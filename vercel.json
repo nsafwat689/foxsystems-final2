@@ -4,7 +4,7 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.js" }
-  ]
+   "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]  ]
 }

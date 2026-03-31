@@ -35,10 +35,11 @@ const translations = {
     articles: "Articles",
     about: "About",
     contact: "Contact",
-    heroTitle: "Enterprise IT Solutions & Services",
+    heroTitle: "Complete IT Solutions to Secure & Grow Your Business",
     heroSubtitle:
-      "Trusted by businesses for over 14 years. CRM systems, cybersecurity, networking, and infrastructure solutions.",
-    heroBtn: "Get Started",
+      "From Cybersecurity to CRM — We Handle Everything",
+    heroBtn: "Get Free Security Audit",
+    viewSolutionsBtn: "View Solutions",
     whatsappBtn: "WhatsApp Us",
     chatBtn: "Chat with Us",
     servicesTitle: "Our Services",
@@ -99,9 +100,10 @@ const translations = {
     articles: "المقالات",
     about: "حول",
     contact: "اتصل",
-    heroTitle: "حلول وخدمات تكنولوجيا المعلومات للمؤسسات",
+    heroTitle: "حلول تقنية متكاملة لتأمين وتنمية أعمالك",
+    viewSolutionsBtn: "عرض الحلول",
     heroSubtitle:
-      "موثوق به من قبل الشركات لأكثر من 14 سنة. أنظمة CRM والأمن السيبراني والشبكات وحلول البنية التحتية.",
+      "من الأمن السيبراني إلى CRM — نحن نتولى كل شيء",
     heroBtn: "ابدأ الآن",
     whatsappBtn: "واتس آب",
     chatBtn: "دردشة معنا",
@@ -221,10 +223,9 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  onClick={() => window.open("https://wa.me/201557649136", "_blank")}
                 >
-                  <Phone className="w-4 h-4 mr-2" />
-                  {t.whatsappBtn}
+                            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                  {t.viewSolutionsBtn}
                 </Button>
               </div>
             </div>

@@ -279,7 +279,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section with Tabs */}
+      {/* Security Banner Section */}       <section className="py-16 bg-primary text-primary-foreground">         <div className="container mx-auto px-4 text-center">           <motion.div             initial={{ opacity: 0, y: 24 }}             whileInView={{ opacity: 1, y: 0 }}             transition={{ duration: 0.5 }}             viewport={{ once: true }}             className="max-w-2xl mx-auto"           >             <p className="text-sm font-semibold uppercase tracking-widest opacity-80 mb-3">               SECURITY             </p>             <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">               {isArabic ? "🔐 احمِ أعمالك قبل أن يتم اختراقها" : "🔐 Protect Your Business Before It Gets Hacked"}             </h2>             <p className="text-base md:text-lg opacity-90 mb-8">               {isArabic ? "حدّد الثغرات وأمّن أنظمتك في 48 ساعة" : "Identify vulnerabilities and secure your systems in 48 hours"}             </p>             <Button               size="lg"               variant="secondary"               className="font-semibold px-8 py-3 rounded-full hover:scale-105 transition-transform"               onClick={() => window.open("https://wa.me/201557649136", "_blank")}             >               {isArabic ? "احصل على تدقيق أمني مجاني" : "Get Free Security Audit"}             </Button>           </motion.div>         </div>       </section>       {/* Services Section with Tabs */}
       <section id="services" className="py-20 md:py-32 bg-muted/20">
         <div className="container">
           <div className={`text-center mb-12 ${isArabic ? "space-y-2" : ""}`}>

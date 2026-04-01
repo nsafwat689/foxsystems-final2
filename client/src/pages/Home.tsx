@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "wouter";
 import {
   MessageCircle,
@@ -21,6 +20,9 @@ import {
   Lock,
   ArrowRight,
   ChevronDown,
+  Briefcase,
+  Target,
+  Lightbulb,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
@@ -35,13 +37,34 @@ const translations = {
     articles: "Articles",
     about: "About",
     contact: "Contact",
+    // Hero
     heroTitle: "Complete IT Solutions to Secure & Grow Your Business",
-    heroSubtitle:
-      "From Cybersecurity to CRM — We Handle Everything",
+    heroSubtitle: "From Cybersecurity to CRM — We Handle Everything",
     heroBtn: "Get Free Security Audit",
     viewSolutionsBtn: "View Solutions",
-    whatsappBtn: "WhatsApp Us",
-    chatBtn: "Chat with Us",
+    getStarted: "Get Started",
+    // Mission & Vision
+    missionTitle: "Our Mission",
+    missionText: "To be a trusted leader in information technology solutions — delivering responsive, innovative, and scalable services that empower organizations of all sizes to achieve peak performance and resilience in a rapidly evolving digital world.",
+    visionTitle: "Our Vision",
+    visionText: "Our vision at Fox Systems is to provide total IT solutions that elevate our clients' performance and secure their digital environments. We do this by delivering reliable, cost-effective, and cutting-edge technology services suited to corporate, government, and individual needs.",
+    // Core Values
+    coreValuesTitle: "Core Values",
+    integrity: "Integrity & Honesty",
+    integrityDesc: "Doing what's right for our clients and partners, always with transparency and ethical conduct.",
+    reliability: "Reliability",
+    reliabilityDesc: "Being dependable in service delivery and support, anytime, anywhere.",
+    customerFocus: "Customer-Focused Innovation",
+    customerFocusDesc: "Continuously improving our processes and solutions to exceed expectations.",
+    teamwork: "Teamwork & Professionalism",
+    teamworkDesc: "Valuing collaboration, expertise, and accountability in everything we do.",
+    excellence: "Service Excellence",
+    excellenceDesc: "Striving for top quality in outcomes, processes, and customer interactions.",
+    flexibility: "Flexibility & Adaptability",
+    flexibilityDesc: "Meeting diverse needs with scalable and tailored IT solutions.",
+    respect: "Respect & Trust",
+    respectDesc: "Building long-lasting relationships through empathy, respect, and trustworthiness.",
+    // Services
     servicesTitle: "Our Services",
     servicesSubtitle: "Comprehensive IT solutions tailored to your business needs",
     crm: "CRM Systems",
@@ -60,33 +83,28 @@ const translations = {
     hardwareDesc: "Quality hardware devices and equipment in bulk quantities",
     support: "24/7 Support",
     supportDesc: "Monthly support contracts with dedicated technical assistance",
-    aboutTitle: "About Fox Systems",
-    aboutText:
-      "With over 14 years of experience in the IT industry, Fox Systems has established itself as a trusted partner for businesses seeking comprehensive technology solutions. We specialize in delivering enterprise-grade CRM systems, cybersecurity solutions, and infrastructure services that drive business growth.",
+    // Why Fox Systems
+    whyFoxTitle: "Why Fox Systems?",
+    yearsExperience: "Years Experience",
+    happyClients: "Happy Clients",
+    projectsDelivered: "Projects Delivered",
+    supportAvailable: "24/7 Support",
+    // Partners
+    trustedByTitle: "Trusted By Over 360 Clients",
+    trustedByDesc: "Over 360 clients trust us with their IT infrastructure across various industries",
+    // Footer
+    footer: "© 2024 Fox Systems. All rights reserved.",
+    company: "Company",
+    aboutCompany: "About",
+    ourServices: "Our Services",
+    followUs: "Follow Us",
+    linkedin: "LinkedIn",
+    facebook: "Facebook",
+    twitter: "Twitter",
     contactTitle: "Get In Touch",
     contactSubtitle: "Have questions? We're here to help.",
     whatsappContact: "WhatsApp: +201557649136",
     emailContact: "Email us for more information",
-    footer: "© 2024 Fox Systems. All rights reserved.",
-    accountable: "Accountable",
-    accountableDesc: "Define your need, if it's a Tech one, you directly call us. We are your Go-To.",
-    upToDate: "Up-to-Date",
-    upToDateDesc: "We have the latest, we bring the newest, so you always have the updated version of everything.",
-    senseOfUrgency: "Sense of Urgency",
-    senseOfUrgencyDesc: "Stops for a moment if there is an issue to be solved or a missing little piece to be installed.",
-    safetyFirst: "Safety Comes First",
-    safetyFirstDesc: "It's always safe to work after we do our job, it's always safe to use our products.",
-    happyCustomers: "Happy Customers",
-    projectsDelivered: "Projects Delivered",
-    partners: "Partners & Alliances",
-    engineers: "Professional Engineers",
-    ourServices: "Our Services",
-    ourWork: "Our Work",
-    recentProjects: "Recent Projects",
-    viewAll: "View All",
-    hardwareCategory: "Hardware",
-    solutionsCategory: "Solutions",
-    softwareCategory: "Software",
     faq: "FAQ",
     faqTitle: "Frequently Asked Questions",
     faqSubtitle: "Find answers to common questions about our services",
@@ -100,13 +118,34 @@ const translations = {
     articles: "المقالات",
     about: "حول",
     contact: "اتصل",
+    // Hero
     heroTitle: "حلول تقنية متكاملة لتأمين وتنمية أعمالك",
+    heroSubtitle: "من الأمن السيبراني إلى CRM — نحن نتولى كل شيء",
+    heroBtn: "احصل على تدقيق أمني مجاني",
     viewSolutionsBtn: "عرض الحلول",
-    heroSubtitle:
-      "من الأمن السيبراني إلى CRM — نحن نتولى كل شيء",
-    heroBtn: "ابدأ الآن",
-    whatsappBtn: "واتس آب",
-    chatBtn: "دردشة معنا",
+    getStarted: "ابدأ الآن",
+    // Mission & Vision
+    missionTitle: "مهمتنا",
+    missionText: "أن نكون قائداً موثوقاً في حلول تكنولوجيا المعلومات — نقدم خدمات مستجيبة ومبتكرة وقابلة للتوسع تمكّن المنظمات من جميع الأحجام من تحقيق أداء عالي والمرونة في عالم رقمي سريع التطور.",
+    visionTitle: "رؤيتنا",
+    visionText: "رؤيتنا في Fox Systems هي توفير حلول تقنية شاملة تعزز أداء عملائنا وتأمين بيئتهم الرقمية. نفعل ذلك من خلال تقديم خدمات تقنية موثوقة وفعالة من حيث التكلفة وحديثة مناسبة للاحتياجات الحكومية والفردية والشركات.",
+    // Core Values
+    coreValuesTitle: "القيم الأساسية",
+    integrity: "النزاهة والصدق",
+    integrityDesc: "فعل ما هو صحيح لعملائنا وشركائنا، دائماً بشفافية وسلوك أخلاقي.",
+    reliability: "الموثوقية",
+    reliabilityDesc: "أن نكون موثوقين في تقديم الخدمة والدعم، في أي وقت وأي مكان.",
+    customerFocus: "الابتكار الموجه للعميل",
+    customerFocusDesc: "تحسين عملياتنا وحلولنا باستمرار لتجاوز التوقعات.",
+    teamwork: "العمل الجماعي والاحترافية",
+    teamworkDesc: "تقدير التعاون والخبرة والمسؤولية في كل ما نقوم به.",
+    excellence: "تميز الخدمة",
+    excellenceDesc: "السعي للحصول على أعلى جودة في النتائج والعمليات والتفاعلات مع العملاء.",
+    flexibility: "المرونة والقابلية للتكيف",
+    flexibilityDesc: "تلبية الاحتياجات المتنوعة بحلول تقنية قابلة للتوسع ومخصصة.",
+    respect: "الاحترام والثقة",
+    respectDesc: "بناء علاقات طويلة الأجل من خلال التعاطف والاحترام والموثوقية.",
+    // Services
     servicesTitle: "خدماتنا",
     servicesSubtitle: "حلول تكنولوجيا معلومات شاملة مخصصة لاحتياجات عملك",
     crm: "أنظمة CRM",
@@ -125,33 +164,28 @@ const translations = {
     hardwareDesc: "أجهزة ومعدات عالية الجودة بكميات كبيرة",
     support: "الدعم 24/7",
     supportDesc: "عقود الدعم الشهري مع مساعدة تقنية مخصصة",
-    aboutTitle: "حول شركة Fox Systems",
-    aboutText:
-      "مع أكثر من 14 سنة من الخبرة في صناعة تكنولوجيا المعلومات، أصبحت Fox Systems شريكاً موثوقاً للشركات التي تسعى للحصول على حلول تكنولوجية شاملة. نحن متخصصون في تقديم أنظمة CRM على مستوى المؤسسات وحلول الأمن السيبراني وخدمات البنية التحتية التي تدفع نمو الأعمال.",
+    // Why Fox Systems
+    whyFoxTitle: "لماذا Fox Systems؟",
+    yearsExperience: "سنوات الخبرة",
+    happyClients: "عملاء سعداء",
+    projectsDelivered: "مشاريع منجزة",
+    supportAvailable: "دعم 24/7",
+    // Partners
+    trustedByTitle: "موثوق به من قبل أكثر من 360 عميل",
+    trustedByDesc: "أكثر من 360 عميل يثقون بنا في بنيتهم التحتية لتكنولوجيا المعلومات عبر صناعات مختلفة",
+    // Footer
+    footer: "© 2024 Fox Systems. جميع الحقوق محفوظة.",
+    company: "الشركة",
+    aboutCompany: "حول",
+    ourServices: "خدماتنا",
+    followUs: "تابعنا",
+    linkedin: "LinkedIn",
+    facebook: "Facebook",
+    twitter: "Twitter",
     contactTitle: "تواصل معنا",
     contactSubtitle: "هل لديك أسئلة؟ نحن هنا للمساعدة.",
     whatsappContact: "واتس آب: +201557649136",
     emailContact: "راسلنا عبر البريد الإلكتروني",
-    footer: "© 2024 Fox Systems. جميع الحقوق محفوظة.",
-    accountable: "المساءلة",
-    accountableDesc: "حدد احتياجك، إذا كان تقنياً، اتصل بنا مباشرة. نحن خيارك الأول.",
-    upToDate: "محدث دائماً",
-    upToDateDesc: "لدينا الأحدث، نحضر الأحدث، لذا لديك دائماً النسخة المحدثة من كل شيء.",
-    senseOfUrgency: "الاستجابة السريعة",
-    senseOfUrgencyDesc: "نتوقف للحظة إذا كانت هناك مشكلة يجب حلها أو قطعة صغيرة مفقودة يجب تثبيتها.",
-    safetyFirst: "السلامة أولاً",
-    safetyFirstDesc: "يكون العمل آمناً دائماً بعد عملنا، يكون استخدام منتجاتنا آمناً دائماً.",
-    happyCustomers: "عملاء سعداء",
-    projectsDelivered: "مشاريع منجزة",
-    partners: "الشركاء والتحالفات",
-    engineers: "مهندسون محترفون",
-    ourServices: "خدماتنا",
-    ourWork: "أعمالنا",
-    recentProjects: "المشاريع الأخيرة",
-    viewAll: "عرض الكل",
-    hardwareCategory: "الأجهزة",
-    solutionsCategory: "الحلول",
-    softwareCategory: "البرمجيات",
     faq: "الأسئلة الشائعة",
     faqTitle: "الأسئلة الشائعة",
     faqSubtitle: "ابحث عن إجابات للأسئلة الشائعة حول خدماتنا",
@@ -161,7 +195,6 @@ const translations = {
 export default function Home() {
   const [language, setLanguage] = useState<"en" | "ar">("en");
   const [showChat, setShowChat] = useState(false);
-  const [activeServiceTab, setActiveServiceTab] = useState("all");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const { theme, toggleTheme } = useTheme();
   const t = translations[language];
@@ -174,33 +207,31 @@ export default function Home() {
     { icon: Server, title: t.domainServices, desc: t.domainDesc, category: "infrastructure", image: "/hero-tech.jpg" },
     { icon: Globe, title: t.websites, desc: t.websitesDesc, category: "software", image: "/hero-tech.jpg" },
     { icon: Zap, title: t.infrastructure, desc: t.infrastructureDesc, category: "infrastructure", image: "/it-services.jpg" },
-    { icon: Users, title: t.hardware, desc: t.hardwareDesc, category: "hardware", image: "/firewall-security.jpg" },
-    { icon: Phone, title: t.support, desc: t.supportDesc, category: "support", image: "/crm-solution.jpg" },
   ];
 
-  const features = [
-    { icon: CheckCircle, title: t.accountable, desc: t.accountableDesc },
-    { icon: Clock, title: t.upToDate, desc: t.upToDateDesc },
-    { icon: AlertCircle, title: t.senseOfUrgency, desc: t.senseOfUrgencyDesc },
-    { icon: Lock, title: t.safetyFirst, desc: t.safetyFirstDesc },
+  const coreValues = [
+    { icon: CheckCircle, title: t.integrity, desc: t.integrityDesc },
+    { icon: Clock, title: t.reliability, desc: t.reliabilityDesc },
+    { icon: Lightbulb, title: t.customerFocus, desc: t.customerFocusDesc },
+    { icon: Users, title: t.teamwork, desc: t.teamworkDesc },
+    { icon: Briefcase, title: t.excellence, desc: t.excellenceDesc },
+    { icon: Zap, title: t.flexibility, desc: t.flexibilityDesc },
+    { icon: Lock, title: t.respect, desc: t.respectDesc },
   ];
 
   const stats = [
-    { value: "2,322+", label: t.happyCustomers, icon: Users },
-    { value: "3,230+", label: t.projectsDelivered, icon: CheckCircle },
-    { value: "50+", label: t.partners, icon: Globe },
-    { value: "120+", label: t.engineers, icon: Users },
+    { value: "14+", label: t.yearsExperience, icon: Clock },
+    { value: "360+", label: t.happyClients, icon: Users },
+    { value: "500+", label: t.projectsDelivered, icon: CheckCircle },
+    { value: "24/7", label: t.supportAvailable, icon: Phone },
   ];
-
-  const filteredServices =
-    activeServiceTab === "all" ? services : services.filter((s) => s.category === activeServiceTab);
 
   return (
     <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
       <Header language={language} setLanguage={setLanguage} />
 
-      {/* Hero Section with Slider */}
-      <section className="relative py-16 md:py-24 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 right-20 w-72 h-72 bg-primary rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 left-20 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
@@ -220,11 +251,7 @@ export default function Home() {
                 <Button size="lg" className="bg-primary hover:bg-primary/90">
                   {t.heroBtn}
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                >
-                            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                <Button size="lg" variant="outline">
                   {t.viewSolutionsBtn}
                 </Button>
               </div>
@@ -242,224 +269,195 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Service Categories Section */}
-      <section className="py-12 bg-muted/30 border-b border-border">
+      {/* Mission & Vision Section */}
+      <section className="py-20 md:py-32 bg-muted/20">
         <div className="container">
-          <div className="grid grid-cols-3 gap-4 md:gap-6">
-            <div className="bg-primary text-primary-foreground p-6 rounded-lg text-center hover:shadow-lg transition">
-              <h3 className="font-bold text-lg">{t.hardwareCategory}</h3>
-            </div>
-            <div className="bg-primary text-primary-foreground p-6 rounded-lg text-center hover:shadow-lg transition">
-              <h3 className="font-bold text-lg">{t.solutionsCategory}</h3>
-            </div>
-            <div className="bg-primary text-primary-foreground p-6 rounded-lg text-center hover:shadow-lg transition">
-              <h3 className="font-bold text-lg">{t.softwareCategory}</h3>
-            </div>
+          <div className="grid md:grid-cols-2 gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className={`space-y-4 ${isArabic ? "text-right" : ""}`}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold">{t.missionTitle}</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">{t.missionText}</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className={`space-y-4 ${isArabic ? "text-right" : ""}`}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold">{t.visionTitle}</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">{t.visionText}</p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Core Values Section */}
       <section className="py-20 md:py-32">
         <div className="container">
-          <div className={`grid md:grid-cols-4 gap-8 ${isArabic ? "text-right" : ""}`}>
-            {features.map((feature, idx) => {
-              const Icon = feature.icon;
+          <div className={`text-center mb-16 ${isArabic ? "space-y-2" : ""}`}>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.coreValuesTitle}</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {coreValues.map((value, idx) => {
+              const Icon = value.icon;
               return (
-                <div key={idx} className="space-y-4">
-                  <div className="p-4 bg-primary/10 rounded-lg w-fit">
-                    <Icon className="w-8 h-8 text-primary" />
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className={`space-y-3 p-6 rounded-lg border border-border hover:border-primary/50 hover:shadow-lg transition-all ${
+                    isArabic ? "text-right" : ""
+                  }`}
+                >
+                  <div className="p-3 bg-primary/10 rounded-lg w-fit">
+                    <Icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="text-lg font-bold uppercase tracking-wide">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.desc}</p>
-                </div>
+                  <h3 className="font-bold text-lg">{value.title}</h3>
+                  <p className="text-sm text-muted-foreground">{value.desc}</p>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Security Banner Section */}       <section className="py-16 bg-primary text-primary-foreground">         <div className="container mx-auto px-4">           <motion.div             initial={{ opacity: 0, y: 24 }}             whileInView={{ opacity: 1, y: 0 }}             transition={{ duration: 0.5 }}             viewport={{ once: true }}             className="grid md:grid-cols-2 gap-12 items-center"           >             {/* Left: Text Content */}             <div className={`space-y-6 ${isArabic ? "text-right" : "text-left"}`}>               <h1 className="text-5xl md:text-7xl font-extrabold uppercase tracking-tight leading-none">                 {isArabic ? "الأمان" : "SECURITY"}               </h1>               <h2 className="text-2xl md:text-3xl font-bold leading-snug">                 {isArabic ? "🔐 احمِ أعمالك قبل أن يتم اختراقها" : "🔐 Protect Your Business Before It Gets Hacked"}               </h2>               <p className="text-base md:text-lg opacity-90">                 {isArabic ? "حدّد الثغرات وأمّن أنظمتك في 48 ساعة" : "Identify vulnerabilities and secure your systems in 48 hours"}               </p>               <Button                 size="lg"                 variant="secondary"                 className="font-semibold px-8 py-3 rounded-full hover:scale-105 transition-transform"                 onClick={() => window.open("https://wa.me/201557649136", "_blank")}               >                 {isArabic ? "احصل على تدقيق أمني مجاني" : "Get Free Security Audit"}               </Button>             </div>             {/* Right: Firewall Image */}             <div className="relative">               <img                 src="/firewall-security.jpg"                 alt="Sophos Firewall Security"                 className="rounded-2xl shadow-2xl w-full h-auto object-cover"               />               <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent rounded-2xl" />             </div>           </motion.div>         </div>       </section>       <section className="py-16 bg-primary text-primary-foreground">         <div className="container mx-auto px-4 text-center">           <motion.div             initial={{ opacity: 0, y: 24 }}             whileInView={{ opacity: 1, y: 0 }}             transition={{ duration: 0.5 }}             viewport={{ once: true }}             className="max-w-2xl mx-auto"           >             <p className="text-sm font-semibold uppercase tracking-widest opacity-80 mb-3">               SECURITY             </p>             <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">               {isArabic ? "🔐 احمِ أعمالك قبل أن يتم اختراقها" : "🔐 Protect Your Business Before It Gets Hacked"}             </h2>             <p className="text-base md:text-lg opacity-90 mb-8">               {isArabic ? "حدّد الثغرات وأمّن أنظمتك في 48 ساعة" : "Identify vulnerabilities and secure your systems in 48 hours"}             </p>             <Button               size="lg"               variant="secondary"               className="font-semibold px-8 py-3 rounded-full hover:scale-105 transition-transform"               onClick={() => window.open("https://wa.me/201557649136", "_blank")}             >               {isArabic ? "احصل على تدقيق أمني مجاني" : "Get Free Security Audit"}             </Button>           </motion.div>         </div>       </section>       {/* Services Section with Tabs */}
+      {/* Our Services Section */}
       <section id="services" className="py-20 md:py-32 bg-muted/20">
         <div className="container">
-          <div className={`text-center mb-12 ${isArabic ? "space-y-2" : ""}`}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.ourServices}</h2>
+          <div className={`text-center mb-16 ${isArabic ? "space-y-2" : ""}`}>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.servicesTitle}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t.servicesSubtitle}</p>
           </div>
 
-          <div className="mb-8">
-            <Tabs value={activeServiceTab} onValueChange={setActiveServiceTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-5 mb-8">
-                <TabsTrigger value="all">{isArabic ? "الكل" : "All"}</TabsTrigger>
-                <TabsTrigger value="software">{isArabic ? "برمجيات" : "Software"}</TabsTrigger>
-                <TabsTrigger value="security">{isArabic ? "أمان" : "Security"}</TabsTrigger>
-                <TabsTrigger value="networking">{isArabic ? "شبكات" : "Networking"}</TabsTrigger>
-                <TabsTrigger value="infrastructure">{isArabic ? "بنية تحتية" : "Infrastructure"}</TabsTrigger>
-              </TabsList>
-
-              <TabsContent value={activeServiceTab} className="mt-8">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {filteredServices.map((service, idx) => {
-                    const Icon = service.icon;
-                    return (
-                      <Card
-                        key={idx}
-                        className="hover:shadow-lg transition-all hover:border-primary/50 cursor-pointer group overflow-hidden"
-                      >
-                        <div className="h-32 bg-gradient-to-br from-primary/20 to-primary/5 overflow-hidden relative">
-                          <img
-                            src={service.image}
-                            alt={service.title}
-                            className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition"
-                          />
-                        </div>
-                        <CardHeader>
-                          <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary/20 transition">
-                            <Icon className="w-6 h-6 text-primary" />
-                          </div>
-                          <CardTitle className="text-lg">{service.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground">{service.desc}</p>
-                        </CardContent>
-                      </Card>
-                    );
-                  })}
-                </div>
-              </TabsContent>
-            </Tabs>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, idx) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className={`group p-8 rounded-lg border border-border/50 hover:border-primary hover:shadow-xl transition-all cursor-pointer ${
+                    isArabic ? "text-right" : ""
+                  }`}
+                >
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition">
+                      <Icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground">{service.desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Statistics Section */}
-      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
+      {/* Why Fox Systems - Stats Section */}
+      <section className="py-20 md:py-32 bg-primary text-primary-foreground">
         <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.whyFoxTitle}</h2>
+          </div>
+
           <div className="grid md:grid-cols-4 gap-8">
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
               return (
-                <div key={idx} className="text-center">
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="text-center"
+                >
                   <div className="flex justify-center mb-4">
                     <Icon className="w-12 h-12" />
                   </div>
-                  <p className="text-4xl font-bold mb-2">{stat.value}</p>
+                  <p className="text-5xl font-bold mb-2">{stat.value}</p>
                   <p className="text-primary-foreground/80">{stat.label}</p>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 md:py-32">
+      {/* Trusted By Section */}
+      <section className="py-20 md:py-32">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className={isArabic ? "order-2" : ""}>
-              <img
-                src="/it-services.jpg"
-                alt="About Fox Systems"
-                className="rounded-2xl shadow-xl w-full h-auto object-cover"
-              />
-            </div>
-            <div className={`space-y-6 ${isArabic ? "order-1 text-right" : ""}`}>
-              <h2 className="text-3xl md:text-4xl font-bold">{t.aboutTitle}</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">{t.aboutText}</p>
-              <Button className="w-fit" size="lg">
-                {t.heroBtn}
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
+          <div className={`text-center mb-16 ${isArabic ? "space-y-2" : ""}`}>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.trustedByTitle}</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t.trustedByDesc}</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {[...Array(12)].map((_, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                className="flex items-center justify-center p-6 rounded-lg border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all bg-muted/30"
+              >
+                <div className="text-center text-muted-foreground">
+                  <Globe className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                  <p className="text-xs font-semibold">Client {idx + 1}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-    <section id="faq" className="py-20 md:py-32 bg-primary/10">        <div className="container">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className={`text-center mb-16 ${isArabic ? "space-y-2" : ""}`}
-          >
+      <section id="faq" className="py-20 md:py-32 bg-muted/20">
+        <div className="container">
+          <div className={`text-center mb-16 ${isArabic ? "space-y-2" : ""}`}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.faqTitle}</h2>
             <p className="text-lg text-muted-foreground">{t.faqSubtitle}</p>
-          </motion.div>
+          </div>
 
           <div className="max-w-3xl mx-auto space-y-4">
             {[
               {
                 q: isArabic ? "ما هي أنواع أنظمة CRM التي تقدمونها؟" : "What types of CRM systems do you provide?",
-                a: isArabic 
-                  ? "نحن نقدم أنظمة CRM مخصصة ومبنية على السحابة تناسب مختلف أحجام الشركات، مع التركيز على سهولة الاستخدام والتكامل." 
+                a: isArabic
+                  ? "نحن نقدم أنظمة CRM مخصصة ومبنية على السحابة تناسب مختلف أحجام الشركات، مع التركيز على سهولة الاستخدام والتكامل."
                   : "We provide custom and cloud-based CRM systems tailored to various business sizes, focusing on ease of use and integration.",
               },
               {
                 q: isArabic ? "هل تقدمون دعماً فنياً على مدار الساعة؟" : "Do you provide 24/7 technical support?",
-                a: isArabic 
-                  ? "نعم، نحن نقدم عقود دعم شهري تضمن لك الحصول على مساعدة تقنية في أي وقت ومن أي مكان." 
+                a: isArabic
+                  ? "نعم، نحن نقدم عقود دعم شهري تضمن لك الحصول على مساعدة تقنية في أي وقت ومن أي مكان."
                   : "Yes, we offer monthly support contracts that ensure you get technical assistance anytime, anywhere.",
               },
               {
                 q: isArabic ? "كيف تحمون شبكاتنا من الاختراقات؟" : "How do you protect our networks from breaches?",
-                a: isArabic 
-                  ? "نستخدم أنظمة Sophos المتقدمة وجدران الحماية القوية، بالإضافة إلى المراقبة المستمرة وتحديثات الأمان الدورية." 
+                a: isArabic
+                  ? "نستخدم أنظمة Sophos المتقدمة وجدران الحماية القوية، بالإضافة إلى المراقبة المستمرة وتحديثات الأمان الدورية."
                   : "We use advanced Sophos systems and robust firewalls, along with continuous monitoring and regular security updates.",
               },
               {
                 q: isArabic ? "هل يمكنكم المساعدة في إعداد البنية التحتية للشركات الناشئة؟" : "Can you help with infrastructure setup for startups?",
-                a: isArabic 
-                  ? "بالتأكيد، نحن متخصصون في تصميم وتنفيذ البنية التحتية الكاملة للشركات الناشئة لضمان بداية تقنية قوية وقابلة للتوسع." 
+                a: isArabic
+                  ? "بالتأكيد، نحن متخصصون في تصميم وتنفيذ البنية التحتية الكاملة للشركات الناشئة لضمان بداية تقنية قوية وقابلة للتوسع."
                   : "Certainly, we specialize in designing and implementing complete IT infrastructure for startups to ensure a strong and scalable technical start.",
-              },
-              {
-                q: isArabic ? "ما هي تكلفة خدماتكم؟" : "What is the cost of your services?",
-                a: isArabic 
-                  ? "تعتمد التكلفة على حجم المشروع والمتطلبات المحددة. نحن نقدم عروض أسعار مخصصة بعد تقييم احتياجاتك." 
-                  : "The cost depends on the project size and specific requirements. We provide customized quotes after assessing your needs.",
-              },
-              {
-                q: isArabic ? "هل تقدمون خدمات تصميم المواقع؟" : "Do you offer website design services?",
-                a: isArabic 
-                  ? "نعم، نصمم مواقع احترافية وسريعة الاستجابة تتناسب مع هوية شركتك وتساعدك على الوصول لعملائك." 
-                  : "Yes, we design professional and responsive websites that match your company's identity and help you reach your customers.",
-              },
-              {
-                q: isArabic ? "هل يمكن دمج نظام CRM مع أدواتنا الحالية؟" : "Can the CRM system be integrated with our current tools?",
-                a: isArabic 
-                  ? "نعم، أنظمتنا تدعم التكامل مع معظم الأدوات الشائعة مثل البريد الإلكتروني ومنصات التواصل الاجتماعي." 
-                  : "Yes, our systems support integration with most popular tools like email and social media platforms.",
-              },
-              {
-                q: isArabic ? "ما هي مدة تنفيذ مشروع البنية التحتية؟" : "How long does an infrastructure project take?",
-                a: isArabic 
-                  ? "تتراوح المدة عادة بين أسبوعين إلى شهرين حسب تعقيد المشروع وحجم الشركة." 
-                  : "The duration usually ranges from two weeks to two months depending on the project complexity and company size.",
-              },
-              {
-                q: isArabic ? "هل توفرون أجهزة الهاردوير؟" : "Do you provide hardware equipment?",
-                a: isArabic 
-                  ? "نعم، نوفر أجهزة السيرفرات، أجهزة الكمبيوتر، ومعدات الشبكات من أفضل العلامات التجارية العالمية." 
-                  : "Yes, we provide servers, computers, and networking equipment from top global brands.",
-              },
-              {
-                q: isArabic ? "كيف يمكنني البدء معكم؟" : "How can I get started with you?",
-                a: isArabic 
-                  ? "يمكنك التواصل معنا عبر الواتس آب أو البريد الإلكتروني لجدولة استشارة مجانية." 
-                  : "You can contact us via WhatsApp or email to schedule a free consultation.",
-              },
-              {
-                q: isArabic ? "هل تقدمون خدمات الربط بين الفروع؟" : "Do you offer site-to-site networking?",
-                a: isArabic 
-                  ? "نعم، نؤمن اتصالات آمنة وسريعة بين فروع شركتك المختلفة لضمان سلاسة العمل." 
-                  : "Yes, we secure fast and safe connections between your company's different branches to ensure smooth operations.",
-              },
-              {
-                q: isArabic ? "ما الذي يميز Fox Systems عن غيرها؟" : "What makes Fox Systems different?",
-                a: isArabic 
-                  ? "خبرتنا التي تزيد عن 14 عاماً، التزامنا بالجودة، ودعمنا الفني المستمر هم سر تميزنا." 
-                  : "Our 14+ years of experience, commitment to quality, and continuous technical support are the secrets of our excellence.",
               },
             ].map((item, idx) => (
               <motion.div
@@ -470,12 +468,16 @@ export default function Home() {
                 transition={{ delay: idx * 0.05 }}
               >
                 <Card className="border border-border overflow-hidden">
-                  <button 
+                  <button
                     onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
                     className="w-full text-left p-4 flex justify-between items-center hover:bg-muted/50 transition-colors"
                   >
                     <span className="font-bold text-base">{item.q}</span>
-                    <ChevronDown className={`w-5 h-5 text-primary transition-transform duration-300 ${openFaqIndex === idx ? "rotate-180" : ""}`} />
+                    <ChevronDown
+                      className={`w-5 h-5 text-primary transition-transform duration-300 ${
+                        openFaqIndex === idx ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
                   <AnimatePresence>
                     {openFaqIndex === idx && (
@@ -523,7 +525,24 @@ export default function Home() {
                   onClick={() => window.open("https://wa.me/201557649136", "_blank")}
                   className="w-full"
                 >
-                  {t.whatsappBtn}
+                  {isArabic ? "تواصل الآن" : "Contact Now"}
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-all">
+              <CardHeader>
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Mail className="w-6 h-6 text-primary" />
+                  </div>
+                </div>
+                <CardTitle>{isArabic ? "البريد الإلكتروني" : "Email"}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">info@foxsystems.com</p>
+                <Button size="sm" variant="outline" className="w-full">
+                  {t.emailContact}
                 </Button>
               </CardContent>
             </Card>
@@ -542,24 +561,7 @@ export default function Home() {
                   {isArabic ? "تحدث معنا الآن" : "Chat with our team"}
                 </p>
                 <Button size="sm" onClick={() => setShowChat(!showChat)} className="w-full">
-                  {t.chatBtn}
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-all">
-              <CardHeader>
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                </div>
-                <CardTitle>{isArabic ? "البريد الإلكتروني" : "Email"}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">info@foxsystems.com</p>
-                <Button size="sm" variant="outline" className="w-full">
-                  {t.emailContact}
+                  {isArabic ? "ابدأ الدردشة" : "Start Chat"}
                 </Button>
               </CardContent>
             </Card>
@@ -583,9 +585,7 @@ export default function Home() {
             <div className="space-y-4">
               <div className="bg-primary text-primary-foreground rounded-lg p-3 max-w-xs">
                 <p className="text-sm">
-                  {isArabic
-                    ? "مرحباً! كيف يمكننا مساعدتك؟"
-                    : "Hello! How can we help you today?"}
+                  {isArabic ? "مرحباً! كيف يمكننا مساعدتك؟" : "Hello! How can we help you today?"}
                 </p>
               </div>
             </div>
@@ -611,20 +611,20 @@ export default function Home() {
       )}
 
       {/* Footer */}
-      <footer className="bg-foreground/5 border-t border-border py-8">
+      <footer className="bg-foreground/5 border-t border-border py-12">
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <h4 className="font-bold mb-4">{isArabic ? "الشركة" : "Company"}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-primary transition">
-                    {t.about}
+                  <a href="#about" className="hover:text-primary transition">
+                    {t.aboutCompany}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition">
-                    {t.services}
+                  <a href="#services" className="hover:text-primary transition">
+                    {t.ourServices}
                   </a>
                 </li>
               </ul>
@@ -633,12 +633,12 @@ export default function Home() {
               <h4 className="font-bold mb-4">{isArabic ? "الخدمات" : "Services"}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-primary transition">
+                  <a href="#services" className="hover:text-primary transition">
                     {t.crm}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition">
+                  <a href="#services" className="hover:text-primary transition">
                     {t.firewall}
                   </a>
                 </li>
@@ -648,13 +648,13 @@ export default function Home() {
               <h4 className="font-bold mb-4">{isArabic ? "الدعم" : "Support"}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-primary transition">
+                  <a href="#contact" className="hover:text-primary transition">
                     {t.contact}
                   </a>
                 </li>
                 <li>
                   <a href="#faq" className="hover:text-primary transition">
-                    {isArabic ? "الأسئلة الشائعة" : "FAQ"}
+                    {t.faq}
                   </a>
                 </li>
               </ul>
@@ -663,10 +663,10 @@ export default function Home() {
               <h4 className="font-bold mb-4">{isArabic ? "تابعنا" : "Follow Us"}</h4>
               <div className="flex gap-4">
                 <a href="#" className="text-muted-foreground hover:text-primary transition">
-                  LinkedIn
+                  {t.linkedin}
                 </a>
                 <a href="#" className="text-muted-foreground hover:text-primary transition">
-                  Twitter
+                  {t.facebook}
                 </a>
               </div>
             </div>

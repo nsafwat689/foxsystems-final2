@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, ChevronDown, Globe } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 interface HeaderProps {
   language: "en" | "ar";
@@ -10,20 +17,46 @@ interface HeaderProps {
 
 const translations = {
   en: {
-    services: "Services",
-    articles: "Articles",
-    about: "About",
-    contact: "Contact",
-    faq: "FAQ",
     home: "Home",
+    about: "About",
+    services: "Services",
+    company: "Company",
+    support: "Support",
+    careers: "Careers",
+    contact: "Contact",
+    getStarted: "Get Started",
+    // Dropdown items
+    internet: "Internet",
+    software: "Software",
+    hardware: "Hardware",
+    cybersecurity: "Cybersecurity",
+    infrastructure: "Infrastructure",
+    webDev: "Website Development",
+    founder: "Founder",
+    team: "Team",
+    events: "Events",
+    sla: "SLA & Consultant",
   },
   ar: {
-    services: "الخدمات",
-    articles: "المقالات",
-    about: "حول",
-    contact: "اتصل",
-    faq: "الأسئلة الشائعة",
     home: "الرئيسية",
+    about: "حول",
+    services: "الخدمات",
+    company: "الشركة",
+    support: "الدعم",
+    careers: "الوظائف",
+    contact: "اتصل",
+    getStarted: "ابدأ الآن",
+    // Dropdown items
+    internet: "الإنترنت",
+    software: "البرمجيات",
+    hardware: "الأجهزة",
+    cybersecurity: "الأمن السيبراني",
+    infrastructure: "البنية التحتية",
+    webDev: "تطوير المواقع",
+    founder: "المؤسس",
+    team: "الفريق",
+    events: "الفعاليات",
+    sla: "اتفاقية مستوى الخدمة والاستشارات",
   },
 };
 
@@ -31,95 +64,145 @@ export default function Header({ language, setLanguage }: HeaderProps) {
   const { theme, toggleTheme } = useTheme();
   const [location] = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const t = translations[language];
   const isArabic = language === "ar";
 
-  const navLinks = [
-    { name: t.services, href: "/services" },
-    { name: t.articles, href: "/articles" },
-    // When on home page, anchor links scroll to sections; otherwise navigate back to home with hash
-    { name: t.about, href: location === "/" ? "#about" : "/#about" },
-    { name: t.contact, href: location === "/" ? "#contact" : "/#contact" },
-    { name: t.faq, href: location === "/" ? "#faq" : "/#faq" },
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const serviceItems = [
+    { name: t.internet, href: "/services/internet" },
+    { name: t.software, href: "/services/software" },
+    { name: t.hardware, href: "/services/hardware" },
+    { name: t.cybersecurity, href: "/services/cybersecurity" },
+    { name: t.infrastructure, href: "/services/infrastructure" },
+    { name: t.webDev, href: "/services/web-development" },
   ];
 
-  // Smooth scroll to section helper
-  const scrollToSection = (id: string) => {
-    if (typeof document !== "undefined") {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
+  const companyItems = [
+    { name: t.founder, href: "/company/founder" },
+    { name: t.team, href: "/company/team" },
+    { name: t.events, href: "/company/events" },
+  ];
 
-  // Handle navigation click: if on home and anchor link, prevent default and scroll
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    href: string
-  ) => {
-    if (href.startsWith("#") && location === "/") {
-      e.preventDefault();
-      const id = href.substring(1);
-      scrollToSection(id);
-      setIsMenuOpen(false);
-    } else {
-      // For mobile menu, close menu when navigating to another page
-      setIsMenuOpen(false);
-    }
-  };
+  const supportItems = [
+    { name: t.sla, href: "/support/sla" },
+  ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-sm">
+    <nav
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/95 backdrop-blur border-b border-border shadow-md py-2"
+          : "bg-transparent py-4"
+      }`}
+    >
       <div className="container flex items-center justify-between h-16">
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
             <img src="/logo.jpg" alt="Fox Systems" className="h-10 w-10 rounded-lg" />
-            <span className="font-bold text-lg text-primary hidden sm:inline">
+            <span className="font-bold text-xl text-primary hidden lg:inline">
               Fox Systems
             </span>
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
-          <div className={`flex items-center gap-6 ${isArabic ? "flex-row-reverse" : ""}`}>
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium hover:text-primary transition"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
+        <div className={`hidden md:flex items-center gap-8 ${isArabic ? "flex-row-reverse" : ""}`}>
+          <Link href="/" className="text-sm font-medium hover:text-primary transition">
+            {t.home}
+          </Link>
+          <Link href="/about" className="text-sm font-medium hover:text-primary transition">
+            {t.about}
+          </Link>
 
-          <div className="flex items-center gap-2">
+          {/* Services Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium hover:text-primary transition outline-none">
+              {t.services} <ChevronDown className="w-4 h-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align={isArabic ? "end" : "start"} className="w-56">
+              {serviceItems.map((item) => (
+                <DropdownMenuItem key={item.href} asChild>
+                  <Link href={item.href} className="w-full cursor-pointer">
+                    {item.name}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Company Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium hover:text-primary transition outline-none">
+              {t.company} <ChevronDown className="w-4 h-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align={isArabic ? "end" : "start"} className="w-48">
+              {companyItems.map((item) => (
+                <DropdownMenuItem key={item.href} asChild>
+                  <Link href={item.href} className="w-full cursor-pointer">
+                    {item.name}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Support Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium hover:text-primary transition outline-none">
+              {t.support} <ChevronDown className="w-4 h-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align={isArabic ? "end" : "start"} className="w-56">
+              {supportItems.map((item) => (
+                <DropdownMenuItem key={item.href} asChild>
+                  <Link href={item.href} className="w-full cursor-pointer">
+                    {item.name}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <Link href="/careers" className="text-sm font-medium hover:text-primary transition">
+            {t.careers}
+          </Link>
+          <Link href="/contact" className="text-sm font-medium hover:text-primary transition">
+            {t.contact}
+          </Link>
+
+          <div className="flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-muted transition"
+              className="p-2 rounded-full hover:bg-muted transition"
               title={theme === "light" ? "Dark mode" : "Light mode"}
             >
-              {theme === "light" ? (
-                <Moon className="w-5 h-5" />
-              ) : (
-                <Sun className="w-5 h-5" />
-              )}
+              {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </button>
+            
             <button
               onClick={() => setLanguage(language === "en" ? "ar" : "en")}
-              className="px-3 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition"
+              className="flex items-center gap-1 p-2 rounded-full hover:bg-muted transition"
             >
-              {language === "en" ? "العربية" : "EN"}
+              <Globe className="w-5 h-5" />
+              <span className="text-xs font-bold uppercase">{language === "en" ? "AR" : "EN"}</span>
             </button>
+
+            <Button asChild className="bg-primary hover:bg-primary/90">
+              <Link href="/contact">{t.getStarted}</Link>
+            </Button>
           </div>
         </div>
 
         {/* Mobile Menu Toggle */}
         <div className="flex md:hidden items-center gap-2">
-          <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-muted transition">
+          <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-muted transition">
             {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
           </button>
           <button
@@ -133,29 +216,47 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-b border-border p-4 space-y-4">
+        <div className="md:hidden bg-background border-b border-border p-6 space-y-6 animate-in slide-in-from-top duration-300">
           <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-sm font-medium hover:text-primary transition ${
-                  isArabic ? "text-right" : ""
-                }`}
+            <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium">
+              {t.home}
+            </Link>
+            <Link href="/about" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium">
+              {t.about}
+            </Link>
+            
+            <div className="space-y-2">
+              <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider">{t.services}</p>
+              {serviceItems.map((item) => (
+                <Link key={item.href} href={item.href} onClick={() => setIsMenuOpen(false)} className="block pl-4 text-base">
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+
+            <Link href="/careers" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium">
+              {t.careers}
+            </Link>
+            <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium">
+              {t.contact}
+            </Link>
+
+            <div className="pt-4 flex flex-col gap-4">
+              <Button
+                onClick={() => {
+                  setLanguage(language === "en" ? "ar" : "en");
+                  setIsMenuOpen(false);
+                }}
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2"
               >
-                {link.name}
-              </Link>
-            ))}
-            <button
-              onClick={() => {
-                setLanguage(language === "en" ? "ar" : "en");
-                setIsMenuOpen(false);
-              }}
-              className="w-full px-3 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition"
-            >
-              {language === "en" ? "العربية" : "EN"}
-            </button>
+                <Globe className="w-4 h-4" />
+                {language === "en" ? "العربية" : "English"}
+              </Button>
+              <Button asChild className="w-full">
+                <Link href="/contact" onClick={() => setIsMenuOpen(false)}>{t.getStarted}</Link>
+              </Button>
+            </div>
           </div>
         </div>
       )}

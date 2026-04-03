@@ -201,12 +201,12 @@ export default function Home() {
   ];
 
   const services = [
-    { icon: Network, title: t.internet, desc: t.internetDesc, items: ["Fiber Leased Line", "Microwave", "WiMAX", "VPN", "Static IP"] },
-    { icon: Cpu, title: t.software, desc: t.softwareDesc, items: ["Microsoft", "VMware", "Veeam", "Veritas"] },
-    { icon: Server, title: t.hardware, desc: t.hardwareDesc, items: ["Dell", "HP", "Lenovo", "Cisco", "Huawei"] },
-    { icon: Shield, title: t.cybersecurity, desc: t.cybersecurityDesc, items: ["Kaspersky", "Bitdefender", "ESET", "Sophos", "Fortinet"] },
-    { icon: Zap, title: t.infrastructure, desc: t.infrastructureDesc, items: ["Network Infrastructure", "Servers & Data Center", "Surveillance"] },
-    { icon: Globe, title: t.webDev, desc: t.webDevDesc, items: ["UI/UX Design", "Mobile-first", "SEO", "Multi-language"] },
+    { icon: Network, title: t.internet, desc: t.internetDesc, items: ["Fiber Leased Line", "Microwave", "WiMAX", "VPN", "Static IP"], href: "/services/internet" },
+    { icon: Cpu, title: t.software, desc: t.softwareDesc, items: ["Microsoft", "VMware", "Veeam", "Veritas"], href: "/services/software" },
+    { icon: Server, title: t.hardware, desc: t.hardwareDesc, items: ["Dell", "HP", "Lenovo", "Cisco", "Huawei"], href: "/services/hardware" },
+    { icon: Shield, title: t.cybersecurity, desc: t.cybersecurityDesc, items: ["Kaspersky", "Bitdefender", "ESET", "Sophos", "Fortinet"], href: "/services/cybersecurity" },
+    { icon: Zap, title: t.infrastructure, desc: t.infrastructureDesc, items: ["Network Infrastructure", "Servers & Data Center", "Surveillance"], href: "/services/infrastructure" },
+    { icon: Globe, title: t.webDev, desc: t.webDevDesc, items: ["UI/UX Design", "Mobile-first", "SEO", "Multi-language"], href: "/services/web-development" },
   ];
 
   const stats = [
@@ -344,33 +344,34 @@ export default function Home() {
             {services.map((service, idx) => {
               const Icon = service.icon;
               return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className={`group p-10 rounded-2xl border border-border/50 bg-card hover:border-primary hover:shadow-2xl transition-all duration-500 cursor-pointer ${
-                    isArabic ? "text-right" : ""
-                  }`}
-                >
-                  <div className="flex justify-between items-start mb-8">
-                    <div className="p-4 bg-primary/10 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                      <Icon className="w-8 h-8" />
+                <Link key={idx} href={service.href}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className={`group p-10 rounded-2xl border border-border/50 bg-card hover:border-primary hover:shadow-2xl transition-all duration-500 cursor-pointer h-full ${
+                      isArabic ? "text-right" : ""
+                    }`}
+                  >
+                    <div className="flex justify-between items-start mb-8">
+                      <div className="p-4 bg-primary/10 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                        <Icon className="w-8 h-8" />
+                      </div>
+                      <ArrowRight className="w-6 h-6 text-primary opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-[-10px] group-hover:translate-x-0" />
                     </div>
-                    <ArrowRight className="w-6 h-6 text-primary opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-[-10px] group-hover:translate-x-0" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-6">{service.title}</h3>
-                  <p className="text-muted-foreground mb-8 leading-relaxed">{service.desc}</p>
-                  <ul className="space-y-3">
-                    {service.items.map((item, i) => (
-                      <li key={i} className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
+                    <h3 className="text-2xl font-bold mb-6">{service.title}</h3>
+                    <p className="text-muted-foreground mb-8 leading-relaxed">{service.desc}</p>
+                    <ul className="space-y-3">
+                      {service.items.map((item, i) => (
+                        <li key={i} className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </Link>
               );
             })}
           </div>

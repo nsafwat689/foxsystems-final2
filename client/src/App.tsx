@@ -6,10 +6,7 @@ import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
-import Articles from "./pages/Articles";
-import ArticleDetail from "./pages/ArticleDetail";
 
 function Router() {
   // Access current location via wouter. When location changes, scroll to top.
@@ -22,14 +19,31 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/services" component={Services} />
-      <Route path="/service/:serviceId">
-        {({ serviceId }) => <ServiceDetail serviceId={serviceId as string} />}
+      
+      {/* Service Routes */}
+      <Route path="/services/internet">
+        {() => <ServiceDetail serviceId="internet" />}
       </Route>
-      <Route path="/articles" component={Articles} />
-      <Route path="/article/:articleId">
-        {({ articleId }) => <ArticleDetail articleId={articleId as string} />}
+      <Route path="/services/software">
+        {() => <ServiceDetail serviceId="software" />}
       </Route>
+      <Route path="/services/hardware">
+        {() => <ServiceDetail serviceId="hardware" />}
+      </Route>
+      <Route path="/services/cybersecurity">
+        {() => <ServiceDetail serviceId="cybersecurity" />}
+      </Route>
+      <Route path="/services/infrastructure">
+        {() => <ServiceDetail serviceId="infrastructure" />}
+      </Route>
+      <Route path="/services/web-development">
+        {() => <ServiceDetail serviceId="web-development" />}
+      </Route>
+
+      {/* Static Pages */}
+      <Route path="/about" component={Home} /> {/* About is currently a section on Home */}
+      <Route path="/contact" component={Home} /> {/* Contact is currently a section on Home */}
+      
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

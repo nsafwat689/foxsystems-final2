@@ -250,11 +250,15 @@ export default function Home() {
               {t.heroSubtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 h-14 text-lg">
-                {t.getStarted} <ArrowRight className={`ml-2 w-5 h-5 ${isArabic ? "rotate-180" : ""}`} />
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 h-14 text-lg" asChild>
+                <Link href="/contact">
+                  {t.getStarted} <ArrowRight className={`ml-2 w-5 h-5 ${isArabic ? "rotate-180" : ""}`} />
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10 h-14 text-lg px-8">
-                {t.viewServices}
+              <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10 h-14 text-lg px-8" asChild>
+                <a href="#services">
+                  {t.viewServices}
+                </a>
               </Button>
             </div>
           </motion.div>

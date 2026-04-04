@@ -7,6 +7,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import ServiceDetail from "./pages/ServiceDetail";
+import Contact from "./pages/Contact";
 
 function Router() {
   // Access current location via wouter. When location changes, scroll to top.
@@ -40,9 +41,11 @@ function Router() {
         {() => <ServiceDetail serviceId="web-development" />}
       </Route>
 
+      {/* Contact Page */}
+      <Route path="/contact" component={Contact} />
+
       {/* Static Pages */}
-      <Route path="/about" component={Home} /> {/* About is currently a section on Home */}
-      <Route path="/contact" component={Home} /> {/* Contact is currently a section on Home */}
+      <Route path="/about" component={Home} />
       
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />

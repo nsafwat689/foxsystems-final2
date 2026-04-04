@@ -1,11 +1,13 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Link } from "wouter";
 import { ArrowRight, CheckCircle, MessageCircle, Phone, Globe, Shield, Cpu, Network, Server, Zap, Send, MapPin, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import { motion } from "framer-motion";
+import SEOHead from "@/components/SEOHead";
+import { serviceSEOConfigs, generateServiceSchema } from "@/utils/seo";
 
 interface ServiceDetailProps {
   serviceId: string;
@@ -109,8 +111,12 @@ export default function ServiceDetail({ serviceId }: ServiceDetailProps) {
   const data = serviceDetails[serviceId] || serviceDetails.internet;
   const Icon = data.icon;
 
+  const seoConfig = serviceSEOConfigs[serviceId] || serviceSEOConfigs.internet;
+  const serviceSchema = generateServiceSchema(data.title, data.overview, seoConfig.canonicalUrl);
+
   return (
     <div className={`min-h-screen bg-background text-foreground ${isArabic ? "rtl" : "ltr"}`}>
+      <SEOHead config={seoConfig} organizationSchema additionalSchema={serviceSchema} />
       <Header language={language} setLanguage={setLanguage} />
 
       {/* Hero Section */}

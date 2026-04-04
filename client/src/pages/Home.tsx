@@ -3,6 +3,8 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
+import SEOHead from "@/components/SEOHead";
+import { defaultSEOConfig, generateOrganizationSchema } from "@/utils/seo";
 import {
   MessageCircle,
   Phone,
@@ -218,6 +220,7 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
+      <SEOHead config={defaultSEOConfig} organizationSchema additionalSchema={generateOrganizationSchema()} />
       <Header language={language} setLanguage={setLanguage} />
 
       {/* Hero Section */}

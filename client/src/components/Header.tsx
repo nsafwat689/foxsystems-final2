@@ -18,11 +18,7 @@ interface HeaderProps {
 const translations = {
   en: {
     home: "Home",
-    about: "About",
     services: "Services",
-    company: "Company",
-    support: "Support",
-    careers: "Careers",
     contact: "Contact",
     getStarted: "Get Started",
     // Dropdown items
@@ -32,18 +28,10 @@ const translations = {
     cybersecurity: "Cybersecurity",
     infrastructure: "Infrastructure",
     webDev: "Website Development",
-    founder: "Founder",
-    team: "Team",
-    events: "Events",
-    sla: "SLA & Consultant",
   },
   ar: {
     home: "الرئيسية",
-    about: "حول",
     services: "الخدمات",
-    company: "الشركة",
-    support: "الدعم",
-    careers: "الوظائف",
     contact: "اتصل",
     getStarted: "ابدأ الآن",
     // Dropdown items
@@ -53,10 +41,6 @@ const translations = {
     cybersecurity: "الأمن السيبراني",
     infrastructure: "البنية التحتية",
     webDev: "تطوير المواقع",
-    founder: "المؤسس",
-    team: "الفريق",
-    events: "الفعاليات",
-    sla: "اتفاقية مستوى الخدمة والاستشارات",
   },
 };
 
@@ -85,16 +69,6 @@ export default function Header({ language, setLanguage }: HeaderProps) {
     { name: t.webDev, href: "/services/web-development" },
   ];
 
-  const companyItems = [
-    { name: t.founder, href: "/company/founder" },
-    { name: t.team, href: "/company/team" },
-    { name: t.events, href: "/company/events" },
-  ];
-
-  const supportItems = [
-    { name: t.sla, href: "/support/sla" },
-  ];
-
   return (
     <nav
       className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -118,9 +92,6 @@ export default function Header({ language, setLanguage }: HeaderProps) {
           <Link href="/" className="text-sm font-medium hover:text-primary transition">
             {t.home}
           </Link>
-          <Link href="/about" className="text-sm font-medium hover:text-primary transition">
-            {t.about}
-          </Link>
 
           {/* Services Dropdown */}
           <DropdownMenu>
@@ -138,41 +109,6 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* Company Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium hover:text-primary transition outline-none">
-              {t.company} <ChevronDown className="w-4 h-4" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align={isArabic ? "end" : "start"} className="w-48">
-              {companyItems.map((item) => (
-                <DropdownMenuItem key={item.href} asChild>
-                  <Link href={item.href} className="w-full cursor-pointer">
-                    {item.name}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          {/* Support Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium hover:text-primary transition outline-none">
-              {t.support} <ChevronDown className="w-4 h-4" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align={isArabic ? "end" : "start"} className="w-56">
-              {supportItems.map((item) => (
-                <DropdownMenuItem key={item.href} asChild>
-                  <Link href={item.href} className="w-full cursor-pointer">
-                    {item.name}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <Link href="/careers" className="text-sm font-medium hover:text-primary transition">
-            {t.careers}
-          </Link>
           <Link href="/contact" className="text-sm font-medium hover:text-primary transition">
             {t.contact}
           </Link>
@@ -221,9 +157,6 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium">
               {t.home}
             </Link>
-            <Link href="/about" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium">
-              {t.about}
-            </Link>
             
             <div className="space-y-2">
               <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider">{t.services}</p>
@@ -234,9 +167,6 @@ export default function Header({ language, setLanguage }: HeaderProps) {
               ))}
             </div>
 
-            <Link href="/careers" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium">
-              {t.careers}
-            </Link>
             <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium">
               {t.contact}
             </Link>

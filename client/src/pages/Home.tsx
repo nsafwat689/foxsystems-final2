@@ -218,6 +218,19 @@ export default function Home() {
     { value: "24/7", label: t.supportAvailable, icon: Phone },
   ];
 
+  const clientLogos = [
+    { src: "/clients/01_bank_masr-BTQ0AReE.png", alt: "Bank Masr" },
+    { src: "/clients/02_national_bank_kuwait-1O0GSd4n.webp", alt: "National Bank of Kuwait" },
+    { src: "/clients/03_elaraby_group-sKFXhEzA.png", alt: "Elaraby Group" },
+    { src: "/clients/04_hassan_allam_holding-CFQaxSID.png", alt: "Hassan Allam Holding" },
+    { src: "/clients/05_el_nahda_cement-DXEmYNZR.png", alt: "El Nahda Cement" },
+    { src: "/clients/06_orascom_investment-DPKaxSvM.png", alt: "Orascom Investment" },
+    { src: "/clients/08_etisalat-C9KaxS7P.png", alt: "Etisalat" },
+    { src: "/clients/09_vodafone-D9KaxS7P.png", alt: "Vodafone" },
+    { src: "/clients/10_we-E9KaxS7P.png", alt: "WE" },
+    { src: "/clients/11_tmobile-F9KaxS7P.png", alt: "T-Mobile" },
+  ];
+
   return (
     <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
       <SEOHead config={defaultSEOConfig} organizationSchema additionalSchema={generateOrganizationSchema()} />
@@ -431,16 +444,23 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
-            {[...Array(10)].map((_, idx) => (
+            {clientLogos.map((logo, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
-                className="flex items-center justify-center p-10 rounded-2xl border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all bg-muted/20 grayscale hover:grayscale-0 duration-500"
+                className="flex items-center justify-center p-8 rounded-2xl border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all bg-muted/20 grayscale hover:grayscale-0 duration-500 h-32"
               >
-                <Globe className="w-12 h-12 text-muted-foreground/40" />
+                <img 
+                  src={logo.src} 
+                  alt={logo.alt} 
+                  className="max-w-full max-h-full object-contain"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150?text=' + logo.alt;
+                  }}
+                />
               </motion.div>
             ))}
           </div>

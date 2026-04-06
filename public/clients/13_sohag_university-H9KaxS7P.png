@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>IT Planet - Enterprise IT Solutions | Internet, Cybersecurity, Software | Egypt</title>
+    <meta name="description" content="Trusted by 300+ clients. IT Planet delivers enterprise-grade IT solutions: Fiber Internet, Cybersecurity, Microsoft & Dell solutions, Network Infrastructure, and Project Delivery across Egypt and the Middle East. Contact us today." />
+    <meta name="keywords" content="IT solutions Egypt, enterprise IT, internet connectivity, fiber leased line, cybersecurity Egypt, Microsoft partner Egypt, Dell partner, Cisco partner, network infrastructure, IT services Cairo, software deployment, hardware solutions, project management IT, managed IT services, VPN solutions, cloud computing Egypt" />
+    <meta name="author" content="IT Planet for Digital Services" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English, Arabic" />
+    <meta name="geo.region" content="EG" />
+    <meta name="geo.placename" content="Cairo, Egypt" />
+    
+    <meta property="og:title" content="IT Planet - Enterprise IT Solutions in Egypt" />
+    <meta property="og:description" content="300+ clients trust IT Planet for enterprise IT solutions: Internet connectivity, Cybersecurity, Software, Hardware & Project Delivery across Egypt and the Middle East." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://itplanetds.com" />
+    <meta property="og:site_name" content="IT Planet for Digital Services" />
+    <meta property="og:image" content="https://itplanetds.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ar_EG" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@itplanetds" />
+    <meta name="twitter:title" content="IT Planet - Enterprise IT Solutions in Egypt" />
+    <meta name="twitter:description" content="300+ clients trust IT Planet for enterprise IT solutions across Egypt and the Middle East." />
+    <meta name="twitter:image" content="https://itplanetds.com/og-image.png" />
+    
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href="https://itplanetds.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "IT Planet for Digital Services",
+      "alternateName": "IT Planet",
+      "url": "https://itplanetds.com",
+      "logo": "https://itplanetds.com/favicon.png",
+      "description": "IT Planet provides comprehensive IT solutions including Internet connectivity, Software deployment, Hardware solutions, Cybersecurity, and Project management services.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "B Square Mall Gate3, El-Nasr Rd, Al Manteqah Al Oula",
+        "addressLocality": "Nasr City",
+        "addressRegion": "Cairo",
+        "postalCode": "11765",
+        "addressCountry": "EG"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+20-155-586-9015",
+        "contactType": "sales",
+        "availableLanguage": ["English", "Arabic"]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/itplanetds"
+      ],
+      "foundingDate": "2015",
+      "founder": {
+        "@type": "Person",
+        "name": "Ahmed Mahmoud"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 30.0444,
+          "longitude": 31.2357
+        },
+        "geoRadius": "2000"
+      },
+      "serviceType": [
+        "Internet Connectivity",
+        "Software Solutions",
+        "Hardware Solutions",
+        "Cybersecurity Services",
+        "IT Project Delivery",
+        "Website Development",
+        "Managed IT Services"
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "IT Planet for Digital Services",
+      "image": "https://itplanetds.com/favicon.png",
+      "telephone": "+20-155-586-9015",
+      "email": "info@itplanetds.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "B Square Mall Gate3, El-Nasr Rd, Al Manteqah Al Oula",
+        "addressLocality": "Nasr City",
+        "addressRegion": "Cairo",
+        "postalCode": "11765",
+        "addressCountry": "EG"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "priceRange": "$$"
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-Btq-5f6b.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-syzraptN.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

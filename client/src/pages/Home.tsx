@@ -457,9 +457,8 @@ export default function Home() {
                   src={logo.src} 
                   alt={logo.alt} 
                   className="max-w-full max-h-full object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150?text=' + logo.alt;
-                  }}
+                  loading="lazy"
+                  decoding="async"
                 />
               </motion.div>
             ))}

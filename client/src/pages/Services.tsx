@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -305,8 +304,13 @@ const translations = {
   },
 };
 
-export default function Services() {
-  const [language, setLanguage] = useState<"en" | "ar">("en");
+interface ServicesProps {
+    language: "en" | "ar";
+    setLanguage: (lang: "en" | "ar") => void;
+  }
+
+export default function Servic({ language, setLanguage }: ServicesProps)() {
+
   const { theme } = useTheme();
   const t = translations[language];
   const isArabic = language === "ar";

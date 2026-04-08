@@ -2,52 +2,62 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch, useLocation } from "wouter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import ServiceDetail from "./pages/ServiceDetail";
+import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 
 function Router() {
-  // Access current location via wouter. When location changes, scroll to top.
+  const [language, setLanguage] = useState<"en" | "ar">("en");
   const [location] = useLocation();
+
   useEffect(() => {
-    // Reset scroll position to top whenever the route changes.
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, [location]);
 
   return (
     <Switch>
-      <Route path="/" component={Home} />
-      
-      {/* Service Routes */}
+      <Route path="/">
+        {() => <Home language={language} setLanguage={setLanguage} />}
+      </Route>
+
+      <Route path="/services">
+        {() => <Services language={language} setLanguage={setLanguage} />}
+      </Route>
+
+      {/* Service Detail Routes */}
       <Route path="/services/internet">
-        {() => <ServiceDetail serviceId="internet" />}
+        {() => <ServiceDetail serviceId="internet" language={language} setLanguage={setLanguage} />}
       </Route>
       <Route path="/services/software">
-        {() => <ServiceDetail serviceId="software" />}
+        {() => <ServiceDetail serviceId="software" language={language} setLanguage={setLanguage} />}
       </Route>
       <Route path="/services/hardware">
-        {() => <ServiceDetail serviceId="hardware" />}
+        {() => <ServiceDetail serviceId="hardware" language={language} setLanguage={setLanguage} />}
       </Route>
       <Route path="/services/cybersecurity">
-        {() => <ServiceDetail serviceId="cybersecurity" />}
+        {() => <ServiceDetail serviceId="cybersecurity" language={language} setLanguage={setLanguage} />}
       </Route>
       <Route path="/services/infrastructure">
-        {() => <ServiceDetail serviceId="infrastructure" />}
+        {() => <ServiceDetail serviceId="infrastructure" language={language} setLanguage={setLanguage} />}
       </Route>
       <Route path="/services/web-development">
-        {() => <ServiceDetail serviceId="web-development" />}
+        {() => <ServiceDetail serviceId="web-development" language={language} setLanguage={setLanguage} />}
       </Route>
 
       {/* Contact Page */}
-      <Route path="/contact" component={Contact} />
+      <Route path="/contact">
+        {() => <Contact language={language} setLanguage={setLanguage} />}
+      </Route>
 
       {/* Static Pages */}
-      <Route path="/about" component={Home} />
-      
-      <Route path="/404" component={NotFound} />
+      <Route path="/about">
+        {() => <Home language={language} setLanguage={setLanguage} />}
+      </Route>
+
       <Route component={NotFound} />
     </Switch>
   );
@@ -55,14 +65,14 @@ function Router() {
 
 function App() {
   return (
-    <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark" switchable>
+    <ThemeProvider>
+      <ErrorBoundary>
         <TooltipProvider>
-          <Toaster />
           <Router />
+          <Toaster />
         </TooltipProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
+      </ErrorBoundary>
+    </ThemeProvider>
   );
 }
 

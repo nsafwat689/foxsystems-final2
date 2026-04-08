@@ -11,6 +11,8 @@ import { serviceSEOConfigs, generateServiceSchema } from "@/utils/seo";
 
 interface ServiceDetailProps {
   serviceId: string;
+    language: "en" | "ar";
+    setLanguage: (lang: "en" | "ar") => void;
 }
 
 const serviceDetails: Record<string, any> = {
@@ -105,8 +107,8 @@ const serviceDetails: Record<string, any> = {
   }
 };
 
-export default function ServiceDetail({ serviceId }: ServiceDetailProps) {
-  const [language, setLanguage] = useState<"en" | "ar">("en");
+export default function ServiceDetail({ serviceId, language, setLanguage }: ServiceDetailProps) {
+
   const isArabic = language === "ar";
   const data = serviceDetails[serviceId] || serviceDetails.internet;
   const Icon = data.icon;

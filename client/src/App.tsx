@@ -65,7 +65,7 @@ function Router() {
 
 function App() {
   return (
-    <ThemeProvider>
+    <ThemeProvider switchable={true}>
       <ErrorBoundary>
         <TooltipProvider>
           <Router />

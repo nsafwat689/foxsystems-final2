@@ -201,7 +201,7 @@ export default function Contact() {
                       <input
                         type="text"
                         placeholder="Acme Corp"
-                        className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none"
+                        className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none"
                       />
                     </div>
                     <div className="space-y-2">
@@ -209,7 +209,7 @@ export default function Contact() {
                       <input
                         type="text"
                         placeholder="John Doe"
-                        className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none"
+                        className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none"
                       />
                     </div>
                   </div>
@@ -220,7 +220,7 @@ export default function Contact() {
                       <input
                         type="email"
                         placeholder="john@company.com"
-                        className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none"
+                        className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none"
                       />
                     </div>
                     <div className="space-y-2">
@@ -228,14 +228,14 @@ export default function Contact() {
                       <input
                         type="text"
                         placeholder="+20 123 456 7890"
-                        className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none"
+                        className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-bold">{t.serviceType}</label>
-                    <select className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none appearance-none">
+                    <select className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none appearance-none">
                       <option>Select a service</option>
                       <option>{t.internet}</option>
                       <option>{t.software}</option>
@@ -251,7 +251,7 @@ export default function Contact() {
                     <textarea
                       rows={4}
                       placeholder={t.placeholderRequirements}
-                      className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none resize-none"
+                      className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none resize-none"
                     ></textarea>
                   </div>
 

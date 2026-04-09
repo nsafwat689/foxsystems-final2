@@ -514,26 +514,26 @@ export default function Home() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-bold">{t.companyName}</label>
-                    <input type="text" placeholder="Acme Corp" className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none" />
+                    <input type="text" placeholder="Acme Corp" className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-bold">{t.contactName}</label>
-                    <input type="text" placeholder="John Doe" className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none" />
+                    <input type="text" placeholder="John Doe" className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-bold">{t.email}</label>
-                    <input type="email" placeholder="john@company.com" className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none" />
+                    <input type="email" placeholder="john@company.com" className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-bold">{t.phoneWhatsApp}</label>
-                    <input type="text" placeholder="+20 123 456 7890" className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none" />
+                    <input type="text" placeholder="+20 123 456 7890" className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold">{t.serviceType}</label>
-                  <select className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none appearance-none">
+                  <select className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none appearance-none">
                     <option>Internet</option>
                     <option>Software</option>
                     <option>Hardware</option>
@@ -544,7 +544,7 @@ export default function Home() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold">{t.message}</label>
-                  <textarea rows={4} placeholder={t.placeholderRequirements} className="w-full p-4 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary outline-none resize-none"></textarea>
+                  <textarea rows={4} placeholder={t.placeholderRequirements} className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none resize-none"></textarea>
                 </div>
                 <Button className="w-full h-14 text-lg font-bold rounded-xl">
                   {t.submitInquiry} <Send className="ml-2 w-5 h-5" />

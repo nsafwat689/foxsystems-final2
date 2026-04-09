@@ -205,10 +205,10 @@ export default function ServiceDetail({ serviceId, language, setLanguage }: Serv
               <Card className="sticky top-32 p-8 border-none shadow-2xl bg-card">
                 <h3 className="text-2xl font-bold mb-6">{isArabic ? "اتصل بنا" : "Contact Us"}</h3>
                 <form className="space-y-4">
-                  <input type="text" placeholder={isArabic ? "اسم الشركة" : "Company Name"} className="w-full p-4 rounded-xl bg-muted/50 border-none outline-none" />
-                  <input type="text" placeholder={isArabic ? "الاسم" : "Name"} className="w-full p-4 rounded-xl bg-muted/50 border-none outline-none" />
-                  <input type="email" placeholder={isArabic ? "البريد الإلكتروني" : "Email"} className="w-full p-4 rounded-xl bg-muted/50 border-none outline-none" />
-                  <textarea rows={4} placeholder={isArabic ? "الرسالة" : "Message"} className="w-full p-4 rounded-xl bg-muted/50 border-none outline-none resize-none"></textarea>
+                  <input type="text" placeholder={isArabic ? "اسم الشركة" : "Company Name"} className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
+                  <input type="text" placeholder={isArabic ? "الاسم" : "Name"} className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
+                  <input type="email" placeholder={isArabic ? "البريد الإلكتروني" : "Email"} className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
+                  <textarea rows={4} placeholder={isArabic ? "الرسالة" : "Message"} className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none resize-none"></textarea>
                   <Button className="w-full h-14 text-lg font-bold">
                     {isArabic ? "إرسال" : "Submit"} <Send className="ml-2 w-5 h-5" />
                   </Button>

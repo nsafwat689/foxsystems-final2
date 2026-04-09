@@ -309,8 +309,7 @@ interface ServicesProps {
     setLanguage: (lang: "en" | "ar") => void;
   }
 
-export default function Servic({ language, setLanguage }: ServicesProps)() {
-
+export default function Services({ language, setLanguage }: ServicesProps) {
   const { theme } = useTheme();
   const t = translations[language];
   const isArabic = language === "ar";

@@ -23,6 +23,17 @@ export const defaultSEOConfig: SEOConfig = {
 };
 
 export const serviceSEOConfigs: Record<string, SEOConfig> = {
+  articles: {
+    title: "Articles | Insights & Resources - Fox Systems",
+    description: "Stay informed with the latest articles, insights, and resources on IT solutions, cybersecurity, VoIP, and more from Fox Systems.",
+    keywords: "IT articles, cybersecurity insights, VoIP resources, technology blog, Fox Systems news",
+    ogTitle: "Articles - Fox Systems",
+    ogDescription: "Latest insights and resources on IT solutions",
+    ogImage: "https://foxsystemstech.com/articles-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/articles",
+    language: "en",
+  },
+
   internet: {
     title: "Corporate Internet Services | Leased Line, Microwave, WiMAX - Fox Systems Egypt",
     description: "High-performance corporate internet services including Fiber Leased Line, Microwave, WiMAX, and VPN solutions for multi-branch companies in Egypt and Middle East.",
@@ -96,6 +107,17 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
 };
 
 export const arabicSEOConfigs: Record<string, SEOConfig> = {
+  articles: {
+    title: "المقالات | رؤى وموارد - Fox Systems",
+    description: "ابقَ على اطلاع بأحدث المقالات والرؤى والموارد حول حلول تكنولوجيا المعلومات والأمن السيبراني وVoIP والمزيد من Fox Systems.",
+    keywords: "مقالات تكنولوجيا المعلومات, رؤى الأمن السيبراني, موارد VoIP, مدونة تقنية, أخبار Fox Systems",
+    ogTitle: "المقالات - Fox Systems",
+    ogDescription: "أحدث الرؤى والموارد حول حلول تكنولوجيا المعلومات",
+    ogImage: "https://foxsystemstech.com/articles-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/articles",
+    language: "ar",
+  },
+
   internet: {
     title: "خدمات الإنترنت للشركات | خطوط مؤجرة، ميكروويف - Fox Systems مصر",
     description: "خدمات إنترنت عالية الأداء للشركات تشمل خطوط مؤجرة، ميكروويف، WiMAX وحلول VPN للشركات متعددة الفروع في مصر والشرق الأوسط.",
@@ -211,6 +233,35 @@ export function generateServiceSchema(serviceName: string, description: string, 
       url: "https://foxsystemstech.com",
     },
     areaServed: ["EG", "AE", "SA", "KW", "QA", "BH", "OM", "JO", "LB", "SY"],
+  });
+}
+
+export function generateArticleSchema(article: { title: string; description: string; author: string; datePublished: string; imageUrl: string; url: string }): string {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    image: [
+      article.imageUrl
+    ],
+    datePublished: article.datePublished,
+    author: {
+      "@type": "Person",
+      name: article.author
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Fox Systems",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://foxsystemstech.com/logo.jpg"
+      }
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": article.url
+    }
   });
 }
 

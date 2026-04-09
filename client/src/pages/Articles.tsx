@@ -4,7 +4,9 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import { ArrowRight, Calendar, User, Tag } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import SEOHead from "@/components/SEOHead";
+import { serviceSEOConfigs, arabicSEOConfigs, generateBreadcrumbSchema } from "@/utils/seo";
 
 interface Article {
   id: string;
@@ -16,6 +18,22 @@ interface Article {
   readTime: string;
   image: string;
 }
+
+const getArticleSEOConfig = (lang: "en" | "ar") => {
+  const baseConfig = lang === "en" ? serviceSEOConfigs.articles : arabicSEOConfigs.articles;
+  return {
+    ...baseConfig,
+    canonicalUrl: `https://foxsystemstech.com/${lang === "ar" ? "ar/" : ""}articles`,
+  };
+};
+
+const getBreadcrumbSchema = (lang: "en" | "ar") => {
+  const items = [
+    { name: lang === "en" ? "Home" : "الرئيسية", url: `https://foxsystemstech.com/${lang === "ar" ? "ar/" : ""}` },
+    { name: lang === "en" ? "Articles" : "المقالات", url: `https://foxsystemstech.com/${lang === "ar" ? "ar/" : ""}articles` },
+  ];
+  return generateBreadcrumbSchema(items);
+};
 
 const articles: Record<string, Article> = {
   "voip-basics": {
@@ -67,7 +85,7 @@ const articles: Record<string, Article> = {
     date: "2025-01-05",
     readTime: "9 min read",
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
- },
+  },
   "crm-implementation": {
    id: "crm-implementation",
    title: "Implementing CRM Systems: A Step-by-Step Guide",
@@ -167,197 +185,103 @@ const articles: Record<string, Article> = {
    date: "2024-12-31",
    readTime: "11 min read",
    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
-  }};
+  }}
 
-const translations = {
-  en: {
-    articles: "Articles",
-    articlesTitle: "Latest Articles & Resources",
-    articlesSubtitle: "Stay informed with our latest insights on VoIP, telecommunications, and business communication systems",
-    readMore: "Read More",
-    category: "Category",
-    author: "By",
-    published: "Published",
-    home: "Home",
-    breadcrumb: "Articles",
-    noArticles: "No articles found",
-    searchPlaceholder: "Search articles...",
-    allCategories: "All Categories",
-  },
-  ar: {
-    articles: "المقالات",
-    articlesTitle: "أحدث المقالات والموارد",
-    articlesSubtitle: "ابقَ على اطلاع مع أحدث رؤيتنا حول VoIP والاتصالات وأنظمة الاتصالات التجارية",
-    readMore: "اقرأ المزيد",
-    category: "الفئة",
-    author: "بواسطة",
-    published: "نُشر في",
-    home: "الرئيسية",
-    breadcrumb: "المقالات",
-    noArticles: "لا توجد مقالات",
-    searchPlaceholder: "ابحث عن المقالات...",
-    allCategories: "جميع الفئات",
-  },
-};
 
-export default function Articles() {
-  const { theme } = useTheme();
-  const [language, setLanguage] = useState<"en" | "ar">("en");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+function Articles() {
+  const { language, isArabic } = useTheme();
+  const [currentPage, setCurrentPage] = useState(1);
+  const articlesPerPage = 6;
 
-  const isArabic = language === "ar";
-  const t = translations[language];
+  const allArticles = Object.values(articles);
+  const totalPages = Math.ceil(allArticles.length / articlesPerPage);
 
-  // Get unique categories
-  const categories = Array.from(new Set(Object.values(articles).map((a) => a.category)));
+  const indexOfLastArticle = currentPage * articlesPerPage;
+  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+  const currentArticles = allArticles.slice(indexOfFirstArticle, indexOfLastArticle);
 
-  // Filter articles
-  const filteredArticles = Object.values(articles).filter((article) => {
-    const matchesSearch =
-      article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = !selectedCategory || article.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString(language === "en" ? "en-US" : "ar-EG", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
-      <Header language={language} setLanguage={setLanguage} />
+    <>
+      <SEOHead
+        config={getArticleSEOConfig(language)}
+        organizationSchema={true}
+        additionalSchema={getBreadcrumbSchema(language)}
+      />
+      <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
+        <Header language={language} setLanguage={setLanguage} />
 
-      {/* Header Section */}
-      <section className="bg-gradient-to-br from-primary/10 via-transparent to-primary/5 py-16 md:py-24">
-        <div className="container">
-          <div className={`flex items-center gap-2 mb-6 ${isArabic ? "flex-row-reverse" : ""}`}>
-            <Link href="/" className="text-muted-foreground hover:text-primary transition text-sm">
-              {t.home}
-            </Link>
-            <span className="text-muted-foreground">/</span>
-            <span className="text-sm font-medium text-primary">{t.breadcrumb}</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.articlesTitle}</h1>
-          <p className="text-lg text-muted-foreground max-w-3xl">{t.articlesSubtitle}</p>
-        </div>
-      </section>
+        {/* Main content */}
+        <main className="container mx-auto p-4 md:p-8">
+          <section className="py-12">
+            <h1 className="text-4xl font-bold text-center mb-12">
+              {language === "en" ? "Our Latest Articles" : "أحدث مقالاتنا"}
+            </h1>
 
-      {/* Filters Section */}
-      <section className="py-8 border-b border-border">
-        <div className="container">
-          <div className="space-y-4">
-            {/* Search */}
-            <div>
-              <input
-                type="text"
-                placeholder={t.searchPlaceholder}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-            </div>
-
-            {/* Category Filter */}
-            <div className={`flex flex-wrap gap-2 ${isArabic ? "flex-row-reverse" : ""}`}>
-              <button
-                onClick={() => setSelectedCategory(null)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-                  !selectedCategory
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground hover:bg-muted/80"
-                }`}
-              >
-                {t.allCategories}
-              </button>
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-                    selectedCategory === category
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-foreground hover:bg-muted/80"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Articles Grid */}
-      <section className="py-16 md:py-24">
-        <div className="container">
-          {filteredArticles.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-lg text-muted-foreground">{t.noArticles}</p>
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredArticles.map((article) => (
-                <Link key={article.id} href={`/article/${article.id}`}>
-                  <Card className="h-full hover:shadow-xl transition-all overflow-hidden group cursor-pointer">
-                    {/* Image */}
-                    <div className="h-48 bg-muted overflow-hidden">
-                      <img
-                        src={article.image}
-                        alt={article.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                      />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {currentArticles.map((article) => (
+                <Card key={article.id} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <CardHeader className="flex-grow">
+                    <h3 className="text-xl font-semibold mb-2">
+                      {article.title}
+                    </h3>
+                    <div className="flex items-center text-sm text-muted-foreground mb-2">
+                      <User className="w-4 h-4 mr-1" /> {article.author}
+                      <Calendar className="w-4 h-4 ml-4 mr-1" /> {article.date}
                     </div>
-
-                    <CardHeader>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Tag className="w-4 h-4 text-primary" />
-                        <span className="text-xs font-semibold text-primary uppercase">{article.category}</span>
-                      </div>
-                      <h3 className="text-xl font-bold group-hover:text-primary transition">{article.title}</h3>
-                    </CardHeader>
-
-                    <CardContent className="space-y-4">
-                      <p className="text-muted-foreground text-sm line-clamp-2">{article.excerpt}</p>
-
-                      <div className={`flex flex-wrap gap-4 text-xs text-muted-foreground ${isArabic ? "flex-row-reverse" : ""}`}>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          <span>{formatDate(article.date)}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <User className="w-4 h-4" />
-                          <span>{article.author}</span>
-                        </div>
-                      </div>
-
-                      <div className="pt-4 border-t border-border">
-                        <Button size="sm" variant="ghost" className="w-full justify-between">
-                          {t.readMore}
-                          <ArrowRight className="w-4 h-4" />
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Tag className="w-4 h-4 mr-1" /> {article.category}
+                    </div>
+                  </CardHeader>
+                  <CardContent className="flex flex-col justify-between p-4">
+                    <p className="text-muted-foreground mb-4 flex-grow">
+                      {article.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <Link href={`/${language === "ar" ? "ar/" : ""}articles/${article.id}`}>
+                        <Button variant="link" className="p-0">
+                          {language === "en" ? "Read More" : "اقرأ المزيد"} <ArrowRight className="w-4 h-4 ml-1" />
                         </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
+                      </Link>
+                      <span className="text-sm text-muted-foreground">
+                        {article.readTime}
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
-          )}
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border py-12 bg-muted/30">
-        <div className="container text-center text-muted-foreground">
-          <p>&copy; 2025 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
-        </div>
-      </footer>
-    </div>
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="flex justify-center mt-12 space-x-2">
+                {Array.from({ length: totalPages }, (_, i) => (
+                  <Button
+                    key={i + 1}
+                    onClick={() => paginate(i + 1)}
+                    variant={currentPage === i + 1 ? "default" : "outline"}
+                    size="icon"
+                  >
+                    {i + 1}
+                  </Button>
+                ))}
+              </div>
+            )}
+          </section>
+        </main>
+      </div>
+    </>
   );
 }
+
+export default Articles;

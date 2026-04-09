@@ -66,6 +66,16 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/web-development"/>
   </url>
 
+  <!-- Articles Page -->
+  <url>
+    <loc>https://foxsystemstech.com/articles</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles"/>
+  </url>
+
   <!-- Contact Page -->
   <url>
     <loc>https://foxsystemstech.com/contact</loc>

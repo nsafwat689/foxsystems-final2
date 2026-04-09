@@ -21,6 +21,8 @@ const translations = {
     services: "Services",
     contact: "Contact",
     getStarted: "Get Started",
+    articles: "Articles",
+    // Dropdown items
     internet: "Internet",
     software: "Software",
     hardware: "Hardware",
@@ -34,6 +36,8 @@ const translations = {
     services: "الخدمات",
     contact: "اتصل بنا",
     getStarted: "ابدأ الآن",
+    articles: "المقالات",
+    // Dropdown items
     internet: "الإنترنت",
     software: "البرمجيات",
     hardware: "الأجهزة",
@@ -124,6 +128,15 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             </DropdownMenu>
 
             <Link
+              href="/articles"
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                location === "/articles" ? "text-primary font-semibold" : "text-foreground"
+              }`}
+            >
+              {t.articles}
+            </Link>
+
+            <Link
               href="/contact"
               className={`text-sm font-medium transition-colors hover:text-primary ${
                 location === "/contact" ? "text-primary font-semibold" : "text-foreground"
@@ -199,6 +212,14 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                 </Link>
               ))}
             </div>
+
+            <Link
+              href="/articles"
+              onClick={() => setIsMenuOpen(false)}
+              className="w-full px-3 py-2 rounded-lg text-base font-medium hover:bg-muted transition"
+            >
+              {t.articles}
+            </Link>
 
             <Link
               href="/contact"

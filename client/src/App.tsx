@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import ServiceDetail from "./pages/ServiceDetail";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+import Articles from "./pages/Articles";
+import ArticleDetail from "./pages/ArticleDetail";
 
 function Router() {
   const [language, setLanguage] = useState<"en" | "ar">("en");
@@ -51,6 +53,12 @@ function Router() {
       {/* Contact Page */}
       <Route path="/contact">
         {() => <Contact language={language} setLanguage={setLanguage} />}
+      </Route>
+
+      {/* Articles Pages */}
+      <Route path="/articles" component={Articles} />
+      <Route path="/articles/:articleId">
+        {({ articleId }) => <ArticleDetail articleId={articleId} />}
       </Route>
 
       {/* Static Pages */}

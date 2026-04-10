@@ -2,8 +2,11 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Link } from "wouter";
+import Header from "@/components/Header";
 import { ArrowRight, Calendar, User, MessageCircle, Share2 } from "lucide-react";
-import { useState } from "react";
+import { useEffect } from "react";
+import SEOHead from "@/components/SEOHead";
+import { generateArticleSchema } from "@/utils/seo";
 
 interface ArticleDetailProps {
   articleId: string;
@@ -11,6 +14,7 @@ interface ArticleDetailProps {
 
 const articleContent: Record<string, any> = {
   "voip-basics": {
+    id: "voip-basics",
     title: "Understanding VoIP Technology: The Complete Guide",
     subtitle: "Master the fundamentals of Voice over Internet Protocol",
     author: "Fox Systems Team",
@@ -57,6 +61,7 @@ const articleContent: Record<string, any> = {
     `,
   },
   "pbx-systems": {
+    id: "pbx-systems",
     title: "Private Branch Exchange (PBX) Systems Explained",
     subtitle: "Optimize your internal communication infrastructure",
     author: "Fox Systems Team",
@@ -105,6 +110,7 @@ const articleContent: Record<string, any> = {
     `,
   },
   "asterisk-server": {
+    id: "asterisk-server",
     title: "Asterisk Server: Building Powerful Communication Systems",
     subtitle: "Leverage open-source telecommunications technology",
     author: "Fox Systems Team",
@@ -163,6 +169,7 @@ const articleContent: Record<string, any> = {
     `,
   },
   "telecom-trends": {
+    id: "telecom-trends",
     title: "2025 Telecommunications Trends: What's Next?",
     subtitle: "Stay ahead with emerging telecommunications technologies",
     author: "Fox Systems Team",
@@ -191,31 +198,12 @@ const articleContent: Record<string, any> = {
       <h3>5. Security and Compliance</h3>
       <p>With increasing cyber threats, security and compliance remain top priorities. End-to-end encryption and compliance with regulations like GDPR are essential.</p>
 
-      <h2>Impact on Businesses</h2>
-      <p>These trends have significant implications for businesses:</p>
-      <ul>
-        <li>Improved employee productivity and collaboration</li>
-        <li>Enhanced customer experience</li>
-        <li>Reduced operational costs</li>
-        <li>Better security and compliance</li>
-        <li>Greater flexibility and scalability</li>
-      </ul>
-
-      <h2>Preparing for the Future</h2>
-      <p>To stay ahead in 2025 and beyond, organizations should:</p>
-      <ul>
-        <li>Evaluate current communication infrastructure</li>
-        <li>Plan for cloud migration</li>
-        <li>Invest in security measures</li>
-        <li>Train employees on new technologies</li>
-        <li>Partner with experienced telecommunications providers</li>
-      </ul>
-
       <h2>Conclusion</h2>
       <p>The telecommunications landscape continues to evolve rapidly. By staying informed about emerging trends and making strategic investments, organizations can leverage new technologies to improve communication, enhance productivity, and drive business growth.</p>
     `,
   },
   "voip-security": {
+    id: "voip-security",
     title: "VoIP Security: Protecting Your Communications",
     subtitle: "Essential security measures for VoIP infrastructure",
     author: "Fox Systems Team",
@@ -253,12 +241,6 @@ const articleContent: Record<string, any> = {
       <h3>5. Network Segmentation</h3>
       <p>Separate VoIP traffic from general data traffic using VLANs (Virtual Local Area Networks) to limit the impact of potential breaches.</p>
 
-      <h2>Monitoring and Incident Response</h2>
-      <p>Implement comprehensive monitoring to detect suspicious activity. Develop an incident response plan to quickly address security breaches.</p>
-
-      <h2>Compliance Considerations</h2>
-      <p>Ensure your VoIP security measures comply with relevant regulations such as HIPAA, PCI-DSS, and GDPR depending on your industry and jurisdiction.</p>
-
       <h2>Conclusion</h2>
       <p>VoIP security is critical for protecting sensitive communications and maintaining business continuity. By implementing comprehensive security measures and staying informed about emerging threats, organizations can safely leverage the benefits of VoIP technology.</p>
     `,
@@ -293,9 +275,7 @@ const translations = {
 };
 
 export default function ArticleDetail({ articleId }: ArticleDetailProps) {
-  const { theme } = useTheme();
-  const [language, setLanguage] = useState<"en" | "ar">("en");
-  const isArabic = language === "ar";
+  const { language, setLanguage, isArabic } = useTheme();
   const t = translations[language];
 
   const article = articleContent[articleId] || articleContent["voip-basics"];
@@ -303,6 +283,10 @@ export default function ArticleDetail({ articleId }: ArticleDetailProps) {
   const whatsappNumber = "201557649136";
   const whatsappMessage = `Hi, I'm interested in learning more about your services. I read your article: "${article.title}"`;
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [articleId]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -313,130 +297,123 @@ export default function ArticleDetail({ articleId }: ArticleDetailProps) {
     });
   };
 
+  const seoConfig = {
+    title: `${article.title} | Fox Systems`,
+    description: article.subtitle,
+    canonicalUrl: `https://foxsystemstech.com/${language === "ar" ? "ar/" : ""}articles/${article.id}`,
+    ogImage: article.image,
+    ogType: "article" as const,
+  };
+
+  const articleSchema = generateArticleSchema({
+    title: article.title,
+    description: article.subtitle,
+    image: article.image,
+    author: article.author,
+    datePublished: article.date,
+    url: seoConfig.canonicalUrl,
+  });
+
   return (
-    <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-sm">
-        <div className="container flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
-            <img src="/logo.jpg" alt="Fox Systems" className="h-10 w-10 rounded-lg" />
-            <span className="font-bold text-lg text-primary hidden sm:inline">Fox Systems</span>
-          </Link>
+    <>
+      <SEOHead
+        config={seoConfig}
+        additionalSchema={articleSchema}
+      />
+      <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
+        <Header language={language} setLanguage={setLanguage} />
 
-          <div className="flex items-center gap-4">
-            <Link href="/" className="text-sm font-medium hover:text-primary transition">
-              {t.home}
+        {/* Article Header */}
+        <section className="bg-gradient-to-br from-primary/10 via-transparent to-primary/5 py-12 md:py-16">
+          <div className="container">
+            <Link href="/articles" className="text-primary hover:underline text-sm mb-4 inline-block">
+              ← {t.backToArticles}
             </Link>
-            <Link href="/articles" className="text-sm font-medium hover:text-primary transition">
-              {t.articles}
-            </Link>
-            <button
-              onClick={() => setLanguage(language === "en" ? "ar" : "en")}
-              className="px-3 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition"
-            >
-              {language === "en" ? "العربية" : "EN"}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Article Header */}
-      <section className="bg-gradient-to-br from-primary/10 via-transparent to-primary/5 py-12 md:py-16">
-        <div className="container">
-          <Link href="/articles" className="text-primary hover:underline text-sm mb-4 inline-block">
-            ← {t.backToArticles}
-          </Link>
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-primary uppercase bg-primary/10 px-3 py-1 rounded-full">
-                {article.category}
-              </span>
-              <span className="text-sm text-muted-foreground">{article.readTime}</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold">{article.title}</h1>
-            <p className="text-xl text-muted-foreground">{article.subtitle}</p>
-            <div className={`flex flex-wrap gap-4 text-sm text-muted-foreground ${isArabic ? "flex-row-reverse" : ""}`}>
-              <span>{t.author} {article.author}</span>
-              <span>{t.published} {formatDate(article.date)}</span>
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold text-primary uppercase bg-primary/10 px-3 py-1 rounded-full">
+                  {article.category}
+                </span>
+                <span className="text-sm text-muted-foreground">{article.readTime}</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold">{article.title}</h1>
+              <p className="text-xl text-muted-foreground">{article.subtitle}</p>
+              <div className={`flex flex-wrap gap-4 text-sm text-muted-foreground ${isArabic ? "flex-row-reverse" : ""}`}>
+                <span>{t.author} {article.author}</span>
+                <span>{t.published} {formatDate(article.date)}</span>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Featured Image */}
-      <section className="py-8">
-        <div className="container">
-          <img src={article.image} alt={article.title} className="w-full h-96 object-cover rounded-lg" />
-        </div>
-      </section>
+        {/* Featured Image */}
+        <section className="py-8">
+          <div className="container">
+            <img src={article.image} alt={article.title} className="w-full h-96 object-cover rounded-lg" />
+          </div>
+        </section>
 
-      {/* Article Content */}
-      <section className="py-12 md:py-16">
-        <div className="container">
-          <div className="grid md:grid-cols-3 gap-12">
-            {/* Main Content */}
-            <div className="md:col-span-2">
-              <div
-                className="prose prose-sm md:prose-base dark:prose-invert max-w-none"
-                dangerouslySetInnerHTML={{ __html: article.content }}
-              />
-            </div>
+        {/* Article Content */}
+        <section className="py-12 md:py-16">
+          <div className="container">
+            <div className="grid md:grid-cols-3 gap-12">
+              {/* Main Content */}
+              <div className="md:col-span-2">
+                <div
+                  className="prose prose-sm md:prose-base dark:prose-invert max-w-none"
+                  dangerouslySetInnerHTML={{ __html: article.content }}
+                />
+              </div>
 
-            {/* Sidebar */}
-            <div className="space-y-6">
-              {/* Contact Card */}
-              <Card className="border-2 border-primary/30 sticky top-24">
-                <CardHeader>
-                  <h3 className="text-xl font-bold">{isArabic ? "هل أنت مهتم؟" : "Interested?"}</h3>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground">
-                    {isArabic
-                      ? "تواصل معنا لمعرفة المزيد عن خدماتنا والحلول المتاحة."
-                      : "Contact us to learn more about our services and solutions."}
-                  </p>
-                  <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                    <Button className="w-full" size="sm">
-                      <MessageCircle className="w-4 h-4 mr-2" />
-                      {t.whatsapp}
-                    </Button>
-                  </a>
-                </CardContent>
-              </Card>
+              {/* Sidebar */}
+              <div className="space-y-6">
+                {/* Contact Card */}
+                <Card className="border-2 border-primary/30 sticky top-24">
+                  <CardHeader>
+                    <h3 className="text-xl font-bold">{isArabic ? "هل أنت مهتم؟" : "Interested?"}</h3>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-sm text-muted-foreground">
+                      {isArabic
+                        ? "تواصل معنا لمعرفة المزيد عن خدماتنا والحلول المتاحة."
+                        : "Contact us to learn more about our services and solutions."}
+                    </p>
+                    <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                      <Button className="w-full" size="sm">
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        {t.whatsapp}
+                      </Button>
+                    </a>
+                  </CardContent>
+                </Card>
 
-              {/* Share Card */}
-              <Card>
-                <CardHeader>
-                  <h3 className="font-bold flex items-center gap-2">
-                    <Share2 className="w-4 h-4" />
-                    {t.share}
-                  </h3>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <button className="w-full text-left text-sm text-primary hover:underline">
-                      {isArabic ? "شارك على فيسبوك" : "Share on Facebook"}
-                    </button>
-                    <button className="w-full text-left text-sm text-primary hover:underline">
-                      {isArabic ? "شارك على تويتر" : "Share on Twitter"}
-                    </button>
-                    <button className="w-full text-left text-sm text-primary hover:underline">
-                      {isArabic ? "نسخ الرابط" : "Copy Link"}
-                    </button>
-                  </div>
-                </CardContent>
-              </Card>
+                {/* Share Card */}
+                <Card>
+                  <CardHeader>
+                    <h3 className="font-bold flex items-center gap-2">
+                      <Share2 className="w-4 h-4" />
+                      {t.share}
+                    </h3>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <button className="w-full text-left text-sm text-primary hover:underline">
+                        {isArabic ? "شارك على فيسبوك" : "Share on Facebook"}
+                      </button>
+                      <button className="w-full text-left text-sm text-primary hover:underline">
+                        {isArabic ? "شارك على تويتر" : "Share on Twitter"}
+                      </button>
+                      <button className="w-full text-left text-sm text-primary hover:underline">
+                        {isArabic ? "نسخ الرابط" : "Copy Link"}
+                      </button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border py-12 bg-muted/30">
-        <div className="container text-center text-muted-foreground">
-          <p>&copy; 2025 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
-        </div>
-      </footer>
-    </div>
+        </section>
+      </div>
+    </>
   );
 }

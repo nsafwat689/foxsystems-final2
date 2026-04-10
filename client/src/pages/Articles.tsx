@@ -185,11 +185,12 @@ const articles: Record<string, Article> = {
    date: "2024-12-31",
    readTime: "11 min read",
    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
-  }}
+  }
+};
 
 
 function Articles() {
-  const { language, isArabic } = useTheme();
+  const { language, setLanguage, isArabic } = useTheme();
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 6;
 

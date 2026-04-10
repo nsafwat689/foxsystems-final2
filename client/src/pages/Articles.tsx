@@ -219,8 +219,13 @@ const articles: Record<string, Article> = {
 };
 
 
-function Articles() {
-  const { language, setLanguage, isArabic } = useTheme();
+interface ArticlesProps {
+  language: "en" | "ar";
+  setLanguage: (lang: "en" | "ar") => void;
+}
+
+function Articles({ language, setLanguage }: ArticlesProps) {
+  const isArabic = language === "ar";
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 6;
 

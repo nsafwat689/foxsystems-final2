@@ -56,9 +56,11 @@ function Router() {
       </Route>
 
       {/* Articles Pages */}
-      <Route path="/articles" component={Articles} />
+      <Route path="/articles">
+        {() => <Articles language={language} setLanguage={setLanguage} />}
+      </Route>
       <Route path="/articles/:articleId">
-        {({ articleId }) => <ArticleDetail articleId={articleId} />}
+        {({ articleId }) => <ArticleDetail articleId={articleId} language={language} setLanguage={setLanguage} />}
       </Route>
 
       {/* Static Pages */}

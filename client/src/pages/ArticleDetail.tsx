@@ -383,8 +383,14 @@ const translations = {
   },
 };
 
-export default function ArticleDetail({ articleId }: ArticleDetailProps) {
-  const { language, setLanguage, isArabic } = useTheme();
+interface ArticleDetailProps {
+  articleId: string;
+  language: "en" | "ar";
+  setLanguage: (lang: "en" | "ar") => void;
+}
+
+export default function ArticleDetail({ articleId, language, setLanguage }: ArticleDetailProps) {
+  const isArabic = language === "ar";
   const t = translations[language];
 
   const article = articleContent[articleId] || articleContent["voip-basics"];

@@ -36,6 +36,36 @@ const getBreadcrumbSchema = (lang: "en" | "ar") => {
 };
 
 const articles: Record<string, Article> = {
+  "ai-infrastructure-2026": {
+    id: "ai-infrastructure-2026",
+    title: "The Future of Enterprise IT Infrastructure in 2026: AI-Native Foundations",
+    excerpt: "As we move through 2026, the shift from traditional IT setups to AI-native infrastructure is no longer a luxury but a necessity for competitive enterprises.",
+    category: "Infrastructure",
+    author: "Fox Systems Team",
+    date: "2026-04-10",
+    readTime: "15 min read",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
+  },
+  "odoo-erp-sme-2026": {
+    id: "odoo-erp-sme-2026",
+    title: "Why 2026 is the Definitive Year for SMEs to Adopt Odoo ERP",
+    excerpt: "For Small and Medium Enterprises (SMEs), 2026 offers unprecedented tools for growth. Discover why Odoo ERP is the central engine for modern business success.",
+    category: "Software",
+    author: "Fox Systems Team",
+    date: "2026-04-08",
+    readTime: "12 min read",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
+  },
+  "cybersecurity-distributed-workforce-2026": {
+    id: "cybersecurity-distributed-workforce-2026",
+    title: "Cybersecurity in 2026: Protecting the Distributed Workforce",
+    excerpt: "With remote and hybrid work now the standard, traditional security perimeters have vanished. Learn the essential strategies to protect your data in a borderless world.",
+    category: "Cybersecurity",
+    author: "Fox Systems Team",
+    date: "2026-04-05",
+    readTime: "14 min read",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=400&fit=crop",
+  },
   "voip-basics": {
     id: "voip-basics",
     title: "Understanding VoIP Technology: The Complete Guide",

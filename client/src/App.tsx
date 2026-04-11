@@ -57,10 +57,16 @@ function Router() {
 
       {/* Articles Pages */}
       <Route path="/articles">
-        {() => <Articles language={language} setLanguage={setLanguage} />}
+        {() => <Articles />}
+      </Route>
+      <Route path="/ar/articles">
+        {() => <Articles />}
       </Route>
       <Route path="/articles/:articleId">
-        {({ articleId }) => <ArticleDetail articleId={articleId} language={language} setLanguage={setLanguage} />}
+        {({ articleId }) => <ArticleDetail articleId={articleId} />}
+      </Route>
+      <Route path="/ar/articles/:articleId">
+        {({ articleId }) => <ArticleDetail articleId={articleId} />}
       </Route>
 
       {/* Static Pages */}
@@ -87,5 +93,3 @@ function App() {
 }
 
 export default App;
-
- 

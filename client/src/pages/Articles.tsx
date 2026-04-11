@@ -1,7 +1,7 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import Header from "@/components/Header";
 import { ArrowRight, Calendar, User, Tag } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -219,15 +219,19 @@ const articles: Record<string, Article> = {
 };
 
 
-interface ArticlesProps {
-  language: "en" | "ar";
-  setLanguage: (lang: "en" | "ar") => void;
-}
-
-function Articles({ language, setLanguage }: ArticlesProps) {
-  const isArabic = language === "ar";
+function Articles() {
+  const { language, setLanguage, isArabic } = useTheme();
+  const [location] = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 6;
+
+  useEffect(() => {
+    if (location.startsWith("/ar/") && language !== "ar") {
+      setLanguage("ar");
+    } else if (!location.startsWith("/ar/") && language === "ar") {
+      setLanguage("en");
+    }
+  }, [location, language, setLanguage]);
 
   const allArticles = Object.values(articles);
   const totalPages = Math.ceil(allArticles.length / articlesPerPage);

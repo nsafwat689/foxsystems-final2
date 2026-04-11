@@ -1,7 +1,7 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import Header from "@/components/Header";
 import { ArrowRight, Calendar, User, MessageCircle, Share2 } from "lucide-react";
 import { useEffect } from "react";
@@ -14,6 +14,7 @@ interface ArticleDetailProps {
 
 const articleContent: Record<string, any> = {
   "ai-infrastructure-2026": {
+    id: "ai-infrastructure-2026",
     title: "The Future of Enterprise IT Infrastructure in 2026: AI-Native Foundations",
     subtitle: "Build a resilient foundation for the AI era",
     author: "Fox Systems Team",
@@ -44,6 +45,7 @@ const articleContent: Record<string, any> = {
     `,
   },
   "odoo-erp-sme-2026": {
+    id: "odoo-erp-sme-2026",
     title: "Why 2026 is the Definitive Year for SMEs to Adopt Odoo ERP",
     subtitle: "Unlock your business potential with modular ERP",
     author: "Fox Systems Team",
@@ -84,6 +86,7 @@ const articleContent: Record<string, any> = {
     `,
   },
   "cybersecurity-distributed-workforce-2026": {
+    id: "cybersecurity-distributed-workforce-2026",
     title: "Cybersecurity in 2026: Protecting the Distributed Workforce",
     subtitle: "Secure your business in a borderless world",
     author: "Fox Systems Team",
@@ -119,7 +122,7 @@ const articleContent: Record<string, any> = {
       <p>The cost of a data breach in 2026 is higher than ever, not just in terms of direct financial loss, but in the devastating blow to customer trust. For businesses in the Middle East, where digital transformation is accelerating, a single security incident can set back years of progress.</p>
 
       <h2>Conclusion</h2>
-      <p>Cybersecurity is not a "set it and forget it" project; it's a continuous process of adaptation. As the distributed workforce continues to evolve, so must our defenses. Fox Systems is here to provide the advanced tools and strategic guidance needed to keep your business secure in an increasingly borderless world.</p>
+      <p>Cybersecurity is not a "set it and forget it" project; it's a continuous process of adaptation. As the distributed workforce continues to evolve, so must our defenses. Fox Systems is here to provide the advanced tools and strategic guidance needed to protect your organization in this borderless world.</p>
     `,
   },
   "voip-basics": {
@@ -383,15 +386,18 @@ const translations = {
   },
 };
 
-interface ArticleDetailProps {
-  articleId: string;
-  language: "en" | "ar";
-  setLanguage: (lang: "en" | "ar") => void;
-}
-
-export default function ArticleDetail({ articleId, language, setLanguage }: ArticleDetailProps) {
-  const isArabic = language === "ar";
+export default function ArticleDetail({ articleId }: ArticleDetailProps) {
+  const { language, setLanguage, isArabic } = useTheme();
+  const [location] = useLocation();
   const t = translations[language];
+
+  useEffect(() => {
+    if (location.startsWith("/ar/") && language !== "ar") {
+      setLanguage("ar");
+    } else if (!location.startsWith("/ar/") && language === "ar") {
+      setLanguage("en");
+    }
+  }, [location, language, setLanguage]);
 
   const article = articleContent[articleId] || articleContent["voip-basics"];
 
@@ -441,7 +447,7 @@ export default function ArticleDetail({ articleId, language, setLanguage }: Arti
         {/* Article Header */}
         <section className="bg-gradient-to-br from-primary/10 via-transparent to-primary/5 py-12 md:py-16">
           <div className="container">
-            <Link href="/articles" className="text-primary hover:underline text-sm mb-4 inline-block">
+            <Link href={`/${language === "ar" ? "ar/" : ""}articles`} className="text-primary hover:underline text-sm mb-4 inline-block">
               ← {t.backToArticles}
             </Link>
             <div className="space-y-4">

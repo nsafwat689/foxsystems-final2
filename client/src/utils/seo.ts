@@ -128,6 +128,66 @@ export const arabicSEOConfigs: Record<string, SEOConfig> = {
     canonicalUrl: "https://foxsystemstech.com/services/internet",
     language: "ar",
   },
+  software: {
+    title: "حلول البرمجيات وتطبيق ERP | شريك أودو في مصر - Fox Systems",
+    description: "أنظمة ERP مخصصة، تطبيقات مخصصة، حلول إدارة تكنولوجيا المعلومات، وتطبيق أودو بالكامل كشريك رسمي في مصر والشرق الأوسط.",
+    keywords: "حلول البرمجيات مصر، تطبيق ERP، شريك أودو، تطبيقات مخصصة، برامج إدارة تكنولوجيا المعلومات",
+    ogTitle: "حلول البرمجيات وERP",
+    ogDescription: "برمجيات المؤسسات المصممة خصيصاً لاحتياجات عملك",
+    ogImage: "https://foxsystemstech.com/services/software-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/services/software",
+    language: "ar",
+  },
+  hardware: {
+    title: "حلول أجهزة المؤسسات | الخوادم، أجهزة الشبكات - Fox Systems مصر",
+    description: "خوادم موثوقة من فئة المؤسسات، أجهزة كمبيوتر، أجهزة لاب توب، جدران حماية، وأجهزة شبكات من الشركات المصنعة الرائدة للشركات في مصر والشرق الأوسط.",
+    keywords: "أجهزة المؤسسات مصر، خوادم، أجهزة شبكات، جدران حماية، حلول الأجهزة الشرق الأوسط",
+    ogTitle: "حلول أجهزة المؤسسات",
+    ogDescription: "أجهزة عالية الجودة لبنيتك التحتية لتكنولوجيا المعلومات",
+    ogImage: "https://foxsystemstech.com/services/hardware-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/services/hardware",
+    language: "ar",
+  },
+  cybersecurity: {
+    title: "حلول الأمن السيبراني والحماية | جدران الحماية، حماية النقاط النهائية - Fox Systems",
+    description: "حلول جدران الحماية المتقدمة، حماية النقاط النهائية، المراقبة، النسخ الاحتياطي، وأنظمة التعافي من الكوارث للشركات في مصر والشرق الأوسط.",
+    keywords: "حلول الأمن السيبراني مصر، حماية جدار الحماية، أمن النقاط النهائية، الحماية من التهديدات السيبرانية، النسخ الاحتياطي للبيانات",
+    ogTitle: "الأمن السيبراني والحماية",
+    ogDescription: "حلول أمنية متقدمة لعملك",
+    ogImage: "https://foxsystemstech.com/services/cybersecurity-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/services/cybersecurity",
+    language: "ar",
+  },
+  infrastructure: {
+    title: "إعداد الشبكة والبنية التحتية لتكنولوجيا المعلومات | مراكز البيانات - Fox Systems مصر",
+    description: "إعداد كامل للشبكة، التكوين، الكابلات، مراكز البيانات، والصيانة المصممة للسرعة والاستقرار في مصر والشرق الأوسط.",
+    keywords: "إعداد البنية التحتية لتكنولوجيا المعلومات مصر، تكوين الشبكة، إعداد مركز البيانات، كابلات الشبكة، تصميم البنية التحتية",
+    ogTitle: "الشبكة والبنية التحتية لتكنولوجيا المعلومات",
+    ogDescription: "بنية تحتية قوية لاستمرارية العمل",
+    ogImage: "https://foxsystemstech.com/services/infrastructure-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/services/infrastructure",
+    language: "ar",
+  },
+  "web-development": {
+    title: "تطوير وتصميم المواقع الإلكترونية | UI/UX، محسن لمحركات البحث - Fox Systems مصر",
+    description: "مواقع شركات احترافية مع تصميم UI/UX، متوافقة مع الهاتف المحمول، تحسين محركات البحث، ودعم لغات متعددة للشركات في مصر والشرق الأوسط.",
+    keywords: "تطوير المواقع مصر، تصميم المواقع، تصميم UI/UX، مواقع محسنة لمحركات البحث، تصميم مواقع متجاوب",
+    ogTitle: "تطوير وتصميم المواقع الإلكترونية",
+    ogDescription: "مواقع حديثة تدفع نمو الأعمال",
+    ogImage: "https://foxsystemstech.com/services/web-development-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/services/web-development",
+    language: "ar",
+  },
+  contact: {
+    title: "اتصل بـ Fox Systems | احصل على دعم حلول تكنولوجيا المعلومات في مصر والشرق الأوسط",
+    description: "اتصل بـ Fox Systems للحصول على حلول تكنولوجيا المعلومات للمؤسسات، الخدمات المدارة، والدعم الفني في مصر والشرق الأوسط. اتصل على +201557649136.",
+    keywords: "اتصل بـ Fox Systems، دعم تكنولوجيا المعلومات مصر، دعم فني، اتصال الخدمات المدارة",
+    ogTitle: "اتصل بنا - Fox Systems",
+    ogDescription: "تواصل مع فريق حلول تكنولوجيا المعلومات لدينا",
+    ogImage: "https://foxsystemstech.com/contact-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/contact",
+    language: "ar",
+  },
 };
 
 // Function to update document meta tags
@@ -236,14 +296,14 @@ export function generateServiceSchema(serviceName: string, description: string, 
   });
 }
 
-export function generateArticleSchema(article: { title: string; description: string; author: string; datePublished: string; imageUrl: string; url: string }): string {
+export function generateArticleSchema(article: { title: string; description: string; author: string; datePublished: string; image: string; url: string }): string {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     description: article.description,
     image: [
-      article.imageUrl
+      article.image
     ],
     datePublished: article.datePublished,
     author: {

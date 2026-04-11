@@ -53,7 +53,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
   const [location] = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const t = translations[language];
+  const t = translations[language] || translations.en;
   const isArabic = language === "ar";
 
   useEffect(() => {

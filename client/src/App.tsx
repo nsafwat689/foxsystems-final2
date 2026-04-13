@@ -57,16 +57,16 @@ function Router() {
 
       {/* Articles Pages */}
       <Route path="/articles">
-        {() => <Articles />}
+        {() => <Articles language={language} setLanguage={setLanguage} />}
       </Route>
       <Route path="/ar/articles">
-        {() => <Articles />}
+        {() => <Articles language={language} setLanguage={setLanguage} />}
       </Route>
       <Route path="/articles/:articleId">
-        {({ articleId }) => <ArticleDetail articleId={articleId} />}
+        {({ articleId }) => <ArticleDetail articleId={articleId} language={language} setLanguage={setLanguage} />}
       </Route>
       <Route path="/ar/articles/:articleId">
-        {({ articleId }) => <ArticleDetail articleId={articleId} />}
+        {({ articleId }) => <ArticleDetail articleId={articleId} language={language} setLanguage={setLanguage} />}
       </Route>
 
       {/* Static Pages */}

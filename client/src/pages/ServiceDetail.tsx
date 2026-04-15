@@ -113,7 +113,9 @@ export default function ServiceDetail({ serviceId, language, setLanguage }: Serv
   const data = serviceDetails[serviceId] || serviceDetails.internet;
   const Icon = data.icon;
 
-  const seoConfig = serviceSEOConfigs[serviceId] || serviceSEOConfigs.internet;
+  const seoConfig = isArabic 
+    ? (arabicSEOConfigs[serviceId] || arabicSEOConfigs.internet)
+    : (serviceSEOConfigs[serviceId] || serviceSEOConfigs.internet);
   const serviceSchema = generateServiceSchema(data.title, data.overview, seoConfig.canonicalUrl);
 
   return (

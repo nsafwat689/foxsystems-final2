@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import SEOHead from "@/components/SEOHead";
+import { defaultSEOConfig } from "@/utils/seo";
 
 const translations = {
   en: {
@@ -242,59 +244,59 @@ const translations = {
       "تقييم وتخطيط البنية التحتية",
       "إعداد الخوادم والتخزين",
       "تصميم معمارية الشبكة",
-      "التكامل والهجرة السحابية",
-      "أنظمة النسخ الاحتياطي واسترجاع الكوارث",
+      "تكامل السحابة والهجرة",
+      "أنظمة النسخ الاحتياطي والتعافي من الكوارث",
       "التوثيق والتدريب",
     ],
-    infrastructureBenefits: "بنِ أساساً قوياً وآمناً وموثوقاً لتكنولوجيا المعلومات يدعم نمو عملك وكفاءة العمليات.",
+    infrastructureBenefits: "ابنِ أساساً تقنياً قابلاً للتوسع وآمناً وموثوقاً يدعم نمو عملك وكفاءتك التشغيلية.",
 
     // Hardware
     hardwareTitle: "حلول الأجهزة",
-    hardwareDesc: "أجهزة ومعدات عالية الجودة متاحة بكميات كبيرة لنشر المؤسسات والترقيات.",
+    hardwareDesc: "أجهزة ومعدات عالية الجودة متوفرة بكميات كبيرة لعمليات نشر المؤسسات وترقياتها.",
     hardwareFeatures: [
-      "خوادم محطات عمل على مستوى المؤسسات",
-      "معدات الشبكة والمفاتيح",
-      "أنظمة وصفائف التخزين",
+      "خوادم ومحطات عمل على مستوى المؤسسات",
+      "معدات الشبكة والمحولات",
+      "أنظمة ومصفوفات التخزين",
       "أجهزة الأمان وجدران الحماية",
-      "أجهزة النسخ الاحتياطي والاسترجاع",
-      "تسعير الحجم والخصومات الكبيرة",
+      "أجهزة النسخ الاحتياطي والاسترداد",
+      "تسعير الحجم وخصومات الكمية",
     ],
-    hardwareBenefits: "احصل على أجهزة موثوقة وعالية الجودة على مستوى المؤسسات بأسعار تنافسية ودعم شامل.",
+    hardwareBenefits: "احصل على أجهزة موثوقة بجودة المؤسسات مع أسعار تنافسية ودعم شامل لاحتياجات بنيتك التحتية.",
 
     // VoIP Services
-    voipTitle: "حلول VoIP لمراكز الاتصالات",
-    voipDesc: "حلول صوتية متقدمة عبر الإنترنت مصممة خصيصاً لمراكز الاتصالات وعمليات خدمة العملاء مع موثوقية على مستوى المؤسسات.",
+    voipTitle: "حلول VoIP لمراكز الاتصال",
+    voipDesc: "حلول متقدمة لنقل الصوت عبر الإنترنت مصممة خصيصاً لمراكز الاتصال وعمليات خدمة العملاء مع موثوقية على مستوى المؤسسات.",
     voipFeatures: [
-      "جودة صوت بلورية وصوت HD",
-      "بنية مركز اتصالات قابلة للتوسع",
-      "أنظمة توجيه المكالمات المتقدمة و IVR",
+      "جودة صوت واضحة تماماً وصوت عالي الدقة",
+      "بنية تحتية لمركز اتصال قابلة للتوسع",
+      "توجيه مكالمات متقدم وأنظمة IVR",
       "تسجيل المكالمات والتحليلات",
       "التكامل مع أنظمة CRM",
-      "دعم الاتصالات متعددة القنوات",
+      "دعم الاتصال متعدد القنوات",
     ],
-    voipBenefits: "حسّن الاتصالات مع العملاء، وقلل التكاليف التشغيلية، وسع عمليات مركز الاتصالات الخاص بك باستخدام حلول VoIP الاحترافية لدينا المدعومة من VoIPCat.",
+    voipBenefits: "عزز تواصل العملاء، وقلل التكاليف التشغيلية، ووسع عمليات مركز الاتصال الخاص بك مع حلول VoIP الاحترافية المدعومة من VoIPCat.",
 
     // Support
-    supportTitle: "الدعم الفني 24/7",
-    supportDesc: "عقود دعم شهرية شاملة مع مساعدة تقنية مخصصة تضمن تشغيل أنظمتك بسلاسة.",
+    supportTitle: "دعم فني على مدار الساعة",
+    supportDesc: "عقود دعم شهرية شاملة مع مساعدة فنية مخصصة تضمن تشغيل أنظمتك بسلاسة.",
     supportFeatures: [
-      "دعم مكتب المساعدة 24/7",
-      "مراقبة النظام الاستباقية",
-      "الصيانة والتحديثات المنتظمة",
-      "استجابة حادثة ذات أولوية",
+      "دعم فني على مدار الساعة 24/7",
+      "مراقبة استباقية للنظام",
+      "صيانة وتحديثات منتظمة",
+      "استجابة ذات أولوية للحوادث",
       "تحسين الأداء",
-      "الاستشارة التقنية والتخطيط",
+      "استشارات وتخطيط فني",
     ],
-    supportBenefits: "قلل وقت التوقف، وتأكد من موثوقية النظام، وركز على عملك بينما يدير خبراؤنا بنية تكنولوجيا المعلومات الخاصة بك.",
+    supportBenefits: "قلل وقت التوقف عن العمل، واضمن موثوقية النظام، وركز على عملك بينما يدير خبراؤنا بنيتك التحتية لتكنولوجيا المعلومات.",
 
     whyChooseUs: "لماذا تختار Fox Systems",
-    whyChooseDesc: "مع أكثر من 14 سنة من الخبرة في الصناعة، نقدم حلول على مستوى المؤسسات مدعومة بدعم خبير.",
-    experience: "خبرة تزيد عن 14 سنة",
-    experienceDesc: "سجل حافل بالتطبيقات الناجحة والعملاء الراضين",
-    expertise: "فريق خبير",
-    expertiseDesc: "محترفون معتمدون بمعرفة تقنية عميقة",
+    whyChooseDesc: "مع أكثر من 14 عاماً من الخبرة في الصناعة، نقدم حلولاً على مستوى المؤسسات مدعومة بدعم الخبراء.",
+    experience: "14+ عاماً من الخبرة",
+    experienceDesc: "سجل حافل من التنفيذ الناجح والعملاء الراضين",
+    expertise: "فريق خبراء",
+    expertiseDesc: "محترفون معتمدون ذوو معرفة تقنية عميقة",
     support24: "دعم 24/7",
-    support24Desc: "مساعدة على مدار الساعة لأنظمتك الحرجة",
+    support24Desc: "مساعدة على مدار الساعة لأنظمتك الحيوية",
     reliability: "موثوقية مثبتة",
     reliabilityDesc: "حلول على مستوى المؤسسات مع ضمان وقت تشغيل 99.9٪",
     
@@ -305,14 +307,24 @@ const translations = {
 };
 
 interface ServicesProps {
-    language: "en" | "ar";
-    setLanguage: (lang: "en" | "ar") => void;
-  }
+  language: "en" | "ar";
+  setLanguage: (lang: "en" | "ar") => void;
+}
 
 export default function Services({ language, setLanguage }: ServicesProps) {
   const { theme } = useTheme();
   const t = translations[language];
   const isArabic = language === "ar";
+
+  const seoConfig = {
+    ...defaultSEOConfig,
+    title: isArabic ? "خدماتنا الشاملة لتكنولوجيا المعلومات | Fox Systems" : "Our Comprehensive IT Services | Fox Systems",
+    description: isArabic 
+      ? "اكتشف مجموعة واسعة من خدمات تكنولوجيا المعلومات للمؤسسات بما في ذلك الأمن السيبراني، والشبكات، وتطوير المواقع، وحلول ERP في مصر والشرق الأوسط."
+      : "Explore our wide range of enterprise IT services including cybersecurity, networking, web development, and ERP solutions in Egypt and the Middle East.",
+    canonicalUrl: isArabic ? "https://foxsystemstech.com/ar/services" : "https://foxsystemstech.com/services",
+    language: language,
+  };
 
   const services = [
     {
@@ -417,7 +429,8 @@ export default function Services({ language, setLanguage }: ServicesProps) {
   ];
 
   return (
-    <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
+    <div className={`min-h-screen bg-background ${isArabic ? "rtl" : "ltr"}`} dir={isArabic ? "rtl" : "ltr"}>
+      <SEOHead config={seoConfig} />
       <Header language={language} setLanguage={setLanguage} />
 
       {/* Header Section */}
@@ -438,66 +451,70 @@ export default function Services({ language, setLanguage }: ServicesProps) {
       {/* Services Grid */}
       <section className="py-20 md:py-32">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service, idx) => {
+          <div className="grid gap-12">
+            {services.map((service) => {
               const Icon = service.icon;
               return (
-                <Card
-                  key={idx}
-                  className={`border-2 ${service.borderColor} hover:shadow-xl transition-all overflow-hidden group`}
+                <div
+                  key={service.id}
+                  id={service.id}
+                  className={`grid md:grid-cols-2 gap-12 items-center ${
+                    isArabic ? "md:text-right" : ""
+                  }`}
                 >
-                  <div className={`bg-gradient-to-br ${service.color} p-8 relative overflow-hidden`}>
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br from-primary to-primary transition-opacity"></div>
-                    <Icon className="w-12 h-12 text-primary relative z-10 mb-4" />
-                    <h3 className="text-2xl font-bold mb-3 relative z-10">{service.title}</h3>
-                    <p className="text-muted-foreground relative z-10">{service.desc}</p>
-                  </div>
-
-                  <CardContent className="pt-6">
+                  <div className="space-y-6">
+                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${service.color} border ${service.borderColor}`}>
+                      <Icon className="w-8 h-8 text-primary" />
+                    </div>
+                    <h2 className="text-3xl font-bold">{service.title}</h2>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      {service.desc}
+                    </p>
                     <div className="space-y-4">
-                      <div>
-                        <h4 className="font-bold mb-3 text-sm uppercase tracking-wide">
-                          {isArabic ? "المميزات الرئيسية" : "Key Features"}
-                        </h4>
-                        <ul className={`space-y-2 ${isArabic ? "text-right" : ""}`}>
-                          {service.features.slice(0, 3).map((feature, fidx) => (
-                            <li key={fidx} className="flex items-start gap-3">
-                              <CheckCircle className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                              <span className="text-sm text-muted-foreground">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="bg-muted/50 p-4 rounded-lg">
-                        <p className="text-sm font-medium text-foreground">{service.benefits}</p>
-                      </div>
-
+                      <h3 className="font-bold text-xl">{isArabic ? "الميزات الرئيسية" : "Key Features"}</h3>
+                      <ul className="grid sm:grid-cols-2 gap-3">
+                        {service.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                            <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="p-6 rounded-2xl bg-muted/30 border border-border">
+                      <h3 className="font-bold mb-2">{isArabic ? "الفوائد" : "Benefits"}</h3>
+                      <p className="text-muted-foreground">{service.benefits}</p>
+                    </div>
+                    <div className="flex gap-4">
                       {service.isVoip ? (
-                        <a href={service.voipLink} target="_blank" rel="noopener noreferrer">
-                          <Button className="w-full" size="sm">
-                            {t.learnMore}
-                            <ArrowRight className="w-4 h-4 ml-2" />
-                          </Button>
-                        </a>
+                        <Button asChild size="lg">
+                          <a href={service.voipLink} target="_blank" rel="noopener noreferrer">
+                            {t.learnMore} <ArrowRight className={`ml-2 w-4 h-4 ${isArabic ? "rotate-180" : ""}`} />
+                          </a>
+                        </Button>
                       ) : (
-                        <Link href={`/service/${service.id}`}>
-                          <Button className="w-full" size="sm">
-                            {t.learnMore}
-                            <ArrowRight className="w-4 h-4 ml-2" />
-                          </Button>
-                        </Link>
+                        <Button size="lg" asChild>
+                          <Link href="/contact">
+                            {t.getQuote} <ArrowRight className={`ml-2 w-4 h-4 ${isArabic ? "rotate-180" : ""}`} />
+                          </Link>
+                        </Button>
                       )}
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                  <div className="relative group">
+                    <div className={`absolute -inset-4 bg-gradient-to-br ${service.color} rounded-[2rem] blur-2xl opacity-20 group-hover:opacity-30 transition-opacity`} />
+                    <Card className="relative overflow-hidden border-none shadow-2xl rounded-[2rem] aspect-video flex items-center justify-center bg-muted/50">
+                      <Icon className="w-32 h-32 text-primary/20" />
+                    </Card>
+                  </div>
+                </div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
+      {/* Why Choose Us */}
       <section className="py-20 md:py-32 bg-muted/20">
         <div className="container">
           <div className={`text-center mb-16 ${isArabic ? "space-y-2" : ""}`}>
@@ -540,13 +557,13 @@ export default function Services({ language, setLanguage }: ServicesProps) {
               : "Contact us today for a free consultation and customized quote for your business needs."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" onClick={() => window.open("https://wa.me/966155764913", "_blank")}>
+            <Button size="lg" variant="secondary" onClick={() => window.open("https://wa.me/201557649136", "_blank")}>
               <Phone className="w-4 h-4 mr-2" />
               {t.contactUs}
             </Button>
             <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10">
               <MessageCircle className="w-4 h-4 mr-2" />
-              {t.schedule}
+              {isArabic ? "جدول استشارة" : "Schedule Consultation"}
             </Button>
           </div>
         </div>
@@ -556,7 +573,7 @@ export default function Services({ language, setLanguage }: ServicesProps) {
       <footer className="bg-foreground/5 border-t border-border py-8">
         <div className="container">
           <div className="text-center text-sm text-muted-foreground">
-            <p>© 2024 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
+            <p>© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
           </div>
         </div>
       </footer>

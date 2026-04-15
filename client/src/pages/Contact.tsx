@@ -7,9 +7,7 @@ import { Mail, Phone, MapPin, MessageCircle, Send, Globe, Clock, Users, CheckCir
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
-import { serviceSEOConfigs } from "@/utils/seo";
-
-interface ContactProps {}
+import { serviceSEOConfigs, arabicSEOConfigs } from "@/utils/seo";
 
 const translations = {
   en: {
@@ -80,13 +78,17 @@ const translations = {
   },
 };
 
-export default function Contact() {
-  const [language, setLanguage] = useState<"en" | "ar">("en");
+interface ContactProps {
+  language: "en" | "ar";
+  setLanguage: (lang: "en" | "ar") => void;
+}
+
+export default function Contact({ language, setLanguage }: ContactProps) {
   const { theme } = useTheme();
   const t = translations[language];
   const isArabic = language === "ar";
 
-  const seoConfig = serviceSEOConfigs.contact;
+  const seoConfig = isArabic ? arabicSEOConfigs.contact : serviceSEOConfigs.contact;
 
   return (
     <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
 import SEOHead from "@/components/SEOHead";
-import { defaultSEOConfig, generateOrganizationSchema } from "@/utils/seo";
+import { defaultSEOConfig, arabicSEOConfigs } from "@/utils/seo";
 import {
   MessageCircle,
   Phone,
@@ -231,9 +231,11 @@ export default function Home() {
     { src: "/clients/11_tmobile-F9KaxS7P.png", alt: "T-Mobile" },
   ];
 
+  const seoConfig = isArabic ? arabicSEOConfigs.home : defaultSEOConfig;
+
   return (
     <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
-      <SEOHead config={defaultSEOConfig} organizationSchema additionalSchema={generateOrganizationSchema()} />
+      <SEOHead config={seoConfig} organizationSchema />
       <Header language={language} setLanguage={setLanguage} />
 
       {/* Hero Section */}

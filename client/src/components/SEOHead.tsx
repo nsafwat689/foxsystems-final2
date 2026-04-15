@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { updateMetaTags, generateOrganizationSchema, SEOConfig } from "@/utils/seo";
+import { updateMetaTags, generateOrganizationSchema, generateWebSiteSchema, SEOConfig } from "@/utils/seo";
 
 interface SEOHeadProps {
   config: SEOConfig;
@@ -14,14 +14,25 @@ export default function SEOHead({ config, organizationSchema = true, additionalS
 
     // Add organization schema if requested
     if (organizationSchema) {
-      let script = document.querySelector('script[type="application/ld+json"][data-schema="organization"]');
-      if (!script) {
-        script = document.createElement("script");
-        script.type = "application/ld+json";
-        script.setAttribute("data-schema", "organization");
-        document.head.appendChild(script);
+      // Organization Schema
+      let orgScript = document.querySelector('script[type="application/ld+json"][data-schema="organization"]');
+      if (!orgScript) {
+        orgScript = document.createElement("script");
+        orgScript.type = "application/ld+json";
+        orgScript.setAttribute("data-schema", "organization");
+        document.head.appendChild(orgScript);
       }
-      script.textContent = generateOrganizationSchema();
+      orgScript.textContent = generateOrganizationSchema();
+
+      // WebSite Schema (for Sitelinks Searchbox and Brand recognition)
+      let siteScript = document.querySelector('script[type="application/ld+json"][data-schema="website"]');
+      if (!siteScript) {
+        siteScript = document.createElement("script");
+        siteScript.type = "application/ld+json";
+        siteScript.setAttribute("data-schema", "website");
+        document.head.appendChild(siteScript);
+      }
+      siteScript.textContent = generateWebSiteSchema();
     }
 
     // Add additional schema if provided

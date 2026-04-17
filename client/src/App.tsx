@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch, useLocation } from "wouter";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -25,78 +25,108 @@ function Router() {
 
   return (
     <Switch>
-      {/* ===== ENGLISH ROUTES ===== */}
-      
-      {/* Home */}
-      <Route path="/">
-        {() => <Home language={language} />}
-      </Route>
-
-      {/* Services Overview */}
-      <Route path="/services">
-        {() => <Services language={language} />}
-      </Route>
-
-      {/* Service Detail - Dynamic Route */}
-      <Route path="/services/:serviceId">
-        {({ serviceId }) => <ServiceDetail serviceId={serviceId} language={language} />}
-      </Route>
-
-      {/* Contact Page */}
-      <Route path="/contact">
-        {() => <Contact language={language} />}
-      </Route>
-
-      {/* Articles */}
-      <Route path="/articles">
-        {() => <Articles language={language} />}
-      </Route>
-
-      {/* Article Detail */}
-      <Route path="/articles/:articleId">
-        {({ articleId }) => <ArticleDetail articleId={articleId} language={language} />}
-      </Route>
-
-      {/* About (redirects to Home) */}
-      <Route path="/about">
-        {() => <Home language={language} />}
-      </Route>
-
-      {/* ===== ARABIC ROUTES ===== */}
+      {/* ===== ARABIC ROUTES (MUST BE FIRST) ===== */}
 
       {/* Arabic Home */}
       <Route path="/ar">
-        {() => <Home language={language} />}
+        {() => <Home language="ar" />}
       </Route>
 
       {/* Arabic Services Overview */}
       <Route path="/ar/services">
-        {() => <Services language={language} />}
+        {() => <Services language="ar" />}
       </Route>
 
-      {/* Arabic Service Detail - Dynamic Route */}
-      <Route path="/ar/services/:serviceId">
-        {({ serviceId }) => <ServiceDetail serviceId={serviceId} language={language} />}
+      {/* Arabic Service Detail - Specific routes for each service */}
+      <Route path="/ar/services/internet">
+        {() => <ServiceDetail serviceId="internet" language="ar" />}
+      </Route>
+      <Route path="/ar/services/software">
+        {() => <ServiceDetail serviceId="software" language="ar" />}
+      </Route>
+      <Route path="/ar/services/hardware">
+        {() => <ServiceDetail serviceId="hardware" language="ar" />}
+      </Route>
+      <Route path="/ar/services/cybersecurity">
+        {() => <ServiceDetail serviceId="cybersecurity" language="ar" />}
+      </Route>
+      <Route path="/ar/services/infrastructure">
+        {() => <ServiceDetail serviceId="infrastructure" language="ar" />}
+      </Route>
+      <Route path="/ar/services/web-development">
+        {() => <ServiceDetail serviceId="web-development" language="ar" />}
       </Route>
 
       {/* Arabic Contact Page */}
       <Route path="/ar/contact">
-        {() => <Contact language={language} />}
+        {() => <Contact language="ar" />}
       </Route>
 
       {/* Arabic Articles */}
       <Route path="/ar/articles">
-        {() => <Articles language={language} />}
+        {() => <Articles language="ar" />}
       </Route>
 
       {/* Arabic Article Detail */}
       <Route path="/ar/articles/:articleId">
-        {({ articleId }) => <ArticleDetail articleId={articleId} language={language} />}
+        {({ articleId }) => <ArticleDetail articleId={articleId} language="ar" />}
       </Route>
 
       {/* Arabic About (redirects to Arabic Home) */}
       <Route path="/ar/about">
-        {() => <Home language={language} />}
+        {() => <Home language="ar" />}
+      </Route>
+
+      {/* ===== ENGLISH ROUTES ===== */}
+
+      {/* Home */}
+      <Route path="/">
+        {() => <Home language="en" />}
+      </Route>
+
+      {/* Services Overview */}
+      <Route path="/services">
+        {() => <Services language="en" />}
+      </Route>
+
+      {/* Service Detail - Specific routes for each service */}
+      <Route path="/services/internet">
+        {() => <ServiceDetail serviceId="internet" language="en" />}
+      </Route>
+      <Route path="/services/software">
+        {() => <ServiceDetail serviceId="software" language="en" />}
+      </Route>
+      <Route path="/services/hardware">
+        {() => <ServiceDetail serviceId="hardware" language="en" />}
+      </Route>
+      <Route path="/services/cybersecurity">
+        {() => <ServiceDetail serviceId="cybersecurity" language="en" />}
+      </Route>
+      <Route path="/services/infrastructure">
+        {() => <ServiceDetail serviceId="infrastructure" language="en" />}
+      </Route>
+      <Route path="/services/web-development">
+        {() => <ServiceDetail serviceId="web-development" language="en" />}
+      </Route>
+
+      {/* Contact Page */}
+      <Route path="/contact">
+        {() => <Contact language="en" />}
+      </Route>
+
+      {/* Articles */}
+      <Route path="/articles">
+        {() => <Articles language="en" />}
+      </Route>
+
+      {/* Article Detail */}
+      <Route path="/articles/:articleId">
+        {({ articleId }) => <ArticleDetail articleId={articleId} language="en" />}
+      </Route>
+
+      {/* About (redirects to Home) */}
+      <Route path="/about">
+        {() => <Home language="en" />}
       </Route>
 
       {/* 404 Not Found - Must be last */}

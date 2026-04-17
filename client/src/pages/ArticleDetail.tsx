@@ -1,17 +1,15 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import Header from "@/components/Header";
-import { ArrowRight, Calendar, User, MessageCircle, Share2 } from "lucide-react";
-import { useEffect } from "react";
+import { ArrowRight, Calendar, User, MessageCircle, Share2, ArrowLeft } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { generateArticleSchema, arabicSEOConfigs, serviceSEOConfigs } from "@/utils/seo";
 
 interface ArticleDetailProps {
   articleId: string;
   language: "en" | "ar";
-  setLanguage: (lang: "en" | "ar") => void;
 }
 
 const articleContent: Record<string, Record<"en" | "ar", any>> = {
@@ -99,24 +97,6 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
         <h3>Start Small, Scale Fast</h3>
         <p>An SME might start with just the <strong>Accounting</strong> and <strong>Inventory</strong> modules. As they grow, they can easily add <strong>CRM</strong>, <strong>E-commerce</strong>, <strong>Manufacturing</strong>, or <strong>Human Resources</strong>. This "pay-as-you-grow" model is perfect for the fluctuating budgets of growing businesses in the Middle East.</p>
 
-        <h2>New Features in 2026</h2>
-        <p>The 2026 version of Odoo has introduced several game-changing features specifically designed for the modern SME:</p>
-        <h3>1. AI-Driven Financial Forecasting</h3>
-        <p>Odoo now uses historical data to provide highly accurate cash flow forecasts. For an SME, knowing exactly when a cash crunch might occur allows for proactive management and better decision-making.</p>
-        <h3>2. Hyper-Personalized Marketing Automation</h3>
-        <p>The CRM and Marketing modules now integrate deep learning to segment customers more effectively than ever. SMEs can now run marketing campaigns that rival the sophistication of global brands, all within a single interface.</p>
-        <h3>3. Enhanced Localized Compliance</h3>
-        <p>For businesses in Egypt, staying compliant with local tax laws and e-invoicing requirements is a top priority. Odoo's 2026 updates include enhanced localization features that automate much of this compliance work, reducing the risk of errors and penalties.</p>
-
-        <h2>The Fox Systems Implementation Approach</h2>
-        <p>At Fox Systems, we don't just "install" software. We partner with you to understand your unique workflows. Our implementation process involves:</p>
-        <ul>
-          <li><strong>Business Process Audit:</strong> Identifying bottlenecks in your current operations.</li>
-          <li><strong>Custom Configuration:</strong> Tailoring Odoo modules to fit your specific needs.</li>
-          <li><strong>Team Training:</strong> Ensuring your staff is confident and productive from day one.</li>
-          <li><strong>Ongoing Support:</strong> Being there as your business evolves and needs new capabilities.</li>
-        </ul>
-
         <h2>Conclusion</h2>
         <p>2026 is not just another year; it's a turning point for digital maturity. For SMEs, Odoo ERP is no longer an optional upgrade—it's the foundation for survival and growth. Let Fox Systems help you unlock the full potential of your business with a solution that grows with you.</p>
       `,
@@ -140,139 +120,170 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
         <h3>ابدأ صغيراً، وتوسع بسرعة</h3>
         <p>قد تبدأ الشركة الصغيرة والمتوسطة بوحدات <strong>المحاسبة</strong> و <strong>المخزون</strong> فقط. ومع نموها، يمكنها بسهولة إضافة <strong>إدارة علاقات العملاء (CRM)</strong>، أو <strong>التجارة الإلكترونية</strong>، أو <strong>التصنيع</strong>، أو <strong>الموارد البشرية</strong>. هذا النموذج "ادفع مقابل ما تحتاجه للنمو" مثالي للميزانيات المتقلبة للشركات النامية في الشرق الأوسط.</p>
 
-        <h2>ميزات جديدة في عام 2026</h2>
-        <p>قدم إصدار 2026 من أودو العديد من الميزات التي تغير قواعد اللعبة والمصممة خصيصاً للشركات الصغيرة والمتوسطة الحديثة:</p>
-        <h3>1. التنبؤ المالي القائم على الذكاء الاصطناعي</h3>
-        <p>يستخدم أودو الآن البيانات التاريخية لتقديم توقعات دقيقة للغاية للتدفقات النقدية. بالنسبة للشركة الصغيرة والمتوسطة، فإن معرفة متى قد تحدث أزمة نقدية بالضبط تسمح بالإدارة الاستباقية واتخاذ قرارات أفضل.</p>
-        <h3>2. أتمتة التسويق الشخصي للغاية</h3>
-        <p>تدمج وحدات CRM والتسويق الآن التعلم العميق لتقسيم العملاء بشكل أكثر فعالية من أي وقت مضى. يمكن للشركات الصغيرة والمتوسطة الآن تشغيل حملات تسويقية تضاهي تطور العلامات التجارية العالمية، كل ذلك ضمن واجهة واحدة.</p>
-        <h3>3. تعزيز الامتثال المحلي</h3>
-        <p>بالنسبة للشركات في مصر، يمثل البقاء متوافقاً مع قوانين الضرائب المحلية ومتطلبات الفواتير الإلكترونية أولوية قصوى. تتضمن تحديثات أودو لعام 2026 ميزات توطين محسنة تعمل على أتمتة الكثير من أعمال الامتثال هذه، مما يقلل من مخاطر الأخطاء والعقوبات.</p>
-
-        <h2>نهج تنفيذ فوكس سيستمز</h2>
-        <p>في فوكس سيستمز، نحن لا نقوم فقط بـ "تثبيت" البرامج. نحن نشاركك لفهم سير عملك الفريد. تتضمن عملية التنفيذ لدينا:</p>
-        <ul>
-          <li><strong>تدقيق عمليات الأعمال:</strong> تحديد الاختناقات في عملياتك الحالية.</li>
-          <li><strong>التكوين المخصص:</strong> تخصيص وحدات أودو لتناسب احتياجاتك الخاصة.</li>
-          <li><strong>تدريب الفريق:</strong> ضمان ثقة وإنتاجية موظفيك من اليوم الأول.</li>
-          <li><strong>الدعم المستمر:</strong> التواجد معك مع تطور عملك وحاجتك لإمكانيات جديدة.</li>
-        </ul>
-
         <h2>الخلاصة</h2>
-        <p>عام 2026 ليس مجرد عام آخر؛ إنه نقطة تحول للنضج الرقمي. بالنسبة للشركات الصغيرة والمتوسطة، لم يعد Odoo ERP ترقية اختيارية - إنه الأساس للبقاء والنمو. دع فوكس سيستمز تساعدك على إطلاق العنان للإمكانيات الكاملة لعملك من خلال حل ينمو معك.</p>
+        <p>2026 ليس مجرد عام آخر؛ إنه نقطة تحول للنضج الرقمي. بالنسبة للشركات الصغيرة والمتوسطة، لم يعد Odoo ERP ترقية اختيارية - إنه الأساس للبقاء والنمو. دع فوكس سيستمز تساعدك في إطلاق العنان للإمكانيات الكاملة لعملك بحل ينمو معك.</p>
       `,
     }
-  }
+  },
+  "cybersecurity-distributed-workforce-2026": {
+    en: {
+      id: "cybersecurity-distributed-workforce-2026",
+      title: "Cybersecurity in 2026: Protecting the Distributed Workforce",
+      subtitle: "Essential strategies for borderless security",
+      author: "Fox Systems Team",
+      date: "2026-04-05",
+      category: "Cybersecurity",
+      readTime: "14 min read",
+      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=600&fit=crop",
+      content: `
+        <h2>The New Security Perimeter</h2>
+        <p>With remote and hybrid work now the standard, traditional security perimeters have vanished. Learn the essential strategies to protect your data in a borderless world. This guide covers zero-trust architecture, endpoint security, and compliance frameworks.</p>
+        <p>In 2026, the concept of a "corporate network" has become obsolete. Employees work from home, coffee shops, and co-working spaces. Data flows through personal devices, cloud services, and third-party applications. This distributed reality requires a fundamentally different approach to cybersecurity.</p>
+
+        <h2>Zero-Trust Architecture</h2>
+        <p>The old security model operated on the principle of "trust but verify." Zero-trust flips this: "never trust, always verify." Every access request, whether from an employee or a system, is treated as a potential threat until proven otherwise.</p>
+
+        <h2>Endpoint Security</h2>
+        <p>With employees using personal devices, endpoint security has become critical. Modern endpoint protection platforms now use AI to detect anomalous behavior in real-time, preventing breaches before they happen.</p>
+
+        <h2>Compliance and Governance</h2>
+        <p>Staying compliant with regulations like GDPR, local data protection laws, and industry standards is more complex than ever. Fox Systems helps organizations navigate this landscape with comprehensive compliance solutions.</p>
+      `,
+    },
+    ar: {
+      id: "cybersecurity-distributed-workforce-2026",
+      title: "الأمن السيبراني في عام 2026: حماية القوى العاملة الموزعة",
+      subtitle: "استراتيجيات أساسية للأمان بلا حدود",
+      author: "فريق فوكس سيستمز",
+      date: "2026-04-05",
+      category: "الأمن السيبراني",
+      readTime: "14 دقيقة قراءة",
+      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=600&fit=crop",
+      content: `
+        <h2>محيط الأمان الجديد</h2>
+        <p>مع كون العمل عن بعد والهجين هو المعيار الآن، اختفت حدود الأمان التقليدية. تعرف على الاستراتيجيات الأساسية لحماية بياناتك في عالم بلا حدود. يغطي هذا الدليل معمارية Zero-Trust وأمان الأجهزة الطرفية وأطر الامتثال.</p>
+        <p>في عام 2026، أصبح مفهوم "الشبكة الموثوقة للشركة" قديماً. يعمل الموظفون من المنزل والمقاهي ومساحات العمل المشتركة. تتدفق البيانات عبر الأجهزة الشخصية والخدمات السحابية والتطبيقات التابعة لجهات خارجية. يتطلب هذا الواقع الموزع نهجاً مختلفاً بشكل أساسي للأمن السيبراني.</p>
+
+        <h2>معمارية Zero-Trust</h2>
+        <p>كان نموذج الأمان القديم يعمل على مبدأ "الثقة ولكن التحقق". يقلب Zero-Trust هذا: "لا تثق أبداً، تحقق دائماً". يتم التعامل مع كل طلب وصول، سواء من موظف أو نظام، كتهديد محتمل حتى يثبت العكس.</p>
+
+        <h2>أمان نقاط النهاية</h2>
+        <p>مع استخدام الموظفين للأجهزة الشخصية، أصبح أمان نقاط النهاية أمراً بالغ الأهمية. تستخدم منصات حماية نقاط النهاية الحديثة الآن الذكاء الاصطناعي لاكتشاف السلوك الشاذ في الوقت الفعلي، مما يمنع الاختراقات قبل حدوثها.</p>
+
+        <h2>الامتثال والحوكمة</h2>
+        <p>البقاء متوافقاً مع اللوائح مثل GDPR والقوانين المحلية لحماية البيانات ومعايير الصناعة أصبح أكثر تعقيداً من أي وقت مضى. تساعد فوكس سيستمز المنظمات على التنقل في هذا المشهد بحلول امتثال شاملة.</p>
+      `,
+    }
+  },
 };
 
-export default function ArticleDetail({ articleId, language, setLanguage }: ArticleDetailProps) {
-  const [location] = useLocation();
+export default function ArticleDetail({ articleId, language }: ArticleDetailProps) {
+  const { theme } = useTheme();
   const isArabic = language === "ar";
+  const article = articleContent[articleId]?.[language];
 
-  useEffect(() => {
-    // Synchronize language state with the URL
-    if (location.startsWith("/ar/") && language !== "ar") {
-      setLanguage("ar");
-    } else if (!location.startsWith("/ar/") && language === "ar") {
-      setLanguage("en");
-    }
-  }, [location, language, setLanguage]);
+  if (!article) {
+    return (
+      <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
+        <Header language={language} />
+        <div className="container mx-auto p-4 md:p-8 text-center py-20">
+          <h1 className="text-2xl font-bold mb-4">
+            {language === "en" ? "Article not found" : "لم يتم العثور على المقالة"}
+          </h1>
+          <Link href={isArabic ? "/ar/articles" : "/articles"}>
+            <Button>{language === "en" ? "Back to Articles" : "العودة إلى المقالات"}</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
-  const data = (articleContent[articleId] || articleContent["ai-infrastructure-2026"])[language];
-
-  const seoConfig = isArabic 
-    ? {
-        ...arabicSEOConfigs.articles,
-        title: `${data.title} - Fox Systems`,
-        canonicalUrl: `https://foxsystemstech.com/ar/articles/${articleId}`
-      }
-    : {
-        ...serviceSEOConfigs.articles,
-        title: `${data.title} - Fox Systems`,
-        canonicalUrl: `https://foxsystemstech.com/articles/${articleId}`
-      };
-
-  const articleSchema = generateArticleSchema(data, seoConfig.canonicalUrl);
+  const langPrefix = isArabic ? "/ar" : "";
 
   return (
     <>
-      <SEOHead config={seoConfig} organizationSchema={true} additionalSchema={articleSchema} />
+      <SEOHead config={serviceSEOConfigs.articles} />
       <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
-        <Header language={language} setLanguage={setLanguage} />
+        <Header language={language} />
 
-        {/* Article Hero */}
-        <section className="relative py-20 bg-black overflow-hidden">
-          <div className="absolute inset-0 opacity-40">
-            <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-          </div>
-          <div className="container relative z-10">
-            <div className={`max-w-4xl mx-auto ${isArabic ? "text-right" : ""}`}>
-              <div className="flex items-center gap-3 mb-6 text-primary font-bold uppercase tracking-wider">
-                <span className="px-3 py-1 bg-primary/20 rounded-full text-sm">{data.category}</span>
-                <span className="text-white/60">•</span>
-                <span className="text-white/80 text-sm">{data.readTime}</span>
+        {/* Main content */}
+        <main className="container mx-auto p-4 md:p-8">
+          <Link href={`${langPrefix}/articles`} className="inline-flex items-center gap-2 text-primary hover:underline mb-8">
+            <ArrowLeft className={`w-4 h-4 ${isArabic ? "rotate-180" : ""}`} />
+            {language === "en" ? "Back to Articles" : "العودة إلى المقالات"}
+          </Link>
+
+          <article className="max-w-3xl mx-auto">
+            {/* Article header */}
+            <header className="mb-8">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-xs font-semibold text-primary uppercase">
+                  {article.category}
+                </span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                {data.title}
+
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                {article.title}
               </h1>
-              <p className="text-xl text-white/80 leading-relaxed mb-8 max-w-2xl">
-                {data.subtitle}
-              </p>
-              <div className="flex items-center gap-6 text-white/60">
-                <div className="flex items-center gap-2">
-                  <User className="w-5 h-5" />
-                  <span>{data.author}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  <span>{data.date}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Article Content */}
-        <main className="container mx-auto py-16 px-4">
-          <div className="max-w-4xl mx-auto">
-            <article 
-              className={`prose prose-lg dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary ${isArabic ? "text-right" : ""}`}
-              dangerouslySetInnerHTML={{ __html: data.content }}
-            />
-            
-            <div className="mt-16 pt-8 border-t border-border flex flex-wrap items-center justify-between gap-6">
-              <div className="flex items-center gap-4">
-                <span className="font-bold">{isArabic ? "مشاركة المقال:" : "Share this article:"}</span>
-                <div className="flex gap-2">
-                  <Button variant="outline" size="icon" className="rounded-full">
-                    <Share2 className="w-4 h-4" />
-                  </Button>
-                  <Button variant="outline" size="icon" className="rounded-full">
-                    <MessageCircle className="w-4 h-4" />
-                  </Button>
+              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground border-b border-border pb-6">
+                <div className="flex items-center gap-2">
+                  <User className="w-4 h-4" />
+                  <span>{article.author}</span>
                 </div>
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  <span>{article.date}</span>
+                </div>
+                <span>{article.readTime}</span>
               </div>
-              <Link href={`/${isArabic ? "ar/" : ""}articles`}>
-                <Button variant="ghost" className="gap-2">
-                  <ArrowRight className={`w-4 h-4 ${isArabic ? "" : "rotate-180"}`} />
-                  {isArabic ? "العودة إلى المقالات" : "Back to Articles"}
+            </header>
+
+            {/* Featured image */}
+            <img
+              src={article.image}
+              alt={article.title}
+              className="w-full h-96 object-cover rounded-lg mb-8"
+            />
+
+            {/* Article content */}
+            <div className="prose prose-lg max-w-none mb-12 dark:prose-invert">
+              <div dangerouslySetInnerHTML={{ __html: article.content }} />
+            </div>
+
+            {/* Share buttons */}
+            <div className="flex items-center gap-4 py-8 border-t border-b border-border">
+              <span className="font-semibold">{language === "en" ? "Share:" : "شارك:"}</span>
+              <Button variant="outline" size="sm" className="gap-2">
+                <Share2 className="w-4 h-4" />
+                {language === "en" ? "Share" : "شارك"}
+              </Button>
+            </div>
+
+            {/* CTA */}
+            <div className="mt-12 p-8 bg-muted rounded-lg text-center">
+              <h3 className="text-2xl font-bold mb-4">
+                {language === "en" ? "Need IT Solutions?" : "هل تحتاج إلى حلول تقنية؟"}
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                {language === "en"
+                  ? "Contact our team to discuss how we can help your business."
+                  : "اتصل بفريقنا لمناقشة كيفية مساعدتك في عملك."}
+              </p>
+              <Link href={`${langPrefix}/contact`}>
+                <Button size="lg">
+                  {language === "en" ? "Get in Touch" : "تواصل معنا"}
                 </Button>
               </Link>
             </div>
-          </div>
+          </article>
         </main>
 
         {/* Footer */}
-        <footer className="bg-foreground/5 border-t border-border py-12 mt-12">
-          <div className="container text-center">
-            <div className="mb-8">
-              <img src="/logo.jpg" alt="Fox Systems" className="h-12 w-12 rounded-lg mx-auto mb-4" />
-              <h2 className="text-2xl font-bold">Fox Systems</h2>
-              <p className="text-muted-foreground mt-2">{isArabic ? "شريكك التقني الموثوق في مصر والشرق الأوسط" : "Your Trusted IT Partner in Egypt & Middle East"}</p>
-            </div>
-            <div className="text-sm text-muted-foreground pt-8 border-t border-border/50">
-              <p>© 2024 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
+        <footer className="bg-foreground/5 border-t border-border py-8 mt-12">
+          <div className="container">
+            <div className="text-center text-sm text-muted-foreground">
+              <p>© 2024 Fox Systems. {language === "en" ? "All rights reserved." : "جميع الحقوق محفوظة."}</p>
             </div>
           </div>
         </footer>

@@ -1,11 +1,12 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { ArrowRight, Calendar, User, Tag } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import { serviceSEOConfigs, arabicSEOConfigs, generateBreadcrumbSchema } from "@/utils/seo";
+import Header from "@/components/Header";
 
 interface Article {
   id: string;
@@ -20,7 +21,6 @@ interface Article {
 
 interface ArticlesProps {
   language: "en" | "ar";
-  setLanguage: (lang: "en" | "ar") => void;
 }
 
 const getArticleSEOConfig = (lang: "en" | "ar") => {
@@ -106,44 +106,12 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=400&fit=crop",
     }
   },
-  "voip-basics": {
-    en: {
-      id: "voip-basics",
-      title: "Understanding VoIP Technology: The Complete Guide",
-      excerpt: "Learn the fundamentals of Voice over Internet Protocol and how it revolutionizes business communication.",
-      category: "VoIP",
-      author: "Fox Systems Team",
-      date: "2025-01-15",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
-    },
-    ar: {
-      id: "voip-basics",
-      title: "فهم تقنية VoIP: الدليل الكامل",
-      excerpt: "تعرف على أساسيات بروتوكول الصوت عبر الإنترنت وكيف يغير اتصالات الأعمال.",
-      category: "VoIP",
-      author: "فريق فوكس سيستمز",
-      date: "2025-01-15",
-      readTime: "8 دقائق قراءة",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
-    }
-  }
 };
 
-export default function Articles({ language, setLanguage }: ArticlesProps) {
-  const { isArabic } = useTheme();
-  const [location] = useLocation();
+export default function Articles({ language }: ArticlesProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 6;
-
-  useEffect(() => {
-    // Synchronize language state with the URL
-    if (location.startsWith("/ar/") && language !== "ar") {
-      setLanguage("ar");
-    } else if (!location.startsWith("/ar/") && language === "ar") {
-      setLanguage("en");
-    }
-  }, [location, language, setLanguage]);
+  const isArabic = language === "ar";
 
   const allArticles = Object.values(articles).map(a => a[language]);
   const totalPages = Math.ceil(allArticles.length / articlesPerPage);
@@ -152,9 +120,7 @@ export default function Articles({ language, setLanguage }: ArticlesProps) {
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
   const currentArticles = allArticles.slice(indexOfFirstArticle, indexOfLastArticle);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentPage]);
+  const langPrefix = isArabic ? "/ar" : "";
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -165,8 +131,8 @@ export default function Articles({ language, setLanguage }: ArticlesProps) {
         organizationSchema={true}
         additionalSchema={getBreadcrumbSchema(language)}
       />
-      <div className={`min-h-screen bg-background text-foreground transition-colors ${language === "ar" ? "rtl" : "ltr"}`}>
-        <Header language={language} setLanguage={setLanguage} />
+      <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
+        <Header language={language} />
 
         {/* Main content */}
         <main className="container mx-auto p-4 md:p-8">
@@ -208,10 +174,10 @@ export default function Articles({ language, setLanguage }: ArticlesProps) {
                     </p>
                   </CardHeader>
                   <CardContent className="pt-0">
-                    <Link href={`/${language === "ar" ? "ar/" : ""}articles/${article.id}`}>
+                    <Link href={`${langPrefix}/articles/${article.id}`}>
                       <Button className="w-full group">
                         {language === "en" ? "Read More" : "اقرأ المزيد"}
-                        <ArrowRight className={`w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 ${language === "ar" ? "rotate-180" : ""}`} />
+                        <ArrowRight className={`w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 ${isArabic ? "rotate-180" : ""}`} />
                       </Button>
                     </Link>
                   </CardContent>
@@ -226,7 +192,10 @@ export default function Articles({ language, setLanguage }: ArticlesProps) {
                   <Button
                     key={number}
                     variant={currentPage === number ? "default" : "outline"}
-                    onClick={() => paginate(number)}
+                    onClick={() => {
+                      setCurrentPage(number);
+                      window.scrollTo(0, 0);
+                    }}
                     className="w-10 h-10 p-0"
                   >
                     {number}

@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button";
 
 interface HeaderProps {
   language: "en" | "ar";
-  setLanguage: (lang: "en" | "ar") => void;
 }
 
 const translations = {
@@ -22,7 +21,6 @@ const translations = {
     contact: "Contact",
     getStarted: "Get Started",
     articles: "Articles",
-    // Dropdown items
     internet: "Internet",
     software: "Software",
     hardware: "Hardware",
@@ -37,7 +35,6 @@ const translations = {
     contact: "اتصل بنا",
     getStarted: "ابدأ الآن",
     articles: "المقالات",
-    // Dropdown items
     internet: "الإنترنت",
     software: "البرمجيات",
     hardware: "الأجهزة",
@@ -48,7 +45,7 @@ const translations = {
   },
 };
 
-export default function Header({ language, setLanguage }: HeaderProps) {
+export default function Header({ language }: HeaderProps) {
   const { theme, toggleTheme } = useTheme();
   const [location, setLocation] = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,7 +61,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
   useEffect(() => {
     setIsMenuOpen(false);
-  }, [location, language]);
+  }, [location]);
 
   const langPrefix = isArabic ? "/ar" : "";
 
@@ -78,20 +75,18 @@ export default function Header({ language, setLanguage }: HeaderProps) {
   ];
 
   const toggleLanguage = () => {
-    const newLang = language === "en" ? "ar" : "en";
-    setLanguage(newLang);
+    // Convert current path to the opposite language
+    let newPath = location;
     
-    // Update URL to reflect language change
-    if (newLang === "ar") {
-      if (!location.startsWith("/ar")) {
-        setLocation(`/ar${location === "/" ? "" : location}`);
-      }
+    if (isArabic) {
+      // Remove /ar prefix
+      newPath = location.replace(/^\/ar/, "") || "/";
     } else {
-      if (location.startsWith("/ar")) {
-        const newLoc = location.replace(/^\/ar/, "") || "/";
-        setLocation(newLoc);
-      }
+      // Add /ar prefix
+      newPath = `/ar${location === "/" ? "" : location}`;
     }
+    
+    setLocation(newPath);
   };
 
   return (
@@ -120,7 +115,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             <Link
               href={isArabic ? "/ar" : "/"}
               className={`text-sm font-medium transition-colors hover:text-primary ${
-                location === "/" || location === "/ar" ? "text-primary font-semibold" : "text-foreground"
+                (location === "/" || location === "/ar") ? "text-primary font-semibold" : "text-foreground"
               }`}
             >
               {t.home}

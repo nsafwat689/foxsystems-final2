@@ -23,56 +23,41 @@ function Router() {
     window.scrollTo({ top: 0, behavior: "auto" });
   }, [location]);
 
-  // Helper function to navigate with language prefix
-  const navigateWithLanguage = (path: string) => {
-    return isArabic ? `/ar${path}` : path;
-  };
-
   return (
     <Switch>
-      {/* English Routes */}
+      {/* ===== ENGLISH ROUTES ===== */}
+      
+      {/* Home */}
       <Route path="/">
         {() => <Home language={language} />}
       </Route>
 
+      {/* Services Overview */}
       <Route path="/services">
         {() => <Services language={language} />}
       </Route>
 
-      {/* Service Detail Routes - English */}
-      <Route path="/services/internet">
-        {() => <ServiceDetail serviceId="internet" language={language} />}
-      </Route>
-      <Route path="/services/software">
-        {() => <ServiceDetail serviceId="software" language={language} />}
-      </Route>
-      <Route path="/services/hardware">
-        {() => <ServiceDetail serviceId="hardware" language={language} />}
-      </Route>
-      <Route path="/services/cybersecurity">
-        {() => <ServiceDetail serviceId="cybersecurity" language={language} />}
-      </Route>
-      <Route path="/services/infrastructure">
-        {() => <ServiceDetail serviceId="infrastructure" language={language} />}
-      </Route>
-      <Route path="/services/web-development">
-        {() => <ServiceDetail serviceId="web-development" language={language} />}
+      {/* Service Detail - Dynamic Route */}
+      <Route path="/services/:serviceId">
+        {({ serviceId }) => <ServiceDetail serviceId={serviceId} language={language} />}
       </Route>
 
-      {/* Contact Page - English */}
+      {/* Contact Page */}
       <Route path="/contact">
         {() => <Contact language={language} />}
       </Route>
 
-      {/* Articles Pages - English */}
+      {/* Articles */}
       <Route path="/articles">
         {() => <Articles language={language} />}
       </Route>
+
+      {/* Article Detail */}
       <Route path="/articles/:articleId">
         {({ articleId }) => <ArticleDetail articleId={articleId} language={language} />}
       </Route>
 
-      {/* Static Pages - English */}
+      {/* About (redirects to Home) */}
       <Route path="/about">
         {() => <Home language={language} />}
       </Route>
@@ -84,50 +69,37 @@ function Router() {
         {() => <Home language={language} />}
       </Route>
 
-      {/* Arabic Services */}
+      {/* Arabic Services Overview */}
       <Route path="/ar/services">
         {() => <Services language={language} />}
       </Route>
 
-      {/* Service Detail Routes - Arabic */}
-      <Route path="/ar/services/internet">
-        {() => <ServiceDetail serviceId="internet" language={language} />}
-      </Route>
-      <Route path="/ar/services/software">
-        {() => <ServiceDetail serviceId="software" language={language} />}
-      </Route>
-      <Route path="/ar/services/hardware">
-        {() => <ServiceDetail serviceId="hardware" language={language} />}
-      </Route>
-      <Route path="/ar/services/cybersecurity">
-        {() => <ServiceDetail serviceId="cybersecurity" language={language} />}
-      </Route>
-      <Route path="/ar/services/infrastructure">
-        {() => <ServiceDetail serviceId="infrastructure" language={language} />}
-      </Route>
-      <Route path="/ar/services/web-development">
-        {() => <ServiceDetail serviceId="web-development" language={language} />}
+      {/* Arabic Service Detail - Dynamic Route */}
+      <Route path="/ar/services/:serviceId">
+        {({ serviceId }) => <ServiceDetail serviceId={serviceId} language={language} />}
       </Route>
 
-      {/* Contact Page - Arabic */}
+      {/* Arabic Contact Page */}
       <Route path="/ar/contact">
         {() => <Contact language={language} />}
       </Route>
 
-      {/* Articles Pages - Arabic */}
+      {/* Arabic Articles */}
       <Route path="/ar/articles">
         {() => <Articles language={language} />}
       </Route>
+
+      {/* Arabic Article Detail */}
       <Route path="/ar/articles/:articleId">
         {({ articleId }) => <ArticleDetail articleId={articleId} language={language} />}
       </Route>
 
-      {/* Static Pages - Arabic */}
+      {/* Arabic About (redirects to Arabic Home) */}
       <Route path="/ar/about">
         {() => <Home language={language} />}
       </Route>
 
-      {/* 404 Not Found */}
+      {/* 404 Not Found - Must be last */}
       <Route component={NotFound} />
     </Switch>
   );

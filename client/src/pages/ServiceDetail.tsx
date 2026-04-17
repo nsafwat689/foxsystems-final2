@@ -12,8 +12,7 @@ import { serviceDetailsAr } from "@/data/serviceDetailsAr";
 
 interface ServiceDetailProps {
   serviceId: string;
-    language: "en" | "ar";
-    setLanguage: (lang: "en" | "ar") => void;
+  language: "en" | "ar";
 }
 
 const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
@@ -126,18 +125,11 @@ const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
   }
 };
 
-export default function ServiceDetail({ serviceId, language, setLanguage }: ServiceDetailProps) {
+export default function ServiceDetail({ serviceId, language }: ServiceDetailProps) {
   const [location] = useLocation();
   const isArabic = language === "ar";
   
-  useEffect(() => {
-    // Synchronize language state with the URL
-    if (location.startsWith("/ar/") && language !== "ar") {
-      setLanguage("ar");
-    } else if (!location.startsWith("/ar/") && language === "ar") {
-      setLanguage("en");
-    }
-  }, [location, language, setLanguage]);
+
 
   const data = (serviceDetails[serviceId] || serviceDetails.internet)[language];
   const Icon = data.icon;
@@ -150,7 +142,7 @@ export default function ServiceDetail({ serviceId, language, setLanguage }: Serv
   return (
     <div className={`min-h-screen bg-background text-foreground ${isArabic ? "rtl" : "ltr"}`}>
       <SEOHead config={seoConfig} organizationSchema additionalSchema={serviceSchema} />
-      <Header language={language} setLanguage={setLanguage} />
+      <Header language={language} />
 
       {/* Hero Section */}
       <section className="relative py-24 bg-black overflow-hidden">

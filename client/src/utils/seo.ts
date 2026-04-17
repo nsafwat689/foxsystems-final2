@@ -12,9 +12,9 @@ export interface SEOConfig {
 }
 
 export const defaultSEOConfig: SEOConfig = {
-  title: "Fox Systems | Enterprise IT Solutions & Managed Services in Egypt & Middle East",
-  description: "Fox Systems (Fox Systems Tech) provides end-to-end IT solutions, including cybersecurity, software development, infrastructure setup, and managed services for businesses in Egypt and the Middle East.",
-  keywords: "Fox Systems, Fox Systems Tech, FoxSystems, IT solutions Egypt, managed IT services, cybersecurity Middle East, software development, enterprise IT infrastructure, Odoo partner Egypt",
+  title: "Fox Systems | Enterprise IT Solutions, Managed Services & Cybersecurity Egypt",
+  description: "Fox Systems - Your trusted IT solutions partner in Egypt & Middle East. 14+ years expertise in managed IT services, cybersecurity, software development, ERP implementation, infrastructure setup, and enterprise solutions for 360+ clients.",
+  keywords: "Fox Systems, Fox Systems Tech, FoxSystems, FoxSystem, IT solutions Egypt, managed IT services Cairo, cybersecurity services Egypt, software development Middle East, enterprise IT infrastructure, Odoo partner Egypt, ERP implementation Cairo, network security solutions, IT support Egypt, business technology solutions, digital transformation services",
   ogTitle: "Fox Systems - Your Trusted IT Partner",
   ogDescription: "Enterprise IT Solutions for Egypt, Middle East, and Global Markets",
   ogImage: "https://foxsystemstech.com/og-image.jpg",
@@ -35,9 +35,9 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
   },
 
   internet: {
-    title: "Corporate Internet Services | Leased Line, Microwave, WiMAX - Fox Systems Egypt",
-    description: "High-performance corporate internet services including Fiber Leased Line, Microwave, WiMAX, and VPN solutions for multi-branch companies in Egypt and Middle East.",
-    keywords: "corporate internet services Egypt, leased line, microwave internet, WiMAX, VPN solutions, internet connectivity, Fox Systems internet",
+    title: "Corporate Internet Services | Leased Line, Microwave, WiMAX, VPN - Egypt",
+    description: "High-performance corporate internet services in Egypt & Middle East. Fiber Leased Line, Microwave, WiMAX, VPN solutions, Static IP, and Call Center connectivity for multi-branch companies. 24/7 support.",
+    keywords: "corporate internet services Egypt, leased line Cairo, microwave internet Egypt, WiMAX solutions, VPN services Middle East, static IP addresses, call center connectivity, internet connectivity Egypt, Fox Systems internet services, high-speed fiber Egypt",
     ogTitle: "Corporate Internet Services",
     ogDescription: "Reliable high-speed connectivity for your business",
     ogImage: "https://foxsystemstech.com/services/internet-og.jpg",
@@ -45,9 +45,9 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
     language: "en",
   },
   software: {
-    title: "Software Solutions & ERP Implementation | Odoo Partner Egypt - Fox Systems",
-    description: "Tailored ERP systems, custom applications, IT management solutions, and full Odoo implementation as an official partner in Egypt and Middle East.",
-    keywords: "software solutions Egypt, ERP implementation, Odoo partner, custom applications, IT management software, Fox Systems software",
+    title: "ERP Implementation & Custom Software Solutions | Odoo Partner Egypt",
+    description: "Professional ERP implementation, custom software development, and Odoo solutions in Egypt. Tailored business applications, IT management systems, and enterprise software for SMEs and corporations.",
+    keywords: "ERP implementation Egypt, Odoo partner Cairo, custom software development Egypt, business management software, enterprise applications, IT management solutions, Odoo implementation services, software solutions Middle East, business process automation",
     ogTitle: "Software Solutions & ERP",
     ogDescription: "Enterprise software tailored to your business needs",
     ogImage: "https://foxsystemstech.com/services/software-og.jpg",
@@ -55,9 +55,9 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
     language: "en",
   },
   hardware: {
-    title: "Enterprise Hardware Solutions | Servers, Networking Devices - Fox Systems Egypt",
-    description: "Reliable enterprise-grade servers, PCs, laptops, firewalls, and networking devices from leading manufacturers for businesses in Egypt and Middle East.",
-    keywords: "enterprise hardware Egypt, servers, networking devices, firewalls, hardware solutions Middle East, Fox Systems hardware",
+    title: "Enterprise Hardware Solutions | Servers, Firewalls, Networking - Egypt",
+    description: "Enterprise-grade hardware solutions in Egypt & Middle East. Servers, PCs, laptops, firewalls, networking devices from Dell, HP, Cisco, Huawei. Professional installation and 24/7 support.",
+    keywords: "enterprise hardware Egypt, servers Cairo, networking devices Egypt, firewall solutions, Dell servers Egypt, Cisco networking, hardware installation Egypt, IT equipment suppliers, data center hardware, Fox Systems hardware solutions",
     ogTitle: "Enterprise Hardware Solutions",
     ogDescription: "Quality hardware for your IT infrastructure",
     ogImage: "https://foxsystemstech.com/services/hardware-og.jpg",
@@ -65,9 +65,9 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
     language: "en",
   },
   cybersecurity: {
-    title: "Cybersecurity & Protection Solutions | Firewalls, Endpoint Protection - Fox Systems",
-    description: "Advanced firewall solutions, endpoint protection, monitoring, backup, and disaster-recovery systems for businesses in Egypt and Middle East.",
-    keywords: "cybersecurity solutions Egypt, firewall protection, endpoint security, cyber threat protection, data backup, Fox Systems security",
+    title: "Cybersecurity Services | Firewalls, Endpoint Protection, Backup - Egypt",
+    description: "Advanced cybersecurity solutions in Egypt & Middle East. Firewall protection, endpoint security, 24/7 monitoring, data backup, disaster recovery, and threat detection for enterprises.",
+    keywords: "cybersecurity services Egypt, firewall protection Cairo, endpoint security solutions, cyber threat detection, data backup services, disaster recovery Egypt, network security Egypt, ransomware protection, security monitoring, Fox Systems cybersecurity",
     ogTitle: "Cybersecurity & Protection",
     ogDescription: "Advanced security solutions for your business",
     ogImage: "https://foxsystemstech.com/services/cybersecurity-og.jpg",
@@ -75,9 +75,9 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
     language: "en",
   },
   infrastructure: {
-    title: "Network & IT Infrastructure Setup | Data Centers - Fox Systems Egypt",
-    description: "Complete network setup, configuration, cabling, data centers, and maintenance designed for speed and stability in Egypt and Middle East.",
-    keywords: "IT infrastructure setup Egypt, network configuration, data center setup, network cabling, infrastructure design, Fox Systems infrastructure",
+    title: "IT Infrastructure Setup & Data Center Solutions | Egypt & Middle East",
+    description: "Complete IT infrastructure design, network setup, data center solutions, and cabling services in Egypt. Professional installation, configuration, and 24/7 maintenance for enterprise networks.",
+    keywords: "IT infrastructure setup Egypt, network configuration Cairo, data center solutions, network cabling Egypt, infrastructure design services, enterprise network setup, data center design, network infrastructure, Fox Systems infrastructure services",
     ogTitle: "Network & IT Infrastructure",
     ogDescription: "Robust infrastructure for business continuity",
     ogImage: "https://foxsystemstech.com/services/infrastructure-og.jpg",
@@ -85,9 +85,9 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
     language: "en",
   },
   "web-development": {
-    title: "Website Development & Design | UI/UX, SEO-Optimized - Fox Systems Egypt",
-    description: "Professional corporate websites with UI/UX design, mobile-first responsive, SEO optimization, and multi-language support for businesses in Egypt and Middle East.",
-    keywords: "website development Egypt, web design, UI/UX design, SEO-optimized websites, responsive web design, Fox Systems web development",
+    title: "Website Development & Design | SEO, UI/UX, Mobile-Responsive - Egypt",
+    description: "Professional website development in Egypt & Middle East. Custom design, UI/UX optimization, SEO-friendly, mobile-responsive, multi-language support, and e-commerce solutions for businesses.",
+    keywords: "website development Egypt, web design Cairo, UI/UX design services, SEO-optimized websites, responsive web design, e-commerce development, website redesign Egypt, web development company Egypt, digital presence solutions, Fox Systems web development",
     ogTitle: "Website Development & Design",
     ogDescription: "Modern websites that drive business growth",
     ogImage: "https://foxsystemstech.com/services/web-development-og.jpg",
@@ -190,8 +190,8 @@ export const arabicSEOConfigs: Record<string, any> = {
   },
   contact: {
     title: "اتصل بـ Fox Systems | احصل على دعم حلول تكنولوجيا المعلومات في مصر والشرق الأوسط",
-    description: "اتصل بـ Fox Systems للحصول على حلول تكنولوجيا المعلومات للمؤسسات، الخدمات المدارة، والدعم الفني في مصر والشرق الأوسط. اتصل على +201557649136.",
-    keywords: "اتصل بـ Fox Systems، دعم تكنولوجيا المعلومات مصر، دعم فني، اتصال الخدمات المدارة، عنوان فوكس سيستمز",
+    description: "اتصل بـ Fox Systems للحصول على حلول تكنولوجيا المعلومات للمؤسسات والخدمات المدارة والدعم الفني في مصر والشرق الأوسط. اتصل +201557649136.",
+    keywords: "اتصل بـ Fox Systems، دعم تكنولوجيا المعلومات مصر، دعم فني، اتصال الخدمات المدارة، عنوان Fox Systems",
     ogTitle: "اتصل بنا - Fox Systems",
     ogDescription: "تواصل مع فريق حلول تكنولوجيا المعلومات لدينا",
     ogImage: "https://foxsystemstech.com/contact-og.jpg",
@@ -200,170 +200,34 @@ export const arabicSEOConfigs: Record<string, any> = {
   },
 };
 
-// Function to update document meta tags
-export function updateMetaTags(config: SEOConfig): void {
-  // Update title
-  document.title = config.title;
-
-  // Update or create meta description
-  let metaDescription = document.querySelector('meta[name="description"]');
-  if (!metaDescription) {
-    metaDescription = document.createElement("meta");
-    metaDescription.setAttribute("name", "description");
-    document.head.appendChild(metaDescription);
-  }
-  metaDescription.setAttribute("content", config.description);
-
-  // Update or create meta keywords
-  let metaKeywords = document.querySelector('meta[name="keywords"]');
-  if (!metaKeywords) {
-    metaKeywords = document.createElement("meta");
-    metaKeywords.setAttribute("name", "keywords");
-    document.head.appendChild(metaKeywords);
-  }
-  metaKeywords.setAttribute("content", config.keywords);
-
-  // Update Open Graph tags
-  updateOpenGraphTags(config);
-
-  // Update canonical URL
-  updateCanonicalTag(config.canonicalUrl);
-
-  // Update language
-  document.documentElement.lang = config.language;
-}
-
-function updateOpenGraphTags(config: SEOConfig): void {
-  const ogTags = [
-    { property: "og:title", content: config.ogTitle },
-    { property: "og:description", content: config.ogDescription },
-    { property: "og:image", content: config.ogImage },
-    { property: "og:url", content: config.canonicalUrl },
-    { property: "og:type", content: "website" },
-    { property: "og:site_name", content: "Fox Systems" },
-  ];
-
-  ogTags.forEach(({ property, content }) => {
-    let tag = document.querySelector(`meta[property="${property}"]`);
-    if (!tag) {
-      tag = document.createElement("meta");
-      tag.setAttribute("property", property);
-      document.head.appendChild(tag);
-    }
-    tag.setAttribute("content", content);
-  });
-}
-
-function updateCanonicalTag(url: string): void {
-  let canonical = document.querySelector('link[rel="canonical"]');
-  if (!canonical) {
-    canonical = document.createElement("link");
-    canonical.setAttribute("rel", "canonical");
-    document.head.appendChild(canonical);
-  }
-  canonical.setAttribute("href", url);
-}
-
-// Function to generate JSON-LD structured data
-export function generateOrganizationSchema(): string {
-  return JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://foxsystemstech.com/#organization",
-    name: "Fox Systems",
-    alternateName: ["Fox Systems Tech", "FoxSystems"],
-    url: "https://foxsystemstech.com",
-    logo: "https://foxsystemstech.com/logo.jpg",
-    description: "Enterprise IT solutions provider in Egypt and Middle East",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Cairo",
-      addressLocality: "Cairo",
-      addressRegion: "Cairo",
-      addressCountry: "EG",
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "Customer Service",
-      telephone: "+201557649136",
-      email: "info@foxsystems.com",
-      availableLanguage: ["English", "Arabic"]
-    },
-    sameAs: [
-      "https://www.linkedin.com/company/fox-systems",
-      "https://www.facebook.com/foxsystems",
-    ],
-  });
-}
-
-export function generateWebSiteSchema(): string {
-  return JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://foxsystemstech.com/#website",
-    url: "https://foxsystemstech.com",
-    name: "Fox Systems",
-    alternateName: "Fox Systems Tech",
-    publisher: {
-      "@id": "https://foxsystemstech.com/#organization"
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://foxsystemstech.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  });
-}
-
-export function generateServiceSchema(serviceName: string, description: string, url: string): string {
-  return JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: serviceName,
-    description: description,
-    url: url,
-    provider: {
-      "@id": "https://foxsystemstech.com/#organization"
-    },
-    areaServed: ["EG", "AE", "SA", "KW", "QA", "BH", "OM", "JO", "LB", "SY"],
-  });
-}
-
-export function generateArticleSchema(article: { title: string; description: string; author: string; datePublished: string; image: string; url: string }): string {
-  return JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: article.title,
-    description: article.description,
-    image: [
-      article.image
-    ],
-    datePublished: article.datePublished,
-    author: {
-      "@type": "Person",
-      name: article.author
-    },
-    publisher: {
-      "@id": "https://foxsystemstech.com/#organization"
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": article.url
-    }
-  });
-}
-
-export function generateBreadcrumbSchema(items: Array<{ name: string; url: string }>): string {
-  const itemListElement = items.map((item, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    name: item.name,
-    item: item.url,
-  }));
-
-  return JSON.stringify({
+export function generateBreadcrumbSchema(items: Array<{ name: string; url: string }>) {
+  return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement,
-  });
+    "itemListElement": items.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": item.url
+    }))
+  };
+}
+
+export function generateOrganizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Fox Systems",
+    "url": "https://foxsystemstech.com",
+    "logo": "https://foxsystemstech.com/logo.jpg",
+    "description": "Enterprise IT Solutions & Managed Services Provider",
+    "telephone": "+201557649136",
+    "email": "info@foxsystems.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "EG"
+    },
+    "areaServed": ["EG", "ME", "NA"],
+    "sameAs": ["https://www.linkedin.com/company/fox-systems"]
+  };
 }

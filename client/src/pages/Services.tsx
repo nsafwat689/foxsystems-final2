@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,10 +15,10 @@ import {
   CheckCircle,
   MessageCircle,
 } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
-import { defaultSEOConfig } from "@/utils/seo";
+import { defaultSEOConfig, arabicSEOConfigs } from "@/utils/seo";
 
 const translations = {
   en: {
@@ -239,7 +240,7 @@ const translations = {
 
     // Infrastructure
     infrastructureTitle: "إعداد البنية التحتية لتكنولوجيا المعلومات",
-    infrastructureDesc: "تصميم وتنفيذ البنية التحتية الكاملة لتكنولوجيا المعلومات للشركات الناشئة والمؤسسات، من التخطيط إلى النشر.",
+    infrastructureDesc: "تصميم وتنفيذ كامل للبنية التحتية لتكنولوجيا المعلومات للشركات الناشئة والمؤسسات، من التخطيط إلى النشر.",
     infrastructureFeatures: [
       "تقييم وتخطيط البنية التحتية",
       "إعداد الخوادم والتخزين",
@@ -252,32 +253,32 @@ const translations = {
 
     // Hardware
     hardwareTitle: "حلول الأجهزة",
-    hardwareDesc: "أجهزة ومعدات عالية الجودة متوفرة بكميات كبيرة لعمليات نشر المؤسسات وترقياتها.",
+    hardwareDesc: "أجهزة ومعدات عالية الجودة متاحة بكميات كبيرة لنشر المؤسسات وترقيتها.",
     hardwareFeatures: [
       "خوادم ومحطات عمل على مستوى المؤسسات",
-      "معدات الشبكة والمحولات",
+      "معدات الشبكات والمفاتيح",
       "أنظمة ومصفوفات التخزين",
       "أجهزة الأمان وجدران الحماية",
-      "أجهزة النسخ الاحتياطي والاسترداد",
-      "تسعير الحجم وخصومات الكمية",
+      "أجهزة النسخ الاحتياطي والتعافي",
+      "أسعار الجملة وخصومات الكميات",
     ],
-    hardwareBenefits: "احصل على أجهزة موثوقة بجودة المؤسسات مع أسعار تنافسية ودعم شامل لاحتياجات بنيتك التحتية.",
+    hardwareBenefits: "احصل على أجهزة موثوقة بجودة المؤسسات وبأسعار تنافسية ودعم شامل لاحتياجات بنيتك التحتية.",
 
     // VoIP Services
     voipTitle: "حلول VoIP لمراكز الاتصال",
-    voipDesc: "حلول متقدمة لنقل الصوت عبر الإنترنت مصممة خصيصاً لمراكز الاتصال وعمليات خدمة العملاء مع موثوقية على مستوى المؤسسات.",
+    voipDesc: "حلول متقدمة للصوت عبر بروتوكول الإنترنت مصممة خصيصاً لمراكز الاتصال وعمليات خدمة العملاء مع موثوقية على مستوى المؤسسات.",
     voipFeatures: [
       "جودة صوت واضحة تماماً وصوت عالي الدقة",
-      "بنية تحتية لمركز اتصال قابلة للتوسع",
+      "بنية تحتية لمراكز الاتصال قابلة للتوسع",
       "توجيه مكالمات متقدم وأنظمة IVR",
       "تسجيل المكالمات والتحليلات",
       "التكامل مع أنظمة CRM",
-      "دعم الاتصال متعدد القنوات",
+      "دعم اتصالات متعدد القنوات",
     ],
-    voipBenefits: "عزز تواصل العملاء، وقلل التكاليف التشغيلية، ووسع عمليات مركز الاتصال الخاص بك مع حلول VoIP الاحترافية المدعومة من VoIPCat.",
+    voipBenefits: "عزز تواصلك مع العملاء، وقلل التكاليف التشغيلية، ووسع عمليات مركز الاتصال الخاص بك من خلال حلول VoIP الاحترافية المدعومة من VoIPCat.",
 
     // Support
-    supportTitle: "دعم فني على مدار الساعة",
+    supportTitle: "دعم فني 24/7",
     supportDesc: "عقود دعم شهرية شاملة مع مساعدة فنية مخصصة تضمن تشغيل أنظمتك بسلاسة.",
     supportFeatures: [
       "دعم فني على مدار الساعة 24/7",
@@ -285,7 +286,7 @@ const translations = {
       "صيانة وتحديثات منتظمة",
       "استجابة ذات أولوية للحوادث",
       "تحسين الأداء",
-      "استشارات وتخطيط فني",
+      "استشارات وتخطيط تقني",
     ],
     supportBenefits: "قلل وقت التوقف عن العمل، واضمن موثوقية النظام، وركز على عملك بينما يدير خبراؤنا بنيتك التحتية لتكنولوجيا المعلومات.",
 
@@ -294,15 +295,15 @@ const translations = {
     experience: "14+ عاماً من الخبرة",
     experienceDesc: "سجل حافل من التنفيذ الناجح والعملاء الراضين",
     expertise: "فريق خبراء",
-    expertiseDesc: "محترفون معتمدون ذوو معرفة تقنية عميقة",
+    expertiseDesc: "محترفون معتمدون ذوو معرفة فنية عميقة",
     support24: "دعم 24/7",
-    support24Desc: "مساعدة على مدار الساعة لأنظمتك الحيوية",
+    support24Desc: "مساعدة على مدار الساعة لأنظمتك الحرجة",
     reliability: "موثوقية مثبتة",
-    reliabilityDesc: "حلول على مستوى المؤسسات مع ضمان وقت تشغيل 99.9٪",
+    reliabilityDesc: "حلول على مستوى المؤسسات مع ضمان توفر بنسبة 99.9%",
     
-    relatedServices: "الخدمات ذات الصلة",
-    requestDemo: "اطلب عرضاً توضيحياً",
-    schedule: "جدول استشارة",
+    relatedServices: "خدمات ذات صلة",
+    requestDemo: "طلب عرض توضيحي",
+    schedule: "جدولة استشارة",
   },
 };
 
@@ -312,269 +313,124 @@ interface ServicesProps {
 }
 
 export default function Services({ language, setLanguage }: ServicesProps) {
-  const { theme } = useTheme();
+  const [location] = useLocation();
   const t = translations[language];
   const isArabic = language === "ar";
 
-  const seoConfig = {
-    ...defaultSEOConfig,
-    title: isArabic ? "خدماتنا الشاملة لتكنولوجيا المعلومات | Fox Systems" : "Our Comprehensive IT Services | Fox Systems",
-    description: isArabic 
-      ? "اكتشف مجموعة واسعة من خدمات تكنولوجيا المعلومات للمؤسسات بما في ذلك الأمن السيبراني، والشبكات، وتطوير المواقع، وحلول ERP في مصر والشرق الأوسط."
-      : "Explore our wide range of enterprise IT services including cybersecurity, networking, web development, and ERP solutions in Egypt and the Middle East.",
-    canonicalUrl: isArabic ? "https://foxsystemstech.com/ar/services" : "https://foxsystemstech.com/services",
-    language: language,
-  };
+  useEffect(() => {
+    // Synchronize language state with the URL
+    if (location.startsWith("/ar/") && language !== "ar") {
+      setLanguage("ar");
+    } else if (!location.startsWith("/ar/") && language === "ar") {
+      setLanguage("en");
+    }
+  }, [location, language, setLanguage]);
 
-  const services = [
-    {
-      id: "crm",
-      icon: Cpu,
-      title: t.crmTitle,
-      desc: t.crmDesc,
-      features: t.crmFeatures,
-      benefits: t.crmBenefits,
-      color: "from-blue-500/20 to-blue-600/20",
-      borderColor: "border-blue-500/30",
-    },
-    {
-      id: "firewall",
-      icon: Shield,
-      title: t.firewallTitle,
-      desc: t.firewallDesc,
-      features: t.firewallFeatures,
-      benefits: t.firewallBenefits,
-      color: "from-red-500/20 to-red-600/20",
-      borderColor: "border-red-500/30",
-    },
-    {
-      id: "networking",
-      icon: Network,
-      title: t.networkingTitle,
-      desc: t.networkingDesc,
-      features: t.networkingFeatures,
-      benefits: t.networkingBenefits,
-      color: "from-green-500/20 to-green-600/20",
-      borderColor: "border-green-500/30",
-    },
-    {
-      id: "domain",
-      icon: Server,
-      title: t.domainTitle,
-      desc: t.domainDesc,
-      features: t.domainFeatures,
-      benefits: t.domainBenefits,
-      color: "from-purple-500/20 to-purple-600/20",
-      borderColor: "border-purple-500/30",
-    },
-    {
-      id: "website",
-      icon: Globe,
-      title: t.websiteTitle,
-      desc: t.websiteDesc,
-      features: t.websiteFeatures,
-      benefits: t.websiteBenefits,
-      color: "from-orange-500/20 to-orange-600/20",
-      borderColor: "border-orange-500/30",
-    },
-    {
-      id: "infrastructure",
-      icon: Zap,
-      title: t.infrastructureTitle,
-      desc: t.infrastructureDesc,
-      features: t.infrastructureFeatures,
-      benefits: t.infrastructureBenefits,
-      color: "from-yellow-500/20 to-yellow-600/20",
-      borderColor: "border-yellow-500/30",
-    },
-    {
-      id: "hardware",
-      icon: Users,
-      title: t.hardwareTitle,
-      desc: t.hardwareDesc,
-      features: t.hardwareFeatures,
-      benefits: t.hardwareBenefits,
-      color: "from-indigo-500/20 to-indigo-600/20",
-      borderColor: "border-indigo-500/30",
-    },
-    {
-      id: "voip",
-      icon: Phone,
-      title: t.voipTitle,
-      desc: t.voipDesc,
-      features: t.voipFeatures,
-      benefits: t.voipBenefits,
-      color: "from-rose-500/20 to-rose-600/20",
-      borderColor: "border-rose-500/30",
-      isVoip: true,
-      voipLink: "https://voipcat.com/",
-    },
-    {
-      id: "support",
-      icon: Phone,
-      title: t.supportTitle,
-      desc: t.supportDesc,
-      features: t.supportFeatures,
-      benefits: t.supportBenefits,
-      color: "from-cyan-500/20 to-cyan-600/20",
-      borderColor: "border-cyan-500/30",
-    },
-  ];
+  const langPrefix = isArabic ? "/ar" : "";
 
-  const whyChooseFeatures = [
-    { icon: CheckCircle, title: t.experience, desc: t.experienceDesc },
-    { icon: Users, title: t.expertise, desc: t.expertiseDesc },
-    { icon: Phone, title: t.support24, desc: t.support24Desc },
-    { icon: CheckCircle, title: t.reliability, desc: t.reliabilityDesc },
+  const allServices = [
+    { id: "internet", icon: Network, title: t.networkingTitle, desc: t.networkingDesc, features: t.networkingFeatures, benefits: t.networkingBenefits },
+    { id: "software", icon: Cpu, title: t.crmTitle, desc: t.crmDesc, features: t.crmFeatures, benefits: t.crmBenefits },
+    { id: "cybersecurity", icon: Shield, title: t.firewallTitle, desc: t.firewallDesc, features: t.firewallFeatures, benefits: t.firewallBenefits },
+    { id: "infrastructure", icon: Zap, title: t.infrastructureTitle, desc: t.infrastructureDesc, features: t.infrastructureFeatures, benefits: t.infrastructureBenefits },
+    { id: "hardware", icon: Server, title: t.hardwareTitle, desc: t.hardwareDesc, features: t.hardwareFeatures, benefits: t.hardwareBenefits },
+    { id: "web-development", icon: Globe, title: t.websiteTitle, desc: t.websiteDesc, features: t.websiteFeatures, benefits: t.websiteBenefits },
+    { id: "voip", icon: Phone, title: t.voipTitle, desc: t.voipDesc, features: t.voipFeatures, benefits: t.voipBenefits },
+    { id: "support", icon: Users, title: t.supportTitle, desc: t.supportDesc, features: t.supportFeatures, benefits: t.supportBenefits },
+    { id: "domain", icon: Globe, title: t.domainTitle, desc: t.domainDesc, features: t.domainFeatures, benefits: t.domainBenefits },
   ];
 
   return (
-    <div className={`min-h-screen bg-background ${isArabic ? "rtl" : "ltr"}`} dir={isArabic ? "rtl" : "ltr"}>
-      <SEOHead config={seoConfig} />
+    <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
+      <SEOHead config={isArabic ? arabicSEOConfigs.services : defaultSEOConfig} />
       <Header language={language} setLanguage={setLanguage} />
 
-      {/* Header Section */}
-      <section className="bg-gradient-to-br from-primary/10 via-transparent to-primary/5 py-12 md:py-16">
-        <div className="container">
-          <div className={`flex items-center gap-2 mb-6 ${isArabic ? "flex-row-reverse" : ""}`}>
-            <Link href="/" className="text-muted-foreground hover:text-primary transition text-sm">
-              {t.home}
-            </Link>
-            <span className="text-muted-foreground">/</span>
-            <span className="text-sm font-medium text-primary">{t.breadcrumb}</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.servicesTitle}</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl">{t.servicesSubtitle}</p>
+      {/* Hero Section */}
+      <section className="relative py-20 bg-black overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=400&fit=crop"
+            alt="Services Hero"
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+        </div>
+        <div className="container relative z-10 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            {t.servicesTitle}
+          </h1>
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+            {t.servicesSubtitle}
+          </p>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 md:py-32">
-        <div className="container">
-          <div className="grid gap-12">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  key={service.id}
-                  id={service.id}
-                  className={`grid md:grid-cols-2 gap-12 items-center ${
-                    isArabic ? "md:text-right" : ""
-                  }`}
-                >
-                  <div className="space-y-6">
-                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${service.color} border ${service.borderColor}`}>
-                      <Icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <h2 className="text-3xl font-bold">{service.title}</h2>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      {service.desc}
-                    </p>
-                    <div className="space-y-4">
-                      <h3 className="font-bold text-xl">{isArabic ? "الميزات الرئيسية" : "Key Features"}</h3>
-                      <ul className="grid sm:grid-cols-2 gap-3">
-                        {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-muted-foreground">
-                            <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="p-6 rounded-2xl bg-muted/30 border border-border">
-                      <h3 className="font-bold mb-2">{isArabic ? "الفوائد" : "Benefits"}</h3>
-                      <p className="text-muted-foreground">{service.benefits}</p>
-                    </div>
-                    <div className="flex gap-4">
-                      {service.isVoip ? (
-                        <Button asChild size="lg">
-                          <a href={service.voipLink} target="_blank" rel="noopener noreferrer">
-                            {t.learnMore} <ArrowRight className={`ml-2 w-4 h-4 ${isArabic ? "rotate-180" : ""}`} />
-                          </a>
-                        </Button>
-                      ) : (
-                        <Button size="lg" asChild>
-                          <Link href="/contact">
-                            {t.getQuote} <ArrowRight className={`ml-2 w-4 h-4 ${isArabic ? "rotate-180" : ""}`} />
-                          </Link>
-                        </Button>
-                      )}
-                    </div>
+      <main className="container mx-auto py-16 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {allServices.map((service) => {
+            const Icon = service.icon;
+            return (
+              <Card key={service.id} className="flex flex-col h-full border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardHeader className="space-y-4">
+                  <div className="p-3 bg-primary/10 rounded-xl w-fit">
+                    <Icon className="w-8 h-8 text-primary" />
                   </div>
-                  <div className="relative group">
-                    <div className={`absolute -inset-4 bg-gradient-to-br ${service.color} rounded-[2rem] blur-2xl opacity-20 group-hover:opacity-30 transition-opacity`} />
-                    <Card className="relative overflow-hidden border-none shadow-2xl rounded-[2rem] aspect-video flex items-center justify-center bg-muted/50">
-                      <Icon className="w-32 h-32 text-primary/20" />
-                    </Card>
-                  </div>
+                  <CardTitle className="text-2xl font-bold">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow space-y-6">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {service.desc}
+                  </p>
+                  <ul className="space-y-3">
+                    {service.features.slice(0, 3).map((feature, i) => (
+                      <li key={i} className="flex items-center gap-3 text-sm">
+                        <CheckCircle className="w-4 h-4 text-primary shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+                <div className="p-6 pt-0 mt-auto">
+                  <Link href={`${langPrefix}/services/${service.id}`}>
+                    <Button className="w-full group gap-2">
+                      {t.learnMore}
+                      <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${isArabic ? "rotate-180" : ""}`} />
+                    </Button>
+                  </Link>
                 </div>
-              );
-            })}
-          </div>
+              </Card>
+            );
+          })}
         </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-20 md:py-32 bg-muted/20">
-        <div className="container">
-          <div className={`text-center mb-16 ${isArabic ? "space-y-2" : ""}`}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.whyChooseUs}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t.whyChooseDesc}</p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            {whyChooseFeatures.map((feature, idx) => {
-              const Icon = feature.icon;
-              return (
-                <Card key={idx} className="text-center hover:shadow-lg transition-all">
-                  <CardHeader>
-                    <div className="flex justify-center mb-4">
-                      <div className="p-3 bg-primary/10 rounded-lg">
-                        <Icon className="w-6 h-6 text-primary" />
-                      </div>
-                    </div>
-                    <CardTitle className="text-lg">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">{feature.desc}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      </main>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-primary text-primary-foreground">
+      <section className="py-20 bg-muted/30">
         <div className="container text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            {isArabic ? "هل أنت مهتم بخدماتنا؟" : "Ready to Get Started?"}
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            {isArabic ? "هل أنت مستعد لتطوير عملك؟" : "Ready to Elevate Your Business?"}
           </h2>
-          <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            {isArabic
-              ? "تواصل معنا اليوم للحصول على استشارة مجانية وعرض سعر مخصص لاحتياجات عملك."
-              : "Contact us today for a free consultation and customized quote for your business needs."}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" onClick={() => window.open("https://wa.me/201557649136", "_blank")}>
-              <Phone className="w-4 h-4 mr-2" />
-              {t.contactUs}
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10">
-              <MessageCircle className="w-4 h-4 mr-2" />
-              {isArabic ? "جدول استشارة" : "Schedule Consultation"}
+          <div className="flex flex-wrap justify-center gap-6">
+            <Link href={`${langPrefix}/contact`}>
+              <Button size="lg" className="h-14 px-10 text-lg rounded-xl">
+                {t.contactUs}
+              </Button>
+            </Link>
+            <Button size="lg" variant="outline" className="h-14 px-10 text-lg rounded-xl gap-2">
+              <MessageCircle className="w-5 h-5" />
+              {isArabic ? "تحدث معنا" : "Chat with Us"}
             </Button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground/5 border-t border-border py-8">
-        <div className="container">
-          <div className="text-center text-sm text-muted-foreground">
-            <p>© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
-          </div>
+      <footer className="bg-foreground/5 border-t border-border py-12">
+        <div className="container text-center">
+          <p className="text-muted-foreground">
+            © 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}
+          </p>
         </div>
       </footer>
     </div>

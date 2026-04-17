@@ -1,13 +1,13 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { ArrowRight, CheckCircle, MessageCircle, Phone, Globe, Shield, Cpu, Network, Server, Zap, Send, MapPin, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import { motion } from "framer-motion";
 import SEOHead from "@/components/SEOHead";
-import { serviceSEOConfigs, generateServiceSchema } from "@/utils/seo";
+import { serviceSEOConfigs, arabicSEOConfigs, generateServiceSchema } from "@/utils/seo";
 import { serviceDetailsAr } from "@/data/serviceDetailsAr";
 
 interface ServiceDetailProps {
@@ -127,8 +127,18 @@ const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
 };
 
 export default function ServiceDetail({ serviceId, language, setLanguage }: ServiceDetailProps) {
-
+  const [location] = useLocation();
   const isArabic = language === "ar";
+  
+  useEffect(() => {
+    // Synchronize language state with the URL
+    if (location.startsWith("/ar/") && language !== "ar") {
+      setLanguage("ar");
+    } else if (!location.startsWith("/ar/") && language === "ar") {
+      setLanguage("en");
+    }
+  }, [location, language, setLanguage]);
+
   const data = (serviceDetails[serviceId] || serviceDetails.internet)[language];
   const Icon = data.icon;
 
@@ -210,78 +220,85 @@ export default function ServiceDetail({ serviceId, language, setLanguage }: Serv
               {data.partners && (
                 <div className="space-y-8">
                   <h2 className="text-3xl font-bold">{data.partnersTitle}</h2>
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-wrap gap-8 items-center opacity-70">
                     {data.partners.map((partner: string, idx: number) => (
-                      <div key={idx} className="px-6 py-3 bg-muted rounded-xl font-bold text-muted-foreground">
-                        {partner}
-                      </div>
+                      <span key={idx} className="text-2xl font-bold text-muted-foreground">{partner}</span>
                     ))}
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Sidebar Contact Form */}
-            <div className="lg:col-span-1">
-              <Card className="sticky top-32 p-8 border-none shadow-2xl bg-card">
-                <h3 className="text-2xl font-bold mb-6">{data.contactUsTitle}</h3>
-                <form className="space-y-4">
-                  <input type="text" placeholder={data.formCompanyNamePlaceholder} className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
-                  <input type="text" placeholder={data.formNamePlaceholder} className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
-                  <input type="email" placeholder={data.formEmailPlaceholder} className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
-                  <textarea rows={4} placeholder={data.formMessagePlaceholder} className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none resize-none"></textarea>
-                  <Button className="w-full h-14 text-lg font-bold">
-                    {data.formSendButton} <Send className="ml-2 w-5 h-5" />
+            {/* Sidebar */}
+            <div className="space-y-8">
+              <Card className="p-8 bg-primary text-primary-foreground space-y-6 border-none">
+                <h3 className="text-2xl font-bold">{data.contactUsTitle}</h3>
+                <p className="opacity-90">{isArabic ? "تواصل معنا اليوم لمناقشة متطلباتك والحصول على عرض سعر مخصص." : "Contact us today to discuss your requirements and get a custom quote."}</p>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <Phone className="w-5 h-5" />
+                    <span>+201557649136</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <Mail className="w-5 h-5" />
+                    <span>info@foxsystemstech.com</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <MapPin className="w-5 h-5" />
+                    <span>{isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</span>
+                  </div>
+                </div>
+                <Link href="/contact">
+                  <Button variant="secondary" className="w-full mt-4 group">
+                    {isArabic ? "اتصل بنا الآن" : "Contact Us Now"}
+                    <ArrowRight className={`w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 ${isArabic ? "rotate-180" : ""}`} />
                   </Button>
-                </form>
+                </Link>
               </Card>
+
+              <div className="space-y-4">
+                <h4 className="font-bold text-lg uppercase tracking-wider">{isArabic ? "خدمات أخرى" : "Other Services"}</h4>
+                <div className="grid gap-2">
+                  {Object.keys(serviceDetails).filter(id => id !== serviceId).map(id => (
+                    <Link key={id} href={`/services/${id}`}>
+                      <a className="flex items-center justify-between p-4 rounded-lg hover:bg-muted transition-colors group">
+                        <span className="font-medium capitalize">{id.replace('-', ' ')}</span>
+                        <ArrowRight className={`w-4 h-4 opacity-0 group-hover:opacity-100 transition-all ${isArabic ? "rotate-180" : ""}`} />
+                      </a>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-card border-t border-border py-20">
-        <div className="container">
-          <div className="grid md:grid-cols-4 gap-12 mb-16">
-            <div className="space-y-6">
-              <Link href="/" className="flex items-center gap-3">
-                <img src="/logo.jpg" alt="Fox Systems" className="h-12 w-12 rounded-xl" />
-                <span className="font-bold text-2xl text-primary">Fox Systems</span>
-              </Link>
-              <p className="text-muted-foreground leading-relaxed">
-                {data.footerDescription}
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold text-xl mb-8">{data.footerServicesTitle}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li><Link href="/services/internet" className="hover:text-primary transition">{data.footerInternet}</Link></li>
-                <li><Link href="/services/software" className="hover:text-primary transition">{data.footerSoftware}</Link></li>
-                <li><Link href="/services/hardware" className="hover:text-primary transition">{data.footerHardware}</Link></li>
-                <li><Link href="/services/cybersecurity" className="hover:text-primary transition">{data.footerCybersecurity}</Link></li>
-                <li><Link href="/services/infrastructure" className="hover:text-primary transition">{data.footerInfrastructure}</Link></li>
-                <li><Link href="/services/web-development" className="hover:text-primary transition">{data.footerWebDevelopment}</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-xl mb-8">{data.footerCompanyTitle}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li><Link href="/about" className="hover:text-primary transition">{data.footerAbout}</Link></li>
-                <li><Link href="/contact" className="hover:text-primary transition">{data.footerContact}</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-xl mb-8">{data.footerContactTitle}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li className="flex items-center gap-3"><Mail className="w-5 h-5 text-primary" /> {data.footerEmail}</li>
-                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-primary" /> {data.footerPhone}</li>
-                <li className="flex items-center gap-3"><MapPin className="w-5 h-5 text-primary" /> {data.footerAddress}</li>
-              </ul>
-            </div>
+      {/* CTA Footer */}
+      <section className="py-24 bg-muted/30">
+        <div className="container text-center max-w-3xl space-y-8">
+          <h2 className="text-3xl md:text-5xl font-bold">{isArabic ? "هل أنت مستعد لتطوير عملك؟" : "Ready to Transform Your Business?"}</h2>
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            {isArabic ? "انضم إلى أكثر من 360 عميلًا يثقون في Fox Systems لحلول تكنولوجيا المعلومات المتقدمة والخدمات المدارة." : "Join over 360+ clients who trust Fox Systems for advanced IT solutions and managed services."}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Link href="/contact">
+              <Button size="lg" className="h-14 px-10 text-lg">
+                {isArabic ? "ابدأ الآن" : "Get Started Now"}
+              </Button>
+            </Link>
+            <Button size="lg" variant="outline" className="h-14 px-10 text-lg flex items-center gap-2">
+              <MessageCircle className="w-5 h-5" />
+              {isArabic ? "تحدث مع خبير" : "Talk to an Expert"}
+            </Button>
           </div>
-          <div className="pt-12 border-t border-border text-center text-muted-foreground">
-            <p>© 2026 Fox Systems. All rights reserved.</p>
+        </div>
+      </section>
+
+      <footer className="bg-foreground/5 border-t border-border py-8 mt-12">
+        <div className="container">
+          <div className="text-center text-sm text-muted-foreground">
+            <p>© 2024 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
           </div>
         </div>
       </footer>

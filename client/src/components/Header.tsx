@@ -50,7 +50,7 @@ const translations = {
 
 export default function Header({ language, setLanguage }: HeaderProps) {
   const { theme, toggleTheme } = useTheme();
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const t = translations[language] || translations.en;
@@ -66,14 +66,33 @@ export default function Header({ language, setLanguage }: HeaderProps) {
     setIsMenuOpen(false);
   }, [location, language]);
 
+  const langPrefix = isArabic ? "/ar" : "";
+
   const serviceItems = [
-    { name: t.internet, href: "/services/internet" },
-    { name: t.software, href: "/services/software" },
-    { name: t.hardware, href: "/services/hardware" },
-    { name: t.cybersecurity, href: "/services/cybersecurity" },
-    { name: t.infrastructure, href: "/services/infrastructure" },
-    { name: t.webDev, href: "/services/web-development" },
+    { name: t.internet, href: `${langPrefix}/services/internet` },
+    { name: t.software, href: `${langPrefix}/services/software` },
+    { name: t.hardware, href: `${langPrefix}/services/hardware` },
+    { name: t.cybersecurity, href: `${langPrefix}/services/cybersecurity` },
+    { name: t.infrastructure, href: `${langPrefix}/services/infrastructure` },
+    { name: t.webDev, href: `${langPrefix}/services/web-development` },
   ];
+
+  const toggleLanguage = () => {
+    const newLang = language === "en" ? "ar" : "en";
+    setLanguage(newLang);
+    
+    // Update URL to reflect language change
+    if (newLang === "ar") {
+      if (!location.startsWith("/ar")) {
+        setLocation(`/ar${location === "/" ? "" : location}`);
+      }
+    } else {
+      if (location.startsWith("/ar")) {
+        const newLoc = location.replace(/^\/ar/, "") || "/";
+        setLocation(newLoc);
+      }
+    }
+  };
 
   return (
     <nav
@@ -89,7 +108,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
         {/* Col 1 – Logo */}
         <div className="flex items-center">
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
+          <Link href={isArabic ? "/ar" : "/"} className="flex items-center gap-3 hover:opacity-80 transition">
             <img src="/logo.jpg" alt="Fox Systems" className="h-10 w-10 rounded-lg object-cover" />
             <span className="font-bold text-xl text-primary hidden lg:inline">Fox Systems</span>
           </Link>
@@ -99,9 +118,9 @@ export default function Header({ language, setLanguage }: HeaderProps) {
         <div className="hidden md:flex justify-center">
           <div className={`flex items-center gap-8 ${isArabic ? "flex-row-reverse" : ""}`}>
             <Link
-              href="/"
+              href={isArabic ? "/ar" : "/"}
               className={`text-sm font-medium transition-colors hover:text-primary ${
-                location === "/" ? "text-primary font-semibold" : "text-foreground"
+                location === "/" || location === "/ar" ? "text-primary font-semibold" : "text-foreground"
               }`}
             >
               {t.home}
@@ -110,7 +129,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             <DropdownMenu>
               <DropdownMenuTrigger
                 className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary outline-none ${
-                  location.startsWith("/services") ? "text-primary font-semibold" : "text-foreground"
+                  location.includes("/services") ? "text-primary font-semibold" : "text-foreground"
                 }`}
               >
                 {t.services}
@@ -128,18 +147,18 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             </DropdownMenu>
 
             <Link
-              href="/articles"
+              href={`${langPrefix}/articles`}
               className={`text-sm font-medium transition-colors hover:text-primary ${
-                location === "/articles" ? "text-primary font-semibold" : "text-foreground"
+                location.includes("/articles") ? "text-primary font-semibold" : "text-foreground"
               }`}
             >
               {t.articles}
             </Link>
 
             <Link
-              href="/contact"
+              href={`${langPrefix}/contact`}
               className={`text-sm font-medium transition-colors hover:text-primary ${
-                location === "/contact" ? "text-primary font-semibold" : "text-foreground"
+                location.includes("/contact") ? "text-primary font-semibold" : "text-foreground"
               }`}
             >
               {t.contact}
@@ -158,7 +177,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
           </button>
 
           <button
-            onClick={() => setLanguage(language === "en" ? "ar" : "en")}
+            onClick={toggleLanguage}
             className="flex items-center gap-1 px-3 py-1.5 rounded-full hover:bg-muted transition text-sm font-medium"
           >
             <Globe className="w-4 h-4" />
@@ -166,7 +185,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
           </button>
 
           <Button asChild size="sm" className="bg-primary hover:bg-primary/90 ml-1">
-            <Link href="/contact">{t.getStarted}</Link>
+            <Link href={`${langPrefix}/contact`}>{t.getStarted}</Link>
           </Button>
         </div>
 
@@ -190,7 +209,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
         <div className="md:hidden bg-background border-t border-border">
           <div className={`flex flex-col gap-1 p-4 ${isArabic ? "items-end text-right" : "items-start"}`}>
             <Link
-              href="/"
+              href={isArabic ? "/ar" : "/"}
               onClick={() => setIsMenuOpen(false)}
               className="w-full px-3 py-2 rounded-lg text-base font-medium hover:bg-muted transition"
             >
@@ -214,7 +233,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             </div>
 
             <Link
-              href="/articles"
+              href={`${langPrefix}/articles`}
               onClick={() => setIsMenuOpen(false)}
               className="w-full px-3 py-2 rounded-lg text-base font-medium hover:bg-muted transition"
             >
@@ -222,7 +241,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             </Link>
 
             <Link
-              href="/contact"
+              href={`${langPrefix}/contact`}
               onClick={() => setIsMenuOpen(false)}
               className="w-full px-3 py-2 rounded-lg text-base font-medium hover:bg-muted transition"
             >
@@ -234,7 +253,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                 variant="outline"
                 className="w-full flex items-center justify-center gap-2"
                 onClick={() => {
-                  setLanguage(language === "en" ? "ar" : "en");
+                  toggleLanguage();
                   setIsMenuOpen(false);
                 }}
               >
@@ -242,7 +261,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                 {t.switchLang}
               </Button>
               <Button asChild className="w-full">
-                <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
+                <Link href={`${langPrefix}/contact`} onClick={() => setIsMenuOpen(false)}>
                   {t.getStarted}
                 </Link>
               </Button>

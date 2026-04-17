@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import { ArrowRight, Calendar, User, MessageCircle, Share2 } from "lucide-react";
 import { useEffect } from "react";
 import SEOHead from "@/components/SEOHead";
-import { generateArticleSchema } from "@/utils/seo";
+import { generateArticleSchema, arabicSEOConfigs, serviceSEOConfigs } from "@/utils/seo";
 
 interface ArticleDetailProps {
   articleId: string;
@@ -132,196 +132,45 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
       content: `
         <h2>تحدي الشركات الصغيرة والمتوسطة في عالم رقمي أولاً</h2>
-        <p>لطالما واجهت الشركات الصغيرة والمتوسطة تحدي "فعل المزيد بموارد أقل". في عام 2026، يتضاعف هذا التحدي بسبب سوق عالمي يتوقع استجابات فورية وخدمة شخصية وتجارب رقمية سلسة. للمنافسة، لم يعد بإمكان الشركات الصغيرة والمتوسطة الاعتماد على جداول بيانات مجزأة أو أدوات برمجية منفصلة. إنهم بحاجة إلى "عقل" موحد لأعمالهم.</p>
-        <p>هنا يأتي دور Odoo ERP. بصفتنا شريكاً رسمياً لـ Odoo، شهدت فوكس سيستمز بشكل مباشر كيف يمكن لهذه المنصة المعيارية تحويل عمل متعثر إلى قوة دفع انسيابية.</p>
+        <p>لطالما واجهت الشركات الصغيرة والمتوسطة تحدي "فعل المزيد بموارد أقل". في عام 2026، يتضاعف هذا التحدي بسبب سوق عالمي يتوقع استجابة فورية وخدمة شخصية وتجارب رقمية سلسة. للمنافسة، لم يعد بإمكان الشركات الصغيرة والمتوسطة الاعتماد على جداول البيانات المجزأة أو أدوات البرمجيات المنفصلة. إنهم بحاجة إلى "عقل" موحد لأعمالهم.</p>
+        <p>هنا يأتي دور Odoo ERP. كشريك رسمي لأودو، شهدت فوكس سيستمز بشكل مباشر كيف يمكن لهذه المنصة المعيارية أن تحول الأعمال المتعثرة إلى قوة دفع انسيابية.</p>
 
         <h2>الميزة المعيارية</h2>
-        <p>أحد أكبر الأساطير حول أنظمة ERP (تخطيط موارد المؤسسات) هو أنها مخصصة فقط للشركات العملاقة. يحطم Odoo هذه الأسطورة بنهجه المعياري. ليس عليك تنفيذ كل شيء دفعة واحدة.</p>
-        <h3>ابدأ صغيراً، وتوسع سريعاً</h3>
-        <p>قد تبدأ شركة صغيرة ومتوسطة بوحدات <strong>المحاسبة</strong> و <strong>المخزون</strong> فقط. ومع نموها، يمكنها بسهولة إضافة <strong>إدارة علاقات العملاء (CRM)</strong>، أو <strong>التجارة الإلكترونية</strong>، أو <strong>التصنيع</strong>، أو <strong>الموارد البشرية</strong>. نموذج "ادفع مقابل ما تحتاجه" هذا مثالي للميزانيات المتقلبة للشركات المتنامية في الشرق الأوسط.</p>
+        <p>أحد أكبر الأساطير حول أنظمة ERP (تخطيط موارد المؤسسات) هي أنها مخصصة فقط للشركات العملاقة. يحطم أودو هذه الأسطورة بنهجه المعياري. ليس عليك تنفيذ كل شيء دفعة واحدة.</p>
+        <h3>ابدأ صغيراً، وتوسع بسرعة</h3>
+        <p>قد تبدأ الشركة الصغيرة والمتوسطة بوحدات <strong>المحاسبة</strong> و <strong>المخزون</strong> فقط. ومع نموها، يمكنها بسهولة إضافة <strong>إدارة علاقات العملاء (CRM)</strong>، أو <strong>التجارة الإلكترونية</strong>، أو <strong>التصنيع</strong>، أو <strong>الموارد البشرية</strong>. هذا النموذج "ادفع مقابل ما تحتاجه للنمو" مثالي للميزانيات المتقلبة للشركات النامية في الشرق الأوسط.</p>
 
         <h2>ميزات جديدة في عام 2026</h2>
-        <p>قدم إصدار 2026 من Odoo العديد من الميزات التي تغير قواعد اللعبة والمصممة خصيصاً للشركات الصغيرة والمتوسطة الحديثة:</p>
-        <h3>1. التنبؤ المالي المدفوع بالذكاء الاصطناعي</h3>
-        <p>يستخدم Odoo الآن البيانات التاريخية لتقديم توقعات دقيقة للغاية للتدفقات النقدية. بالنسبة لشركة صغيرة ومتوسطة، فإن معرفة متى قد تحدث أزمة نقدية بالضبط تسمح بإدارة استباقية واتخاذ قرارات أفضل.</p>
-        <h3>2. أتمتة التسويق الشخصية للغاية</h3>
+        <p>قدم إصدار 2026 من أودو العديد من الميزات التي تغير قواعد اللعبة والمصممة خصيصاً للشركات الصغيرة والمتوسطة الحديثة:</p>
+        <h3>1. التنبؤ المالي القائم على الذكاء الاصطناعي</h3>
+        <p>يستخدم أودو الآن البيانات التاريخية لتقديم توقعات دقيقة للغاية للتدفقات النقدية. بالنسبة للشركة الصغيرة والمتوسطة، فإن معرفة متى قد تحدث أزمة نقدية بالضبط تسمح بالإدارة الاستباقية واتخاذ قرارات أفضل.</p>
+        <h3>2. أتمتة التسويق الشخصي للغاية</h3>
         <p>تدمج وحدات CRM والتسويق الآن التعلم العميق لتقسيم العملاء بشكل أكثر فعالية من أي وقت مضى. يمكن للشركات الصغيرة والمتوسطة الآن تشغيل حملات تسويقية تضاهي تطور العلامات التجارية العالمية، كل ذلك ضمن واجهة واحدة.</p>
         <h3>3. تعزيز الامتثال المحلي</h3>
-        <p>بالنسبة للشركات في مصر، يعد البقاء ممتثلاً لقوانين الضرائب المحلية ومتطلبات الفاتورة الإلكترونية أولوية قصوى. تتضمن تحديثات Odoo لعام 2026 ميزات توطين محسنة تعمل على أتمتة الكثير من أعمال الامتثال هذه، مما يقلل من مخاطر الأخطاء والعقوبات.</p>
+        <p>بالنسبة للشركات في مصر، يمثل البقاء متوافقاً مع قوانين الضرائب المحلية ومتطلبات الفواتير الإلكترونية أولوية قصوى. تتضمن تحديثات أودو لعام 2026 ميزات توطين محسنة تعمل على أتمتة الكثير من أعمال الامتثال هذه، مما يقلل من مخاطر الأخطاء والعقوبات.</p>
 
-        <h2>نهج فوكس سيستمز في التنفيذ</h2>
+        <h2>نهج تنفيذ فوكس سيستمز</h2>
         <p>في فوكس سيستمز، نحن لا نقوم فقط بـ "تثبيت" البرامج. نحن نشاركك لفهم سير عملك الفريد. تتضمن عملية التنفيذ لدينا:</p>
         <ul>
           <li><strong>تدقيق عمليات الأعمال:</strong> تحديد الاختناقات في عملياتك الحالية.</li>
-          <li><strong>التكوين المخصص:</strong> تخصيص وحدات Odoo لتناسب احتياجاتك الخاصة.</li>
-          <li><strong>تدريب الفريق:</strong> ضمان ثقة موظفيك وإنتاجيتهم من اليوم الأول.</li>
-          <li><strong>الدعم المستمر:</strong> التواجد معك مع تطور عملك وحاجته لإمكانيات جديدة.</li>
+          <li><strong>التكوين المخصص:</strong> تخصيص وحدات أودو لتناسب احتياجاتك الخاصة.</li>
+          <li><strong>تدريب الفريق:</strong> ضمان ثقة وإنتاجية موظفيك من اليوم الأول.</li>
+          <li><strong>الدعم المستمر:</strong> التواجد معك مع تطور عملك وحاجتك لإمكانيات جديدة.</li>
         </ul>
 
         <h2>الخلاصة</h2>
-        <p>عام 2026 ليس مجرد عام آخر؛ إنه نقطة تحول للنضج الرقمي. بالنسبة للشركات الصغيرة والمتوسطة، لم يعد Odoo ERP ترقية اختيارية - بل هو الأساس للبقاء والنمو. دع فوكس سيستمز تساعدك على إطلاق العنان للإمكانيات الكاملة لعملك مع حل ينمو معك.</p>
-      `,
-    }
-  },
-  "cybersecurity-distributed-workforce-2026": {
-    en: {
-      id: "cybersecurity-distributed-workforce-2026",
-      title: "Cybersecurity in 2026: Protecting the Distributed Workforce",
-      subtitle: "Secure your business in a borderless world",
-      author: "Fox Systems Team",
-      date: "2026-04-05",
-      category: "Cybersecurity",
-      readTime: "14 min read",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=600&fit=crop",
-      content: `
-        <h2>The Death of the Traditional Perimeter</h2>
-        <p>Remember when "securing the office" meant putting up a strong firewall and making sure the doors were locked? Those days are long gone. In 2026, the "office" is wherever your employees happen to be—a home office in Maadi, a co-working space in Dubai, or a cafe in Alexandria.</p>
-        <p>This distributed workforce has created a massive "attack surface" for cybercriminals. At Fox Systems, we've seen a shift in how successful companies approach security: they've moved from "Trust but Verify" to "Never Trust, Always Verify."</p>
-
-        <h2>The Zero Trust Architecture</h2>
-        <p>The cornerstone of cybersecurity in 2026 is <strong>Zero Trust</strong>. This framework assumes that threats could be anywhere—even inside your network. Every user, device, and application must be continuously authenticated and authorized.</p>
-        <h3>Key Components of a 2026 Security Strategy:</h3>
-        <h3>1. Identity as the New Perimeter</h3>
-        <p>Since physical locations no longer matter, identity is the only thing that can be consistently managed. Multi-Factor Authentication (MFA) is now the bare minimum. Advanced organizations are moving toward "Passwordless" authentication using biometrics and hardware keys, which are much harder to compromise.</p>
-        <h3>2. Endpoint Detection and Response (EDR)</h3>
-        <p>Every laptop, tablet, and smartphone used for work is an "endpoint." In 2026, simple antivirus software is insufficient. EDR solutions use AI to monitor device behavior in real-time, automatically isolating any device that starts acting suspiciously—such as attempting to encrypt files or connect to known malicious servers.</p>
-        <h3>3. Secure Access Service Edge (SASE)</h3>
-        <p>SASE (pronounced "sassy") combines network security functions with wide-area networking (WAN) capabilities. It allows remote workers to connect securely to cloud applications without the latency issues of traditional VPNs. It's the "gold standard" for performance and security in a hybrid work environment.</p>
-
-        <h2>The Human Element: Security Culture</h2>
-        <p>Technology is only half the battle. In 2026, the most common entry point for hackers is still human error—phishing, social engineering, or weak passwords.</p>
-        <p>Fox Systems recommends a continuous approach to security awareness:</p>
-        <ul>
-          <li><strong>Simulated Phishing Attacks:</strong> Testing employees' ability to spot suspicious emails.</li>
-          <li><strong>Regular Training Modules:</strong> Keeping the team updated on the latest threat vectors.</li>
-          <li><strong>Clear Incident Reporting:</strong> Making it easy for employees to report potential issues without fear of punishment.</li>
-        </ul>
-
-        <h2>Why Proactive Protection is Non-Negotiable</h2>
-        <p>The cost of a data breach in 2026 is higher than ever, not just in terms of direct financial loss, but in the devastating blow to customer trust. For businesses in the Middle East, where digital transformation is accelerating, a single security incident can set back years of progress.</p>
-
-        <h2>Conclusion</h2>
-        <p>Cybersecurity is not a "set it and forget it" project; it's a continuous process of adaptation. As the threat landscape evolves, so must your defenses. Fox Systems is here to provide the tools, expertise, and support needed to protect your digital assets in 2026 and beyond.</p>
-      `,
-    },
-    ar: {
-      id: "cybersecurity-distributed-workforce-2026",
-      title: "الأمن السيبراني في عام 2026: حماية القوى العاملة الموزعة",
-      subtitle: "تأمين عملك في عالم بلا حدود",
-      author: "فريق فوكس سيستمز",
-      date: "2026-04-05",
-      category: "الأمن السيبراني",
-      readTime: "14 دقيقة قراءة",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=600&fit=crop",
-      content: `
-        <h2>موت المحيط التقليدي</h2>
-        <p>هل تتذكر عندما كان "تأمين المكتب" يعني وضع جدار حماية قوي والتأكد من إغلاق الأبواب؟ لقد ولت تلك الأيام. في عام 2026، أصبح "المكتب" هو المكان الذي يتواجد فيه موظفوك - مكتب منزلي في المعادي، أو مساحة عمل مشتركة في دبي، أو مقهى في الإسكندرية.</p>
-        <p>لقد خلقت هذه القوى العاملة الموزعة "سطح هجوم" هائلاً لمجرمي الإنترنت. في فوكس سيستمز، شهدنا تحولاً في كيفية تعامل الشركات الناجحة مع الأمن: لقد انتقلوا من "الثقة ولكن التحقق" إلى "عدم الثقة أبداً، والتحقق دائماً".</p>
-
-        <h2>بنية الثقة الصفرية (Zero Trust)</h2>
-        <p>حجر الزاوية في الأمن السيبراني في عام 2026 هو <strong>الثقة الصفرية</strong>. يفترض هذا الإطار أن التهديدات يمكن أن تكون في أي مكان - حتى داخل شبكتك. يجب التحقق من هوية كل مستخدم وجهاز وتطبيق وتفويضه باستمرار.</p>
-        <h3>المكونات الرئيسية لاستراتيجية الأمن لعام 2026:</h3>
-        <h3>1. الهوية كمحيط جديد</h3>
-        <p>بما أن المواقع المادية لم تعد تهم، فإن الهوية هي الشيء الوحيد الذي يمكن إدارته باستمرار. المصادقة متعددة العوامل (MFA) هي الآن الحد الأدنى. تنتقل المؤسسات المتقدمة نحو المصادقة "بدون كلمة مرور" باستخدام القياسات الحيوية ومفاتيح الأجهزة، والتي يصعب اختراقها بشكل أكبر.</p>
-        <h3>2. اكتشاف نقاط النهاية والاستجابة لها (EDR)</h3>
-        <p>كل كمبيوتر محمول وجهاز لوحي وهاتف ذكي يستخدم للعمل هو "نقطة نهاية". في عام 2026، لم تعد برامج مكافحة الفيروسات البسيطة كافية. تستخدم حلول EDR الذكاء الاصطناعي لمراقبة سلوك الجهاز في الوقت الفعلي، وعزل أي جهاز يبدأ في التصرف بشكل مريب تلقائياً - مثل محاولة تشفير الملفات أو الاتصال بخوادم ضارة معروفة.</p>
-        <h3>3. حافة خدمة الوصول الآمن (SASE)</h3>
-        <p>تجمع SASE بين وظائف أمن الشبكة وإمكانيات الشبكات واسعة النطاق (WAN). وهي تسمح للعاملين عن بعد بالاتصال بأمان بتطبيقات السحابة دون مشاكل زمن الوصول لشبكات VPN التقليدية. إنها "المعيار الذهبي" للأداء والأمان في بيئة عمل هجينة.</p>
-
-        <h2>العنصر البشري: ثقافة الأمن</h2>
-        <p>التكنولوجيا هي نصف المعركة فقط. في عام 2026، لا يزال الخطأ البشري هو نقطة الدخول الأكثر شيوعاً للمتسللين - التصيد الاحتيالي، أو الهندسة الاجتماعية، أو كلمات المرور الضعيفة.</p>
-        <p>توصي فوكس سيستمز بنهج مستمر للتوعية الأمنية:</p>
-        <ul>
-          <li><strong>هجمات التصيد المحاكية:</strong> اختبار قدرة الموظفين على اكتشاف رسائل البريد الإلكتروني المشبوهة.</li>
-          <li><strong>وحدات تدريب منتظمة:</strong> إبقاء الفريق على اطلاع بأحدث نواقل التهديد.</li>
-          <li><strong>الإبلاغ الواضح عن الحوادث:</strong> تسهيل إبلاغ الموظفين عن المشكلات المحتملة دون خوف من العقاب.</li>
-        </ul>
-
-        <h2>لماذا الحماية الاستباقية غير قابلة للتفاوض</h2>
-        <p>تكلفة خرق البيانات في عام 2026 أعلى من أي وقت مضى، ليس فقط من حيث الخسارة المالية المباشرة، ولكن في الضربة القاصمة لثقة العملاء. بالنسبة للشركات في الشرق الأوسط، حيث يتسارع التحول الرقمي، يمكن لحادث أمني واحد أن يعيد سنوات من التقدم إلى الوراء.</p>
-
-        <h2>الخلاصة</h2>
-        <p>الأمن السيبراني ليس مشروعاً "اضبطه وانساه"؛ إنه عملية مستمرة من التكيف. مع استمرار تطور مشهد التهديدات، يجب أن تتطور دفاعاتك أيضاً. فوكس سيستمز هنا لتوفير الأدوات والخبرة والدعم اللازم لحماية أصولك الرقمية في عام 2026 وما بعده.</p>
-      `,
-    }
-  },
-  "voip-basics": {
-    en: {
-      id: "voip-basics",
-      title: "Understanding VoIP Technology: The Complete Guide",
-      subtitle: "Learn the fundamentals of Voice over Internet Protocol",
-      author: "Fox Systems Team",
-      date: "2025-01-15",
-      category: "VoIP",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop",
-      content: `
-        <h2>What is VoIP?</h2>
-        <p>Voice over Internet Protocol (VoIP) is a technology that allows you to make voice calls using a broadband Internet connection instead of a regular (or analog) phone line.</p>
-        <p>VoIP services convert your voice into a digital signal that travels over the Internet. If you are calling a regular phone number, the signal is converted to a regular telephone signal before it reaches the destination.</p>
-      `,
-    },
-    ar: {
-      id: "voip-basics",
-      title: "فهم تقنية VoIP: الدليل الكامل",
-      subtitle: "تعرف على أساسيات بروتوكول الصوت عبر الإنترنت",
-      author: "فريق فوكس سيستمز",
-      date: "2025-01-15",
-      category: "VoIP",
-      readTime: "8 دقائق قراءة",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop",
-      content: `
-        <h2>ما هو VoIP؟</h2>
-        <p>بروتوكول الصوت عبر الإنترنت (VoIP) هو تقنية تسمح لك بإجراء مكالمات صوتية باستخدام اتصال إنترنت واسع النطاق بدلاً من خط هاتف عادي (أو تناظري).</p>
-        <p>تقوم خدمات VoIP بتحويل صوتك إلى إشارة رقمية تنتقل عبر الإنترنت. إذا كنت تتصل برقم هاتف عادي، فسيتم تحويل الإشارة إلى إشارة هاتف عادية قبل أن تصل إلى الوجهة.</p>
+        <p>عام 2026 ليس مجرد عام آخر؛ إنه نقطة تحول للنضج الرقمي. بالنسبة للشركات الصغيرة والمتوسطة، لم يعد Odoo ERP ترقية اختيارية - إنه الأساس للبقاء والنمو. دع فوكس سيستمز تساعدك على إطلاق العنان للإمكانيات الكاملة لعملك من خلال حل ينمو معك.</p>
       `,
     }
   }
 };
 
-const translations = {
-  en: {
-    home: "Home",
-    articles: "Articles",
-    readTime: "min read",
-    author: "By",
-    published: "Published",
-    share: "Share",
-    contact: "Contact Us",
-    relatedArticles: "Related Articles",
-    backToArticles: "Back to Articles",
-    whatsapp: "WhatsApp Us",
-    interested: "Interested?",
-    contactLearnMore: "Contact us to learn more about our services and solutions.",
-    shareFacebook: "Share on Facebook",
-    shareTwitter: "Share on Twitter",
-    copyLink: "Copy Link"
-  },
-  ar: {
-    home: "الرئيسية",
-    articles: "المقالات",
-    readTime: "دقيقة قراءة",
-    author: "بواسطة",
-    published: "نُشر في",
-    share: "شارك",
-    contact: "تواصل معنا",
-    relatedArticles: "مقالات ذات صلة",
-    backToArticles: "العودة إلى المقالات",
-    whatsapp: "واتس آب",
-    interested: "هل أنت مهتم؟",
-    contactLearnMore: "تواصل معنا لمعرفة المزيد عن خدماتنا والحلول المتاحة.",
-    shareFacebook: "شارك على فيسبوك",
-    shareTwitter: "شارك على تويتر",
-    copyLink: "نسخ الرابط"
-  },
-};
-
 export default function ArticleDetail({ articleId, language, setLanguage }: ArticleDetailProps) {
-  const { isArabic } = useTheme();
   const [location] = useLocation();
-  const t = translations[language];
+  const isArabic = language === "ar";
 
   useEffect(() => {
+    // Synchronize language state with the URL
     if (location.startsWith("/ar/") && language !== "ar") {
       setLanguage("ar");
     } else if (!location.startsWith("/ar/") && language === "ar") {
@@ -329,131 +178,104 @@ export default function ArticleDetail({ articleId, language, setLanguage }: Arti
     }
   }, [location, language, setLanguage]);
 
-  const article = (articleContent[articleId] || articleContent["voip-basics"])[language];
+  const data = (articleContent[articleId] || articleContent["ai-infrastructure-2026"])[language];
 
-  const whatsappNumber = "201557649136";
-  const whatsappMessage = language === "en" 
-    ? `Hi, I'm interested in learning more about your services. I read your article: "${article.title}"`
-    : `مرحباً، أنا مهتم بمعرفة المزيد عن خدماتكم. لقد قرأت مقالكم: "${article.title}"`;
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  const seoConfig = isArabic 
+    ? {
+        ...arabicSEOConfigs.articles,
+        title: `${data.title} - Fox Systems`,
+        canonicalUrl: `https://foxsystemstech.com/ar/articles/${articleId}`
+      }
+    : {
+        ...serviceSEOConfigs.articles,
+        title: `${data.title} - Fox Systems`,
+        canonicalUrl: `https://foxsystemstech.com/articles/${articleId}`
+      };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [articleId]);
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString(language === "en" ? "en-US" : "ar-EG", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
-
-  const seoConfig = {
-    title: `${article.title} | Fox Systems`,
-    description: article.subtitle,
-    canonicalUrl: `https://foxsystemstech.com/${language === "ar" ? "ar/" : ""}articles/${articleId}`,
-    ogImage: article.image,
-    ogType: "article" as const,
-  };
+  const articleSchema = generateArticleSchema(data, seoConfig.canonicalUrl);
 
   return (
     <>
-      <SEOHead
-        config={seoConfig}
-      />
+      <SEOHead config={seoConfig} organizationSchema={true} additionalSchema={articleSchema} />
       <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
         <Header language={language} setLanguage={setLanguage} />
 
-        {/* Article Header */}
-        <section className="bg-gradient-to-br from-primary/10 via-transparent to-primary/5 py-12 md:py-16">
-          <div className="container">
-            <Link href={`/${language === "ar" ? "ar/" : ""}articles`} className="text-primary hover:underline text-sm mb-4 inline-block">
-              {isArabic ? "← " : "← "}{t.backToArticles}
-            </Link>
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold text-primary uppercase bg-primary/10 px-3 py-1 rounded-full">
-                  {article.category}
-                </span>
-                <span className="text-sm text-muted-foreground">{article.readTime}</span>
+        {/* Article Hero */}
+        <section className="relative py-20 bg-black overflow-hidden">
+          <div className="absolute inset-0 opacity-40">
+            <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+          </div>
+          <div className="container relative z-10">
+            <div className={`max-w-4xl mx-auto ${isArabic ? "text-right" : ""}`}>
+              <div className="flex items-center gap-3 mb-6 text-primary font-bold uppercase tracking-wider">
+                <span className="px-3 py-1 bg-primary/20 rounded-full text-sm">{data.category}</span>
+                <span className="text-white/60">•</span>
+                <span className="text-white/80 text-sm">{data.readTime}</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold">{article.title}</h1>
-              <p className="text-xl text-muted-foreground">{article.subtitle}</p>
-              <div className={`flex flex-wrap gap-4 text-sm text-muted-foreground ${isArabic ? "flex-row-reverse" : ""}`}>
-                <span>{t.author} {article.author}</span>
-                <span>{t.published} {formatDate(article.date)}</span>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                {data.title}
+              </h1>
+              <p className="text-xl text-white/80 leading-relaxed mb-8 max-w-2xl">
+                {data.subtitle}
+              </p>
+              <div className="flex items-center gap-6 text-white/60">
+                <div className="flex items-center gap-2">
+                  <User className="w-5 h-5" />
+                  <span>{data.author}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5" />
+                  <span>{data.date}</span>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Featured Image */}
-        <section className="py-8">
-          <div className="container">
-            <img src={article.image} alt={article.title} className="w-full h-96 object-cover rounded-lg" />
           </div>
         </section>
 
         {/* Article Content */}
-        <section className="py-12 md:py-16">
-          <div className="container">
-            <div className="grid md:grid-cols-3 gap-12">
-              {/* Main Content */}
-              <div className="md:col-span-2">
-                <div
-                  className="prose prose-sm md:prose-base dark:prose-invert max-w-none"
-                  dangerouslySetInnerHTML={{ __html: article.content }}
-                />
+        <main className="container mx-auto py-16 px-4">
+          <div className="max-w-4xl mx-auto">
+            <article 
+              className={`prose prose-lg dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary ${isArabic ? "text-right" : ""}`}
+              dangerouslySetInnerHTML={{ __html: data.content }}
+            />
+            
+            <div className="mt-16 pt-8 border-t border-border flex flex-wrap items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <span className="font-bold">{isArabic ? "مشاركة المقال:" : "Share this article:"}</span>
+                <div className="flex gap-2">
+                  <Button variant="outline" size="icon" className="rounded-full">
+                    <Share2 className="w-4 h-4" />
+                  </Button>
+                  <Button variant="outline" size="icon" className="rounded-full">
+                    <MessageCircle className="w-4 h-4" />
+                  </Button>
+                </div>
               </div>
-
-              {/* Sidebar */}
-              <div className="space-y-6">
-                {/* Contact Card */}
-                <Card className="border-2 border-primary/30 sticky top-24">
-                  <CardHeader>
-                    <h3 className="text-xl font-bold">{t.interested}</h3>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-sm text-muted-foreground">
-                      {t.contactLearnMore}
-                    </p>
-                    <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                      <Button className="w-full" size="sm">
-                        <MessageCircle className="w-4 h-4 mr-2" />
-                        {t.whatsapp}
-                      </Button>
-                    </a>
-                  </CardContent>
-                </Card>
-
-                {/* Share Card */}
-                <Card>
-                  <CardHeader>
-                    <h3 className="font-bold flex items-center gap-2">
-                      <Share2 className="w-4 h-4" />
-                      {t.share}
-                    </h3>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2">
-                      <button className="w-full text-left text-sm text-primary hover:underline">
-                        {t.shareFacebook}
-                      </button>
-                      <button className="w-full text-left text-sm text-primary hover:underline">
-                        {t.shareTwitter}
-                      </button>
-                      <button className="w-full text-left text-sm text-primary hover:underline">
-                        {t.copyLink}
-                      </button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+              <Link href={`/${isArabic ? "ar/" : ""}articles`}>
+                <Button variant="ghost" className="gap-2">
+                  <ArrowRight className={`w-4 h-4 ${isArabic ? "" : "rotate-180"}`} />
+                  {isArabic ? "العودة إلى المقالات" : "Back to Articles"}
+                </Button>
+              </Link>
             </div>
           </div>
-        </section>
+        </main>
+
+        {/* Footer */}
+        <footer className="bg-foreground/5 border-t border-border py-12 mt-12">
+          <div className="container text-center">
+            <div className="mb-8">
+              <img src="/logo.jpg" alt="Fox Systems" className="h-12 w-12 rounded-lg mx-auto mb-4" />
+              <h2 className="text-2xl font-bold">Fox Systems</h2>
+              <p className="text-muted-foreground mt-2">{isArabic ? "شريكك التقني الموثوق في مصر والشرق الأوسط" : "Your Trusted IT Partner in Egypt & Middle East"}</p>
+            </div>
+            <div className="text-sm text-muted-foreground pt-8 border-t border-border/50">
+              <p>© 2024 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   );

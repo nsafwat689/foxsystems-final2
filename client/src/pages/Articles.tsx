@@ -2,7 +2,6 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Link, useLocation } from "wouter";
-import Header from "@/components/Header";
 import { ArrowRight, Calendar, User, Tag } from "lucide-react";
 import { useState, useEffect } from "react";
 import SEOHead from "@/components/SEOHead";
@@ -138,6 +137,7 @@ export default function Articles({ language, setLanguage }: ArticlesProps) {
   const articlesPerPage = 6;
 
   useEffect(() => {
+    // Synchronize language state with the URL
     if (location.startsWith("/ar/") && language !== "ar") {
       setLanguage("ar");
     } else if (!location.startsWith("/ar/") && language === "ar") {
@@ -165,7 +165,7 @@ export default function Articles({ language, setLanguage }: ArticlesProps) {
         organizationSchema={true}
         additionalSchema={getBreadcrumbSchema(language)}
       />
-      <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
+      <div className={`min-h-screen bg-background text-foreground transition-colors ${language === "ar" ? "rtl" : "ltr"}`}>
         <Header language={language} setLanguage={setLanguage} />
 
         {/* Main content */}
@@ -211,7 +211,7 @@ export default function Articles({ language, setLanguage }: ArticlesProps) {
                     <Link href={`/${language === "ar" ? "ar/" : ""}articles/${article.id}`}>
                       <Button className="w-full group">
                         {language === "en" ? "Read More" : "اقرأ المزيد"}
-                        <ArrowRight className={`w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 ${isArabic ? "rotate-180" : ""}`} />
+                        <ArrowRight className={`w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 ${language === "ar" ? "rotate-180" : ""}`} />
                       </Button>
                     </Link>
                   </CardContent>

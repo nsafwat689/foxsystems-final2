@@ -189,9 +189,9 @@ export const arabicSEOConfigs: Record<string, any> = {
     language: "ar",
   },
   contact: {
-    title: "اتصل بـ Fox Systems | احصل على دعم حلول تكنولوجيا المعلومات في مصر والشرق الأوسط",
-    description: "اتصل بـ Fox Systems للحصول على حلول تكنولوجيا المعلومات للمؤسسات والخدمات المدارة والدعم الفني في مصر والشرق الأوسط. اتصل +201557649136.",
-    keywords: "اتصل بـ Fox Systems، دعم تكنولوجيا المعلومات مصر، دعم فني، اتصال الخدمات المدارة، عنوان Fox Systems",
+    title: "اتصل بـ Fox Systems | الحصول على دعم حلول تكنولوجيا المعلومات في مصر والشرق الأوسط",
+    description: "اتصل بـ Fox Systems للحصول على حلول تكنولوجيا المعلومات للمؤسسات، والخدمات المدارة، والدعم الفني في مصر والشرق الأوسط. اتصل على +201557649136.",
+    keywords: "اتصل بـ Fox Systems، دعم تكنولوجيا المعلومات مصر، الدعم الفني، الاتصال بالخدمات المدارة، عنوان Fox Systems",
     ogTitle: "اتصل بنا - Fox Systems",
     ogDescription: "تواصل مع فريق حلول تكنولوجيا المعلومات لدينا",
     ogImage: "https://foxsystemstech.com/contact-og.jpg",
@@ -200,8 +200,48 @@ export const arabicSEOConfigs: Record<string, any> = {
   },
 };
 
+export function updateMetaTags(config: SEOConfig) {
+  if (typeof document === 'undefined') return;
+
+  document.title = config.title;
+  
+  const metaTags = {
+    'description': config.description,
+    'keywords': config.keywords,
+    'og:title': config.ogTitle,
+    'og:description': config.ogDescription,
+    'og:image': config.ogImage,
+    'og:url': config.canonicalUrl,
+    'twitter:title': config.ogTitle,
+    'twitter:description': config.ogDescription,
+    'twitter:image': config.ogImage,
+  };
+
+  Object.entries(metaTags).forEach(([name, content]) => {
+    let element = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
+    if (!element) {
+      element = document.createElement('meta');
+      if (name.startsWith('og:')) {
+        element.setAttribute('property', name);
+      } else {
+        element.setAttribute('name', name);
+      }
+      document.head.appendChild(element);
+    }
+    element.setAttribute('content', content);
+  });
+
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonical);
+  }
+  canonical.setAttribute('href', config.canonicalUrl);
+}
+
 export function generateBreadcrumbSchema(items: Array<{ name: string; url: string }>) {
-  return {
+  return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": items.map((item, index) => ({
@@ -210,11 +250,11 @@ export function generateBreadcrumbSchema(items: Array<{ name: string; url: strin
       "name": item.name,
       "item": item.url
     }))
-  };
+  });
 }
 
 export function generateOrganizationSchema() {
-  return {
+  return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Fox Systems",
@@ -229,5 +269,57 @@ export function generateOrganizationSchema() {
     },
     "areaServed": ["EG", "ME", "NA"],
     "sameAs": ["https://www.linkedin.com/company/fox-systems"]
-  };
+  });
+}
+
+export function generateWebSiteSchema() {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Fox Systems",
+    "url": "https://foxsystemstech.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://foxsystemstech.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  });
+}
+
+export function generateServiceSchema(name: string, description: string, url: string) {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": name,
+    "description": description,
+    "url": url,
+    "provider": {
+      "@type": "Organization",
+      "name": "Fox Systems"
+    }
+  });
+}
+
+export function generateArticleSchema(article: any, url: string) {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title,
+    "description": article.excerpt,
+    "image": article.image,
+    "author": {
+      "@type": "Organization",
+      "name": "Fox Systems"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Fox Systems",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://foxsystemstech.com/logo.jpg"
+      }
+    },
+    "datePublished": article.date,
+    "url": url
+  });
 }

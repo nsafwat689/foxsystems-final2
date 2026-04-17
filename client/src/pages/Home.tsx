@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import SEOHead from "@/components/SEOHead";
 import { defaultSEOConfig, arabicSEOConfigs } from "@/utils/seo";
 import {
@@ -172,7 +172,7 @@ const translations = {
     contactName: "اسم جهة الاتصال",
     email: "البريد الإلكتروني",
     phoneWhatsApp: "الهاتف / واتس آب",
-    serviceType: "نوع الخدمة",
+    serviceType: "Service Type",
     message: "الرسالة",
     placeholderRequirements: "أخبرنا عن متطلباتك...",
     // Footer
@@ -186,11 +186,25 @@ const translations = {
   },
 };
 
-export default function Home() {
-  const [language, setLanguage] = useState<"en" | "ar">("en");
+interface HomeProps {
+  language: "en" | "ar";
+  setLanguage: (lang: "en" | "ar") => void;
+}
+
+export default function Home({ language, setLanguage }: HomeProps) {
+  const [location] = useLocation();
   const { theme } = useTheme();
   const t = translations[language];
   const isArabic = language === "ar";
+
+  useEffect(() => {
+    // Synchronize language state with the URL
+    if (location === "/ar" && language !== "ar") {
+      setLanguage("ar");
+    } else if (location === "/" && language === "ar") {
+      setLanguage("en");
+    }
+  }, [location, language, setLanguage]);
 
   const coreValues = [
     { icon: Shield, title: t.integrity, desc: t.integrityDesc },
@@ -202,40 +216,27 @@ export default function Home() {
     { icon: Lock, title: t.respect, desc: t.respectDesc },
   ];
 
+  const langPrefix = isArabic ? "/ar" : "";
+
   const services = [
-    { icon: Network, title: t.internet, desc: t.internetDesc, items: ["Fiber Leased Line", "Microwave", "WiMAX", "VPN", "Static IP"], href: "/services/internet" },
-    { icon: Cpu, title: t.software, desc: t.softwareDesc, items: ["Microsoft", "VMware", "Veeam", "Veritas"], href: "/services/software" },
-    { icon: Server, title: t.hardware, desc: t.hardwareDesc, items: ["Dell", "HP", "Lenovo", "Cisco", "Huawei"], href: "/services/hardware" },
-    { icon: Shield, title: t.cybersecurity, desc: t.cybersecurityDesc, items: ["Kaspersky", "Bitdefender", "ESET", "Sophos", "Fortinet"], href: "/services/cybersecurity" },
-    { icon: Zap, title: t.infrastructure, desc: t.infrastructureDesc, items: ["Network Infrastructure", "Servers & Data Center", "Surveillance"], href: "/services/infrastructure" },
-    { icon: Globe, title: t.webDev, desc: t.webDevDesc, items: ["UI/UX Design", "Mobile-first", "SEO", "Multi-language"], href: "/services/web-development" },
+    { icon: Network, title: t.internet, desc: t.internetDesc, items: ["Fiber Leased Line", "Microwave", "WiMAX", "VPN", "Static IP"], href: `${langPrefix}/services/internet` },
+    { icon: Cpu, title: t.software, desc: t.softwareDesc, items: ["Odoo ERP", "Custom Software", "IT Management", "Official Partner"], href: `${langPrefix}/services/software` },
+    { icon: Server, title: t.hardware, desc: t.hardwareDesc, items: ["Servers", "PCs", "Firewalls", "Network Devices"], href: `${langPrefix}/services/hardware` },
+    { icon: Shield, title: t.cybersecurity, desc: t.cybersecurityDesc, items: ["Firewalls", "Endpoint Protection", "Monitoring", "Backup"], href: `${langPrefix}/services/cybersecurity` },
+    { icon: Zap, title: t.infrastructure, desc: t.infrastructureDesc, items: ["Network Setup", "Data Centers", "Cabling", "Maintenance"], href: `${langPrefix}/services/infrastructure` },
+    { icon: Globe, title: t.webDev, desc: t.webDevDesc, items: ["UI/UX Design", "Responsive", "SEO", "Multi-language"], href: `${langPrefix}/services/web-development` },
   ];
 
   const stats = [
-    { value: "14+", label: t.yearsExperience, icon: Clock },
-    { value: "360+", label: t.happyClients, icon: Users },
-    { value: "500+", label: t.projectsDelivered, icon: CheckCircle },
-    { value: "24/7", label: t.supportAvailable, icon: Phone },
+    { label: t.yearsExperience, value: "14+" },
+    { label: t.happyClients, value: "360+" },
+    { label: t.projectsDelivered, value: "500+" },
+    { label: t.supportAvailable, value: "24/7" },
   ];
-
-  const clientLogos = [
-    { src: "/clients/01_bank_masr-BTQ0AReE.png", alt: "Bank Masr" },
-    { src: "/clients/02_national_bank_kuwait-1O0GSd4n.webp", alt: "National Bank of Kuwait" },
-    { src: "/clients/03_elaraby_group-sKFXhEzA.png", alt: "Elaraby Group" },
-    { src: "/clients/04_hassan_allam_holding-CFQaxSID.png", alt: "Hassan Allam Holding" },
-    { src: "/clients/05_el_nahda_cement-DXEmYNZR.png", alt: "El Nahda Cement" },
-    { src: "/clients/06_orascom_investment-DPKaxSvM.png", alt: "Orascom Investment" },
-    { src: "/clients/08_etisalat-C9KaxS7P.png", alt: "Etisalat" },
-    { src: "/clients/09_vodafone-D9KaxS7P.png", alt: "Vodafone" },
-    { src: "/clients/10_we-E9KaxS7P.png", alt: "WE" },
-    { src: "/clients/11_tmobile-F9KaxS7P.png", alt: "T-Mobile" },
-  ];
-
-  const seoConfig = isArabic ? arabicSEOConfigs.home : defaultSEOConfig;
 
   return (
     <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
-      <SEOHead config={seoConfig} organizationSchema />
+      <SEOHead config={isArabic ? arabicSEOConfigs.home : defaultSEOConfig} />
       <Header language={language} setLanguage={setLanguage} />
 
       {/* Hero Section */}
@@ -243,313 +244,286 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <img
             src="/hero-tech.jpg"
-            alt="Data Center"
+            alt="Hero Background"
             className="w-full h-full object-cover opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
         </div>
 
-        <div className="container relative z-10">
+        <div className="container relative z-10 py-20">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className={`max-w-3xl space-y-8 ${isArabic ? "text-right mr-auto ml-0" : "text-left"}`}
+            className={`max-w-3xl ${isArabic ? "text-right mr-auto ml-0" : ""}`}
           >
-            <div className="inline-block px-4 py-2 bg-primary/20 border border-primary/30 rounded-full">
-              <span className="text-primary text-sm font-bold tracking-wider uppercase">
+            <div className="inline-block px-4 py-2 bg-primary/20 border border-primary/30 rounded-full mb-8">
+              <span className="text-primary font-bold text-xs uppercase tracking-widest">
                 {t.heroBadge}
               </span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
               {t.heroTitle}
             </h1>
-            <p className="text-xl text-gray-300 leading-relaxed max-w-2xl">
+            <p className="text-xl text-gray-300 mb-12 leading-relaxed max-w-2xl">
               {t.heroSubtitle}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 h-14 text-lg" asChild>
-                <Link href="/contact">
-                  {t.getStarted} <ArrowRight className={`ml-2 w-5 h-5 ${isArabic ? "rotate-180" : ""}`} />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10 h-14 text-lg px-8" asChild>
-                <a href="#services">
+            <div className="flex flex-wrap gap-6">
+              <Link href={`${langPrefix}/contact`}>
+                <Button size="lg" className="h-14 px-10 text-lg rounded-xl">
+                  {t.getStarted}
+                </Button>
+              </Link>
+              <Link href={`${langPrefix}/services`}>
+                <Button size="lg" variant="outline" className="h-14 px-10 text-lg text-white border-white/30 hover:bg-white/10 rounded-xl">
                   {t.viewServices}
-                </a>
-              </Button>
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Who We Are Section */}
-      <section className="py-24 md:py-32 bg-muted/30">
+      {/* Who We Are */}
+      <section className="py-24 bg-background">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className={`space-y-6 ${isArabic ? "text-right" : ""}`}
-            >
-              <h2 className="text-4xl font-bold">{t.whoWeAreTitle}</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {t.whoWeAreText}
-              </p>
-              <div className="grid sm:grid-cols-2 gap-8 pt-6">
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-primary">{t.visionTitle}</h3>
-                  <p className="text-muted-foreground">{t.visionText}</p>
-                </div>
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-primary">{t.missionTitle}</h3>
-                  <p className="text-muted-foreground">{t.missionText}</p>
-                </div>
-              </div>
-            </motion.div>
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video"
+              className="relative"
             >
-              <img src="/it-services.jpg" alt="Our Team" className="w-full h-full object-cover" />
+              <img src="/who-we-are.jpg" alt="Who We Are" className="rounded-3xl shadow-2xl" />
+              <div className="absolute -bottom-10 -right-10 bg-primary p-10 rounded-3xl hidden md:block">
+                <div className="text-5xl font-bold text-white mb-2">14+</div>
+                <div className="text-white/80 font-medium">{t.yearsExperience}</div>
+              </div>
             </motion.div>
+
+            <div className={`space-y-12 ${isArabic ? "text-right" : ""}`}>
+              <div className="space-y-6">
+                <h2 className="text-4xl md:text-5xl font-bold">{t.whoWeAreTitle}</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  {t.whoWeAreText}
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-10">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-primary/10 rounded-xl">
+                      <Zap className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold">{t.visionTitle}</h3>
+                  </div>
+                  <p className="text-muted-foreground">{t.visionText}</p>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-primary/10 rounded-xl">
+                      <Briefcase className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold">{t.missionTitle}</h3>
+                  </div>
+                  <p className="text-muted-foreground">{t.missionText}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Core Values Section */}
-      <section className="py-24 md:py-32">
+      {/* Core Values */}
+      <section className="py-24 bg-muted/30 overflow-hidden">
         <div className="container">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl font-bold mb-4">{t.coreValuesTitle}</h2>
-            <div className="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
+          <div className={`text-center mb-16 space-y-4 ${isArabic ? "rtl" : ""}`}>
+            <h2 className="text-4xl font-bold">{t.coreValuesTitle}</h2>
+            <div className="h-1.5 w-24 bg-primary mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {coreValues.map((value, idx) => {
               const Icon = value.icon;
               return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className={`p-8 rounded-2xl border border-border bg-card hover:border-primary/50 hover:shadow-xl transition-all duration-300 ${
-                    isArabic ? "text-right" : ""
-                  }`}
-                >
-                  <div className="p-4 bg-primary/10 rounded-xl w-fit mb-6">
-                    <Icon className="w-8 h-8 text-primary" />
+                <Card key={idx} className="border-none bg-background p-8 hover:shadow-xl transition-all group">
+                  <div className="p-4 bg-primary/10 rounded-2xl w-fit mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                    <Icon className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold mb-4">{value.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{value.desc}</p>
-                </motion.div>
+                </Card>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Our Services Section */}
-      <section id="services" className="py-24 md:py-32 bg-muted/30">
+      {/* Services Section */}
+      <section className="py-24 bg-background">
         <div className="container">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl font-bold mb-4">{t.servicesTitle}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t.servicesSubtitle}</p>
+          <div className={`text-center mb-20 space-y-6 ${isArabic ? "rtl" : ""}`}>
+            <h2 className="text-4xl md:text-5xl font-bold">{t.servicesTitle}</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              {t.servicesSubtitle}
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, idx) => {
               const Icon = service.icon;
               return (
-                <Link key={idx} href={service.href}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className={`group p-10 rounded-2xl border border-border/50 bg-card hover:border-primary hover:shadow-2xl transition-all duration-500 cursor-pointer h-full ${
-                      isArabic ? "text-right" : ""
-                    }`}
-                  >
-                    <div className="flex justify-between items-start mb-8">
-                      <div className="p-4 bg-primary/10 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                        <Icon className="w-8 h-8" />
-                      </div>
-                      <ArrowRight className="w-6 h-6 text-primary opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-[-10px] group-hover:translate-x-0" />
+                <Card key={idx} className="overflow-hidden border-none bg-muted/20 hover:bg-muted/40 transition-all group flex flex-col">
+                  <div className="p-10 space-y-6 flex-grow">
+                    <div className="p-5 bg-primary/10 rounded-2xl w-fit group-hover:bg-primary group-hover:text-white transition-colors">
+                      <Icon className="w-10 h-10" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-6">{service.title}</h3>
-                    <p className="text-muted-foreground mb-8 leading-relaxed">{service.desc}</p>
-                    <ul className="space-y-3">
+                    <h3 className="text-2xl font-bold">{service.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {service.desc}
+                    </p>
+                    <ul className="space-y-3 pt-4">
                       {service.items.map((item, i) => (
-                        <li key={i} className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                        <li key={i} className="flex items-center gap-3 text-sm font-medium">
+                          <CheckCircle className="w-4 h-4 text-primary" />
                           {item}
                         </li>
                       ))}
                     </ul>
-                  </motion.div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Fox Systems - Stats Section */}
-      <section className="py-24 md:py-32 bg-primary text-primary-foreground relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-[120px]"></div>
-        </div>
-        <div className="container relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl font-bold mb-4">{t.whyFoxTitle}</h2>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-12">
-            {stats.map((stat, idx) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="text-center space-y-4"
-                >
-                  <div className="flex justify-center">
-                    <div className="p-4 bg-white/10 rounded-2xl">
-                      <Icon className="w-10 h-10" />
-                    </div>
                   </div>
-                  <p className="text-6xl font-bold">{stat.value}</p>
-                  <p className="text-xl font-medium text-primary-foreground/80">{stat.label}</p>
-                </motion.div>
+                  <Link href={service.href}>
+                    <Button variant="ghost" className="w-full h-16 rounded-none border-t border-border group-hover:bg-primary group-hover:text-white transition-colors gap-3">
+                      {language === "en" ? "Learn More" : "اعرف المزيد"}
+                      <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-2 ${isArabic ? "rotate-180" : ""}`} />
+                    </Button>
+                  </Link>
+                </Card>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Trusted By Section */}
-      <section className="py-24 md:py-32">
+      {/* Stats Section */}
+      <section className="py-20 bg-primary text-primary-foreground">
         <div className="container">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl font-bold mb-4">{t.trustedByTitle}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t.trustedByDesc}</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
-            {clientLogos.map((logo, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                className="flex items-center justify-center p-8 rounded-2xl border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all bg-muted/20 grayscale hover:grayscale-0 duration-500 h-32"
-              >
-                <img 
-                  src={logo.src} 
-                  alt={logo.alt} 
-                  className="max-w-full max-h-full object-contain"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </motion.div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+            {stats.map((stat, idx) => (
+              <div key={idx} className="space-y-4">
+                <div className="text-5xl md:text-6xl font-bold">{stat.value}</div>
+                <div className="text-lg opacity-80 font-medium uppercase tracking-wider">{stat.label}</div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24 md:py-32 bg-muted/30">
+      {/* Trusted By Section */}
+      <section className="py-24 bg-background">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-3xl font-bold uppercase tracking-widest text-primary">{t.trustedByTitle}</h2>
+            <p className="text-muted-foreground">{t.trustedByDesc}</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 items-center opacity-40 grayscale hover:grayscale-0 transition-all">
+            <img src="/clients/c1.png" alt="Client 1" className="h-12 object-contain mx-auto" />
+            <img src="/clients/c2.png" alt="Client 2" className="h-12 object-contain mx-auto" />
+            <img src="/clients/c3.png" alt="Client 3" className="h-12 object-contain mx-auto" />
+            <img src="/clients/c4.png" alt="Client 4" className="h-12 object-contain mx-auto" />
+            <img src="/clients/c5.png" alt="Client 5" className="h-12 object-contain mx-auto" />
+            <img src="/clients/c6.png" alt="Client 6" className="h-12 object-contain mx-auto" />
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-24 bg-muted/30">
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-20">
             <div className={`space-y-12 ${isArabic ? "text-right" : ""}`}>
-              <div className="space-y-4">
-                <h2 className="text-4xl font-bold">{t.contactTitle}</h2>
-                <p className="text-lg text-muted-foreground">{t.contactSubtitle}</p>
+              <div className="space-y-6">
+                <h2 className="text-4xl md:text-5xl font-bold">{t.contactTitle}</h2>
+                <p className="text-xl text-muted-foreground">
+                  {t.contactSubtitle}
+                </p>
               </div>
 
               <div className="space-y-8">
-                <div className="flex items-start gap-6">
-                  <div className="p-4 bg-primary/10 rounded-xl">
-                    <Phone className="w-6 h-6 text-primary" />
+                <div className="flex items-center gap-6 group">
+                  <div className="p-4 bg-background rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors shadow-lg">
+                    <Phone className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold mb-2">{t.phone}</h4>
-                    <p className="text-muted-foreground text-lg">+201557649136</p>
+                    <div className="text-sm text-muted-foreground mb-1">{t.phone}</div>
+                    <div className="text-xl font-bold">+201557649136</div>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-6">
-                  <div className="p-4 bg-primary/10 rounded-xl">
-                    <MapPin className="w-6 h-6 text-primary" />
+                <div className="flex items-center gap-6 group">
+                  <div className="p-4 bg-background rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors shadow-lg">
+                    <Mail className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold mb-2">{t.address}</h4>
-                    <p className="text-muted-foreground text-lg">
-                      {isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}
-                    </p>
+                    <div className="text-sm text-muted-foreground mb-1">{t.email}</div>
+                    <div className="text-xl font-bold">info@foxsystemstech.com</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-6 group">
+                  <div className="p-4 bg-background rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors shadow-lg">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground mb-1">{t.address}</div>
+                    <div className="text-xl font-bold">{isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</div>
                   </div>
                 </div>
               </div>
 
-              <Button
-                size="lg"
-                onClick={() => window.open("https://wa.me/201557649136", "_blank")}
-                className="bg-[#25D366] hover:bg-[#25D366]/90 text-white px-8 h-14 text-lg"
-              >
-                <MessageCircle className="mr-2 w-6 h-6" /> {t.chatWhatsApp}
+              <Button size="lg" className="h-16 px-10 text-lg bg-green-600 hover:bg-green-700 gap-3 rounded-2xl shadow-xl shadow-green-600/20">
+                <MessageCircle className="w-6 h-6" />
+                {t.chatWhatsApp}
               </Button>
             </div>
 
-            <Card className="p-8 md:p-10 rounded-3xl shadow-2xl border-none">
+            <Card className="p-10 border-none shadow-2xl rounded-3xl">
               <form className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-sm font-bold">{t.companyName}</label>
-                    <input type="text" placeholder="Acme Corp" className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
+                    <label className="text-sm font-bold uppercase tracking-wider">{t.companyName}</label>
+                    <input className="w-full h-14 bg-muted/50 rounded-xl px-4 outline-none focus:ring-2 focus:ring-primary transition-all" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold">{t.contactName}</label>
-                    <input type="text" placeholder="John Doe" className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
+                    <label className="text-sm font-bold uppercase tracking-wider">{t.contactName}</label>
+                    <input className="w-full h-14 bg-muted/50 rounded-xl px-4 outline-none focus:ring-2 focus:ring-primary transition-all" />
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-sm font-bold">{t.email}</label>
-                    <input type="email" placeholder="john@company.com" className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
+                    <label className="text-sm font-bold uppercase tracking-wider">{t.email}</label>
+                    <input className="w-full h-14 bg-muted/50 rounded-xl px-4 outline-none focus:ring-2 focus:ring-primary transition-all" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold">{t.phoneWhatsApp}</label>
-                    <input type="text" placeholder="+20 123 456 7890" className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none" />
+                    <label className="text-sm font-bold uppercase tracking-wider">{t.phoneWhatsApp}</label>
+                    <input className="w-full h-14 bg-muted/50 rounded-xl px-4 outline-none focus:ring-2 focus:ring-primary transition-all" />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold">{t.serviceType}</label>
-                  <select className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none appearance-none">
-                    <option>Internet</option>
-                    <option>Software</option>
-                    <option>Hardware</option>
-                    <option>Cybersecurity</option>
-                    <option>Infrastructure</option>
-                    <option>Website Development</option>
+                  <label className="text-sm font-bold uppercase tracking-wider">{t.serviceType}</label>
+                  <select className="w-full h-14 bg-muted/50 rounded-xl px-4 outline-none focus:ring-2 focus:ring-primary transition-all appearance-none">
+                    <option>{t.internet}</option>
+                    <option>{t.software}</option>
+                    <option>{t.hardware}</option>
+                    <option>{t.cybersecurity}</option>
+                    <option>{t.infrastructure}</option>
+                    <option>{t.webDev}</option>
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold">{t.message}</label>
-                  <textarea rows={4} placeholder={t.placeholderRequirements} className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none resize-none"></textarea>
+                  <label className="text-sm font-bold uppercase tracking-wider">{t.message}</label>
+                  <textarea className="w-full h-32 bg-muted/50 rounded-xl p-4 outline-none focus:ring-2 focus:ring-primary transition-all resize-none" placeholder={t.placeholderRequirements}></textarea>
                 </div>
-                <Button className="w-full h-14 text-lg font-bold rounded-xl">
-                  {t.submitInquiry} <Send className="ml-2 w-5 h-5" />
+                <Button className="w-full h-16 text-lg rounded-xl shadow-lg shadow-primary/20 gap-3">
+                  <Send className="w-5 h-5" />
+                  {t.submitInquiry}
                 </Button>
               </form>
             </Card>
@@ -558,50 +532,60 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-card border-t border-border py-20">
+      <footer className="bg-black text-white py-24">
         <div className="container">
-          <div className="grid md:grid-cols-4 gap-12 mb-16">
-            <div className="space-y-6">
-              <Link href="/" className="flex items-center gap-3">
-                <img src="/logo.jpg" alt="Fox Systems" className="h-12 w-12 rounded-xl" />
-                <span className="font-bold text-2xl text-primary">Fox Systems</span>
+          <div className="grid lg:grid-cols-4 gap-16 mb-16">
+            <div className="space-y-8 col-span-1 lg:col-span-1">
+              <Link href={isArabic ? "/ar" : "/"} className="flex items-center gap-4">
+                <img src="/logo.jpg" alt="Fox Systems" className="h-14 w-14 rounded-2xl object-cover" />
+                <span className="text-3xl font-bold tracking-tighter">Fox Systems</span>
               </Link>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-gray-400 leading-relaxed text-lg">
                 {t.footerDesc}
               </p>
+              <div className="flex gap-4">
+                <div className="p-3 bg-white/5 rounded-xl hover:bg-primary transition-colors cursor-pointer">
+                  <Globe className="w-6 h-6" />
+                </div>
+                <div className="p-3 bg-white/5 rounded-xl hover:bg-primary transition-colors cursor-pointer">
+                  <Users className="w-6 h-6" />
+                </div>
+              </div>
             </div>
-            <div>
-              <h4 className="font-bold text-xl mb-8">{t.services}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li><Link href="/services/internet" className="hover:text-primary transition">{t.internet}</Link></li>
-                <li><Link href="/services/software" className="hover:text-primary transition">{t.software}</Link></li>
-                <li><Link href="/services/hardware" className="hover:text-primary transition">{t.hardware}</Link></li>
-                <li><Link href="/services/cybersecurity" className="hover:text-primary transition">{t.cybersecurity}</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-xl mb-8">{t.company}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li><Link href="/about" className="hover:text-primary transition">{isArabic ? "حول" : "About"}</Link></li>
-                <li><Link href="/company/team" className="hover:text-primary transition">{isArabic ? "الفريق" : "Team"}</Link></li>
-                <li><Link href="/careers" className="hover:text-primary transition">{t.careers}</Link></li>
-                <li><Link href="/contact" className="hover:text-primary transition">{t.contact}</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-xl mb-8">{t.contact}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li className="flex items-center gap-3"><Mail className="w-5 h-5 text-primary" /> info@foxsystems.com</li>
-                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-primary" /> +201557649136</li>
-                <li className="flex items-center gap-3"><MapPin className="w-5 h-5 text-primary" /> {isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</li>
-              </ul>
+
+            <div className={`lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-12 ${isArabic ? "text-right" : ""}`}>
+              <div className="space-y-8">
+                <h4 className="text-xl font-bold uppercase tracking-widest text-primary">{t.services}</h4>
+                <ul className="space-y-4 text-gray-400">
+                  {services.map((s, i) => (
+                    <li key={i}><Link href={s.href} className="hover:text-primary transition-colors">{s.title}</Link></li>
+                  ))}
+                </ul>
+              </div>
+              <div className="space-y-8">
+                <h4 className="text-xl font-bold uppercase tracking-widest text-primary">{t.company}</h4>
+                <ul className="space-y-4 text-gray-400">
+                  <li><Link href={`${langPrefix}/about`} className="hover:text-primary transition-colors">{isArabic ? "من نحن" : "About Us"}</Link></li>
+                  <li><Link href={`${langPrefix}/articles`} className="hover:text-primary transition-colors">{t.articles}</Link></li>
+                  <li><Link href={`${langPrefix}/contact`} className="hover:text-primary transition-colors">{t.contact}</Link></li>
+                </ul>
+              </div>
+              <div className="space-y-8">
+                <h4 className="text-xl font-bold uppercase tracking-widest text-primary">{t.contact}</h4>
+                <ul className="space-y-4 text-gray-400">
+                  <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-primary" /> +201557649136</li>
+                  <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-primary" /> info@foxsystemstech.com</li>
+                  <li className="flex items-center gap-3"><MapPin className="w-4 h-4 text-primary" /> {isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</li>
+                </ul>
+              </div>
             </div>
           </div>
-          <div className="pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6 text-muted-foreground">
+          
+          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-gray-500 font-medium">
             <p>{t.copyright}</p>
             <div className="flex gap-8">
-              <Link href="/privacy" className="hover:text-primary transition">{t.privacyPolicy}</Link>
-              <Link href="/terms" className="hover:text-primary transition">{t.termsOfUse}</Link>
+              <Link href={`${langPrefix}/privacy`} className="hover:text-white transition-colors">{t.privacyPolicy}</Link>
+              <Link href={`${langPrefix}/terms`} className="hover:text-white transition-colors">{t.termsOfUse}</Link>
             </div>
           </div>
         </div>

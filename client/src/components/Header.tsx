@@ -28,6 +28,7 @@ const translations = {
     infrastructure: "Infrastructure",
     webDev: "Website Development",
     switchLang: "العربية",
+    viewAll: "View All Services",
   },
   ar: {
     home: "الرئيسية",
@@ -42,6 +43,7 @@ const translations = {
     infrastructure: "البنية التحتية",
     webDev: "تطوير المواقع",
     switchLang: "English",
+    viewAll: "عرض جميع الخدمات",
   },
 };
 
@@ -121,16 +123,30 @@ export default function Header({ language }: HeaderProps) {
               {t.home}
             </Link>
 
+            {/* Services with dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger
-                className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary outline-none ${
-                  location.includes("/services") ? "text-primary font-semibold" : "text-foreground"
-                }`}
-              >
-                {t.services}
-                <ChevronDown className="w-4 h-4" />
+              <DropdownMenuTrigger asChild>
+                <Link
+                  href={`${langPrefix}/services`}
+                  className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary outline-none cursor-pointer ${
+                    location.includes("/services") ? "text-primary font-semibold" : "text-foreground"
+                  }`}
+                  onClick={(e) => {
+                    // Allow dropdown to work, but also allow direct navigation
+                    e.preventDefault();
+                  }}
+                >
+                  {t.services}
+                  <ChevronDown className="w-4 h-4" />
+                </Link>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center" className="w-56">
+                <DropdownMenuItem asChild>
+                  <Link href={`${langPrefix}/services`} className="w-full cursor-pointer">
+                    {t.viewAll}
+                  </Link>
+                </DropdownMenuItem>
+                <div className="my-2 border-t border-border"></div>
                 {serviceItems.map((item) => (
                   <DropdownMenuItem key={item.href} asChild>
                     <Link href={item.href} className="w-full cursor-pointer">
@@ -212,8 +228,15 @@ export default function Header({ language }: HeaderProps) {
             </Link>
 
             <div className="w-full">
-              <p className="px-3 py-2 text-xs font-bold text-muted-foreground uppercase tracking-wider">
+              <Link
+                href={`${langPrefix}/services`}
+                onClick={() => setIsMenuOpen(false)}
+                className="w-full px-3 py-2 rounded-lg text-base font-medium hover:bg-muted transition block"
+              >
                 {t.services}
+              </Link>
+              <p className="px-3 py-2 text-xs font-bold text-muted-foreground uppercase tracking-wider">
+                {t.viewAll}
               </p>
               {serviceItems.map((item) => (
                 <Link

@@ -128,6 +128,7 @@ const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
 export default function ServiceDetail({ serviceId, language }: ServiceDetailProps) {
   const [location] = useLocation();
   const isArabic = language === "ar";
+  const langPrefix = isArabic ? "/ar" : "";
   
 
 
@@ -240,7 +241,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                     <span>{isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</span>
                   </div>
                 </div>
-                <Link href="/contact">
+                <Link href={`${langPrefix}/contact`} asChild>
                   <Button variant="secondary" className="w-full mt-4 group">
                     {isArabic ? "اتصل بنا الآن" : "Contact Us Now"}
                     <ArrowRight className={`w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 ${isArabic ? "rotate-180" : ""}`} />
@@ -252,11 +253,9 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                 <h4 className="font-bold text-lg uppercase tracking-wider">{isArabic ? "خدمات أخرى" : "Other Services"}</h4>
                 <div className="grid gap-2">
                   {Object.keys(serviceDetails).filter(id => id !== serviceId).map(id => (
-                    <Link key={id} href={`/services/${id}`}>
-                      <a className="flex items-center justify-between p-4 rounded-lg hover:bg-muted transition-colors group">
-                        <span className="font-medium capitalize">{id.replace('-', ' ')}</span>
-                        <ArrowRight className={`w-4 h-4 opacity-0 group-hover:opacity-100 transition-all ${isArabic ? "rotate-180" : ""}`} />
-                      </a>
+                    <Link key={id} href={`${langPrefix}/services/${id}`} className="flex items-center justify-between p-4 rounded-lg hover:bg-muted transition-colors group">
+                      <span className="font-medium capitalize">{id.replace('-', ' ')}</span>
+                      <ArrowRight className={`w-4 h-4 opacity-0 group-hover:opacity-100 transition-all ${isArabic ? "rotate-180" : ""}`} />
                     </Link>
                   ))}
                 </div>
@@ -274,7 +273,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
             {isArabic ? "انضم إلى أكثر من 360 عميلًا يثقون في Fox Systems لحلول تكنولوجيا المعلومات المتقدمة والخدمات المدارة." : "Join over 360+ clients who trust Fox Systems for advanced IT solutions and managed services."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link href="/contact">
+            <Link href={`${langPrefix}/contact`} asChild>
               <Button size="lg" className="h-14 px-10 text-lg">
                 {isArabic ? "ابدأ الآن" : "Get Started Now"}
               </Button>

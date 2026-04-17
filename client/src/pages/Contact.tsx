@@ -80,10 +80,9 @@ const translations = {
 
 interface ContactProps {
   language: "en" | "ar";
-  setLanguage: (lang: "en" | "ar") => void;
 }
 
-export default function Contact({ language, setLanguage }: ContactProps) {
+export default function Contact({ language }: ContactProps) {
   const { theme } = useTheme();
   const t = translations[language];
   const isArabic = language === "ar";
@@ -93,7 +92,7 @@ export default function Contact({ language, setLanguage }: ContactProps) {
   return (
     <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
       <SEOHead config={seoConfig} organizationSchema />
-      <Header language={language} setLanguage={setLanguage} />
+      <Header language={language} />
 
       {/* Hero Section */}
       <section className="relative py-24 bg-black overflow-hidden">

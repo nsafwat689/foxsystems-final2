@@ -132,8 +132,29 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
   
 
 
-  const data = (serviceDetails[serviceId] || serviceDetails.internet)[language];
-  const Icon = data.icon;
+  const serviceBase = serviceDetails[serviceId] || serviceDetails.internet;
+  const rawData = serviceBase[language];
+  
+  // Create a robust data object with fallbacks for every possible field
+  const data = {
+    ...rawData,
+    // Titles from global Arabic data or English fallback
+    overviewTitle: serviceDetailsAr.overviewTitle || "Overview",
+    capabilitiesTitle: serviceDetailsAr.capabilitiesTitle || "Capabilities",
+    stepsTitle: serviceDetailsAr.stepsTitle || "Service Delivery Cycle",
+    partnersTitle: serviceDetailsAr.partnersTitle || "Partners & Vendors",
+    contactUsTitle: serviceDetailsAr.contactUsTitle || "Contact Us",
+    // Content fields with English fallbacks
+    title: rawData.title || serviceBase.en.title,
+    subtitle: rawData.subtitle || serviceBase.en.subtitle,
+    overview: rawData.overview || serviceBase.en.overview,
+    capabilities: rawData.capabilities || serviceBase.en.capabilities,
+    steps: rawData.steps || serviceBase.en.steps,
+    partners: rawData.partners || serviceBase.en.partners,
+  };
+
+  // Ensure Icon is never undefined by falling back to the English icon
+  const Icon = rawData.icon || serviceBase.en.icon;
 
   const seoConfig = isArabic 
     ? (arabicSEOConfigs[serviceId] || arabicSEOConfigs.internet)
@@ -241,7 +262,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                     <span>{isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</span>
                   </div>
                 </div>
-                <Link href={`${langPrefix}/contact`} asChild>
+                <Link href={`${langPrefix}/contact`}>
                   <Button variant="secondary" className="w-full mt-4 group">
                     {isArabic ? "اتصل بنا الآن" : "Contact Us Now"}
                     <ArrowRight className={`w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 ${isArabic ? "rotate-180" : ""}`} />
@@ -273,7 +294,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
             {isArabic ? "انضم إلى أكثر من 360 عميلًا يثقون في Fox Systems لحلول تكنولوجيا المعلومات المتقدمة والخدمات المدارة." : "Join over 360+ clients who trust Fox Systems for advanced IT solutions and managed services."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link href={`${langPrefix}/contact`} asChild>
+            <Link href={`${langPrefix}/contact`}>
               <Button size="lg" className="h-14 px-10 text-lg">
                 {isArabic ? "ابدأ الآن" : "Get Started Now"}
               </Button>

@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import { ArrowRight, Calendar, User, MessageCircle, Share2, ArrowLeft } from "lucide-react";
-import SEOHead from "@/components/SEOHead";
 import { generateArticleSchema } from "@/utils/seo";
 interface ArticleDetailProps {
   articleId: string;
@@ -241,11 +240,9 @@ export default function ArticleDetail({ articleId, language }: ArticleDetailProp
 
   return (
     <>
-      <SEOHead config={serviceSEOConfigs.articles} />
       <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
         <Header language={language} />
 
-        {/* Main content */}
         <main className="container mx-auto p-4 md:p-8">
           <Link href={`${langPrefix}/articles`} className="inline-flex items-center gap-2 text-primary hover:underline mb-8">
             <ArrowLeft className={`w-4 h-4 ${isArabic ? "rotate-180" : ""}`} />

@@ -5,12 +5,51 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import { ArrowRight, Calendar, User, MessageCircle, Share2, ArrowLeft } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
-import { generateArticleSchema, arabicSEOConfigs, serviceSEOConfigs } from "@/utils/seo";
-
+import { generateArticleSchema } from "@/utils/seo";
 interface ArticleDetailProps {
   articleId: string;
   language: "en" | "ar";
 }
+
+// Simple markdown to HTML converter
+function markdownToHtml(markdown: string): string {
+  let html = markdown
+    .replace(/^## (.+)$/gm, '<h2 class="text-3xl font-bold mt-8 mb-4">$1</h2>')
+    .replace(/^### (.+)$/gm, '<h3 class="text-2xl font-semibold mt-6 mb-3">$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>');
+  
+  const lines = html.split('\n');
+  const result: string[] = [];
+  let inParagraph = false;
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) {
+      if (inParagraph) {
+        result.push('</p>');
+        inParagraph = false;
+      }
+    } else if (line.startsWith('<h')) {
+      if (inParagraph) {
+        result.push('</p>');
+        inParagraph = false;
+      }
+      result.push(line);
+    } else {
+      if (!inParagraph) {
+        result.push('<p class="mb-4">');
+        inParagraph = true;
+      } else {
+        result.push(' ');
+      }
+      result.push(line);
+    }
+  }
+  if (inParagraph) result.push('</p>');
+  return result.join('');
+}
+
 
 const articleContent: Record<string, Record<"en" | "ar", any>> = {
   "ai-infrastructure-2026": {
@@ -248,12 +287,9 @@ export default function ArticleDetail({ articleId, language }: ArticleDetailProp
 
             {/* Article content */}
             <div className="prose prose-lg max-w-none mb-12 dark:prose-invert">
-              <div dangerouslySetInnerHTML={{ __html: article.content }} />
-            </div>
+        <div dangerouslySetInnerHTML={{ __html: markdownToHtml(article.content) }} />            </div>
 
             {/* Share buttons */}
-            <div className="flex items-center gap-4 py-8 border-t border-b border-border">
-              <span className="font-semibold">{language === "en" ? "Share:" : "شارك:"}</span>
               <Button variant="outline" size="sm" className="gap-2">
                 <Share2 className="w-4 h-4" />
                 {language === "en" ? "Share" : "شارك"}

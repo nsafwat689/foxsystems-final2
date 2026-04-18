@@ -320,7 +320,8 @@ export default function ArticleDetail({ articleId, language }: ArticleDetailProp
             </div>
           </div>
         </footer>
-      </div>
+            </div>
+      
     </>
   );
 }

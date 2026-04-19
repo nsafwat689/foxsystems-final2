@@ -315,23 +315,33 @@ export default function Home({ language }: HomeProps) {
             {services.map((service, idx) => {
               const Icon = service.icon;
               return (
-                <Card key={idx} className="overflow-hidden border-none bg-muted/20 hover:bg-muted/40 transition-all group flex flex-col">
-                  <div className="p-10 space-y-6 flex-grow">
-                    <div className="p-5 bg-primary/10 rounded-2xl w-fit group-hover:bg-primary group-hover:text-white transition-colors">
-                      <Icon className="w-10 h-10" />
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  whileHover={{ y: -8 }}
+                  className="h-full"
+                >
+                  <Card className="overflow-hidden border-none bg-gradient-to-br from-primary/5 to-primary/10 hover:from-primary/15 hover:to-primary/20 transition-all group flex flex-col h-full shadow-lg hover:shadow-2xl">
+                    <div className="p-10 space-y-6 flex-grow">
+                      <div className="p-5 bg-primary/20 rounded-2xl w-fit group-hover:bg-primary group-hover:text-white transition-colors">
+                        <Icon className="w-10 h-10 text-primary group-hover:text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-primary">{service.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {service.desc}
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-bold">{service.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {service.desc}
-                    </p>
-                  </div>
-                  <Link href={service.href}>
-                    <Button variant="ghost" className="w-full h-16 rounded-none border-t border-border group-hover:bg-primary group-hover:text-white transition-colors gap-3">
-                      {language === "en" ? "Learn More" : "اعرف المزيد"}
-                      <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-2 ${isArabic ? "rotate-180" : ""}`} />
-                    </Button>
-                  </Link>
-                </Card>
+                    <Link href={service.href}>
+                      <Button variant="ghost" className="w-full h-16 rounded-none border-t border-primary/20 group-hover:bg-primary group-hover:text-white transition-colors gap-3 text-primary">
+                        {language === "en" ? "Learn More" : "اعرف المزيد"}
+                        <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-2 ${isArabic ? "rotate-180" : ""}`} />
+                      </Button>
+                    </Link>
+                  </Card>
+                </motion.div>
               );
             })}
           </div>
@@ -389,15 +399,23 @@ export default function Home({ language }: HomeProps) {
             <h2 className="text-4xl font-bold">{t.trustedByTitle}</h2>
             <p className="text-xl text-muted-foreground">{t.trustedByDesc}</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition-all">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="flex justify-center p-4">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                whileHover={{ scale: 1.1 }}
+                className="flex justify-center p-4"
+              >
                 <img 
                   src={i === 7 ? '/clients/mwri-logo-cut.png' : i === 8 ? '/clients/vodafone-cut.png' : `/clients/${i.toString().padStart(2, '0')}_${i === 1 ? 'bank_masr-BTQ0AReE.png' : i === 2 ? 'national_bank_kuwait-1O0GSd4n.webp' : i === 3 ? 'elaraby_group-sKFXhEzA.png' : i === 4 ? 'hassan_allam_holding-CFQaxSID.png' : i === 5 ? 'el_nahda_cement-DXEmYNZR.png' : 'orascom_investment-DPKaxSvM.png'}`} 
                   alt="Client" 
-                  className="h-12 md:h-16 object-contain" 
+                  className="h-12 md:h-16 object-contain transition-all" 
                 />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

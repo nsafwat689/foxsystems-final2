@@ -170,123 +170,129 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
       subtitle: "Essential strategies for borderless security",
       author: "Fox Systems Team",
       date: "2026-04-05",
-      category: "Cybersecurity",
-      readTime: "14 min read",
+      category: "Security",
+      readTime: "10 min read",
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=600&fit=crop",
       content: `
         <h2>The New Security Perimeter</h2>
-        <p>With remote and hybrid work now the standard, traditional security perimeters have vanished. Learn the essential strategies to protect your data in a borderless world. This guide covers zero-trust architecture, endpoint security, and compliance frameworks.</p>
-        <p>In 2026, the concept of a "corporate network" has become obsolete. Employees work from home, coffee shops, and co-working spaces. Data flows through personal devices, cloud services, and third-party applications. This distributed reality requires a fundamentally different approach to cybersecurity.</p>
+        <p>The traditional "castle and moat" approach to cybersecurity is officially dead. In 2026, the perimeter is wherever your employees are—at home, in a cafe, or traveling between branches. This distributed workforce requires a Zero Trust architecture that verifies every request, regardless of its origin.</p>
 
-        <h2>Zero-Trust Architecture</h2>
-        <p>The old security model operated on the principle of "trust but verify." Zero-trust flips this: "never trust, always verify." Every access request, whether from an employee or a system, is treated as a potential threat until proven otherwise.</p>
+        <h2>Key Strategies for 2026</h2>
+        <h3>1. Identity as the New Perimeter</h3>
+        <p>In 2026, we focus on securing identities rather than just devices. Multi-factor authentication (MFA) has evolved into continuous biometric verification, ensuring that the person accessing sensitive data is who they say they are throughout their entire session.</p>
 
-        <h2>Endpoint Security</h2>
-        <p>With employees using personal devices, endpoint security has become critical. Modern endpoint protection platforms now use AI to detect anomalous behavior in real-time, preventing breaches before they happen.</p>
+        <h3>2. AI-Powered Threat Hunting</h3>
+        <p>Hackers are using AI to launch more sophisticated attacks. To counter this, businesses must use AI-powered security tools that can detect anomalies in real-time. These tools can identify the "footprints" of a breach long before it causes damage.</p>
 
-        <h2>Compliance and Governance</h2>
-        <p>Staying compliant with regulations like GDPR, local data protection laws, and industry standards is more complex than ever. Fox Systems helps organizations navigate this landscape with comprehensive compliance solutions.</p>
+        <h2>Conclusion</h2>
+        <p>Cybersecurity is not a one-time setup; it's a continuous process of adaptation. By focusing on identity and leveraging AI, businesses can protect their distributed workforce and maintain trust in a digital-first world. Fox Systems provides the tools and expertise to keep your business secure in 2026 and beyond.</p>
       `,
     },
     ar: {
       id: "cybersecurity-distributed-workforce-2026",
       title: "الأمن السيبراني في عام 2026: حماية القوى العاملة الموزعة",
-      subtitle: "استراتيجيات أساسية للأمان بلا حدود",
+      subtitle: "استراتيجيات أساسية للأمن بلا حدود",
       author: "فريق فوكس سيستمز",
       date: "2026-04-05",
-      category: "الأمن السيبراني",
-      readTime: "14 دقيقة قراءة",
+      category: "الأمن",
+      readTime: "10 دقائق قراءة",
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=600&fit=crop",
       content: `
         <h2>محيط الأمان الجديد</h2>
-        <p>مع كون العمل عن بعد والهجين هو المعيار الآن، اختفت حدود الأمان التقليدية. تعرف على الاستراتيجيات الأساسية لحماية بياناتك في عالم بلا حدود. يغطي هذا الدليل معمارية Zero-Trust وأمان الأجهزة الطرفية وأطر الامتثال.</p>
-        <p>في عام 2026، أصبح مفهوم "الشبكة الموثوقة للشركة" قديماً. يعمل الموظفون من المنزل والمقاهي ومساحات العمل المشتركة. تتدفق البيانات عبر الأجهزة الشخصية والخدمات السحابية والتطبيقات التابعة لجهات خارجية. يتطلب هذا الواقع الموزع نهجاً مختلفاً بشكل أساسي للأمن السيبراني.</p>
+        <p>لقد انتهى نهج "القلعة والخندق" التقليدي للأمن السيبراني رسمياً. في عام 2026، أصبح المحيط هو المكان الذي يتواجد فيه موظفوك - في المنزل، أو في المقهى، أو أثناء التنقل بين الفروع. تتطلب هذه القوى العاملة الموزعة بنية "ثقة معدومة" (Zero Trust) تتحقق من كل طلب، بغض النظر عن مصدره.</p>
 
-        <h2>معمارية Zero-Trust</h2>
-        <p>كان نموذج الأمان القديم يعمل على مبدأ "الثقة ولكن التحقق". يقلب Zero-Trust هذا: "لا تثق أبداً، تحقق دائماً". يتم التعامل مع كل طلب وصول، سواء من موظف أو نظام، كتهديد محتمل حتى يثبت العكس.</p>
+        <h2>الاستراتيجيات الرئيسية لعام 2026</h2>
+        <h3>1. الهوية هي المحيط الجديد</h3>
+        <p>في عام 2026، نركز على تأمين الهويات بدلاً من مجرد الأجهزة. لقد تطورت المصادقة متعددة العوامل (MFA) إلى تحقق حيوي مستمر، مما يضمن أن الشخص الذي يصل إلى البيانات الحساسة هو من يدعي أنه هو طوال جلسته بالكامل.</p>
 
-        <h2>أمان نقاط النهاية</h2>
-        <p>مع استخدام الموظفين للأجهزة الشخصية، أصبح أمان نقاط النهاية أمراً بالغ الأهمية. تستخدم منصات حماية نقاط النهاية الحديثة الآن الذكاء الاصطناعي لاكتشاف السلوك الشاذ في الوقت الفعلي، مما يمنع الاختراقات قبل حدوثها.</p>
+        <h3>2. صيد التهديدات المدعوم بالذكاء الاصطناعي</h3>
+        <p>يستخدم المتسللون الذكاء الاصطناعي لشن هجمات أكثر تطوراً. لمواجهة ذلك، يجب على الشركات استخدام أدوات أمنية مدعومة بالذكاء الاصطناعي يمكنها اكتشاف الشذوذ في الوقت الفعلي. يمكن لهذه الأدوات تحديد "بصمات" الاختراق قبل وقت طويل من تسببه في ضرر.</p>
 
-        <h2>الامتثال والحوكمة</h2>
-        <p>البقاء متوافقاً مع اللوائح مثل GDPR والقوانين المحلية لحماية البيانات ومعايير الصناعة أصبح أكثر تعقيداً من أي وقت مضى. تساعد فوكس سيستمز المنظمات على التنقل في هذا المشهد بحلول امتثال شاملة.</p>
+        <h2>الخلاصة</h2>
+        <p>الأمن السيبراني ليس إعداداً لمرة واحدة؛ إنه عملية مستمرة من التكيف. من خلال التركيز على الهوية والاستفادة من الذكاء الاصطناعي، يمكن للشركات حماية قواها العاملة الموزعة والحفاظ على الثقة في عالم رقمي أولاً. توفر فوكس سيستمز الأدوات والخبرة اللازمة للحفاظ على أمان عملك في عام 2026 وما بعده.</p>
       `,
     }
-  },
+  }
 };
 
 export default function ArticleDetail({ articleId, language }: ArticleDetailProps) {
   const { theme } = useTheme();
+  const article = articleContent[articleId];
   const isArabic = language === "ar";
-  const article = articleContent[articleId]?.[language];
+  const langPrefix = isArabic ? "/ar" : "";
 
   if (!article) {
     return (
-      <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
-        <Header language={language} />
-        <div className="container mx-auto p-4 md:p-8 text-center py-20">
-          <h1 className="text-2xl font-bold mb-4">
-            {language === "en" ? "Article not found" : "لم يتم العثور على المقالة"}
-          </h1>
-          <Link href={isArabic ? "/ar/articles" : "/articles"}>
-            <Button>{language === "en" ? "Back to Articles" : "العودة إلى المقالات"}</Button>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
+          <Link href={`${langPrefix}/articles`}>
+            <Button>Back to Articles</Button>
           </Link>
         </div>
       </div>
     );
   }
 
-  const langPrefix = isArabic ? "/ar" : "";
+  const content = article[language];
+  const articleSchema = generateArticleSchema(content, `https://foxsystemstech.com${langPrefix}/articles/${articleId}`);
 
   return (
     <>
       <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
         <Header language={language} />
 
-        <main className="container mx-auto p-4 md:p-8">
-          <Link href={`${langPrefix}/articles`} className="inline-flex items-center gap-2 text-primary hover:underline mb-8">
-            <ArrowLeft className={`w-4 h-4 ${isArabic ? "rotate-180" : ""}`} />
-            {language === "en" ? "Back to Articles" : "العودة إلى المقالات"}
-          </Link>
+        <main className="container py-20">
+          <div className="mb-12">
+            <Link href={`${langPrefix}/articles`}>
+              <Button variant="ghost" className="gap-2">
+                <ArrowLeft className={`w-4 h-4 ${isArabic ? "rotate-180" : ""}`} />
+                {language === "en" ? "Back to Articles" : "العودة للمقالات"}
+              </Button>
+            </Link>
+          </div>
 
           <article className="max-w-3xl mx-auto">
             {/* Article header */}
             <header className="mb-8">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-xs font-semibold text-primary uppercase">
-                  {article.category}
+                  {content.category}
                 </span>
               </div>
 
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                {article.title}
+                {content.title}
               </h1>
 
               <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground border-b border-border pb-6">
                 <div className="flex items-center gap-2">
                   <User className="w-4 h-4" />
-                  <span>{article.author}</span>
+                  <span>{content.author}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
-                  <span>{article.date}</span>
+                  <span>{content.date}</span>
                 </div>
-                <span>{article.readTime}</span>
+                <span>{content.readTime}</span>
               </div>
             </header>
 
             {/* Featured image */}
             <img
-              src={article.image}
-              alt={article.title}
+              src={content.image}
+              alt={content.title}
               className="w-full h-96 object-cover rounded-lg mb-8"
             />
 
             {/* Article content */}
             <div className="prose prose-lg max-w-none mb-12 dark:prose-invert">
-        <div dangerouslySetInnerHTML={{ __html: markdownToHtml(article.content) }} />            </div>
+              <div dangerouslySetInnerHTML={{ __html: content.content }} />
+            </div>
 
             {/* Share buttons */}
+            <div className="flex items-center gap-4 py-8 border-t border-border">
+              <span className="text-sm font-bold">{language === "en" ? "Share this article:" : "شارك هذا المقال:"}</span>
               <Button variant="outline" size="sm" className="gap-2">
                 <Share2 className="w-4 h-4" />
                 {language === "en" ? "Share" : "شارك"}
@@ -320,8 +326,8 @@ export default function ArticleDetail({ articleId, language }: ArticleDetailProp
             </div>
           </div>
         </footer>
-            </div>
-      
+      </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleSchema }} />
     </>
   );
 }

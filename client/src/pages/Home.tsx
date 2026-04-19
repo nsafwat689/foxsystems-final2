@@ -403,6 +403,105 @@ export default function Home({ language }: HomeProps) {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <section className="py-24 bg-muted/30">
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div className="space-y-4">
+                <h2 className="text-4xl font-bold">{t.contactTitle}</h2>
+                <p className="text-xl text-muted-foreground">{t.contactSubtitle}</p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">{t.phone}</div>
+                    <div className="text-lg font-bold">+201557649136</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">{t.email}</div>
+                    <div className="text-lg font-bold">info@foxsystems.com</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">{t.address}</div>
+                    <div className="text-lg font-bold">{isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-8">
+                <a 
+                  href="https://wa.me/201557649136" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white rounded-xl font-bold hover:opacity-90 transition-all"
+                >
+                  <MessageCircle className="w-6 h-6" />
+                  {t.chatWhatsApp}
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-background p-8 md:p-12 rounded-3xl shadow-xl"
+            >
+              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">{t.contactName}</label>
+                    <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">{t.email}</label>
+                    <input type="email" className="w-full h-12 px-4 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">{t.companyName}</label>
+                    <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">{t.phoneWhatsApp}</label>
+                    <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t.message}</label>
+                  <textarea rows={4} className="w-full p-4 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder={t.placeholderRequirements}></textarea>
+                </div>
+                <Button className="w-full h-14 text-lg rounded-xl gap-2">
+                  <Send className="w-5 h-5" />
+                  {t.submitInquiry}
+                </Button>
+              </form>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-card border-t border-border py-20">
         <div className="container">

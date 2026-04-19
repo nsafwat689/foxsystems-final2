@@ -3,6 +3,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch, useLocation } from "wouter";
 import { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -24,8 +25,17 @@ function Router() {
   }, [location]);
 
   return (
-    <Switch>
-      {/* ===== ARABIC ROUTES (MUST BE FIRST) ===== */}
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.3 }}
+        className="bg-mesh min-h-screen"
+      >
+        <Switch location={location}>
+          {/* ===== ARABIC ROUTES (MUST BE FIRST) ===== */}
 
       {/* Arabic Home */}
       <Route path="/ar">
@@ -129,9 +139,11 @@ function Router() {
         {() => <Home language="en" />}
       </Route>
 
-      {/* 404 Not Found - Must be last */}
-      <Route component={NotFound} />
-    </Switch>
+          {/* 404 Not Found - Must be last */}
+          <Route component={NotFound} />
+        </Switch>
+      </motion.div>
+    </AnimatePresence>
   );
 }
 

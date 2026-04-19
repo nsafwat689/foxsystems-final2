@@ -73,8 +73,8 @@ const translations = {
     happyClients: "Happy Clients",
     projectsDelivered: "Projects Delivered",
     supportAvailable: "24/7 Support",
-    trustedByTitle: "Trusted By Over 360 Clients",
-    trustedByDesc: "Over 360 clients trust us with their IT infrastructure across various industries",
+    trustedByTitle: "Trusted By Over 300 Clients",
+    trustedByDesc: "Over 300 clients trust us with their IT infrastructure across various industries",
     contactTitle: "Contact Us",
     contactSubtitle: "Get in touch with our team",
     phone: "Phone",
@@ -145,8 +145,8 @@ const translations = {
     happyClients: "عملاء سعداء",
     projectsDelivered: "مشاريع منجزة",
     supportAvailable: "دعم 24/7",
-    trustedByTitle: "موثوق به من قبل أكثر من 360 عميل",
-    trustedByDesc: "أكثر من 360 عميل يثقون بنا في بنيتهم التحتية لتكنولوجيا المعلومات عبر صناعات مختلفة",
+    trustedByTitle: "موثوق به من قبل أكثر من 300 عميل",
+    trustedByDesc: "أكثر من 300 عميل يثقون بنا في بنيتهم التحتية لتكنولوجيا المعلومات عبر صناعات مختلفة",
     contactTitle: "اتصل بنا",
     contactSubtitle: "تواصل مع فريقنا",
     phone: "الهاتف",
@@ -205,7 +205,7 @@ export default function Home({ language }: HomeProps) {
 
   const stats = [
     { label: t.yearsExperience, value: "14+" },
-    { label: t.happyClients, value: "360+" },
+    { label: t.happyClients, value: "300+" },
     { label: t.projectsDelivered, value: "500+" },
     { label: t.supportAvailable, value: "24/7" },
   ];
@@ -390,10 +390,10 @@ export default function Home({ language }: HomeProps) {
             <p className="text-xl text-muted-foreground">{t.trustedByDesc}</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition-all">
-            {[1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15].map((i) => (
+            {[1, 2, 3, 4, 5, 6].map((i) => (
               <div key={i} className="flex justify-center p-4">
                 <img 
-                  src={`/clients/${i.toString().padStart(2, '0')}_${i === 1 ? 'bank_masr-BTQ0AReE.png' : i === 2 ? 'national_bank_kuwait-1O0GSd4n.webp' : i === 3 ? 'elaraby_group-sKFXhEzA.png' : i === 4 ? 'hassan_allam_holding-CFQaxSID.png' : i === 5 ? 'el_nahda_cement-DXEmYNZR.png' : i === 6 ? 'orascom_investment-DPKaxSvM.png' : i === 8 ? 'etisalat-C9KaxS7P.png' : i === 9 ? 'vodafone-D9KaxS7P.png' : i === 10 ? 'we-E9KaxS7P.png' : i === 11 ? 'tmobile-F9KaxS7P.png' : i === 12 ? 'auc-G9KaxS7P.png' : i === 13 ? 'sohag_university-H9KaxS7P.png' : i === 14 ? 'o6u-I9KaxS7P.png' : 'miu-J9KaxS7P.png'}`} 
+                  src={`/clients/${i.toString().padStart(2, '0')}_${i === 1 ? 'bank_masr-BTQ0AReE.png' : i === 2 ? 'national_bank_kuwait-1O0GSd4n.webp' : i === 3 ? 'elaraby_group-sKFXhEzA.png' : i === 4 ? 'hassan_allam_holding-CFQaxSID.png' : i === 5 ? 'el_nahda_cement-DXEmYNZR.png' : 'orascom_investment-DPKaxSvM.png'}`} 
                   alt="Client" 
                   className="h-12 md:h-16 object-contain" 
                 />

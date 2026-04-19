@@ -1,4 +1,48 @@
+# Fox Systems SEO Robots Configuration
+# Allows all search engines to crawl the website
+
 User-agent: *
 Allow: /
+Allow: /en/
+Allow: /ar/
+Allow: /services/
+Allow: /services/internet
+Allow: /services/software
+Allow: /services/hardware
+Allow: /services/cybersecurity
+Allow: /services/infrastructure
+Allow: /services/web-development
+Allow: /contact
+Allow: /articles
 
-Sitemap: https://foxsystems.vercel.app/sitemap.xml
+# Disallow private or admin pages
+Disallow: /admin
+Disallow: /private
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# Sitemap locations
+Sitemap: https://foxsystemstech.com/sitemap.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

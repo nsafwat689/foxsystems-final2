@@ -1,27 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage -->
   <url>
-    <loc>https://foxsystems.vercel.app/</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://foxsystemstech.com/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://foxsystemstech.com/" />
   </url>
+  
+  <!-- Arabic Homepage -->
   <url>
-    <loc>https://foxsystems.vercel.app/services</loc>
-    <lastmod>2026-01-11</lastmod>
+    <loc>https://foxsystemstech.com/ar</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/" />
+  </url>
+
+  <!-- English Services -->
+  <url>
+    <loc>https://foxsystemstech.com/services/internet</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/internet" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/internet" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/services/software</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/software" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/software" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/services/hardware</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/hardware" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/hardware" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/services/cybersecurity</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/cybersecurity" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/cybersecurity" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/services/infrastructure</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/infrastructure" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/infrastructure" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/services/web-development</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/web-development" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/web-development" />
+  </url>
+
+  <!-- Arabic Services -->
+  <url>
+    <loc>https://foxsystemstech.com/ar/services/internet</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/internet" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/internet" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/ar/services/software</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/software" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/software" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/ar/services/hardware</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/hardware" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/hardware" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/ar/services/cybersecurity</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/cybersecurity" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/cybersecurity" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/ar/services/infrastructure</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/infrastructure" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/infrastructure" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/ar/services/web-development</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/web-development" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/web-development" />
+  </url>
+
+  <!-- Contact Pages -->
+  <url>
+    <loc>https://foxsystemstech.com/contact</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/contact" />
   </url>
+
   <url>
-    <loc>https://foxsystems.vercel.app/about</loc>
-    <lastmod>2026-01-11</lastmod>
+    <loc>https://foxsystemstech.com/ar/contact</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/contact" />
   </url>
+
+  <!-- Articles Pages -->
   <url>
-    <loc>https://foxsystems.vercel.app/contact</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://foxsystemstech.com/articles</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles" />
   </url>
 </urlset>

@@ -1,4 +1,4 @@
-// SEO utilities for meta tags, structured data, and optimization
+import { useEffect } from "react";
 
 export interface SEOConfig {
   title: string;
@@ -12,13 +12,16 @@ export interface SEOConfig {
 }
 
 export const defaultSEOConfig: SEOConfig = {
-  title: "Fox Systems | Enterprise IT Solutions, Managed Services & Cybersecurity Egypt",
-  description: "Fox Systems - Your trusted IT solutions partner in Egypt & Middle East. 14+ years expertise in managed IT services, cybersecurity, software development, ERP implementation, infrastructure setup, and enterprise solutions for 360+ clients.",
-  keywords: "Fox Systems, Fox Systems Tech, FoxSystems, FoxSystem, IT solutions Egypt, managed IT services Cairo, cybersecurity services Egypt, software development Middle East, enterprise IT infrastructure, Odoo partner Egypt, ERP implementation Cairo, network security solutions, IT support Egypt, business technology solutions, digital transformation services",
-  ogTitle: "Fox Systems - Your Trusted IT Partner",
+  title: "Fox Systems | Enterprise IT Solutions, Managed Services & Cybersecurity in Egypt, Saudi Arabia, Kuwait & Middle East",
+  // Targeted keywords for SEO optimization
+  // Focus on high-intent IT services and regional targeting
+  description: "Fox Systems provides leading IT solutions, managed services, and cybersecurity across Egypt, Saudi Arabia, Kuwait, and the wider Middle East. Specializing in Call Center, Firewall, Security, CRM, VoIP, PC, Laptop, and comprehensive IT infrastructure.",
+  keywords: "Fox Systems, Fox Systems Tech, FoxSystems, FoxSystem, IT solutions Egypt, managed IT services Cairo, cybersecurity services Egypt, software development Middle East, enterprise IT infrastructure, Odoo partner Egypt, ERP implementation Cairo, network security solutions, IT support Egypt, business technology solutions, digital transformation services, Call Center solutions Egypt, Firewall services KSA, Security solutions Kuwait, CRM systems Middle East, VoIP services Egypt, PC support, Laptop repair, IT consulting, IT services Saudi Arabia, IT services Kuwait, enterprise IT, IT infrastructure, network solutions, data security, cloud services, managed IT, IT support, business IT, technology solutions, digital transformation, IT consulting, IT services, IT support, IT solutions, IT services Middle East, IT services Egypt, IT services Saudi Arabia, IT services Kuwait, Call Center, Firewall, Security, CRM, VoIP, PC, Laptop, IT, IT field, IT solutions, IT services, IT support, IT consulting, IT infrastructure, network solutions, data security, cloud services, managed IT, business IT, technology solutions, digital transformation",
+  ogTitle: "Fox Systems | Leading IT Solutions in Egypt, KSA, Kuwait & Middle East",
+  // Ensure canonical URL is correct for the main domain
   ogDescription: "Enterprise IT Solutions for Egypt, Middle East, and Global Markets",
   ogImage: "https://foxsystemstech.com/og-image.jpg",
-  canonicalUrl: "https://foxsystemstech.com",
+  canonicalUrl: "https://foxsystemstech.com/",
   language: "en",
 };
 
@@ -35,177 +38,156 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
   },
 
   internet: {
-    title: "Corporate Internet Services | Leased Line, Microwave, WiMAX, VPN - Egypt",
-    description: "High-performance corporate internet services in Egypt & Middle East. Fiber Leased Line, Microwave, WiMAX, VPN solutions, Static IP, and Call Center connectivity for multi-branch companies. 24/7 support.",
-    keywords: "corporate internet services Egypt, leased line Cairo, microwave internet Egypt, WiMAX solutions, VPN services Middle East, static IP addresses, call center connectivity, internet connectivity Egypt, Fox Systems internet services, high-speed fiber Egypt",
-    ogTitle: "Corporate Internet Services",
-    ogDescription: "Reliable high-speed connectivity for your business",
+    title: "Corporate Internet Services | Leased Line, Microwave, WiMAX, VPN - Egypt, KSA, Kuwait",
+    description: "High-performance corporate internet services in Egypt, Saudi Arabia, Kuwait & Middle East. Fiber Leased Line, Microwave, WiMAX, VPN solutions, Static IP, and Call Center connectivity for multi-branch companies. 24/7 support for your IT infrastructure.",
+    keywords: "corporate internet services Egypt, leased line Cairo, microwave internet Egypt, WiMAX solutions, VPN services Middle East, static IP addresses, call center connectivity, internet connectivity Egypt, Fox Systems internet services, high-speed fiber Egypt, internet services Saudi Arabia, internet services Kuwait, IT infrastructure, network solutions, VoIP connectivity, business internet, dedicated internet access, enterprise internet",
+    ogTitle: "Corporate Internet Services - Fox Systems",
+    ogDescription: "Reliable high-speed connectivity for your business in Egypt, KSA, Kuwait",
     ogImage: "https://foxsystemstech.com/services/internet-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/services/internet",
     language: "en",
   },
   software: {
-    title: "ERP Implementation & Custom Software Solutions | Odoo Partner Egypt",
-    description: "Professional ERP implementation, custom software development, and Odoo solutions in Egypt. Tailored business applications, IT management systems, and enterprise software for SMEs and corporations.",
-    keywords: "ERP implementation Egypt, Odoo partner Cairo, custom software development Egypt, business management software, enterprise applications, IT management solutions, Odoo implementation services, software solutions Middle East, business process automation",
-    ogTitle: "Software Solutions & ERP",
-    ogDescription: "Enterprise software tailored to your business needs",
+    title: "CRM & Software Solutions | ERP, Odoo, Custom Applications - Egypt, KSA, Kuwait",
+    description: "Tailored CRM systems, ERP implementation, and custom software development to streamline your business in Egypt, Saudi Arabia, and Kuwait. Professional Odoo implementation and IT management solutions for enterprises.",
+    keywords: "CRM systems Egypt, ERP implementation Cairo, Odoo partner Egypt, custom software development Egypt, IT management solutions, software development Saudi Arabia, software development Kuwait, CRM solutions KSA, enterprise software, business automation, CRM implementation, ERP solutions, custom apps, IT management, software services, business software",
+    ogTitle: "CRM & Software Solutions - Fox Systems",
+    ogDescription: "Streamline your business with custom software in Egypt, KSA, Kuwait",
     ogImage: "https://foxsystemstech.com/services/software-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/services/software",
     language: "en",
   },
   hardware: {
-    title: "Enterprise Hardware Solutions | Servers, Firewalls, Networking - Egypt",
-    description: "Enterprise-grade hardware solutions in Egypt & Middle East. Servers, PCs, laptops, firewalls, networking devices from Dell, HP, Cisco, Huawei. Professional installation and 24/7 support.",
-    keywords: "enterprise hardware Egypt, servers Cairo, networking devices Egypt, firewall solutions, Dell servers Egypt, Cisco networking, hardware installation Egypt, IT equipment suppliers, data center hardware, Fox Systems hardware solutions",
-    ogTitle: "Enterprise Hardware Solutions",
-    ogDescription: "Quality hardware for your IT infrastructure",
+    title: "IT Hardware Solutions | Servers, PCs, Laptops, Networking - Egypt, KSA, Kuwait",
+    description: "Enterprise-grade servers, high-performance PCs, and laptops with professional setup and maintenance in Egypt, Saudi Arabia, and Kuwait. Reliable hardware solutions for your IT infrastructure and business needs.",
+    keywords: "IT hardware Egypt, servers Cairo, business laptops Egypt, PC support Cairo, networking devices, IT hardware Saudi Arabia, IT hardware Kuwait, server setup, enterprise hardware, business computers, laptop repair, hardware maintenance, IT equipment, networking hardware, computer systems, hardware solutions",
+    ogTitle: "IT Hardware Solutions - Fox Systems",
+    ogDescription: "Reliable servers, PCs, and laptops for your business in Egypt, KSA, Kuwait",
     ogImage: "https://foxsystemstech.com/services/hardware-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/services/hardware",
     language: "en",
   },
   cybersecurity: {
-    title: "Cybersecurity Services | Firewalls, Endpoint Protection, Backup - Egypt",
-    description: "Advanced cybersecurity solutions in Egypt & Middle East. Firewall protection, endpoint security, 24/7 monitoring, data backup, disaster recovery, and threat detection for enterprises.",
-    keywords: "cybersecurity services Egypt, firewall protection Cairo, endpoint security solutions, cyber threat detection, data backup services, disaster recovery Egypt, network security Egypt, ransomware protection, security monitoring, Fox Systems cybersecurity",
-    ogTitle: "Cybersecurity & Protection",
-    ogDescription: "Advanced security solutions for your business",
+    title: "Firewall & Cybersecurity Solutions | Network Protection - Egypt, KSA, Kuwait",
+    description: "Advanced Firewall solutions, endpoint security, and 24/7 monitoring to protect your business from cyber threats in Egypt, Saudi Arabia, and Kuwait. Comprehensive security audits and data protection services.",
+    keywords: "firewall solutions Egypt, network security Cairo, cybersecurity services Egypt, endpoint protection, security monitoring, firewall KSA, cybersecurity Kuwait, data protection, threat detection, network safety, security audits, cyber defense, information security, managed security, security solutions",
+    ogTitle: "Firewall & Cybersecurity Solutions - Fox Systems",
+    ogDescription: "Protect your business from cyber threats in Egypt, KSA, Kuwait",
     ogImage: "https://foxsystemstech.com/services/cybersecurity-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/services/cybersecurity",
     language: "en",
   },
   infrastructure: {
-    title: "IT Infrastructure Setup & Data Center Solutions | Egypt & Middle East",
-    description: "Complete IT infrastructure design, network setup, data center solutions, and cabling services in Egypt. Professional installation, configuration, and 24/7 maintenance for enterprise networks.",
-    keywords: "IT infrastructure setup Egypt, network configuration Cairo, data center solutions, network cabling Egypt, infrastructure design services, enterprise network setup, data center design, network infrastructure, Fox Systems infrastructure services",
-    ogTitle: "Network & IT Infrastructure",
-    ogDescription: "Robust infrastructure for business continuity",
+    title: "Network & IT Infrastructure | Data Center Solutions - Egypt, KSA, Kuwait",
+    description: "Complete IT infrastructure setup, data center solutions, and network cabling for enterprises in Egypt, Saudi Arabia, and Kuwait. Reliable network design and infrastructure management services.",
+    keywords: "IT infrastructure Egypt, data center solutions Cairo, network cabling Egypt, infrastructure management, network design, IT infrastructure Saudi Arabia, IT infrastructure Kuwait, server room setup, network setup, infrastructure services, enterprise networking, data center management, network infrastructure, IT solutions",
+    ogTitle: "Network & IT Infrastructure - Fox Systems",
+    ogDescription: "Robust IT infrastructure for your business in Egypt, KSA, Kuwait",
     ogImage: "https://foxsystemstech.com/services/infrastructure-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/services/infrastructure",
     language: "en",
   },
   "web-development": {
-    title: "Website Development & Design | SEO, UI/UX, Mobile-Responsive - Egypt",
-    description: "Professional website development in Egypt & Middle East. Custom design, UI/UX optimization, SEO-friendly, mobile-responsive, multi-language support, and e-commerce solutions for businesses.",
-    keywords: "website development Egypt, web design Cairo, UI/UX design services, SEO-optimized websites, responsive web design, e-commerce development, website redesign Egypt, web development company Egypt, digital presence solutions, Fox Systems web development",
-    ogTitle: "Website Development & Design",
-    ogDescription: "Modern websites that drive business growth",
+    title: "SEO-Optimized Web Development | UI/UX Design - Egypt, KSA, Kuwait",
+    description: "Mobile-responsive, SEO-optimized websites designed to rank first in Google search for IT services in Egypt, Saudi Arabia, and Kuwait. Professional UI/UX design and multi-language support for corporate websites.",
+    keywords: "web development Egypt, SEO optimization Cairo, UI/UX design Egypt, corporate websites, mobile-responsive web design, web development Saudi Arabia, web development Kuwait, SEO services KSA, website design, digital presence, web solutions, professional websites, SEO strategy, web design services, custom web development",
+    ogTitle: "SEO-Optimized Web Development - Fox Systems",
+    ogDescription: "Rank first in Google with our SEO-optimized websites in Egypt, KSA, Kuwait",
     ogImage: "https://foxsystemstech.com/services/web-development-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/services/web-development",
     language: "en",
   },
-  contact: {
-    title: "Contact Fox Systems | Get IT Solutions Support in Egypt & Middle East",
-    description: "Contact Fox Systems for enterprise IT solutions, managed services, and technical support in Egypt and the Middle East. Call +201557649136.",
-    keywords: "contact Fox Systems, IT support Egypt, technical support, managed services contact, Fox Systems address",
-    ogTitle: "Contact Us - Fox Systems",
-    ogDescription: "Get in touch with our IT solutions team",
-    ogImage: "https://foxsystemstech.com/contact-og.jpg",
-    canonicalUrl: "https://foxsystemstech.com/contact",
-    language: "en",
-  },
 };
 
-export const arabicSEOConfigs: Record<string, any> = {
+export const arabicSEOConfigs: Record<string, SEOConfig> = {
   home: {
-    title: "Fox Systems | حلول تكنولوجيا المعلومات للمؤسسات والخدمات المدارة في مصر والشرق الأوسط",
-    description: "توفر Fox Systems (Fox Systems Tech) حلول تكنولوجيا المعلومات المتكاملة، بما في ذلك الأمن السيبراني، وتطوير البرمجيات، وإعداد البنية التحتية، والخدمات المدارة للشركات في مصر والشرق الأوسط.",
-    keywords: "فوكس سيستمز، فوكس سيستمز تك، حلول تكنولوجيا المعلومات مصر، الخدمات المدارة، الأمن السيبراني الشرق الأوسط، تطوير البرمجيات، البنية التحتية للمؤسسات، شريك أودو مصر",
-    ogTitle: "Fox Systems - شريكك التقني الموثوق",
+    title: "فوكس سيستمز | حلول تكنولوجيا المعلومات المتكاملة، الخدمات المدارة والأمن السيبراني - مصر، السعودية، الكويت",
+    description: "تقدم فوكس سيستمز حلول تكنولوجيا المعلومات الرائدة، والخدمات المدارة، والأمن السيبراني في مصر، السعودية، الكويت، والشرق الأوسط. متخصصون في مراكز الاتصال، جدران الحماية، أنظمة CRM، وVoIP.",
+    keywords: "فوكس سيستمز، تكنولوجيا المعلومات مصر، خدمات مدارة القاهرة، أمن سيبراني مصر، تطوير برمجيات الشرق الأوسط، بنية تحتية للمؤسسات، شريك أودو مصر، تنفيذ ERP، حلول أمن الشبكات، دعم فني مصر، حلول تكنولوجيا الأعمال، خدمات التحول الرقمي، حلول كول سنتر مصر، خدمات جدار الحماية السعودية، حلول أمنية الكويت، أنظمة CRM الشرق الأوسط، خدمات VoIP مصر، دعم الكمبيوتر، صيانة اللابتوب، استشارات تقنية، خدمات تكنولوجيا المعلومات السعودية، خدمات تكنولوجيا المعلومات الكويت، تكنولوجيا المؤسسات، بنية تحتية تقنية، حلول الشبكات، أمن البيانات، خدمات سحابية، تكنولوجيا مدارة، دعم تقني، أعمال تقنية، حلول تكنولوجية، تحول رقمي، استشارات تقنية، خدمات تقنية، دعم تقني، حلول تقنية، خدمات تقنية الشرق الأوسط، خدمات تقنية مصر، خدمات تقنية السعودية، خدمات تقنية الكويت، كول سنتر، جدار حماية، أمن، CRM، VoIP، كمبيوتر، لابتوب، تقنية، مجال التقنية، حلول تقنية، خدمات تقنية، دعم تقني، استشارات تقنية، بنية تحتية تقنية، حلول الشبكات، أمن البيانات، خدمات سحابية، تكنولوجيا مدارة، أعمال تقنية، حلول تكنولوجية، تحول رقمي",
+    ogTitle: "فوكس سيستمز | حلول تكنولوجيا المعلومات الرائدة في مصر، السعودية، الكويت والشرق الأوسط",
     ogDescription: "حلول تكنولوجيا المعلومات للمؤسسات في مصر والشرق الأوسط والأسواق العالمية",
     ogImage: "https://foxsystemstech.com/og-image.jpg",
     canonicalUrl: "https://foxsystemstech.com/ar",
     language: "ar",
   },
-  articles: {
-    title: "المقالات | رؤى وموارد - Fox Systems",
-    description: "ابقَ على اطلاع بأحدث المقالات والرؤى والموارد حول حلول تكنولوجيا المعلومات والأمن السيبراني وVoIP والمزيد من Fox Systems.",
-    keywords: "مقالات تكنولوجيا المعلومات, رؤى الأمن السيبراني, موارد VoIP, مدونة تقنية, أخبار Fox Systems",
-    ogTitle: "المقالات - Fox Systems",
-    ogDescription: "أحدث الرؤى والموارد حول حلول تكنولوجيا المعلومات",
-    ogImage: "https://foxsystemstech.com/articles-og.jpg",
-    canonicalUrl: "https://foxsystemstech.com/ar/articles",
+  services: {
+    title: "خدماتنا | حلول تكنولوجيا المعلومات المتكاملة - مصر، السعودية، الكويت",
+    description: "استكشف مجموعة Fox Systems الشاملة من خدمات تكنولوجيا المعلومات، بما في ذلك مراكز الاتصال، CRM، VoIP، الإنترنت للشركات، والبرمجيات، والأجهزة، والأمن السيبراني، والبنية التحتية، وتطوير المواقع في مصر والسعودية والكويت.",
+    keywords: "خدمات تكنولوجيا المعلومات مصر، حلول الشبكات، خدمات الأمن السيبراني، تطوير البرمجيات، البنية التحتية لتكنولوجيا المعلومات، حلول كول سنتر، أنظمة CRM، خدمات VoIP، خدمات تقنية السعودية، خدمات تقنية الكويت",
+    ogTitle: "خدماتنا - فوكس سيستمز",
+    ogDescription: "حلول تكنولوجيا المعلومات المتكاملة لعملك في مصر، السعودية، الكويت",
+    ogImage: "https://foxsystemstech.com/services-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/services",
     language: "ar",
   },
-
+  contact: {
+    title: "اتصل بـ فوكس سيستمز | دعم حلول تكنولوجيا المعلومات في مصر، السعودية، الكويت",
+    description: "اتصل بـ فوكس سيستمز للحصول على حلول تكنولوجيا المعلومات للمؤسسات، والخدمات المدارة، والدعم الفني في مصر، السعودية، الكويت والشرق الأوسط. اتصل بنا اليوم.",
+    keywords: "اتصل بـ فوكس سيستمز، دعم تكنولوجيا المعلومات مصر، الدعم الفني، الاتصال بالخدمات المدارة، عنوان فوكس سيستمز، دعم تقني السعودية، دعم تقني الكويت",
+    ogTitle: "اتصل بنا - فوكس سيستمز",
+    ogDescription: "نحن هنا لمساعدتك في حلول تكنولوجيا المعلومات في مصر والشرق الأوسط",
+    ogImage: "https://foxsystemstech.com/contact-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/contact",
+    language: "ar",
+  },
   internet: {
-    title: "خدمات الإنترنت للشركات | خطوط مؤجرة، ميكروويف - Fox Systems مصر",
-    description: "خدمات إنترنت عالية الأداء للشركات تشمل خطوط مؤجرة، ميكروويف، WiMAX وحلول VPN للشركات متعددة الفروع في مصر والشرق الأوسط.",
-    keywords: "خدمات الإنترنت للشركات مصر, خطوط مؤجرة, ميكروويف, WiMAX, حلول VPN, فوكس سيستمز إنترنت",
-    ogTitle: "خدمات الإنترنت للشركات",
-    ogDescription: "اتصال موثوق عالي السرعة لعملك",
+    title: "خدمات الإنترنت وVoIP للشركات | اتصال عالي الأداء - مصر، السعودية، الكويت",
+    description: "خدمات إنترنت احترافية وحلول VoIP في مصر، السعودية، الكويت والشرق الأوسط. تشمل الخطوط المؤجرة، الميكروويف، وخدمات VPN المخصصة لمراكز الاتصال والشركات الكبرى.",
+    keywords: "إنترنت الشركات مصر، خطوط مؤجرة القاهرة، ميكروويف إنترنت مصر، حلول VPN الشرق الأوسط، خدمات VoIP مصر، ربط مراكز الاتصال، إنترنت الشركات السعودية، إنترنت الشركات الكويت، بنية تحتية للشبكات، حلول الربط، إنترنت فائق السرعة، خدمات الإنترنت فوكس سيستمز، اتصالات المؤسسات، حلول الشبكات المدارة، إنترنت مخصص للأعمال",
+    ogTitle: "خدمات الإنترنت وVoIP للشركات - فوكس سيستمز",
+    ogDescription: "اتصال موثوق وعالي السرعة لعملك في مصر، السعودية، الكويت",
     ogImage: "https://foxsystemstech.com/services/internet-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/ar/services/internet",
     language: "ar",
   },
   software: {
-    title: "حلول البرمجيات وتطبيق ERP | شريك أودو في مصر - Fox Systems",
-    description: "أنظمة ERP مخصصة، تطبيقات مخصصة، حلول إدارة تكنولوجيا المعلومات، وتطبيق أودو بالكامل كشريك رسمي في مصر والشرق الأوسط.",
-    keywords: "حلول البرمجيات مصر، تطبيق ERP، شريك أودو، تطبيقات مخصصة، برامج إدارة تكنولوجيا المعلومات، فوكس سيستمز برمجيات",
-    ogTitle: "حلول البرمجيات وERP",
-    ogDescription: "برمجيات المؤسسات المصممة خصيصاً لاحتياجات عملك",
+    title: "حلول CRM والبرمجيات | ERP، Odoo، تطبيقات مخصصة - مصر، السعودية، الكويت",
+    description: "أنظمة CRM مخصصة، تنفيذ ERP، وتطوير برمجيات مخصصة لتبسيط أعمالك في مصر، السعودية، والكويت. تنفيذ احترافي لنظام Odoo وحلول إدارة تكنولوجيا المعلومات للمؤسسات.",
+    keywords: "أنظمة CRM مصر، تنفيذ ERP القاهرة، شريك أودو مصر، تطوير برمجيات مخصصة مصر، حلول إدارة التقنية، تطوير برمجيات السعودية، تطوير برمجيات الكويت، حلول CRM السعودية، برمجيات المؤسسات، أتمتة الأعمال، تنفيذ CRM، حلول ERP، تطبيقات مخصصة، إدارة تقنية المعلومات، خدمات البرمجيات، برمجيات الأعمال",
+    ogTitle: "حلول CRM والبرمجيات - فوكس سيستمز",
+    ogDescription: "بسط أعمالك مع البرمجيات المخصصة في مصر، السعودية، الكويت",
     ogImage: "https://foxsystemstech.com/services/software-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/ar/services/software",
     language: "ar",
   },
   hardware: {
-    title: "حلول أجهزة المؤسسات | الخوادم، أجهزة الشبكات - Fox Systems مصر",
-    description: "خوادم موثوقة من فئة المؤسسات، أجهزة كمبيوتر، أجهزة لاب توب، جدران حماية، وأجهزة شبكات من الشركات المصنعة الرائدة للشركات في مصر والشرق الأوسط.",
-    keywords: "أجهزة المؤسسات مصر، خوادم، أجهزة شبكات، جدران حماية، حلول الأجهزة الشرق الأوسط، فوكس سيستمز أجهزة",
-    ogTitle: "حلول أجهزة المؤسسات",
-    ogDescription: "أجهزة عالية الجودة لبنيتك التحتية لتكنولوجيا المعلومات",
+    title: "أجهزة تكنولوجيا المعلومات | خوادم، كمبيوتر، لابتوب - مصر، السعودية، الكويت",
+    description: "خوادم من فئة المؤسسات، أجهزة كمبيوتر عالية الأداء، وأجهزة لابتوب مع تركيب وصيانة احترافية في مصر، السعودية، والكويت. حلول أجهزة موثوقة لبنيتك التحتية واحتياجات عملك.",
+    keywords: "أجهزة تقنية مصر، خوادم القاهرة، لابتوب أعمال مصر، دعم الكمبيوتر القاهرة، أجهزة الشبكات، أجهزة تقنية السعودية، أجهزة تقنية الكويت، تركيب خوادم، أجهزة المؤسسات، كمبيوتر أعمال، صيانة لابتوب، معدات تقنية، أجهزة حاسوب، حلول الأجهزة فوكس سيستمز، توريد أجهزة تقنية",
+    ogTitle: "أجهزة تكنولوجيا المعلومات - فوكس سيستمز",
+    ogDescription: "خوادم وأجهزة كمبيوتر ولابتوب موثوقة لعملك في مصر، السعودية، الكويت",
     ogImage: "https://foxsystemstech.com/services/hardware-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/ar/services/hardware",
     language: "ar",
   },
   cybersecurity: {
-    title: "حلول الأمن السيبراني والحماية | جدران الحماية، حماية النقاط النهائية - Fox Systems",
-    description: "حلول جدران الحماية المتقدمة، حماية النقاط النهائية، المراقبة، النسخ الاحتياطي، وأنظمة التعافي من الكوارث للشركات في مصر والشرق الأوسط.",
-    keywords: "حلول الأمن السيبراني مصر، حماية جدار الحماية، أمن النقاط النهائية، الحماية من التهديدات السيبرانية، النسخ الاحتياطي للبيانات، فوكس سيستمز أمن",
-    ogTitle: "الأمن السيبراني والحماية",
-    ogDescription: "حلول أمنية متقدمة لعملك",
+    title: "خدمات الأمن السيبراني | جدران الحماية، حماية النقاط النهائية، النسخ الاحتياطي - مصر، السعودية، الكويت",
+    description: "حلول أمن سيبراني متقدمة في مصر، السعودية، الكويت والشرق الأوسط. نقدم حماية قوية لجدران الحماية، أمن النقاط النهائية، مراقبة 24/7، النسخ الاحتياطي للبيانات، التعافي من الكوارث، واكتشاف التهديدات المتقدمة للمؤسسات.",
+    keywords: "خدمات الأمن السيبراني مصر، حماية جدار الحماية القاهرة، حلول أمن النقاط النهائية، اكتشاف التهديدات السيبرانية، خدمات النسخ الاحتياطي للبيانات، التعافي من الكوارث مصر، أمن الشبكات مصر، الحماية من برامج الفدية، مراقبة الأمن، الأمن السيبراني فوكس سيستمز، الأمن السيبراني السعودية، الأمن السيبراني الكويت، حماية البيانات، استخبارات التهديدات، خدمات الأمن المدارة، استشارات أمن تكنولوجيا المعلومات",
+    ogTitle: "الأمن السيبراني والحماية - فوكس سيستمز",
+    ogDescription: "حلول أمنية متقدمة لعملك في مصر، السعودية، الكويت",
     ogImage: "https://foxsystemstech.com/services/cybersecurity-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/ar/services/cybersecurity",
     language: "ar",
   },
   infrastructure: {
-    title: "إعداد الشبكة والبنية التحتية لتكنولوجيا المعلومات | مراكز البيانات - Fox Systems مصر",
-    description: "إعداد كامل للشبكة، التكوين، الكابلات، مراكز البيانات، والصيانة المصممة للسرعة والاستقرار في مصر والشرق الأوسط.",
-    keywords: "إعداد البنية التحتية لتكنولوجيا المعلومات مصر، تكوين الشبكة، إعداد مركز البيانات، كابلات الشبكة، تصميم البنية التحتية، فوكس سيستمز بنية تحتية",
-    ogTitle: "الشبكة والبنية التحتية لتكنولوجيا المعلومات",
-    ogDescription: "بنية تحتية قوية لاستمرارية العمل",
+    title: "إعداد البنية التحتية لتكنولوجيا المعلومات ومراكز البيانات | مصر، السعودية، الكويت",
+    description: "تصميم كامل للبنية التحتية لتكنولوجيا المعلومات، إعداد الشبكات، حلول مراكز البيانات، وخدمات الكابلات في مصر، السعودية، والكويت. تركيب احترافي، تكوين، وصيانة 24/7 لشبكات المؤسسات في الشرق الأوسط.",
+    keywords: "إعداد البنية التحتية لتكنولوجيا المعلومات مصر، تكوين الشبكة القاهرة، حلول مراكز البيانات، كابلات الشبكة مصر، خدمات تصميم البنية التحتية، إعداد شبكات المؤسسات، تصميم مراكز البيانات، البنية التحتية للشبكات، خدمات البنية التحتية فوكس سيستمز، البنية التحتية لتكنولوجيا المعلومات السعودية، البنية التحتية لتكنولوجيا المعلومات الكويت، حلول مراكز البيانات الشرق الأوسط، حلول الشبكات، الكابلات المنظمة، تصميم شبكات تكنولوجيا المعلومات، إعداد غرف الخوادم، إدارة البنية التحتية لتكنولوجيا المعلومات",
+    ogTitle: "الشبكة والبنية التحتية لتكنولوجيا المعلومات - فوكس سيستمز",
+    ogDescription: "بنية تحتية قوية لاستمرارية العمل في مصر، السعودية، الكويت",
     ogImage: "https://foxsystemstech.com/services/infrastructure-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/ar/services/infrastructure",
     language: "ar",
   },
   "web-development": {
-    title: "تطوير وتصميم المواقع الإلكترونية | UI/UX، محسن لمحركات البحث - Fox Systems مصر",
-    description: "مواقع شركات احترافية مع تصميم UI/UX، متوافقة مع الهاتف المحمول، تحسين محركات البحث، ودعم لغات متعددة للشركات في مصر والشرق الأوسط.",
-    keywords: "تطوير المواقع مصر، تصميم المواقع، تصميم UI/UX، مواقع محسنة لمحركات البحث، تصميم مواقع متجاوب، فوكس سيستمز تطوير مواقع",
-    ogTitle: "تطوير وتصميم المواقع الإلكترونية",
-    ogDescription: "مواقع حديثة تدفع نمو الأعمال",
+    title: "تطوير وتصميم المواقع الإلكترونية | SEO، UI/UX، متجاوب - مصر، السعودية، الكويت",
+    description: "تطوير مواقع إلكترونية احترافية في مصر، السعودية، الكويت والشرق الأوسط. تصميم مخصص، تحسين UI/UX، متوافق مع محركات البحث (SEO)، متجاوب مع الجوال، دعم متعدد اللغات، وحلول التجارة الإلكترونية للشركات. عزز حضورك الرقمي مع فوكس سيستمز.",
+    keywords: "تطوير المواقع مصر، تصميم الويب القاهرة، خدمات تصميم UI/UX، مواقع محسنة لمحركات البحث، تصميم ويب متجاوب، تطوير التجارة الإلكترونية، إعادة تصميم المواقع مصر، شركة تطوير الويب مصر، حلول الحضور الرقمي، تطوير الويب فوكس سيستمز، تطوير الويب السعودية، تطوير الويب الكويت، حلول ويب مخصصة، تصميم UI/UX الشرق الأوسط، تطوير تطبيقات الجوال، التسويق الرقمي، الحضور عبر الإنترنت",
+    ogTitle: "تطوير وتصميم المواقع الإلكترونية - فوكس سيستمز",
+    ogDescription: "مواقع حديثة تدفع نمو الأعمال في مصر، السعودية، الكويت",
     ogImage: "https://foxsystemstech.com/services/web-development-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/ar/services/web-development",
-    language: "ar",
-  },
-  contact: {
-    title: "اتصل بـ Fox Systems | الحصول على دعم حلول تكنولوجيا المعلومات في مصر والشرق الأوسط",
-    description: "اتصل بـ Fox Systems للحصول على حلول تكنولوجيا المعلومات للمؤسسات، والخدمات المدارة، والدعم الفني في مصر والشرق الأوسط. اتصل على +201557649136.",
-    keywords: "اتصل بـ Fox Systems، دعم تكنولوجيا المعلومات مصر، الدعم الفني، الاتصال بالخدمات المدارة، عنوان Fox Systems",
-    ogTitle: "اتصل بنا - Fox Systems",
-    ogDescription: "تواصل مع فريق حلول تكنولوجيا المعلومات لدينا",
-    ogImage: "https://foxsystemstech.com/contact-og.jpg",
-    canonicalUrl: "https://foxsystemstech.com/ar/contact",
-    language: "ar",
-  },
-  services: {
-    title: "خدماتنا | حلول تكنولوجيا المعلومات المتكاملة - Fox Systems",
-    description: "استكشف مجموعة Fox Systems الشاملة من خدمات تكنولوجيا المعلومات، بما في ذلك الإنترنت للشركات، والبرمجيات، والأجهزة، والأمن السيبراني، والبنية التحتية، وتطوير المواقع.",
-    keywords: "خدمات تكنولوجيا المعلومات مصر، حلول الشبكات، خدمات الأمن السيبراني، تطوير البرمجيات، البنية التحتية لتكنولوجيا المعلومات",
-    ogTitle: "خدماتنا - Fox Systems",
-    ogDescription: "حلول تكنولوجيا المعلومات المتكاملة لعملك",
-    ogImage: "https://foxsystemstech.com/services-og.jpg",
-    canonicalUrl: "https://foxsystemstech.com/ar/services",
     language: "ar",
   },
 };
@@ -270,15 +252,18 @@ export function generateOrganizationSchema() {
     "name": "Fox Systems",
     "url": "https://foxsystemstech.com",
     "logo": "https://foxsystemstech.com/logo.jpg",
-    "description": "Enterprise IT Solutions & Managed Services Provider",
+    "description": "Leading provider of enterprise IT solutions, managed services, cybersecurity, and software development across Egypt, Saudi Arabia, Kuwait, and the Middle East.",
     "telephone": "+201557649136",
     "email": "info@foxsystems.com",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Cairo",
+      "addressLocality": "Cairo",
       "addressCountry": "EG"
     },
-    "areaServed": ["EG", "ME", "NA"],
-    "sameAs": ["https://www.linkedin.com/company/fox-systems"]
+    "areaServed": ["EG", "SA", "KW", "AE", "OM", "QA", "BH"],
+    "knowsAbout": ["IT Solutions", "Managed IT Services", "Cybersecurity", "Call Center Solutions", "Firewall Protection", "CRM Systems", "VoIP Services", "Hardware Solutions", "Software Development", "ERP Implementation", "Network Infrastructure", "Data Center Solutions"],
+    "sameAs": ["https://www.linkedin.com/company/fox-systems", "https://www.facebook.com/foxsystems", "https://twitter.com/foxsystems"]
   });
 }
 
@@ -288,6 +273,7 @@ export function generateWebSiteSchema() {
     "@type": "WebSite",
     "name": "Fox Systems",
     "url": "https://foxsystemstech.com",
+    "inLanguage": ["en", "ar"],
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://foxsystemstech.com/search?q={search_term_string}",
@@ -302,24 +288,26 @@ export function generateServiceSchema(name: string, description: string, url: st
     "@type": "Service",
     "name": name,
     "description": description,
-    "url": url,
     "provider": {
       "@type": "Organization",
       "name": "Fox Systems"
-    }
+    },
+    "url": url,
+    "areaServed": ["EG", "SA", "KW"]
   });
 }
 
-export function generateArticleSchema(article: any, url: string) {
+export function generateArticleSchema(article: { title: string; description: string; image: string; date: string; author: string; url: string }) {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": article.title,
-    "description": article.excerpt,
+    "description": article.description,
     "image": article.image,
+    "datePublished": article.date,
     "author": {
-      "@type": "Organization",
-      "name": "Fox Systems"
+      "@type": "Person",
+      "name": article.author
     },
     "publisher": {
       "@type": "Organization",
@@ -329,7 +317,9 @@ export function generateArticleSchema(article: any, url: string) {
         "url": "https://foxsystemstech.com/logo.jpg"
       }
     },
-    "datePublished": article.date,
-    "url": url
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": article.url
+    }
   });
 }

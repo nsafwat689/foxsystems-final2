@@ -9,6 +9,7 @@ interface SEOHeadProps {
 
 export default function SEOHead({ config, organizationSchema = true, additionalSchema }: SEOHeadProps) {
   useEffect(() => {
+    if (!config) return;
     // Update all meta tags
     updateMetaTags(config);
 
@@ -48,7 +49,9 @@ export default function SEOHead({ config, organizationSchema = true, additionalS
     }
 
     // Add hreflang tags for multilingual support
-    addHrefLangTags(config.canonicalUrl, config.language);
+    if (config.canonicalUrl) {
+      addHrefLangTags(config.canonicalUrl, config.language);
+    }
   }, [config, organizationSchema, additionalSchema]);
 
   return null;

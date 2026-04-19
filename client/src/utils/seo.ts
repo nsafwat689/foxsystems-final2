@@ -198,6 +198,16 @@ export const arabicSEOConfigs: Record<string, any> = {
     canonicalUrl: "https://foxsystemstech.com/ar/contact",
     language: "ar",
   },
+  services: {
+    title: "خدماتنا | حلول تكنولوجيا المعلومات المتكاملة - Fox Systems",
+    description: "استكشف مجموعة Fox Systems الشاملة من خدمات تكنولوجيا المعلومات، بما في ذلك الإنترنت للشركات، والبرمجيات، والأجهزة، والأمن السيبراني، والبنية التحتية، وتطوير المواقع.",
+    keywords: "خدمات تكنولوجيا المعلومات مصر، حلول الشبكات، خدمات الأمن السيبراني، تطوير البرمجيات، البنية التحتية لتكنولوجيا المعلومات",
+    ogTitle: "خدماتنا - Fox Systems",
+    ogDescription: "حلول تكنولوجيا المعلومات المتكاملة لعملك",
+    ogImage: "https://foxsystemstech.com/services-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/services",
+    language: "ar",
+  },
 };
 
 export function updateMetaTags(config: SEOConfig) {

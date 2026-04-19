@@ -131,9 +131,11 @@ export default function Header({ language }: HeaderProps) {
                   className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary outline-none cursor-pointer ${
                     location.includes("/services") ? "text-primary font-semibold" : "text-foreground"
                   }`}
-                  onClick={(e) => {
-                    // Allow dropdown to work, but also allow direct navigation
-                    e.preventDefault();
+                  onClick={() => {
+                    // Allow dropdown to work, but also allow direct navigation on double click or context
+                    if (location !== `${langPrefix}/services`) {
+                      setLocation(`${langPrefix}/services`);
+                    }
                   }}
                 >
                   {t.services}

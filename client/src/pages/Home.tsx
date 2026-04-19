@@ -1,6 +1,6 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import SEOHead from "@/components/SEOHead";
 import { defaultSEOConfig, arabicSEOConfigs } from "@/utils/seo";
@@ -15,11 +15,9 @@ import {
   Server,
   Zap,
   Users,
-  CheckCircle,
   Clock,
   Lock,
   ArrowRight,
-  ChevronDown,
   Briefcase,
   Lightbulb,
   MapPin,
@@ -97,6 +95,9 @@ const translations = {
     contact: "Contact",
     privacyPolicy: "Privacy Policy",
     termsOfUse: "Terms of Use",
+    about: "About",
+    careers: "Careers",
+    team: "Team",
   },
   ar: {
     heroBadge: "شريكك التقني الموثوق في جميع أنحاء الشرق الأوسط",
@@ -158,7 +159,7 @@ const translations = {
     phoneWhatsApp: "الهاتف / واتس آب",
     serviceType: "نوع الخدمة",
     message: "الرسالة",
-    placeholderRequirements: "أخبرنا عن متطلباتك...",
+    placeholderRequirements: "أخبرنا عن متمتطلباتك...",
     footerDesc: "شريكك الموثوق للبنية التحتية المتكاملة لتكنولوجيا المعلومات، ونشر البرمجيات، والأمن السيبراني، وتسليم المشاريع.",
     copyright: "© 2026 Fox Systems. جميع الحقوق محفوظة.",
     services: "الخدمات",
@@ -166,6 +167,9 @@ const translations = {
     contact: "اتصل",
     privacyPolicy: "سياسة الخصوصية",
     termsOfUse: "شروط الاستخدام",
+    about: "حول",
+    careers: "الوظائف",
+    team: "الفريق",
   },
 };
 
@@ -247,12 +251,53 @@ export default function Home({ language }: HomeProps) {
                 </Button>
               </Link>
               <Link href={`${langPrefix}/services`}>
-                <Button size="lg" variant="outline" className="h-14 px-10 text-lg text-white border-white/30 hover:bg-white/10 rounded-xl">
+                <Button size="lg" variant="outline" className="h-14 px-10 text-lg rounded-xl text-white border-white/20 hover:bg-white/10">
                   {t.viewServices}
                 </Button>
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Who We Are Section */}
+      <section className="py-24 bg-muted/30">
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <h2 className="text-4xl font-bold">{t.whoWeAreTitle}</h2>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                {t.whoWeAreText}
+              </p>
+              <div className="grid sm:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-primary">{t.visionTitle}</h3>
+                  <p className="text-muted-foreground">{t.visionText}</p>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-primary">{t.missionTitle}</h3>
+                  <p className="text-muted-foreground">{t.missionText}</p>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <img src="/it-services.jpg" alt="Who We Are" className="rounded-3xl shadow-2xl" />
+              <div className="absolute -bottom-10 -right-10 bg-primary p-8 rounded-3xl text-white hidden md:block">
+                <div className="text-4xl font-bold mb-2">14+</div>
+                <div className="text-sm font-medium uppercase tracking-wider">{t.yearsExperience}</div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -293,6 +338,36 @@ export default function Home({ language }: HomeProps) {
         </div>
       </section>
 
+      {/* Core Values Section */}
+      <section className="py-24 bg-muted/30 overflow-hidden">
+        <div className="container">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold">{t.coreValuesTitle}</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {coreValues.map((value, idx) => {
+              const Icon = value.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="bg-background p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all"
+                >
+                  <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                    <Icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">{value.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{value.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container">
@@ -307,12 +382,74 @@ export default function Home({ language }: HomeProps) {
         </div>
       </section>
 
+      {/* Trusted By Section */}
+      <section className="py-24 bg-background">
+        <div className="container">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl font-bold">{t.trustedByTitle}</h2>
+            <p className="text-xl text-muted-foreground">{t.trustedByDesc}</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition-all">
+            {[1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15].map((i) => (
+              <div key={i} className="flex justify-center p-4">
+                <img 
+                  src={`/clients/${i.toString().padStart(2, '0')}_${i === 1 ? 'bank_masr-BTQ0AReE.png' : i === 2 ? 'national_bank_kuwait-1O0GSd4n.webp' : i === 3 ? 'elaraby_group-sKFXhEzA.png' : i === 4 ? 'hassan_allam_holding-CFQaxSID.png' : i === 5 ? 'el_nahda_cement-DXEmYNZR.png' : i === 6 ? 'orascom_investment-DPKaxSvM.png' : i === 8 ? 'etisalat-C9KaxS7P.png' : i === 9 ? 'vodafone-D9KaxS7P.png' : i === 10 ? 'we-E9KaxS7P.png' : i === 11 ? 'tmobile-F9KaxS7P.png' : i === 12 ? 'auc-G9KaxS7P.png' : i === 13 ? 'sohag_university-H9KaxS7P.png' : i === 14 ? 'o6u-I9KaxS7P.png' : 'miu-J9KaxS7P.png'}`} 
+                  alt="Client" 
+                  className="h-12 md:h-16 object-contain" 
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="bg-black text-white py-12">
-        <div className="container text-center">
-          <p className="text-gray-400">
-            © 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}
-          </p>
+      <footer className="bg-card border-t border-border py-20">
+        <div className="container">
+          <div className="grid md:grid-cols-4 gap-12 mb-16">
+            <div className="space-y-6">
+              <Link href="/" className="flex items-center gap-3">
+                <img src="/logo.jpg" alt="Fox Systems" className="h-12 w-12 rounded-xl" />
+                <span className="font-bold text-2xl text-primary">Fox Systems</span>
+              </Link>
+              <p className="text-muted-foreground leading-relaxed">
+                {t.footerDesc}
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-xl mb-8">{t.services}</h4>
+              <ul className="space-y-4 text-muted-foreground">
+                <li><Link href={`${langPrefix}/services/internet`} className="hover:text-primary transition">{t.internet}</Link></li>
+                <li><Link href={`${langPrefix}/services/software`} className="hover:text-primary transition">{t.software}</Link></li>
+                <li><Link href={`${langPrefix}/services/hardware`} className="hover:text-primary transition">{t.hardware}</Link></li>
+                <li><Link href={`${langPrefix}/services/cybersecurity`} className="hover:text-primary transition">{t.cybersecurity}</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-xl mb-8">{t.company}</h4>
+              <ul className="space-y-4 text-muted-foreground">
+                <li><Link href={`${langPrefix}/`} className="hover:text-primary transition">{t.about}</Link></li>
+                <li><Link href={`${langPrefix}/`} className="hover:text-primary transition">{t.team}</Link></li>
+                <li><Link href={`${langPrefix}/`} className="hover:text-primary transition">{t.careers}</Link></li>
+                <li><Link href={`${langPrefix}/contact`} className="hover:text-primary transition">{t.contact}</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-xl mb-8">{t.contact}</h4>
+              <ul className="space-y-4 text-muted-foreground">
+                <li className="flex items-center gap-3"><Mail className="w-5 h-5 text-primary" /> info@foxsystems.com</li>
+                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-primary" /> +201557649136</li>
+                <li className="flex items-center gap-3"><MapPin className="w-5 h-5 text-primary" /> {isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</li>
+              </ul>
+            </div>
+          </div>
+          <div className="pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6 text-muted-foreground">
+            <p>{t.copyright}</p>
+            <div className="flex gap-8">
+              <Link href={`${langPrefix}/privacy`} className="hover:text-primary transition">{t.privacyPolicy}</Link>
+              <Link href={`${langPrefix}/terms`} className="hover:text-primary transition">{t.termsOfUse}</Link>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

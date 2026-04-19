@@ -143,12 +143,7 @@ export default function Header({ language }: HeaderProps) {
                 </Link>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center" className="w-56">
-                <DropdownMenuItem asChild>
-                  <Link href={`${langPrefix}/services`} className="w-full cursor-pointer">
-                    {t.viewAll}
-                  </Link>
-                </DropdownMenuItem>
-                <div className="my-2 border-t border-border"></div>
+
                 {serviceItems.map((item) => (
                   <DropdownMenuItem key={item.href} asChild>
                     <Link href={item.href} className="w-full cursor-pointer">
@@ -237,9 +232,7 @@ export default function Header({ language }: HeaderProps) {
               >
                 {t.services}
               </Link>
-              <p className="px-3 py-2 text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                {t.viewAll}
-              </p>
+
               {serviceItems.map((item) => (
                 <Link
                   key={item.href}

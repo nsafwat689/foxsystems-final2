@@ -393,7 +393,7 @@ export default function Home({ language }: HomeProps) {
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
               <div key={i} className="flex justify-center p-4">
                 <img 
-                  src={i === 7 ? '/clients/mwri-logo-transparent.png' : i === 8 ? '/clients/vodafone-transparent.png' : `/clients/${i.toString().padStart(2, '0')}_${i === 1 ? 'bank_masr-BTQ0AReE.png' : i === 2 ? 'national_bank_kuwait-1O0GSd4n.webp' : i === 3 ? 'elaraby_group-sKFXhEzA.png' : i === 4 ? 'hassan_allam_holding-CFQaxSID.png' : i === 5 ? 'el_nahda_cement-DXEmYNZR.png' : 'orascom_investment-DPKaxSvM.png'}`} 
+                  src={i === 7 ? '/clients/mwri-logo-cut.png' : i === 8 ? '/clients/vodafone-cut.png' : `/clients/${i.toString().padStart(2, '0')}_${i === 1 ? 'bank_masr-BTQ0AReE.png' : i === 2 ? 'national_bank_kuwait-1O0GSd4n.webp' : i === 3 ? 'elaraby_group-sKFXhEzA.png' : i === 4 ? 'hassan_allam_holding-CFQaxSID.png' : i === 5 ? 'el_nahda_cement-DXEmYNZR.png' : 'orascom_investment-DPKaxSvM.png'}`} 
                   alt="Client" 
                   className="h-12 md:h-16 object-contain" 
                 />

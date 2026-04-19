@@ -505,7 +505,7 @@ export default function Home({ language }: HomeProps) {
       {/* Footer */}
       <footer className="bg-card border-t border-border py-20">
         <div className="container">
-          <div className="grid md:grid-cols-4 gap-12 mb-16">
+          <div className="grid md:grid-cols-3 gap-12 mb-16">
             <div className="space-y-6">
               <Link href="/" className="flex items-center gap-3">
                 <img src="/logo.jpg" alt="Fox Systems" className="h-12 w-12 rounded-xl" />
@@ -522,15 +522,6 @@ export default function Home({ language }: HomeProps) {
                 <li><Link href={`${langPrefix}/services/software`} className="hover:text-primary transition">{t.software}</Link></li>
                 <li><Link href={`${langPrefix}/services/hardware`} className="hover:text-primary transition">{t.hardware}</Link></li>
                 <li><Link href={`${langPrefix}/services/cybersecurity`} className="hover:text-primary transition">{t.cybersecurity}</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-xl mb-8">{t.company}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li><Link href={`${langPrefix}/`} className="hover:text-primary transition">{t.about}</Link></li>
-                <li><Link href={`${langPrefix}/`} className="hover:text-primary transition">{t.team}</Link></li>
-                <li><Link href={`${langPrefix}/`} className="hover:text-primary transition">{t.careers}</Link></li>
-                <li><Link href={`${langPrefix}/contact`} className="hover:text-primary transition">{t.contact}</Link></li>
               </ul>
             </div>
             <div>

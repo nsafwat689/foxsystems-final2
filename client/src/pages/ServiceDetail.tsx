@@ -125,25 +125,40 @@ const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
   }
 };
 
+const enTitles = {
+  overviewTitle: "Overview",
+  capabilitiesTitle: "Capabilities",
+  stepsTitle: "Service Delivery Cycle",
+  partnersTitle: "Partners & Vendors",
+  contactUsTitle: "Contact Us",
+  formNamePlaceholder: "Your Name",
+  formEmailPlaceholder: "Your Email",
+  formSubjectPlaceholder: "Subject",
+  formMessagePlaceholder: "Your Message",
+  formCompanyNamePlaceholder: "Company Name",
+  formSendButton: "Send Inquiry",
+  customSolutionTitle: "Need a Custom Solution?",
+  customSolutionDescription: "Our team is ready to help you design and implement a solution that perfectly fits your business needs.",
+};
+
 export default function ServiceDetail({ serviceId, language }: ServiceDetailProps) {
   const [location] = useLocation();
   const isArabic = language === "ar";
   const langPrefix = isArabic ? "/ar" : "";
   
-
-
   const serviceBase = serviceDetails[serviceId] || serviceDetails.internet;
   const rawData = serviceBase[language];
+  const titles = isArabic ? serviceDetailsAr : enTitles;
   
   // Create a robust data object with fallbacks for every possible field
   const data = {
     ...rawData,
-    // Titles from global Arabic data or English fallback
-    overviewTitle: serviceDetailsAr.overviewTitle || "Overview",
-    capabilitiesTitle: serviceDetailsAr.capabilitiesTitle || "Capabilities",
-    stepsTitle: serviceDetailsAr.stepsTitle || "Service Delivery Cycle",
-    partnersTitle: serviceDetailsAr.partnersTitle || "Partners & Vendors",
-    contactUsTitle: serviceDetailsAr.contactUsTitle || "Contact Us",
+    // Titles from global language data
+    overviewTitle: titles.overviewTitle,
+    capabilitiesTitle: titles.capabilitiesTitle,
+    stepsTitle: titles.stepsTitle,
+    partnersTitle: titles.partnersTitle,
+    contactUsTitle: titles.contactUsTitle,
     // Content fields with English fallbacks
     title: rawData.title || serviceBase.en.title,
     subtitle: rawData.subtitle || serviceBase.en.subtitle,
@@ -210,14 +225,14 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                 </div>
               </div>
 
-              {/* Steps (if any) */}
+              {/* Steps (If available) */}
               {data.steps && (
                 <div className="space-y-8">
                   <h2 className="text-3xl font-bold">{data.stepsTitle}</h2>
                   <div className="space-y-6">
                     {data.steps.map((step: any, idx: number) => (
                       <div key={idx} className="flex gap-6 items-start">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold flex-shrink-0">
                           {idx + 1}
                         </div>
                         <div className="space-y-2">
@@ -230,55 +245,48 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                 </div>
               )}
 
-              {/* Partners (if any) */}
+              {/* Partners (If available) */}
               {data.partners && (
                 <div className="space-y-8">
                   <h2 className="text-3xl font-bold">{data.partnersTitle}</h2>
-                  <div className="flex flex-wrap gap-8 items-center opacity-70">
+                  <div className="flex flex-wrap gap-4">
                     {data.partners.map((partner: string, idx: number) => (
-                      <span key={idx} className="text-2xl font-bold text-muted-foreground">{partner}</span>
+                      <div key={idx} className="px-6 py-3 bg-muted rounded-xl font-semibold">
+                        {partner}
+                      </div>
                     ))}
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Sidebar */}
+            {/* Sidebar Contact */}
             <div className="space-y-8">
-              <Card className="p-8 bg-primary text-primary-foreground space-y-6 border-none">
-                <h3 className="text-2xl font-bold">{data.contactUsTitle}</h3>
-                <p className="opacity-90">{isArabic ? "تواصل معنا اليوم لمناقشة متطلباتك والحصول على عرض سعر مخصص." : "Contact us today to discuss your requirements and get a custom quote."}</p>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <Phone className="w-5 h-5" />
-                    <span>+201557649136</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <Mail className="w-5 h-5" />
-                    <span>info@foxsystemstech.com</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <MapPin className="w-5 h-5" />
-                    <span>{isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</span>
-                  </div>
-                </div>
+              <Card className="p-8 bg-primary text-primary-foreground border-none">
+                <h3 className="text-2xl font-bold mb-4">{titles.customSolutionTitle}</h3>
+                <p className="mb-8 opacity-90">{titles.customSolutionDescription}</p>
                 <Link href={`${langPrefix}/contact`}>
-                  <Button variant="secondary" className="w-full mt-4 group">
-                    {isArabic ? "اتصل بنا الآن" : "Contact Us Now"}
-                    <ArrowRight className={`w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 ${isArabic ? "rotate-180" : ""}`} />
+                  <Button variant="secondary" className="w-full h-12 text-lg">
+                    {isArabic ? "اتصل بنا" : "Contact Us"}
                   </Button>
                 </Link>
               </Card>
 
-              <div className="space-y-4">
-                <h4 className="font-bold text-lg uppercase tracking-wider">{isArabic ? "خدمات أخرى" : "Other Services"}</h4>
-                <div className="grid gap-2">
-                  {Object.keys(serviceDetails).filter(id => id !== serviceId).map(id => (
-                    <Link key={id} href={`${langPrefix}/services/${id}`} className="flex items-center justify-between p-4 rounded-lg hover:bg-muted transition-colors group">
-                      <span className="font-medium capitalize">{id.replace('-', ' ')}</span>
-                      <ArrowRight className={`w-4 h-4 opacity-0 group-hover:opacity-100 transition-all ${isArabic ? "rotate-180" : ""}`} />
-                    </Link>
-                  ))}
+              <div className={`space-y-6 ${isArabic ? "text-right" : ""}`}>
+                <h3 className="text-xl font-bold">{data.contactUsTitle}</h3>
+                <div className="space-y-4">
+                  <div className={`flex items-center gap-3 ${isArabic ? "flex-row-reverse" : ""}`}>
+                    <div className="p-2 bg-muted rounded-lg"><Phone className="w-5 h-5 text-primary" /></div>
+                    <span className="font-medium">+201557649136</span>
+                  </div>
+                  <div className={`flex items-center gap-3 ${isArabic ? "flex-row-reverse" : ""}`}>
+                    <div className="p-2 bg-muted rounded-lg"><Mail className="w-5 h-5 text-primary" /></div>
+                    <span className="font-medium">info@foxsystems.com</span>
+                  </div>
+                  <div className={`flex items-center gap-3 ${isArabic ? "flex-row-reverse" : ""}`}>
+                    <div className="p-2 bg-muted rounded-lg"><MapPin className="w-5 h-5 text-primary" /></div>
+                    <span className="font-medium">{isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -286,32 +294,10 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
         </div>
       </section>
 
-      {/* CTA Footer */}
-      <section className="py-24 bg-muted/30">
-        <div className="container text-center max-w-3xl space-y-8">
-          <h2 className="text-3xl md:text-5xl font-bold">{isArabic ? "هل أنت مستعد لتطوير عملك؟" : "Ready to Transform Your Business?"}</h2>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            {isArabic ? "انضم إلى أكثر من 360 عميلًا يثقون في Fox Systems لحلول تكنولوجيا المعلومات المتقدمة والخدمات المدارة." : "Join over 360+ clients who trust Fox Systems for advanced IT solutions and managed services."}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link href={`${langPrefix}/contact`}>
-              <Button size="lg" className="h-14 px-10 text-lg">
-                {isArabic ? "ابدأ الآن" : "Get Started Now"}
-              </Button>
-            </Link>
-            <Button size="lg" variant="outline" className="h-14 px-10 text-lg flex items-center gap-2">
-              <MessageCircle className="w-5 h-5" />
-              {isArabic ? "تحدث مع خبير" : "Talk to an Expert"}
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <footer className="bg-foreground/5 border-t border-border py-8 mt-12">
-        <div className="container">
-          <div className="text-center text-sm text-muted-foreground">
-            <p>© 2024 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
-          </div>
+      {/* Footer */}
+      <footer className="bg-card border-t border-border py-12">
+        <div className="container text-center text-muted-foreground">
+          <p>© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
         </div>
       </footer>
     </div>

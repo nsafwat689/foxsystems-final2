@@ -443,7 +443,7 @@ export default function Home({ language }: HomeProps) {
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">{t.phone}</div>
-                    <div className="text-lg font-bold">+201557649136</div>
+                    <div className="text-lg font-bold">+201038450546</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -468,7 +468,7 @@ export default function Home({ language }: HomeProps) {
 
               <div className="pt-8">
                 <a 
-                  href="https://wa.me/201557649136" 
+                  href="https://wa.me/201038450546" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white rounded-xl font-bold hover:opacity-90 transition-all"
@@ -546,7 +546,7 @@ export default function Home({ language }: HomeProps) {
               <h4 className="font-bold text-xl mb-8">{t.contact}</h4>
               <ul className="space-y-4 text-muted-foreground">
                 <li className="flex items-center gap-3"><Mail className="w-5 h-5 text-primary" /> info@foxsystems.com</li>
-                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-primary" /> +201557649136</li>
+                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-primary" /> +201038450546</li>
                 <li className="flex items-center gap-3"><MapPin className="w-5 h-5 text-primary" /> {isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</li>
               </ul>
             </div>

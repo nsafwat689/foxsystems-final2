@@ -148,7 +148,7 @@ export default function Contact({ language }: ContactProps) {
                   </div>
                   <div>
                     <h4 className="text-xl font-bold mb-2">{t.phone}</h4>
-                    <p className="text-muted-foreground text-lg">+201557649136</p>
+                    <p className="text-muted-foreground text-lg">+201038450546</p>
                   </div>
                 </motion.div>
 
@@ -180,7 +180,7 @@ export default function Contact({ language }: ContactProps) {
               >
                 <Button
                   size="lg"
-                  onClick={() => window.open("https://wa.me/201557649136", "_blank")}
+                  onClick={() => window.open("https://wa.me/201038450546", "_blank")}
                   className="bg-[#25D366] hover:bg-[#25D366]/90 text-white px-8 h-14 text-lg w-full"
                 >
                   <MessageCircle className="mr-2 w-6 h-6" /> {t.chatWhatsApp}
@@ -318,7 +318,7 @@ export default function Contact({ language }: ContactProps) {
               <h4 className="font-bold text-xl mb-8">{t.contact}</h4>
               <ul className="space-y-4 text-muted-foreground">
                 <li className="flex items-center gap-3"><Mail className="w-5 h-5 text-primary" /> info@foxsystems.com</li>
-                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-primary" /> +201557649136</li>
+                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-primary" /> +201038450546</li>
                 <li className="flex items-center gap-3"><MapPin className="w-5 h-5 text-primary" /> {isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</li>
               </ul>
             </div>

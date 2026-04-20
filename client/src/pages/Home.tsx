@@ -335,7 +335,7 @@ export default function Home({ language }: HomeProps) {
                       </p>
                     </div>
                     <Link href={service.href}>
-                      <Button variant="ghost" className="w-full h-16 rounded-none border-t border-primary/20 group-hover:bg-primary group-hover:text-white transition-colors gap-3 text-primary">
+                      <Button className="w-full h-16 rounded-none border-t border-primary/20 bg-primary text-white hover:bg-primary/90 transition-colors gap-3 font-semibold">
                         {language === "en" ? "Learn More" : "اعرف المزيد"}
                         <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-2 ${isArabic ? "rotate-180" : ""}`} />
                       </Button>

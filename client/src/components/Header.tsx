@@ -91,6 +91,13 @@ export default function Header({ language }: HeaderProps) {
     setLocation(newPath);
   };
 
+  const handleHomeClick = () => {
+    // If already on home page, scroll to top
+    if (location === "/" || location === "/ar") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <nav
       dir={isArabic ? "rtl" : "ltr"}
@@ -116,6 +123,7 @@ export default function Header({ language }: HeaderProps) {
           <div className={`flex items-center gap-8 ${isArabic ? "flex-row-reverse" : ""}`}>
             <Link
               href={isArabic ? "/ar" : "/"}
+              onClick={handleHomeClick}
               className={`text-sm font-medium transition-colors hover:text-primary ${
                 (location === "/" || location === "/ar") ? "text-primary font-semibold" : "text-foreground"
               }`}
@@ -218,7 +226,10 @@ export default function Header({ language }: HeaderProps) {
           <div className={`flex flex-col gap-1 p-4 ${isArabic ? "items-end text-right" : "items-start"}`}>
             <Link
               href={isArabic ? "/ar" : "/"}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                handleHomeClick();
+              }}
               className="w-full px-3 py-2 rounded-lg text-base font-medium hover:bg-muted transition"
             >
               {t.home}

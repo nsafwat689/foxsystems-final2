@@ -1,4 +1,3 @@
-import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Link } from "wouter";
@@ -106,6 +105,336 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=400&fit=crop",
     }
   },
+  "voip-basics": {
+    en: {
+      id: "voip-basics",
+      title: "Understanding VoIP Technology: The Complete Guide",
+      excerpt: "Learn the fundamentals of Voice over Internet Protocol and how it revolutionizes business communication.",
+      category: "VoIP",
+      author: "Fox Systems Team",
+      date: "2025-01-15",
+      readTime: "8 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "voip-basics",
+      title: "فهم تقنية VoIP: الدليل الكامل",
+      excerpt: "تعرف على أساسيات بروتوكول الصوت عبر الإنترنت وكيف يغير اتصالات الأعمال.",
+      category: "VoIP",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-15",
+      readTime: "8 دقائق قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "pbx-systems": {
+    en: {
+      id: "pbx-systems",
+      title: "Private Branch Exchange (PBX) Systems Explained",
+      excerpt: "Discover how PBX systems improve internal communication and reduce telecommunications costs.",
+      category: "PBX",
+      author: "Fox Systems Team",
+      date: "2025-01-12",
+      readTime: "10 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "pbx-systems",
+      title: "أنظمة PBX المشروحة: دليل شامل",
+      excerpt: "اكتشف كيف تعمل أنظمة PBX على تحسين الاتصالات الداخلية وتقليل تكاليف الاتصالات.",
+      category: "PBX",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-12",
+      readTime: "10 دقائق قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "asterisk-server": {
+    en: {
+      id: "asterisk-server",
+      title: "Asterisk Server: Building Powerful Communication Systems",
+      excerpt: "Explore how Asterisk enables flexible and scalable telecommunications infrastructure.",
+      category: "Asterisk",
+      author: "Fox Systems Team",
+      date: "2025-01-10",
+      readTime: "12 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "asterisk-server",
+      title: "خادم Asterisk: بناء أنظمة اتصالات قوية",
+      excerpt: "استكشف كيف يتيح Asterisk بنية تحتية مرنة وقابلة للتوسع للاتصالات.",
+      category: "Asterisk",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-10",
+      readTime: "12 دقيقة قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "telecom-trends": {
+    en: {
+      id: "telecom-trends",
+      title: "2025 Telecommunications Trends: What's Next?",
+      excerpt: "Stay ahead with insights into the latest telecommunications industry trends and innovations.",
+      category: "Telecommunications",
+      author: "Fox Systems Team",
+      date: "2025-01-08",
+      readTime: "7 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "telecom-trends",
+      title: "اتجهات الاتصالات لعام 2025: ماذا بعد؟",
+      excerpt: "ابق في المقدمة مع رؤى حول أحدث اتجاهات صناعة الاتصالات والابتكارات.",
+      category: "الاتصالات",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-08",
+      readTime: "7 دقائق قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "voip-security": {
+    en: {
+      id: "voip-security",
+      title: "VoIP Security: Protecting Your Communications",
+      excerpt: "Essential security measures and best practices for protecting your VoIP infrastructure.",
+      category: "VoIP",
+      author: "Fox Systems Team",
+      date: "2025-01-05",
+      readTime: "9 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "voip-security",
+      title: "أمان VoIP: حماية اتصالاتك",
+      excerpt: "إجراءات أمنية أساسية وأفضل الممارسات لحماية بنية VoIP التحتية الخاصة بك.",
+      category: "VoIP",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-05",
+      readTime: "9 دقائق قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "crm-implementation": {
+    en: {
+      id: "crm-implementation",
+      title: "Implementing CRM Systems: A Step-by-Step Guide",
+      excerpt: "Learn how to successfully implement a CRM system in your organization and maximize adoption.",
+      category: "CRM",
+      author: "Fox Systems Team",
+      date: "2025-01-14",
+      readTime: "11 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "crm-implementation",
+      title: "تنفيذ أنظمة CRM: دليل خطوة بخطوة",
+      excerpt: "تعرف على كيفية تنفيذ نظام CRM بنجاح في مؤسستك وتحقيق أقصى استفادة منه.",
+      category: "CRM",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-14",
+      readTime: "11 دقيقة قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "cybersecurity-best-practices": {
+    en: {
+      id: "cybersecurity-best-practices",
+      title: "Essential Cybersecurity Best Practices for Businesses",
+      excerpt: "Protect your organization from cyber threats with these essential security practices and protocols.",
+      category: "Cybersecurity",
+      author: "Fox Systems Team",
+      date: "2025-01-13",
+      readTime: "10 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "cybersecurity-best-practices",
+      title: "أفضل ممارسات الأمن السيبراني الأساسية للشركات",
+      excerpt: "احمِ مؤسستك من التهديدات السيبرانية باستخدام هذه الممارسات والبروتوكولات الأمنية الأساسية.",
+      category: "الأمن السيبراني",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-13",
+      readTime: "10 دقائق قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "network-infrastructure": {
+    en: {
+      id: "network-infrastructure",
+      title: "Building Robust Network Infrastructure",
+      excerpt: "Design and implement a reliable network infrastructure that supports your business growth.",
+      category: "Networking",
+      author: "Fox Systems Team",
+      date: "2025-01-11",
+      readTime: "9 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "network-infrastructure",
+      title: "بناء بنية تحتية قوية للشبكة",
+      excerpt: "تصميم وتنفيذ بنية تحتية موثوقة للشبكة تدعم نمو عملك.",
+      category: "الشبكات",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-11",
+      readTime: "9 دقائق قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "firewall-security": {
+    en: {
+      id: "firewall-security",
+      title: "Advanced Firewall Security Solutions",
+      excerpt: "Understand firewall technologies and how they protect your network from unauthorized access.",
+      category: "Cybersecurity",
+      author: "Fox Systems Team",
+      date: "2025-01-09",
+      readTime: "8 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "firewall-security",
+      title: "حلول أمان جدار الحماية المتقدمة",
+      excerpt: "فهم تقنيات جدار الحماية وكيف تحمي شبكتك من الوصول غير المصرح به.",
+      category: "الأمن السيبراني",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-09",
+      readTime: "8 دقائق قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "cloud-infrastructure": {
+    en: {
+      id: "cloud-infrastructure",
+      title: "Cloud Infrastructure: Migrating Your Business",
+      excerpt: "Explore the benefits of cloud infrastructure and best practices for a successful migration.",
+      category: "Infrastructure",
+      author: "Fox Systems Team",
+      date: "2025-01-07",
+      readTime: "12 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "cloud-infrastructure",
+      title: "البنية التحتية السحابية: ترحيل أعمالك",
+      excerpt: "استكشف فوائد البنية التحتية السحابية وأفضل الممارسات لترحيل ناجح.",
+      category: "البنية التحتية",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-07",
+      readTime: "12 دقيقة قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "website-design-trends": {
+    en: {
+      id: "website-design-trends",
+      title: "2025 Website Design Trends & Best Practices",
+      excerpt: "Discover the latest website design trends and how to create engaging user experiences.",
+      category: "Web Design",
+      author: "Fox Systems Team",
+      date: "2025-01-06",
+      readTime: "7 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "website-design-trends",
+      title: "اتجهات تصميم المواقع لعام 2025 وأفضل الممارسات",
+      excerpt: "اكتشف أحدث اتجاهات تصميم المواقع وكيفية إنشاء تجارب مستخدم جذابة.",
+      category: "تصميم المواقع",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-06",
+      readTime: "7 دقائق قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "domain-dns-management": {
+    en: {
+      id: "domain-dns-management",
+      title: "Complete Guide to Domain and DNS Management",
+      excerpt: "Master domain registration, DNS configuration, and Active Directory management.",
+      category: "Domain Services",
+      author: "Fox Systems Team",
+      date: "2025-01-04",
+      readTime: "10 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "domain-dns-management",
+      title: "الدليل الكامل لإدارة النطاق و DNS",
+      excerpt: "اتقن تسجيل النطاق وتكوين DNS وإدارة Active Directory.",
+      category: "خدمات النطاق",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-04",
+      readTime: "10 دقائق قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "it-support-contracts": {
+    en: {
+      id: "it-support-contracts",
+      title: "Choosing the Right IT Support Contract",
+      excerpt: "Compare different IT support models and find the perfect contract for your business needs.",
+      category: "Support",
+      author: "Fox Systems Team",
+      date: "2025-01-03",
+      readTime: "6 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "it-support-contracts",
+      title: "اختيار عقد دعم تكنولوجيا المعلومات المناسب",
+      excerpt: "قارن بين نماذج دعم تكنولوجيا المعلومات المختلفة واعثر على العقد المثالي لاحتياجات عملك.",
+      category: "الدعم",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-03",
+      readTime: "6 دقائق قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "digital-transformation": {
+    en: {
+      id: "digital-transformation",
+      title: "Digital Transformation: Your Roadmap to Success",
+      excerpt: "Learn how digital transformation can revolutionize your business operations and efficiency.",
+      category: "Infrastructure",
+      author: "Fox Systems Team",
+      date: "2025-01-02",
+      readTime: "13 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "digital-transformation",
+      title: "التحول الرقمي: خارطة الطريق للنجاح",
+      excerpt: "تعرف على كيفية قيام التحول الرقمي بإحداث ثورة في عمليات عملك وكفاءته.",
+      category: "البنية التحتية",
+      author: "فريق فوكس سيستمز",
+      date: "2025-01-02",
+      readTime: "13 دقيقة قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  },
+  "business-continuity-planning": {
+    en: {
+      id: "business-continuity-planning",
+      title: "Business Continuity Planning & Disaster Recovery",
+      excerpt: "Develop a comprehensive business continuity plan to ensure your organization stays resilient.",
+      category: "Infrastructure",
+      author: "Fox Systems Team",
+      date: "2024-12-31",
+      readTime: "11 min read",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    },
+    ar: {
+      id: "business-continuity-planning",
+      title: "تخطيط استمرارية الأعمال والتعافي من الكوارث",
+      excerpt: "قم بتطوير خطة شاملة لاستمرارية الأعمال لضمان بقاء مؤسستك مرنة.",
+      category: "البنية التحتية",
+      author: "فريق فوكس سيستمز",
+      date: "2024-12-31",
+      readTime: "11 دقيقة قراءة",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
+    }
+  }
 };
 
 export default function Articles({ language }: ArticlesProps) {

@@ -4,7 +4,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://foxsystemstech.com/</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar" />
@@ -12,161 +12,373 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://foxsystemstech.com/" />
   </url>
   
-  <!-- Arabic Homepage -->
   <url>
     <loc>https://foxsystemstech.com/ar</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/" />
   </url>
 
-  <!-- English Services -->
+  <!-- Services -->
   <url>
     <loc>https://foxsystemstech.com/services/internet</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/internet" />
     <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/internet" />
   </url>
-
-  <url>
-    <loc>https://foxsystemstech.com/services/software</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/software" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/software" />
-  </url>
-
-  <url>
-    <loc>https://foxsystemstech.com/services/hardware</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/hardware" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/hardware" />
-  </url>
-
-  <url>
-    <loc>https://foxsystemstech.com/services/cybersecurity</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/cybersecurity" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/cybersecurity" />
-  </url>
-
-  <url>
-    <loc>https://foxsystemstech.com/services/infrastructure</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/infrastructure" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/infrastructure" />
-  </url>
-
-  <url>
-    <loc>https://foxsystemstech.com/services/web-development</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/web-development" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/web-development" />
-  </url>
-
-  <!-- Arabic Services -->
   <url>
     <loc>https://foxsystemstech.com/ar/services/internet</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/internet" />
     <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/internet" />
   </url>
 
-  <url>
-    <loc>https://foxsystemstech.com/ar/services/software</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/software" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/software" />
-  </url>
-
-  <url>
-    <loc>https://foxsystemstech.com/ar/services/hardware</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/hardware" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/hardware" />
-  </url>
-
-  <url>
-    <loc>https://foxsystemstech.com/ar/services/cybersecurity</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/cybersecurity" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/cybersecurity" />
-  </url>
-
-  <url>
-    <loc>https://foxsystemstech.com/ar/services/infrastructure</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/infrastructure" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/infrastructure" />
-  </url>
-
-  <url>
-    <loc>https://foxsystemstech.com/ar/services/web-development</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/services/web-development" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/services/web-development" />
-  </url>
-
-  <!-- Contact Pages -->
-  <url>
-    <loc>https://foxsystemstech.com/contact</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/contact" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/contact" />
-  </url>
-
-  <url>
-    <loc>https://foxsystemstech.com/ar/contact</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/contact" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/contact" />
-  </url>
-
-  <!-- Articles Pages -->
+  <!-- Articles Listing -->
   <url>
     <loc>https://foxsystemstech.com/articles</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles" />
     <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles" />
   </url>
 
+  <!-- Article Details (16 Articles) -->
   <url>
-    <loc>https://foxsystemstech.com/ar/articles</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://foxsystemstech.com/articles/ai-infrastructure-2026</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/ai-infrastructure-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/ai-infrastructure-2026" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/ai-infrastructure-2026</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/ai-infrastructure-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/ai-infrastructure-2026" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/odoo-erp-sme-2026</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/odoo-erp-sme-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/odoo-erp-sme-2026" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/odoo-erp-sme-2026</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/odoo-erp-sme-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/odoo-erp-sme-2026" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/cybersecurity-distributed-workforce-2026</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/cybersecurity-distributed-workforce-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/cybersecurity-distributed-workforce-2026" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/cybersecurity-distributed-workforce-2026</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/cybersecurity-distributed-workforce-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/cybersecurity-distributed-workforce-2026" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/voip-basics</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/voip-basics" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/voip-basics" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/voip-basics</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/voip-basics" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/voip-basics" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/pbx-systems</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/pbx-systems" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/pbx-systems" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/pbx-systems</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/pbx-systems" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/pbx-systems" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/asterisk-server</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/asterisk-server" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/asterisk-server" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/asterisk-server</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/asterisk-server" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/asterisk-server" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/telecom-trends</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/telecom-trends" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/telecom-trends" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/telecom-trends</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/telecom-trends" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/telecom-trends" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/voip-security</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/voip-security" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/voip-security" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/voip-security</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/voip-security" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/voip-security" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/crm-implementation</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/crm-implementation" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/crm-implementation" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/crm-implementation</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/crm-implementation" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/crm-implementation" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/cybersecurity-best-practices</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/cybersecurity-best-practices" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/cybersecurity-best-practices" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/cybersecurity-best-practices</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/cybersecurity-best-practices" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/cybersecurity-best-practices" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/network-infrastructure</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/network-infrastructure" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/network-infrastructure" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/network-infrastructure</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/network-infrastructure" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/network-infrastructure" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/firewall-security</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/firewall-security" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/firewall-security" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/firewall-security</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/firewall-security" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/firewall-security" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/cloud-infrastructure</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/cloud-infrastructure" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/cloud-infrastructure" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/cloud-infrastructure</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/cloud-infrastructure" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/cloud-infrastructure" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/website-design-trends</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/website-design-trends" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/website-design-trends" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/website-design-trends</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/website-design-trends" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/website-design-trends" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/domain-dns-management</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/domain-dns-management" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/domain-dns-management" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/domain-dns-management</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/domain-dns-management" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/domain-dns-management" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/it-support-contracts</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/it-support-contracts" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/it-support-contracts" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/it-support-contracts</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/it-support-contracts" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/it-support-contracts" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/digital-transformation</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/digital-transformation" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/digital-transformation" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/digital-transformation</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/digital-transformation" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/digital-transformation" />
+  </url>
+
+  <url>
+    <loc>https://foxsystemstech.com/articles/business-continuity-planning</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/business-continuity-planning" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/business-continuity-planning" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/articles/business-continuity-planning</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/articles/business-continuity-planning" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/articles/business-continuity-planning" />
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://foxsystemstech.com/contact</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/contact" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/contact</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/contact" />
   </url>
 </urlset>

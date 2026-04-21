@@ -112,7 +112,7 @@ export default function Header({ language }: HeaderProps) {
 
         {/* Col 1 – Logo */}
         <div className="flex items-center">
-          <Link href={isArabic ? "/ar" : "/"} className="flex items-center gap-3 hover:opacity-80 transition">
+          <Link href={isArabic ? "/ar" : "/"} onClick={handleHomeClick} className="flex items-center gap-3 hover:opacity-80 transition">
             <img src="/logo.jpg" alt="Fox Systems" className="h-10 w-10 rounded-lg object-cover" />
             <span className="font-bold text-xl text-primary hidden lg:inline">Fox Systems</span>
           </Link>

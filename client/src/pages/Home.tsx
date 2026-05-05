@@ -1,3 +1,4 @@
+import React from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -285,14 +286,78 @@ export default function Home({ language }: HomeProps) {
     { name: "Orascom Investment", src: "/clients/06_orascom_investment-DPKaxSvM.png" },
   ];
 
-  const techPartners = [
-    { name: "Microsoft", src: "/clients/microsoft.svg" },
-    { name: "Sophos", src: "/clients/sophos.svg" },
-    { name: "Grandstream", src: "/clients/grandstream.svg" },
-    { name: "Cisco", src: "/clients/cisco.svg" },
-    { name: "Fortinet", src: "/clients/fortinet.svg" },
-    { name: "Dell", src: "/clients/dell.svg" },
-    { name: "HP", src: "/clients/hp.svg" },
+  // Inline SVG logos — no image loading issues, always renders
+  const techPartnerLogos: { name: string; logo: React.ReactNode }[] = [
+    {
+      name: "Microsoft",
+      logo: (
+        <svg viewBox="0 0 96 96" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="46" height="46" fill="#F25022"/>
+          <rect x="50" y="0" width="46" height="46" fill="#7FBA00"/>
+          <rect x="0" y="50" width="46" height="46" fill="#00A4EF"/>
+          <rect x="50" y="50" width="46" height="46" fill="#FFB900"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Sophos",
+      logo: (
+        <svg viewBox="0 0 80 80" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="40" fill="#0079BE"/>
+          <path d="M20 48 Q20 36 32 34 Q26 26 36 22 Q32 32 42 32 Q54 28 56 40 Q60 54 48 58 Q42 62 36 58 Q28 62 20 56Z" fill="white"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Grandstream",
+      logo: (
+        <svg viewBox="0 0 80 80" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="38" fill="#E8331A"/>
+          <text x="40" y="48" fontFamily="Arial,sans-serif" fontSize="26" fontWeight="bold" fill="white" textAnchor="middle">G</text>
+        </svg>
+      ),
+    },
+    {
+      name: "Cisco",
+      logo: (
+        <svg viewBox="0 0 80 80" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4"  y="32" width="10" height="18" rx="2" fill="#049FD9"/>
+          <rect x="17" y="22" width="10" height="36" rx="2" fill="#049FD9"/>
+          <rect x="30" y="12" width="10" height="56" rx="2" fill="#049FD9"/>
+          <rect x="43" y="22" width="10" height="36" rx="2" fill="#049FD9"/>
+          <rect x="56" y="32" width="10" height="18" rx="2" fill="#049FD9"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Fortinet",
+      logo: (
+        <svg viewBox="0 0 80 80" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="72" height="72" rx="8" fill="#EE3124"/>
+          <rect x="16" y="20" width="30" height="8" rx="2" fill="white"/>
+          <rect x="16" y="36" width="20" height="8" rx="2" fill="white"/>
+          <rect x="16" y="52" width="30" height="8" rx="2" fill="white"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Dell",
+      logo: (
+        <svg viewBox="0 0 80 80" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="38" fill="#007DB8"/>
+          <text x="40" y="52" fontFamily="Arial,sans-serif" fontSize="28" fontWeight="bold" fontStyle="italic" fill="white" textAnchor="middle">dell</text>
+        </svg>
+      ),
+    },
+    {
+      name: "HP",
+      logo: (
+        <svg viewBox="0 0 80 80" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="38" fill="#0096D6"/>
+          <text x="40" y="52" fontFamily="Arial,sans-serif" fontSize="30" fontWeight="bold" fill="white" textAnchor="middle">hp</text>
+        </svg>
+      ),
+    },
   ];
 
   const crmFeatures = [
@@ -565,7 +630,7 @@ export default function Home({ language }: HomeProps) {
             <p className="text-lg text-muted-foreground">{t.partnersDesc}</p>
           </div>
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 items-center">
-            {techPartners.map((partner, i) => (
+            {techPartnerLogos.map((partner, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -573,14 +638,10 @@ export default function Home({ language }: HomeProps) {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
                 whileHover={{ scale: 1.1 }}
-                className="flex flex-col items-center justify-center p-4 bg-background rounded-xl shadow-sm hover:shadow-md transition-all"
+                className="flex flex-col items-center justify-center p-4 bg-background rounded-xl shadow-sm hover:shadow-md transition-all gap-2"
               >
-                <img
-                  src={partner.src}
-                  alt={`${partner.name} Partner - Fox Systems`}
-                  className="h-10 object-contain"
-                />
-                <span className="text-xs text-muted-foreground mt-2 font-medium">{partner.name}</span>
+                {partner.logo}
+                <span className="text-xs text-muted-foreground font-semibold tracking-wide">{partner.name}</span>
               </motion.div>
             ))}
           </div>

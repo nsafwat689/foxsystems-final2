@@ -18,8 +18,8 @@ interface ServiceDetailProps {
 const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
   internet: {
     en: {
-      title: "Corporate Internet Services",
-      subtitle: "High-performance connectivity including Leased Line, Microwave, WiMAX, and VPN services for multi-branch companies.",
+      title: "Call Center & VoIP Solutions",
+      subtitle: "Complete Call Center setup with Grandstream & Cisco VoIP, IVR, call recording, and CRM integration — for businesses in Egypt, Saudi Arabia & Kuwait.",
       icon: Network,
       overview: "Because credibility starts before any contract, we follow clear steps to ensure implementation feasibility. We only proceed when feasibility is confirmed, ensuring no hidden surprises for our clients.",
       capabilities: [
@@ -42,18 +42,29 @@ const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
   },
   software: {
     en: {
-      title: "Software Solutions",
-      subtitle: "Tailored ERP systems, custom applications, IT management solutions, and full Odoo implementation as an official partner.",
+      title: "CRM Systems & Software Solutions",
+      subtitle: "Egypt's #1 CRM implementation company. We help businesses manage customers, automate sales, and grow revenue — with full Arabic & English support across Egypt, Saudi Arabia & Kuwait.",
       icon: Cpu,
-      overview: "We provide professional deployment of enterprise software across your organization, ensuring that your business processes are streamlined and efficient.",
+      overview: "Fox Systems is the leading CRM provider in Egypt and the Middle East. Our CRM solutions are designed specifically for businesses in Egypt, Saudi Arabia, and Kuwait — with full Arabic interface, local support, and integration with your Call Center, VoIP, and existing systems. We implement, train your team, and support you 24/7.",
       capabilities: [
-        { title: "Deployment", desc: "Professional deployment of enterprise software across your organization." },
-        { title: "Installation & Configuration", desc: "Expert installation and configuration tailored to your business needs." },
-        { title: "Licensing & Renewal", desc: "License management and timely renewals to ensure compliance." },
-        { title: "Remote Support", desc: "24/7 remote support for software issues and troubleshooting." },
-        { title: "Training", desc: "Comprehensive training programs for your team on software usage." }
+        { title: "Customer & Lead Management", desc: "Organize all your contacts, track every interaction, and never lose a lead. Full pipeline visibility for your sales team." },
+        { title: "Sales Pipeline & Automation", desc: "Visual sales pipeline, automated follow-up reminders, and workflow automation to close more deals faster." },
+        { title: "Real-time Reports & Dashboards", desc: "Instant reports on sales performance, team productivity, and customer activity. Make data-driven decisions." },
+        { title: "Call Center & VoIP Integration", desc: "Fully integrated with your call center system — log calls automatically, view customer history during calls, track agent performance." },
+        { title: "Multi-branch & Multi-user", desc: "Manage multiple branches, departments, and users from one central CRM system." },
+        { title: "Arabic & English Interface", desc: "Full Arabic RTL interface and English support — designed for Middle East businesses." },
+        { title: "ERP & Odoo Implementation", desc: "Full Odoo ERP implementation for finance, HR, inventory, and operations alongside your CRM." },
+        { title: "Data Migration & Training", desc: "We migrate your existing data and train your team on-site. Smooth transition guaranteed." }
       ],
-      partners: ["Microsoft", "VMware", "Veeam", "Veritas", "Odoo"]
+      steps: [
+        { title: "Requirements Analysis", desc: "We meet with your team to understand your business processes, goals, and existing systems." },
+        { title: "CRM Demo & Selection", desc: "We present the best CRM solution for your needs with a live demonstration." },
+        { title: "Implementation & Customization", desc: "Our team configures the CRM to match your workflows, Arabic/English language, and user roles." },
+        { title: "Data Migration", desc: "We securely migrate all your existing customer data from spreadsheets or legacy systems." },
+        { title: "Training & Go-Live", desc: "Full on-site training for all users, then system launch with dedicated support." },
+        { title: "Ongoing Support", desc: "24/7 technical support, updates, and continuous improvement of your CRM system." }
+      ],
+      partners: ["Microsoft", "Odoo", "Zoho", "HubSpot", "Salesforce"]
     },
     ar: serviceDetailsAr.software
   },
@@ -70,7 +81,7 @@ const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
         { title: "Cabling", desc: "Structured cabling solutions for optimal network performance." },
         { title: "Surveillance Installation", desc: "Complete CCTV and surveillance system installation and configuration." }
       ],
-      partners: ["Dell", "HP", "Lenovo", "Cisco", "Huawei", "Aruba", "Hikvision"]
+      partners: ["Dell", "HP", "Lenovo", "Cisco", "Grandstream", "Aruba", "Hikvision"]
     },
     ar: serviceDetailsAr.hardware
   },
@@ -87,7 +98,7 @@ const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
         { title: "Licensing & Renewal", desc: "Timely license management and renewals for all security products." },
         { title: "Remote Support", desc: "24/7 remote support for security incidents and troubleshooting." }
       ],
-      partners: ["Kaspersky", "Bitdefender", "ESET", "Sophos", "Fortinet"]
+      partners: ["Sophos", "Fortinet", "Kaspersky", "ESET", "Bitdefender", "Cisco"]
     },
     ar: serviceDetailsAr.cybersecurity
   },

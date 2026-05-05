@@ -22,73 +22,109 @@ import {
   Lightbulb,
   MapPin,
   Send,
+  CheckCircle2,
+  Star,
+  TrendingUp,
+  HeadphonesIcon,
+  Database,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
+import { useState } from "react";
 
 const translations = {
   en: {
     heroBadge: "YOUR TRUSTED IT PARTNER ACROSS THE MIDDLE EAST",
-    heroTitle: "Enterprise IT Solutions in Egypt, KSA & Kuwait",
-    heroSubtitle: "Your trusted partner for Call Center solutions, Firewalls, CRM, VoIP, and IT infrastructure. We provide servers, PCs, and laptops with 24/7 support across Egypt, Saudi Arabia, and Kuwait.",
-    getStarted: "Get Started",
-    viewServices: "View Services",
+    heroTitle: "CRM & Enterprise IT Solutions",
+    heroTitleHighlight: "Egypt, KSA & Kuwait",
+    heroSubtitle: "Fox Systems is the #1 CRM implementation partner in Egypt and the Middle East. We help businesses grow with powerful CRM systems, Call Center solutions, Firewalls, VoIP, and full IT infrastructure — backed by 14+ years of expertise and 24/7 support.",
+    getStarted: "Get a Free CRM Demo",
+    viewServices: "Explore All Services",
+    crmBannerTitle: "Transform Your Business with a Powerful CRM",
+    crmBannerDesc: "Fox Systems specializes in CRM implementation that helps you manage customers, automate sales, and grow revenue — across Egypt, Saudi Arabia, and Kuwait.",
+    crmFeature1: "Customer Management & Sales Pipeline",
+    crmFeature2: "Automated Follow-ups & Reminders",
+    crmFeature3: "Real-time Reports & Analytics",
+    crmFeature4: "Multi-branch & Multi-user Support",
+    crmFeature5: "Integrated with Call Center & VoIP",
+    crmFeature6: "Arabic & English Interface",
+    crmCTA: "Request CRM Demo →",
     whoWeAreTitle: "Who We Are",
-    whoWeAreText: "Fox Systems is a leading provider of end-to-end technology solutions in the Middle East. We specialize in Call Center systems, Firewall security, CRM implementation, and VoIP services, offering complete IT support for businesses in Egypt, Saudi Arabia, and Kuwait.",
+    whoWeAreText: "Fox Systems is a leading provider of end-to-end IT solutions in the Middle East. Headquartered in Cairo, Egypt, we specialize in CRM systems, Call Center implementation, Firewall & cybersecurity, VoIP communications, and complete IT infrastructure — serving enterprises in Egypt, Saudi Arabia, and Kuwait since 2010.",
     visionTitle: "Vision",
-    visionText: "To be a trusted leader in information technology solutions — delivering responsive, innovative, and scalable services.",
+    visionText: "To be the most trusted CRM and IT solutions provider in the Middle East — delivering measurable business results through technology.",
     missionTitle: "Mission",
-    missionText: "Our mission at Fox Systems is to provide total IT solutions that elevate our clients' performance and secure their digital environments.",
+    missionText: "We deliver CRM systems and complete IT solutions that help businesses in Egypt, KSA, and Kuwait grow faster, serve customers better, and operate more efficiently.",
     coreValuesTitle: "Core Values",
     integrity: "Integrity & Honesty",
-    integrityDesc: "Doing what's right for our clients and partners, always with transparency and ethical conduct.",
+    integrityDesc: "Transparent dealings with every client, always doing what's right.",
     reliability: "Reliability",
-    reliabilityDesc: "Being dependable in service delivery and support, anytime, anywhere.",
+    reliabilityDesc: "24/7 support and dependable service delivery, anytime, anywhere.",
     customerFocus: "Customer-Focused Innovation",
-    customerFocusDesc: "Continuously improving our processes and solutions to exceed expectations.",
+    customerFocusDesc: "Continuously improving our CRM solutions to exceed client expectations.",
     teamwork: "Teamwork & Professionalism",
-    teamworkDesc: "Valuing collaboration, expertise, and accountability in everything we do.",
+    teamworkDesc: "Expert collaboration and accountability in every project we deliver.",
     excellence: "Service Excellence",
-    excellenceDesc: "Striving for top quality in outcomes, processes, and customer interactions.",
-    flexibility: "Flexibility & Adaptability",
-    flexibilityDesc: "Meeting diverse needs with scalable and tailored IT solutions.",
-    respect: "Respect & Trust",
-    respectDesc: "Building long-lasting relationships through empathy, respect, and trustworthiness.",
-    servicesTitle: "Our Services",
-    servicesSubtitle: "Comprehensive IT solutions including Call Center, CRM, and VoIP for your business in the Middle East",
-    internet: "Corporate Internet & VoIP Services",
-    internetDesc: "High-performance connectivity and VoIP solutions including Leased Line, Microwave, and VPN services for Call Centers.",
-    software: "CRM & Software Solutions",
-    softwareDesc: "Tailored CRM systems, ERP implementation, and custom software development to streamline your business in Egypt and KSA.",
+    excellenceDesc: "Top quality in every CRM implementation, IT project, and support interaction.",
+    flexibility: "Flexibility",
+    flexibilityDesc: "Tailored CRM and IT solutions that scale with your business.",
+    respect: "Trust",
+    respectDesc: "Building long-term partnerships through reliability and results.",
+    servicesTitle: "Our IT Services",
+    servicesSubtitle: "CRM is our core expertise — backed by a full suite of IT services for complete business transformation across the Middle East",
+    crmService: "CRM Systems (Our Core Service)",
+    crmServiceDesc: "Powerful CRM implementation in Egypt, KSA & Kuwait. Manage leads, customers, sales pipelines, and automate your business workflows. Full Arabic & English support.",
+    internet: "Call Center & VoIP Solutions",
+    internetDesc: "Complete Call Center setup, VoIP systems, Leased Line, Microwave, and VPN services. Professional connectivity for businesses of all sizes.",
+    software: "ERP & Business Software",
+    softwareDesc: "Odoo ERP, custom software development, and business automation solutions to streamline operations across Egypt and KSA.",
     hardware: "IT Hardware: Servers, PCs & Laptops",
-    hardwareDesc: "Enterprise-grade servers, high-performance PCs, and laptops with professional setup and maintenance in Kuwait and Egypt.",
-    cybersecurity: "Firewall & Security Protection",
-    cybersecurityDesc: "Advanced Firewall solutions, endpoint security, and 24/7 monitoring to protect your business from cyber threats.",
+    hardwareDesc: "Enterprise-grade servers, high-performance PCs, and laptops with professional setup and maintenance.",
+    cybersecurity: "Firewall & Cybersecurity",
+    cybersecurityDesc: "Advanced Sophos & Fortinet Firewall solutions, endpoint security, and 24/7 threat monitoring to protect your business.",
     infrastructure: "Network & IT Infrastructure",
-    infrastructureDesc: "Complete IT infrastructure setup, data center solutions, and network cabling for enterprises in Saudi Arabia and Egypt.",
-    webDev: "SEO-Optimized Web Development",
-    webDevDesc: "Mobile-responsive, SEO-optimized websites designed to rank first in Google search for IT services in the Middle East.",
-    whyFoxTitle: "Why Fox Systems?",
+    infrastructureDesc: "Complete network setup, structured cabling, data center solutions, and IT infrastructure for enterprises in the Middle East.",
+    webDev: "Website Development & SEO",
+    webDevDesc: "Mobile-responsive, SEO-optimized websites designed to rank on page 1 of Google for IT and CRM services in the Middle East.",
+    whyFoxTitle: "Why 300+ Businesses Choose Fox Systems",
     yearsExperience: "Years Experience",
     happyClients: "Happy Clients",
     projectsDelivered: "Projects Delivered",
     supportAvailable: "24/7 Support",
-    trustedByTitle: "Trusted By Over 300 Clients",
-    trustedByDesc: "Over 300 clients trust us with their IT infrastructure across various industries",
-    contactTitle: "Contact Us",
-    contactSubtitle: "Get in touch with our team",
+    trustedByTitle: "Trusted By Leading Organizations",
+    trustedByDesc: "Over 300 companies across Egypt, Saudi Arabia, and Kuwait trust Fox Systems for CRM and IT solutions",
+    partnersTitle: "Our Technology Partners",
+    partnersDesc: "We work with the world's leading technology brands to deliver the best CRM and IT solutions",
+    faqTitle: "Frequently Asked Questions",
+    faqSubtitle: "Common questions about CRM systems and IT solutions in Egypt and the Middle East",
+    faq1Q: "What is a CRM system and why does my business need it?",
+    faq1A: "A CRM (Customer Relationship Management) system helps businesses in Egypt, Saudi Arabia, and Kuwait manage customer data, track sales pipelines, automate follow-ups, and generate reports. It increases sales efficiency by up to 40% and improves customer retention. Fox Systems implements CRM solutions tailored to your industry and business size.",
+    faq2Q: "How long does CRM implementation take?",
+    faq2A: "CRM implementation by Fox Systems typically takes 2-8 weeks depending on your business size and requirements. We handle everything: setup, data migration, staff training, and post-launch support. Our team speaks Arabic and English to ensure smooth onboarding across Egypt, KSA, and Kuwait.",
+    faq3Q: "What makes Fox Systems the best CRM provider in Egypt?",
+    faq3A: "Fox Systems has 14+ years of experience implementing CRM systems for 300+ clients in Egypt, Saudi Arabia, and Kuwait. We provide full Arabic interface support, local after-sales service, 24/7 technical support, and integration with Call Center and VoIP systems — all at competitive prices.",
+    faq4Q: "Do you provide firewall and network security solutions?",
+    faq4A: "Yes. Fox Systems is an authorized partner for Sophos and Fortinet firewall solutions. We provide advanced firewall installation, configuration, endpoint protection, and 24/7 security monitoring for enterprises across Egypt, KSA, and Kuwait.",
+    faq5Q: "Can Fox Systems set up a complete Call Center?",
+    faq5A: "Absolutely. We specialize in complete Call Center setup including VoIP systems (Grandstream, Cisco), CRM integration, agent management software, IVR, call recording, and real-time dashboards. We serve Call Centers across Egypt, Saudi Arabia, and Kuwait.",
+    faq6Q: "Do you provide IT services across Saudi Arabia and Kuwait?",
+    faq6A: "Yes. Fox Systems provides CRM implementation, IT infrastructure, firewall security, and VoIP solutions across Egypt, Saudi Arabia (KSA), and Kuwait. Our team is available remotely and on-site throughout the Middle East.",
+    contactTitle: "Get a Free CRM Consultation",
+    contactSubtitle: "Tell us about your business and we'll recommend the perfect CRM and IT solution",
     phone: "Phone",
     address: "Address",
     chatWhatsApp: "Chat on WhatsApp",
-    submitInquiry: "Submit Inquiry",
+    submitInquiry: "Send Message",
     companyName: "Company Name",
-    contactName: "Contact Name",
+    contactName: "Your Name",
     email: "Email",
     phoneWhatsApp: "Phone / WhatsApp",
-    serviceType: "Service Type",
+    serviceType: "Service Interested In",
     message: "Message",
-    placeholderRequirements: "Tell us about your requirements...",
-    footerDesc: "Your trusted partner for comprehensive IT infrastructure, software deployment, cybersecurity, and project delivery.",
+    placeholderRequirements: "Tell us about your business and requirements...",
+    footerDesc: "Fox Systems is your trusted CRM and IT solutions partner in Egypt, Saudi Arabia, and Kuwait. Specializing in CRM, Call Center, Firewall, VoIP, and complete IT infrastructure.",
     copyright: "© 2026 Fox Systems. All rights reserved.",
     services: "Services",
     company: "Company",
@@ -101,66 +137,94 @@ const translations = {
   },
   ar: {
     heroBadge: "شريكك التقني الموثوق في جميع أنحاء الشرق الأوسط",
-    heroTitle: "حلول تكنولوجيا المعلومات في مصر، السعودية والكويت",
-    heroSubtitle: "شريكك الموثوق لحلول مراكز الاتصال (Call Center)، جدران الحماية (Firewall)، أنظمة CRM، والاتصالات الصوتية (VoIP). نوفر الخوادم، أجهزة الكمبيوتر، واللابتوب مع دعم 24/7 في مصر، السعودية، والكويت.",
-    getStarted: "ابدأ الآن",
-    viewServices: "عرض الخدمات",
+    heroTitle: "أنظمة CRM وحلول تكنولوجيا المعلومات للمؤسسات",
+    heroTitleHighlight: "مصر، السعودية والكويت",
+    heroSubtitle: "فوكس سيستمز هي الشريك الأول لتطبيق أنظمة CRM في مصر والشرق الأوسط. نساعد الشركات على النمو بأنظمة CRM القوية، مراكز الاتصال، جدران الحماية، وVoIP — مدعومة بخبرة تزيد عن 14 عامًا ودعم على مدار الساعة.",
+    getStarted: "احصل على عرض CRM مجاني",
+    viewServices: "استكشف جميع الخدمات",
+    crmBannerTitle: "حوّل عملك مع نظام CRM قوي",
+    crmBannerDesc: "فوكس سيستمز متخصصة في تطبيق أنظمة CRM التي تساعدك على إدارة العملاء، وأتمتة المبيعات، وزيادة الإيرادات — في مصر، السعودية، والكويت.",
+    crmFeature1: "إدارة العملاء وقمع المبيعات",
+    crmFeature2: "متابعة تلقائية وتذكيرات",
+    crmFeature3: "تقارير وتحليلات في الوقت الفعلي",
+    crmFeature4: "دعم متعدد الفروع والمستخدمين",
+    crmFeature5: "تكامل مع مركز الاتصال وVoIP",
+    crmFeature6: "واجهة عربية وإنجليزية",
+    crmCTA: "اطلب عرض CRM ←",
     whoWeAreTitle: "من نحن",
-    whoWeAreText: "تعد فوكس سيستمز مزوداً رائداً لحلول التكنولوجيا المتكاملة في الشرق الأوسط. نحن متخصصون في أنظمة مراكز الاتصال، أمن جدران الحماية، تنفيذ أنظمة CRM، وخدمات VoIP، ونقدم دعماً كاملاً لتكنولوجيا المعلومات للشركات في مصر، السعودية، والكويت.",
+    whoWeAreText: "تعد فوكس سيستمز مزوداً رائداً لحلول تكنولوجيا المعلومات المتكاملة في الشرق الأوسط. مقرنا في القاهرة، مصر، ومتخصصون في أنظمة CRM، مراكز الاتصال، جدران الحماية، الأمن السيبراني، اتصالات VoIP، والبنية التحتية الكاملة لتكنولوجيا المعلومات — نخدم المؤسسات في مصر، السعودية، والكويت منذ عام 2010.",
     visionTitle: "الرؤية",
-    visionText: "أن نكون قائداً موثوقاً في حلول تكنولوجيا المعلومات — نقدم خدمات مستجيبة ومبتكرة وقابلة للتوسع.",
+    visionText: "أن نكون أكثر مزودي CRM وحلول تكنولوجيا المعلومات موثوقية في الشرق الأوسط — نحقق نتائج أعمال قابلة للقياس من خلال التكنولوجيا.",
     missionTitle: "المهمة",
-    missionText: "مهمتنا في Fox Systems هي توفير حلول تقنية شاملة تعزز أداء عملائنا وتأمين بيئتهم الرقمية.",
+    missionText: "نقدم أنظمة CRM وحلول تكنولوجيا المعلومات الكاملة التي تساعد الشركات في مصر والسعودية والكويت على النمو بشكل أسرع وخدمة العملاء بشكل أفضل والعمل بكفاءة أعلى.",
     coreValuesTitle: "القيم الأساسية",
     integrity: "النزاهة والصدق",
-    integrityDesc: "فعل ما هو صحيح لعملائنا وشركائنا، دائماً بشفافية وسلوك أخلاقي.",
+    integrityDesc: "معاملات شفافة مع كل عميل، دائماً نفعل الصواب.",
     reliability: "الموثوقية",
-    reliabilityDesc: "أن نكون موثوقين في تقديم الخدمة والدعم، في أي وقت وأي مكان.",
+    reliabilityDesc: "دعم على مدار الساعة وتقديم خدمة موثوقة في أي وقت وأي مكان.",
     customerFocus: "الابتكار الموجه للعميل",
-    customerFocusDesc: "تحسين عملياتنا وحلولنا باستمرار لتجاوز التوقعات.",
+    customerFocusDesc: "تحسين حلول CRM باستمرار لتجاوز توقعات العملاء.",
     teamwork: "العمل الجماعي والاحترافية",
-    teamworkDesc: "تقدير التعاون والخبرة والمسؤولية في كل ما نقوم به.",
+    teamworkDesc: "تعاون متخصص ومساءلة في كل مشروع نقدمه.",
     excellence: "تميز الخدمة",
-    excellenceDesc: "السعي للحصول على أعلى جودة في النتائج والعمليات والتفاعلات مع العملاء.",
-    flexibility: "المرونة والقابلية للتكيف",
-    flexibilityDesc: "تلبية الاحتياجات المتنوعة بحلول تقنية قابلة للتوسع ومخصصة.",
-    respect: "الاحترام والثقة",
-    respectDesc: "بناء علاقات طويلة الأجل من خلال التعاطف والاحترام والموثوقية.",
-    servicesTitle: "خدماتنا",
-    servicesSubtitle: "حلول تكنولوجيا معلومات شاملة تشمل مراكز الاتصال، CRM، وVoIP لعملك في الشرق الأوسط",
-    internet: "خدمات الإنترنت وVoIP للشركات",
-    internetDesc: "اتصال عالي الأداء وحلول VoIP تشمل الخطوط المؤجرة، الميكروويف، وخدمات VPN لمراكز الاتصال.",
-    software: "حلول CRM والبرمجيات",
-    softwareDesc: "أنظمة CRM مخصصة، تنفيذ ERP، وتطوير برمجيات مخصصة لتبسيط أعمالك في مصر والسعودية.",
-    hardware: "أجهزة تكنولوجيا المعلومات: خوادم، كمبيوتر ولابتوب",
-    hardwareDesc: "خوادم من فئة المؤسسات، أجهزة كمبيوتر عالية الأداء، وأجهزة لابتوب مع تركيب وصيانة احترافية في الكويت ومصر.",
-    cybersecurity: "حماية جدران الحماية والأمن",
-    cybersecurityDesc: "حلول جدران الحماية المتقدمة، أمن النقاط النهائية، ومراقبة 24/7 لحماية عملك من التهديدات السيبرانية.",
+    excellenceDesc: "أعلى جودة في كل تطبيق CRM ومشروع تقني وتفاعل دعم.",
+    flexibility: "المرونة",
+    flexibilityDesc: "حلول CRM وتكنولوجيا المعلومات المخصصة التي تنمو مع عملك.",
+    respect: "الثقة",
+    respectDesc: "بناء شراكات طويلة الأمد من خلال الموثوقية والنتائج.",
+    servicesTitle: "خدمات تكنولوجيا المعلومات لدينا",
+    servicesSubtitle: "CRM هو خبرتنا الأساسية — مدعومة بمجموعة كاملة من خدمات تكنولوجيا المعلومات للتحول الكامل للأعمال في الشرق الأوسط",
+    crmService: "أنظمة CRM (خدمتنا الأساسية)",
+    crmServiceDesc: "تطبيق قوي لنظام CRM في مصر والسعودية والكويت. إدارة العملاء والمبيعات وأتمتة سير العمل. دعم كامل باللغة العربية والإنجليزية.",
+    internet: "مراكز الاتصال وحلول VoIP",
+    internetDesc: "إعداد مركز اتصال كامل، أنظمة VoIP، خطوط مؤجرة، ميكروويف، وخدمات VPN. اتصال احترافي للشركات من جميع الأحجام.",
+    software: "ERP وبرمجيات الأعمال",
+    softwareDesc: "نظام Odoo ERP، تطوير برمجيات مخصصة، وحلول أتمتة الأعمال لتبسيط العمليات في مصر والسعودية.",
+    hardware: "أجهزة تكنولوجيا المعلومات: خوادم وكمبيوتر ولابتوب",
+    hardwareDesc: "خوادم من فئة المؤسسات، أجهزة كمبيوتر عالية الأداء، وأجهزة لابتوب مع تركيب وصيانة احترافية.",
+    cybersecurity: "جدار الحماية والأمن السيبراني",
+    cybersecurityDesc: "حلول متقدمة لجدار الحماية Sophos وFortinet، أمن النقاط النهائية، ومراقبة التهديدات على مدار الساعة.",
     infrastructure: "الشبكة والبنية التحتية لتكنولوجيا المعلومات",
-    infrastructureDesc: "إعداد كامل للبنية التحتية، حلول مراكز البيانات، وكابلات الشبكة للمؤسسات في السعودية ومصر.",
-    webDev: "تطوير مواقع محسنة لمحركات البحث (SEO)",
-    webDevDesc: "مواقع متجاوبة ومحسنة لمحركات البحث مصممة لتظهر في النتيجة الأولى في جوجل لخدمات تكنولوجيا المعلومات.",
-    whyFoxTitle: "لماذا Fox Systems؟",
+    infrastructureDesc: "إعداد كامل للشبكة، الكابلات المنظمة، حلول مراكز البيانات، والبنية التحتية لتكنولوجيا المعلومات للمؤسسات.",
+    webDev: "تطوير المواقع وتحسين محركات البحث",
+    webDevDesc: "مواقع متجاوبة محسنة لمحركات البحث مصممة للظهور في الصفحة الأولى من جوجل لخدمات تكنولوجيا المعلومات و CRM في الشرق الأوسط.",
+    whyFoxTitle: "لماذا تختار أكثر من 300 شركة فوكس سيستمز",
     yearsExperience: "سنوات الخبرة",
     happyClients: "عملاء سعداء",
     projectsDelivered: "مشاريع منجزة",
     supportAvailable: "دعم 24/7",
-    trustedByTitle: "موثوق به من قبل أكثر من 300 عميل",
-    trustedByDesc: "أكثر من 300 عميل يثقون بنا في بنيتهم التحتية لتكنولوجيا المعلومات عبر صناعات مختلفة",
-    contactTitle: "اتصل بنا",
-    contactSubtitle: "تواصل مع فريقنا",
+    trustedByTitle: "موثوق به من قبل المؤسسات الرائدة",
+    trustedByDesc: "أكثر من 300 شركة في مصر والسعودية والكويت تثق بـ فوكس سيستمز لأنظمة CRM وحلول تكنولوجيا المعلومات",
+    partnersTitle: "شركاؤنا التقنيون",
+    partnersDesc: "نعمل مع أكبر العلامات التجارية التقنية في العالم لتقديم أفضل حلول CRM وتكنولوجيا المعلومات",
+    faqTitle: "الأسئلة الشائعة",
+    faqSubtitle: "أسئلة شائعة حول أنظمة CRM وحلول تكنولوجيا المعلومات في مصر والشرق الأوسط",
+    faq1Q: "ما هو نظام CRM ولماذا يحتاجه عملي؟",
+    faq1A: "نظام CRM يساعد الشركات في مصر والسعودية والكويت على إدارة بيانات العملاء، وتتبع قمع المبيعات، وأتمتة المتابعات، وإنشاء التقارير. يزيد كفاءة المبيعات بنسبة تصل إلى 40% ويحسن الاحتفاظ بالعملاء. فوكس سيستمز تطبق حلول CRM مخصصة لصناعتك وحجم عملك.",
+    faq2Q: "كم من الوقت يستغرق تطبيق نظام CRM؟",
+    faq2A: "يستغرق تطبيق CRM من فوكس سيستمز عادةً من 2 إلى 8 أسابيع حسب حجم عملك ومتطلباتك. نتولى كل شيء: الإعداد، وترحيل البيانات، وتدريب الموظفين، ودعم ما بعد الإطلاق. فريقنا يتحدث العربية والإنجليزية لضمان انضمام سلس في مصر والسعودية والكويت.",
+    faq3Q: "ما الذي يجعل فوكس سيستمز أفضل مزود CRM في مصر؟",
+    faq3A: "تمتلك فوكس سيستمز أكثر من 14 عامًا من الخبرة في تطبيق أنظمة CRM لأكثر من 300 عميل في مصر والسعودية والكويت. نوفر دعم واجهة عربية كامل، وخدمة ما بعد البيع المحلية، ودعم فني على مدار الساعة، وتكامل مع مركز الاتصال وأنظمة VoIP — وكل ذلك بأسعار تنافسية.",
+    faq4Q: "هل تقدمون حلول جدار الحماية وأمن الشبكات؟",
+    faq4A: "نعم. فوكس سيستمز شريك معتمد لحلول جدران الحماية Sophos وFortinet. نقدم تركيب جدار الحماية المتقدم، والتكوين، وحماية النقاط النهائية، ومراقبة الأمان على مدار الساعة للمؤسسات في جميع أنحاء مصر والسعودية والكويت.",
+    faq5Q: "هل يمكن لفوكس سيستمز إعداد مركز اتصال كامل؟",
+    faq5A: "بالتأكيد. نحن متخصصون في إعداد مراكز الاتصال الكاملة بما في ذلك أنظمة VoIP (Grandstream وCisco) وتكامل CRM وبرامج إدارة الوكلاء والرد الآلي الصوتي وتسجيل المكالمات ولوحات التحكم في الوقت الفعلي. نخدم مراكز الاتصال في جميع أنحاء مصر والسعودية والكويت.",
+    faq6Q: "هل تقدمون خدمات تكنولوجيا المعلومات في جميع أنحاء السعودية والكويت؟",
+    faq6A: "نعم. تقدم فوكس سيستمز تطبيق CRM والبنية التحتية لتكنولوجيا المعلومات وأمن جدار الحماية وحلول VoIP في جميع أنحاء مصر والسعودية والكويت. فريقنا متاح عن بُعد وفي الموقع في جميع أنحاء الشرق الأوسط.",
+    contactTitle: "احصل على استشارة CRM مجانية",
+    contactSubtitle: "أخبرنا عن عملك وسنوصي بحل CRM وتكنولوجيا المعلومات المثالي",
     phone: "الهاتف",
     address: "العنوان",
     chatWhatsApp: "تحدث عبر واتس آب",
-    submitInquiry: "إرسال الطلب",
+    submitInquiry: "إرسال الرسالة",
     companyName: "اسم الشركة",
-    contactName: "اسم جهة الاتصال",
+    contactName: "اسمك",
     email: "البريد الإلكتروني",
     phoneWhatsApp: "الهاتف / واتس آب",
-    serviceType: "نوع الخدمة",
+    serviceType: "الخدمة المهتم بها",
     message: "الرسالة",
-    placeholderRequirements: "أخبرنا عن متمتطلباتك...",
-    footerDesc: "شريكك الموثوق للبنية التحتية المتكاملة لتكنولوجيا المعلومات، ونشر البرمجيات، والأمن السيبراني، وتسليم المشاريع.",
+    placeholderRequirements: "أخبرنا عن عملك ومتطلباتك...",
+    footerDesc: "فوكس سيستمز هو شريكك الموثوق لأنظمة CRM وحلول تكنولوجيا المعلومات في مصر والسعودية والكويت. متخصصون في CRM، مراكز الاتصال، جدران الحماية، VoIP، والبنية التحتية الكاملة.",
     copyright: "© 2026 Fox Systems. جميع الحقوق محفوظة.",
     services: "الخدمات",
     company: "الشركة",
@@ -181,6 +245,7 @@ export default function Home({ language }: HomeProps) {
   const { theme } = useTheme();
   const t = translations[language];
   const isArabic = language === "ar";
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const coreValues = [
     { icon: Shield, title: t.integrity, desc: t.integrityDesc },
@@ -195,11 +260,12 @@ export default function Home({ language }: HomeProps) {
   const langPrefix = isArabic ? "/ar" : "";
 
   const services = [
-    { icon: Network, title: t.internet, desc: t.internetDesc, href: `${langPrefix}/services/internet` },
+    { icon: Database, title: t.crmService, desc: t.crmServiceDesc, href: `${langPrefix}/services/software`, featured: true },
+    { icon: HeadphonesIcon, title: t.internet, desc: t.internetDesc, href: `${langPrefix}/services/internet` },
     { icon: Cpu, title: t.software, desc: t.softwareDesc, href: `${langPrefix}/services/software` },
     { icon: Server, title: t.hardware, desc: t.hardwareDesc, href: `${langPrefix}/services/hardware` },
     { icon: Shield, title: t.cybersecurity, desc: t.cybersecurityDesc, href: `${langPrefix}/services/cybersecurity` },
-    { icon: Zap, title: t.infrastructure, desc: t.infrastructureDesc, href: `${langPrefix}/services/infrastructure` },
+    { icon: Network, title: t.infrastructure, desc: t.infrastructureDesc, href: `${langPrefix}/services/infrastructure` },
     { icon: Globe, title: t.webDev, desc: t.webDevDesc, href: `${langPrefix}/services/web-development` },
   ];
 
@@ -210,20 +276,63 @@ export default function Home({ language }: HomeProps) {
     { label: t.supportAvailable, value: "24/7" },
   ];
 
+  const clients = [
+    { name: "Bank Masr", src: "/clients/01_bank_masr-BTQ0AReE.png" },
+    { name: "National Bank Kuwait", src: "/clients/02_national_bank_kuwait-1O0GSd4n.webp" },
+    { name: "El Araby Group", src: "/clients/03_elaraby_group-sKFXhEzA.png" },
+    { name: "Hassan Allam Holding", src: "/clients/04_hassan_allam_holding-CFQaxSID.png" },
+    { name: "El Nahda Cement", src: "/clients/05_el_nahda_cement-DXEmYNZR.png" },
+    { name: "Orascom Investment", src: "/clients/06_orascom_investment-DPKaxSvM.png" },
+  ];
+
+  const techPartners = [
+    { name: "Microsoft", src: "/clients/microsoft.svg" },
+    { name: "Sophos", src: "/clients/sophos.svg" },
+    { name: "Grandstream", src: "/clients/grandstream.svg" },
+    { name: "Cisco", src: "/clients/cisco.svg" },
+    { name: "Fortinet", src: "/clients/fortinet.svg" },
+    { name: "Dell", src: "/clients/dell.svg" },
+    { name: "HP", src: "/clients/hp.svg" },
+  ];
+
+  const crmFeatures = [
+    t.crmFeature1, t.crmFeature2, t.crmFeature3,
+    t.crmFeature4, t.crmFeature5, t.crmFeature6,
+  ];
+
+  const faqs = [
+    { q: t.faq1Q, a: t.faq1A },
+    { q: t.faq2Q, a: t.faq2A },
+    { q: t.faq3Q, a: t.faq3A },
+    { q: t.faq4Q, a: t.faq4A },
+    { q: t.faq5Q, a: t.faq5A },
+    { q: t.faq6Q, a: t.faq6A },
+  ];
+
+  const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+    }))
+  });
+
   return (
     <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
-      <SEOHead config={isArabic ? arabicSEOConfigs.home : defaultSEOConfig} />
+      <SEOHead config={isArabic ? arabicSEOConfigs.home : defaultSEOConfig} additionalSchema={faqSchema} />
       <Header language={language} />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-black">
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
           <img
             src="/hero-tech.jpg"
-            alt="Hero Background"
-            className="w-full h-full object-cover opacity-40"
+            alt="CRM and IT Solutions - Fox Systems Egypt"
+            className="w-full h-full object-cover opacity-35"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-transparent"></div>
         </div>
 
         <div className="container relative z-10 py-20">
@@ -238,9 +347,12 @@ export default function Home({ language }: HomeProps) {
                 {t.heroBadge}
               </span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
               {t.heroTitle}
             </h1>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8 leading-tight">
+              {t.heroTitleHighlight}
+            </h2>
             <p className="text-xl text-gray-300 mb-12 leading-relaxed max-w-2xl">
               {t.heroSubtitle}
             </p>
@@ -256,7 +368,53 @@ export default function Home({ language }: HomeProps) {
                 </Button>
               </Link>
             </div>
+            {/* Quick trust signals */}
+            <div className="flex flex-wrap gap-6 mt-10 text-white/70 text-sm">
+              {["14+ Years Experience", "300+ Clients", "Egypt • KSA • Kuwait"].map((item, i) => (
+                <span key={i} className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary" /> {item}
+                </span>
+              ))}
+            </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* CRM Feature Banner */}
+      <section className="py-20 bg-primary text-white">
+        <div className="container">
+          <div className={`grid lg:grid-cols-2 gap-16 items-center ${isArabic ? "rtl" : ""}`}>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div className="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-bold uppercase tracking-wider">
+                ⭐ {isArabic ? "خدمتنا الأساسية" : "Our Core Service"}
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight">{t.crmBannerTitle}</h2>
+              <p className="text-xl text-white/85 leading-relaxed">{t.crmBannerDesc}</p>
+              <Link href={`${langPrefix}/contact`}>
+                <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold mt-4 h-14 px-10 rounded-xl">
+                  {t.crmCTA}
+                </Button>
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+            >
+              {crmFeatures.map((feature, i) => (
+                <div key={i} className="flex items-center gap-3 bg-white/10 rounded-xl p-4">
+                  <CheckCircle2 className="w-5 h-5 text-white shrink-0" />
+                  <span className="font-medium">{feature}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -291,7 +449,7 @@ export default function Home({ language }: HomeProps) {
               viewport={{ once: true }}
               className="relative"
             >
-              <img src="/it-services.jpg" alt="Who We Are" className="rounded-3xl shadow-2xl" />
+              <img src="/it-services.jpg" alt="Fox Systems - CRM and IT Solutions in Egypt" className="rounded-3xl shadow-2xl" />
               <div className="absolute -bottom-10 -right-10 bg-primary p-8 rounded-3xl text-white hidden md:block">
                 <div className="text-4xl font-bold mb-2">14+</div>
                 <div className="text-sm font-medium uppercase tracking-wider">{t.yearsExperience}</div>
@@ -302,11 +460,11 @@ export default function Home({ language }: HomeProps) {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-background" id="services">
         <div className="container">
           <div className={`text-center mb-20 space-y-6 ${isArabic ? "rtl" : ""}`}>
             <h2 className="text-4xl md:text-5xl font-bold">{t.servicesTitle}</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {t.servicesSubtitle}
             </p>
           </div>
@@ -320,57 +478,34 @@ export default function Home({ language }: HomeProps) {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
+                  transition={{ delay: idx * 0.08 }}
                   whileHover={{ y: -8 }}
-                  className="h-full"
+                  className={`h-full ${idx === 0 ? "md:col-span-2 lg:col-span-1" : ""}`}
                 >
-                  <Card className="overflow-hidden border-none bg-gradient-to-br from-primary/5 to-primary/10 hover:from-primary/15 hover:to-primary/20 transition-all group flex flex-col h-full shadow-lg hover:shadow-2xl">
-                    <div className="p-10 space-y-6 flex-grow">
-                      <div className="p-5 bg-primary/20 rounded-2xl w-fit group-hover:bg-primary group-hover:text-white transition-colors">
-                        <Icon className="w-10 h-10 text-primary group-hover:text-white" />
+                  <Card className={`overflow-hidden border-none transition-all group flex flex-col h-full shadow-lg hover:shadow-2xl ${service.featured ? "bg-gradient-to-br from-primary to-primary/80 text-white" : "bg-gradient-to-br from-primary/5 to-primary/10 hover:from-primary/15 hover:to-primary/20"}`}>
+                    {service.featured && (
+                      <div className="px-10 pt-6">
+                        <span className="inline-block px-3 py-1 bg-white/20 text-white text-xs font-bold uppercase rounded-full tracking-wider">
+                          ⭐ {isArabic ? "الخدمة الأساسية" : "Core Service"}
+                        </span>
                       </div>
-                      <h3 className="text-2xl font-bold text-primary">{service.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">
+                    )}
+                    <div className="p-10 space-y-6 flex-grow">
+                      <div className={`p-5 rounded-2xl w-fit ${service.featured ? "bg-white/20" : "bg-primary/20 group-hover:bg-primary group-hover:text-white"} transition-colors`}>
+                        <Icon className={`w-10 h-10 ${service.featured ? "text-white" : "text-primary group-hover:text-white"}`} />
+                      </div>
+                      <h3 className={`text-2xl font-bold ${service.featured ? "text-white" : "text-primary"}`}>{service.title}</h3>
+                      <p className={`leading-relaxed ${service.featured ? "text-white/85" : "text-muted-foreground"}`}>
                         {service.desc}
                       </p>
                     </div>
                     <Link href={service.href}>
-                      <Button className="w-full h-16 rounded-none border-t border-primary/20 bg-primary text-white hover:bg-primary/90 transition-colors gap-3 font-semibold">
+                      <Button className={`w-full h-16 rounded-none border-t font-semibold gap-3 ${service.featured ? "bg-white text-primary hover:bg-white/90 border-white/20" : "border-primary/20 bg-primary text-white hover:bg-primary/90"} transition-colors`}>
                         {language === "en" ? "Learn More" : "اعرف المزيد"}
                         <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-2 ${isArabic ? "rotate-180" : ""}`} />
                       </Button>
                     </Link>
                   </Card>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Core Values Section */}
-      <section className="py-24 bg-muted/30 overflow-hidden">
-        <div className="container">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold">{t.coreValuesTitle}</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {coreValues.map((value, idx) => {
-              const Icon = value.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-background p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all"
-                >
-                  <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                    <Icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-4">{value.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{value.desc}</p>
                 </motion.div>
               );
             })}
@@ -392,15 +527,15 @@ export default function Home({ language }: HomeProps) {
         </div>
       </section>
 
-      {/* Trusted By Section */}
+      {/* Trusted By Clients */}
       <section className="py-24 bg-background">
         <div className="container">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-4xl font-bold">{t.trustedByTitle}</h2>
             <p className="text-xl text-muted-foreground">{t.trustedByDesc}</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+            {clients.map((client, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -410,10 +545,11 @@ export default function Home({ language }: HomeProps) {
                 whileHover={{ scale: 1.1 }}
                 className="flex justify-center p-4"
               >
-                <img 
-                  src={i === 7 ? '/clients/mwri-logo-cut.png' : i === 8 ? '/clients/vodafone-cut.png' : `/clients/${i.toString().padStart(2, '0')}_${i === 1 ? 'bank_masr-BTQ0AReE.png' : i === 2 ? 'national_bank_kuwait-1O0GSd4n.webp' : i === 3 ? 'elaraby_group-sKFXhEzA.png' : i === 4 ? 'hassan_allam_holding-CFQaxSID.png' : i === 5 ? 'el_nahda_cement-DXEmYNZR.png' : 'orascom_investment-DPKaxSvM.png'}`} 
-                  alt="Client" 
-                  className="h-12 md:h-16 object-contain transition-all" 
+                <img
+                  src={client.src}
+                  alt={`${client.name} - Fox Systems Client`}
+                  className="h-12 md:h-16 object-contain transition-all"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                 />
               </motion.div>
             ))}
@@ -421,8 +557,107 @@ export default function Home({ language }: HomeProps) {
         </div>
       </section>
 
+      {/* Tech Partners Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container">
+          <div className="text-center mb-12 space-y-4">
+            <h2 className="text-3xl font-bold">{t.partnersTitle}</h2>
+            <p className="text-lg text-muted-foreground">{t.partnersDesc}</p>
+          </div>
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 items-center">
+            {techPartners.map((partner, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                whileHover={{ scale: 1.1 }}
+                className="flex flex-col items-center justify-center p-4 bg-background rounded-xl shadow-sm hover:shadow-md transition-all"
+              >
+                <img
+                  src={partner.src}
+                  alt={`${partner.name} Partner - Fox Systems`}
+                  className="h-10 object-contain"
+                />
+                <span className="text-xs text-muted-foreground mt-2 font-medium">{partner.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values Section */}
+      <section className="py-24 bg-background overflow-hidden">
+        <div className="container">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold">{t.coreValuesTitle}</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {coreValues.map((value, idx) => {
+              const Icon = value.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="bg-muted/30 p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2"
+                >
+                  <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                    <Icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">{value.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{value.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-muted/30" id="faq">
+        <div className="container">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl font-bold">{t.faqTitle}</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t.faqSubtitle}</p>
+          </div>
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                className="bg-background rounded-2xl shadow-md overflow-hidden"
+              >
+                <button
+                  className="w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-primary/5 transition-colors"
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                >
+                  <span className="font-semibold text-lg">{faq.q}</span>
+                  {openFaq === idx ? (
+                    <ChevronUp className="w-5 h-5 text-primary shrink-0" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-primary shrink-0" />
+                  )}
+                </button>
+                {openFaq === idx && (
+                  <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                    {faq.a}
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-24 bg-background" id="contact">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16">
             <motion.div
@@ -466,10 +701,10 @@ export default function Home({ language }: HomeProps) {
                 </div>
               </div>
 
-              <div className="pt-8">
-                <a 
-                  href="https://wa.me/201038450546" 
-                  target="_blank" 
+              <div className="pt-4">
+                <a
+                  href="https://wa.me/201038450546"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white rounded-xl font-bold hover:opacity-90 transition-all"
                 >
@@ -483,32 +718,44 @@ export default function Home({ language }: HomeProps) {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-background p-8 md:p-12 rounded-3xl shadow-xl"
+              className="bg-muted/30 p-8 md:p-12 rounded-3xl shadow-xl"
             >
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium">{t.contactName}</label>
-                    <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                    <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/20" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium">{t.email}</label>
-                    <input type="email" className="w-full h-12 px-4 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                    <input type="email" className="w-full h-12 px-4 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/20" />
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium">{t.companyName}</label>
-                    <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                    <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/20" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium">{t.phoneWhatsApp}</label>
-                    <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                    <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/20" />
                   </div>
                 </div>
                 <div className="space-y-2">
+                  <label className="text-sm font-medium">{t.serviceType}</label>
+                  <select className="w-full h-12 px-4 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/20">
+                    <option value="crm">{isArabic ? "نظام CRM" : "CRM System"}</option>
+                    <option value="callcenter">{isArabic ? "مركز الاتصال" : "Call Center"}</option>
+                    <option value="firewall">{isArabic ? "جدار الحماية" : "Firewall / Security"}</option>
+                    <option value="voip">{isArabic ? "VoIP" : "VoIP"}</option>
+                    <option value="hardware">{isArabic ? "أجهزة" : "Hardware"}</option>
+                    <option value="infrastructure">{isArabic ? "الشبكة والبنية التحتية" : "Network & Infrastructure"}</option>
+                    <option value="other">{isArabic ? "أخرى" : "Other"}</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
                   <label className="text-sm font-medium">{t.message}</label>
-                  <textarea rows={4} className="w-full p-4 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder={t.placeholderRequirements}></textarea>
+                  <textarea rows={4} className="w-full p-4 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder={t.placeholderRequirements}></textarea>
                 </div>
                 <Button className="w-full h-14 text-lg rounded-xl gap-2">
                   <Send className="w-5 h-5" />
@@ -523,43 +770,70 @@ export default function Home({ language }: HomeProps) {
       {/* Footer */}
       <footer className="bg-card border-t border-border py-20">
         <div className="container">
-          <div className="grid md:grid-cols-3 gap-12 mb-16">
-            <div className="space-y-6">
+          <div className="grid md:grid-cols-4 gap-12 mb-16">
+            <div className="md:col-span-1 space-y-6">
               <Link href="/" className="flex items-center gap-3">
-                <img src="/logo.jpg" alt="Fox Systems" className="h-12 w-12 rounded-xl" />
+                <img src="/logo.jpg" alt="Fox Systems - CRM & IT Solutions Egypt" className="h-12 w-12 rounded-xl" />
                 <span className="font-bold text-2xl text-primary">Fox Systems</span>
               </Link>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed text-sm">
                 {t.footerDesc}
               </p>
             </div>
             <div>
               <h4 className="font-bold text-xl mb-8">{t.services}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li><Link href={`${langPrefix}/services/internet`} className="hover:text-primary transition">{t.internet}</Link></li>
-                <li><Link href={`${langPrefix}/services/software`} className="hover:text-primary transition">{t.software}</Link></li>
-                <li><Link href={`${langPrefix}/services/hardware`} className="hover:text-primary transition">{t.hardware}</Link></li>
-                <li><Link href={`${langPrefix}/services/cybersecurity`} className="hover:text-primary transition">{t.cybersecurity}</Link></li>
+              <ul className="space-y-3 text-muted-foreground text-sm">
+                <li><Link href={`${langPrefix}/services/software`} className="hover:text-primary transition">{isArabic ? "أنظمة CRM" : "CRM Systems"}</Link></li>
+                <li><Link href={`${langPrefix}/services/internet`} className="hover:text-primary transition">{isArabic ? "مراكز الاتصال وVoIP" : "Call Center & VoIP"}</Link></li>
+                <li><Link href={`${langPrefix}/services/cybersecurity`} className="hover:text-primary transition">{isArabic ? "جدران الحماية" : "Firewall & Security"}</Link></li>
+                <li><Link href={`${langPrefix}/services/hardware`} className="hover:text-primary transition">{isArabic ? "الأجهزة والخوادم" : "Hardware & Servers"}</Link></li>
+                <li><Link href={`${langPrefix}/services/infrastructure`} className="hover:text-primary transition">{isArabic ? "الشبكة والبنية التحتية" : "Network & Infrastructure"}</Link></li>
+                <li><Link href={`${langPrefix}/services/web-development`} className="hover:text-primary transition">{isArabic ? "تطوير المواقع" : "Website Development"}</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-xl mb-8">{t.company}</h4>
+              <ul className="space-y-3 text-muted-foreground text-sm">
+                <li><Link href={`${langPrefix}/`} className="hover:text-primary transition">{t.about}</Link></li>
+                <li><Link href={`${langPrefix}/articles`} className="hover:text-primary transition">{isArabic ? "المقالات" : "Articles"}</Link></li>
+                <li><a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">{isArabic ? "واتس آب" : "WhatsApp"}</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-xl mb-8">{t.contact}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li className="flex items-center gap-3"><Mail className="w-5 h-5 text-primary" /> info@foxsystems.com</li>
-                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-primary" /> +201038450546</li>
-                <li className="flex items-center gap-3"><MapPin className="w-5 h-5 text-primary" /> {isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</li>
+              <ul className="space-y-4 text-muted-foreground text-sm">
+                <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-primary" /> info@foxsystems.com</li>
+                <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-primary" /> +201038450546</li>
+                <li className="flex items-center gap-3"><MapPin className="w-4 h-4 text-primary" /> {isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</li>
+                <li className="mt-4">
+                  <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#25D366] text-white rounded-lg text-sm font-bold hover:opacity-90 transition">
+                    <MessageCircle className="w-4 h-4" />
+                    WhatsApp
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-          <div className="pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6 text-muted-foreground">
+          <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-muted-foreground text-sm">
             <p>{t.copyright}</p>
-            <div className="flex gap-8">
-              <Link href={`${langPrefix}/privacy`} className="hover:text-primary transition">{t.privacyPolicy}</Link>
-              <Link href={`${langPrefix}/terms`} className="hover:text-primary transition">{t.termsOfUse}</Link>
+            <div className="flex gap-6">
+              <span className="text-xs">{isArabic ? "مصر | السعودية | الكويت | الشرق الأوسط" : "Egypt | Saudi Arabia | Kuwait | Middle East"}</span>
             </div>
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://wa.me/201038450546"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+        aria-label="Chat on WhatsApp"
+      >
+        <MessageCircle className="w-7 h-7 text-white" />
+      </a>
     </div>
   );
 }

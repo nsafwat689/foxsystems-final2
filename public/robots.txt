@@ -1,23 +1,18 @@
-# Robots.txt for Fox Systems
-# Allows search engines to crawl and index all pages
-
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /private
-Disallow: /*.json$
-Disallow: /*.pdf$
 
-# Specific rules for Googlebot
-User-agent: Googlebot
-Allow: /
+# High-priority pages for crawlers
+Allow: /services/software
+Allow: /ar/services/software
+Allow: /services/internet
+Allow: /services/cybersecurity
+Allow: /services/infrastructure
+Allow: /contact
+Allow: /ar/
+Allow: /ar/services/
 
-# Specific rules for Bingbot
-User-agent: Bingbot
-Allow: /
-
-# Crawl delay (in seconds)
-Crawl-delay: 1
-
-# Sitemap location
+# Sitemap
 Sitemap: https://foxsystemstech.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1

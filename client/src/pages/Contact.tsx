@@ -11,8 +11,8 @@ import { serviceSEOConfigs, arabicSEOConfigs } from "@/utils/seo";
 
 const translations = {
   en: {
-    contactTitle: "Contact Us",
-    contactSubtitle: "Get in touch with our team",
+    contactTitle: "Get a Free CRM Consultation",
+    contactSubtitle: "Talk to our experts about CRM systems, Call Center, Firewall, VoIP, or any IT solution — Egypt, KSA & Kuwait",
     email: "Email",
     phone: "Phone",
     address: "Address",
@@ -44,8 +44,8 @@ const translations = {
     openInMaps: "Open in Maps",
   },
   ar: {
-    contactTitle: "اتصل بنا",
-    contactSubtitle: "تواصل مع فريقنا",
+    contactTitle: "احصل على استشارة CRM مجانية",
+    contactSubtitle: "تحدث مع خبرائنا حول أنظمة CRM، مراكز الاتصال، جدران الحماية، VoIP، أو أي حل تقني — مصر، السعودية والكويت",
     email: "البريد الإلكتروني",
     phone: "الهاتف",
     address: "العنوان",
@@ -332,6 +332,16 @@ export default function Contact({ language }: ContactProps) {
           </div>
         </div>
       </footer>
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://wa.me/201038450546"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+        aria-label="Chat on WhatsApp"
+      >
+        <MessageCircle className="w-7 h-7 text-white" />
+      </a>
     </div>
   );
 }

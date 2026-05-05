@@ -188,50 +188,69 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
   const serviceSchema = generateServiceSchema(data.title, data.overview, seoConfig.canonicalUrl);
 
   return (
-    <div className={`min-h-screen bg-background text-foreground ${isArabic ? "rtl" : "ltr"}`}>
+    <div className={`min-h-screen bg-background text-foreground ${isArabic ? "rtl" : "ltr"}`} dir={isArabic ? "rtl" : "ltr"}>
       <SEOHead config={seoConfig} organizationSchema additionalSchema={serviceSchema} />
       <Header language={language} />
 
       {/* Hero Section */}
-      <section className="relative py-24 bg-black overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <img src="/hero-tech.jpg" alt="Service Hero" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black"></div>
-        </div>
+      <section className="relative py-28 bg-hero-pattern overflow-hidden">
+        <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
+        <div className="absolute top-1/3 left-1/4 w-80 h-80 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
         <div className="container relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`max-w-3xl ${isArabic ? "text-right mr-auto" : ""}`}
+            transition={{ duration: 0.55, ease: [0.22,1,0.36,1] }}
+            className={`max-w-3xl ${isArabic ? "text-right mr-auto ml-0" : ""}`}
           >
-            <div className="p-4 bg-primary/20 rounded-2xl w-fit mb-8">
-              <Icon className="w-12 h-12 text-primary" />
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl mb-7 ring-1 ring-white/20">
+              <Icon className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">{data.title}</h1>
-            <p className="text-xl text-gray-300 leading-relaxed">{data.subtitle}</p>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-5"
+              style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", letterSpacing:"-0.025em" }}>
+              {data.title}
+            </h1>
+            <p className="text-lg text-white/70 leading-relaxed max-w-2xl">{data.subtitle}</p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href={`${langPrefix}/contact`}>
+                <Button size="lg" className="h-12 px-8 rounded-full font-bold shadow-xl shadow-primary/40 hover:scale-[1.02] transition-all">
+                  {isArabic ? "احصل على عرض مجاني" : "Get a Free Quote"}
+                </Button>
+              </Link>
+              <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline" className="h-12 px-8 rounded-full border-white/25 text-white hover:bg-white/10 gap-2">
+                  <MessageCircle className="w-4 h-4" /> WhatsApp
+                </Button>
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-20 bg-background">
         <div className="container">
-          <div className="grid lg:grid-cols-3 gap-16">
+          <div className="grid lg:grid-cols-3 gap-14">
             <div className={`lg:col-span-2 space-y-16 ${isArabic ? "text-right" : ""}`}>
               {/* Overview */}
-              <div className="space-y-6">
-                <h2 className="text-3xl font-bold">{data.overviewTitle}</h2>
+              <div className="space-y-5">
+                <h2 className="text-3xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{data.overviewTitle}</h2>
+                <div className="section-divider" />
                 <p className="text-lg text-muted-foreground leading-relaxed">{data.overview}</p>
               </div>
 
               {/* Capabilities */}
-              <div className="space-y-8">
-                <h2 className="text-3xl font-bold">{data.capabilitiesTitle}</h2>
-                <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-7">
+                <h2 className="text-3xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{data.capabilitiesTitle}</h2>
+                <div className="grid md:grid-cols-2 gap-4">
                   {data.capabilities.map((cap: any, idx: number) => (
-                    <Card key={idx} className="border-none bg-muted/30 p-6 hover:bg-muted/50 transition-colors">
-                      <h3 className="text-xl font-bold mb-3">{cap.title}</h3>
-                      <p className="text-muted-foreground">{cap.desc}</p>
-                    </Card>
+                    <motion.div key={idx} initial={{opacity:0,y:12}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:idx*0.06}}
+                      className="p-6 rounded-2xl bg-muted/40 border border-border hover:border-primary/25 hover:bg-primary/5 transition-all card-hover">
+                      <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <CheckCircle className="w-4 h-4 text-primary" />
+                      </div>
+                      <h3 className="font-bold text-lg mb-2" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{cap.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">{cap.desc}</p>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -242,15 +261,16 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                   <h2 className="text-3xl font-bold">{data.stepsTitle}</h2>
                   <div className="space-y-6">
                     {data.steps.map((step: any, idx: number) => (
-                      <div key={idx} className="flex gap-6 items-start">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold flex-shrink-0">
+                      <motion.div key={idx} initial={{opacity:0,x:-16}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{delay:idx*0.08}}
+                      className="flex gap-5 items-start">
+                        <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-extrabold flex-shrink-0 text-sm shadow-md shadow-primary/30">
                           {idx + 1}
                         </div>
-                        <div className="space-y-2">
-                          <h3 className="text-xl font-bold">{step.title}</h3>
-                          <p className="text-muted-foreground">{step.desc}</p>
+                        <div className="flex-1 pb-6 border-b border-border last:border-0">
+                          <h3 className="font-bold text-lg mb-1.5" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{step.title}</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
@@ -262,7 +282,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                   <h2 className="text-3xl font-bold">{data.partnersTitle}</h2>
                   <div className="flex flex-wrap gap-4">
                     {data.partners.map((partner: string, idx: number) => (
-                      <div key={idx} className="px-6 py-3 bg-muted rounded-xl font-semibold">
+                      <div key={idx} className="px-5 py-2.5 bg-primary/8 border border-primary/20 text-primary rounded-full text-sm font-bold hover:bg-primary hover:text-white transition-all cursor-default">
                         {partner}
                       </div>
                     ))}
@@ -273,32 +293,38 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
 
             {/* Sidebar Contact */}
             <div className="space-y-8">
-              <Card className="p-8 bg-primary text-primary-foreground border-none">
-                <h3 className="text-2xl font-bold mb-4">{titles.customSolutionTitle}</h3>
-                <p className="mb-8 opacity-90">{titles.customSolutionDescription}</p>
+              <div className="rounded-2xl bg-primary p-7 text-white shadow-xl shadow-primary/30 space-y-4">
+                <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase tracking-widest">{isArabic?"ابدأ الآن":"Get Started"}</span>
+                <h3 className="text-xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{titles.customSolutionTitle}</h3>
+                <p className="opacity-80 text-sm leading-relaxed">{titles.customSolutionDescription}</p>
                 <Link href={`${langPrefix}/contact`}>
-                  <Button variant="secondary" className="w-full h-12 text-lg">
-                    {isArabic ? "اتصل بنا" : "Contact Us"}
+                  <Button className="w-full bg-white text-primary hover:bg-white/95 font-bold rounded-full mt-2">
+                    {isArabic ? "اتصل بنا" : "Contact Us"} <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
-              </Card>
+                <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/15 rounded-full gap-2 mt-1">
+                    <MessageCircle className="w-4 h-4" /> WhatsApp
+                  </Button>
+                </a>
+              </div>
 
-              <div className={`space-y-6 ${isArabic ? "text-right" : ""}`}>
-                <h3 className="text-xl font-bold">{data.contactUsTitle}</h3>
-                <div className="space-y-4">
-                  <div className={`flex items-center gap-3 ${isArabic ? "flex-row-reverse" : ""}`}>
-                    <div className="p-2 bg-muted rounded-lg"><Phone className="w-5 h-5 text-primary" /></div>
-                    <span className="font-medium">+201557649136</span>
+              <div className="space-y-4 p-6 bg-muted/40 border border-border rounded-2xl">
+                <h3 className="font-bold text-base" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{data.contactUsTitle}</h3>
+                {[
+                  { Icon: Phone, val: "+201038450546", href: "tel:+201038450546" },
+                  { Icon: Mail, val: "info@foxsystems.com", href: "mailto:info@foxsystems.com" },
+                  { Icon: MapPin, val: isArabic ? "القاهرة، مصر" : "Cairo, Egypt", href: null },
+                ].map(({ Icon, val, href }, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-4 h-4 text-primary" />
+                    </div>
+                    {href
+                      ? <a href={href} className="text-sm font-semibold hover:text-primary transition">{val}</a>
+                      : <span className="text-sm font-semibold">{val}</span>}
                   </div>
-                  <div className={`flex items-center gap-3 ${isArabic ? "flex-row-reverse" : ""}`}>
-                    <div className="p-2 bg-muted rounded-lg"><Mail className="w-5 h-5 text-primary" /></div>
-                    <span className="font-medium">info@foxsystems.com</span>
-                  </div>
-                  <div className={`flex items-center gap-3 ${isArabic ? "flex-row-reverse" : ""}`}>
-                    <div className="p-2 bg-muted rounded-lg"><MapPin className="w-5 h-5 text-primary" /></div>
-                    <span className="font-medium">{isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -306,11 +332,16 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
       </section>
 
       {/* Footer */}
-      <footer className="bg-card border-t border-border py-12">
-        <div className="container text-center text-muted-foreground">
-          <p>© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
+      <footer className="bg-[var(--navy)] text-white py-10">
+        <div className="container text-center">
+          <p className="text-white/40 text-sm">© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait</p>
         </div>
       </footer>
+      <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+        aria-label="Chat on WhatsApp">
+        <MessageCircle className="w-7 h-7 text-white" />
+      </a>
     </div>
   );
 }

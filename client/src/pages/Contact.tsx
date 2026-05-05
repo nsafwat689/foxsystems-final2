@@ -1,345 +1,274 @@
 import { useState } from "react";
-import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Link } from "wouter";
-import { Mail, Phone, MapPin, MessageCircle, Send, Globe, Clock, Users, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, Send, Clock, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
-import { serviceSEOConfigs, arabicSEOConfigs } from "@/utils/seo";
+import { arabicSEOConfigs } from "@/utils/seo";
+import { Link } from "wouter";
 
-const translations = {
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] } }),
+};
+
+const T = {
   en: {
-    contactTitle: "Get a Free CRM Consultation",
-    contactSubtitle: "Talk to our experts about CRM systems, Call Center, Firewall, VoIP, or any IT solution — Egypt, KSA & Kuwait",
-    email: "Email",
-    phone: "Phone",
-    address: "Address",
-    chatWhatsApp: "Chat on WhatsApp",
-    companyName: "Company Name",
-    contactName: "Contact Name",
-    emailLabel: "Email",
-    phoneLabel: "Phone / WhatsApp",
-    serviceType: "Service Type",
-    message: "Message",
-    placeholderRequirements: "Tell us about your requirements...",
-    submitInquiry: "Submit Inquiry",
-    footerDesc: "Your trusted partner for comprehensive IT infrastructure, software deployment, cybersecurity, and project delivery.",
-    copyright: "© 2026 Fox Systems. All rights reserved.",
-    services: "Services",
-    company: "Company",
-    contact: "Contact",
-    privacyPolicy: "Privacy Policy",
-    termsOfUse: "Terms of Use",
-    internet: "Internet",
-    software: "Software",
-    hardware: "Hardware",
-    cybersecurity: "Cybersecurity",
-    infrastructure: "Infrastructure",
-    webDev: "Website Development",
-    careers: "Careers",
-    team: "Team",
-    about: "About",
-    openInMaps: "Open in Maps",
+    badge: "Free Consultation",
+    title: "Let's Talk About Your Business",
+    sub: "Get a free consultation with our CRM and IT experts. We'll recommend the perfect solution for your business in Egypt, Saudi Arabia, or Kuwait.",
+    nameLbl: "Your Name", emailLbl: "Email Address",
+    companyLbl: "Company Name", phoneLbl: "Phone / WhatsApp",
+    serviceLbl: "Service Interested In", msgLbl: "Tell us about your requirements",
+    msgPlaceholder: "Describe your project, business size, and what you're looking to achieve...",
+    sendBtn: "Send Message",
+    sending: "Sending...",
+    successTitle: "Message Sent!",
+    successMsg: "Thank you! Our team will contact you within 24 hours.",
+    services: ["CRM System","Call Center Setup","Firewall / Security","VoIP Solutions","Network & Infrastructure","ERP / Odoo","Hardware & Servers","Website Development","Other"],
+    whyTitle: "Why Choose Fox Systems?",
+    reasons: [
+      "14+ years of IT experience in Egypt and the Middle East",
+      "300+ successful CRM and IT projects delivered",
+      "Authorized Sophos & Fortinet security partner",
+      "Full Arabic & English support — bilingual team",
+      "24/7 technical support across Egypt, KSA & Kuwait",
+      "On-site and remote service across the region",
+    ],
+    contactInfo: "Contact Information",
+    address: "Cairo, Egypt",
+    hours: "Sun – Thu: 9:00 AM – 6:00 PM",
+    hoursLbl: "Working Hours",
+    waBtn: "Chat on WhatsApp",
+    waDesc: "Get an instant response during business hours",
+    seoTitle: "Contact Fox Systems | Free CRM Demo | Egypt, KSA, Kuwait",
+    seoDesc: "Contact Fox Systems for a free CRM consultation, Call Center setup, Firewall, VoIP, or any IT solution in Egypt, Saudi Arabia, and Kuwait.",
   },
   ar: {
-    contactTitle: "احصل على استشارة CRM مجانية",
-    contactSubtitle: "تحدث مع خبرائنا حول أنظمة CRM، مراكز الاتصال، جدران الحماية، VoIP، أو أي حل تقني — مصر، السعودية والكويت",
-    email: "البريد الإلكتروني",
-    phone: "الهاتف",
-    address: "العنوان",
-    chatWhatsApp: "تحدث عبر واتس آب",
-    companyName: "اسم الشركة",
-    contactName: "اسم جهة الاتصال",
-    emailLabel: "البريد الإلكتروني",
-    phoneLabel: "الهاتف / واتس آب",
-    serviceType: "نوع الخدمة",
-    message: "الرسالة",
-    placeholderRequirements: "أخبرنا عن متطلباتك...",
-    submitInquiry: "إرسال الطلب",
-    footerDesc: "شريكك الموثوق للبنية التحتية المتكاملة لتكنولوجيا المعلومات، ونشر البرمجيات، والأمن السيبراني، وتسليم المشاريع.",
-    copyright: "© 2026 Fox Systems. جميع الحقوق محفوظة.",
-    services: "الخدمات",
-    company: "الشركة",
-    contact: "اتصل",
-    privacyPolicy: "سياسة الخصوصية",
-    termsOfUse: "شروط الاستخدام",
-    internet: "الإنترنت",
-    software: "البرمجيات",
-    hardware: "الأجهزة",
-    cybersecurity: "الأمن السيبراني",
-    infrastructure: "البنية التحتية",
-    webDev: "تطوير المواقع",
-    careers: "الوظائف",
-    team: "الفريق",
-    about: "حول",
-    openInMaps: "فتح في الخرائط",
+    badge: "استشارة مجانية",
+    title: "لنتحدث عن عملك",
+    sub: "احصل على استشارة مجانية مع خبراء CRM وتكنولوجيا المعلومات لدينا. سنوصي بالحل المثالي لعملك في مصر أو السعودية أو الكويت.",
+    nameLbl: "اسمك", emailLbl: "البريد الإلكتروني",
+    companyLbl: "اسم الشركة", phoneLbl: "الهاتف / واتس آب",
+    serviceLbl: "الخدمة المهتم بها", msgLbl: "أخبرنا عن متطلباتك",
+    msgPlaceholder: "صف مشروعك وحجم عملك وما تريد تحقيقه...",
+    sendBtn: "إرسال الرسالة",
+    sending: "جاري الإرسال...",
+    successTitle: "تم الإرسال!",
+    successMsg: "شكرًا! سيتصل بك فريقنا خلال 24 ساعة.",
+    services: ["نظام CRM","إعداد مركز الاتصال","جدار الحماية / الأمن","حلول VoIP","الشبكة والبنية التحتية","ERP / أودو","الأجهزة والخوادم","تطوير المواقع","أخرى"],
+    whyTitle: "لماذا تختار فوكس سيستمز؟",
+    reasons: [
+      "14+ عام خبرة في IT في مصر والشرق الأوسط",
+      "300+ مشروع CRM وIT منجز بنجاح",
+      "شريك Sophos وFortinet الأمني المعتمد",
+      "دعم كامل بالعربية والإنجليزية",
+      "دعم فني 24/7 في مصر والسعودية والكويت",
+      "خدمة في الموقع وعن بُعد في جميع أنحاء المنطقة",
+    ],
+    contactInfo: "معلومات التواصل",
+    address: "القاهرة، مصر",
+    hours: "الأحد – الخميس: 9:00 ص – 6:00 م",
+    hoursLbl: "ساعات العمل",
+    waBtn: "تحدث عبر واتس آب",
+    waDesc: "احصل على رد فوري خلال ساعات العمل",
+    seoTitle: "اتصل بفوكس سيستمز | عرض CRM مجاني | مصر، السعودية، الكويت",
+    seoDesc: "اتصل بفوكس سيستمز للحصول على استشارة CRM مجانية، إعداد مركز الاتصال، جدار الحماية، VoIP، أو أي حل IT في مصر والسعودية والكويت.",
   },
 };
 
-interface ContactProps {
-  language: "en" | "ar";
-}
+interface ContactProps { language: "en" | "ar"; }
 
 export default function Contact({ language }: ContactProps) {
-  const { theme } = useTheme();
-  const t = translations[language];
+  const t = T[language];
   const isArabic = language === "ar";
+  const langPrefix = isArabic ? "/ar" : "";
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const seoConfig = isArabic ? arabicSEOConfigs.contact : serviceSEOConfigs.contact;
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1200);
+  };
+
+  const seoConfig = isArabic
+    ? { ...arabicSEOConfigs.contact, title: t.seoTitle, description: t.seoDesc }
+    : {
+        title: t.seoTitle, description: t.seoDesc,
+        keywords: "contact Fox Systems Egypt, CRM Egypt contact, IT solutions Egypt, Fox Systems phone, free CRM demo Egypt",
+        ogTitle: t.seoTitle, ogDescription: t.seoDesc,
+        ogImage: "https://foxsystemstech.com/contact-og.jpg",
+        canonicalUrl: "https://foxsystemstech.com/contact",
+        language: "en" as const,
+      };
 
   return (
-    <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
-      <SEOHead config={seoConfig} organizationSchema />
+    <div className={`min-h-screen bg-background text-foreground ${isArabic ? "rtl" : "ltr"}`} dir={isArabic ? "rtl" : "ltr"}>
+      <SEOHead config={seoConfig} />
       <Header language={language} />
 
-      {/* Hero Section */}
-      <section className="relative py-24 bg-black overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <img src="/hero-tech.jpg" alt="Contact Hero" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black"></div>
-        </div>
-        <div className="container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={`max-w-3xl ${isArabic ? "text-right mr-auto" : ""}`}
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">{t.contactTitle}</h1>
-            <p className="text-xl text-gray-300 leading-relaxed">{t.contactSubtitle}</p>
+      {/* Hero */}
+      <section className="relative py-24 bg-hero-pattern overflow-hidden">
+        <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
+        <div className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
+        <div className="container relative z-10 text-center">
+          <motion.div initial="hidden" animate="show" variants={{ hidden:{}, show:{ transition:{ staggerChildren:0.09 } } }}>
+            <motion.span variants={fadeUp} className="pill pill-gold mb-6 inline-block">{t.badge}</motion.span>
+            <motion.h1 variants={fadeUp}
+              className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-5"
+              style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", letterSpacing:"-0.025em" }}>
+              {t.title}
+            </motion.h1>
+            <motion.p variants={fadeUp} className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
+              {t.sub}
+            </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Content Section */}
-      <section className="py-24">
+      {/* Main Content */}
+      <section className="py-20 bg-background">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Information */}
-            <div className={`space-y-12 ${isArabic ? "text-right" : ""}`}>
-              <div className="space-y-8">
-                {/* Email */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="flex items-start gap-6"
-                >
-                  <div className="p-4 bg-primary/10 rounded-xl flex-shrink-0">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2">{t.email}</h4>
-                    <p className="text-muted-foreground text-lg">info@foxsystems.com</p>
-                  </div>
-                </motion.div>
+          <div className="grid lg:grid-cols-5 gap-12 items-start">
 
-                {/* Phone */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                  className="flex items-start gap-6"
-                >
-                  <div className="p-4 bg-primary/10 rounded-xl flex-shrink-0">
-                    <Phone className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2">{t.phone}</h4>
-                    <p className="text-muted-foreground text-lg">+201038450546</p>
-                  </div>
-                </motion.div>
-
-                {/* Address */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="flex items-start gap-6"
-                >
-                  <div className="p-4 bg-primary/10 rounded-xl flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2">{t.address}</h4>
-                    <p className="text-muted-foreground text-lg">
-                      {isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}
-                    </p>
-                  </div>
-                </motion.div>
+            {/* Left sidebar — contact info */}
+            <motion.div initial={{opacity:0,x:-24}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.6}}
+              className="lg:col-span-2 space-y-6">
+              <div>
+                <span className="pill mb-4 inline-block">{t.contactInfo}</span>
+                <h2 className="text-2xl font-extrabold mb-4" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
+                  {isArabic ? "تواصل معنا" : "Reach Us"}
+                </h2>
+                <div className="section-divider mb-6" />
               </div>
 
-              {/* WhatsApp Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <Button
-                  size="lg"
-                  onClick={() => window.open("https://wa.me/201038450546", "_blank")}
-                  className="bg-[#25D366] hover:bg-[#25D366]/90 text-white px-8 h-14 text-lg w-full"
-                >
-                  <MessageCircle className="mr-2 w-6 h-6" /> {t.chatWhatsApp}
-                </Button>
-              </motion.div>
-            </div>
-
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="p-8 md:p-10 rounded-3xl shadow-2xl border-none">
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold">{t.companyName}</label>
-                      <input
-                        type="text"
-                        placeholder="Acme Corp"
-                        className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold">{t.contactName}</label>
-                      <input
-                        type="text"
-                        placeholder="John Doe"
-                        className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none"
-                      />
-                    </div>
+              {/* Info cards */}
+              {[
+                { Icon: Phone, label: isArabic?"الهاتف":"Phone", val: "+201038450546", href: "tel:+201038450546" },
+                { Icon: Mail, label: isArabic?"البريد الإلكتروني":"Email", val: "info@foxsystems.com", href: "mailto:info@foxsystems.com" },
+                { Icon: MapPin, label: isArabic?"العنوان":"Address", val: t.address, href: null },
+                { Icon: Clock, label: t.hoursLbl, val: t.hours, href: null },
+              ].map(({ Icon, label, val, href }, i) => (
+                <div key={i} className="flex items-start gap-4 p-4 bg-muted/40 rounded-2xl border border-border hover:border-primary/20 hover:bg-primary/5 transition-all">
+                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Icon className="w-4.5 h-4.5 text-primary" />
                   </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold">{t.emailLabel}</label>
-                      <input
-                        type="email"
-                        placeholder="john@company.com"
-                        className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold">{t.phoneLabel}</label>
-                      <input
-                        type="text"
-                        placeholder="+20 123 456 7890"
-                        className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none"
-                      />
-                    </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground font-semibold uppercase tracking-wide mb-1">{label}</div>
+                    {href
+                      ? <a href={href} className="text-sm font-bold hover:text-primary transition">{val}</a>
+                      : <div className="text-sm font-bold">{val}</div>}
                   </div>
+                </div>
+              ))}
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold">{t.serviceType}</label>
-                    <select className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none appearance-none">
-                      <option>Select a service</option>
-                      <option>{t.internet}</option>
-                      <option>{t.software}</option>
-                      <option>{t.hardware}</option>
-                      <option>{t.cybersecurity}</option>
-                      <option>{t.infrastructure}</option>
-                      <option>{t.webDev}</option>
-                    </select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold">{t.message}</label>
-                    <textarea
-                      rows={4}
-                      placeholder={t.placeholderRequirements}
-                      className="w-full p-4 rounded-xl bg-muted/50 dark:bg-muted/20 border border-transparent dark:border-border focus:ring-2 focus:ring-primary outline-none resize-none"
-                    ></textarea>
-                  </div>
-
-                  <Button className="w-full h-14 text-lg font-bold rounded-xl">
-                    {t.submitInquiry} <Send className="ml-2 w-5 h-5" />
+              {/* WhatsApp CTA */}
+              <div className="p-5 bg-[#25D366]/10 border border-[#25D366]/25 rounded-2xl space-y-3">
+                <div className="flex items-center gap-2">
+                  <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                  <span className="font-bold text-[#1ebc59] text-sm">{isArabic ? "واتس آب" : "WhatsApp"}</span>
+                </div>
+                <p className="text-xs text-muted-foreground">{t.waDesc}</p>
+                <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer">
+                  <Button className="w-full bg-[#25D366] hover:bg-[#1ebc59] text-white rounded-full font-bold gap-2 transition-all hover:scale-[1.02]">
+                    <MessageCircle className="w-4 h-4" /> {t.waBtn}
                   </Button>
-                </form>
-              </Card>
+                </a>
+              </div>
+
+              {/* Why Fox Systems */}
+              <div className="space-y-3">
+                <h3 className="font-bold text-base" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{t.whyTitle}</h3>
+                {t.reasons.map((r, i) => (
+                  <div key={i} className="flex items-start gap-2.5">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">{r}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right: form */}
+            <motion.div initial={{opacity:0,x:24}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.6}}
+              className="lg:col-span-3">
+              <div className="bg-muted/40 border border-border rounded-3xl p-8 md:p-10 shadow-sm">
+                {submitted ? (
+                  <motion.div initial={{opacity:0,scale:0.95}} animate={{opacity:1,scale:1}}
+                    className="flex flex-col items-center justify-center py-16 text-center gap-5">
+                    <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-10 h-10 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{t.successTitle}</h3>
+                    <p className="text-muted-foreground max-w-xs">{t.successMsg}</p>
+                    <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer">
+                      <Button className="rounded-full gap-2 mt-2">
+                        <MessageCircle className="w-4 h-4" /> WhatsApp
+                      </Button>
+                    </a>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      {[
+                        { lbl: t.nameLbl, type: "text", id: "name", required: true },
+                        { lbl: t.emailLbl, type: "email", id: "email", required: true },
+                        { lbl: t.companyLbl, type: "text", id: "company", required: false },
+                        { lbl: t.phoneLbl, type: "tel", id: "phone", required: false },
+                      ].map(({ lbl, type, id, required }) => (
+                        <div key={id} className="space-y-1.5">
+                          <label htmlFor={id} className="text-sm font-semibold">
+                            {lbl} {required && <span className="text-primary">*</span>}
+                          </label>
+                          <input id={id} type={type} required={required} className="form-input" />
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-semibold">{t.serviceLbl}</label>
+                      <select className="form-input">
+                        {t.services.map((o) => <option key={o} value={o}>{o}</option>)}
+                      </select>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-semibold">{t.msgLbl}</label>
+                      <textarea rows={5} className="form-input" placeholder={t.msgPlaceholder} />
+                    </div>
+
+                    <Button type="submit" disabled={loading}
+                      className="w-full h-13 text-base rounded-xl font-bold gap-2 shadow-lg shadow-primary/25 hover:scale-[1.01] transition-all disabled:opacity-70 disabled:cursor-wait">
+                      {loading
+                        ? <span className="flex items-center gap-2"><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />{t.sending}</span>
+                        : <><Send className="w-4 h-4" /> {t.sendBtn}</>
+                      }
+                    </Button>
+
+                    <p className="text-xs text-muted-foreground text-center">
+                      {isArabic ? "سنرد عليك خلال 24 ساعة. لا بريد عشوائي." : "We'll respond within 24 hours. No spam, ever."}
+                    </p>
+                  </form>
+                )}
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-24 bg-muted/30">
-        <div className="container">
-          <div className="rounded-3xl overflow-hidden shadow-2xl h-96">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.8169394287367!2d31.235727!3d30.044420!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa50000001%3A0x0!2sFox%20Systems!5e0!3m2!1sen!2seg!4v1234567890"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
-      <footer className="bg-card border-t border-border py-20">
-        <div className="container">
-          <div className="grid md:grid-cols-4 gap-12 mb-16">
-            <div className="space-y-6">
-              <Link href="/" className="flex items-center gap-3">
-                <img src="/logo.jpg" alt="Fox Systems" className="h-12 w-12 rounded-xl" />
-                <span className="font-bold text-2xl text-primary">Fox Systems</span>
-              </Link>
-              <p className="text-muted-foreground leading-relaxed">
-                {t.footerDesc}
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold text-xl mb-8">{t.services}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li><Link href="/services/internet" className="hover:text-primary transition">{t.internet}</Link></li>
-                <li><Link href="/services/software" className="hover:text-primary transition">{t.software}</Link></li>
-                <li><Link href="/services/hardware" className="hover:text-primary transition">{t.hardware}</Link></li>
-                <li><Link href="/services/cybersecurity" className="hover:text-primary transition">{t.cybersecurity}</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-xl mb-8">{t.company}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li><Link href="/" className="hover:text-primary transition">{t.about}</Link></li>
-                <li><Link href="/" className="hover:text-primary transition">{t.team}</Link></li>
-                <li><Link href="/" className="hover:text-primary transition">{t.careers}</Link></li>
-                <li><Link href="/contact" className="hover:text-primary transition">{t.contact}</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-xl mb-8">{t.contact}</h4>
-              <ul className="space-y-4 text-muted-foreground">
-                <li className="flex items-center gap-3"><Mail className="w-5 h-5 text-primary" /> info@foxsystems.com</li>
-                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-primary" /> +201038450546</li>
-                <li className="flex items-center gap-3"><MapPin className="w-5 h-5 text-primary" /> {isArabic ? "القاهرة، مصر" : "Cairo, Egypt"}</li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6 text-muted-foreground">
-            <p>{t.copyright}</p>
-            <div className="flex gap-8">
-              <Link href="/privacy" className="hover:text-primary transition">{t.privacyPolicy}</Link>
-              <Link href="/terms" className="hover:text-primary transition">{t.termsOfUse}</Link>
-            </div>
-          </div>
+      <footer className="bg-[var(--navy)] text-white py-10">
+        <div className="container text-center">
+          <p className="text-white/40 text-sm">
+            © 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة" : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait · Middle East
+          </p>
         </div>
       </footer>
-      {/* Floating WhatsApp Button */}
-      <a
-        href="https://wa.me/201038450546"
-        target="_blank"
-        rel="noopener noreferrer"
+
+      {/* Floating WhatsApp */}
+      <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
-        aria-label="Chat on WhatsApp"
-      >
+        aria-label="Chat on WhatsApp">
         <MessageCircle className="w-7 h-7 text-white" />
       </a>
     </div>

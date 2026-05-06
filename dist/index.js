@@ -684,7 +684,7 @@ async function setupVite(app, server) {
   });
 }
 function serveStatic(app) {
-  const distPath = process.env.NODE_ENV === "development" ? path2.resolve(import.meta.dirname, "../..", "dist", "public") : path2.resolve(import.meta.dirname, "../..", "dist", "public");
+  const distPath = process.env.NODE_ENV === "development" ? path2.resolve(import.meta.dirname, "../..", "dist", "public") : path2.resolve(import.meta.dirname, "public");
   if (!fs.existsSync(distPath)) {
     console.error(
       `Could not find the build directory: ${distPath}, make sure to build the client first`
@@ -697,12 +697,10 @@ function serveStatic(app) {
 }
 
 // server/_core/index.ts
-var __origProcessEmit = process.emit.bind(process);
-process.emit = ((name, data, ...rest) => {
-  if (name === "warning" && data && typeof data === "object" && data.name === "DeprecationWarning" && data.code === "DEP0169") {
-    return false;
-  }
-  return __origProcessEmit(name, data, ...rest);
+process.removeAllListeners("warning");
+process.on("warning", (warning) => {
+  if (warning?.name === "DeprecationWarning" && warning.code === "DEP0169") return;
+  console.warn(warning?.stack || warning);
 });
 function isPortAvailable(port) {
   return new Promise((resolve) => {

@@ -69,8 +69,12 @@ export default function Header({ language }: HeaderProps) {
   };
 
   const handleHomeClick = () => {
-    if (location === "/" || location === "/ar")
+    const onHome = location === "/" || location === "/ar";
+    if (onHome) {
       window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
+    }
   };
 
   const navLinkCls = (active: boolean) =>

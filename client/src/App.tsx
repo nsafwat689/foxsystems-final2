@@ -5,6 +5,7 @@ import { Route, Switch, useLocation } from "wouter";
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ErrorBoundary from "./components/ErrorBoundary";
+import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import ServiceDetail from "./pages/ServiceDetail";
@@ -142,6 +143,7 @@ function Router() {
           {/* 404 Not Found - Must be last */}
           <Route component={NotFound} />
         </Switch>
+        <ScrollToTop language={language} />
       </motion.div>
     </AnimatePresence>
   );

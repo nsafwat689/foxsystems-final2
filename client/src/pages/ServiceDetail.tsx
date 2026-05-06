@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import { motion } from "framer-motion";
 import SEOHead from "@/components/SEOHead";
-import { serviceSEOConfigs, arabicSEOConfigs, generateServiceSchema } from "@/utils/seo";
+import { serviceSEOConfigs, arabicSEOConfigs, generateServiceSchema, generateBreadcrumbSchema } from "@/utils/seo";
 import { serviceDetailsAr } from "@/data/serviceDetailsAr";
 
 interface ServiceDetailProps {
@@ -182,14 +182,19 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
   // Ensure Icon is never undefined by falling back to the English icon
   const Icon = rawData.icon || serviceBase.en.icon;
 
-  const seoConfig = isArabic 
+  const seoConfig = isArabic
     ? (arabicSEOConfigs[serviceId] || arabicSEOConfigs.internet)
     : (serviceSEOConfigs[serviceId] || serviceSEOConfigs.internet);
   const serviceSchema = generateServiceSchema(data.title, data.overview, seoConfig.canonicalUrl);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isArabic ? "الرئيسية" : "Home", url: isArabic ? "https://foxsystemstech.com/ar" : "https://foxsystemstech.com/" },
+    { name: isArabic ? "الخدمات" : "Services", url: isArabic ? "https://foxsystemstech.com/ar/services" : "https://foxsystemstech.com/services" },
+    { name: data.title, url: seoConfig.canonicalUrl },
+  ]);
 
   return (
     <div className={`min-h-screen bg-background text-foreground ${isArabic ? "rtl" : "ltr"}`} dir={isArabic ? "rtl" : "ltr"}>
-      <SEOHead config={seoConfig} organizationSchema additionalSchema={serviceSchema} />
+      <SEOHead config={seoConfig} organizationSchema additionalSchema={serviceSchema} breadcrumbSchema={breadcrumbSchema} />
       <Header language={language} />
 
       {/* Hero Section */}

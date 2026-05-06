@@ -4,7 +4,8 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import { ArrowRight, Calendar, User, MessageCircle, Share2, ArrowLeft } from "lucide-react";
-import { generateArticleSchema } from "@/utils/seo";
+import SEOHead from "@/components/SEOHead";
+import { generateArticleSchema, generateBreadcrumbSchema, SEOConfig } from "@/utils/seo";
 
 interface ArticleDetailProps {
   articleId: string;
@@ -960,10 +961,28 @@ export default function ArticleDetail({ articleId, language }: ArticleDetailProp
   }
 
   const content = article[language];
-  const articleSchema = generateArticleSchema(content, `https://foxsystemstech.com${langPrefix}/articles/${articleId}`);
+  const canonicalUrl = `https://foxsystemstech.com${langPrefix}/articles/${articleId}`;
+  const articleSchema = generateArticleSchema(content, canonicalUrl);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isArabic ? "الرئيسية" : "Home", url: isArabic ? "https://foxsystemstech.com/ar" : "https://foxsystemstech.com/" },
+    { name: isArabic ? "المقالات" : "Articles", url: isArabic ? "https://foxsystemstech.com/ar/articles" : "https://foxsystemstech.com/articles" },
+    { name: content.title, url: canonicalUrl },
+  ]);
+
+  const seoConfig: SEOConfig = {
+    title: `${content.title} | Fox Systems`,
+    description: content.subtitle || content.title,
+    keywords: `${content.category}, Fox Systems, CRM Egypt, IT Egypt, ${content.title}`,
+    ogTitle: content.title,
+    ogDescription: content.subtitle || content.title,
+    ogImage: content.image,
+    canonicalUrl,
+    language,
+  };
 
   return (
     <>
+      <SEOHead config={seoConfig} additionalSchema={articleSchema} breadcrumbSchema={breadcrumbSchema} />
       <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
         <Header language={language} />
 

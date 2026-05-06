@@ -260,19 +260,28 @@ export default function Home({ language }: HomeProps) {
       <Header language={language} />
 
       {/* ── HERO ── */}
-      <section className="relative min-h-[88vh] flex items-center overflow-hidden bg-hero-pattern">
+      <section
+        className="relative min-h-[88vh] flex items-center overflow-hidden"
+        style={{
+          backgroundColor: "#0f172a",
+          backgroundImage: [
+            "url('/hero-tech.jpg')",
+            "radial-gradient(ellipse 80% 60% at 20% 40%, rgba(29,78,216,0.55) 0%, transparent 60%)",
+            "radial-gradient(ellipse 60% 40% at 80% 20%, rgba(14,165,233,0.3) 0%, transparent 60%)",
+            "radial-gradient(ellipse 40% 30% at 60% 80%, rgba(29,78,216,0.25) 0%, transparent 50%)",
+          ].join(", "),
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundBlendMode: "overlay, normal, normal, normal",
+        }}
+      >
         {/* Dot grid overlay */}
-        <div className="absolute inset-0 bg-dot-grid opacity-40 pointer-events-none" />
-
-        {/* Background image */}
-        <div className="absolute inset-0 z-0">
-          <img src="/hero-tech.jpg" alt="Fox Systems CRM Egypt"
-            className="w-full h-full object-cover opacity-20 mix-blend-luminosity" />
-        </div>
+        <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
 
         {/* Glowing orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-sky-500/15 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{background:"rgba(29,78,216,0.2)",filter:"blur(80px)"}} />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full pointer-events-none" style={{background:"rgba(14,165,233,0.15)",filter:"blur(60px)"}} />
 
         <div className="container relative z-10 py-24">
           <motion.div
@@ -392,7 +401,21 @@ export default function Home({ language }: HomeProps) {
               </div>
             </motion.div>
             <motion.div initial={{opacity:0,scale:0.95}} whileInView={{opacity:1,scale:1}} viewport={{once:true}} transition={{duration:0.6}} className="relative">
-              <img src="/it-services.jpg" alt="Fox Systems IT Solutions Egypt" className="rounded-3xl shadow-2xl w-full object-cover" />
+              <img
+                src="/it-services.jpg"
+                alt="Fox Systems IT Solutions Egypt"
+                className="rounded-3xl shadow-2xl w-full object-cover"
+                onError={(e) => {
+                  const el = e.target as HTMLImageElement;
+                  el.style.display = "none";
+                  const parent = el.parentElement;
+                  if (parent) {
+                    parent.style.background = "linear-gradient(135deg,#1d4ed8,#0ea5e9)";
+                    parent.style.minHeight = "350px";
+                    parent.style.borderRadius = "1.5rem";
+                  }
+                }}
+              />
               <div className="absolute -bottom-8 -right-6 md:-right-10 bg-primary p-6 md:p-8 rounded-2xl text-white shadow-xl shadow-primary/30">
                 <div className="stat-number">14+</div>
                 <div className="text-xs font-bold uppercase tracking-widest opacity-80 mt-1">{t.s1}</div>

@@ -1,3 +1,5 @@
+process.removeAllListeners('warning');process.on('warning',(w)=>{if(w&&w.code==='DEP0169')return;console.warn(w&&w.stack||w);});
+
 // server/_core/index.ts
 import "dotenv/config";
 import express2 from "express";
@@ -697,11 +699,6 @@ function serveStatic(app) {
 }
 
 // server/_core/index.ts
-process.removeAllListeners("warning");
-process.on("warning", (warning) => {
-  if (warning?.name === "DeprecationWarning" && warning.code === "DEP0169") return;
-  console.warn(warning?.stack || warning);
-});
 function isPortAvailable(port) {
   return new Promise((resolve) => {
     const server = net.createServer();

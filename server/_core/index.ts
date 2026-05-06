@@ -1,14 +1,4 @@
 import "dotenv/config";
-
-// Filter out the harmless DEP0169 (`url.parse()`) deprecation warning emitted
-// by upstream Express middleware (parseurl). Fixed upstream; silencing keeps
-// deploy logs clean. We swap Node's default warning printer for a filtered one.
-process.removeAllListeners("warning");
-process.on("warning", (warning: NodeJS.ErrnoException & { code?: string }) => {
-  if (warning?.name === "DeprecationWarning" && warning.code === "DEP0169") return;
-  console.warn(warning?.stack || warning);
-});
-
 import express from "express";
 import { createServer } from "http";
 import net from "net";

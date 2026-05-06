@@ -7,7 +7,7 @@ import {
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
-import { serviceSEOConfigs, arabicSEOConfigs } from "@/utils/seo";
+import { serviceSEOConfigs, arabicSEOConfigs, generateBreadcrumbSchema } from "@/utils/seo";
 import { motion } from "framer-motion";
 
 const fadeUp = {
@@ -100,9 +100,14 @@ export default function Services({ language }: ServicesProps) {
     canonicalUrl: "https://foxsystemstech.com/services",
   };
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isArabic ? "الرئيسية" : "Home", url: isArabic ? "https://foxsystemstech.com/ar" : "https://foxsystemstech.com/" },
+    { name: isArabic ? "الخدمات" : "Services", url: isArabic ? "https://foxsystemstech.com/ar/services" : "https://foxsystemstech.com/services" },
+  ]);
+
   return (
     <div className={`min-h-screen bg-background text-foreground ${isArabic ? "rtl" : "ltr"}`} dir={isArabic ? "rtl" : "ltr"}>
-      <SEOHead config={seoConfig} />
+      <SEOHead config={seoConfig} breadcrumbSchema={breadcrumbSchema} />
       <Header language={language} />
 
       {/* Hero */}

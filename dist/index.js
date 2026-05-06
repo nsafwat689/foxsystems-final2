@@ -612,7 +612,22 @@ var vite_config_default = defineConfig({
   publicDir: path.resolve(import.meta.dirname, "client", "public"),
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
-    emptyOutDir: true
+    emptyOutDir: true,
+    chunkSizeWarningLimit: 1500,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return;
+          if (id.includes("react-dom") || id.includes("/react/") || id.includes("scheduler")) return "react-vendor";
+          if (id.includes("@radix-ui") || id.includes("cmdk") || id.includes("vaul") || id.includes("lucide-react")) return "ui-vendor";
+          if (id.includes("framer-motion")) return "motion-vendor";
+          if (id.includes("recharts") || id.includes("d3-")) return "charts-vendor";
+          if (id.includes("@tanstack") || id.includes("@trpc") || id.includes("superjson")) return "data-vendor";
+          if (id.includes("react-hook-form") || id.includes("@hookform") || id.includes("zod")) return "forms-vendor";
+          return "vendor";
+        }
+      }
+    }
   },
   server: {
     host: true,
@@ -682,6 +697,13 @@ function serveStatic(app) {
 }
 
 // server/_core/index.ts
+var __origProcessEmit = process.emit.bind(process);
+process.emit = ((name, data, ...rest) => {
+  if (name === "warning" && data && typeof data === "object" && data.name === "DeprecationWarning" && data.code === "DEP0169") {
+    return false;
+  }
+  return __origProcessEmit(name, data, ...rest);
+});
 function isPortAvailable(port) {
   return new Promise((resolve) => {
     const server = net.createServer();

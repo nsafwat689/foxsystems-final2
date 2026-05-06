@@ -18,8 +18,11 @@ Allow: /articles
 # Disallow private or admin pages
 Disallow: /admin
 Disallow: /private
+Disallow: /api/
 Disallow: /*.json$
-Disallow: /*.xml$
+
+# Allow XML files (sitemap.xml needs to be crawlable)
+Allow: /sitemap.xml
 
 # Sitemap locations
 Sitemap: https://foxsystemstech.com/sitemap.xml

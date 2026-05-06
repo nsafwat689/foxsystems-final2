@@ -3,7 +3,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import SEOHead from "@/components/SEOHead";
-import { defaultSEOConfig, arabicSEOConfigs } from "@/utils/seo";
+import { defaultSEOConfig, arabicSEOConfigs, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 import {
   MessageCircle, Phone, Mail, Globe, Shield, Cpu, Network,
   Server, Zap, Users, Clock, Lock, ArrowRight, Briefcase,
@@ -249,14 +249,14 @@ export default function Home({ language }: HomeProps) {
 
   const crmFeatures = [t.crmF1, t.crmF2, t.crmF3, t.crmF4, t.crmF5, t.crmF6];
 
-  const faqSchema = JSON.stringify({
-    "@context": "https://schema.org", "@type": "FAQPage",
-    mainEntity: t.faqs.map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } }))
-  });
+  const faqSchema = generateFAQSchema(t.faqs);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isArabic ? "الرئيسية" : "Home", url: isArabic ? "https://foxsystemstech.com/ar" : "https://foxsystemstech.com/" },
+  ]);
 
   return (
     <div className={`min-h-screen bg-background text-foreground ${isArabic ? "rtl" : "ltr"}`} dir={isArabic ? "rtl" : "ltr"}>
-      <SEOHead config={isArabic ? arabicSEOConfigs.home : defaultSEOConfig} additionalSchema={faqSchema} />
+      <SEOHead config={isArabic ? arabicSEOConfigs.home : defaultSEOConfig} faqSchema={faqSchema} breadcrumbSchema={breadcrumbSchema} />
       <Header language={language} />
 
       {/* ── HERO ── */}

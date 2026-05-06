@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, MessageCircle, Send, Clock, CheckCircle } from "lu
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
-import { arabicSEOConfigs } from "@/utils/seo";
+import { arabicSEOConfigs, generateBreadcrumbSchema } from "@/utils/seo";
 import { Link } from "wouter";
 
 const fadeUp = {
@@ -103,9 +103,14 @@ export default function Contact({ language }: ContactProps) {
         language: "en" as const,
       };
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isArabic ? "الرئيسية" : "Home", url: isArabic ? "https://foxsystemstech.com/ar" : "https://foxsystemstech.com/" },
+    { name: isArabic ? "اتصل بنا" : "Contact", url: seoConfig.canonicalUrl },
+  ]);
+
   return (
     <div className={`min-h-screen bg-background text-foreground ${isArabic ? "rtl" : "ltr"}`} dir={isArabic ? "rtl" : "ltr"}>
-      <SEOHead config={seoConfig} />
+      <SEOHead config={seoConfig} breadcrumbSchema={breadcrumbSchema} />
       <Header language={language} />
 
       {/* Hero */}

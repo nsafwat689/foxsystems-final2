@@ -458,7 +458,7 @@ export default function Articles({ language }: ArticlesProps) {
       <SEOHead
         config={getArticleSEOConfig(language)}
         organizationSchema={true}
-        additionalSchema={getBreadcrumbSchema(language)}
+        breadcrumbSchema={getBreadcrumbSchema(language)}
       />
       <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
         <Header language={language} />

@@ -1,4 +1,26 @@
 import "dotenv/config";
+
+// Filter out the harmless DEP0169 (`url.parse()`) deprecation warning emitted
+// by upstream Express middleware (parseurl). It is informational only and
+// fixed upstream — silencing avoids noisy deploy logs.
+const __origProcessEmit = process.emit.bind(process);
+(process as unknown as { emit: typeof process.emit }).emit = ((
+  name: string,
+  data?: unknown,
+  ...rest: unknown[]
+) => {
+  if (
+    name === "warning" &&
+    data &&
+    typeof data === "object" &&
+    (data as { name?: string }).name === "DeprecationWarning" &&
+    (data as { code?: string }).code === "DEP0169"
+  ) {
+    return false;
+  }
+  return (__origProcessEmit as unknown as (...a: unknown[]) => boolean)(name, data, ...rest);
+}) as typeof process.emit;
+
 import express from "express";
 import { createServer } from "http";
 import net from "net";

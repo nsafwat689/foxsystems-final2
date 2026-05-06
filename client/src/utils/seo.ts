@@ -194,23 +194,38 @@ export function updateMetaTags(config: SEOConfig) {
 
   document.title = config.title;
   
-  const metaTags = {
+  const metaTags: Record<string, string> = {
     'description': config.description,
     'keywords': config.keywords,
     'og:title': config.ogTitle,
     'og:description': config.ogDescription,
     'og:image': config.ogImage,
+    'og:image:alt': config.ogTitle,
     'og:url': config.canonicalUrl,
     'og:type': 'website',
     'og:site_name': 'Fox Systems',
+    'og:locale': config.language === 'ar' ? 'ar_EG' : 'en_US',
+    'og:locale:alternate': config.language === 'ar' ? 'en_US' : 'ar_EG',
     'twitter:title': config.ogTitle,
     'twitter:description': config.ogDescription,
     'twitter:image': config.ogImage,
+    'twitter:image:alt': config.ogTitle,
     'twitter:card': 'summary_large_image',
+    'twitter:site': '@FoxSystemsEgypt',
+    'twitter:creator': '@FoxSystemsEgypt',
     'robots': 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+    'googlebot': 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+    'bingbot': 'index, follow',
     'author': 'Fox Systems',
-    'geo.region': 'EG',
+    'publisher': 'Fox Systems',
+    'geo.region': 'EG-C',
     'geo.placename': 'Cairo',
+    'geo.position': '30.0444;31.2357',
+    'ICBM': '30.0444, 31.2357',
+    'rating': 'general',
+    'distribution': 'global',
+    'revisit-after': '3 days',
+    'theme-color': '#1d4ed8',
   };
 
   Object.entries(metaTags).forEach(([name, content]) => {
@@ -344,14 +359,69 @@ export function generateServiceSchema(name: string, description: string, url: st
   });
 }
 
-export function generateArticleSchema(article: { title: string; description: string; image: string; date: string; author: string; url: string }) {
+export function generateLocalBusinessSchema() {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://foxsystemstech.com/#localbusiness",
+    "name": "Fox Systems",
+    "alternateName": ["Fox Systems Egypt", "فوكس سيستمز", "Fox Systems Tech"],
+    "image": "https://foxsystemstech.com/logo.jpg",
+    "logo": "https://foxsystemstech.com/logo.jpg",
+    "url": "https://foxsystemstech.com",
+    "telephone": "+201038450546",
+    "email": "info@foxsystems.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Cairo",
+      "addressRegion": "Cairo",
+      "addressCountry": "EG"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 30.0444, "longitude": 31.2357 },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
+      "opens": "09:00", "closes": "18:00"
+    }],
+    "areaServed": [
+      { "@type": "Country", "name": "Egypt" },
+      { "@type": "Country", "name": "Saudi Arabia" },
+      { "@type": "Country", "name": "Kuwait" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "300"
+    }
+  });
+}
+
+export function generateFAQSchema(faqs: Array<{ q: string; a: string }>) {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  });
+}
+
+export function generateArticleSchema(
+  article: { title: string; description?: string; subtitle?: string; image: string; date: string; author: string; url?: string },
+  url?: string
+) {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": article.title,
-    "description": article.description,
+    "description": article.description || article.subtitle || article.title,
     "image": article.image,
     "datePublished": article.date,
+    "dateModified": article.date,
     "author": {
       "@type": "Person",
       "name": article.author
@@ -366,7 +436,7 @@ export function generateArticleSchema(article: { title: string; description: str
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": article.url
+      "@id": url || article.url
     }
   });
 }

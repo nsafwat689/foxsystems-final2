@@ -339,23 +339,44 @@ export default function Home({ language }: HomeProps) {
       </section>
 
       {/* ── CRM BANNER ── */}
-      <section className="py-20 bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 bg-dot-grid opacity-10 pointer-events-none" />
+      <section
+        className="py-24 relative overflow-hidden"
+        style={{
+          background: "linear-gradient(135deg, #0a0f1e 0%, #0d1b3e 40%, #0f2354 70%, #0a1628 100%)",
+        }}
+      >
+        {/* Subtle blue glow accents matching hero */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          backgroundImage: [
+            "radial-gradient(ellipse 60% 50% at 10% 50%, rgba(29,78,216,0.25) 0%, transparent 60%)",
+            "radial-gradient(ellipse 40% 40% at 90% 30%, rgba(14,165,233,0.15) 0%, transparent 60%)",
+          ].join(", ")
+        }} />
+        <div className="absolute inset-0 bg-dot-grid opacity-15 pointer-events-none" />
+
         <div className="container relative z-10">
           <div className={`grid lg:grid-cols-2 gap-16 items-center ${isArabic ? "rtl" : ""}`}>
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={{ hidden:{}, show:{ transition:{ staggerChildren:0.08 } } }} className="space-y-6">
-              <motion.span variants={fadeUp} className="inline-block px-4 py-1.5 bg-white/15 rounded-full text-white/90 text-xs font-bold uppercase tracking-widest">
+              <motion.span variants={fadeUp}
+                className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest"
+                style={{ background:"rgba(29,78,216,0.25)", color:"#93c5fd", border:"1px solid rgba(29,78,216,0.4)" }}>
                 {t.crmBannerBadge}
               </motion.span>
-              <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-extrabold text-white leading-tight" style={{fontFamily:"'Plus Jakarta Sans',sans-serif",letterSpacing:"-0.02em"}}>
+              <motion.h2 variants={fadeUp}
+                className="text-4xl md:text-5xl font-extrabold leading-tight"
+                style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", letterSpacing:"-0.02em", color:"#ffffff" }}>
                 {t.crmBannerTitle}
               </motion.h2>
-              <motion.p variants={fadeUp} className="text-lg text-white/80 leading-relaxed">
+              <motion.p variants={fadeUp} style={{ color:"rgba(191,219,254,0.85)", fontSize:"1.125rem", lineHeight:"1.75" }}>
                 {t.crmBannerSub}
               </motion.p>
               <motion.div variants={fadeUp}>
                 <Link href={`${langPrefix}/contact`}>
-                  <Button size="lg" className="bg-white text-primary hover:bg-white/95 font-bold rounded-full h-13 px-8 shadow-xl hover:scale-[1.02] transition-all">
+                  <Button size="lg"
+                    className="font-bold rounded-full h-13 px-8 shadow-xl hover:scale-[1.02] transition-all"
+                    style={{ background:"#1d4ed8", color:"white", boxShadow:"0 0 30px rgba(29,78,216,0.5)" }}
+                    onMouseEnter={e => (e.currentTarget.style.background="#2563eb")}
+                    onMouseLeave={e => (e.currentTarget.style.background="#1d4ed8")}>
                     {t.crmCTA} <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
@@ -365,9 +386,13 @@ export default function Home({ language }: HomeProps) {
             <motion.div initial={{opacity:0,x:30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.6}}
               className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {crmFeatures.map((f, i) => (
-                <div key={i} className="flex items-center gap-3 bg-white/10 hover:bg-white/15 transition rounded-xl px-4 py-3.5">
-                  <CheckCircle2 className="w-5 h-5 text-white/90 flex-shrink-0" />
-                  <span className="text-white font-medium text-sm">{f}</span>
+                <div key={i}
+                  className="flex items-center gap-3 rounded-xl px-4 py-3.5 transition-all"
+                  style={{ background:"rgba(29,78,216,0.18)", border:"1px solid rgba(29,78,216,0.3)" }}
+                  onMouseEnter={e => (e.currentTarget.style.background="rgba(29,78,216,0.3)")}
+                  onMouseLeave={e => (e.currentTarget.style.background="rgba(29,78,216,0.18)")}>
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" style={{color:"#60a5fa"}} />
+                  <span className="font-medium text-sm" style={{color:"#e2e8f0"}}>{f}</span>
                 </div>
               ))}
             </motion.div>

@@ -138,37 +138,43 @@ export default function Services({ language }: ServicesProps) {
       </section>
 
       {/* CRM Core Service Spotlight */}
-      <section className="py-24 bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 bg-dot-grid opacity-10 pointer-events-none" />
+      <section
+        className="py-24 relative overflow-hidden"
+        style={{ background:"linear-gradient(135deg,#0a0f1e 0%,#0d1b3e 40%,#0f2354 70%,#0a1628 100%)" }}
+      >
+        <div className="absolute inset-0 pointer-events-none" style={{
+          backgroundImage:"radial-gradient(ellipse 60% 50% at 10% 50%,rgba(29,78,216,0.25) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 90% 30%,rgba(14,165,233,0.15) 0%,transparent 60%)"
+        }} />
+        <div className="absolute inset-0 bg-dot-grid opacity-15 pointer-events-none" />
         <div className="container relative z-10">
           <div className={`grid lg:grid-cols-2 gap-16 items-center ${isArabic ? "rtl" : ""}`}>
             {/* Left: content */}
             <motion.div initial={{opacity:0,x:-30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.6}}
               className="space-y-7">
-              <span className="inline-block px-4 py-1.5 bg-white/15 rounded-full text-white text-xs font-bold uppercase tracking-widest">
+              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest" style={{background:"rgba(29,78,216,0.25)",color:"#93c5fd",border:"1px solid rgba(29,78,216,0.4)"}}>
                 {t.crmDemoBadge}
               </span>
               <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight"
                 style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", letterSpacing:"-0.025em" }}>
                 {t.crmTitle}
               </h2>
-              <p className="text-lg text-white/80 leading-relaxed">{t.crmDesc}</p>
+              <p className="text-lg leading-relaxed" style={{color:"rgba(191,219,254,0.85)"}}>{t.crmDesc}</p>
               <div className="grid sm:grid-cols-2 gap-3">
                 {t.crmBullets.map((b, i) => (
                   <div key={i} className="flex items-center gap-3 bg-white/10 hover:bg-white/15 transition rounded-xl px-4 py-3">
-                    <CheckCircle2 className="w-4 h-4 text-white/90 flex-shrink-0" />
-                    <span className="text-white text-sm font-medium">{b}</span>
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{color:"#60a5fa"}} />
+                    <span className="text-sm font-medium" style={{color:"#e2e8f0"}}>{b}</span>
                   </div>
                 ))}
               </div>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link href={`${langPrefix}/contact`}>
-                  <Button className="bg-white text-primary hover:bg-white/95 font-bold rounded-full h-12 px-8 shadow-xl hover:scale-[1.02] transition-all">
+                  <Button className="font-bold rounded-full h-12 px-8 shadow-xl hover:scale-[1.02] transition-all" style={{background:"#1d4ed8",color:"white",boxShadow:"0 0 25px rgba(29,78,216,0.5)"}}>
                     {t.crmCTA} <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
                 <Link href={`${langPrefix}/services/software`}>
-                  <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full h-12 px-8 transition-all">
+                  <Button variant="outline" className="rounded-full h-12 px-8 transition-all" style={{borderColor:"rgba(59,130,246,0.4)",color:"#93c5fd"}}>
                     {t.crmLearn}
                   </Button>
                 </Link>
@@ -177,7 +183,7 @@ export default function Services({ language }: ServicesProps) {
 
             {/* Right: mock CRM dashboard */}
             <motion.div initial={{opacity:0,x:30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.6}}
-              className="bg-white/10 rounded-3xl p-6 border border-white/20 shadow-2xl">
+              className="rounded-3xl p-6 shadow-2xl" style={{background:"rgba(10,25,60,0.7)",border:"1px solid rgba(29,78,216,0.35)"}}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-9 h-9 bg-white/20 rounded-xl flex items-center justify-center">
                   <Database className="w-5 h-5 text-white" />
@@ -194,7 +200,7 @@ export default function Services({ language }: ServicesProps) {
               <div className="space-y-2.5">
                 {(isArabic ? t.demoPanelAr : t.demoPanel).map((item, i) => (
                   <div key={i} className="flex justify-between items-center bg-white/8 hover:bg-white/15 transition rounded-xl px-4 py-3.5">
-                    <span className="text-white/80 text-sm font-medium">{item}</span>
+                    <span className="text-sm font-medium" style={{color:"rgba(191,219,254,0.85)"}}>{item}</span>
                     <span className="font-extrabold text-white text-xl" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
                       {t.demoVals[i]}
                     </span>

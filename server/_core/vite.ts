@@ -48,10 +48,15 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
+  // In production, the server is bundled to dist/index.js, so import.meta.dirname
+  // resolves to <project>/dist — making `public` the correct sibling. In dev
+  // (tsx watch) the source lives at server/_core/, so we need to walk back up.
   const distPath =
     process.env.NODE_ENV === "development"
       ? path.resolve(import.meta.dirname, "../..", "dist", "public")
-    : path.resolve(import.meta.dirname, "../..", "dist", "public");  if (!fs.existsSync(distPath)) {
+      : path.resolve(import.meta.dirname, "public");
+
+  if (!fs.existsSync(distPath)) {
     console.error(
       `Could not find the build directory: ${distPath}, make sure to build the client first`
     );

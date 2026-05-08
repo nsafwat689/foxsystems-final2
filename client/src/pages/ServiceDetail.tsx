@@ -152,6 +152,87 @@ const enTitles = {
   customSolutionDescription: "Our team is ready to help you design and implement a solution that perfectly fits your business needs.",
 };
 
+function ServiceFAQ({ serviceId, isArabic, langPrefix }: { serviceId: string; isArabic: boolean; langPrefix: string }) {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+
+  const faqMap: Record<string, { q: string; a: string }[]> = {
+    software: isArabic ? [
+      { q: "كم من الوقت يستغرق تطبيق نظام CRM؟", a: "عادةً من 2 إلى 8 أسابيع حسب حجم شركتك ومتطلباتها. نتولى الإعداد الكامل، ترحيل البيانات، التدريب، والدعم بعد الإطلاق." },
+      { q: "هل النظام يدعم اللغة العربية بشكل كامل؟", a: "نعم. جميع أنظمة CRM التي نطبقها تدعم العربية بالكامل مع واجهة RTL وتقارير عربية وإشعارات عربية." },
+      { q: "هل يمكن تكامل CRM مع نظام مركز الاتصال؟", a: "بالتأكيد. هذا أحد أقوى مزايانا — تكامل CRM مع مركز الاتصال Grandstream/Cisco بحيث تظهر بيانات العميل تلقائياً عند كل مكالمة." },
+      { q: "ما هي تكلفة نظام CRM؟", a: "تعتمد التكلفة على حجم الشركة والميزات المطلوبة. نقدم عروض أسعار مخصصة بعد تقييم مجاني. تواصل معنا للحصول على عرض." },
+    ] : [
+      { q: "How long does CRM implementation take?", a: "Typically 2–8 weeks depending on your company size and requirements. We handle everything: setup, data migration, training, and post-launch support." },
+      { q: "Does the CRM fully support Arabic?", a: "Yes. All CRM systems we implement fully support Arabic with RTL interface, Arabic reports, and Arabic notifications." },
+      { q: "Can the CRM integrate with our Call Center?", a: "Absolutely — this is one of our strongest capabilities. CRM integrates with Grandstream/Cisco so customer data appears automatically on every call." },
+      { q: "What does CRM implementation cost?", a: "Cost depends on company size and required features. We provide custom quotes after a free assessment. Contact us for a proposal." },
+    ],
+    cybersecurity: isArabic ? [
+      { q: "هل أنتم شريك Sophos وFortinet معتمد؟", a: "نعم. فوكس سيستمز شريك معتمد لكل من Sophos وFortinet. نقدم التركيب والتكوين والحماية والمراقبة الأمنية 24/7." },
+      { q: "كم يستغرق تركيب جدار الحماية؟", a: "تركيب جدار الحماية الأساسي يستغرق 1-3 أيام. التكوين الكامل مع السياسات والمراقبة يستغرق أسبوعاً واحداً." },
+      { q: "هل تقدمون مراقبة أمنية مستمرة؟", a: "نعم. نقدم مراقبة أمنية 24/7 مع تقارير شهرية وتنبيهات فورية عند اكتشاف أي تهديد." },
+    ] : [
+      { q: "Are you an authorized Sophos & Fortinet partner?", a: "Yes. Fox Systems is an authorized partner for both Sophos and Fortinet — professional installation, configuration, and 24/7 security monitoring." },
+      { q: "How long does firewall installation take?", a: "Basic firewall installation takes 1–3 days. Full configuration with policies and monitoring takes about one week." },
+      { q: "Do you provide continuous security monitoring?", a: "Yes. We provide 24/7 security monitoring with monthly reports and instant alerts on any detected threat." },
+    ],
+    internet: isArabic ? [
+      { q: "ما هو الفرق بين Leased Line والإنترنت العادي؟", a: "Leased Line خط مخصص لشركتك بحصرية تامة مع ضمان النطاق الترددي والاتاحة 99.9%. الإنترنت العادي مشترك بين عدة مستخدمين." },
+      { q: "هل تخدمون خارج القاهرة؟", a: "نعم. نخدم جميع محافظات مصر، بالإضافة إلى السعودية والكويت." },
+      { q: "كم يستغرق إعداد مركز الاتصال؟", a: "إعداد مركز اتصال متكامل يستغرق من 1 إلى 3 أسابيع حسب الحجم والمتطلبات." },
+    ] : [
+      { q: "What's the difference between a Leased Line and regular internet?", a: "A Leased Line is dedicated exclusively to your company with guaranteed bandwidth and 99.9% uptime. Regular internet is shared among multiple users." },
+      { q: "Do you serve outside Cairo?", a: "Yes. We serve all Egyptian governorates, plus Saudi Arabia and Kuwait." },
+      { q: "How long does Call Center setup take?", a: "A complete Call Center setup takes 1–3 weeks depending on size and requirements." },
+    ],
+  };
+
+  const faqs = faqMap[serviceId] || (isArabic ? [
+    { q: "ما هي مناطق خدمتكم؟", a: "نخدم مصر بالكامل، السعودية، الكويت، وسائر دول الخليج عن بُعد." },
+    { q: "هل تقدمون ضمان على أعمالكم؟", a: "نعم. جميع أعمالنا مضمونة مع دعم فني مستمر 24/7 بعد الانتهاء." },
+    { q: "كيف أحصل على عرض سعر؟", a: "تواصل معنا عبر الهاتف أو واتس آب أو ملء النموذج — وسنرسل لك عرضاً مخصصاً خلال 24 ساعة." },
+  ] : [
+    { q: "What areas do you serve?", a: "We serve all of Egypt, Saudi Arabia, Kuwait, and other Gulf countries remotely." },
+    { q: "Do you offer a warranty on your work?", a: "Yes. All our work comes with a warranty plus continuous 24/7 technical support post-completion." },
+    { q: "How do I get a quote?", a: "Contact us via phone, WhatsApp, or by filling in the form — we'll send a custom proposal within 24 hours." },
+  ]);
+
+  return (
+    <div className="space-y-6">
+      <h2 className="text-3xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
+        {isArabic ? "الأسئلة الشائعة" : "Frequently Asked Questions"}
+      </h2>
+      <div className="section-divider" />
+      <div className="space-y-3">
+        {faqs.map((faq, i) => (
+          <motion.div key={i} initial={{opacity:0,y:8}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.05}}
+            className="bg-muted/40 rounded-2xl border border-border overflow-hidden">
+            <button className="w-full text-left px-6 py-5 flex justify-between items-start gap-4 hover:bg-primary/5 transition-colors"
+              onClick={() => setOpenIdx(openIdx === i ? null : i)}>
+              <span className="font-semibold text-base leading-snug flex-1" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{faq.q}</span>
+              <div className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all ${openIdx===i?"bg-primary text-white":"bg-muted text-muted-foreground"}`}>
+                {openIdx === i ? "−" : "+"}
+              </div>
+            </button>
+            {openIdx === i && (
+              <div className="px-6 pb-5 text-muted-foreground text-sm leading-relaxed border-t border-border pt-4">
+                {faq.a}
+                <div className="mt-4">
+                  <Link href={`${langPrefix}/contact`}>
+                    <span className="text-primary font-semibold text-sm hover:underline cursor-pointer">
+                      {isArabic ? "تحدث مع خبير ←" : "Talk to an expert →"}
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            )}
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function ServiceDetail({ serviceId, language }: ServiceDetailProps) {
   const [location] = useLocation();
   const isArabic = language === "ar";
@@ -294,9 +375,105 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                   </div>
                 </div>
               )}
-            </div>
+              {/* Partners (If available) */}
+              {data.partners && (
+                <div className="space-y-8">
+                  <h2 className="text-3xl font-bold">{data.partnersTitle}</h2>
+                  <div className="flex flex-wrap gap-4">
+                    {data.partners.map((partner: string, idx: number) => (
+                      <div key={idx} className="px-5 py-2.5 bg-primary/8 border border-primary/20 text-primary rounded-full text-sm font-bold hover:bg-primary hover:text-white transition-all cursor-default">
+                        {partner}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-            {/* Sidebar Contact */}
+              {/* ── MID-PAGE CTA ── */}
+              <motion.div initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} viewport={{once:true}}
+                className="rounded-2xl p-8 text-center"
+                style={{background:"linear-gradient(135deg,#1d4ed8,#0ea5e9)", boxShadow:"0 20px 60px -12px rgba(29,78,216,0.4)"}}>
+                <h3 className="text-2xl font-extrabold text-white mb-3" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
+                  {isArabic ? `هل تحتاج ${data.title}؟` : `Need ${data.title}?`}
+                </h3>
+                <p className="text-white/80 mb-6 text-sm leading-relaxed">
+                  {isArabic
+                    ? "تحدث مع مهندسينا اليوم. استشارة مجانية، تقييم مجاني، وعرض سعر مخصص لاحتياجاتك."
+                    : "Talk to our engineers today. Free consultation, free assessment, and a custom proposal tailored to your business."}
+                </p>
+                <div className="flex flex-wrap justify-center gap-3">
+                  <Link href={`${langPrefix}/contact`}>
+                    <Button className="bg-white text-primary font-bold rounded-full px-8 hover:bg-white/90 hover:scale-[1.02] transition-all">
+                      {isArabic ? "احجز استشارة مجانية" : "Book Free Consultation"}
+                    </Button>
+                  </Link>
+                  <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="border-white/40 text-white hover:bg-white/15 rounded-full gap-2">
+                      <MessageCircle className="w-4 h-4" /> WhatsApp
+                    </Button>
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* ── PROBLEMS WE SOLVE ── */}
+              <div className="space-y-7">
+                <h2 className="text-3xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
+                  {isArabic ? "المشكلات التي نحلها" : "Problems We Solve"}
+                </h2>
+                <div className="section-divider" />
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {(isArabic ? [
+                    { problem: "توقف الأنظمة وانقطاع الخدمة", solution: "مراقبة استباقية 24/7 واتفاقية خدمة 4 ساعات" },
+                    { problem: "ضعف الأمن وتهديدات الاختراق", solution: "حماية متعددة الطبقات وجدران حماية معتمدة" },
+                    { problem: "بنية تحتية قديمة وبطيئة", solution: "ترقية كاملة بأجهزة Dell وHP ومعدات Cisco" },
+                    { problem: "ضياع بيانات العملاء وفرص المبيعات", solution: "نظام CRM متكامل مع تتبع كل تفاعل" },
+                  ] : [
+                    { problem: "System downtime & service outages", solution: "Proactive 24/7 monitoring + 4-hour SLA" },
+                    { problem: "Security breaches & cyber threats", solution: "Multi-layer protection with certified firewalls" },
+                    { problem: "Slow, outdated infrastructure", solution: "Full upgrade with enterprise Dell, HP & Cisco" },
+                    { problem: "Lost customer data & missed sales", solution: "Integrated CRM tracking every interaction" },
+                  ]).map((item, i) => (
+                    <motion.div key={i} initial={{opacity:0,y:10}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.07}}
+                      className="p-5 rounded-2xl bg-muted/40 border border-border hover:border-primary/20 transition-all">
+                      <div className="flex items-start gap-3 mb-3">
+                        <span className="text-base">❌</span>
+                        <p className="text-sm font-semibold text-foreground/80">{item.problem}</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                        <p className="text-sm font-semibold text-green-700 dark:text-green-400">{item.solution}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* ── INDUSTRIES SERVED ── */}
+              <div className="space-y-6">
+                <h2 className="text-3xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
+                  {isArabic ? "القطاعات التي نخدمها" : "Industries We Serve"}
+                </h2>
+                <div className="section-divider" />
+                <div className="flex flex-wrap gap-3">
+                  {(isArabic ? [
+                    "🏦 البنوك والتمويل", "🏥 الرعاية الصحية", "🎓 التعليم والجامعات",
+                    "🏗️ البناء والعقارات", "🏭 التصنيع والصناعة", "📡 الاتصالات",
+                    "🛒 التجزئة والتجارة الإلكترونية", "🏛️ الحكومة والقطاع العام",
+                  ] : [
+                    "🏦 Banking & Finance", "🏥 Healthcare", "🎓 Education & Universities",
+                    "🏗️ Construction & Real Estate", "🏭 Manufacturing & Industry", "📡 Telecommunications",
+                    "🛒 Retail & E-commerce", "🏛️ Government & Public Sector",
+                  ]).map((ind, i) => (
+                    <span key={i} className="px-4 py-2 bg-primary/8 border border-primary/15 rounded-full text-sm font-semibold text-primary hover:bg-primary hover:text-white transition-all cursor-default">
+                      {ind}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* ── SERVICE FAQ ── */}
+              <ServiceFAQ serviceId={serviceId} isArabic={isArabic} langPrefix={langPrefix} />
+            </div>
             <div className="space-y-8">
               <div className="rounded-2xl bg-primary p-7 text-white shadow-xl shadow-primary/30 space-y-4">
                 <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase tracking-widest">{isArabic?"ابدأ الآن":"Get Started"}</span>

@@ -44,7 +44,27 @@ const T = {
     fwSvc: "Firewall & Cybersecurity", fwSvcDesc: "Authorized Sophos & Fortinet partner. Advanced firewall, endpoint security, and 24/7 threat monitoring.",
     infSvc: "Network & Infrastructure", infSvcDesc: "Structured cabling, data centers, wireless networks, and complete IT infrastructure for enterprises.",
     webSvc: "Website Development & SEO", webSvcDesc: "Google page-1 optimized websites in Arabic & English. Responsive, fast, and built to convert.",
-    learnMore: "Learn More",
+    learnMore: "Explore Service",
+    stickyCTA: "Talk to a Solutions Engineer",
+    stickySubtext: "Free consultation · No commitment",
+    whyTitle: "Why 300+ Businesses Choose Fox Systems",
+    whySub: "Not just a vendor — your long-term IT growth partner across Egypt & MENA",
+    why1Title: "Local Presence, Enterprise Standards",
+    why1Desc: "Cairo-based team with on-site support across Egypt, KSA & Kuwait. No outsourcing, no delays.",
+    why2Title: "Authorized Technology Partner",
+    why2Desc: "Official partner for Sophos, Fortinet, Cisco, Grandstream, Dell & HP — not just resellers.",
+    why3Title: "Full-Stack IT Capability",
+    why3Desc: "CRM, Call Center, Firewall, VoIP, Networking, Hardware — one team covers everything.",
+    why4Title: "Bilingual Arabic & English Support",
+    why4Desc: "Our team speaks your language. Full Arabic RTL systems and Arabic-speaking engineers.",
+    why5Title: "Fastest Response in Egypt",
+    why5Desc: "4-hour emergency SLA. Remote monitoring 24/7. Issues resolved before you notice them.",
+    why6Title: "Transparent Fixed Pricing",
+    why6Desc: "No hidden fees. Clear proposals, fixed project costs, and flexible payment plans.",
+    testimonialsTitle: "What Our Clients Say",
+    testimonialsSub: "Real results from real businesses across Egypt, Saudi Arabia & Kuwait",
+    caseTitle: "Client Success Stories",
+    caseSub: "How we've transformed operations for leading organizations",
     statsTitle: "Why 300+ Businesses Trust Us",
     s1: "Years Experience", s2: "Happy Clients", s3: "Projects Done", s4: "Support",
     clientsTitle: "Trusted by Leading Organizations",
@@ -118,7 +138,27 @@ const T = {
     fwSvc: "جدران الحماية والأمن السيبراني", fwSvcDesc: "شريك Sophos وFortinet المعتمد. جدار حماية متقدم، أمن نقاط النهاية، ومراقبة 24/7.",
     infSvc: "الشبكة والبنية التحتية", infSvcDesc: "كابلات منظمة، مراكز بيانات، شبكات لاسلكية، وبنية تحتية IT كاملة للمؤسسات.",
     webSvc: "تطوير المواقع وتحسين محركات البحث", webSvcDesc: "مواقع محسنة للصفحة الأولى من جوجل بالعربية والإنجليزية. متجاوبة وسريعة.",
-    learnMore: "اعرف المزيد",
+    learnMore: "استكشف الخدمة",
+    stickyCTA: "تحدث مع مهندس حلول",
+    stickySubtext: "استشارة مجانية · بدون التزام",
+    whyTitle: "لماذا تختار أكثر من 300 شركة فوكس سيستمز",
+    whySub: "لسنا مجرد مورد — نحن شريك نموك التقني طويل الأمد في مصر والشرق الأوسط",
+    why1Title: "حضور محلي بمعايير دولية",
+    why1Desc: "فريق مقره القاهرة مع دعم ميداني في مصر والسعودية والكويت. لا تعاقد من الباطن، لا تأخير.",
+    why2Title: "شريك تقني معتمد",
+    why2Desc: "شريك رسمي لـ Sophos وFortinet وCisco وGrandstream وDell وHP — وليس مجرد موزع.",
+    why3Title: "قدرات IT شاملة",
+    why3Desc: "CRM، مراكز الاتصال، جدران الحماية، VoIP، الشبكات، الأجهزة — فريق واحد يغطي كل شيء.",
+    why4Title: "دعم ثنائي اللغة عربي وإنجليزي",
+    why4Desc: "فريقنا يتحدث لغتك. أنظمة عربية كاملة ومهندسون يتحدثون العربية.",
+    why5Title: "أسرع استجابة في مصر",
+    why5Desc: "اتفاقية خدمة طوارئ 4 ساعات. مراقبة عن بُعد 24/7. حل المشكلات قبل أن تلاحظها.",
+    why6Title: "أسعار شفافة وثابتة",
+    why6Desc: "لا رسوم مخفية. عروض واضحة وتكاليف ثابتة وخطط دفع مرنة.",
+    testimonialsTitle: "ماذا يقول عملاؤنا",
+    testimonialsSub: "نتائج حقيقية من شركات حقيقية في مصر والسعودية والكويت",
+    caseTitle: "قصص نجاح عملائنا",
+    caseSub: "كيف حولنا عمليات المؤسسات الرائدة",
     statsTitle: "لماذا تثق بنا أكثر من 300 شركة",
     s1: "سنوات الخبرة", s2: "عملاء سعداء", s3: "مشاريع منجزة", s4: "دعم",
     clientsTitle: "موثوق به من قبل المؤسسات الرائدة",
@@ -170,6 +210,13 @@ export default function Home({ language }: HomeProps) {
   const isArabic = language === "ar";
   const langPrefix = isArabic ? "/ar" : "";
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showStickyCTA, setShowStickyCTA] = useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => setShowStickyCTA(window.scrollY > 400);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const services = [
     { icon: Database, title: t.crmSvc, sub: t.crmSvcSub, desc: t.crmSvcDesc, href: `${langPrefix}/services/software`, featured: true },
@@ -193,6 +240,45 @@ export default function Home({ language }: HomeProps) {
     { icon: Users, title: t.v4, desc: t.v4d },
     { icon: Briefcase, title: t.v5, desc: t.v5d },
     { icon: Lock, title: t.v6, desc: t.v6d },
+  ];
+
+  const whyUs = [
+    { icon: MapPin,    title: t.why1Title, desc: t.why1Desc },
+    { icon: CheckCircle2, title: t.why2Title, desc: t.why2Desc },
+    { icon: Server,    title: t.why3Title, desc: t.why3Desc },
+    { icon: Globe,     title: t.why4Title, desc: t.why4Desc },
+    { icon: Clock,     title: t.why5Title, desc: t.why5Desc },
+    { icon: TrendingUp,title: t.why6Title, desc: t.why6Desc },
+  ];
+
+  const testimonials = [
+    {
+      name: "Ahmed Khalil",
+      role: isArabic ? "مدير تقنية المعلومات" : "IT Director",
+      company: "Hassan Allam Holding",
+      rating: 5,
+      text: isArabic
+        ? "فوكس سيستمز نفذت نظام CRM كامل لشركتنا في أقل من 6 أسابيع. الفريق محترف جداً، والنظام يعمل بشكل مثالي باللغتين العربية والإنجليزية."
+        : "Fox Systems implemented a full CRM system for our company in under 6 weeks. The team is highly professional, and the system works flawlessly in both Arabic and English.",
+    },
+    {
+      name: "Sara El-Masry",
+      role: isArabic ? "مدير العمليات" : "Operations Manager",
+      company: "El Araby Group",
+      rating: 5,
+      text: isArabic
+        ? "قبل فوكس سيستمز، كنا نعاني من مشاكل أمنية متكررة. الآن لدينا جدار حماية Fortinet متكامل مع مراقبة 24/7. لا مزيد من التوقف عن العمل."
+        : "Before Fox Systems, we had recurring security incidents. Now we have a full Fortinet firewall with 24/7 monitoring. Zero downtime since deployment.",
+    },
+    {
+      name: "Mohamed Farouk",
+      role: isArabic ? "الرئيس التنفيذي" : "CEO",
+      company: "El Nahda Cement",
+      rating: 5,
+      text: isArabic
+        ? "مركز الاتصال الذي نفذوه لنا غيّر طريقة عملنا تماماً. التكامل مع نظام CRM يوفر لنا رؤية كاملة عن كل عميل لحظة بلحظة."
+        : "The Call Center they deployed transformed our operations. CRM integration gives us real-time full visibility on every customer interaction.",
+    },
   ];
 
   const clients = [
@@ -600,6 +686,78 @@ export default function Home({ language }: HomeProps) {
         </div>
       </section>
 
+      {/* ── WHY FOX SYSTEMS ── */}
+      <section className="py-24 bg-background" id="why-us">
+        <div className="container">
+          <motion.div initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} viewport={{once:true}} className="text-center mb-14">
+            <span className="pill mb-4 inline-block">{isArabic ? "ميزتنا التنافسية" : "Why Us"}</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4" style={{fontFamily:"'Plus Jakarta Sans',sans-serif",letterSpacing:"-0.02em"}}>
+              {t.whyTitle}
+            </h2>
+            <div className="section-divider mx-auto mb-6" />
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t.whySub}</p>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {whyUs.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div key={i} custom={i} variants={fadeUp} initial="hidden" whileInView="show" viewport={{once:true}}
+                  className="group p-7 rounded-2xl border border-border hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all card-hover bg-background"
+                  style={{background:"linear-gradient(135deg, var(--background) 0%, rgba(29,78,216,0.03) 100%)"}}>
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary transition-colors">
+                    <Icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="font-bold text-lg mb-2 leading-snug" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+          <motion.div initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} viewport={{once:true}} className="mt-12 text-center">
+            <Link href={`${langPrefix}/contact`}>
+              <Button size="lg" className="rounded-full font-bold px-10 h-13 shadow-xl shadow-primary/25 hover:scale-[1.02] transition-all"
+                onClick={() => { if (typeof window !== "undefined" && (window as any).trackCTA) (window as any).trackCTA("why_us_section"); }}>
+                {isArabic ? "احجز استشارة مجانية" : "Schedule a Free Consultation"} <ArrowRight className={`w-4 h-4 ml-2 ${isArabic?"rotate-180":""}`} />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS ── */}
+      <section className="py-24 bg-muted/40 border-y border-border">
+        <div className="container">
+          <motion.div initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} viewport={{once:true}} className="text-center mb-14">
+            <span className="pill mb-4 inline-block">{isArabic ? "آراء العملاء" : "Testimonials"}</span>
+            <h2 className="text-4xl font-extrabold mb-3" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{t.testimonialsTitle}</h2>
+            <div className="section-divider mx-auto mt-4 mb-4" />
+            <p className="text-muted-foreground max-w-xl mx-auto">{t.testimonialsSub}</p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((tm, i) => (
+              <motion.div key={i} custom={i} variants={fadeUp} initial="hidden" whileInView="show" viewport={{once:true}}
+                className="bg-background rounded-2xl p-7 border border-border shadow-sm hover:shadow-lg hover:shadow-primary/10 hover:border-primary/20 transition-all card-hover">
+                <div className="flex gap-1 mb-4">
+                  {Array.from({length: tm.rating}).map((_, j) => (
+                    <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6 italic">"{tm.text}"</p>
+                <div className="flex items-center gap-3 pt-4 border-t border-border">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">
+                    {tm.name.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="font-bold text-sm" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{tm.name}</div>
+                    <div className="text-xs text-muted-foreground">{tm.role} · {tm.company}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ ── */}
       <section className="py-24 bg-muted/40" id="faq">
         <div className="container">
@@ -672,7 +830,14 @@ export default function Home({ language }: HomeProps) {
 
             <motion.div initial={{opacity:0,x:30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.6}}
               className="bg-muted/40 p-8 md:p-10 rounded-3xl border border-border shadow-sm">
-              <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-5" onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.target as HTMLFormElement;
+                const serviceEl = form.querySelector('select[name="service"]') as HTMLSelectElement;
+                if (typeof window !== "undefined" && (window as any).trackFormSubmit) {
+                  (window as any).trackFormSubmit(serviceEl?.value || "General");
+                }
+              }}>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {[
                     { label: t.nameL, type: "text", id: "name" },
@@ -686,11 +851,48 @@ export default function Home({ language }: HomeProps) {
                     </div>
                   ))}
                 </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-semibold text-foreground">{t.serviceL}</label>
-                  <select className="form-input">
-                    {t.svcOptions.map((o, i) => <option key={i} value={o}>{o}</option>)}
-                  </select>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-semibold text-foreground">{t.serviceL}</label>
+                    <select name="service" className="form-input">
+                      {t.svcOptions.map((o, i) => <option key={i} value={o}>{o}</option>)}
+                    </select>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-semibold text-foreground">
+                      {isArabic ? "حجم الشركة" : "Company Size"}
+                    </label>
+                    <select className="form-input">
+                      {(isArabic
+                        ? ["1–10 موظفين", "11–50 موظفاً", "51–200 موظف", "200+ موظف"]
+                        : ["1–10 Employees", "11–50 Employees", "51–200 Employees", "200+ Employees"]
+                      ).map((o, i) => <option key={i}>{o}</option>)}
+                    </select>
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-semibold text-foreground">
+                      {isArabic ? "النطاق التقديري للميزانية" : "Approximate Budget"}
+                    </label>
+                    <select className="form-input">
+                      {(isArabic
+                        ? ["أقل من 10,000 جنيه", "10,000–50,000 جنيه", "50,000–200,000 جنيه", "200,000+ جنيه", "سأناقشه لاحقاً"]
+                        : ["Under EGP 10K", "EGP 10K–50K", "EGP 50K–200K", "EGP 200K+", "I'll discuss later"]
+                      ).map((o, i) => <option key={i}>{o}</option>)}
+                    </select>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-semibold text-foreground">
+                      {isArabic ? "مدى الإلحاح" : "Timeline / Urgency"}
+                    </label>
+                    <select className="form-input">
+                      {(isArabic
+                        ? ["في أسرع وقت ممكن", "خلال شهر", "خلال 3 أشهر", "أستكشف فقط"]
+                        : ["ASAP", "Within 1 month", "Within 3 months", "Just exploring"]
+                      ).map((o, i) => <option key={i}>{o}</option>)}
+                    </select>
+                  </div>
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-sm font-semibold text-foreground">{t.msgL}</label>
@@ -699,6 +901,11 @@ export default function Home({ language }: HomeProps) {
                 <Button type="submit" className="w-full h-13 text-base rounded-xl font-bold gap-2 shadow-lg shadow-primary/25 hover:scale-[1.01] transition-all">
                   <Send className="w-4 h-4" /> {t.sendBtn}
                 </Button>
+                <p className="text-center text-xs text-muted-foreground">
+                  {isArabic ? "أو تواصل معنا مباشرة على واتس آب:" : "Or reach us directly on WhatsApp:"}
+                  {" "}
+                  <a href="https://wa.me/201038450546" className="text-primary font-semibold hover:underline" target="_blank" rel="noopener noreferrer">+20 103 845 0546</a>
+                </p>
               </form>
             </motion.div>
           </div>
@@ -769,6 +976,54 @@ export default function Home({ language }: HomeProps) {
           </div>
         </div>
       </footer>
+
+      {/* ── STICKY CTA BAR (desktop) ── */}
+      {showStickyCTA && (
+        <motion.div
+          initial={{ y: 80, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="fixed bottom-0 left-0 right-0 z-40 hidden md:flex items-center justify-between px-8 py-3.5 shadow-2xl"
+          style={{ background: "linear-gradient(90deg, #0f172a 0%, #1e3a5f 100%)", borderTop: "1px solid rgba(29,78,216,0.4)" }}
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <p className="text-white font-semibold text-sm">
+              {isArabic ? "فريقنا متاح الآن — مصر · السعودية · الكويت" : "Our team is available now — Egypt · Saudi Arabia · Kuwait"}
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-white/50 text-xs">{t.stickySubtext}</span>
+            <Link href={`${langPrefix}/contact`}>
+              <Button size="sm" className="rounded-full font-bold px-6 shadow-lg shadow-primary/30 hover:scale-[1.03] transition-all"
+                onClick={() => { if (typeof window !== "undefined" && (window as any).trackCTA) (window as any).trackCTA("sticky_bar"); }}>
+                {t.stickyCTA} <ArrowRight className={`w-4 h-4 ml-1.5 ${isArabic ? "rotate-180" : ""}`} />
+              </Button>
+            </Link>
+          </div>
+        </motion.div>
+      )}
+
+      {/* ── MOBILE STICKY CTA ── */}
+      {showStickyCTA && (
+        <motion.div
+          initial={{ y: 80, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="fixed bottom-0 left-0 right-0 z-40 flex md:hidden items-center gap-3 px-4 py-3"
+          style={{ background: "#0f172a", borderTop: "1px solid rgba(29,78,216,0.4)" }}
+        >
+          <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#25D366] rounded-full font-bold text-white text-sm"
+            onClick={() => { if (typeof window !== "undefined" && (window as any).trackWhatsApp) (window as any).trackWhatsApp(); }}>
+            <MessageCircle className="w-4 h-4" /> WhatsApp
+          </a>
+          <Link href={`${langPrefix}/contact`} className="flex-1">
+            <Button className="w-full rounded-full font-bold text-sm h-11">
+              {isArabic ? "استشارة مجانية" : "Free Consultation"}
+            </Button>
+          </Link>
+        </motion.div>
+      )}
 
       {/* Floating WhatsApp */}
       <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer"

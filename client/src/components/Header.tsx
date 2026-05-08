@@ -15,7 +15,7 @@ interface HeaderProps { language: "en" | "ar"; }
 const translations = {
   en: {
     home: "Home", services: "Services", contact: "Contact Us",
-    getStarted: "Free CRM Demo", articles: "Articles",
+    getStarted: "Schedule Consultation", articles: "Articles",
     internet: "Call Center & VoIP", software: "CRM Systems",
     hardware: "Hardware & Servers", cybersecurity: "Firewall & Security",
     infrastructure: "Network & Infrastructure", webDev: "Website Development",
@@ -25,7 +25,7 @@ const translations = {
   },
   ar: {
     home: "الرئيسية", services: "الخدمات", contact: "اتصل بنا",
-    getStarted: "عرض CRM مجاني", articles: "المقالات",
+    getStarted: "احجز استشارة مجانية", articles: "المقالات",
     internet: "مراكز الاتصال وVoIP", software: "أنظمة CRM",
     hardware: "الأجهزة والخوادم", cybersecurity: "جدران الحماية والأمن",
     infrastructure: "الشبكة والبنية التحتية", webDev: "تطوير المواقع",

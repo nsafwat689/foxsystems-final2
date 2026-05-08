@@ -288,3 +288,44 @@
 }
 .marquee-track { animation: marquee 28s linear infinite; }
 .marquee-track:hover { animation-play-state: paused; }
+
+/* ─── Mobile sticky CTA bar padding ─── */
+@media (max-width: 767px) {
+  /* Add bottom padding on pages when sticky bar is visible so content isn't hidden */
+  body.has-sticky-cta {
+    padding-bottom: 72px;
+  }
+}
+
+/* ─── Mobile utility improvements ─── */
+@media (max-width: 640px) {
+  .container { padding-left: 1.125rem; padding-right: 1.125rem; }
+
+  /* Ensure hero headlines scale gracefully */
+  h1 { font-size: clamp(2rem, 8vw, 3.5rem) !important; }
+
+  /* Full-width buttons on small screens */
+  .btn-mobile-full { width: 100% !important; }
+
+  /* Reduce excessive vertical spacing on mobile */
+  section { padding-top: 4rem; padding-bottom: 4rem; }
+}
+
+/* ─── Scroll-triggered animations ─── */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* ─── Print styles (for proposals/quotes) ─── */
+@media print {
+  header, footer, .floating-wa, .sticky-cta { display: none !important; }
+  body { color: #000 !important; background: #fff !important; }
+}
+
+/* ─── Focus-visible accessibility ─── */
+*:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

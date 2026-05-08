@@ -8,6 +8,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import Industries from "./pages/Industries";
 import ServiceDetail from "./pages/ServiceDetail";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
@@ -44,6 +45,10 @@ function Router() {
       </Route>
 
       {/* Arabic Services Overview */}
+      <Route path="/ar/industries">
+        {() => <Industries language="ar" />}
+      </Route>
+
       <Route path="/ar/services">
         {() => <Services language="ar" />}
       </Route>
@@ -96,6 +101,10 @@ function Router() {
       </Route>
 
       {/* Services Overview */}
+      <Route path="/industries">
+        {() => <Industries language="en" />}
+      </Route>
+
       <Route path="/services">
         {() => <Services language="en" />}
       </Route>

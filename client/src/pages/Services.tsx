@@ -29,17 +29,17 @@ const T = {
       "Call Center & VoIP integration", "Multi-branch, multi-user",
       "Full Arabic & English interface", "Training & 24/7 support",
     ],
-    crmCTA: "Get Free CRM Demo",
-    crmLearn: "Learn More",
+    crmCTA: "Schedule Free Consultation",
+    crmLearn: "Explore CRM Solutions",
     demoPanel: ["Leads","Active Deals","Won This Month","Today's Calls","Pending Follow-ups"],
     demoPanelAr: ["عملاء محتملون","صفقات نشطة","مكسوب هذا الشهر","مكالمات اليوم","متابعات معلقة"],
     demoVals: [142, 38, 24, 67, 15],
     otherTitle: "Additional IT Services",
     otherSub: "Complete IT support to power every aspect of your business",
-    learnMore: "Learn More",
-    ctaTitle: "Ready to Grow Your Business?",
-    ctaDesc: "Book a free consultation with our experts and discover the right IT solution for your needs.",
-    ctaPrimary: "Get Free CRM Demo",
+    learnMore: "Explore Service",
+    ctaTitle: "Ready to Transform Your IT?",
+    ctaDesc: "Schedule a free 30-minute consultation. Our engineers will assess your needs and propose the right solution.",
+    ctaPrimary: "Schedule Free Consultation",
     ctaWhatsApp: "Chat on WhatsApp",
     services: [
       { id:"internet", icon: HeadphonesIcon, title:"Call Center & VoIP", desc:"Complete Call Center setup with Grandstream & Cisco VoIP, IVR, call recording, and CRM integration. Leased Line, Microwave, and VPN connectivity." },
@@ -63,17 +63,17 @@ const T = {
       "تكامل مع مركز الاتصال وVoIP", "متعدد الفروع والمستخدمين",
       "واجهة عربية وإنجليزية كاملة", "تدريب ودعم 24/7",
     ],
-    crmCTA: "احصل على عرض CRM مجاني",
-    crmLearn: "اعرف المزيد",
+    crmCTA: "احجز استشارة مجانية",
+    crmLearn: "استكشف حلول CRM",
     demoPanel: ["Leads","Active Deals","Won This Month","Today's Calls","Pending Follow-ups"],
     demoPanelAr: ["عملاء محتملون","صفقات نشطة","مكسوب هذا الشهر","مكالمات اليوم","متابعات معلقة"],
     demoVals: [142, 38, 24, 67, 15],
     otherTitle: "خدمات IT الإضافية",
     otherSub: "دعم IT كامل لتشغيل كل جانب من جوانب عملك",
-    learnMore: "اعرف المزيد",
-    ctaTitle: "هل أنت مستعد لتنمية عملك؟",
-    ctaDesc: "احجز استشارة مجانية مع خبرائنا واكتشف حل IT المناسب لاحتياجاتك.",
-    ctaPrimary: "احصل على عرض CRM مجاني",
+    learnMore: "استكشف الخدمة",
+    ctaTitle: "هل أنت مستعد لتحويل تقنية معلوماتك؟",
+    ctaDesc: "احجز استشارة مجانية لمدة 30 دقيقة. سيقيّم مهندسونا احتياجاتك ويقترحون الحل الصحيح.",
+    ctaPrimary: "احجز استشارة مجانية",
     ctaWhatsApp: "تحدث عبر واتس آب",
     services: [
       { id:"internet", icon: HeadphonesIcon, title:"مراكز الاتصال وVoIP", desc:"إعداد مركز اتصال كامل مع Grandstream وCisco، IVR، تسجيل مكالمات، وتكامل CRM. خطوط مؤجرة وVPN." },
@@ -136,6 +136,25 @@ export default function Services({ language }: ServicesProps) {
           </motion.div>
         </div>
       </section>
+
+      {/* ── SOCIAL PROOF TRUST BAR ── */}
+      <div className="border-b border-white/10 bg-[#0a0f1e]">
+        <div className="container">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10 rtl:divide-x-reverse">
+            {[
+              { value: "300+", label: isArabic ? "عميل راضٍ" : "Happy Clients" },
+              { value: "500+", label: isArabic ? "مشروع مكتمل" : "Projects Delivered" },
+              { value: "14+", label: isArabic ? "سنة خبرة" : "Years Experience" },
+              { value: "24/7", label: isArabic ? "دعم فني" : "Technical Support" },
+            ].map((s, i) => (
+              <div key={i} className="flex flex-col items-center py-5 px-4 text-center">
+                <span className="text-2xl font-extrabold text-white" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{s.value}</span>
+                <span className="text-xs text-white/50 mt-1">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* CRM Core Service Spotlight */}
       <section
@@ -248,6 +267,44 @@ export default function Services({ language }: ServicesProps) {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOW WE WORK PROCESS STRIP ── */}
+      <section className="py-20 bg-muted/30 border-y border-border">
+        <div className="container">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <span className="pill mb-4 inline-block">{isArabic ? "كيف نعمل" : "Our Process"}</span>
+            <h2 className="text-3xl font-extrabold" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+              {isArabic ? "من الاستشارة إلى التسليم في 4 خطوات" : "From Consultation to Go-Live in 4 Steps"}
+            </h2>
+            <div className="section-divider mx-auto mt-4" />
+          </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {(isArabic ? [
+              { step: "01", title: "استشارة مجانية", desc: "نجلس معك لفهم عملك وتحدياتك ونحدد الحل الأمثل." },
+              { step: "02", title: "تقييم وعرض سعر", desc: "نرسل لك تقييمًا تقنيًا مفصلاً وعرض سعر شفافاً خلال 24 ساعة." },
+              { step: "03", title: "التنفيذ والتدريب", desc: "يقوم فريقنا بالتنفيذ الكامل ويدرب فريقك على كل شيء." },
+              { step: "04", title: "الدعم المستمر", desc: "دعم فني 24/7 بعد الإطلاق مع ضمان الأداء والتحديثات." },
+            ] : [
+              { step: "01", title: "Free Consultation", desc: "We sit with you to understand your business, challenges, and identify the optimal solution." },
+              { step: "02", title: "Assessment & Quote", desc: "We send a detailed technical assessment and a transparent proposal within 24 hours." },
+              { step: "03", title: "Implementation & Training", desc: "Our team handles the full setup and trains your staff on everything they need." },
+              { step: "04", title: "Ongoing Support", desc: "24/7 post-launch technical support with performance guarantees and updates." },
+            ]).map((item, i) => (
+              <motion.div key={i} custom={i} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
+                className="relative p-6 rounded-2xl bg-background border border-border hover:border-primary/30 hover:shadow-lg transition-all">
+                <div className="text-5xl font-black text-primary/10 mb-3" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", lineHeight: 1 }}>{item.step}</div>
+                <h3 className="font-bold text-base mb-2" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{item.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                {i < 3 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center z-10">
+                    <span className="text-primary text-xs font-bold">{isArabic ? "←" : "→"}</span>
+                  </div>
+                )}
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

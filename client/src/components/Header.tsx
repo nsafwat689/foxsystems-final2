@@ -15,7 +15,7 @@ interface HeaderProps { language: "en" | "ar"; }
 const translations = {
   en: {
     home: "Home", services: "Services", contact: "Contact Us",
-    getStarted: "Schedule Consultation", articles: "Articles",
+    getStarted: "Schedule Consultation", articles: "Articles", industries: "Industries",
     internet: "Call Center & VoIP", software: "CRM Systems",
     hardware: "Hardware & Servers", cybersecurity: "Firewall & Security",
     infrastructure: "Network & Infrastructure", webDev: "Website Development",
@@ -25,7 +25,7 @@ const translations = {
   },
   ar: {
     home: "الرئيسية", services: "الخدمات", contact: "اتصل بنا",
-    getStarted: "احجز استشارة مجانية", articles: "المقالات",
+    getStarted: "احجز استشارة مجانية", articles: "المقالات", industries: "القطاعات",
     internet: "مراكز الاتصال وVoIP", software: "أنظمة CRM",
     hardware: "الأجهزة والخوادم", cybersecurity: "جدران الحماية والأمن",
     infrastructure: "الشبكة والبنية التحتية", webDev: "تطوير المواقع",
@@ -156,17 +156,15 @@ export default function Header({ language }: HeaderProps) {
                 </DropdownMenuContent>
               </DropdownMenu>
 
+              <Link href={`${langPrefix}/industries`}
+                className={navLinkCls(location.includes("/industries"))}>
+                {t.industries}
+              </Link>
+
               <Link href={`${langPrefix}/articles`}
                 className={navLinkCls(location.includes("/articles"))}>
                 {t.articles}
               </Link>
-
-              <Link href={`${langPrefix}/contact`}
-                className={navLinkCls(location.includes("/contact"))}>
-                {t.contact}
-              </Link>
-            </div>
-          </div>
 
           {/* Right controls */}
           <div className="hidden md:flex items-center gap-2">
@@ -224,6 +222,11 @@ export default function Header({ language }: HeaderProps) {
                   </Link>
                 ))}
               </div>
+
+              <Link href={`${langPrefix}/industries`} onClick={() => setIsMenuOpen(false)}
+                className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">
+                {t.industries}
+              </Link>
 
               <Link href={`${langPrefix}/articles`} onClick={() => setIsMenuOpen(false)}
                 className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">

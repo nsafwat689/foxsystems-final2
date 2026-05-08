@@ -230,16 +230,54 @@ export default function Contact({ language }: ContactProps) {
                       ))}
                     </div>
 
-                    <div className="space-y-1.5">
-                      <label className="text-sm font-semibold">{t.serviceLbl}</label>
-                      <select className="form-input">
-                        {t.services.map((o) => <option key={o} value={o}>{o}</option>)}
-                      </select>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="space-y-1.5">
+                        <label className="text-sm font-semibold">{t.serviceLbl}</label>
+                        <select name="service" className="form-input">
+                          {t.services.map((o) => <option key={o} value={o}>{o}</option>)}
+                        </select>
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-sm font-semibold">
+                          {isArabic ? "حجم الشركة" : "Company Size"}
+                        </label>
+                        <select className="form-input">
+                          {(isArabic
+                            ? ["1–10 موظفين", "11–50 موظفاً", "51–200 موظف", "200+ موظف"]
+                            : ["1–10 Employees", "11–50 Employees", "51–200 Employees", "200+ Employees"]
+                          ).map((o) => <option key={o}>{o}</option>)}
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="space-y-1.5">
+                        <label className="text-sm font-semibold">
+                          {isArabic ? "الميزانية التقديرية" : "Approximate Budget"}
+                        </label>
+                        <select className="form-input">
+                          {(isArabic
+                            ? ["أقل من 10,000 جنيه", "10,000–50,000 جنيه", "50,000–200,000 جنيه", "200,000+ جنيه", "سأناقشه لاحقاً"]
+                            : ["Under EGP 10K", "EGP 10K–50K", "EGP 50K–200K", "EGP 200K+", "I'll discuss later"]
+                          ).map((o) => <option key={o}>{o}</option>)}
+                        </select>
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-sm font-semibold">
+                          {isArabic ? "مدى الإلحاح" : "Timeline / Urgency"}
+                        </label>
+                        <select className="form-input">
+                          {(isArabic
+                            ? ["في أسرع وقت ممكن", "خلال شهر", "خلال 3 أشهر", "أستكشف فقط"]
+                            : ["ASAP", "Within 1 month", "Within 3 months", "Just exploring"]
+                          ).map((o) => <option key={o}>{o}</option>)}
+                        </select>
+                      </div>
                     </div>
 
                     <div className="space-y-1.5">
                       <label className="text-sm font-semibold">{t.msgLbl}</label>
-                      <textarea rows={5} className="form-input" placeholder={t.msgPlaceholder} />
+                      <textarea rows={4} className="form-input" placeholder={t.msgPlaceholder} />
                     </div>
 
                     <Button type="submit" disabled={loading}

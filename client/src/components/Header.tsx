@@ -166,6 +166,13 @@ export default function Header({ language }: HeaderProps) {
                 {t.articles}
               </Link>
 
+              <Link href={`${langPrefix}/contact`}
+                className={navLinkCls(location.includes("/contact"))}>
+                {t.contact}
+              </Link>
+            </div>
+          </div>
+
           {/* Right controls */}
           <div className="hidden md:flex items-center gap-2">
             <button onClick={toggleTheme}

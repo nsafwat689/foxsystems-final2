@@ -16,6 +16,7 @@ const translations = {
   en: {
     home: "Home", services: "Services", contact: "Contact Us",
     getStarted: "Schedule Consultation", articles: "Articles", industries: "Industries",
+    caseStudies: "Case Studies",
     internet: "Call Center & VoIP", software: "CRM Systems",
     hardware: "Hardware & Servers", cybersecurity: "Firewall & Security",
     infrastructure: "Network & Infrastructure", webDev: "Website Development",
@@ -26,6 +27,7 @@ const translations = {
   ar: {
     home: "الرئيسية", services: "الخدمات", contact: "اتصل بنا",
     getStarted: "احجز استشارة مجانية", articles: "المقالات", industries: "القطاعات",
+    caseStudies: "قصص النجاح",
     internet: "مراكز الاتصال وVoIP", software: "أنظمة CRM",
     hardware: "الأجهزة والخوادم", cybersecurity: "جدران الحماية والأمن",
     infrastructure: "الشبكة والبنية التحتية", webDev: "تطوير المواقع",
@@ -166,6 +168,11 @@ export default function Header({ language }: HeaderProps) {
                 {t.articles}
               </Link>
 
+              <Link href={`${langPrefix}/case-studies`}
+                className={navLinkCls(location.includes("/case-studies"))}>
+                {t.caseStudies}
+              </Link>
+
               <Link href={`${langPrefix}/contact`}
                 className={navLinkCls(location.includes("/contact"))}>
                 {t.contact}
@@ -233,6 +240,11 @@ export default function Header({ language }: HeaderProps) {
               <Link href={`${langPrefix}/industries`} onClick={() => setIsMenuOpen(false)}
                 className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">
                 {t.industries}
+              </Link>
+
+              <Link href={`${langPrefix}/case-studies`} onClick={() => setIsMenuOpen(false)}
+                className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">
+                {t.caseStudies}
               </Link>
 
               <Link href={`${langPrefix}/articles`} onClick={() => setIsMenuOpen(false)}

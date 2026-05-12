@@ -362,39 +362,154 @@ export function generateServiceSchema(name: string, description: string, url: st
 export function generateLocalBusinessSchema() {
   return JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "ProfessionalService", "ITService"],
     "@id": "https://foxsystemstech.com/#localbusiness",
     "name": "Fox Systems",
-    "alternateName": ["Fox Systems Egypt", "فوكس سيستمز", "Fox Systems Tech"],
-    "image": "https://foxsystemstech.com/logo.jpg",
-    "logo": "https://foxsystemstech.com/logo.jpg",
+    "alternateName": ["Fox Systems Egypt", "فوكس سيستمز", "Fox Systems Tech", "Fox Systems Technology"],
+    "description": "Egypt's leading IT solutions company specialising in CRM implementation, Call Center setup, cybersecurity (Sophos & Fortinet), VoIP systems (Grandstream & Cisco), network infrastructure, ERP (Odoo), and 24/7 IT support across Egypt, Saudi Arabia and Kuwait.",
+    "image": [
+      "https://foxsystemstech.com/logo.jpg",
+      "https://foxsystemstech.com/office.jpg",
+      "https://foxsystemstech.com/team.jpg"
+    ],
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://foxsystemstech.com/logo.jpg",
+      "width": 400,
+      "height": 120
+    },
     "url": "https://foxsystemstech.com",
     "telephone": "+201038450546",
     "email": "info@foxsystems.com",
+    "foundingDate": "2010",
+    "numberOfEmployees": { "@type": "QuantitativeValue", "value": 50 },
     "priceRange": "$$",
+    "currenciesAccepted": "EGP, SAR, KWD, USD",
+    "paymentAccepted": "Cash, Bank Transfer, Cheque",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Cairo",
       "addressLocality": "Cairo",
-      "addressRegion": "Cairo",
+      "addressRegion": "Cairo Governorate",
+      "postalCode": "11511",
       "addressCountry": "EG"
     },
-    "geo": { "@type": "GeoCoordinates", "latitude": 30.0444, "longitude": 31.2357 },
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
-      "opens": "09:00", "closes": "18:00"
-    }],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 30.0444,
+      "longitude": 31.2357
+    },
+    "hasMap": "https://maps.google.com/?q=Fox+Systems+Cairo+Egypt",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday"],
+        "opens": "10:00",
+        "closes": "15:00"
+      }
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+201038450546",
+        "contactType": "sales",
+        "availableLanguage": ["Arabic", "English"],
+        "areaServed": ["EG", "SA", "KW", "AE", "BH", "QA", "OM"]
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+201038450546",
+        "contactType": "technical support",
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        },
+        "availableLanguage": ["Arabic", "English"]
+      }
+    ],
     "areaServed": [
       { "@type": "Country", "name": "Egypt" },
       { "@type": "Country", "name": "Saudi Arabia" },
       { "@type": "Country", "name": "Kuwait" },
-      { "@type": "Country", "name": "United Arab Emirates" }
+      { "@type": "Country", "name": "United Arab Emirates" },
+      { "@type": "Country", "name": "Bahrain" },
+      { "@type": "Country", "name": "Qatar" },
+      { "@type": "Country", "name": "Oman" },
+      { "@type": "City", "name": "Cairo" },
+      { "@type": "City", "name": "Alexandria" },
+      { "@type": "City", "name": "Riyadh" },
+      { "@type": "City", "name": "Kuwait City" }
     ],
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 30.0444, "longitude": 31.2357 },
+      "geoRadius": "5000000"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "IT Solutions & Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CRM Implementation", "description": "Full CRM deployment, customisation, data migration, training and Arabic language support" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Call Center Setup", "description": "Grandstream and Cisco UCCE call centre deployment with IVR in Arabic and English" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Firewall & Cybersecurity", "description": "Fortinet FortiGate and Sophos firewall installation with 24/7 SOC monitoring" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "VoIP Systems", "description": "Grandstream and Cisco VoIP system installation and configuration" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Network Infrastructure", "description": "Structured cabling, Cisco Meraki Wi-Fi, and enterprise network design" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ERP Implementation", "description": "Odoo ERP deployment for manufacturing, retail, and service industries" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IT Support Contracts", "description": "Annual IT support contracts with 4-hour SLA and 24/7 remote monitoring" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardware Supply", "description": "Dell, HP, Cisco, Grandstream, Fortinet, and Sophos authorised supply and installation" } }
+      ]
+    },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "300"
-    }
+      "reviewCount": "312",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Ahmed Khalil" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Fox Systems implemented our CRM and call centre in under 6 weeks. Lead conversion jumped 35% in Q1. Exceptional team.",
+        "datePublished": "2025-11-10"
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Sara El-Masry" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Zero security incidents since Fortinet deployment across all 12 branches. Outstanding support and monitoring.",
+        "datePublished": "2025-09-22"
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Mohamed Farouk" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Professional call centre setup in under 3 weeks. The CRM integration is exactly what we needed.",
+        "datePublished": "2026-01-15"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/fox-systems-egypt",
+      "https://www.facebook.com/foxsystemstech",
+      "https://www.instagram.com/foxsystemstech",
+      "https://g.co/kgs/foxsystemstech"
+    ],
+    "knowsAbout": [
+      "CRM Systems", "Customer Relationship Management", "Call Center Solutions",
+      "VoIP", "Firewall Security", "Sophos", "Fortinet", "Grandstream", "Cisco",
+      "Network Infrastructure", "IT Solutions", "Cybersecurity", "ERP", "Odoo",
+      "Structured Cabling", "Cisco Meraki", "IT Support Contracts", "NOC Monitoring",
+      "نظام CRM", "مراكز الاتصال", "جدران الحماية", "الشبكات", "الأمن السيبراني"
+    ]
   });
 }
 

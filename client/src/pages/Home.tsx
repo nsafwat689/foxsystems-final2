@@ -349,25 +349,16 @@ export default function Home({ language }: HomeProps) {
       <section
         className="relative min-h-[88vh] flex items-center overflow-hidden"
         style={{
-          backgroundColor: "#0f172a",
-          backgroundImage: [
-            "url('/hero-tech.jpg')",
-            "radial-gradient(ellipse 80% 60% at 20% 40%, rgba(29,78,216,0.55) 0%, transparent 60%)",
-            "radial-gradient(ellipse 60% 40% at 80% 20%, rgba(14,165,233,0.3) 0%, transparent 60%)",
-            "radial-gradient(ellipse 40% 30% at 60% 80%, rgba(29,78,216,0.25) 0%, transparent 50%)",
-          ].join(", "),
+          backgroundImage: "url('/hero-tech.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundBlendMode: "overlay, normal, normal, normal",
         }}
       >
         {/* Dot grid overlay */}
         <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
 
-        {/* Glowing orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{background:"rgba(29,78,216,0.2)",filter:"blur(80px)"}} />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full pointer-events-none" style={{background:"rgba(14,165,233,0.15)",filter:"blur(60px)"}} />
+
 
         <div className="container relative z-10 py-24">
           <motion.div

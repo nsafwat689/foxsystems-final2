@@ -151,7 +151,7 @@ export default function Contact({ language }: ContactProps) {
               {/* Info cards */}
               {[
                 { Icon: Phone, label: isArabic?"الهاتف":"Phone", val: "+201038450546", href: "tel:+201038450546" },
-                { Icon: Mail, label: isArabic?"البريد الإلكتروني":"Email", val: "info@foxsystems.com", href: "mailto:info@foxsystems.com" },
+                { Icon: Mail, label: isArabic?"البريد الإلكتروني":"Email", val: "support@foxsystemstech.com", href: "mailto:support@foxsystemstech.com" },
                 { Icon: MapPin, label: isArabic?"العنوان":"Address", val: t.address, href: null },
                 { Icon: Clock, label: t.hoursLbl, val: t.hours, href: null },
               ].map(({ Icon, label, val, href }, i) => (

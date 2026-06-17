@@ -282,7 +282,7 @@ export function generateOrganizationSchema() {
     "logo": "https://foxsystemstech.com/logo.jpg",
     "description": "Egypt's leading CRM implementation and IT solutions company. Specializing in CRM systems, Call Center setup, Firewall security (Sophos, Fortinet), VoIP (Grandstream, Cisco), network infrastructure, ERP, and IT support across Egypt, Saudi Arabia, and Kuwait.",
     "telephone": "+201038450546",
-    "email": "info@foxsystems.com",
+    "email": "support@foxsystemstech.com",
     "foundingDate": "2010",
     "address": {
       "@type": "PostalAddress",
@@ -380,7 +380,7 @@ export function generateLocalBusinessSchema() {
     },
     "url": "https://foxsystemstech.com",
     "telephone": "+201038450546",
-    "email": "info@foxsystems.com",
+    "email": "support@foxsystemstech.com",
     "foundingDate": "2010",
     "numberOfEmployees": { "@type": "QuantitativeValue", "value": 50 },
     "priceRange": "$$",

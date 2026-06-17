@@ -398,7 +398,7 @@ If you've been thinking about CRM, cybersecurity, network infrastructure, or cal
 
 → Claim Your Jumpstart Package (expires Friday)
 
-If you're not ready yet, no problem at all. You can always reach us when the timing is right at info@foxsystems.com or +20 103 845 0546.
+If you're not ready yet, no problem at all. You can always reach us when the timing is right at support@foxsystemstech.com or +20 103 845 0546.
 
 Thank you for reading — and for trusting Fox Systems with your IT learning.
 
@@ -461,7 +461,7 @@ P.S. — مهما قررت، يمكنك دائماً التواصل معنا. ي
  *
  * 5. FROM NAME:  "Nour from Fox Systems" (personal name converts better than company name)
  * 6. FROM EMAIL: nour@foxsystemstech.com (use a real inbox that gets monitored)
- * 7. REPLY-TO:   info@foxsystemstech.com
+ * 7. REPLY-TO:   support@foxsystemstech.com
  *
  * 8. GA4 UTM PARAMETERS for all CTA links:
  *    ?utm_source=email&utm_medium=nurture&utm_campaign=guide_download&utm_content=email{{id}}

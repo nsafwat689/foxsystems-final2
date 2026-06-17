@@ -795,7 +795,7 @@ export default function Home({ language }: HomeProps) {
               <div className="space-y-4">
                 {[
                   { Icon: Phone, label: isArabic?"الهاتف":"Phone", val: "+201038450546", href: "tel:+201038450546" },
-                  { Icon: Mail, label: isArabic?"البريد الإلكتروني":"Email", val: "info@foxsystems.com", href: "mailto:info@foxsystems.com" },
+                  { Icon: Mail, label: isArabic?"البريد الإلكتروني":"Email", val: "support@foxsystemstech.com", href: "mailto:support@foxsystemstech.com" },
                   { Icon: MapPin, label: isArabic?"العنوان":"Address", val: t.egypt, href: null },
                 ].map(({ Icon, label, val, href }, i) => (
                   <div key={i} className="flex items-center gap-4 p-4 bg-muted/50 rounded-2xl border border-border hover:border-primary/20 transition-all">
@@ -954,7 +954,7 @@ export default function Home({ language }: HomeProps) {
             <div>
               <h4 className="font-bold text-sm uppercase tracking-widest text-white/50 mb-5">{t.footerContact}</h4>
               <ul className="space-y-4 text-sm">
-                <li><a href="mailto:info@foxsystems.com" className="flex items-center gap-2.5 text-white/60 hover:text-white transition"><Mail className="w-4 h-4 text-primary flex-shrink-0" />info@foxsystems.com</a></li>
+                <li><a href="mailto:support@foxsystemstech.com" className="flex items-center gap-2.5 text-white/60 hover:text-white transition"><Mail className="w-4 h-4 text-primary flex-shrink-0" />support@foxsystemstech.com</a></li>
                 <li><a href="tel:+201038450546" className="flex items-center gap-2.5 text-white/60 hover:text-white transition"><Phone className="w-4 h-4 text-primary flex-shrink-0" />+201038450546</a></li>
                 <li><span className="flex items-center gap-2.5 text-white/60"><MapPin className="w-4 h-4 text-primary flex-shrink-0" />{t.egypt}</span></li>
               </ul>

@@ -495,7 +495,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                 <h3 className="font-bold text-base" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{data.contactUsTitle}</h3>
                 {[
                   { Icon: Phone, val: "+201038450546", href: "tel:+201038450546" },
-                  { Icon: Mail, val: "info@foxsystems.com", href: "mailto:info@foxsystems.com" },
+                  { Icon: Mail, val: "support@foxsystemstech.com", href: "mailto:support@foxsystemstech.com" },
                   { Icon: MapPin, val: isArabic ? "القاهرة، مصر" : "Cairo, Egypt", href: null },
                 ].map(({ Icon, val, href }, i) => (
                   <div key={i} className="flex items-center gap-3">

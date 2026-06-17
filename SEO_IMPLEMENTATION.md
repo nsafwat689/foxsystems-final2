@@ -227,6 +227,6 @@ This ensures Google understands language and regional targeting.
 ## 13. Contact Information
 
 For SEO-related questions or updates:
-- Email: info@foxsystems.com
+- Email: support@foxsystemstech.com
 - Phone: +201557649136
 - Website: https://foxsystemstech.com

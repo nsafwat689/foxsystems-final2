@@ -355,8 +355,10 @@ export default function Home({ language }: HomeProps) {
           backgroundRepeat: "no-repeat",
         }}
       >
+        {/* Dark scrim so text is always legible */}
+        <div className="absolute inset-0 bg-[#0a1628]/75 pointer-events-none" />
         {/* Dot grid overlay */}
-        <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 bg-dot-grid opacity-20 pointer-events-none" />
 
 
 

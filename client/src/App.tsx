@@ -29,7 +29,7 @@ function Router() {
   }, [location]);
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={location}
         initial={{ opacity: 0, y: 10 }}

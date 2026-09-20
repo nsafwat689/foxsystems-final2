@@ -1,5 +1,18 @@
 import { useEffect } from "react";
 
+/**
+ * Verified public profiles for the Fox Systems entity.
+ *
+ * Search engines use sameAs to tie the site to the business, so every schema
+ * block must emit the same list — a URL that 404s weakens the association.
+ * Add a profile here only once you've confirmed it resolves.
+ */
+export const SOCIAL_PROFILES = [
+  "https://www.linkedin.com/company/fox-systems",
+  "https://www.facebook.com/foxsystemstech",
+  "https://www.instagram.com/foxsystemstech",
+];
+
 export interface SEOConfig {
   title: string;
   description: string;
@@ -317,10 +330,7 @@ export function generateOrganizationSchema() {
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ERP Implementation" } }
       ]
     },
-    "sameAs": [
-      "https://www.linkedin.com/company/fox-systems",
-      "https://www.facebook.com/foxsystems"
-    ]
+    "sameAs": SOCIAL_PROFILES
   });
 }
 
@@ -467,42 +477,11 @@ export function generateLocalBusinessSchema() {
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardware Supply", "description": "Dell, HP, Cisco, Grandstream, Fortinet, and Sophos authorised supply and installation" } }
       ]
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "312",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Ahmed Khalil" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Fox Systems implemented our CRM and call centre in under 6 weeks. Lead conversion jumped 35% in Q1. Exceptional team.",
-        "datePublished": "2025-11-10"
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Sara El-Masry" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Zero security incidents since Fortinet deployment across all 12 branches. Outstanding support and monitoring.",
-        "datePublished": "2025-09-22"
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Mohamed Farouk" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Professional call centre setup in under 3 weeks. The CRM integration is exactly what we needed.",
-        "datePublished": "2026-01-15"
-      }
-    ],
-    "sameAs": [
-      "https://www.linkedin.com/company/fox-systems-egypt",
-      "https://www.facebook.com/foxsystemstech",
-      "https://www.instagram.com/foxsystemstech",
-      "https://g.co/kgs/foxsystemstech"
-    ],
+    // No aggregateRating or review here on purpose: Google's structured-data
+    // policy forbids self-serving review markup that isn't backed by reviews
+    // real customers left, and the penalty lands on the whole domain. Wire this
+    // up to Google Business Profile reviews if you want stars in the SERP.
+    "sameAs": SOCIAL_PROFILES,
     "knowsAbout": [
       "CRM Systems", "Customer Relationship Management", "Call Center Solutions",
       "VoIP", "Firewall Security", "Sophos", "Fortinet", "Grandstream", "Cisco",

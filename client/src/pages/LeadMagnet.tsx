@@ -2,10 +2,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageCircle, Download, CheckCircle2, Shield, FileText, Star } from "lucide-react";
+import { ArrowRight, MessageCircle, Download, CheckCircle2, Shield, FileText, Star, AlertCircle } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { generateBreadcrumbSchema } from "@/utils/seo";
+import { submitLead, whatsAppFallbackUrl, SUPPORT_EMAIL, GUIDE_PDF_PATH, guidePdfIsAvailable, type Lead } from "@/lib/leads";
 
 interface LeadMagnetProps { language: "en" | "ar"; }
 
@@ -23,7 +24,13 @@ const T = {
     submitBtn: "Send Me the Free Guide",
     downloading: "Preparing your guide...",
     successTitle: "Your guide is ready!",
-    successDesc: "Check your email — we've sent the PDF directly to your inbox. Our team will also reach out within 24 hours to answer any questions.",
+    successDesc: "Your download is starting now. Our team will also reach out within 24 hours to answer any questions.",
+    successTitlePending: "Thanks — we've got your details",
+    successDescPending: "Our team will email the guide to you shortly, and will reach out within 24 hours to answer any questions.",
+    errorTitle: "We couldn't send that",
+    errorMsg: "Something went wrong on our side and your request never reached us. Message us on WhatsApp instead and we'll send the guide straight over.",
+    errorInvalid: "Please check your name and email address, then try again.",
+    retryBtn: "Try again",
     privacyNote: "We respect your privacy. No spam, ever. Unsubscribe any time.",
     whatsInside: "What's Inside the Guide",
     chapters: [
@@ -59,6 +66,12 @@ const T = {
     sizePlaceholder: "حجم الشركة",
     submitBtn: "أرسل لي الدليل المجاني",
     downloading: "جارٍ تحضير دليلك...",
+    successTitlePending: "شكراً — وصلتنا بياناتك",
+    successDescPending: "سيرسل لك فريقنا الدليل عبر البريد الإلكتروني قريباً، وسيتواصل معك خلال 24 ساعة للإجابة على أي أسئلة.",
+    errorTitle: "تعذّر الإرسال",
+    errorMsg: "حدث خطأ لدينا ولم يصلنا طلبك. راسلنا عبر واتس آب وسنرسل لك الدليل فوراً.",
+    errorInvalid: "يرجى التأكد من الاسم والبريد الإلكتروني ثم المحاولة مرة أخرى.",
+    retryBtn: "حاول مرة أخرى",
     successTitle: "دليلك جاهز!",
     successDesc: "تحقق من بريدك الإلكتروني — لقد أرسلنا PDF مباشرة إلى صندوق الوارد. سيتواصل معك فريقنا أيضاً خلال 24 ساعة.",
     privacyNote: "نحترم خصوصيتك. لا بريد عشوائي أبداً. إلغاء الاشتراك في أي وقت.",
@@ -90,14 +103,29 @@ export default function LeadMagnet({ language }: LeadMagnetProps) {
   const isArabic = language === "ar";
   const langPrefix = isArabic ? "/ar" : "";
   const t = T[language];
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", company: "", phone: "", size: "" });
+  type Status = "idle" | "sending" | "sent" | "unavailable" | "invalid";
+  const [status, setStatus] = useState<Status>("idle");
+  // The guide only downloads if the PDF is actually published — otherwise we
+  // promise an email instead of handing the visitor a broken file.
+  const [pdfReady, setPdfReady] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", company: "", phone: "", size: "", website: "" });
+
+  const lead: Lead = {
+    name: form.name, email: form.email, company: form.company, phone: form.phone,
+    companySize: form.size, website: form.website,
+    service: "IT Readiness Guide", language, source: "it-guide",
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    // Track lead magnet download in GA4
+    setStatus("sending");
+
+    const result = await submitLead(lead);
+    if (!result.ok) {
+      setStatus(result.reason === "invalid" ? "invalid" : "unavailable");
+      return;
+    }
+
     if (typeof window !== "undefined" && (window as any).gtag) {
       (window as any).gtag("event", "lead_magnet_download", {
         event_category: "lead",
@@ -105,15 +133,17 @@ export default function LeadMagnet({ language }: LeadMagnetProps) {
         company_size: form.size,
       });
     }
-    // Simulate submission — replace with your form API endpoint
-    await new Promise(r => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
-    // Trigger PDF download
-    const link = document.createElement("a");
-    link.href = "/fox-systems-it-readiness-guide.pdf";
-    link.download = "Fox-Systems-IT-Readiness-Guide.pdf";
-    link.click();
+
+    const available = await guidePdfIsAvailable();
+    setPdfReady(available);
+    setStatus("sent");
+
+    if (available) {
+      const link = document.createElement("a");
+      link.href = GUIDE_PDF_PATH;
+      link.download = "Fox-Systems-IT-Readiness-Guide.pdf";
+      link.click();
+    }
   };
 
   const seoConfig = {
@@ -170,7 +200,7 @@ export default function LeadMagnet({ language }: LeadMagnetProps) {
             {/* Right — form */}
             <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}
               className="bg-background rounded-3xl p-8 shadow-2xl border border-border">
-              {!submitted ? (
+              {status !== "sent" ? (
                 <>
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
@@ -184,6 +214,28 @@ export default function LeadMagnet({ language }: LeadMagnetProps) {
                     </div>
                   </div>
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {status === "unavailable" && (
+                      <div role="alert" className="rounded-2xl border border-destructive/30 bg-destructive/5 p-4 space-y-3">
+                        <div className="flex items-start gap-2.5">
+                          <AlertCircle className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
+                          <div className="space-y-1">
+                            <p className="font-semibold text-sm">{t.errorTitle}</p>
+                            <p className="text-sm text-muted-foreground">{t.errorMsg}</p>
+                          </div>
+                        </div>
+                        <a href={whatsAppFallbackUrl(lead)} target="_blank" rel="noopener noreferrer" className="block">
+                          <Button type="button" size="sm" className="rounded-full gap-2">
+                            <MessageCircle className="w-4 h-4" /> WhatsApp
+                          </Button>
+                        </a>
+                      </div>
+                    )}
+                    {status === "invalid" && (
+                      <div role="alert" className="rounded-2xl border border-destructive/30 bg-destructive/5 p-4 flex items-start gap-2.5">
+                        <AlertCircle className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
+                        <p className="text-sm text-muted-foreground">{t.errorInvalid}</p>
+                      </div>
+                    )}
                     <div className="grid grid-cols-2 gap-3">
                       <input required value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                         placeholder={t.namePlaceholder} className="form-input col-span-2" />
@@ -199,8 +251,16 @@ export default function LeadMagnet({ language }: LeadMagnetProps) {
                         {t.sizeOptions.map(o => <option key={o}>{o}</option>)}
                       </select>
                     </div>
-                    <Button type="submit" disabled={loading} className="w-full h-13 rounded-xl font-bold text-base gap-2 shadow-lg shadow-primary/25">
-                      {loading ? <><span className="animate-spin">⏳</span> {t.downloading}</> : <><Download className="w-4 h-4" /> {t.submitBtn}</>}
+                    {/* Honeypot — see LeadForm: never offset this off-canvas. */}
+                    <div aria-hidden="true" className="sr-only">
+                      <label htmlFor="lm-website">Website</label>
+                      <input id="lm-website" name="website" type="text" tabIndex={-1} autoComplete="off"
+                        value={form.website} onChange={e => setForm(f => ({ ...f, website: e.target.value }))} />
+                    </div>
+                    <Button type="submit" disabled={status === "sending"} className="w-full h-13 rounded-xl font-bold text-base gap-2 shadow-lg shadow-primary/25">
+                      {status === "sending"
+                        ? <><span className="animate-spin">⏳</span> {t.downloading}</>
+                        : <><Download className="w-4 h-4" /> {status === "unavailable" || status === "invalid" ? t.retryBtn : t.submitBtn}</>}
                     </Button>
                     <p className="text-xs text-muted-foreground text-center flex items-center justify-center gap-1.5">
                       <Shield className="w-3 h-3" /> {t.privacyNote}
@@ -212,12 +272,18 @@ export default function LeadMagnet({ language }: LeadMagnetProps) {
                   <div className="w-16 h-16 rounded-full bg-green-500/15 flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8 text-green-500" />
                   </div>
-                  <h3 className="text-xl font-extrabold" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{t.successTitle}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{t.successDesc}</p>
+                  <h3 className="text-xl font-extrabold" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+                    {pdfReady ? t.successTitle : t.successTitlePending}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {pdfReady ? t.successDesc : t.successDescPending}
+                  </p>
                   <div className="pt-4 space-y-3">
-                    <a href="/fox-systems-it-readiness-guide.pdf" download className="block">
-                      <Button className="w-full rounded-xl gap-2"><Download className="w-4 h-4" /> {isArabic ? "تحميل PDF الآن" : "Download PDF Now"}</Button>
-                    </a>
+                    {pdfReady && (
+                      <a href={GUIDE_PDF_PATH} download className="block">
+                        <Button className="w-full rounded-xl gap-2"><Download className="w-4 h-4" /> {isArabic ? "تحميل PDF الآن" : "Download PDF Now"}</Button>
+                      </a>
+                    )}
                     <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer" className="block">
                       <Button variant="outline" className="w-full rounded-xl gap-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white">
                         <MessageCircle className="w-4 h-4" /> {isArabic ? "تحدث مع مهندس" : "Talk to an Engineer"}

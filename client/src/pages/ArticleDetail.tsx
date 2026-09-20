@@ -1026,6 +1026,7 @@ export default function ArticleDetail({ articleId, language }: ArticleDetailProp
             <img
               src={content.image}
               alt={content.title}
+              width={1200} height={384} loading="lazy" decoding="async"
               className="w-full h-96 object-cover rounded-lg mb-8"
             />
 

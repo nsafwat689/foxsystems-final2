@@ -112,7 +112,7 @@ export default function Header({ language }: HeaderProps) {
           <Link href={isArabic ? "/ar" : "/"} onClick={handleHomeClick}
             className="flex items-center gap-3 hover:opacity-90 transition group">
             <div className="relative">
-              <img src="/logo.jpg" alt="Fox Systems"
+              <img src="/logo.jpg" alt="Fox Systems" width={48} height={48} fetchPriority="high"
                 className="h-11 w-11 rounded-xl object-cover ring-2 ring-primary/20 group-hover:ring-primary/40 transition-all" />
             </div>
             <div className="hidden lg:block">

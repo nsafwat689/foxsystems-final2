@@ -18,7 +18,7 @@ export default function SEOHead({ config, organizationSchema = true, additionalS
     // Add organization schema if requested
     if (organizationSchema) {
       // Organization Schema
-      let orgScript = document.querySelector('script[type="application/ld+json"][data-schema="organization"]');
+      let orgScript = document.querySelector<HTMLScriptElement>('script[type="application/ld+json"][data-schema="organization"]');
       if (!orgScript) {
         orgScript = document.createElement("script");
         orgScript.type = "application/ld+json";
@@ -28,7 +28,7 @@ export default function SEOHead({ config, organizationSchema = true, additionalS
       orgScript.textContent = generateOrganizationSchema();
 
       // WebSite Schema (for Sitelinks Searchbox and Brand recognition)
-      let siteScript = document.querySelector('script[type="application/ld+json"][data-schema="website"]');
+      let siteScript = document.querySelector<HTMLScriptElement>('script[type="application/ld+json"][data-schema="website"]');
       if (!siteScript) {
         siteScript = document.createElement("script");
         siteScript.type = "application/ld+json";
@@ -38,7 +38,7 @@ export default function SEOHead({ config, organizationSchema = true, additionalS
       siteScript.textContent = generateWebSiteSchema();
 
       // LocalBusiness Schema (Egypt focus for local SEO)
-      let lbScript = document.querySelector('script[type="application/ld+json"][data-schema="localbusiness"]');
+      let lbScript = document.querySelector<HTMLScriptElement>('script[type="application/ld+json"][data-schema="localbusiness"]');
       if (!lbScript) {
         lbScript = document.createElement("script");
         lbScript.type = "application/ld+json";
@@ -50,7 +50,7 @@ export default function SEOHead({ config, organizationSchema = true, additionalS
 
     // Add additional schema if provided
     if (additionalSchema) {
-      let script = document.querySelector('script[type="application/ld+json"][data-schema="service"]');
+      let script = document.querySelector<HTMLScriptElement>('script[type="application/ld+json"][data-schema="service"]');
       if (!script) {
         script = document.createElement("script");
         script.type = "application/ld+json";
@@ -59,12 +59,12 @@ export default function SEOHead({ config, organizationSchema = true, additionalS
       }
       script.textContent = additionalSchema;
     } else {
-      document.querySelector('script[type="application/ld+json"][data-schema="service"]')?.remove();
+      document.querySelector<HTMLScriptElement>('script[type="application/ld+json"][data-schema="service"]')?.remove();
     }
 
     // Breadcrumb schema
     if (breadcrumbSchema) {
-      let bc = document.querySelector('script[type="application/ld+json"][data-schema="breadcrumb"]');
+      let bc = document.querySelector<HTMLScriptElement>('script[type="application/ld+json"][data-schema="breadcrumb"]');
       if (!bc) {
         bc = document.createElement("script");
         bc.type = "application/ld+json";
@@ -73,12 +73,12 @@ export default function SEOHead({ config, organizationSchema = true, additionalS
       }
       bc.textContent = breadcrumbSchema;
     } else {
-      document.querySelector('script[type="application/ld+json"][data-schema="breadcrumb"]')?.remove();
+      document.querySelector<HTMLScriptElement>('script[type="application/ld+json"][data-schema="breadcrumb"]')?.remove();
     }
 
     // FAQ schema
     if (faqSchema) {
-      let faq = document.querySelector('script[type="application/ld+json"][data-schema="faq"]');
+      let faq = document.querySelector<HTMLScriptElement>('script[type="application/ld+json"][data-schema="faq"]');
       if (!faq) {
         faq = document.createElement("script");
         faq.type = "application/ld+json";
@@ -87,7 +87,7 @@ export default function SEOHead({ config, organizationSchema = true, additionalS
       }
       faq.textContent = faqSchema;
     } else {
-      document.querySelector('script[type="application/ld+json"][data-schema="faq"]')?.remove();
+      document.querySelector<HTMLScriptElement>('script[type="application/ld+json"][data-schema="faq"]')?.remove();
     }
 
     // Add hreflang tags for multilingual support
@@ -106,21 +106,21 @@ function addHrefLangTags(canonicalUrl: string, language: "en" | "ar"): void {
   // Add English hreflang
   const enLink = document.createElement("link");
   enLink.rel = "alternate";
-  enLink.hrefLang = "en";
+  enLink.hreflang = "en";
   enLink.href = canonicalUrl.replace(/\/ar\//, "/en/").replace(/\/ar$/, "");
   document.head.appendChild(enLink);
 
   // Add Arabic hreflang
   const arLink = document.createElement("link");
   arLink.rel = "alternate";
-  arLink.hrefLang = "ar";
+  arLink.hreflang = "ar";
   arLink.href = canonicalUrl.replace(/\/en\//, "/ar/").replace(/\/en$/, "/ar");
   document.head.appendChild(arLink);
 
   // Add x-default (English as default)
   const defaultLink = document.createElement("link");
   defaultLink.rel = "alternate";
-  defaultLink.hrefLang = "x-default";
+  defaultLink.hreflang = "x-default";
   defaultLink.href = canonicalUrl.replace(/\/(en|ar)\//, "/").replace(/\/(en|ar)$/, "");
   document.head.appendChild(defaultLink);
 }

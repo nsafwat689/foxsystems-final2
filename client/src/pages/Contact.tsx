@@ -1,15 +1,15 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, MessageCircle, Send, Clock, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, Clock, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { arabicSEOConfigs, generateBreadcrumbSchema } from "@/utils/seo";
 import { Link } from "wouter";
+import LeadForm from "@/components/LeadForm";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
-  show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] } }),
+  show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] as const } }),
 };
 
 const T = {
@@ -25,6 +25,15 @@ const T = {
     sending: "Sending...",
     successTitle: "Message Sent!",
     successMsg: "Thank you! Our team will contact you within 24 hours.",
+    errorTitle: "We couldn't send that",
+    errorMsg: "Something went wrong on our side and your message never reached us. Please send it over WhatsApp or email instead — we've filled in your details for you.",
+    errorInvalid: "Please check your name and email address, then try again.",
+    retryBtn: "Try again",
+    emailBtn: "Email us instead",
+    sizeLbl: "Company Size", budgetLbl: "Approximate Budget", timelineLbl: "Timeline / Urgency",
+    sizeOpts: ["1–10 Employees", "11–50 Employees", "51–200 Employees", "200+ Employees"],
+    budgetOpts: ["Under EGP 10K", "EGP 10K–50K", "EGP 50K–200K", "EGP 200K+", "I'll discuss later"],
+    timelineOpts: ["ASAP", "Within 1 month", "Within 3 months", "Just exploring"],
     services: ["CRM System","Call Center Setup","Firewall / Security","VoIP Solutions","Network & Infrastructure","ERP / Odoo","Hardware & Servers","Website Development","Other"],
     whyTitle: "Why Choose Fox Systems?",
     reasons: [
@@ -56,6 +65,15 @@ const T = {
     sending: "جاري الإرسال...",
     successTitle: "تم الإرسال!",
     successMsg: "شكرًا! سيتصل بك فريقنا خلال 24 ساعة.",
+    errorTitle: "تعذّر الإرسال",
+    errorMsg: "حدث خطأ لدينا ولم تصلنا رسالتك. من فضلك أرسلها عبر واتس آب أو البريد الإلكتروني — لقد جهّزنا لك التفاصيل.",
+    errorInvalid: "يرجى التأكد من الاسم والبريد الإلكتروني ثم المحاولة مرة أخرى.",
+    retryBtn: "حاول مرة أخرى",
+    emailBtn: "راسلنا بالبريد",
+    sizeLbl: "حجم الشركة", budgetLbl: "الميزانية التقديرية", timelineLbl: "مدى الإلحاح",
+    sizeOpts: ["1–10 موظفين", "11–50 موظفاً", "51–200 موظف", "200+ موظف"],
+    budgetOpts: ["أقل من 10,000 جنيه", "10,000–50,000 جنيه", "50,000–200,000 جنيه", "200,000+ جنيه", "سأناقشه لاحقاً"],
+    timelineOpts: ["في أسرع وقت ممكن", "خلال شهر", "خلال 3 أشهر", "أستكشف فقط"],
     services: ["نظام CRM","إعداد مركز الاتصال","جدار الحماية / الأمن","حلول VoIP","الشبكة والبنية التحتية","ERP / أودو","الأجهزة والخوادم","تطوير المواقع","أخرى"],
     whyTitle: "لماذا تختار فوكس سيستمز؟",
     reasons: [
@@ -83,14 +101,7 @@ export default function Contact({ language }: ContactProps) {
   const t = T[language];
   const isArabic = language === "ar";
   const langPrefix = isArabic ? "/ar" : "";
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1200);
-  };
 
   const seoConfig = isArabic
     ? { ...arabicSEOConfigs.contact, title: t.seoTitle, description: t.seoDesc }
@@ -198,101 +209,7 @@ export default function Contact({ language }: ContactProps) {
             <motion.div initial={{opacity:0,x:24}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.6}}
               className="lg:col-span-3">
               <div className="bg-muted/40 border border-border rounded-3xl p-8 md:p-10 shadow-sm">
-                {submitted ? (
-                  <motion.div initial={{opacity:0,scale:0.95}} animate={{opacity:1,scale:1}}
-                    className="flex flex-col items-center justify-center py-16 text-center gap-5">
-                    <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
-                      <CheckCircle className="w-10 h-10 text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{t.successTitle}</h3>
-                    <p className="text-muted-foreground max-w-xs">{t.successMsg}</p>
-                    <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer">
-                      <Button className="rounded-full gap-2 mt-2">
-                        <MessageCircle className="w-4 h-4" /> WhatsApp
-                      </Button>
-                    </a>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      {[
-                        { lbl: t.nameLbl, type: "text", id: "name", required: true },
-                        { lbl: t.emailLbl, type: "email", id: "email", required: true },
-                        { lbl: t.companyLbl, type: "text", id: "company", required: false },
-                        { lbl: t.phoneLbl, type: "tel", id: "phone", required: false },
-                      ].map(({ lbl, type, id, required }) => (
-                        <div key={id} className="space-y-1.5">
-                          <label htmlFor={id} className="text-sm font-semibold">
-                            {lbl} {required && <span className="text-primary">*</span>}
-                          </label>
-                          <input id={id} type={type} required={required} className="form-input" />
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="space-y-1.5">
-                        <label className="text-sm font-semibold">{t.serviceLbl}</label>
-                        <select name="service" className="form-input">
-                          {t.services.map((o) => <option key={o} value={o}>{o}</option>)}
-                        </select>
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-sm font-semibold">
-                          {isArabic ? "حجم الشركة" : "Company Size"}
-                        </label>
-                        <select className="form-input">
-                          {(isArabic
-                            ? ["1–10 موظفين", "11–50 موظفاً", "51–200 موظف", "200+ موظف"]
-                            : ["1–10 Employees", "11–50 Employees", "51–200 Employees", "200+ Employees"]
-                          ).map((o) => <option key={o}>{o}</option>)}
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="space-y-1.5">
-                        <label className="text-sm font-semibold">
-                          {isArabic ? "الميزانية التقديرية" : "Approximate Budget"}
-                        </label>
-                        <select className="form-input">
-                          {(isArabic
-                            ? ["أقل من 10,000 جنيه", "10,000–50,000 جنيه", "50,000–200,000 جنيه", "200,000+ جنيه", "سأناقشه لاحقاً"]
-                            : ["Under EGP 10K", "EGP 10K–50K", "EGP 50K–200K", "EGP 200K+", "I'll discuss later"]
-                          ).map((o) => <option key={o}>{o}</option>)}
-                        </select>
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-sm font-semibold">
-                          {isArabic ? "مدى الإلحاح" : "Timeline / Urgency"}
-                        </label>
-                        <select className="form-input">
-                          {(isArabic
-                            ? ["في أسرع وقت ممكن", "خلال شهر", "خلال 3 أشهر", "أستكشف فقط"]
-                            : ["ASAP", "Within 1 month", "Within 3 months", "Just exploring"]
-                          ).map((o) => <option key={o}>{o}</option>)}
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <label className="text-sm font-semibold">{t.msgLbl}</label>
-                      <textarea rows={4} className="form-input" placeholder={t.msgPlaceholder} />
-                    </div>
-
-                    <Button type="submit" disabled={loading}
-                      className="w-full h-13 text-base rounded-xl font-bold gap-2 shadow-lg shadow-primary/25 hover:scale-[1.01] transition-all disabled:opacity-70 disabled:cursor-wait">
-                      {loading
-                        ? <span className="flex items-center gap-2"><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />{t.sending}</span>
-                        : <><Send className="w-4 h-4" /> {t.sendBtn}</>
-                      }
-                    </Button>
-
-                    <p className="text-xs text-muted-foreground text-center">
-                      {isArabic ? "سنرد عليك خلال 24 ساعة. لا بريد عشوائي." : "We'll respond within 24 hours. No spam, ever."}
-                    </p>
-                  </form>
-                )}
+                <LeadForm language={language} idPrefix="contact" />
               </div>
             </motion.div>
           </div>

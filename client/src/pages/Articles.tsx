@@ -476,6 +476,7 @@ export default function Articles({ language }: ArticlesProps) {
                   <img
                     src={article.image}
                     alt={article.title}
+                    width={800} height={384} loading="lazy" decoding="async"
                     className="w-full h-48 object-cover"
                   />
                   <CardHeader className="flex-grow">

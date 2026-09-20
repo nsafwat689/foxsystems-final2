@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
+import LeadForm from "@/components/LeadForm";
 
 const T = {
   en: {
@@ -200,7 +201,7 @@ const T = {
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] } }),
+  show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] as const } }),
 };
 
 interface HomeProps { language: "en" | "ar"; }
@@ -508,6 +509,7 @@ export default function Home({ language }: HomeProps) {
               <img
                 src="/it-services.jpg"
                 alt="Fox Systems IT Solutions Egypt"
+                width={1200} height={800} loading="lazy" decoding="async"
                 className="rounded-3xl shadow-2xl w-full object-cover"
                 onError={(e) => {
                   const el = e.target as HTMLImageElement;
@@ -624,7 +626,7 @@ export default function Home({ language }: HomeProps) {
               <motion.div key={i} initial={{opacity:0,scale:0.9}} whileInView={{opacity:1,scale:1}} viewport={{once:true}}
                 transition={{delay:i*0.06}} whileHover={{scale:1.06}}
                 className="flex flex-col items-center justify-center p-5 bg-muted/40 rounded-2xl border border-border hover:border-primary/20 hover:bg-primary/5 transition-all">
-                <img src={c.src} alt={c.name + " - Fox Systems Client"}
+                <img src={c.src} alt={c.name + " - Fox Systems Client"} width={160} height={64} loading="lazy" decoding="async"
                   className="h-11 object-contain"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
               </motion.div>
@@ -823,83 +825,18 @@ export default function Home({ language }: HomeProps) {
 
             <motion.div initial={{opacity:0,x:30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.6}}
               className="bg-muted/40 p-8 md:p-10 rounded-3xl border border-border shadow-sm">
-              <form className="space-y-5" onSubmit={(e) => {
-                e.preventDefault();
-                const form = e.target as HTMLFormElement;
-                const serviceEl = form.querySelector('select[name="service"]') as HTMLSelectElement;
-                if (typeof window !== "undefined" && (window as any).trackFormSubmit) {
-                  (window as any).trackFormSubmit(serviceEl?.value || "General");
+              <LeadForm
+                language={language}
+                idPrefix="home"
+                footer={
+                  <p className="text-center text-xs text-muted-foreground">
+                    {isArabic ? "أو تواصل معنا مباشرة على واتس آب:" : "Or reach us directly on WhatsApp:"}
+                    {" "}
+                    <a href="https://wa.me/201038450546" className="text-primary font-semibold hover:underline" target="_blank" rel="noopener noreferrer">+20 103 845 0546</a>
+                  </p>
                 }
-              }}>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {[
-                    { label: t.nameL, type: "text", id: "name" },
-                    { label: t.emailL, type: "email", id: "email" },
-                    { label: t.companyL, type: "text", id: "company" },
-                    { label: t.phoneL, type: "tel", id: "phone" },
-                  ].map(({ label, type, id }) => (
-                    <div key={id} className="space-y-1.5">
-                      <label htmlFor={id} className="text-sm font-semibold text-foreground">{label}</label>
-                      <input id={id} type={type} className="form-input" />
-                    </div>
-                  ))}
-                </div>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-sm font-semibold text-foreground">{t.serviceL}</label>
-                    <select name="service" className="form-input">
-                      {t.svcOptions.map((o, i) => <option key={i} value={o}>{o}</option>)}
-                    </select>
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-sm font-semibold text-foreground">
-                      {isArabic ? "حجم الشركة" : "Company Size"}
-                    </label>
-                    <select className="form-input">
-                      {(isArabic
-                        ? ["1–10 موظفين", "11–50 موظفاً", "51–200 موظف", "200+ موظف"]
-                        : ["1–10 Employees", "11–50 Employees", "51–200 Employees", "200+ Employees"]
-                      ).map((o, i) => <option key={i}>{o}</option>)}
-                    </select>
-                  </div>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-sm font-semibold text-foreground">
-                      {isArabic ? "النطاق التقديري للميزانية" : "Approximate Budget"}
-                    </label>
-                    <select className="form-input">
-                      {(isArabic
-                        ? ["أقل من 10,000 جنيه", "10,000–50,000 جنيه", "50,000–200,000 جنيه", "200,000+ جنيه", "سأناقشه لاحقاً"]
-                        : ["Under EGP 10K", "EGP 10K–50K", "EGP 50K–200K", "EGP 200K+", "I'll discuss later"]
-                      ).map((o, i) => <option key={i}>{o}</option>)}
-                    </select>
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-sm font-semibold text-foreground">
-                      {isArabic ? "مدى الإلحاح" : "Timeline / Urgency"}
-                    </label>
-                    <select className="form-input">
-                      {(isArabic
-                        ? ["في أسرع وقت ممكن", "خلال شهر", "خلال 3 أشهر", "أستكشف فقط"]
-                        : ["ASAP", "Within 1 month", "Within 3 months", "Just exploring"]
-                      ).map((o, i) => <option key={i}>{o}</option>)}
-                    </select>
-                  </div>
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-semibold text-foreground">{t.msgL}</label>
-                  <textarea rows={4} className="form-input" placeholder={t.msgP} />
-                </div>
-                <Button type="submit" className="w-full h-13 text-base rounded-xl font-bold gap-2 shadow-lg shadow-primary/25 hover:scale-[1.01] transition-all">
-                  <Send className="w-4 h-4" /> {t.sendBtn}
-                </Button>
-                <p className="text-center text-xs text-muted-foreground">
-                  {isArabic ? "أو تواصل معنا مباشرة على واتس آب:" : "Or reach us directly on WhatsApp:"}
-                  {" "}
-                  <a href="https://wa.me/201038450546" className="text-primary font-semibold hover:underline" target="_blank" rel="noopener noreferrer">+20 103 845 0546</a>
-                </p>
-              </form>
+              />
+
             </motion.div>
           </div>
         </div>
@@ -911,7 +848,7 @@ export default function Home({ language }: HomeProps) {
           <div className="grid md:grid-cols-4 gap-12 mb-14">
             <div className="space-y-5">
               <Link href="/" className="flex items-center gap-3">
-                <img src="/logo.jpg" alt="Fox Systems" className="h-12 w-12 rounded-xl object-cover ring-2 ring-white/20" />
+                <img src="/logo.jpg" alt="Fox Systems" width={48} height={48} loading="lazy" decoding="async" className="h-12 w-12 rounded-xl object-cover ring-2 ring-white/20" />
                 <div>
                   <div className="font-extrabold text-xl leading-none" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>Fox Systems</div>
                   <div className="text-[10px] text-white/50 tracking-widest uppercase mt-0.5">IT & CRM Solutions</div>
@@ -975,7 +912,7 @@ export default function Home({ language }: HomeProps) {
         <motion.div
           initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] as const }}
           className="fixed bottom-0 left-0 right-0 z-40 hidden md:flex items-center justify-between px-8 py-3.5 shadow-2xl"
           style={{ background: "linear-gradient(90deg, #0f172a 0%, #1e3a5f 100%)", borderTop: "1px solid rgba(29,78,216,0.4)" }}
         >

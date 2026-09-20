@@ -286,7 +286,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: [0.22,1,0.36,1] }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] as const }}
             className={`max-w-3xl ${isArabic ? "text-right mr-auto ml-0" : ""}`}
           >
             <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl mb-7 ring-1 ring-white/20">

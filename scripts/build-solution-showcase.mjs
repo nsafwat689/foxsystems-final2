@@ -22,12 +22,22 @@ import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 
-const SETS = {
-  "realestate-crm": ["dashboard", "pipeline", "properties", "payments"],
-  "pestcontrol-crm": ["dispatch", "schedule", "reports", "analytics"],
-};
+/** Desktop screens render at 1800px; the phone shot is portrait, so it gets 560. */
+const MOBILE_WIDTH = 560;
+const DESKTOP_WIDTH = 1800;
 
-const WIDTH = 1800;
+const SETS = {
+  "realestate-crm": [
+    "dashboard", "pipeline", "properties", "payments",
+    "leads", "matching", "automations", "payouts",
+    "mobile",
+  ],
+  "pestcontrol-crm": [
+    "dispatch", "schedule", "reports", "analytics",
+    "clients", "devices", "contracts", "invoices",
+    "mobile",
+  ],
+};
 
 const [set, src] = process.argv.slice(2);
 
@@ -54,7 +64,8 @@ for (const stem of SETS[set]) {
     continue;
   }
   const to = path.join(out, `${stem}.webp`);
-  await sharp(from).resize({ width: WIDTH, withoutEnlargement: true }).webp({ quality: 82 }).toFile(to);
+  const width = stem === "mobile" ? MOBILE_WIDTH : DESKTOP_WIDTH;
+  await sharp(from).resize({ width, withoutEnlargement: true }).webp({ quality: 82 }).toFile(to);
   const kb = Math.round(fs.statSync(to).size / 1024);
   console.log(`  ${stem.padEnd(12)} ${String(kb).padStart(4)} KB  ->  ${to}`);
   written++;

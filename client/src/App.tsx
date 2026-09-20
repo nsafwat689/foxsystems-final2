@@ -8,7 +8,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-import { SOLUTION_IDS } from "./data/solutions";
+import { SOLUTION_IDS } from "./data/solutionIds";
 
 // Only the home page ships in the entry bundle. Everything else loads on
 // demand — carrying all eleven pages up front put ~900 kB of JavaScript in

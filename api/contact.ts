@@ -5,9 +5,14 @@
  * visitor filled in is emailed to LEAD_INBOX so nothing is lost.
  *
  * Required environment variables (set in Vercel → Settings → Environment Variables):
- *   RESEND_API_KEY  API key from resend.com
+ *   BREVO_API_KEY   API key from brevo.com (SMTP & API → API keys)
  *   LEAD_INBOX      where leads are delivered, e.g. support@foxsystemstech.com
- *   LEAD_FROM       verified sender on your domain, e.g. website@foxsystemstech.com
+ *   LEAD_FROM       sender on the authenticated domain, e.g. website@foxsystemstech.com
+ *
+ * Brevo is the provider because foxsystemstech.com is already authenticated for
+ * it — SPF (include:spf.brevo.com), both DKIM keys (brevo1/brevo2._domainkey)
+ * and a Brevo-managed DMARC at p=quarantine. LEAD_FROM must stay on that domain
+ * or DMARC will quarantine the lead mail.
  *
  * Until those are set the endpoint answers 503 with { code: "not_configured" },
  * which the forms treat as "hand the visitor to WhatsApp" rather than pretending
@@ -91,31 +96,36 @@ export default async function handler(req: any, res: any) {
   // Honeypot tripped — accept silently so the bot doesn't learn anything.
   if (lead.website) return res.status(200).json({ ok: true });
 
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = process.env.BREVO_API_KEY;
   const inbox = process.env.LEAD_INBOX;
   const from = process.env.LEAD_FROM;
 
   if (!apiKey || !inbox || !from) {
-    console.error("[contact] RESEND_API_KEY, LEAD_INBOX or LEAD_FROM is not set — lead not delivered:", lead.email);
+    console.error("[contact] BREVO_API_KEY, LEAD_INBOX or LEAD_FROM is not set — lead not delivered:", lead.email);
     return res.status(503).json({ ok: false, code: "not_configured" });
   }
 
   try {
-    const response = await fetch("https://api.resend.com/emails", {
+    const response = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      headers: {
+        "api-key": apiKey,
+        "content-type": "application/json",
+        accept: "application/json",
+      },
       body: JSON.stringify({
-        from,
-        to: [inbox],
-        reply_to: lead.email,
+        sender: { email: from, name: "Fox Systems Website" },
+        to: [{ email: inbox }],
+        // The visitor's own address, so hitting Reply in the inbox answers them.
+        replyTo: { email: lead.email, name: lead.name },
         subject: `Website enquiry — ${lead.name}${lead.company ? ` (${lead.company})` : ""}`,
-        html: renderLead(lead),
+        htmlContent: renderLead(lead),
       }),
     });
 
     if (!response.ok) {
       const detail = await response.text().catch(() => response.statusText);
-      console.error("[contact] Resend rejected the message:", response.status, detail);
+      console.error("[contact] Brevo rejected the message:", response.status, detail);
       return res.status(502).json({ ok: false, code: "delivery_failed" });
     }
 

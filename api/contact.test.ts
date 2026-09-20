@@ -34,7 +34,7 @@ const validLead = {
 const ORIGINAL_ENV = { ...process.env };
 
 beforeEach(() => {
-  delete process.env.RESEND_API_KEY;
+  delete process.env.BREVO_API_KEY;
   delete process.env.LEAD_INBOX;
   delete process.env.LEAD_FROM;
   vi.spyOn(console, "error").mockImplementation(() => {});
@@ -46,7 +46,7 @@ afterEach(() => {
 });
 
 function configureMail() {
-  process.env.RESEND_API_KEY = "re_test_key";
+  process.env.BREVO_API_KEY = "xkeysib_test_key";
   process.env.LEAD_INBOX = "support@foxsystemstech.com";
   process.env.LEAD_FROM = "website@foxsystemstech.com";
 }
@@ -112,13 +112,14 @@ describe("POST /api/contact", () => {
     expect(fetchSpy).toHaveBeenCalledTimes(1);
 
     const [url, init] = fetchSpy.mock.calls[0];
-    expect(url).toBe("https://api.resend.com/emails");
+    expect(url).toBe("https://api.brevo.com/v3/smtp/email");
 
     const payload = JSON.parse((init as any).body);
-    expect(payload.to).toEqual(["support@foxsystemstech.com"]);
-    expect(payload.reply_to).toBe("ahmed@example.com");
-    expect(payload.html).toContain("Example Co");
-    expect(payload.html).toContain("We need a CRM for 40 people.");
+    expect(payload.sender.email).toBe("website@foxsystemstech.com");
+    expect(payload.to).toEqual([{ email: "support@foxsystemstech.com" }]);
+    expect(payload.replyTo.email).toBe("ahmed@example.com");
+    expect(payload.htmlContent).toContain("Example Co");
+    expect(payload.htmlContent).toContain("We need a CRM for 40 people.");
   });
 
   it("escapes lead content so a submission can't inject markup into the email", async () => {
@@ -135,8 +136,8 @@ describe("POST /api/contact", () => {
 
     expect(res.statusCode).toBe(200);
     const payload = JSON.parse((fetchSpy.mock.calls[0][1] as any).body);
-    expect(payload.html).not.toContain("<script>");
-    expect(payload.html).toContain("&lt;script&gt;");
+    expect(payload.htmlContent).not.toContain("<script>");
+    expect(payload.htmlContent).toContain("&lt;script&gt;");
   });
 
   it("surfaces a delivery failure instead of claiming success", async () => {

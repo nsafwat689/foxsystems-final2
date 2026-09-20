@@ -9,7 +9,10 @@ import { useEffect } from "react";
  */
 export const SOCIAL_PROFILES = [
   "https://www.linkedin.com/company/fox-systems",
-  "https://www.facebook.com/foxsystemstech",
+  // The page the owner confirmed (2026-09-21). It is a share link rather than
+  // a vanity URL; swap it for facebook.com/<pagename> once that is known, since
+  // a stable canonical URL is a stronger sameAs signal than a share redirect.
+  "https://www.facebook.com/share/1Dd5TU3GED/",
   "https://www.instagram.com/foxsystemstech",
 ];
 
@@ -257,9 +260,9 @@ export function updateMetaTags(config: SEOConfig) {
     'author': 'Fox Systems',
     'publisher': 'Fox Systems',
     'geo.region': 'EG-C',
-    'geo.placename': 'Cairo',
-    'geo.position': '30.0444;31.2357',
-    'ICBM': '30.0444, 31.2357',
+    'geo.placename': 'Maadi, Cairo',
+    'geo.position': '29.9603;31.2569',
+    'ICBM': '29.9603, 31.2569',
     'rating': 'general',
     'distribution': 'global',
     'revisit-after': '3 days',
@@ -326,8 +329,10 @@ export function generateOrganizationSchema() {
     "foundingDate": "2010",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Cairo",
-      "addressLocality": "Cairo",
+      "streetAddress": "8 Badr Street, Maadi",
+      "addressLocality": "Maadi",
+      "addressRegion": "Cairo Governorate",
+      "postalCode": "11728",
       "addressCountry": "EG"
     },
     "areaServed": [
@@ -425,18 +430,18 @@ export function generateLocalBusinessSchema() {
     "paymentAccepted": "Cash, Bank Transfer, Cheque",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Cairo",
-      "addressLocality": "Cairo",
+      "streetAddress": "8 Badr Street, Maadi",
+      "addressLocality": "Maadi",
       "addressRegion": "Cairo Governorate",
-      "postalCode": "11511",
+      "postalCode": "11728",
       "addressCountry": "EG"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 30.0444,
-      "longitude": 31.2357
+      "latitude": 29.9603,
+      "longitude": 31.2569
     },
-    "hasMap": "https://maps.google.com/?q=Fox+Systems+Cairo+Egypt",
+    "hasMap": "https://maps.google.com/?q=8+Badr+Street+Maadi+Cairo+Egypt",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -487,7 +492,7 @@ export function generateLocalBusinessSchema() {
     ],
     "serviceArea": {
       "@type": "GeoCircle",
-      "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 30.0444, "longitude": 31.2357 },
+      "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 29.9603, "longitude": 31.2569 },
       "geoRadius": "5000000"
     },
     "hasOfferCatalog": {

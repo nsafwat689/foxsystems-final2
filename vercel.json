@@ -48,6 +48,78 @@
       "destination": "/ar/articles.html"
     },
     {
+      "source": "/ar/articles/ai-infrastructure-2026",
+      "destination": "/ar/articles/ai-infrastructure-2026.html"
+    },
+    {
+      "source": "/ar/articles/asterisk-server",
+      "destination": "/ar/articles/asterisk-server.html"
+    },
+    {
+      "source": "/ar/articles/business-continuity-planning",
+      "destination": "/ar/articles/business-continuity-planning.html"
+    },
+    {
+      "source": "/ar/articles/cloud-infrastructure",
+      "destination": "/ar/articles/cloud-infrastructure.html"
+    },
+    {
+      "source": "/ar/articles/crm-implementation",
+      "destination": "/ar/articles/crm-implementation.html"
+    },
+    {
+      "source": "/ar/articles/cybersecurity-best-practices",
+      "destination": "/ar/articles/cybersecurity-best-practices.html"
+    },
+    {
+      "source": "/ar/articles/cybersecurity-distributed-workforce-2026",
+      "destination": "/ar/articles/cybersecurity-distributed-workforce-2026.html"
+    },
+    {
+      "source": "/ar/articles/digital-transformation",
+      "destination": "/ar/articles/digital-transformation.html"
+    },
+    {
+      "source": "/ar/articles/domain-dns-management",
+      "destination": "/ar/articles/domain-dns-management.html"
+    },
+    {
+      "source": "/ar/articles/firewall-security",
+      "destination": "/ar/articles/firewall-security.html"
+    },
+    {
+      "source": "/ar/articles/it-support-contracts",
+      "destination": "/ar/articles/it-support-contracts.html"
+    },
+    {
+      "source": "/ar/articles/network-infrastructure",
+      "destination": "/ar/articles/network-infrastructure.html"
+    },
+    {
+      "source": "/ar/articles/odoo-erp-sme-2026",
+      "destination": "/ar/articles/odoo-erp-sme-2026.html"
+    },
+    {
+      "source": "/ar/articles/pbx-systems",
+      "destination": "/ar/articles/pbx-systems.html"
+    },
+    {
+      "source": "/ar/articles/telecom-trends",
+      "destination": "/ar/articles/telecom-trends.html"
+    },
+    {
+      "source": "/ar/articles/voip-basics",
+      "destination": "/ar/articles/voip-basics.html"
+    },
+    {
+      "source": "/ar/articles/voip-security",
+      "destination": "/ar/articles/voip-security.html"
+    },
+    {
+      "source": "/ar/articles/website-design-trends",
+      "destination": "/ar/articles/website-design-trends.html"
+    },
+    {
       "source": "/ar/contact",
       "destination": "/ar/contact.html"
     },
@@ -98,6 +170,78 @@
     {
       "source": "/articles",
       "destination": "/articles.html"
+    },
+    {
+      "source": "/articles/ai-infrastructure-2026",
+      "destination": "/articles/ai-infrastructure-2026.html"
+    },
+    {
+      "source": "/articles/asterisk-server",
+      "destination": "/articles/asterisk-server.html"
+    },
+    {
+      "source": "/articles/business-continuity-planning",
+      "destination": "/articles/business-continuity-planning.html"
+    },
+    {
+      "source": "/articles/cloud-infrastructure",
+      "destination": "/articles/cloud-infrastructure.html"
+    },
+    {
+      "source": "/articles/crm-implementation",
+      "destination": "/articles/crm-implementation.html"
+    },
+    {
+      "source": "/articles/cybersecurity-best-practices",
+      "destination": "/articles/cybersecurity-best-practices.html"
+    },
+    {
+      "source": "/articles/cybersecurity-distributed-workforce-2026",
+      "destination": "/articles/cybersecurity-distributed-workforce-2026.html"
+    },
+    {
+      "source": "/articles/digital-transformation",
+      "destination": "/articles/digital-transformation.html"
+    },
+    {
+      "source": "/articles/domain-dns-management",
+      "destination": "/articles/domain-dns-management.html"
+    },
+    {
+      "source": "/articles/firewall-security",
+      "destination": "/articles/firewall-security.html"
+    },
+    {
+      "source": "/articles/it-support-contracts",
+      "destination": "/articles/it-support-contracts.html"
+    },
+    {
+      "source": "/articles/network-infrastructure",
+      "destination": "/articles/network-infrastructure.html"
+    },
+    {
+      "source": "/articles/odoo-erp-sme-2026",
+      "destination": "/articles/odoo-erp-sme-2026.html"
+    },
+    {
+      "source": "/articles/pbx-systems",
+      "destination": "/articles/pbx-systems.html"
+    },
+    {
+      "source": "/articles/telecom-trends",
+      "destination": "/articles/telecom-trends.html"
+    },
+    {
+      "source": "/articles/voip-basics",
+      "destination": "/articles/voip-basics.html"
+    },
+    {
+      "source": "/articles/voip-security",
+      "destination": "/articles/voip-security.html"
+    },
+    {
+      "source": "/articles/website-design-trends",
+      "destination": "/articles/website-design-trends.html"
     },
     {
       "source": "/contact",

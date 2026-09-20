@@ -18,6 +18,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { build } from "esbuild";
+import { extractArticles } from "./lib/extract-articles.mjs";
 
 const CONFIG = "vercel.json";
 const SPA_FALLBACK = { source: "/((?!api/|assets/).*)", destination: "/index.html" };
@@ -37,7 +38,12 @@ await build({
 const { buildRouteMeta } = await import(`${pathToFileURL(path.resolve(bundlePath)).href}?v=${Date.now()}`);
 fs.rmSync(bundlePath, { force: true });
 
-const routes = Object.keys(buildRouteMeta())
+// Article routes come from ArticleDetail.tsx, the same source the prerender
+// reads, so the two cannot list different routes.
+const { articles } = extractArticles();
+const articleRoutes = articles.map(a => `${a.language === "ar" ? "/ar" : ""}/articles/${a.id}`);
+
+const routes = [...Object.keys(buildRouteMeta()), ...articleRoutes]
   .filter(r => r !== "/") // "/" is index.html already
   .sort();
 

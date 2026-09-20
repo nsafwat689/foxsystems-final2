@@ -10,21 +10,22 @@
  *
  *   node scripts/prerender-meta.mjs        (run after `vite build`)
  *
- * Writes dist/public/<route>.html. vercel.json must keep "cleanUrls": true —
- * Vercel only maps a clean URL to the matching .html during the filesystem
- * phase when that is on, and without it the SPA rewrite catches every path
- * first and this whole step has no effect. Note vercel.json rejects unknown
- * keys, so that cannot be commented inline there.
+ * Writes dist/public/<route>.html. Each of those paths needs an explicit
+ * rewrite in vercel.json pointing at it — run scripts/sync-vercel-rewrites.mjs
+ * after adding a route, or the new page silently keeps serving the generic
+ * shell. Do NOT reach for "cleanUrls": true to avoid that: it does map clean
+ * URLs to .html files, but it also stops the SPA catch-all from matching paths
+ * with no file, which 404'd /industries, /case-studies and every article page
+ * in production.
  *
- * Writes dist/public/<route>.html. Vercel resolves a clean URL to the matching
- * .html file and serves static files before applying the SPA rewrite, so these
- * win; React then hydrates on top and sets the same values again, so the two
- * cannot disagree visually.
+ * React hydrates on top of these files and sets the same values again, so the
+ * served HTML and the rendered page cannot disagree.
  */
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { build } from "esbuild";
+import { extractArticles } from "./lib/extract-articles.mjs";
 
 const DIST = path.join("dist", "public");
 const SHELL = path.join(DIST, "index.html");
@@ -51,6 +52,30 @@ await build({
 const bundleUrl = `${pathToFileURL(path.resolve(bundlePath)).href}?v=${Date.now()}`;
 const { buildRouteMeta } = await import(bundleUrl);
 const routes = buildRouteMeta();
+
+// Article pages keep their metadata inside ArticleDetail.tsx next to the body
+// content, so it is read from there rather than duplicated into routeMeta.ts.
+const { count: articleCount, articles } = extractArticles();
+for (const a of articles) {
+  const prefix = a.language === "ar" ? "/ar" : "";
+  const route = `${prefix}/articles/${a.id}`;
+  const branded = `${a.title} | Fox Systems`;
+  routes[route] = {
+    // Matches ArticleDetail's rule: only append the brand when it still fits
+    // in the ~60 characters Google shows.
+    title: branded.length <= 60 ? branded : a.title,
+    description: a.subtitle,
+    keywords: `${a.category}, Fox Systems, CRM Egypt, IT Egypt, ${a.title}`,
+    ogTitle: a.title,
+    ogDescription: a.subtitle,
+    ogImage: a.image,
+    canonicalUrl: `https://foxsystemstech.com${route}`,
+    language: a.language,
+    ogType: "article",
+    publishedTime: a.date,
+  };
+}
+console.log(`  (+${articleCount} articles x2 languages from ArticleDetail.tsx)\n`);
 
 const shell = fs.readFileSync(SHELL, "utf8");
 
@@ -87,6 +112,10 @@ for (const [route, cfg] of Object.entries(routes)) {
   html = setMeta(html, "property", "og:image", cfg.ogImage);
   html = setMeta(html, "property", "og:url", cfg.canonicalUrl);
   html = setMeta(html, "property", "og:locale", cfg.language === "ar" ? "ar_EG" : "en_US");
+  html = setMeta(html, "property", "og:type", cfg.ogType ?? "website");
+  if (cfg.ogType === "article" && cfg.publishedTime) {
+    html = setMeta(html, "property", "article:published_time", cfg.publishedTime);
+  }
   html = setMeta(html, "name", "twitter:title", cfg.ogTitle);
   html = setMeta(html, "name", "twitter:description", cfg.ogDescription);
   html = setMeta(html, "name", "twitter:image", cfg.ogImage);

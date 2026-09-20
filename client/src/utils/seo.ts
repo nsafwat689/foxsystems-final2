@@ -270,7 +270,9 @@ export function updateMetaTags(config: SEOConfig) {
     let element = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
     if (!element) {
       element = document.createElement('meta');
-      if (name.startsWith('og:')) {
+      // Open Graph and its article:* extension are read from `property`;
+      // emitting article:published_time as `name` makes Facebook ignore it.
+      if (name.startsWith('og:') || name.startsWith('article:')) {
         element.setAttribute('property', name);
       } else {
         element.setAttribute('name', name);

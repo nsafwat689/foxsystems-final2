@@ -18,6 +18,7 @@ const ORIGIN = "https://foxsystemstech.com";
 const OUT = path.join("client", "public", "sitemap.xml");
 const ARTICLES_SRC = path.join("client", "src", "pages", "ArticleDetail.tsx");
 
+const SOLUTIONS = ["medical-crm", "real-estate-crm", "pest-control-crm"];
 const SERVICES = ["internet", "software", "hardware", "cybersecurity", "infrastructure", "web-development"];
 
 /** Read the article ids straight from the content map so the two can't diverge. */
@@ -34,6 +35,8 @@ function buildRoutes() {
     { path: "", changefreq: "weekly", priority: "1.0" },
     { path: "/services", changefreq: "weekly", priority: "0.9" },
     ...SERVICES.map(s => ({ path: `/services/${s}`, changefreq: "monthly", priority: "0.9" })),
+    { path: "/solutions", changefreq: "monthly", priority: "0.9" },
+    ...SOLUTIONS.map(s => ({ path: `/solutions/${s}`, changefreq: "monthly", priority: "0.9" })),
     { path: "/industries", changefreq: "monthly", priority: "0.8" },
     { path: "/case-studies", changefreq: "monthly", priority: "0.8" },
     { path: "/resources/it-guide", changefreq: "monthly", priority: "0.7" },

@@ -38,6 +38,10 @@ const CARDS = [
   ["services/cybersecurity-og.jpg", "Firewalls and Cybersecurity Operations", "Service"],
   ["services/infrastructure-og.jpg", "Network and Structured Cabling Infrastructure", "Service"],
   ["services/web-development-og.jpg", "Web Development and Digital Presence", "Service"],
+  ["solutions/solutions-og.jpg", "CRM Systems Built for One Industry", "Solutions"],
+  ["solutions/medical-crm-og.jpg", "Medical and Pharmaceutical Field Force CRM", "Product"],
+  ["solutions/real-estate-crm-og.jpg", "Real Estate CRM for Brokers and Developers", "Product"],
+  ["solutions/pest-control-crm-og.jpg", "Pest Control Job and Route Management", "Product"],
 ];
 
 const escapeXml = s =>

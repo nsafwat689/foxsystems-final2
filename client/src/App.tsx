@@ -8,6 +8,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import { SOLUTION_IDS } from "./data/solutions";
 
 // Only the home page ships in the entry bundle. Everything else loads on
 // demand — carrying all eleven pages up front put ~900 kB of JavaScript in
@@ -20,6 +21,8 @@ const Services = lazy(() => import("./pages/Services"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Articles = lazy(() => import("./pages/Articles"));
 const ArticleDetail = lazy(() => import("./pages/ArticleDetail"));
+const Solutions = lazy(() => import("./pages/Solutions"));
+const SolutionDetail = lazy(() => import("./pages/SolutionDetail"));
 
 const SERVICE_IDS = [
   "internet",
@@ -51,6 +54,12 @@ function localeRoutes(language: "en" | "ar") {
     ...SERVICE_IDS.map(id => (
       <Route key={`${language}-service-${id}`} path={`${prefix}/services/${id}`}>
         {() => <ServiceDetail serviceId={id} language={language} />}
+      </Route>
+    )),
+    <Route key={`${language}-solutions`} path={`${prefix}/solutions`}>{() => <Solutions language={language} />}</Route>,
+    ...SOLUTION_IDS.map(id => (
+      <Route key={`${language}-solution-${id}`} path={`${prefix}/solutions/${id}`}>
+        {() => <SolutionDetail solutionId={id} language={language} />}
       </Route>
     )),
     <Route key={`${language}-industries`} path={`${prefix}/industries`}>{() => <Industries language={language} />}</Route>,

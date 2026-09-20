@@ -12,6 +12,9 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
+
+// Lazy: pulls in data/solutions.ts, which must not land in the entry bundle.
+const CrmProductsShowcase = React.lazy(() => import("@/components/CrmProductsShowcase"));
 import LeadForm from "@/components/LeadForm";
 
 const T = {
@@ -589,6 +592,19 @@ export default function Home({ language }: HomeProps) {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* ── CRM PRODUCTS ──
+          The three product pages are the most commercially valuable URLs on
+          the site and had no link from the home page at all — they were only
+          reachable via /services/software. Lazy-loaded so the solutions
+          content stays out of the entry bundle. */}
+      <section className="py-4 bg-background">
+        <div className="container">
+          <React.Suspense fallback={<div className="h-48" />}>
+            <CrmProductsShowcase language={language} />
+          </React.Suspense>
         </div>
       </section>
 

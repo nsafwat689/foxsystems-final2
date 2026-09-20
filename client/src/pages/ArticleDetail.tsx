@@ -978,6 +978,8 @@ export default function ArticleDetail({ articleId, language }: ArticleDetailProp
     ogImage: content.image,
     canonicalUrl,
     language,
+    ogType: "article",
+    publishedTime: content.date,
   };
 
   return (

@@ -22,6 +22,14 @@ export interface SEOConfig {
   ogImage: string;
   canonicalUrl: string;
   language: "en" | "ar";
+  /**
+   * Open Graph object type. "article" makes a share render as an article on
+   * Facebook and LinkedIn — with the headline and date treated as such —
+   * rather than as a generic page.
+   */
+  ogType?: "website" | "article";
+  /** ISO date. Emitted as article:published_time when ogType is "article". */
+  publishedTime?: string;
 }
 
 export const defaultSEOConfig: SEOConfig = {
@@ -229,7 +237,10 @@ export function updateMetaTags(config: SEOConfig) {
     'og:image': config.ogImage,
     'og:image:alt': config.ogTitle,
     'og:url': config.canonicalUrl,
-    'og:type': 'website',
+    'og:type': config.ogType ?? 'website',
+    ...(config.ogType === 'article' && config.publishedTime
+      ? { 'article:published_time': config.publishedTime, 'article:publisher': 'Fox Systems' }
+      : {}),
     'og:site_name': 'Fox Systems',
     'og:locale': config.language === 'ar' ? 'ar_EG' : 'en_US',
     'og:locale:alternate': config.language === 'ar' ? 'en_US' : 'ar_EG',

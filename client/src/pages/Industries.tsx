@@ -158,10 +158,10 @@ export default function Industries({ language }: IndustriesProps) {
   const seoConfig = {
     title: isArabic
       ? "القطاعات التي نخدمها | فوكس سيستمز | حلول IT متخصصة"
-      : "Industries We Serve | Fox Systems | Specialized IT Solutions Egypt",
+      : "Industries We Serve | IT & CRM Solutions | Fox Systems",
     description: isArabic
       ? "فوكس سيستمز تقدم حلول CRM وIT متخصصة للبنوك والرعاية الصحية والتعليم والتصنيع والتجزئة والحكومة واللوجستيات في مصر والسعودية والكويت."
-      : "Fox Systems provides specialized CRM and IT solutions for banking, healthcare, education, manufacturing, retail, government, and logistics across Egypt, Saudi Arabia & Kuwait.",
+      : "Specialised CRM and IT solutions for banking, healthcare, education, manufacturing, retail and logistics across Egypt, Saudi Arabia and Kuwait.",
     keywords: "IT solutions Egypt industries, CRM banking Egypt, healthcare IT Egypt, education CRM Egypt, manufacturing ERP Egypt, retail IT solutions, government IT Egypt",
     ogTitle: isArabic ? "القطاعات التي نخدمها | فوكس سيستمز" : "Industries We Serve | Fox Systems",
     ogDescription: isArabic

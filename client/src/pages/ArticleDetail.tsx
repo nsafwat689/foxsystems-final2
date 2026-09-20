@@ -969,8 +969,13 @@ export default function ArticleDetail({ articleId, language }: ArticleDetailProp
     { name: content.title, url: canonicalUrl },
   ]);
 
+  // Article headlines are long, and appending the brand pushed most of them
+  // past the ~60 characters Google shows, so the suffix was being truncated
+  // away along with the end of the headline. Only add it when it fits.
+  const brandedTitle = `${content.title} | Fox Systems`;
+
   const seoConfig: SEOConfig = {
-    title: `${content.title} | Fox Systems`,
+    title: brandedTitle.length <= 60 ? brandedTitle : content.title,
     description: content.subtitle || content.title,
     keywords: `${content.category}, Fox Systems, CRM Egypt, IT Egypt, ${content.title}`,
     ogTitle: content.title,

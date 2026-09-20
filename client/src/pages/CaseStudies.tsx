@@ -274,7 +274,7 @@ export default function CaseStudies({ language }: CaseStudiesProps) {
   const filtered = activeTag === tags[0] ? cases : cases.filter(c => c.tag === activeTag);
 
   const seoConfig = {
-    title: isArabic ? "قصص نجاح عملائنا | فوكس سيستمز | حالات دراسية حقيقية" : "Client Case Studies | Fox Systems | Real IT Success Stories Egypt",
+    title: isArabic ? "قصص نجاح عملائنا | حالات دراسية | فوكس سيستمز" : "Client Case Studies | Real Results | Fox Systems",
     description: isArabic ? "اكتشف كيف حوّلت فوكس سيستمز عمليات أكثر من 300 شركة في مصر والسعودية والكويت عبر CRM ومراكز الاتصال والأمن السيبراني والبنية التحتية." : "See how Fox Systems transformed operations for 300+ businesses across Egypt, Saudi Arabia & Kuwait with CRM, Call Centers, cybersecurity, and IT infrastructure.",
     keywords: "Fox Systems case studies, CRM implementation Egypt, IT solutions Egypt results, cybersecurity Egypt, call center Egypt success story",
     ogTitle: isArabic ? "قصص نجاح عملائنا | فوكس سيستمز" : "Client Case Studies | Fox Systems",

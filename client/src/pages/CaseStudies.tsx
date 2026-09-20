@@ -316,10 +316,10 @@ export default function CaseStudies({ language }: CaseStudiesProps) {
             <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-8 mt-4">
               {(isArabic ? [
                 { v: "300+", l: "عميل راضٍ" }, { v: "500+", l: "مشروع مكتمل" },
-                { v: "14+", l: "سنة خبرة" }, { v: "6", l: "قطاعات مُخدَّمة" },
+                { v: "16+", l: "سنة خبرة" }, { v: "6", l: "قطاعات مُخدَّمة" },
               ] : [
                 { v: "300+", l: "Happy Clients" }, { v: "500+", l: "Projects Delivered" },
-                { v: "14+", l: "Years Experience" }, { v: "6", l: "Industries Served" },
+                { v: "16+", l: "Years Experience" }, { v: "6", l: "Industries Served" },
               ]).map((s, i) => (
                 <div key={i} className="text-center">
                   <div className="text-3xl font-extrabold text-white" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{s.v}</div>

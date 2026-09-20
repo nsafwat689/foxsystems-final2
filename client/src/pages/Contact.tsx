@@ -37,7 +37,7 @@ const T = {
     services: ["CRM System","Call Center Setup","Firewall / Security","VoIP Solutions","Network & Infrastructure","ERP / Odoo","Hardware & Servers","Website Development","Other"],
     whyTitle: "Why Choose Fox Systems?",
     reasons: [
-      "14+ years of IT experience in Egypt and the Middle East",
+      "16+ years of IT experience in Egypt and the Middle East",
       "300+ successful CRM and IT projects delivered",
       "Authorized Sophos & Fortinet security partner",
       "Full Arabic & English support — bilingual team",
@@ -77,7 +77,7 @@ const T = {
     services: ["نظام CRM","إعداد مركز الاتصال","جدار الحماية / الأمن","حلول VoIP","الشبكة والبنية التحتية","ERP / أودو","الأجهزة والخوادم","تطوير المواقع","أخرى"],
     whyTitle: "لماذا تختار فوكس سيستمز؟",
     reasons: [
-      "14+ عام خبرة في IT في مصر والشرق الأوسط",
+      "16+ عام خبرة في IT في مصر والشرق الأوسط",
       "300+ مشروع CRM وIT منجز بنجاح",
       "شريك Sophos وFortinet الأمني المعتمد",
       "دعم كامل بالعربية والإنجليزية",

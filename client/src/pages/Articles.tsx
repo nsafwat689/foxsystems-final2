@@ -23,9 +23,15 @@ interface ArticlesProps {
 }
 
 const getArticleSEOConfig = (lang: "en" | "ar") => {
-  const baseConfig = lang === "en" ? serviceSEOConfigs.articles : arabicSEOConfigs.articles;
+  // Fall back to the English config rather than spreading undefined. That is
+  // what shipped <title>undefined</title> on /ar/articles when the Arabic
+  // entry was missing — a silent failure that a missing key should not cause
+  // again if another locale is added later.
+  const baseConfig =
+    (lang === "en" ? serviceSEOConfigs.articles : arabicSEOConfigs.articles) ?? serviceSEOConfigs.articles;
   return {
     ...baseConfig,
+    language: lang,
     canonicalUrl: `https://foxsystemstech.com/${lang === "ar" ? "ar/" : ""}articles`,
   };
 };
@@ -460,7 +466,10 @@ export default function Articles({ language }: ArticlesProps) {
         organizationSchema={true}
         breadcrumbSchema={getBreadcrumbSchema(language)}
       />
-      <div className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}>
+      <div
+        className={`min-h-screen bg-background text-foreground transition-colors ${isArabic ? "rtl" : "ltr"}`}
+        dir={isArabic ? "rtl" : "ltr"}
+      >
         <Header language={language} />
 
         {/* Main content */}

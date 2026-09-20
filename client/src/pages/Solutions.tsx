@@ -52,9 +52,9 @@ const ORIGIN = "https://foxsystemstech.com";
 
 const SEO: Record<"en" | "ar", SEOConfig> = {
   en: {
-    title: "CRM Systems by Industry | Medical, Real Estate & Pest Control | Fox Systems",
+    title: "CRM Systems by Industry Egypt | Fox Systems",
     description:
-      "Industry CRM systems built and run by Fox Systems: medical and pharmaceutical field force CRM, real estate sales CRM, and pest control job management. Egypt, Saudi Arabia and Kuwait. Arabic & English.",
+      "Industry CRM systems built and run by Fox Systems: pharma field force, real estate sales and pest control job management. Egypt, KSA and Kuwait.",
     keywords:
       "industry CRM Egypt, medical CRM Egypt, real estate CRM Egypt, pest control software Egypt, vertical CRM Middle East, custom CRM Egypt, CRM by industry, نظام CRM طبي, نظام CRM عقاري, برنامج شركات مكافحة الحشرات, CRM solutions Egypt, CRM Saudi Arabia, CRM Kuwait",
     ogTitle: "CRM Systems by Industry - Fox Systems",
@@ -67,7 +67,7 @@ const SEO: Record<"en" | "ar", SEOConfig> = {
   ar: {
     title: "أنظمة CRM حسب القطاع | طبي، عقاري، مكافحة آفات | فوكس سيستمز",
     description:
-      "أنظمة CRM متخصصة من تنفيذ وتشغيل فوكس سيستمز: CRM طبي للفرق الميدانية، CRM عقاري للمبيعات، وبرنامج إدارة مهام مكافحة الآفات. مصر والسعودية والكويت. عربي وإنجليزي.",
+      "أنظمة CRM متخصصة من فوكس سيستمز: طبي للفرق الميدانية، عقاري للمبيعات، ومكافحة آفات. مصر والسعودية والكويت.",
     keywords:
       "نظام CRM طبي, نظام CRM عقاري, برنامج شركات مكافحة الحشرات, أنظمة CRM متخصصة, CRM حسب القطاع, نظام CRM مصر, CRM السعودية, CRM الكويت, industry CRM Egypt, vertical CRM Middle East",
     ogTitle: "أنظمة CRM حسب القطاع - فوكس سيستمز",

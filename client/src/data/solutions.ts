@@ -379,9 +379,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
     },
     seo: {
       en: {
-        title: "Medical & Pharma CRM Egypt | Field Force Automation | Fox Systems",
+        title: "Medical & Pharma CRM Egypt | Field Force | Fox Systems",
         description:
-          "Medical CRM for pharmaceutical field teams in Egypt, Saudi Arabia & Kuwait. GPS-verified visits, sample batch tracking with audit trail, order management, AI detailing assistant. Arabic & English. Book a demo.",
+          "Medical CRM for pharma field teams in Egypt and the Gulf. GPS-verified visits, sample batch tracking, orders and an AI assistant. Book a demo.",
         keywords:
           "medical CRM Egypt, pharma CRM Egypt, pharmaceutical CRM Egypt, نظام CRM طبي, CRM شركات الأدوية, field force automation Egypt, SFA Egypt, sales force automation pharma, medical rep tracking software, medical representative software Egypt, GPS visit verification, sample management software, pharma sample tracking, HCP coverage software, detailing software Egypt, pharma CRM Saudi Arabia, medical CRM Kuwait, برنامج مندوبي الدعاية الطبية, تتبع زيارات المندوبين, إدارة العينات الطبية, نظام إدارة الفريق الميداني",
         ogTitle: "Medical & Pharmaceutical CRM for Field Teams - Fox Systems",
@@ -392,9 +392,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         language: "en",
       },
       ar: {
-        title: "نظام CRM طبي ودوائي في مصر | إدارة الفرق الميدانية | فوكس سيستمز",
+        title: "نظام CRM طبي ودوائي | الفرق الميدانية | فوكس سيستمز",
         description:
-          "نظام CRM للفرق الميدانية في شركات الأدوية بمصر والسعودية والكويت. زيارات موثّقة بـ GPS، تتبّع تشغيلات العيّنات بسجل تدقيق، إدارة الطلبات، ومساعد ذكاء اصطناعي. عربي وإنجليزي. احجز عرض.",
+          "نظام CRM للفرق الميدانية في شركات الأدوية بمصر والخليج. زيارات موثّقة بـ GPS، تتبّع العيّنات، إدارة الطلبات، ومساعد ذكي. احجز عرضًا.",
         keywords:
           "نظام CRM طبي, CRM شركات الأدوية, برنامج مندوبي الدعاية الطبية, تتبع زيارات المندوبين, إدارة العينات الطبية, نظام إدارة الفريق الميداني, برنامج شركات الأدوية مصر, CRM طبي السعودية, CRM طبي الكويت, medical CRM Egypt, pharma CRM Egypt, field force automation Egypt",
         ogTitle: "نظام CRM طبي للفرق الميدانية - فوكس سيستمز",
@@ -781,9 +781,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
     },
     seo: {
       en: {
-        title: "Real Estate CRM Egypt | Property Sales CRM for Brokers | Fox Systems",
+        title: "Real Estate CRM Egypt | Property Sales CRM | Fox Systems",
         description:
-          "Real estate CRM for brokerages and developers in Egypt, Saudi Arabia & Kuwait. Lead routing, deal pipeline with forecast, installment plans and reminders, commission payouts, and a microsite for every unit. Arabic & English.",
+          "Real estate CRM for brokers and developers in Egypt and the Gulf. Lead routing, pipeline forecast, installments, commissions and unit microsites.",
         keywords:
           "real estate CRM Egypt, property CRM Egypt, نظام CRM عقاري, CRM شركات التسويق العقاري, real estate software Egypt, CRM for real estate brokers Egypt, brokerage CRM Egypt, developer CRM Egypt, property management software Egypt, real estate lead management Egypt, installment plan software Egypt, commission tracking real estate, property listing microsite, real estate CRM Saudi Arabia, real estate CRM Kuwait, برنامج إدارة المبيعات العقارية, نظام إدارة العقارات, إدارة عملاء العقارات, برنامج أقساط العقارات, عمولات المبيعات العقارية",
         ogTitle: "Real Estate CRM for Brokers and Developers - Fox Systems",
@@ -794,9 +794,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         language: "en",
       },
       ar: {
-        title: "نظام CRM عقاري في مصر | برنامج إدارة المبيعات العقارية | فوكس سيستمز",
+        title: "نظام CRM عقاري | إدارة المبيعات العقارية | فوكس سيستمز",
         description:
-          "نظام CRM عقاري لشركات التسويق والمطورين في مصر والسعودية والكويت. توزيع العملاء، مسار صفقات بتوقّع، خطط أقساط وتذكيرات، صرف عمولات، وصفحة لكل وحدة. عربي وإنجليزي.",
+          "نظام CRM عقاري للمسوّقين والمطورين في مصر والخليج. توزيع العملاء، توقّع المسار، أقساط وتذكيرات، صرف عمولات، وصفحة لكل وحدة.",
         keywords:
           "نظام CRM عقاري, برنامج إدارة المبيعات العقارية, CRM شركات التسويق العقاري, نظام إدارة العقارات, إدارة عملاء العقارات, برنامج أقساط العقارات, عمولات المبيعات العقارية, برنامج عقارات مصر, CRM عقاري السعودية, CRM عقاري الكويت, real estate CRM Egypt, property CRM Egypt",
         ogTitle: "نظام CRM عقاري لشركات التسويق والمطورين - فوكس سيستمز",
@@ -1172,9 +1172,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
     },
     seo: {
       en: {
-        title: "Pest Control Software Egypt | Job & Route Management CRM | Fox Systems",
+        title: "Pest Control Software Egypt | Route & Job CRM | Fox Systems",
         description:
-          "Pest control software for field service teams in Egypt and the Gulf. Dispatch board with route optimisation, technician check-in, QR-coded devices, service reports, contracts, invoicing and an Arabic client portal.",
+          "Pest control software for field teams in Egypt and the Gulf. Dispatch board with route optimisation, QR-coded devices, reports and a client portal.",
         keywords:
           "pest control software Egypt, pest control CRM, برنامج شركات مكافحة الحشرات, نظام إدارة مكافحة الآفات, pest control management software, field service management Egypt, technician scheduling software, route optimisation software Egypt, job dispatch software, IPM software, integrated pest management software, service contract software Egypt, QR device tracking, pest control app Egypt, facility hygiene software, pest control software Saudi Arabia, pest control software Kuwait, برنامج إدارة الخدمات الميدانية, جدولة الفنيين, تتبع خطوط السير",
         ogTitle: "Pest Control Software for Field Service Teams - Fox Systems",
@@ -1185,9 +1185,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         language: "en",
       },
       ar: {
-        title: "برنامج شركات مكافحة الحشرات | إدارة المهام وخطوط السير | فوكس سيستمز",
+        title: "برنامج مكافحة الحشرات | المهام وخطوط السير | فوكس سيستمز",
         description:
-          "برنامج إدارة شركات مكافحة الآفات والخدمات الميدانية في مصر والخليج. لوحة توزيع بتحسين المسارات، حضور الفنيين، أجهزة بكود QR، تقارير خدمة، عقود وفواتير، وبوابة عملاء بالعربية.",
+          "برنامج إدارة شركات مكافحة الآفات في مصر والخليج. لوحة توزيع بتحسين المسارات، أجهزة بكود QR، تقارير خدمة، عقود، وبوابة عملاء بالعربية.",
         keywords:
           "برنامج شركات مكافحة الحشرات, نظام إدارة مكافحة الآفات, برنامج إدارة الخدمات الميدانية, جدولة الفنيين, تتبع خطوط السير, برنامج مكافحة آفات مصر, عقود الخدمة, بوابة عملاء, pest control software Egypt, pest control CRM, field service management Egypt",
         ogTitle: "برنامج شركات مكافحة الحشرات والخدمات الميدانية - فوكس سيستمز",

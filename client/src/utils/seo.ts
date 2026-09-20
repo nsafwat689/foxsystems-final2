@@ -25,11 +25,11 @@ export interface SEOConfig {
 }
 
 export const defaultSEOConfig: SEOConfig = {
-  title: "Fox Systems | CRM Systems & IT Solutions in Egypt, Saudi Arabia & Kuwait | نظام CRM مصر",
-  description: "Fox Systems — #1 CRM implementation company in Egypt, Saudi Arabia & Kuwait. Expert in CRM systems, Call Center setup, Firewall security, VoIP, network infrastructure, servers, and IT solutions. 300+ clients. 14+ years. 24/7 support. احجز عرض CRM مجاني الآن.",
+  title: "CRM Systems & IT Solutions in Egypt | Fox Systems",
+  description: "CRM systems, call centres, firewalls, VoIP and IT infrastructure across Egypt, Saudi Arabia and Kuwait. 300+ clients, 16+ years, 24/7 support.",
   keywords: "CRM Egypt, CRM system Egypt, CRM software Egypt, نظام CRM مصر, شركة CRM مصر, تطبيق CRM مصر, CRM Saudi Arabia, CRM Kuwait, CRM Middle East, نظام إدارة علاقات العملاء مصر, Fox Systems, Fox Systems Egypt, Fox Systems CRM, call center Egypt, call center solutions Egypt, مركز اتصال مصر, VoIP Egypt, VoIP solutions Middle East, firewall Egypt, firewall security Egypt, Sophos Egypt, Fortinet Egypt, جدار حماية مصر, Grandstream Egypt, network solutions Egypt, IT solutions Egypt, IT services Egypt, حلول تكنولوجيا المعلومات مصر, IT infrastructure Egypt, servers Egypt, خوادم مصر, ERP Egypt, Odoo Egypt, CRM implementation Egypt, CRM provider Egypt, best CRM company Egypt, CRM software Middle East, IT company Cairo, شركة تكنولوجيا المعلومات القاهرة, network security Egypt, cybersecurity Egypt, أمن سيبراني مصر, IT support Egypt, دعم تقني مصر, managed IT Egypt, hardware Egypt, laptops Egypt, PC Egypt, IT solutions Saudi Arabia, IT solutions Kuwait, خدمات IT السعودية, خدمات IT الكويت, call center Saudi Arabia, مركز اتصال السعودية, network Egypt, شبكات مصر, infrastructure Egypt, بنية تحتية مصر",
-  ogTitle: "Fox Systems | CRM Systems & IT Solutions Egypt, Saudi Arabia, Kuwait",
-  ogDescription: "Egypt's #1 CRM & IT Solutions company. Call Center, Firewall, VoIP, Network & Infrastructure. 300+ clients. 14+ years. 24/7 support.",
+  ogTitle: "CRM Systems & IT Solutions Egypt | Fox Systems",
+  ogDescription: "Egypt's #1 CRM & IT Solutions company. Call Center, Firewall, VoIP, Network & Infrastructure. 300+ clients. 16+ years. 24/7 support.",
   ogImage: "https://foxsystemstech.com/og-image.jpg",
   canonicalUrl: "https://foxsystemstech.com/",
   language: "en",
@@ -48,8 +48,8 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
   },
 
   internet: {
-    title: "Call Center & VoIP Solutions Egypt | Grandstream, Cisco | Fox Systems",
-    description: "Complete Call Center setup and VoIP solutions in Egypt, Saudi Arabia & Kuwait. Grandstream, Cisco IP phones. IVR, call recording, CRM integration. Leased Line, Microwave, VPN connectivity. 24/7 support.",
+    title: "Call Center & VoIP Egypt | Grandstream, Cisco | Fox Systems",
+    description: "Call centre setup and VoIP in Egypt, Saudi Arabia and Kuwait. Grandstream and Cisco IP phones, IVR, call recording and CRM integration. 24/7 support.",
     keywords: "call center Egypt, call center setup Egypt, مركز اتصال مصر, VoIP Egypt, VoIP solutions Egypt, Grandstream Egypt, Cisco VoIP Egypt, IP phone Egypt, call center solutions Saudi Arabia, call center Kuwait, VoIP Middle East, leased line Egypt, corporate internet Egypt, IVR Egypt, call recording Egypt, CRM call center integration Egypt, خدمات اتصال مصر, اتصال VoIP مصر, إعداد مركز الاتصال, VPN Egypt, internet connectivity Egypt",
     ogTitle: "Call Center & VoIP Solutions Egypt - Fox Systems",
     ogDescription: "Complete Call Center & VoIP setup in Egypt, KSA, Kuwait. Grandstream, Cisco. CRM integration.",
@@ -58,8 +58,8 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
     language: "en",
   },
   software: {
-    title: "CRM Systems Egypt | CRM Software Implementation | Fox Systems | نظام CRM مصر",
-    description: "Best CRM system implementation in Egypt, Saudi Arabia & Kuwait. Sales pipeline, customer management, automated follow-up, Arabic & English interface. Also: ERP, Odoo, custom software. Free demo available.",
+    title: "CRM Systems Egypt | Implementation & Support | Fox Systems",
+    description: "CRM implementation in Egypt, Saudi Arabia and Kuwait. Sales pipeline, customer management and automated follow-up, in Arabic and English. Free demo.",
     keywords: "CRM Egypt, CRM system Egypt, CRM software Egypt, نظام CRM مصر, تطبيق CRM مصر, CRM implementation Egypt, CRM provider Egypt, best CRM Egypt, CRM company Cairo, CRM Saudi Arabia, CRM Kuwait, CRM Middle East, نظام إدارة علاقات العملاء, sales CRM Egypt, customer management Egypt, ERP Egypt, Odoo Egypt, ERP implementation Egypt, شريك أودو مصر, custom software Egypt, business software Egypt, CRM pricing Egypt, أفضل CRM مصر, برنامج CRM مصر, إدارة العملاء مصر",
     ogTitle: "CRM Systems Egypt | Best CRM Implementation - Fox Systems",
     ogDescription: "Egypt's #1 CRM implementation company. Sales CRM, customer management, Arabic & English. Free demo.",
@@ -68,8 +68,8 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
     language: "en",
   },
   hardware: {
-    title: "IT Hardware Egypt | Servers, PCs, Laptops, Networking | Fox Systems",
-    description: "Enterprise-grade servers, PCs, laptops, and networking equipment in Egypt, Saudi Arabia & Kuwait. Professional setup and maintenance. Dell, HP, Cisco hardware. Competitive prices and fast delivery.",
+    title: "IT Hardware Egypt | Servers, PCs & Networking | Fox Systems",
+    description: "Servers, PCs, laptops and networking hardware in Egypt, Saudi Arabia and Kuwait. Dell, HP and Cisco, with professional setup and fast delivery.",
     keywords: "IT hardware Egypt, servers Egypt, خوادم مصر, business laptops Egypt, PCs Egypt, networking hardware Egypt, Dell Egypt, HP Egypt, server setup Egypt, hardware maintenance Egypt, IT equipment Cairo, networking devices Egypt, أجهزة تقنية مصر, كمبيوتر مصر, لابتوب أعمال مصر, server rental Egypt, hardware solutions Middle East",
     ogTitle: "IT Hardware Egypt | Servers, PCs, Laptops - Fox Systems",
     ogDescription: "Enterprise hardware solutions in Egypt, KSA, Kuwait. Servers, PCs, laptops. Fast delivery.",
@@ -78,18 +78,18 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
     language: "en",
   },
   cybersecurity: {
-    title: "Firewall & Cybersecurity Egypt | Sophos, Fortinet | Fox Systems",
-    description: "Advanced firewall and cybersecurity solutions in Egypt, Saudi Arabia & Kuwait. Authorized Sophos & Fortinet partner. Endpoint security, 24/7 threat monitoring, data protection, ransomware defense.",
+    title: "Firewall Security Egypt | Sophos & Fortinet | Fox Systems",
+    description: "Firewall and cybersecurity in Egypt, Saudi Arabia and Kuwait. Sophos and Fortinet partner: endpoint security, 24/7 monitoring, ransomware defence.",
     keywords: "firewall Egypt, جدار حماية مصر, Sophos Egypt, Fortinet Egypt, cybersecurity Egypt, أمن سيبراني مصر, network security Egypt, endpoint security Egypt, firewall installation Egypt, firewall Saudi Arabia, cybersecurity Kuwait, data protection Egypt, ransomware protection Egypt, firewall solutions Middle East, managed security Egypt, حماية الشبكة مصر, أمن المعلومات مصر, مزود Sophos مصر, حلول أمنية مصر, firewall price Egypt",
-    ogTitle: "Firewall & Cybersecurity Egypt | Sophos, Fortinet - Fox Systems",
+    ogTitle: "Firewall & Cybersecurity Egypt | Sophos, Fortinet",
     ogDescription: "Authorized Sophos & Fortinet partner in Egypt. Firewall, endpoint security, 24/7 monitoring.",
     ogImage: "https://foxsystemstech.com/services/cybersecurity-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/services/cybersecurity",
     language: "en",
   },
   infrastructure: {
-    title: "Network & IT Infrastructure Egypt | Structured Cabling | Fox Systems",
-    description: "Complete network setup and IT infrastructure solutions in Egypt, Saudi Arabia & Kuwait. Structured cabling, data centers, server rooms, network design, wireless solutions. Professional installation and 24/7 maintenance.",
+    title: "Network & IT Infrastructure Egypt | Fox Systems",
+    description: "Network and IT infrastructure in Egypt, Saudi Arabia and Kuwait. Structured cabling, data centres, server rooms and wireless, maintained 24/7.",
     keywords: "network Egypt, شبكات مصر, IT infrastructure Egypt, بنية تحتية مصر, structured cabling Egypt, network setup Egypt, data center Egypt, server room Egypt, network design Egypt, wifi Egypt, wireless solutions Egypt, network maintenance Egypt, infrastructure Saudi Arabia, network Kuwait, IT infrastructure Middle East, كابلات منظمة مصر, مركز بيانات مصر, إعداد شبكة مصر",
     ogTitle: "Network & IT Infrastructure Egypt - Fox Systems",
     ogDescription: "Complete network setup, structured cabling & data centers in Egypt, KSA, Kuwait.",
@@ -98,8 +98,8 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
     language: "en",
   },
   "web-development": {
-    title: "Website Development & SEO Egypt | Google Page 1 | Fox Systems",
-    description: "Professional website development and SEO optimization in Egypt, Saudi Arabia & Kuwait. Mobile-responsive, fast-loading, Google-optimized websites. Arabic & English. E-commerce, corporate, landing pages.",
+    title: "Website Development & SEO Egypt | Fox Systems",
+    description: "Website development and SEO in Egypt, Saudi Arabia and Kuwait. Fast, mobile-ready, Google-optimised sites in Arabic and English. E-commerce and corporate.",
     keywords: "web development Egypt, website Egypt, تطوير مواقع مصر, SEO Egypt, تحسين محركات البحث مصر, website design Egypt, corporate website Egypt, e-commerce Egypt, UI/UX Egypt, mobile website Egypt, Google ranking Egypt, web developer Cairo, تصميم مواقع مصر, موقع إلكتروني مصر, web development Saudi Arabia, website Kuwait, SEO Middle East",
     ogTitle: "Website Development & SEO Egypt - Fox Systems",
     ogDescription: "Professional websites & SEO in Egypt. Google page 1 results. Arabic & English.",
@@ -110,9 +110,23 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
 };
 
 export const arabicSEOConfigs: Record<string, SEOConfig> = {
+  // Missing until 2026-09-20, which made /ar/articles serve a literal
+  // <title>undefined</title>: Articles.tsx spreads arabicSEOConfigs.articles,
+  // and spreading undefined yields an object with no title, description,
+  // ogImage or language — so the page also fell back to lang="en" dir="ltr".
+  articles: {
+    title: "مقالات ورؤى تقنية | فوكس سيستمز",
+    description: "مقالات وأدلة عملية عن أنظمة CRM، الأمن السيبراني، VoIP، الشبكات، والبنية التحتية لتكنولوجيا المعلومات في مصر والشرق الأوسط.",
+    keywords: "مقالات فوكس سيستمز, نصائح CRM مصر, أدلة تقنية مصر, دليل الأمن السيبراني, دليل VoIP, مدونة تقنية مصر, مقالات تكنولوجيا المعلومات",
+    ogTitle: "مقالات ورؤى تقنية - فوكس سيستمز",
+    ogDescription: "أحدث المقالات والأدلة عن CRM وتكنولوجيا المعلومات في مصر والشرق الأوسط.",
+    ogImage: "https://foxsystemstech.com/articles-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/articles",
+    language: "ar",
+  },
   home: {
-    title: "فوكس سيستمز | أنظمة CRM وحلول تكنولوجيا المعلومات في مصر والسعودية والكويت",
-    description: "فوكس سيستمز — الشركة الأولى لتطبيق أنظمة CRM في مصر والشرق الأوسط. متخصصون في أنظمة CRM، مراكز الاتصال، جدران الحماية Sophos وFortinet، VoIP Grandstream، الشبكات، والبنية التحتية. أكثر من 300 عميل. 14+ سنة خبرة. دعم 24/7.",
+    title: "أنظمة CRM وحلول تكنولوجيا المعلومات | فوكس سيستمز",
+    description: "أنظمة CRM ومراكز اتصال وجدران حماية وVoIP وبنية تحتية في مصر والسعودية والكويت. أكثر من 300 عميل، 16+ سنة خبرة، ودعم 24/7.",
     keywords: "نظام CRM مصر, CRM مصر, شركة CRM مصر, تطبيق CRM مصر, برنامج CRM مصر, إدارة علاقات العملاء مصر, أفضل CRM مصر, نظام CRM السعودية, نظام CRM الكويت, نظام CRM الشرق الأوسط, فوكس سيستمز, Fox Systems مصر, مركز اتصال مصر, call center مصر, Grandstream مصر, Cisco مصر, VoIP مصر, جدار حماية مصر, Sophos مصر, Fortinet مصر, أمن سيبراني مصر, شبكات مصر, خوادم مصر, ERP مصر, Odoo مصر, بنية تحتية مصر, دعم تقني مصر, حلول IT مصر, شركة IT القاهرة, خدمات تقنية مصر, IT السعودية, IT الكويت, call center السعودية, CRM السعودية, جدار حماية السعودية",
     ogTitle: "فوكس سيستمز | أنظمة CRM وحلول IT في مصر والسعودية والكويت",
     ogDescription: "الشركة الأولى لتطبيق CRM في مصر. مراكز الاتصال، جدران الحماية، VoIP، شبكات. 300+ عميل.",
@@ -121,8 +135,8 @@ export const arabicSEOConfigs: Record<string, SEOConfig> = {
     language: "ar",
   },
   services: {
-    title: "خدمات فوكس سيستمز | CRM، مراكز الاتصال، جدران الحماية، VoIP - مصر، السعودية، الكويت",
-    description: "استكشف خدمات فوكس سيستمز: أنظمة CRM، مراكز الاتصال وVoIP، جدران الحماية Sophos وFortinet، ERP، الخوادم والأجهزة، الشبكات والبنية التحتية، وتطوير المواقع في مصر والسعودية والكويت.",
+    title: "خدمات فوكس سيستمز | CRM ومراكز الاتصال والشبكات",
+    description: "أنظمة CRM، مراكز الاتصال وVoIP، جدران الحماية، ERP، الخوادم، الشبكات، وتطوير المواقع في مصر والسعودية والكويت.",
     keywords: "خدمات IT مصر, CRM مصر, مركز اتصال مصر, جدار حماية مصر, VoIP مصر, ERP مصر, خوادم مصر, شبكات مصر, IT السعودية, IT الكويت",
     ogTitle: "خدمات فوكس سيستمز - IT والـ CRM في مصر والشرق الأوسط",
     ogDescription: "حلول تكنولوجيا المعلومات الشاملة: CRM، مراكز الاتصال، جدران الحماية، VoIP في مصر والسعودية والكويت",
@@ -141,8 +155,8 @@ export const arabicSEOConfigs: Record<string, SEOConfig> = {
     language: "ar",
   },
   software: {
-    title: "نظام CRM مصر | تطبيق CRM | فوكس سيستمز | أفضل شركة CRM في مصر",
-    description: "فوكس سيستمز — الشركة الأولى لتطبيق أنظمة CRM في مصر والسعودية والكويت. إدارة العملاء، قمع المبيعات، متابعة تلقائية، تقارير فورية. واجهة عربية وإنجليزية. عرض مجاني الآن.",
+    title: "نظام CRM مصر | التطبيق والدعم | فوكس سيستمز",
+    description: "تطبيق أنظمة CRM في مصر والسعودية والكويت. إدارة العملاء، قمع المبيعات، متابعة تلقائية، وتقارير فورية. واجهة عربية وإنجليزية.",
     keywords: "نظام CRM مصر, CRM مصر, تطبيق CRM مصر, برنامج CRM مصر, أفضل CRM مصر, شركة CRM مصر, إدارة علاقات العملاء مصر, CRM السعودية, CRM الكويت, CRM الشرق الأوسط, ERP مصر, Odoo مصر, برمجيات مصر, أتمتة مبيعات مصر",
     ogTitle: "نظام CRM مصر | أفضل تطبيق CRM - فوكس سيستمز",
     ogDescription: "الشركة الأولى لتطبيق CRM في مصر. عرض مجاني. واجهة عربية.",
@@ -192,7 +206,7 @@ export const arabicSEOConfigs: Record<string, SEOConfig> = {
   },
   "web-development": {
     title: "تطوير مواقع مصر | SEO | الصفحة الأولى جوجل | فوكس سيستمز",
-    description: "تطوير مواقع إلكترونية احترافية في مصر والسعودية والكويت. تحسين محركات البحث SEO للظهور في الصفحة الأولى. عربي وإنجليزي. تجارة إلكترونية، مواقع شركات، صفحات هبوط.",
+    description: "تطوير مواقع وتحسين محركات البحث في مصر والسعودية والكويت. عربي وإنجليزي، تجارة إلكترونية ومواقع شركات وصفحات هبوط.",
     keywords: "تطوير مواقع مصر, تصميم مواقع مصر, SEO مصر, موقع إلكتروني مصر, الصفحة الأولى جوجل مصر, تحسين محركات البحث مصر, تجارة إلكترونية مصر, تصميم موقع القاهرة",
     ogTitle: "تطوير مواقع وSEO مصر - فوكس سيستمز",
     ogDescription: "مواقع احترافية وSEO للظهور في الصفحة الأولى من جوجل. عربي وإنجليزي.",

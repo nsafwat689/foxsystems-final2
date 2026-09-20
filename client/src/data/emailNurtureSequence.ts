@@ -40,7 +40,7 @@ Thank you for downloading our IT Readiness Guide. Your PDF is attached to this e
 
 A quick note from our team:
 
-This guide took us 14 years of working with 300+ Egyptian businesses to write. Every checklist, framework, and template inside came from a real project — things we've seen go right, and things we've seen go very wrong.
+This guide took us 16 years of working with 300+ Egyptian businesses to write. Every checklist, framework, and template inside came from a real project — things we've seen go right, and things we've seen go very wrong.
 
 We hope it saves you time, helps you avoid costly mistakes, and gives you a clear roadmap for your IT decisions in 2026.
 
@@ -65,7 +65,7 @@ Cairo, Egypt · +20 103 845 0546`,
 
 ملاحظة سريعة من فريقنا:
 
-استغرق منا كتابة هذا الدليل 14 عاماً من العمل مع أكثر من 300 شركة مصرية. كل قائمة تحقق وإطار عمل وقالب بداخله جاء من مشروع حقيقي — أشياء رأيناها تسير بشكل صحيح، وأشياء رأيناها تسوء جداً.
+استغرق منا كتابة هذا الدليل 16 عاماً من العمل مع أكثر من 300 شركة مصرية. كل قائمة تحقق وإطار عمل وقالب بداخله جاء من مشروع حقيقي — أشياء رأيناها تسير بشكل صحيح، وأشياء رأيناها تسوء جداً.
 
 نأمل أن يوفر عليك الوقت، ويساعدك على تجنب الأخطاء المكلفة، ويمنحك خارطة طريق واضحة لقرارات IT في 2026.
 
@@ -317,11 +317,11 @@ Fox Systems Team`,
     goal: "Handle top objections (cost, time, disruption), re-engage cold leads",
     subject_en: "\"We can't afford it right now\" — let's talk about that",
     subject_ar: "\"لا نستطيع تحمل التكلفة الآن\" — دعنا نتحدث عن ذلك",
-    preview_en: "The 3 objections we hear most — and what 14 years of projects have taught us about each one.",
-    preview_ar: "أكثر 3 اعتراضات نسمعها — وما علّمتنا إياه 14 سنة من المشاريع عن كل منها.",
+    preview_en: "The 3 objections we hear most — and what 16 years of projects have taught us about each one.",
+    preview_ar: "أكثر 3 اعتراضات نسمعها — وما علّمتنا إياه 16 سنة من المشاريع عن كل منها.",
     body_en: `Hi {{first_name}},
 
-In 14 years of IT consulting in Egypt, we've heard the same objections hundreds of times.
+In 16 years of IT consulting in Egypt, we've heard the same objections hundreds of times.
 
 Here are the top 3 — and our honest answers:
 
@@ -345,7 +345,7 @@ Fox Systems Team`,
 
     body_ar: `مرحباً {{first_name}}،
 
-في 14 سنة من الاستشارات التقنية في مصر، سمعنا نفس الاعتراضات مئات المرات.
+في 16 سنة من الاستشارات التقنية في مصر، سمعنا نفس الاعتراضات مئات المرات.
 
 إليك أبرز 3 — وإجاباتنا الصادقة:
 

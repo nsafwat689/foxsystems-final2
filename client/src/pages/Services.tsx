@@ -144,7 +144,7 @@ export default function Services({ language }: ServicesProps) {
             {[
               { value: "300+", label: isArabic ? "عميل راضٍ" : "Happy Clients" },
               { value: "500+", label: isArabic ? "مشروع مكتمل" : "Projects Delivered" },
-              { value: "14+", label: isArabic ? "سنة خبرة" : "Years Experience" },
+              { value: "16+", label: isArabic ? "سنة خبرة" : "Years Experience" },
               { value: "24/7", label: isArabic ? "دعم فني" : "Technical Support" },
             ].map((s, i) => (
               <div key={i} className="flex flex-col items-center py-5 px-4 text-center">

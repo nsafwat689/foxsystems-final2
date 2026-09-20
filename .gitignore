@@ -10,3 +10,7 @@ node_modules/
 
 # Build output — Vercel rebuilds from source, a committed copy only goes stale.
 dist/
+
+# Source captures live outside the repo; the web-sized screens in
+# client/public/showcase are what the site actually serves.
+*.rar

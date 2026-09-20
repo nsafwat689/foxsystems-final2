@@ -1,5 +1,7 @@
 {
   "buildCommand": "vite build && node scripts/prerender-meta.mjs",
+  "_comment_cleanUrls": "Required for the prerendered per-route HTML to be served: Vercel only maps /solutions/medical-crm to solutions/medical-crm.html during the filesystem phase when this is on. Without it the SPA rewrite below catches every path first.",
+  "cleanUrls": true,
   "outputDirectory": "dist/public",
   "installCommand": "pnpm install --frozen-lockfile",
   "framework": null,

@@ -16,7 +16,6 @@ const translations = {
   en: {
     home: "Home", services: "Services", contact: "Contact Us",
     getStarted: "Schedule Consultation", articles: "Articles", industries: "Industries",
-    solutions: "Solutions",
     caseStudies: "Case Studies",
     internet: "Call Center & VoIP", software: "CRM Systems",
     hardware: "Hardware & Servers", cybersecurity: "Firewall & Security",
@@ -28,7 +27,6 @@ const translations = {
   ar: {
     home: "الرئيسية", services: "الخدمات", contact: "اتصل بنا",
     getStarted: "احجز استشارة مجانية", articles: "المقالات", industries: "القطاعات",
-    solutions: "المنتجات",
     caseStudies: "قصص النجاح",
     internet: "مراكز الاتصال وVoIP", software: "أنظمة CRM",
     hardware: "الأجهزة والخوادم", cybersecurity: "جدران الحماية والأمن",
@@ -160,11 +158,6 @@ export default function Header({ language }: HeaderProps) {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <Link href={`${langPrefix}/solutions`}
-                className={navLinkCls(location.includes("/solutions"))}>
-                {t.solutions}
-              </Link>
-
               <Link href={`${langPrefix}/industries`}
                 className={navLinkCls(location.includes("/industries"))}>
                 {t.industries}
@@ -243,11 +236,6 @@ export default function Header({ language }: HeaderProps) {
                   </Link>
                 ))}
               </div>
-
-              <Link href={`${langPrefix}/solutions`} onClick={() => setIsMenuOpen(false)}
-                className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">
-                {t.solutions}
-              </Link>
 
               <Link href={`${langPrefix}/industries`} onClick={() => setIsMenuOpen(false)}
                 className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">

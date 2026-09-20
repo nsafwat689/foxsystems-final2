@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import SEOHead from "@/components/SEOHead";
 import { serviceSEOConfigs, arabicSEOConfigs, generateServiceSchema, generateBreadcrumbSchema } from "@/utils/seo";
 import { serviceDetailsAr } from "@/data/serviceDetailsAr";
-import MedicalCrmShowcase from "@/components/MedicalCrmShowcase";
+import CrmProductsShowcase from "@/components/CrmProductsShowcase";
 
 interface ServiceDetailProps {
   serviceId: string;
@@ -473,7 +473,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
               </div>
 
               {/* Real software we shipped, shown where people shop for CRM. */}
-              {serviceId === "software" && <MedicalCrmShowcase language={language} />}
+              {serviceId === "software" && <CrmProductsShowcase language={language} />}
 
               {/* ── SERVICE FAQ ── */}
               <ServiceFAQ serviceId={serviceId} isArabic={isArabic} langPrefix={langPrefix} />

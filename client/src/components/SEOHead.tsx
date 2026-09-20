@@ -92,35 +92,50 @@ export default function SEOHead({ config, organizationSchema = true, additionalS
 
     // Add hreflang tags for multilingual support
     if (config.canonicalUrl) {
-      addHrefLangTags(config.canonicalUrl, config.language);
+      addHrefLangTags(config.canonicalUrl);
     }
   }, [config, organizationSchema, additionalSchema, breadcrumbSchema, faqSchema]);
 
   return null;
 }
 
-function addHrefLangTags(canonicalUrl: string, language: "en" | "ar"): void {
-  // Remove existing hreflang tags
+/**
+ * Emit the hreflang pair for the page currently being rendered.
+ *
+ * English URLs carry no language prefix (/services/software) and Arabic ones
+ * are prefixed (/ar/services/software). The previous version string-replaced
+ * "/en/", which appears in neither, so on an English page the ar alternate
+ * pointed back at the English URL, and on an Arabic page the en alternate
+ * pointed at /en/... — a route the app does not serve. Both languages were
+ * being declared wrong.
+ *
+ * Derive the pair from the path instead, and keep the two home URLs spelled
+ * exactly as the sitemap spells them ("/" and "/ar") so the two agree.
+ */
+function addHrefLangTags(canonicalUrl: string): void {
   document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((tag) => tag.remove());
 
-  // Add English hreflang
-  const enLink = document.createElement("link");
-  enLink.rel = "alternate";
-  enLink.hreflang = "en";
-  enLink.href = canonicalUrl.replace(/\/ar\//, "/en/").replace(/\/ar$/, "");
-  document.head.appendChild(enLink);
+  let enHref: string;
+  let arHref: string;
+  try {
+    const { origin, pathname } = new URL(canonicalUrl);
+    const enPath = pathname.replace(/^\/ar(?=\/|$)/, "") || "/";
+    enHref = `${origin}${enPath}`;
+    arHref = `${origin}${enPath === "/" ? "/ar" : `/ar${enPath}`}`;
+  } catch {
+    return;
+  }
 
-  // Add Arabic hreflang
-  const arLink = document.createElement("link");
-  arLink.rel = "alternate";
-  arLink.hreflang = "ar";
-  arLink.href = canonicalUrl.replace(/\/en\//, "/ar/").replace(/\/en$/, "/ar");
-  document.head.appendChild(arLink);
-
-  // Add x-default (English as default)
-  const defaultLink = document.createElement("link");
-  defaultLink.rel = "alternate";
-  defaultLink.hreflang = "x-default";
-  defaultLink.href = canonicalUrl.replace(/\/(en|ar)\//, "/").replace(/\/(en|ar)$/, "");
-  document.head.appendChild(defaultLink);
+  // x-default points at English, which is what the site serves unprefixed.
+  for (const [hreflang, href] of [
+    ["en", enHref],
+    ["ar", arHref],
+    ["x-default", enHref],
+  ] as const) {
+    const link = document.createElement("link");
+    link.rel = "alternate";
+    link.hreflang = hreflang;
+    link.href = href;
+    document.head.appendChild(link);
+  }
 }

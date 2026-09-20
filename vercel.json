@@ -10,20 +10,146 @@
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(), camera=()"
+        }
       ]
     }
   ],
   "rewrites": [
-    { "source": "/((?!api/|assets/).*)", "destination": "/index.html" }
+    {
+      "source": "/ar",
+      "destination": "/ar.html"
+    },
+    {
+      "source": "/ar/articles",
+      "destination": "/ar/articles.html"
+    },
+    {
+      "source": "/ar/contact",
+      "destination": "/ar/contact.html"
+    },
+    {
+      "source": "/ar/services",
+      "destination": "/ar/services.html"
+    },
+    {
+      "source": "/ar/services/cybersecurity",
+      "destination": "/ar/services/cybersecurity.html"
+    },
+    {
+      "source": "/ar/services/hardware",
+      "destination": "/ar/services/hardware.html"
+    },
+    {
+      "source": "/ar/services/infrastructure",
+      "destination": "/ar/services/infrastructure.html"
+    },
+    {
+      "source": "/ar/services/internet",
+      "destination": "/ar/services/internet.html"
+    },
+    {
+      "source": "/ar/services/software",
+      "destination": "/ar/services/software.html"
+    },
+    {
+      "source": "/ar/services/web-development",
+      "destination": "/ar/services/web-development.html"
+    },
+    {
+      "source": "/ar/solutions",
+      "destination": "/ar/solutions.html"
+    },
+    {
+      "source": "/ar/solutions/medical-crm",
+      "destination": "/ar/solutions/medical-crm.html"
+    },
+    {
+      "source": "/ar/solutions/pest-control-crm",
+      "destination": "/ar/solutions/pest-control-crm.html"
+    },
+    {
+      "source": "/ar/solutions/real-estate-crm",
+      "destination": "/ar/solutions/real-estate-crm.html"
+    },
+    {
+      "source": "/articles",
+      "destination": "/articles.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/services.html"
+    },
+    {
+      "source": "/services/cybersecurity",
+      "destination": "/services/cybersecurity.html"
+    },
+    {
+      "source": "/services/hardware",
+      "destination": "/services/hardware.html"
+    },
+    {
+      "source": "/services/infrastructure",
+      "destination": "/services/infrastructure.html"
+    },
+    {
+      "source": "/services/internet",
+      "destination": "/services/internet.html"
+    },
+    {
+      "source": "/services/software",
+      "destination": "/services/software.html"
+    },
+    {
+      "source": "/services/web-development",
+      "destination": "/services/web-development.html"
+    },
+    {
+      "source": "/solutions",
+      "destination": "/solutions.html"
+    },
+    {
+      "source": "/solutions/medical-crm",
+      "destination": "/solutions/medical-crm.html"
+    },
+    {
+      "source": "/solutions/pest-control-crm",
+      "destination": "/solutions/pest-control-crm.html"
+    },
+    {
+      "source": "/solutions/real-estate-crm",
+      "destination": "/solutions/real-estate-crm.html"
+    },
+    {
+      "source": "/((?!api/|assets/).*)",
+      "destination": "/index.html"
+    }
   ]
 }

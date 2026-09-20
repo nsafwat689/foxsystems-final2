@@ -166,7 +166,7 @@ export default function Solutions({ language }: Props) {
                 <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" variant="outline" className="border-white/25 text-white hover:bg-white/10 hover:text-white">
               <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className={`w-4 h-4 ${isArabic ? "ml-2" : "mr-2"}`} />
                 {t.wa}

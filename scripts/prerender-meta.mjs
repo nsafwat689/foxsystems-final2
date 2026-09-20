@@ -10,6 +10,12 @@
  *
  *   node scripts/prerender-meta.mjs        (run after `vite build`)
  *
+ * Writes dist/public/<route>.html. vercel.json must keep "cleanUrls": true —
+ * Vercel only maps a clean URL to the matching .html during the filesystem
+ * phase when that is on, and without it the SPA rewrite catches every path
+ * first and this whole step has no effect. Note vercel.json rejects unknown
+ * keys, so that cannot be commented inline there.
+ *
  * Writes dist/public/<route>.html. Vercel resolves a clean URL to the matching
  * .html file and serves static files before applying the SPA rewrite, so these
  * win; React then hydrates on top and sets the same values again, so the two

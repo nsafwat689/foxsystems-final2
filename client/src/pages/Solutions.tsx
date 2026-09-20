@@ -12,7 +12,8 @@ import { ArrowRight, Bug, Building2, MessageCircle, Stethoscope } from "lucide-r
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { SOLUTIONS } from "@/data/solutions";
-import { generateBreadcrumbSchema, type SEOConfig } from "@/utils/seo";
+import { generateBreadcrumbSchema } from "@/utils/seo";
+import { SOLUTIONS_INDEX_SEO } from "@/data/routeMeta";
 
 const ICONS = { Stethoscope, Building2, Bug };
 
@@ -50,33 +51,7 @@ const T = {
 
 const ORIGIN = "https://foxsystemstech.com";
 
-const SEO: Record<"en" | "ar", SEOConfig> = {
-  en: {
-    title: "CRM Systems by Industry Egypt | Fox Systems",
-    description:
-      "Industry CRM systems built and run by Fox Systems: pharma field force, real estate sales and pest control job management. Egypt, KSA and Kuwait.",
-    keywords:
-      "industry CRM Egypt, medical CRM Egypt, real estate CRM Egypt, pest control software Egypt, vertical CRM Middle East, custom CRM Egypt, CRM by industry, نظام CRM طبي, نظام CRM عقاري, برنامج شركات مكافحة الحشرات, CRM solutions Egypt, CRM Saudi Arabia, CRM Kuwait",
-    ogTitle: "CRM Systems by Industry - Fox Systems",
-    ogDescription:
-      "Medical field force CRM, real estate sales CRM and pest control job management. Built, run and supported by Fox Systems.",
-    ogImage: `${ORIGIN}/solutions/solutions-og.jpg`,
-    canonicalUrl: `${ORIGIN}/solutions`,
-    language: "en",
-  },
-  ar: {
-    title: "أنظمة CRM حسب القطاع | طبي، عقاري، مكافحة آفات | فوكس سيستمز",
-    description:
-      "أنظمة CRM متخصصة من فوكس سيستمز: طبي للفرق الميدانية، عقاري للمبيعات، ومكافحة آفات. مصر والسعودية والكويت.",
-    keywords:
-      "نظام CRM طبي, نظام CRM عقاري, برنامج شركات مكافحة الحشرات, أنظمة CRM متخصصة, CRM حسب القطاع, نظام CRM مصر, CRM السعودية, CRM الكويت, industry CRM Egypt, vertical CRM Middle East",
-    ogTitle: "أنظمة CRM حسب القطاع - فوكس سيستمز",
-    ogDescription: "CRM طبي للفرق الميدانية، وCRM عقاري للمبيعات، وبرنامج إدارة مهام مكافحة الآفات.",
-    ogImage: `${ORIGIN}/solutions/solutions-og.jpg`,
-    canonicalUrl: `${ORIGIN}/ar/solutions`,
-    language: "ar",
-  },
-};
+const SEO = SOLUTIONS_INDEX_SEO;
 
 interface Props {
   language: "en" | "ar";

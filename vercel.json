@@ -1,6 +1,5 @@
 {
   "buildCommand": "vite build && node scripts/prerender-meta.mjs",
-  "cleanUrls": true,
   "outputDirectory": "dist/public",
   "installCommand": "pnpm install --frozen-lockfile",
   "framework": null,

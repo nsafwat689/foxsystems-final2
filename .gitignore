@@ -7,3 +7,6 @@ node_modules/
 .vscode/
 .idea/
 *.tsbuildinfo
+
+# Build output — Vercel rebuilds from source, a committed copy only goes stale.
+dist/

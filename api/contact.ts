@@ -105,9 +105,17 @@ export default async function handler(req: any, res: any) {
     return res.status(503).json({ ok: false, code: "not_configured" });
   }
 
+  // Bound the call. Without this a hanging request to Brevo runs until the
+  // platform kills the function, which answers the browser with a plain-text
+  // 502 that never reaches the catch below — so the form could not tell the
+  // visitor anything useful, and the failure left no trace in the response.
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+
   try {
     const response = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
+      signal: controller.signal,
       headers: {
         "api-key": apiKey,
         "content-type": "application/json",
@@ -126,12 +134,15 @@ export default async function handler(req: any, res: any) {
     if (!response.ok) {
       const detail = await response.text().catch(() => response.statusText);
       console.error("[contact] Brevo rejected the message:", response.status, detail);
-      return res.status(502).json({ ok: false, code: "delivery_failed" });
+      return res.status(502).json({ ok: false, code: "delivery_failed", status: response.status });
     }
 
     return res.status(200).json({ ok: true });
-  } catch (error) {
-    console.error("[contact] Failed to deliver lead:", error);
-    return res.status(502).json({ ok: false, code: "delivery_failed" });
+  } catch (error: any) {
+    const reason = error?.name === "AbortError" ? "timeout" : (error?.message ?? "unknown");
+    console.error("[contact] Failed to deliver lead:", reason, error);
+    return res.status(502).json({ ok: false, code: "delivery_failed", reason });
+  } finally {
+    clearTimeout(timeout);
   }
 }

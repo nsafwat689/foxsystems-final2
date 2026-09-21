@@ -96,7 +96,31 @@ export function initAnalytics() {
     window.gtag?.("event", name, params);
   };
 
-  window.trackCTA = label => event("cta_click", { event_category: "engagement", event_label: label });
-  window.trackWhatsApp = () => event("whatsapp_click", { event_category: "lead", event_label: "WhatsApp" });
-  window.trackFormSubmit = service => event("form_submit", { event_category: "lead", event_label: service || "General" });
+  /**
+   * Report the same action to the Pixel as well as GA4.
+   *
+   * These previously went to GA4 only, so Meta never learned that a visitor
+   * converted — which means its delivery cannot be optimised for leads and no
+   * conversion-based audience can be built from the traffic. "Lead" and
+   * "Contact" are Meta's standard events and are the ones ad campaigns can
+   * optimise towards; anything else is sent as a custom event.
+   */
+  const fbqTrack = (name: string, standard: boolean, params?: Record<string, unknown>) => {
+    window.fbq?.(standard ? "track" : "trackCustom", name, params);
+  };
+
+  window.trackCTA = label => {
+    event("cta_click", { event_category: "engagement", event_label: label });
+    fbqTrack("CTAClick", false, { label });
+  };
+  window.trackWhatsApp = () => {
+    event("whatsapp_click", { event_category: "lead", event_label: "WhatsApp" });
+    fbqTrack("Contact", true, { method: "WhatsApp" });
+  };
+  window.trackFormSubmit = service => {
+    event("form_submit", { event_category: "lead", event_label: service || "General" });
+    // Fired only after the lead was actually accepted — see LeadForm.tsx, which
+    // calls this inside the success branch, so a failed send is not a conversion.
+    fbqTrack("Lead", true, { content_name: service || "General" });
+  };
 }

@@ -118,7 +118,11 @@ export function initAnalytics() {
     fbqTrack("Contact", true, { method: "WhatsApp" });
   };
   window.trackFormSubmit = service => {
-    event("form_submit", { event_category: "lead", event_label: service || "General" });
+    // "generate_lead" is GA4's recommended lead event, and deliberately NOT
+    // "form_submit": that name collides with GA4 Enhanced Measurement's own
+    // automatic form_submit, which fires on any submission including ones that
+    // failed to deliver — so the two together would overstate conversions.
+    event("generate_lead", { event_category: "lead", event_label: service || "General" });
     // Fired only after the lead was actually accepted — see LeadForm.tsx, which
     // calls this inside the success branch, so a failed send is not a conversion.
     fbqTrack("Lead", true, { content_name: service || "General" });

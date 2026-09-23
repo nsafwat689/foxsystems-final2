@@ -8,12 +8,16 @@ import { useEffect } from "react";
  * Add a profile here only once you've confirmed it resolves.
  */
 export const SOCIAL_PROFILES = [
-  "https://www.linkedin.com/company/fox-systems",
-  // The page the owner confirmed (2026-09-21). It is a share link rather than
-  // a vanity URL; swap it for facebook.com/<pagename> once that is known, since
-  // a stable canonical URL is a stronger sameAs signal than a share redirect.
-  "https://www.facebook.com/share/1Dd5TU3GED/",
-  "https://www.instagram.com/foxsystemstech",
+  // Supplied by the owner 2026-09-23. Tracking parameters (stkn, fbclid,
+  // mibextid) are stripped on purpose: sameAs should carry the stable
+  // canonical URL, not a click identifier that expires.
+  "https://www.instagram.com/fox_systems_",
+  "https://x.com/Fox_systemsinfo",
+  "https://www.facebook.com/share/1MgVxHhwoy/",
+  "https://www.linkedin.com/in/fox-systems",
+  // The Google Business Profile, so the listing and the site resolve to one
+  // entity. The share link redirects to kgmid /g/11zxrzrd5k.
+  "https://share.google/LopyMBpAWpevaXxJc",
 ];
 
 export interface SEOConfig {
@@ -252,8 +256,8 @@ export function updateMetaTags(config: SEOConfig) {
     'twitter:image': config.ogImage,
     'twitter:image:alt': config.ogTitle,
     'twitter:card': 'summary_large_image',
-    'twitter:site': '@FoxSystemsEgypt',
-    'twitter:creator': '@FoxSystemsEgypt',
+    'twitter:site': '@Fox_systemsinfo',
+    'twitter:creator': '@Fox_systemsinfo',
     'robots': 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
     'googlebot': 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
     'bingbot': 'index, follow',
@@ -441,7 +445,7 @@ export function generateLocalBusinessSchema() {
       "latitude": 29.9603,
       "longitude": 31.2569
     },
-    "hasMap": "https://maps.google.com/?q=8+Badr+Street+Maadi+Cairo+Egypt",
+    "hasMap": "https://share.google/LopyMBpAWpevaXxJc",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",

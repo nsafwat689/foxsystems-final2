@@ -14,7 +14,9 @@ export const SOCIAL_PROFILES = [
   "https://www.instagram.com/fox_systems_",
   "https://x.com/Fox_systemsinfo",
   "https://www.facebook.com/share/1MgVxHhwoy/",
-  "https://www.linkedin.com/in/fox-systems",
+  // The COMPANY page, not the /in/ personal profile: schema.org Organization
+  // sameAs should reference the organisation's own page.
+  "https://www.linkedin.com/company/fox-systems",
   // The Google Business Profile, so the listing and the site resolve to one
   // entity. The share link redirects to kgmid /g/11zxrzrd5k.
   "https://share.google/LopyMBpAWpevaXxJc",

@@ -14,7 +14,7 @@ const T = {
   en: {
     badge: "Free Download",
     title: "The Ultimate IT Readiness Guide for Egyptian Businesses",
-    subtitle: "A practical 28-page guide covering CRM, cybersecurity, network infrastructure, and VoIP — written specifically for Egyptian and MENA enterprises.",
+    subtitle: "A practical guide covering CRM, cybersecurity, network infrastructure, and VoIP — written specifically for Egyptian and MENA enterprises.",
     downloadBtn: "Download Free Guide",
     namePlaceholder: "Your full name",
     emailPlaceholder: "Work email address",
@@ -51,13 +51,13 @@ const T = {
     testimonial: "This is exactly the kind of practical guide I wish I had 3 years ago when we were evaluating CRM vendors. It's clear, actionable, and specific to the Egyptian market.",
     testimonialPerson: "IT Director — Hassan Allam Holding",
     sidebarTitle: "What You'll Get",
-    sidebarItems: ["28-page practical PDF guide", "IT Budget Planning Excel template", "Vendor Evaluation Scorecard", "Cybersecurity Baseline Checklist", "Free follow-up consultation"],
+    sidebarItems: ["Practical PDF guide, six chapters", "IT budget planning framework", "Vendor evaluation scorecard", "Cybersecurity baseline checklist", "Free follow-up consultation"],
     sizeOptions: ["1–10 Employees", "11–50 Employees", "51–200 Employees", "200+ Employees"],
   },
   ar: {
     badge: "تحميل مجاني",
     title: "الدليل الشامل للجاهزية التقنية للشركات المصرية",
-    subtitle: "دليل عملي من 28 صفحة يغطي CRM والأمن السيبراني والبنية التحتية للشبكة و VoIP — مكتوب خصيصاً للمؤسسات المصرية والشرق أوسطية.",
+    subtitle: "دليل عملي يغطي CRM والأمن السيبراني والبنية التحتية للشبكة و VoIP — مكتوب خصيصاً للمؤسسات المصرية والشرق أوسطية.",
     downloadBtn: "تحميل الدليل المجاني",
     namePlaceholder: "الاسم الكامل",
     emailPlaceholder: "البريد الإلكتروني للعمل",
@@ -94,7 +94,7 @@ const T = {
     testimonial: "هذا هو بالضبط الدليل العملي الذي كنت أتمنى وجوده قبل 3 سنوات عندما كنا نقيّم موردي CRM. واضح وقابل للتنفيذ ومحدد للسوق المصري.",
     testimonialPerson: "مدير تقنية المعلومات — حسن علام القابضة",
     sidebarTitle: "ما ستحصل عليه",
-    sidebarItems: ["دليل PDF عملي من 28 صفحة", "نموذج Excel لتخطيط ميزانية IT", "بطاقة تقييم الموردين", "قائمة مراجعة الأمان الأساسية", "استشارة متابعة مجانية"],
+    sidebarItems: ["دليل PDF عملي من ٦ فصول", "إطار تخطيط ميزانية تكنولوجيا المعلومات", "بطاقة تقييم الموردين", "قائمة مراجعة الأمان الأساسية", "استشارة متابعة مجانية"],
     sizeOptions: ["1–10 موظفين", "11–50 موظفاً", "51–200 موظف", "200+ موظف"],
   },
 };
@@ -148,10 +148,10 @@ export default function LeadMagnet({ language }: LeadMagnetProps) {
 
   const seoConfig = {
     title: isArabic ? "دليل الجاهزية التقنية المجاني | فوكس سيستمز" : "Free IT Readiness Guide | Fox Systems Egypt",
-    description: isArabic ? "حمّل الدليل الشامل للجاهزية التقنية للشركات المصرية — يغطي CRM والأمن السيبراني والشبكات ومراكز الاتصال. 28 صفحة مجاناً." : "Download the Ultimate IT Readiness Guide for Egyptian businesses — covering CRM, cybersecurity, networking & call centers. 28 pages, completely free.",
+    description: isArabic ? "حمّل الدليل الشامل للجاهزية التقنية للشركات المصرية — يغطي CRM والأمن السيبراني والشبكات ومراكز الاتصال. مجاناً." : "Download the Ultimate IT Readiness Guide for Egyptian businesses — covering CRM, cybersecurity, networking & call centers. Completely free.",
     keywords: "free IT guide Egypt, CRM guide Egypt, cybersecurity checklist Egypt, IT readiness guide MENA, Fox Systems free download",
     ogTitle: isArabic ? "دليل الجاهزية التقنية المجاني | فوكس سيستمز" : "Free IT Readiness Guide | Fox Systems",
-    ogDescription: isArabic ? "دليل عملي من 28 صفحة للشركات المصرية — مجاناً" : "28-page practical guide for Egyptian businesses — completely free",
+    ogDescription: isArabic ? "دليل عملي للشركات المصرية — مجاناً" : "A practical guide for Egyptian businesses — completely free",
     ogImage: "https://foxsystemstech.com/guide-og.jpg",
     canonicalUrl: isArabic ? "https://foxsystemstech.com/ar/resources/it-guide" : "https://foxsystemstech.com/resources/it-guide",
     language,

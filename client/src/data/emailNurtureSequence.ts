@@ -32,8 +32,8 @@ export const NURTURE_SEQUENCE: NurtureEmail[] = [
     goal: "Deliver the guide, set expectations, warm the relationship",
     subject_en: "Your IT Readiness Guide is here 📥 + a quick note from our team",
     subject_ar: "دليل الجاهزية التقنية جاهز للتحميل 📥 + ملاحظة سريعة من فريقنا",
-    preview_en: "28 pages of practical IT advice built for Egyptian businesses — and a personal note from Fox Systems.",
-    preview_ar: "28 صفحة من النصائح التقنية العملية للشركات المصرية — وملاحظة شخصية من فوكس سيستمز.",
+    preview_en: "Practical IT advice built for Egyptian businesses — and a personal note from Fox Systems.",
+    preview_ar: "نصائح تقنية عملية للشركات المصرية — وملاحظة شخصية من فوكس سيستمز.",
     body_en: `Hi {{first_name}},
 
 Thank you for downloading our IT Readiness Guide. Your PDF is attached to this email and also available at the link below.

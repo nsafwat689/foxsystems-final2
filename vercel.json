@@ -92,6 +92,10 @@
       "destination": "/ar/articles/it-support-contracts.html"
     },
     {
+      "source": "/ar/articles/medical-crm-pharma-egypt",
+      "destination": "/ar/articles/medical-crm-pharma-egypt.html"
+    },
+    {
       "source": "/ar/articles/network-infrastructure",
       "destination": "/ar/articles/network-infrastructure.html"
     },
@@ -102,6 +106,14 @@
     {
       "source": "/ar/articles/pbx-systems",
       "destination": "/ar/articles/pbx-systems.html"
+    },
+    {
+      "source": "/ar/articles/pest-control-software-egypt",
+      "destination": "/ar/articles/pest-control-software-egypt.html"
+    },
+    {
+      "source": "/ar/articles/real-estate-crm-egypt",
+      "destination": "/ar/articles/real-estate-crm-egypt.html"
     },
     {
       "source": "/ar/articles/telecom-trends",
@@ -216,6 +228,10 @@
       "destination": "/articles/it-support-contracts.html"
     },
     {
+      "source": "/articles/medical-crm-pharma-egypt",
+      "destination": "/articles/medical-crm-pharma-egypt.html"
+    },
+    {
       "source": "/articles/network-infrastructure",
       "destination": "/articles/network-infrastructure.html"
     },
@@ -226,6 +242,14 @@
     {
       "source": "/articles/pbx-systems",
       "destination": "/articles/pbx-systems.html"
+    },
+    {
+      "source": "/articles/pest-control-software-egypt",
+      "destination": "/articles/pest-control-software-egypt.html"
+    },
+    {
+      "source": "/articles/real-estate-crm-egypt",
+      "destination": "/articles/real-estate-crm-egypt.html"
     },
     {
       "source": "/articles/telecom-trends",

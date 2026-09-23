@@ -13,6 +13,255 @@ interface ArticleDetailProps {
 }
 
 const articleContent: Record<string, Record<"en" | "ar", any>> = {
+  "real-estate-crm-egypt": {
+    en: {
+      id: "real-estate-crm-egypt",
+      title: "How to Choose a Real Estate CRM in Egypt",
+      subtitle: "What property sales actually needs from a CRM — and what generic systems miss",
+      author: "Fox Systems Team",
+      date: "2026-09-23",
+      category: "CRM",
+      readTime: "9 min read",
+      image: "https://foxsystemstech.com/showcase/realestate-crm/pipeline.webp",
+      content: `
+        <h2>Why a generic CRM struggles with property</h2>
+        <p>Most CRM systems are built around a deal that closes once, is paid once, and involves one salesperson. Property breaks all three assumptions. The money arrives over three or four years in instalments, the inventory is a specific unit that can only be sold once, and the commission is usually split between people who each remember the split differently.</p>
+        <p>That mismatch is why so many brokerages in Egypt end up running a CRM for contacts and a spreadsheet for everything that matters.</p>
+
+        <h2>The five things a real estate CRM must do</h2>
+        <h3>1. Route leads before they go cold</h3>
+        <p>A property enquiry has a short half-life. If a buyer fills in a form at 9pm and nobody owns that lead until someone notices it the next afternoon, they have already spoken to two other developers. Automatic assignment to an available agent in the right branch, with a first-response clock running, is the single highest-value feature.</p>
+
+        <h3>2. Stop the same buyer entering three times</h3>
+        <p>Egyptian mobile numbers get typed in at least three ways: <em>01012345678</em>, <em>+201012345678</em>, and with spaces or a country prefix. A CRM that treats those as different people will quietly build a duplicate problem that makes every report wrong. Phone normalisation on entry plus a near-match warning while typing solves it at the source.</p>
+
+        <h3>3. Track instalments, not just the sale</h3>
+        <p>A signed contract is the start of a payment schedule, not the end of the deal. The system needs to generate a plan from a down payment and a term, then track what is collected, what is due and what is overdue — with reminders before a due date rather than a discovery a month after it was missed.</p>
+
+        <h3>4. Make commission calculable, not negotiable</h3>
+        <p>Month end becomes an argument when nobody can show what closed, at what rate, and what has already been paid out. Per-agent earned, paid and outstanding figures — with a printable statement — remove the argument entirely.</p>
+
+        <h3>5. Give every unit somewhere to send traffic</h3>
+        <p>If you are paying for ads, sending that traffic to a general website is waste. Being able to publish any unit as its own page, with a lead form and the assigned agent's contact details, turns ad spend into attributable enquiries.</p>
+
+        <h2>The Arabic question</h2>
+        <p>"Supports Arabic" can mean translated menu labels or a genuinely mirrored right-to-left interface. Test it with real data: enter a buyer's name in Arabic, log an activity in Arabic, then search for both. If search fails or the layout breaks, your team will be back in Excel within a month.</p>
+
+        <h2>Questions worth asking any vendor</h2>
+        <ul>
+          <li>Show me what happens when two agents open the same lead at once.</li>
+          <li>Generate a payment plan in front of me, then show me the overdue view.</li>
+          <li>Can I export everything, in an open format, without raising a ticket?</li>
+          <li>Who sees commission figures, and is that enforced in the database or just hidden in the interface?</li>
+        </ul>
+
+        <h2>See a system built for this</h2>
+        <p>Fox Systems builds and runs a <a href="/solutions/real-estate-crm">real estate CRM</a> covering lead routing with a response clock, a seven-stage pipeline with weighted forecasting, instalment plans with reminders, commission payouts, and a publishable page for every unit. It runs in production today, in Arabic and English.</p>
+      `,
+    },
+    ar: {
+      id: "real-estate-crm-egypt",
+      title: "كيف تختار نظام CRM عقاري في مصر",
+      subtitle: "ما تحتاجه مبيعات العقارات فعليًا من الـ CRM — وما تفتقده الأنظمة العامة",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-23",
+      category: "CRM",
+      readTime: "٩ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/realestate-crm/pipeline.webp",
+      content: `
+        <h2>ليه الـ CRM العام بيتعثر مع العقارات</h2>
+        <p>معظم أنظمة الـ CRM مبنية على صفقة بتتقفل مرة، وبتتدفع مرة، وفيها مندوب واحد. العقارات بتكسر الافتراضات التلاتة: الفلوس بتدخل على تلات أو أربع سنين أقساط، والمخزون وحدة معينة تتباع مرة واحدة بس، والعمولة غالبًا متقسّمة بين ناس كل واحد فاكرها بطريقة.</p>
+        <p>عشان كده شركات تسويق عقاري كتير في مصر بتنتهي وهي شغالة بـ CRM لجهات الاتصال وإكسل لكل حاجة مهمة.</p>
+
+        <h2>خمس حاجات لازم النظام العقاري يعملها</h2>
+        <h3>١. توزيع العملاء قبل ما يبردوا</h3>
+        <p>استفسار العقار عمره قصير. لو مشتري ملأ نموذج الساعة ٩ بالليل ومحدش مسؤول عنه لحد بعد الضهر، هو خلاص كلّم مطورين تانيين. التوزيع التلقائي على مندوب متاح في الفرع الصح، مع عدّاد استجابة أولى، هو أهم خاصية على الإطلاق.</p>
+
+        <h3>٢. منع تسجيل نفس المشتري ٣ مرات</h3>
+        <p>أرقام الموبايل المصرية بتتكتب بتلات صيغ على الأقل: <em>01012345678</em> و<em>+201012345678</em> وبمسافات أو مقدمة دولية. النظام اللي بيعتبرهم ناس مختلفة هيبني مشكلة تكرار بتخلي كل تقرير غلط. توحيد صيغة الرقم عند الإدخال مع تنبيه للمتشابه بيحل المشكلة من مصدرها.</p>
+
+        <h3>٣. تتبّع الأقساط مش البيعة بس</h3>
+        <p>العقد الموقّع هو بداية جدول سداد مش نهاية الصفقة. النظام لازم يولّد خطة من مقدّم ومدة، ويتابع المحصّل والمستحق والمتأخر — بتذكيرات قبل موعد الاستحقاق مش اكتشاف بعد شهر من تأخره.</p>
+
+        <h3>٤. خلي العمولة محسوبة مش قابلة للتفاوض</h3>
+        <p>آخر الشهر بيبقى خناقة لما محدش يقدر يوضّح إيه اللي اتقفل وبكام ونزل منه كام. أرقام المستحق والمدفوع والمتبقي لكل مندوب — مع كشف حساب قابل للطباعة — بتنهي النقاش.</p>
+
+        <h3>٥. اِدِّي كل وحدة مكان توديلها الزيارات</h3>
+        <p>لو بتدفع في إعلانات، توجيه الزيارات لموقع عام ده هدر. إن أي وحدة تتنشر كصفحة بنموذج تواصل وبيانات المندوب المسؤول بيحوّل ميزانية الإعلانات لاستفسارات محسوبة.</p>
+
+        <h2>مسألة العربي</h2>
+        <p>"بيدعم العربي" ممكن تعني ترجمة القوائم أو واجهة معكوسة فعليًا من اليمين لليسار. جرّبها ببيانات حقيقية: اكتب اسم مشتري بالعربي، سجّل نشاط بالعربي، ودوّر على الاتنين. لو البحث فشل أو التصميم اتكسر، فريقك هيرجع لإكسل خلال شهر.</p>
+
+        <h2>أسئلة تستاهل تتسأل لأي مورّد</h2>
+        <ul>
+          <li>ورّيني بيحصل إيه لما مندوبين يفتحوا نفس العميل في نفس الوقت.</li>
+          <li>ولّد خطة سداد قدامي، وبعدين ورّيني شاشة المتأخرات.</li>
+          <li>أقدر أصدّر كل البيانات بصيغة مفتوحة من غير ما أفتح تذكرة دعم؟</li>
+          <li>مين يشوف أرقام العمولات، وده مفروض في قاعدة البيانات ولا مجرد إخفاء من الواجهة؟</li>
+        </ul>
+
+        <h2>شوف نظام متبني للغرض ده</h2>
+        <p>فوكس سيستمز بتبني وبتشغّل <a href="/ar/solutions/real-estate-crm">نظام CRM عقاري</a> فيه توزيع العملاء بعدّاد استجابة، ومسار من ٧ مراحل بتوقّع مرجّح، وخطط أقساط بتذكيرات، وصرف عمولات، وصفحة قابلة للنشر لكل وحدة. شغال في الإنتاج النهارده، بالعربي والإنجليزي.</p>
+      `,
+    },
+  },
+  "pest-control-software-egypt": {
+    en: {
+      id: "pest-control-software-egypt",
+      title: "Pest Control Software: What Field Service Teams Actually Need",
+      subtitle: "Routes, devices and proof — the three things a whiteboard cannot give you",
+      author: "Fox Systems Team",
+      date: "2026-09-23",
+      category: "Software",
+      readTime: "8 min read",
+      image: "https://foxsystemstech.com/showcase/pestcontrol-crm/dispatch.webp",
+      content: `
+        <h2>This is not a sales pipeline</h2>
+        <p>A CRM built for closing deals does not help a dispatcher standing in front of a whiteboard at 7am, reshuffling a day because one technician called in sick. Pest control and facility hygiene are routing businesses with an evidence problem attached: you have to get people to sites efficiently, and you have to prove what was done when a client or an auditor asks.</p>
+
+        <h2>Three problems software has to solve</h2>
+        <h3>1. Planning the round, and replanning it</h3>
+        <p>Tomorrow's work is a grid of technicians against days. When something changes, you need to move a job in seconds and see immediately whether an SLA is now at risk. Route optimisation on a day's jobs reduces driving time, but the more valuable part is simply that the plan lives somewhere other than one person's head.</p>
+
+        <h3>2. Proving a device was reached</h3>
+        <p>A tick on a paper sheet signed at the end of the day proves nothing. Putting a QR code on every bait station, trap and monitor changes that: scanning it on site is the evidence the device was physically reached, and it builds a scan history per device over time. That history is what turns "we think there is a problem near the loading bay" into a pattern you can show a client.</p>
+
+        <h3>3. Recording what was applied</h3>
+        <p>Chemical usage that lives nowhere becomes a serious problem the first time an incident or an audit asks what was applied, how much, and by whom. Capturing it at the visit is the only approach that survives scrutiny.</p>
+
+        <h2>The client portal is a support-cost decision</h2>
+        <p>Most calls to a pest control office are customers asking when the next visit is, or requesting a copy of a report. A portal where clients see their own sites, visits, reports and invoices removes that traffic — and in a market where many clients operate in Arabic, it needs full right-to-left support, not translated labels.</p>
+
+        <h2>What to check before buying</h2>
+        <ul>
+          <li>Can a technician use it in a phone browser, or does it need an app install on personal devices?</li>
+          <li>What happens where there is no signal — basements and cold stores are the usual problem?</li>
+          <li>Are permissions enforced in the database, so a client can never see another client's sites?</li>
+          <li>Can you export your own client and device register without asking the vendor?</li>
+          <li>Does the report format match what you issue today, or does it force you to change it?</li>
+        </ul>
+
+        <h2>A system built for this work</h2>
+        <p>Fox Systems runs a <a href="/solutions/pest-control-crm">pest control CRM</a> with a dispatch board by technician and day, route optimisation, technician check-in and out, QR-coded devices, structured service reports, contracts and invoicing, and a client portal in Arabic or English.</p>
+      `,
+    },
+    ar: {
+      id: "pest-control-software-egypt",
+      title: "برنامج مكافحة الحشرات: اللي فرق الخدمات الميدانية محتاجاه فعلًا",
+      subtitle: "خطوط السير والأجهزة والإثبات — تلات حاجات السبورة مش هتدّيهالك",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-23",
+      category: "البرمجيات",
+      readTime: "٨ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/pestcontrol-crm/dispatch.webp",
+      content: `
+        <h2>ده مش مسار مبيعات</h2>
+        <p>الـ CRM المبني لإقفال الصفقات مش بيساعد موزّع واقف قدام سبورة الساعة ٧ الصبح بيعيد ترتيب اليوم لأن فني مرض. مكافحة الآفات ونظافة المنشآت شغل خطوط سير وعليه مشكلة إثبات: لازم توصّل ناس لمواقع بكفاءة، ولازم تثبت اتعمل إيه لما عميل أو مدقّق يسأل.</p>
+
+        <h2>تلات مشاكل لازم البرنامج يحلها</h2>
+        <h3>١. تخطيط خط السير، وإعادة تخطيطه</h3>
+        <p>شغل بكرة عبارة عن شبكة فنيين في أيام. لما حاجة تتغيّر، محتاج تنقل مهمة في ثواني وتشوف فورًا لو فيه SLA بقى في خطر. تحسين المسار بيقلّل وقت القيادة، لكن الأهم إن الخطة بتبقى موجودة في مكان غير دماغ شخص واحد.</p>
+
+        <h3>٢. إثبات الوصول للجهاز</h3>
+        <p>علامة على ورقة بتتمضى آخر اليوم مش بتثبت حاجة. كود QR على كل محطة طُعم ومصيدة وجهاز مراقبة بيغيّر ده: مسحه في الموقع هو إثبات إن الجهاز اتوصلّه فعلًا، وبيبني سجل مسح لكل جهاز مع الوقت. السجل ده هو اللي بيحوّل "إحنا فاكرين إن فيه مشكلة جنب رصيف التحميل" لنمط تقدر تعرضه على العميل.</p>
+
+        <h3>٣. تسجيل اللي اتستخدم</h3>
+        <p>استهلاك المبيدات اللي مش متسجل في أي مكان بيبقى مشكلة كبيرة أول ما حادثة أو تدقيق يسأل اتستخدم إيه وبكام وبواسطة مين. تسجيله وقت الزيارة هو الأسلوب الوحيد اللي بيصمد للمراجعة.</p>
+
+        <h2>بوابة العملاء قرار تكلفة دعم</h2>
+        <p>معظم المكالمات لمكتب شركة مكافحة عملاء بيسألوا الزيارة الجاية إمتى أو عايزين نسخة من تقرير. بوابة العميل بيشوف فيها مواقعه وزياراته وتقاريره وفواتيره بتشيل الضغط ده — وفي سوق كتير من عملائه بيشتغلوا بالعربي، محتاجة دعم كامل من اليمين لليسار مش ترجمة قوائم.</p>
+
+        <h2>إيه اللي تتأكد منه قبل الشراء</h2>
+        <ul>
+          <li>الفني يقدر يستخدمه من متصفح الموبايل ولا محتاج تطبيق على جهازه الشخصي؟</li>
+          <li>بيحصل إيه لو مفيش شبكة — البدرومات والثلاجات هي المشكلة المعتادة؟</li>
+          <li>الصلاحيات مفروضة في قاعدة البيانات بحيث عميل ما يقدرش يشوف مواقع عميل تاني؟</li>
+          <li>تقدر تصدّر سجل عملائك وأجهزتك من غير ما تطلب من المورّد؟</li>
+          <li>شكل التقرير بيطابق اللي بتصدره دلوقتي ولا هيجبرك تغيّره؟</li>
+        </ul>
+
+        <h2>نظام متبني للشغل ده</h2>
+        <p>فوكس سيستمز بتشغّل <a href="/ar/solutions/pest-control-crm">نظام إدارة مكافحة الآفات</a> فيه لوحة توزيع بالفني واليوم، وتحسين مسارات، وحضور وانصراف الفنيين، وأجهزة بكود QR، وتقارير خدمة منظّمة، وعقود وفواتير، وبوابة عملاء بالعربي أو الإنجليزي.</p>
+      `,
+    },
+  },
+  "medical-crm-pharma-egypt": {
+    en: {
+      id: "medical-crm-pharma-egypt",
+      title: "Medical CRM for Pharmaceutical Field Teams in Egypt",
+      subtitle: "Verified visits, sample accountability, and coverage you can measure",
+      author: "Fox Systems Team",
+      date: "2026-09-23",
+      category: "CRM",
+      readTime: "8 min read",
+      image: "https://foxsystemstech.com/showcase/medical-crm/dashboard.webp",
+      content: `
+        <h2>The reporting problem</h2>
+        <p>Every medical rep team runs on visit reports. The difficulty is that a report is a claim. A general CRM will happily record that a rep visited a clinic at 10am — because the rep typed it in, possibly from home. Once a manager suspects that, the whole dataset loses authority, and decisions go back to being made on instinct.</p>
+        <p>GPS-verified check-in changes the nature of the record. When a rep can only check in from inside the institution's geofence, and location and accuracy are captured with the visit, a visit report stops being a claim and becomes evidence.</p>
+
+        <h2>Samples are a custody problem, not a stock problem</h2>
+        <p>Sample stock is not ordinary inventory. It moves from a warehouse to a rep to a physician, it expires, and at any point you may need to account for a specific batch. That requires tracking by batch and expiry with a full audit trail — every unit issued to a rep accounted for, and alerts before a batch expires rather than a write-off discovered afterwards.</p>
+
+        <h2>Coverage and frequency have to be measured, not reconstructed</h2>
+        <p>Coverage plans usually live in a spreadsheet that is already out of date by the time anyone reads it. The value of a field-force system is that it measures against the plan while the month is running — which HCPs and institutions are covered, how often, and by whom — so a gap can still be closed.</p>
+
+        <h2>What to look for</h2>
+        <ul>
+          <li><strong>Geofenced check-in</strong> with recorded location and accuracy, not just a timestamp.</li>
+          <li><strong>Batch-level sample tracking</strong> with expiry alerts and an audit trail.</li>
+          <li><strong>Order capture</strong> in the same place the visit is logged, so nothing is re-typed into another system.</li>
+          <li><strong>Role-based access</strong> enforced properly — a rep sees their territory, a manager sees their team.</li>
+          <li><strong>Genuine Arabic support</strong> with right-to-left layout, set per user.</li>
+          <li><strong>A mobile experience</strong> a rep can use one-handed between appointments.</li>
+        </ul>
+
+        <h2>A note on data and privacy</h2>
+        <p>Field-force systems hold information about named healthcare professionals and their prescribing behaviour. That is commercially sensitive and, depending on what you record, personal data. Ask any vendor where it is stored, who can read it, and what the audit trail shows. A system that cannot answer those questions is a liability regardless of its features.</p>
+
+        <h2>The system we build</h2>
+        <p>Fox Systems builds and runs a <a href="/solutions/medical-crm">medical and pharmaceutical CRM</a> with GPS-verified visits, sample batch tracking with audit trail, order management, coverage and frequency measurement, and an AI assistant that drafts follow-ups and detailing in Arabic or English.</p>
+      `,
+    },
+    ar: {
+      id: "medical-crm-pharma-egypt",
+      title: "نظام CRM طبي للفرق الميدانية في شركات الأدوية بمصر",
+      subtitle: "زيارات موثّقة، ومحاسبة على العيّنات، وتغطية تقدر تقيسها",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-23",
+      category: "CRM",
+      readTime: "٨ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/medical-crm/dashboard.webp",
+      content: `
+        <h2>مشكلة التقارير</h2>
+        <p>كل فريق دعاية طبية شغال على تقارير الزيارات. المشكلة إن التقرير دعوى. الـ CRM العام هيسجّل بكل بساطة إن المندوب زار العيادة الساعة ١٠ — لأن المندوب كتب كده، يمكن وهو في البيت. أول ما مدير يشك في ده، البيانات كلها بتفقد قيمتها، والقرارات بترجع تتاخد بالحدس.</p>
+        <p>تسجيل الحضور الموثّق بـ GPS بيغيّر طبيعة السجل. لما المندوب ما يقدرش يسجّل حضوره غير من جوه النطاق الجغرافي للمؤسسة، ومع تسجيل الموقع ودقته، تقرير الزيارة بيبطّل يبقى دعوى ويبقى دليل.</p>
+
+        <h2>العيّنات مشكلة عهدة مش مشكلة مخزون</h2>
+        <p>مخزون العيّنات مش مخزون عادي. بيتحرك من المخزن للمندوب للدكتور، وبينتهي، وفي أي لحظة ممكن تحتاج تحاسب على تشغيلة معيّنة. ده محتاج تتبّع بالتشغيلة وتاريخ الانتهاء بسجل تدقيق كامل — كل وحدة تُصرف للمندوب محسوبة، وتنبيهات قبل انتهاء التشغيلة بدل خسارة تتكتشف بعدين.</p>
+
+        <h2>التغطية والتكرار لازم يتقاسوا مش يتعاد تركيبهم</h2>
+        <p>خطط التغطية غالبًا بتعيش في ملف إكسل بيبقى قديم قبل ما حد يقراه. قيمة نظام الفريق الميداني إنه بيقيس على الخطة والشهر لسه شغال — مين الأطباء والمؤسسات المغطاة، وكل قد إيه، وبواسطة مين — عشان الفجوة تبقى لسه ممكن تتسد.</p>
+
+        <h2>إيه اللي تدوّر عليه</h2>
+        <ul>
+          <li><strong>تسجيل حضور بنطاق جغرافي</strong> مع تسجيل الموقع ودقته، مش مجرد توقيت.</li>
+          <li><strong>تتبّع العيّنات بالتشغيلة</strong> مع تنبيهات انتهاء وسجل تدقيق.</li>
+          <li><strong>تسجيل الطلبات</strong> في نفس المكان اللي الزيارة اتسجلت فيه، فمفيش إعادة كتابة في نظام تاني.</li>
+          <li><strong>صلاحيات حسب الدور</strong> مفروضة صح — المندوب يشوف منطقته، والمدير يشوف فريقه.</li>
+          <li><strong>دعم عربي حقيقي</strong> باتجاه من اليمين لليسار، لكل مستخدم على حدة.</li>
+          <li><strong>تجربة موبايل</strong> المندوب يقدر يستخدمها بإيد واحدة بين المواعيد.</li>
+        </ul>
+
+        <h2>ملاحظة عن البيانات والخصوصية</h2>
+        <p>أنظمة الفرق الميدانية بتحتفظ بمعلومات عن أطباء بالاسم وسلوكهم في الوصف. ده حساس تجاريًا، وحسب اللي بتسجله ممكن يكون بيانات شخصية. اسأل أي مورّد: البيانات متخزنة فين، مين يقدر يقراها، وسجل التدقيق بيوضّح إيه. النظام اللي ما يقدرش يجاوب على ده مسؤولية عليك مهما كانت مميزاته.</p>
+
+        <h2>النظام اللي بنبنيه</h2>
+        <p>فوكس سيستمز بتبني وبتشغّل <a href="/ar/solutions/medical-crm">نظام CRM طبي ودوائي</a> فيه زيارات موثّقة بـ GPS، وتتبّع تشغيلات العيّنات بسجل تدقيق، وإدارة طلبات، وقياس التغطية والتكرار، ومساعد ذكاء اصطناعي بيكتب المتابعات والعروض بالعربي أو الإنجليزي.</p>
+      `,
+    },
+  },
+
   "ai-infrastructure-2026": {
     en: {
       id: "ai-infrastructure-2026",

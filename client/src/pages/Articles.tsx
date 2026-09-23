@@ -45,6 +45,73 @@ const getBreadcrumbSchema = (lang: "en" | "ar") => {
 };
 
 const articles: Record<string, Record<"en" | "ar", Article>> = {
+  "real-estate-crm-egypt": {
+    en: {
+      id: "real-estate-crm-egypt",
+      title: "How to Choose a Real Estate CRM in Egypt",
+      excerpt: "Property sales is not a normal sales cycle. Here is what a real estate CRM in Egypt has to handle that a generic CRM does not.",
+      category: "CRM",
+      author: "Fox Systems Team",
+      date: "2026-09-23",
+      readTime: "9 min read",
+      image: "https://foxsystemstech.com/showcase/realestate-crm/pipeline.webp",
+    },
+    ar: {
+      id: "real-estate-crm-egypt",
+      title: "كيف تختار نظام CRM عقاري في مصر",
+      excerpt: "مبيعات العقارات مش دورة بيع عادية. ده اللي لازم نظام CRM عقاري في مصر يتعامل معاه، والـ CRM العام مش بيعمله.",
+      category: "CRM",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-23",
+      readTime: "٩ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/realestate-crm/pipeline.webp",
+    },
+  },
+  "pest-control-software-egypt": {
+    en: {
+      id: "pest-control-software-egypt",
+      title: "Pest Control Software: What Field Service Teams Actually Need",
+      excerpt: "Pest control is a routing and evidence business. Here is what software has to handle that a generic CRM or a whiteboard cannot.",
+      category: "Software",
+      author: "Fox Systems Team",
+      date: "2026-09-23",
+      readTime: "8 min read",
+      image: "https://foxsystemstech.com/showcase/pestcontrol-crm/dispatch.webp",
+    },
+    ar: {
+      id: "pest-control-software-egypt",
+      title: "برنامج مكافحة الحشرات: اللي فرق الخدمات الميدانية محتاجاه فعلًا",
+      excerpt: "مكافحة الآفات شغل خطوط سير وإثبات. ده اللي لازم البرنامج يتعامل معاه، والـ CRM العام أو السبورة مش هيعملوه.",
+      category: "البرمجيات",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-23",
+      readTime: "٨ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/pestcontrol-crm/dispatch.webp",
+    },
+  },
+  "medical-crm-pharma-egypt": {
+    en: {
+      id: "medical-crm-pharma-egypt",
+      title: "Medical CRM for Pharmaceutical Field Teams in Egypt",
+      excerpt: "A pharma field force has requirements no general CRM covers: provable visits, sample batch custody, and coverage measured against a plan.",
+      category: "CRM",
+      author: "Fox Systems Team",
+      date: "2026-09-23",
+      readTime: "8 min read",
+      image: "https://foxsystemstech.com/showcase/medical-crm/dashboard.webp",
+    },
+    ar: {
+      id: "medical-crm-pharma-egypt",
+      title: "نظام CRM طبي للفرق الميدانية في شركات الأدوية بمصر",
+      excerpt: "الفريق الميداني في شركات الأدوية له متطلبات مش موجودة في أي CRM عام: زيارات قابلة للإثبات، وعهدة تشغيلات العيّنات، وتغطية مقاسة على خطة.",
+      category: "CRM",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-23",
+      readTime: "٨ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/medical-crm/dashboard.webp",
+    },
+  },
+
   "ai-infrastructure-2026": {
     en: {
       id: "ai-infrastructure-2026",

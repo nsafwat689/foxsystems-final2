@@ -15,6 +15,7 @@ import Header from "@/components/Header";
 
 // Lazy: pulls in data/solutions.ts, which must not land in the entry bundle.
 const CrmProductsShowcase = React.lazy(() => import("@/components/CrmProductsShowcase"));
+const ServiceChooser = React.lazy(() => import("@/components/ServiceChooser"));
 import LeadForm from "@/components/LeadForm";
 
 const T = {
@@ -482,6 +483,13 @@ export default function Home({ language }: HomeProps) {
           </div>
         </div>
       </section>
+
+      {/* ── WHAT DO YOU NEED ──
+          Sits before About on purpose: a visitor who just landed needs a route
+          to their own problem before the company talks about itself. */}
+      <React.Suspense fallback={<div className="h-64" />}>
+        <ServiceChooser language={language} />
+      </React.Suspense>
 
       {/* ── ABOUT ── */}
       <section className="py-24 bg-muted/40">

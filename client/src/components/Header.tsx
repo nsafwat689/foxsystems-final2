@@ -16,7 +16,7 @@ const translations = {
   en: {
     home: "Home", services: "Services", contact: "Contact Us",
     getStarted: "Schedule Consultation", articles: "Articles", industries: "Industries",
-    caseStudies: "Case Studies",
+    caseStudies: "Case Studies", crm: "CRM",
     internet: "Call Center & VoIP", software: "CRM Systems",
     hardware: "Hardware & Servers", cybersecurity: "Firewall & Security",
     infrastructure: "Network & Infrastructure", webDev: "Website Development",
@@ -27,7 +27,7 @@ const translations = {
   ar: {
     home: "الرئيسية", services: "الخدمات", contact: "اتصل بنا",
     getStarted: "احجز استشارة مجانية", articles: "المقالات", industries: "القطاعات",
-    caseStudies: "قصص النجاح",
+    caseStudies: "قصص النجاح", crm: "أنظمة CRM",
     internet: "مراكز الاتصال وVoIP", software: "أنظمة CRM",
     hardware: "الأجهزة والخوادم", cybersecurity: "جدران الحماية والأمن",
     infrastructure: "الشبكة والبنية التحتية", webDev: "تطوير المواقع",
@@ -158,6 +158,13 @@ export default function Header({ language }: HeaderProps) {
                 </DropdownMenuContent>
               </DropdownMenu>
 
+              {/* CRM is the large majority of the business, so it gets a
+                  top-level entry rather than sitting inside the dropdown. */}
+              <Link href={`${langPrefix}/services/software`}
+                className={navLinkCls(location.includes("/services/software") || location.includes("/solutions"))}>
+                {t.crm}
+              </Link>
+
               <Link href={`${langPrefix}/industries`}
                 className={navLinkCls(location.includes("/industries"))}>
                 {t.industries}
@@ -236,6 +243,11 @@ export default function Header({ language }: HeaderProps) {
                   </Link>
                 ))}
               </div>
+
+              <Link href={`${langPrefix}/services/software`} onClick={() => setIsMenuOpen(false)}
+                className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">
+                {t.crm}
+              </Link>
 
               <Link href={`${langPrefix}/industries`} onClick={() => setIsMenuOpen(false)}
                 className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">

@@ -117,6 +117,24 @@ export function initAnalytics() {
     event("whatsapp_click", { event_category: "lead", event_label: "WhatsApp" });
     fbqTrack("Contact", true, { method: "WhatsApp" });
   };
+  /**
+   * Catch every WhatsApp click with one delegated listener.
+   *
+   * There are 26 wa.me links across nine pages and only one of them called
+   * trackWhatsApp, so ~25 of 26 clicks were invisible to GA4 and Meta — which
+   * would have made whatsapp_click useless as a key event. Handling it here
+   * covers the existing links and any added later, rather than relying on
+   * whoever adds the next one remembering an onClick.
+   */
+  document.addEventListener(
+    "click",
+    e => {
+      const link = (e.target as Element | null)?.closest?.('a[href*="wa.me"]');
+      if (link) window.trackWhatsApp?.();
+    },
+    { capture: true }
+  );
+
   window.trackFormSubmit = service => {
     // "generate_lead" is GA4's recommended lead event, and deliberately NOT
     // "form_submit": that name collides with GA4 Enhanced Measurement's own

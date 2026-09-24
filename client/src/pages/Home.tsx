@@ -960,7 +960,7 @@ export default function Home({ language }: HomeProps) {
         >
           <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#25D366] rounded-full font-bold text-white text-sm"
-            onClick={() => { if (typeof window !== "undefined" && (window as any).trackWhatsApp) (window as any).trackWhatsApp(); }}>
+            >
             <MessageCircle className="w-4 h-4" /> WhatsApp
           </a>
           <Link href={`${langPrefix}/contact`} className="flex-1">

@@ -11,6 +11,7 @@ import { serviceSEOConfigs, arabicSEOConfigs, generateServiceSchema, generateBre
 import { serviceDetailsAr } from "@/data/serviceDetailsAr";
 import CrmProductsShowcase from "@/components/CrmProductsShowcase";
 import CrmPricing from "@/components/CrmPricing";
+import CrmCommitments from "@/components/CrmCommitments";
 
 interface ServiceDetailProps {
   serviceId: string;
@@ -476,6 +477,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
               {/* Real software we shipped, shown where people shop for CRM. */}
               {serviceId === "crm" && <CrmProductsShowcase language={language} />}
               {serviceId === "crm" && <CrmPricing language={language} />}
+              {serviceId === "crm" && <CrmCommitments language={language} />}
 
               {/* ── SERVICE FAQ ── */}
               <ServiceFAQ serviceId={serviceId} isArabic={isArabic} langPrefix={langPrefix} />

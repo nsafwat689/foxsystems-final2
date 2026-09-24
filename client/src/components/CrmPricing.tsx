@@ -60,7 +60,7 @@ const T = {
   en: {
     kicker: "Pricing",
     title: "CRM pricing, in plain numbers",
-    sub: "Flat pricing per team, not per seat. Implementation, training and support are included — not billed separately once you have signed.",
+    sub: "Flat pricing per team, not per seat, for the standard CRM. Implementation, training and support are included — not billed separately once you have signed. Customisation is quoted on top.",
     monthly: "Monthly",
     annual: "Annual",
     annualNote: "Pay for 10 months instead of 12",
@@ -70,7 +70,7 @@ const T = {
     popular: "Most complete",
     included: "Included in every plan",
     includedItems: [
-      "Standard or customised CRM, built for your sector",
+      "The standard CRM, configured for your sector",
       "Full Arabic and English interface, right-to-left throughout",
       "Implementation, data migration and team training",
       "24/7 support, plus on-site visits when needed",
@@ -94,7 +94,7 @@ const T = {
   ar: {
     kicker: "الأسعار",
     title: "أسعار الـ CRM بأرقام واضحة",
-    sub: "سعر ثابت للفريق، مش لكل مستخدم. التركيب والتدريب والدعم مشمولين — مش فاتورة منفصلة بعد التوقيع.",
+    sub: "سعر ثابت للفريق مش لكل مستخدم، للنظام القياسي. التركيب والتدريب والدعم مشمولين — مش فاتورة منفصلة بعد التوقيع. التخصيص بيتسعّر فوقهم.",
     monthly: "شهري",
     annual: "سنوي",
     annualNote: "ادفع ١٠ شهور بدل ١٢",
@@ -104,7 +104,7 @@ const T = {
     popular: "الأشمل",
     included: "مشمول في كل الباقات",
     includedItems: [
-      "CRM قياسي أو مخصص، متبني لمجال شغلك",
+      "النظام القياسي، مظبوط على مجال شغلك",
       "واجهة كاملة بالعربي والإنجليزي، باتجاه من اليمين لليسار",
       "التركيب ونقل البيانات وتدريب الفريق",
       "دعم ٢٤/٧، وزيارات في الموقع عند الحاجة",

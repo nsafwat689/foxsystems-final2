@@ -57,7 +57,7 @@ export const SOLUTIONS_INDEX_SEO: Record<"en" | "ar", SEOConfig> = {
 
 const SERVICE_IDS = [
   "internet",
-  "software",
+  "crm",
   "hardware",
   "cybersecurity",
   "infrastructure",
@@ -72,7 +72,7 @@ export function buildRouteMeta(): Record<string, SEOConfig> {
     "/articles": serviceSEOConfigs.articles,
     "/ar/articles": arabicSEOConfigs.articles,
     "/contact": {
-      ...serviceSEOConfigs.software,
+      ...serviceSEOConfigs.crm,
       title: "Contact Fox Systems | CRM & IT Support Egypt",
       description:
         "Talk to a CRM and IT engineer in Egypt, Saudi Arabia or Kuwait. Free consultation, fast response, and 24/7 support. Call, WhatsApp or send a message.",
@@ -83,7 +83,7 @@ export function buildRouteMeta(): Record<string, SEOConfig> {
     },
     "/ar/contact": arabicSEOConfigs.contact,
     "/services": {
-      ...serviceSEOConfigs.software,
+      ...serviceSEOConfigs.crm,
       title: "IT Services Egypt | CRM, Call Center, Security | Fox Systems",
       description:
         "CRM systems, call centres, firewalls, VoIP, servers and network infrastructure for businesses in Egypt, Saudi Arabia and Kuwait. 24/7 support.",

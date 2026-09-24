@@ -33,7 +33,7 @@ const CARDS = [
   ["contact-og.jpg", "Talk to a CRM and IT Engineer", "Contact"],
   ["guide-og.jpg", "The IT Readiness Guide for Egyptian Business", "Free Download"],
   ["services/internet-og.jpg", "Call Center and Internet Connectivity", "Service"],
-  ["services/software-og.jpg", "CRM and ERP Software Implementation", "Service"],
+  ["services/crm-og.jpg", "CRM and ERP Software Implementation", "Service"],
   ["services/hardware-og.jpg", "Servers, Workstations and Hardware Supply", "Service"],
   ["services/cybersecurity-og.jpg", "Firewalls and Cybersecurity Operations", "Service"],
   ["services/infrastructure-og.jpg", "Network and Structured Cabling Infrastructure", "Service"],

@@ -74,14 +74,14 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
     canonicalUrl: "https://foxsystemstech.com/services/internet",
     language: "en",
   },
-  software: {
+  crm: {
     title: "CRM Systems Egypt | Implementation & Support | Fox Systems",
     description: "CRM implementation in Egypt, Saudi Arabia and Kuwait. Sales pipeline, customer management and automated follow-up, in Arabic and English. Free demo.",
     keywords: "CRM Egypt, CRM system Egypt, CRM software Egypt, نظام CRM مصر, تطبيق CRM مصر, CRM implementation Egypt, CRM provider Egypt, best CRM Egypt, CRM company Cairo, CRM Saudi Arabia, CRM Kuwait, CRM Middle East, نظام إدارة علاقات العملاء, sales CRM Egypt, customer management Egypt, ERP Egypt, Odoo Egypt, ERP implementation Egypt, شريك أودو مصر, custom software Egypt, business software Egypt, CRM pricing Egypt, أفضل CRM مصر, برنامج CRM مصر, إدارة العملاء مصر",
     ogTitle: "CRM Systems Egypt | Best CRM Implementation - Fox Systems",
     ogDescription: "Egypt's #1 CRM implementation company. Sales CRM, customer management, Arabic & English. Free demo.",
-    ogImage: "https://foxsystemstech.com/services/software-og.jpg",
-    canonicalUrl: "https://foxsystemstech.com/services/software",
+    ogImage: "https://foxsystemstech.com/services/crm-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/services/crm",
     language: "en",
   },
   hardware: {
@@ -171,14 +171,14 @@ export const arabicSEOConfigs: Record<string, SEOConfig> = {
     canonicalUrl: "https://foxsystemstech.com/ar/contact",
     language: "ar",
   },
-  software: {
+  crm: {
     title: "نظام CRM مصر | التطبيق والدعم | فوكس سيستمز",
     description: "تطبيق أنظمة CRM في مصر والسعودية والكويت. إدارة العملاء، قمع المبيعات، متابعة تلقائية، وتقارير فورية. واجهة عربية وإنجليزية.",
     keywords: "نظام CRM مصر, CRM مصر, تطبيق CRM مصر, برنامج CRM مصر, أفضل CRM مصر, شركة CRM مصر, إدارة علاقات العملاء مصر, CRM السعودية, CRM الكويت, CRM الشرق الأوسط, ERP مصر, Odoo مصر, برمجيات مصر, أتمتة مبيعات مصر",
     ogTitle: "نظام CRM مصر | أفضل تطبيق CRM - فوكس سيستمز",
     ogDescription: "الشركة الأولى لتطبيق CRM في مصر. عرض مجاني. واجهة عربية.",
-    ogImage: "https://foxsystemstech.com/services/software-og.jpg",
-    canonicalUrl: "https://foxsystemstech.com/ar/services/software",
+    ogImage: "https://foxsystemstech.com/services/crm-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/services/crm",
     language: "ar",
   },
   internet: {

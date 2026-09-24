@@ -121,7 +121,7 @@ export default function ServiceChooser({ language }: Props) {
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-6 max-w-xl">{t.crmDesc}</p>
               <Link
-                href={`${prefix}/services/software`}
+                href={`${prefix}/services/crm`}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white font-bold hover:gap-3 transition-all shadow-lg shadow-primary/25"
               >
                 {t.crmCta}

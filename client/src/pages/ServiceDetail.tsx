@@ -474,8 +474,8 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
               </div>
 
               {/* Real software we shipped, shown where people shop for CRM. */}
-              {serviceId === "software" && <CrmProductsShowcase language={language} />}
-              {serviceId === "software" && <CrmPricing language={language} />}
+              {serviceId === "crm" && <CrmProductsShowcase language={language} />}
+              {serviceId === "crm" && <CrmPricing language={language} />}
 
               {/* ── SERVICE FAQ ── */}
               <ServiceFAQ serviceId={serviceId} isArabic={isArabic} langPrefix={langPrefix} />

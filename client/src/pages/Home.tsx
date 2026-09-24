@@ -70,19 +70,12 @@ const T = {
     testimonialsSub: "Real results from real businesses across Egypt, Saudi Arabia & Kuwait",
     caseTitle: "Client Success Stories",
     caseSub: "How we've transformed operations for leading organizations",
-    statsTitle: "Why 300+ Businesses Trust Us",
+    statsTitle: "Fox Systems in numbers",
     s1: "Years Experience", s2: "Happy Clients", s3: "Projects Done", s4: "Support",
     clientsTitle: "Trusted by Leading Organizations",
     clientsSub: "Over 300 companies across Egypt, Saudi Arabia & Kuwait trust Fox Systems for CRM and IT",
     partnersTitle: "Technology Partners",
     partnersSub: "We work with the world's leading technology brands",
-    valuesTitle: "Our Core Values",
-    v1:"Integrity", v1d:"Transparent with every client, always doing what's right.",
-    v2:"Reliability", v2d:"24/7 support and dependable delivery, anywhere.",
-    v3:"Innovation", v3d:"Continuously improving our CRM and IT solutions.",
-    v4:"Teamwork", v4d:"Expert collaboration on every project.",
-    v5:"Excellence", v5d:"Top quality in every implementation and interaction.",
-    v6:"Trust", v6d:"Long-term partnerships built on results.",
     faqTitle: "Frequently Asked Questions",
     faqSub: "Common questions about CRM and IT solutions in Egypt and the Middle East",
     faqs: [
@@ -164,19 +157,12 @@ const T = {
     testimonialsSub: "نتائج حقيقية من شركات حقيقية في مصر والسعودية والكويت",
     caseTitle: "قصص نجاح عملائنا",
     caseSub: "كيف حولنا عمليات المؤسسات الرائدة",
-    statsTitle: "لماذا تثق بنا أكثر من 300 شركة",
+    statsTitle: "فوكس سيستمز بالأرقام",
     s1: "سنوات الخبرة", s2: "عملاء سعداء", s3: "مشاريع منجزة", s4: "دعم",
     clientsTitle: "موثوق به من قبل المؤسسات الرائدة",
     clientsSub: "أكثر من 300 شركة في مصر والسعودية والكويت تثق بـ فوكس سيستمز",
     partnersTitle: "شركاؤنا التقنيون",
     partnersSub: "نعمل مع أكبر العلامات التجارية التقنية في العالم",
-    valuesTitle: "قيمنا الأساسية",
-    v1:"النزاهة", v1d:"شفافية تامة مع كل عميل في كل وقت.",
-    v2:"الموثوقية", v2d:"دعم 24/7 وتسليم موثوق في أي وقت ومكان.",
-    v3:"الابتكار", v3d:"تحسين مستمر لحلول CRM وتكنولوجيا المعلومات.",
-    v4:"العمل الجماعي", v4d:"تعاون متخصص في كل مشروع.",
-    v5:"التميز", v5d:"أعلى جودة في كل تطبيق وتفاعل.",
-    v6:"الثقة", v6d:"شراكات طويلة الأمد مبنية على النتائج.",
     faqTitle: "الأسئلة الشائعة",
     faqSub: "أسئلة شائعة حول أنظمة CRM وحلول IT في مصر والشرق الأوسط",
     faqs: [
@@ -224,9 +210,9 @@ export default function Home({ language }: HomeProps) {
   }, []);
 
   const services = [
-    { icon: Database, title: t.crmSvc, sub: t.crmSvcSub, desc: t.crmSvcDesc, href: `${langPrefix}/services/software`, featured: true },
+    { icon: Database, title: t.crmSvc, sub: t.crmSvcSub, desc: t.crmSvcDesc, href: `${langPrefix}/services/crm`, featured: true },
     { icon: HeadphonesIcon, title: t.callSvc, desc: t.callSvcDesc, href: `${langPrefix}/services/internet` },
-    { icon: Cpu, title: t.erpSvc, desc: t.erpSvcDesc, href: `${langPrefix}/services/software` },
+    { icon: Cpu, title: t.erpSvc, desc: t.erpSvcDesc, href: `${langPrefix}/services/crm` },
     { icon: Shield, title: t.fwSvc, desc: t.fwSvcDesc, href: `${langPrefix}/services/cybersecurity` },
     { icon: Network, title: t.infSvc, desc: t.infSvcDesc, href: `${langPrefix}/services/infrastructure` },
     { icon: Server, title: t.hwSvc, desc: t.hwSvcDesc, href: `${langPrefix}/services/hardware` },
@@ -236,15 +222,6 @@ export default function Home({ language }: HomeProps) {
   const stats = [
     { value: "16+", label: t.s1 }, { value: "300+", label: t.s2 },
     { value: "500+", label: t.s3 }, { value: "24/7", label: t.s4 },
-  ];
-
-  const values = [
-    { icon: Shield, title: t.v1, desc: t.v1d },
-    { icon: Clock, title: t.v2, desc: t.v2d },
-    { icon: Lightbulb, title: t.v3, desc: t.v3d },
-    { icon: Users, title: t.v4, desc: t.v4d },
-    { icon: Briefcase, title: t.v5, desc: t.v5d },
-    { icon: Lock, title: t.v6, desc: t.v6d },
   ];
 
   const whyUs = [
@@ -606,7 +583,7 @@ export default function Home({ language }: HomeProps) {
       {/* ── CRM PRODUCTS ──
           The three product pages are the most commercially valuable URLs on
           the site and had no link from the home page at all — they were only
-          reachable via /services/software. Lazy-loaded so the solutions
+          reachable via /services/crm. Lazy-loaded so the solutions
           content stays out of the entry bundle. */}
       <section className="py-4 bg-background">
         <div className="container">
@@ -675,32 +652,6 @@ export default function Home({ language }: HomeProps) {
                 <span className="text-[11px] font-semibold text-muted-foreground text-center">{p.name}</span>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── VALUES ── */}
-      <section className="py-24 bg-background">
-        <div className="container">
-          <motion.div initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} viewport={{once:true}} className="text-center mb-14">
-            <span className="pill mb-4 inline-block">{isArabic?"من نحن":"Who We Are"}</span>
-            <h2 className="text-4xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{t.valuesTitle}</h2>
-            <div className="section-divider mx-auto mt-4" />
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {values.map((v, i) => {
-              const Icon = v.icon;
-              return (
-                <motion.div key={i} custom={i} variants={fadeUp} initial="hidden" whileInView="show" viewport={{once:true}}
-                  className="group p-7 rounded-2xl bg-muted/40 border border-border hover:border-primary/25 hover:bg-primary/5 transition-all card-hover">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary transition-colors">
-                    <Icon className="w-5.5 h-5.5 text-primary group-hover:text-white transition-colors" />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{v.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
-                </motion.div>
-              );
-            })}
           </div>
         </div>
       </section>
@@ -889,7 +840,7 @@ export default function Home({ language }: HomeProps) {
               <h4 className="font-bold text-sm uppercase tracking-widest text-white/50 mb-5">{t.footerServices}</h4>
               <ul className="space-y-3 text-sm">
                 {[
-                  [t.crmSvc, `${langPrefix}/services/software`],
+                  [t.crmSvc, `${langPrefix}/services/crm`],
                   [t.callSvc, `${langPrefix}/services/internet`],
                   [t.fwSvc, `${langPrefix}/services/cybersecurity`],
                   [t.infSvc, `${langPrefix}/services/infrastructure`],

@@ -55,7 +55,7 @@ export default function Header({ language }: HeaderProps) {
   useEffect(() => { setIsMenuOpen(false); }, [location]);
 
   const serviceItems = [
-    { name: t.software,        href: `${langPrefix}/services/software`,        icon: "🧩" },
+    { name: t.software,        href: `${langPrefix}/services/crm`,        icon: "🧩" },
     { name: t.internet,        href: `${langPrefix}/services/internet`,         icon: "📞" },
     { name: t.cybersecurity,   href: `${langPrefix}/services/cybersecurity`,    icon: "🛡️" },
     { name: t.infrastructure,  href: `${langPrefix}/services/infrastructure`,   icon: "🌐" },
@@ -160,8 +160,8 @@ export default function Header({ language }: HeaderProps) {
 
               {/* CRM is the large majority of the business, so it gets a
                   top-level entry rather than sitting inside the dropdown. */}
-              <Link href={`${langPrefix}/services/software`}
-                className={navLinkCls(location.includes("/services/software") || location.includes("/solutions"))}>
+              <Link href={`${langPrefix}/services/crm`}
+                className={navLinkCls(location.includes("/services/crm") || location.includes("/solutions"))}>
                 {t.crm}
               </Link>
 
@@ -244,7 +244,7 @@ export default function Header({ language }: HeaderProps) {
                 ))}
               </div>
 
-              <Link href={`${langPrefix}/services/software`} onClick={() => setIsMenuOpen(false)}
+              <Link href={`${langPrefix}/services/crm`} onClick={() => setIsMenuOpen(false)}
                 className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">
                 {t.crm}
               </Link>

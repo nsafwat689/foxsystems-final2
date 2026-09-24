@@ -6,6 +6,18 @@
   "env": {
     "NODE_ENV": "production"
   },
+  "redirects": [
+    {
+      "source": "/services/software",
+      "destination": "/services/crm",
+      "permanent": true
+    },
+    {
+      "source": "/ar/services/software",
+      "destination": "/ar/services/crm",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -140,6 +152,10 @@
       "destination": "/ar/services.html"
     },
     {
+      "source": "/ar/services/crm",
+      "destination": "/ar/services/crm.html"
+    },
+    {
       "source": "/ar/services/cybersecurity",
       "destination": "/ar/services/cybersecurity.html"
     },
@@ -154,10 +170,6 @@
     {
       "source": "/ar/services/internet",
       "destination": "/ar/services/internet.html"
-    },
-    {
-      "source": "/ar/services/software",
-      "destination": "/ar/services/software.html"
     },
     {
       "source": "/ar/services/web-development",
@@ -276,6 +288,10 @@
       "destination": "/services.html"
     },
     {
+      "source": "/services/crm",
+      "destination": "/services/crm.html"
+    },
+    {
       "source": "/services/cybersecurity",
       "destination": "/services/cybersecurity.html"
     },
@@ -290,10 +306,6 @@
     {
       "source": "/services/internet",
       "destination": "/services/internet.html"
-    },
-    {
-      "source": "/services/software",
-      "destination": "/services/software.html"
     },
     {
       "source": "/services/web-development",

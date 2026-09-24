@@ -43,7 +43,7 @@ const T = {
     ctaWhatsApp: "Chat on WhatsApp",
     services: [
       { id:"internet", icon: HeadphonesIcon, title:"Call Center & VoIP", desc:"Complete Call Center setup with Grandstream & Cisco VoIP, IVR, call recording, and CRM integration. Leased Line, Microwave, and VPN connectivity." },
-      { id:"software", icon: Cpu, title:"ERP & Business Software", desc:"Odoo ERP, custom software development, and business automation for Egypt and KSA." },
+      { id:"crm", icon: Cpu, title:"ERP & Business Software", desc:"Odoo ERP, custom software development, and business automation for Egypt and KSA." },
       { id:"hardware", icon: Server, title:"Servers, PCs & Laptops", desc:"Enterprise Dell & HP hardware with professional setup and ongoing maintenance across the Middle East." },
       { id:"cybersecurity", icon: Shield, title:"Firewall & Cybersecurity", desc:"Authorized Sophos & Fortinet partner. Advanced firewall, endpoint security, and 24/7 threat monitoring." },
       { id:"infrastructure", icon: Network, title:"Network & Infrastructure", desc:"Structured cabling, data centers, wireless networks, and complete IT infrastructure for enterprises." },
@@ -77,7 +77,7 @@ const T = {
     ctaWhatsApp: "تحدث عبر واتس آب",
     services: [
       { id:"internet", icon: HeadphonesIcon, title:"مراكز الاتصال وVoIP", desc:"إعداد مركز اتصال كامل مع Grandstream وCisco، IVR، تسجيل مكالمات، وتكامل CRM. خطوط مؤجرة وVPN." },
-      { id:"software", icon: Cpu, title:"ERP وبرمجيات الأعمال", desc:"Odoo ERP، برمجيات مخصصة، وأتمتة الأعمال لمصر والسعودية." },
+      { id:"crm", icon: Cpu, title:"ERP وبرمجيات الأعمال", desc:"Odoo ERP، برمجيات مخصصة، وأتمتة الأعمال لمصر والسعودية." },
       { id:"hardware", icon: Server, title:"خوادم وكمبيوتر ولابتوب", desc:"أجهزة Dell وHP من فئة المؤسسات مع إعداد احترافي وصيانة مستمرة." },
       { id:"cybersecurity", icon: Shield, title:"جدران الحماية والأمن السيبراني", desc:"شريك Sophos وFortinet المعتمد. جدار حماية متقدم، أمن نقاط النهاية، ومراقبة 24/7." },
       { id:"infrastructure", icon: Network, title:"الشبكة والبنية التحتية", desc:"كابلات منظمة، مراكز بيانات، شبكات لاسلكية، وبنية تحتية IT كاملة للمؤسسات." },
@@ -192,7 +192,7 @@ export default function Services({ language }: ServicesProps) {
                     {t.crmCTA} <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
-                <Link href={`${langPrefix}/services/software`}>
+                <Link href={`${langPrefix}/services/crm`}>
                   <Button variant="outline" className="rounded-full h-12 px-8 transition-all" style={{borderColor:"rgba(59,130,246,0.4)",color:"#93c5fd"}}>
                     {t.crmLearn}
                   </Button>

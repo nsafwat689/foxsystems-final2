@@ -26,7 +26,7 @@ const SolutionDetail = lazy(() => import("./pages/SolutionDetail"));
 
 const SERVICE_IDS = [
   "internet",
-  "software",
+  "crm",
   "hardware",
   "cybersecurity",
   "infrastructure",

@@ -305,7 +305,7 @@ export default function CaseStudies({ language }: CaseStudiesProps) {
             </motion.span>
             <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6"
               style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: "-0.025em" }}>
-              {isArabic ? "كيف غيّرنا عمل 300+ شركة" : "How We've Transformed 300+ Businesses"}
+              {isArabic ? "كيف غيّرنا عمل أكثر من 300 شركة" : "How We've Transformed 300+ Businesses"}
             </motion.h1>
             <motion.p variants={fadeUp} className="text-lg text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
               {isArabic

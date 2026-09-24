@@ -13,6 +13,531 @@ interface ArticleDetailProps {
 }
 
 const articleContent: Record<string, Record<"en" | "ar", any>> = {
+  "real-estate-installment-management": {
+    en: {
+      id: "real-estate-installment-management",
+      title: "Managing Property Instalments Without a Spreadsheet",
+      subtitle: "Why payment plans break, and what tracking them properly looks like",
+      author: "Fox Systems Team",
+      date: "2026-09-24",
+      category: "CRM",
+      readTime: "8 min read",
+      image: "https://foxsystemstech.com/showcase/realestate-crm/payments.webp",
+      content: `
+        <h2>The sale is not the end of the deal</h2>
+        <p>In most industries a closed deal means the money arrived. In property it means a payment schedule just started — a down payment, then instalments running three or four years. The commercial risk moves from winning the sale to collecting it, and that is where most brokerages are running on a spreadsheet.</p>
+
+        <h2>Why the spreadsheet fails</h2>
+        <p>It rarely fails loudly. It fails in three quiet ways:</p>
+        <ul>
+          <li><strong>Nobody owns it.</strong> The file belongs to whoever built it. When they are on leave, overdue payments go unnoticed for weeks.</li>
+          <li><strong>It has no memory.</strong> A cell gets overwritten and the previous value is gone. When a client disputes what they paid, there is no trail.</li>
+          <li><strong>It cannot chase.</strong> A spreadsheet never rang a client the day before a payment was due. Someone has to remember, every time, for every unit.</li>
+        </ul>
+        <p>The cost is not the spreadsheet. It is that an overdue instalment is typically found a month late, when recovering it is already harder.</p>
+
+        <h2>What a payment plan needs to hold</h2>
+        <table>
+          <tr><th>Field</th><th>Why it matters</th></tr>
+          <tr><td>Down payment and terms</td><td>The plan should generate from these, not be typed row by row.</td></tr>
+          <tr><td>Schedule with due dates</td><td>Monthly, quarterly or annual — with the final instalment absorbing rounding.</td></tr>
+          <tr><td>Status per instalment</td><td>Collected, due, overdue. Not a colour someone applied by hand.</td></tr>
+          <tr><td>Payment record</td><td>Who marked it paid, when. This is what settles a dispute.</td></tr>
+          <tr><td>Link to the unit and the buyer</td><td>So the schedule survives an agent leaving.</td></tr>
+        </table>
+
+        <h2>Reminders are the point</h2>
+        <p>Everything above is bookkeeping. The part that changes cash flow is automatic reminders — before a due date, and again when it slips. A client who gets a courteous message three days before a payment is due usually pays on time. The same client, contacted a month after missing it, is now a collections problem.</p>
+
+        <h2>What to measure</h2>
+        <ul>
+          <li><strong>Total scheduled</strong> against <strong>total collected</strong> — your real position, not your contracted one.</li>
+          <li><strong>Overdue amount and age</strong> — 30 days is a reminder, 90 days is a different conversation.</li>
+          <li><strong>Due in the next 30 days</strong> — the number that should drive this week's calls.</li>
+        </ul>
+
+        <h2>Doing this properly</h2>
+        <p>Our <a href="/solutions/real-estate-crm">real estate CRM</a> generates a plan from a down payment and a term, tracks collected, due and overdue, and sends reminders before and after a due date. If you are still choosing a system, start with <a href="/articles/real-estate-crm-egypt">how to choose a real estate CRM in Egypt</a>.</p>
+      `,
+    },
+    ar: {
+      id: "real-estate-installment-management",
+      title: "إدارة أقساط العقارات من غير إكسل",
+      subtitle: "ليه خطط السداد بتتعثر، وشكل تتبّعها الصح إيه",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-24",
+      category: "CRM",
+      readTime: "٨ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/realestate-crm/payments.webp",
+      content: `
+        <h2>البيعة مش نهاية الصفقة</h2>
+        <p>في معظم المجالات الصفقة المقفولة معناها الفلوس وصلت. في العقارات معناها جدول سداد لسه بادئ — مقدّم وبعده أقساط على تلات أو أربع سنين. المخاطرة التجارية بتنتقل من كسب البيعة لتحصيلها، وده المكان اللي معظم شركات التسويق شغالة فيه على إكسل.</p>
+
+        <h2>ليه الإكسل بيفشل</h2>
+        <p>نادرًا ما بيفشل بصوت عالي. بيفشل بتلات طرق هادية:</p>
+        <ul>
+          <li><strong>محدش مالكه.</strong> الملف بتاع اللي عمله. لما يبقى في أجازة، الأقساط المتأخرة بتفضل مش ملحوظة أسابيع.</li>
+          <li><strong>مفيش ذاكرة.</strong> خانة بتتكتب فوقها والقيمة القديمة بتضيع. لما العميل يعترض على اللي دفعه، مفيش سجل.</li>
+          <li><strong>مش بيتابع.</strong> الإكسل عمره ما كلّم عميل قبل استحقاق بيوم. لازم حد يفتكر، كل مرة، لكل وحدة.</li>
+        </ul>
+        <p>التكلفة مش الإكسل. التكلفة إن القسط المتأخر بيتكتشف بعد شهر، لما تحصيله يبقى أصعب.</p>
+
+        <h2>خطة السداد لازم تحتوي إيه</h2>
+        <table>
+          <tr><th>البيان</th><th>ليه مهم</th></tr>
+          <tr><td>المقدّم والشروط</td><td>الخطة تتولّد منهم، مش تتكتب سطر سطر.</td></tr>
+          <tr><td>جدول بتواريخ استحقاق</td><td>شهري أو ربع سنوي أو سنوي — والقسط الأخير يستوعب التقريب.</td></tr>
+          <tr><td>حالة كل قسط</td><td>محصّل، مستحق، متأخر. مش لون حد حطه بإيده.</td></tr>
+          <tr><td>سجل السداد</td><td>مين علّمه مدفوع وإمتى. ده اللي بيحسم الخلاف.</td></tr>
+          <tr><td>ربط بالوحدة والمشتري</td><td>عشان الجدول يفضل موجود لو المندوب مشي.</td></tr>
+        </table>
+
+        <h2>التذكيرات هي بيت القصيد</h2>
+        <p>كل اللي فوق ده مسك دفاتر. الحاجة اللي بتغيّر التدفق النقدي هي التذكيرات التلقائية — قبل الاستحقاق، وتاني لما يتأخر. العميل اللي بيوصله رسالة مهذبة قبل الاستحقاق بتلات أيام بيدفع في ميعاده غالبًا. نفس العميل، لما تكلّمه بعد شهر من التأخير، بقى مشكلة تحصيل.</p>
+
+        <h2>إيه اللي تقيسه</h2>
+        <ul>
+          <li><strong>إجمالي المجدول</strong> مقابل <strong>إجمالي المحصّل</strong> — وضعك الحقيقي، مش التعاقدي.</li>
+          <li><strong>المبلغ المتأخر وعمره</strong> — ٣٠ يوم تذكير، ٩٠ يوم محادثة تانية خالص.</li>
+          <li><strong>المستحق خلال ٣٠ يوم</strong> — الرقم اللي المفروض يحدد مكالمات الأسبوع ده.</li>
+        </ul>
+
+        <h2>تعمل ده صح إزاي</h2>
+        <p><a href="/ar/solutions/real-estate-crm">نظام CRM العقاري</a> بتاعنا بيولّد خطة من مقدّم ومدة، ويتابع المحصّل والمستحق والمتأخر، ويبعت تذكيرات قبل الاستحقاق وبعده. لو لسه بتختار نظام، ابدأ بـ<a href="/ar/articles/real-estate-crm-egypt">كيف تختار نظام CRM عقاري في مصر</a>.</p>
+      `,
+    },
+  },
+  "real-estate-lead-response-time": {
+    en: {
+      id: "real-estate-lead-response-time",
+      title: "Why Property Leads Go Cold, and How to Stop It",
+      subtitle: "Lead routing, response clocks, and the duplicate problem nobody notices",
+      author: "Fox Systems Team",
+      date: "2026-09-24",
+      category: "CRM",
+      readTime: "7 min read",
+      image: "https://foxsystemstech.com/showcase/realestate-crm/leads.webp",
+      content: `
+        <h2>Leads are rarely lost on price</h2>
+        <p>Ask any sales director why a lead did not convert and you will hear "the price". Look at the record and you will usually find something duller: nobody called for two days, or two agents called and neither knew the other had.</p>
+        <p>A buyer enquiring about a property is usually enquiring about three. Whoever reaches them first frames the comparison. That is not a sales-skill problem — it is a routing problem.</p>
+
+        <h2>Three places leads leak</h2>
+        <h3>1. Nobody owns the lead</h3>
+        <p>A form submitted at 9pm sits unassigned until someone notices it the next afternoon. By then the buyer has spoken to competitors. Automatic assignment to an available agent in the right branch closes this, and it closes it at 9pm rather than at 2pm the next day.</p>
+
+        <h3>2. No clock is running</h3>
+        <p>"We respond quickly" is not a measurement. A visible first-response target — thirty minutes is a reasonable starting point — turns a vague intention into something a manager can see slipping while it still matters. What gets displayed gets done.</p>
+
+        <h3>3. The same buyer, three times</h3>
+        <p>Egyptian mobile numbers get entered as <em>01012345678</em>, <em>+201012345678</em>, and with spaces. If your system treats those as three people, three agents may work the same buyer — and every conversion report you produce is wrong. Normalising the number on entry and flagging near-matches while typing fixes it at the source, which is the only place it can be fixed cheaply.</p>
+
+        <h2>What to measure</h2>
+        <table>
+          <tr><th>Metric</th><th>What it tells you</th></tr>
+          <tr><td>Time to first response</td><td>The single best predictor of conversion in fast-moving sales.</td></tr>
+          <tr><td>Unassigned leads right now</td><td>Should be near zero. Anything else is money sitting still.</td></tr>
+          <tr><td>Leads with no activity in 7 days</td><td>Your quiet leak.</td></tr>
+          <tr><td>Duplicate rate</td><td>If this is high, every other number here is unreliable.</td></tr>
+        </table>
+
+        <h2>Where the ad budget fits</h2>
+        <p>If you are paying for traffic, sending it to a general website wastes it. A page for the specific unit someone enquired about — with a form and the assigned agent's contact details — converts far better than a homepage, because it answers the question they actually asked.</p>
+
+        <h2>How we handle it</h2>
+        <p>Our <a href="/solutions/real-estate-crm">real estate CRM</a> auto-assigns new leads to the least-loaded active agent in the right branch, runs a 30-minute first-response clock, normalises phone numbers on entry and warns on near-duplicates. Related: <a href="/articles/real-estate-installment-management">managing property instalments</a>.</p>
+      `,
+    },
+    ar: {
+      id: "real-estate-lead-response-time",
+      title: "ليه العملاء المحتملين في العقارات بيبردوا، وإزاي توقف ده",
+      subtitle: "توزيع العملاء، وعدّاد الاستجابة، ومشكلة التكرار اللي محدش واخد باله منها",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-24",
+      category: "CRM",
+      readTime: "٧ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/realestate-crm/leads.webp",
+      content: `
+        <h2>العملاء نادرًا ما بيضيعوا بسبب السعر</h2>
+        <p>اسأل أي مدير مبيعات ليه العميل ما اتحوّلش هيقول لك "السعر". بص في السجل هتلاقي حاجة أبسط: محدش اتصل ليومين، أو اتنين مندوبين اتصلوا ومحدش فيهم كان عارف إن التاني اتصل.</p>
+        <p>المشتري اللي بيسأل عن عقار غالبًا بيسأل عن تلاتة. اللي يوصله الأول هو اللي بيحدد إطار المقارنة. ودي مش مشكلة مهارة بيع — دي مشكلة توزيع.</p>
+
+        <h2>تلات أماكن العملاء بيتسربوا منها</h2>
+        <h3>١. محدش مالك العميل</h3>
+        <p>نموذج اتبعت ٩ بالليل بيفضل غير موزّع لحد ما حد ياخد باله بعد ضهر تاني يوم. وقتها المشتري بقى كلّم المنافسين. التوزيع التلقائي على مندوب متاح في الفرع الصح بيقفل ده، وبيقفله ٩ بالليل مش ٢ الضهر تاني يوم.</p>
+
+        <h3>٢. مفيش عدّاد شغال</h3>
+        <p>"إحنا بنرد بسرعة" دي مش قياس. هدف استجابة أولى ظاهر — ٣٠ دقيقة بداية معقولة — بيحوّل نية غامضة لحاجة المدير يقدر يشوفها بتتأخر وهي لسه مؤثرة. اللي بيتعرض بيتعمل.</p>
+
+        <h3>٣. نفس المشتري، ٣ مرات</h3>
+        <p>أرقام الموبايل المصرية بتتدخل كـ<em>01012345678</em> و<em>+201012345678</em> وبمسافات. لو نظامك بيعتبرهم ٣ أشخاص، ممكن ٣ مندوبين يشتغلوا على نفس المشتري — وكل تقرير تحويل بتطلعه بيبقى غلط. توحيد الرقم عند الإدخال والتنبيه على المتشابه بيصلّح ده من المصدر، وده المكان الوحيد اللي التصليح فيه رخيص.</p>
+
+        <h2>إيه اللي تقيسه</h2>
+        <table>
+          <tr><th>المؤشر</th><th>بيقول لك إيه</th></tr>
+          <tr><td>وقت أول استجابة</td><td>أفضل مؤشر للتحويل في المبيعات السريعة.</td></tr>
+          <tr><td>العملاء غير الموزّعين دلوقتي</td><td>المفروض قريب من صفر. أي رقم تاني فلوس واقفة.</td></tr>
+          <tr><td>عملاء من غير نشاط ٧ أيام</td><td>التسريب الهادي بتاعك.</td></tr>
+          <tr><td>نسبة التكرار</td><td>لو عالية، كل رقم تاني هنا مش موثوق.</td></tr>
+        </table>
+
+        <h2>ميزانية الإعلانات بتدخل فين</h2>
+        <p>لو بتدفع في زيارات، توجيهها لموقع عام بيهدرها. صفحة للوحدة اللي حد سأل عنها بالذات — بنموذج وبيانات المندوب المسؤول — بتحوّل أحسن بكتير من الصفحة الرئيسية، لأنها بترد على السؤال اللي هو سأله فعلًا.</p>
+
+        <h2>إحنا بنتعامل مع ده إزاي</h2>
+        <p><a href="/ar/solutions/real-estate-crm">نظام CRM العقاري</a> بتاعنا بيوزّع العملاء الجدد تلقائيًا على أقل مندوب نشِط حِملًا في الفرع الصح، وبيشغّل عدّاد استجابة ٣٠ دقيقة، وبيوحّد أرقام التليفون عند الإدخال وبينبّه على المتشابه. اقرأ كمان: <a href="/ar/articles/real-estate-installment-management">إدارة أقساط العقارات</a>.</p>
+      `,
+    },
+  },
+  "pest-control-route-optimisation": {
+    en: {
+      id: "pest-control-route-optimisation",
+      title: "Scheduling Pest Control Rounds When Everything Changes",
+      subtitle: "Dispatch boards, route optimisation and the cost of a whiteboard",
+      author: "Fox Systems Team",
+      date: "2026-09-24",
+      category: "Software",
+      readTime: "7 min read",
+      image: "https://foxsystemstech.com/showcase/pestcontrol-crm/schedule.webp",
+      content: `
+        <h2>The plan is not the problem. The replan is.</h2>
+        <p>Any dispatcher can plan a week when nothing changes. The work is in what happens at 7am when a technician calls in sick, a client moves a visit, and a van will not start — all before the first job.</p>
+        <p>A whiteboard handles the plan. It handles the replan badly, because the plan lives in one person's head and rebuilding it means holding every constraint at once.</p>
+
+        <h2>What the board has to show</h2>
+        <ul>
+          <li><strong>Technicians against days</strong>, so capacity is visible rather than remembered.</li>
+          <li><strong>Move a job in one action</strong> — between technicians or days — because in a reshuffle you do a dozen of these.</li>
+          <li><strong>SLA pressure</strong>, so you can see which move breaks a commitment before you make it.</li>
+          <li><strong>Each site's service days and preferred technician</strong>, because some clients only accept certain days and some sites need someone who knows them.</li>
+        </ul>
+
+        <h2>Route optimisation, honestly</h2>
+        <p>Optimisation orders a day's jobs to cut driving between sites. It is genuinely useful and it is routinely oversold. Two things are worth knowing:</p>
+        <ul>
+          <li><strong>It is a planning aid, not a decision.</strong> The dispatcher knows things the algorithm does not — which client tolerates an early arrival, which site has a loading bay free only before ten.</li>
+          <li><strong>The gain depends on density.</strong> Eight jobs across a city is where it pays. Two jobs in the same district is a route that cannot be improved, and any tool claiming a big saving there is measuring something else.</li>
+        </ul>
+
+        <h2>Check-in is what makes the schedule real</h2>
+        <p>A schedule records intent. Check-in and check-out record what happened. Without them you are comparing plan to plan, and you will never learn that a particular site reliably takes ninety minutes rather than the sixty you keep allotting it.</p>
+
+        <h2>What to measure</h2>
+        <table>
+          <tr><th>Metric</th><th>Why</th></tr>
+          <tr><td>Visits completed against planned</td><td>The honest completion rate.</td></tr>
+          <tr><td>SLA breaches</td><td>What the client experiences, regardless of how busy you were.</td></tr>
+          <tr><td>Planned vs actual time on site</td><td>Where your estimates are wrong, per site.</td></tr>
+          <tr><td>Jobs moved after planning</td><td>High churn means the plan is being made too early or too optimistically.</td></tr>
+        </table>
+
+        <h2>How this works in practice</h2>
+        <p>Our <a href="/solutions/pest-control-crm">pest control system</a> plans the week as a grid by technician and day, moves jobs by drag, shows SLA pressure, optimises a day's route and records check-in and check-out from the field. See also <a href="/articles/pest-control-software-egypt">what field service teams actually need</a>.</p>
+      `,
+    },
+    ar: {
+      id: "pest-control-route-optimisation",
+      title: "جدولة خطوط سير مكافحة الآفات لما كل حاجة بتتغيّر",
+      subtitle: "لوحات التوزيع، وتحسين المسارات، وتكلفة السبورة",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-24",
+      category: "البرمجيات",
+      readTime: "٧ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/pestcontrol-crm/schedule.webp",
+      content: `
+        <h2>المشكلة مش الخطة. المشكلة إعادة التخطيط.</h2>
+        <p>أي موزّع يقدر يخطط أسبوع لو مفيش حاجة بتتغيّر. الشغل الحقيقي في اللي بيحصل الساعة ٧ الصبح لما فني يمرض، وعميل يأجّل زيارة، وعربية ما تدورش — كل ده قبل أول مهمة.</p>
+        <p>السبورة بتتعامل مع الخطة. بتتعامل وحش مع إعادة التخطيط، لأن الخطة عايشة في دماغ شخص واحد وإعادة بنائها معناها إمساك كل القيود في نفس اللحظة.</p>
+
+        <h2>اللوحة لازم تعرض إيه</h2>
+        <ul>
+          <li><strong>الفنيين مقابل الأيام</strong>، عشان الطاقة تبقى ظاهرة مش محفوظة.</li>
+          <li><strong>نقل المهمة بحركة واحدة</strong> — بين الفنيين أو الأيام — لأنك في إعادة الترتيب بتعمل عشرة منهم.</li>
+          <li><strong>ضغط الـ SLA</strong>، عشان تشوف أنهي نقلة هتكسر التزام قبل ما تعملها.</li>
+          <li><strong>أيام الخدمة والفني المفضّل لكل موقع</strong>، لأن فيه عملاء بيقبلوا أيام معينة بس، وفيه مواقع محتاجة حد عارفها.</li>
+        </ul>
+
+        <h2>تحسين المسار، بصراحة</h2>
+        <p>التحسين بيرتّب مهام اليوم عشان يقلّل القيادة بين المواقع. ده مفيد فعلًا وبيتباع أكتر من قيمته. حاجتين تستاهل تعرفهم:</p>
+        <ul>
+          <li><strong>ده مساعد تخطيط مش قرار.</strong> الموزّع عارف حاجات الخوارزمية ما تعرفهاش — مين العميل اللي يقبل وصول بدري، ومين الموقع اللي رصيف التحميل فيه فاضي قبل العاشرة بس.</li>
+          <li><strong>المكسب بيعتمد على الكثافة.</strong> ٨ مهام في مدينة هي المكان اللي بيدفع فيه. مهمتين في نفس الحي ده مسار ما ينفعش يتحسّن، وأي أداة بتدّعي توفير كبير هناك بتقيس حاجة تانية.</li>
+        </ul>
+
+        <h2>تسجيل الحضور هو اللي بيخلي الجدول حقيقي</h2>
+        <p>الجدول بيسجّل النية. الحضور والانصراف بيسجلوا اللي حصل. من غيرهم إنت بتقارن خطة بخطة، وعمرك ما هتعرف إن موقع معيّن بياخد ساعة ونص بدل الساعة اللي بتحطهاله كل مرة.</p>
+
+        <h2>إيه اللي تقيسه</h2>
+        <table>
+          <tr><th>المؤشر</th><th>ليه</th></tr>
+          <tr><td>الزيارات المنفّذة مقابل المخططة</td><td>نسبة الإنجاز الصادقة.</td></tr>
+          <tr><td>خروقات الـ SLA</td><td>اللي العميل بيحسّه، بغض النظر عن انشغالك.</td></tr>
+          <tr><td>الوقت المخطط مقابل الفعلي في الموقع</td><td>مكان الخطأ في تقديراتك، لكل موقع.</td></tr>
+          <tr><td>المهام المنقولة بعد التخطيط</td><td>التغيير الكتير معناه الخطة بتتعمل بدري أو بتفاؤل زيادة.</td></tr>
+        </table>
+
+        <h2>ده بيشتغل إزاي عمليًا</h2>
+        <p><a href="/ar/solutions/pest-control-crm">نظام مكافحة الآفات</a> بتاعنا بيخطط الأسبوع كشبكة بالفني واليوم، وبينقل المهام بالسحب، وبيعرض ضغط الـ SLA، وبيحسّن مسار اليوم، وبيسجّل الحضور والانصراف من الموقع. اقرأ كمان: <a href="/ar/articles/pest-control-software-egypt">اللي فرق الخدمات الميدانية محتاجاه فعلًا</a>.</p>
+      `,
+    },
+  },
+  "pest-control-device-monitoring": {
+    en: {
+      id: "pest-control-device-monitoring",
+      title: "QR-Coded Devices and the Evidence Problem in Pest Control",
+      subtitle: "Proving a bait station was reached, and turning scans into a trend",
+      author: "Fox Systems Team",
+      date: "2026-09-24",
+      category: "Software",
+      readTime: "7 min read",
+      image: "https://foxsystemstech.com/showcase/pestcontrol-crm/devices.webp",
+      content: `
+        <h2>The audit question you cannot answer</h2>
+        <p>An auditor, a client or an insurer asks: was this bait station checked on the twelfth, and what was found? With paper, the honest answer is "there is a sheet that says so, signed at the end of the day". That is a record of a claim, not of an event.</p>
+        <p>This matters most for the clients you most want — food production, hospitality, pharmaceutical and logistics sites, where documentation is a condition of their own certification.</p>
+
+        <h2>What a QR code changes</h2>
+        <p>Put a code on every bait station, trap and monitor, and scanning it on site becomes evidence the device was physically reached. Three things follow:</p>
+        <ul>
+          <li><strong>The visit becomes verifiable</strong> at device level, not just "the technician attended".</li>
+          <li><strong>Each device gets a history.</strong> Every scan, with findings, accumulating over months.</li>
+          <li><strong>Gaps become visible.</strong> A device that has not been scanned in three rounds is a question the system can raise on its own.</li>
+        </ul>
+
+        <h2>From records to trends</h2>
+        <p>This is where the value stops being compliance and becomes advice you can sell. With a scan history per device, activity resolves to a location rather than a building: not "there is a rodent problem at the warehouse", but "three devices near the loading bay show activity every month, the other forty do not".</p>
+        <p>That is a finding a client can act on — seal a gap, change a process, move a bin. It is also the difference between a supplier who treats and a supplier who advises, which is the difference in what you can charge.</p>
+
+        <h2>Recording what was applied</h2>
+        <p>Chemical usage belongs to the same record. Captured at the visit, it answers the incident question — what was applied, how much, by whom — and survives scrutiny. Recorded later from memory, it does not.</p>
+
+        <h2>Practical notes</h2>
+        <ul>
+          <li><strong>Codes need to survive the environment.</strong> A label in a cold store or a wash-down area has a hard life; plan for replacements.</li>
+          <li><strong>Map the devices once, properly.</strong> The register is the foundation — a device nobody recorded cannot be scanned.</li>
+          <li><strong>Signal is the usual constraint.</strong> Basements and cold stores are where this gets tested. Ask the question before you buy.</li>
+        </ul>
+
+        <h2>How we do it</h2>
+        <p>Our <a href="/solutions/pest-control-crm">pest control system</a> keeps a device register with QR codes and location, builds a scan history per device, records chemical usage at the visit, and surfaces activity by site over time. Related: <a href="/articles/pest-control-route-optimisation">scheduling rounds when everything changes</a>.</p>
+      `,
+    },
+    ar: {
+      id: "pest-control-device-monitoring",
+      title: "أجهزة بكود QR ومشكلة الإثبات في مكافحة الآفات",
+      subtitle: "إثبات الوصول لمحطة الطُعم، وتحويل المسح لاتجاه",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-24",
+      category: "البرمجيات",
+      readTime: "٧ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/pestcontrol-crm/devices.webp",
+      content: `
+        <h2>سؤال التدقيق اللي ما تقدرش ترد عليه</h2>
+        <p>مدقّق أو عميل أو شركة تأمين بيسأل: محطة الطُعم دي اتفحصت يوم ١٢، ولقيتوا إيه؟ بالورق، الرد الصادق هو "فيه ورقة بتقول كده، متمضية آخر اليوم". ده سجل لدعوى مش لحدث.</p>
+        <p>وده أهم حاجة للعملاء اللي إنت عايزهم — إنتاج غذائي وضيافة وأدوية ولوجستيات، لأن التوثيق شرط في اعتماداتهم هم.</p>
+
+        <h2>كود الـ QR بيغيّر إيه</h2>
+        <p>حط كود على كل محطة طُعم ومصيدة وجهاز مراقبة، ومسحه في الموقع يبقى دليل إن الجهاز اتوصلّه فعليًا. وبيترتب على كده تلات حاجات:</p>
+        <ul>
+          <li><strong>الزيارة تبقى قابلة للتحقق</strong> على مستوى الجهاز، مش مجرد "الفني حضر".</li>
+          <li><strong>كل جهاز بيبقى ليه تاريخ.</strong> كل مسح، بنتايجه، متراكم على شهور.</li>
+          <li><strong>الفجوات بتبان.</strong> جهاز ما اتمسحش في تلات جولات ده سؤال النظام يقدر يطرحه لوحده.</li>
+        </ul>
+
+        <h2>من السجلات للاتجاهات</h2>
+        <p>هنا القيمة بتبطّل تبقى التزام وتبقى استشارة تقدر تبيعها. بسجل مسح لكل جهاز، النشاط بيتحدد بموقع مش بمبنى: مش "فيه مشكلة قوارض في المخزن"، لكن "تلات أجهزة جنب رصيف التحميل بتظهر نشاط كل شهر، والأربعين التانيين لأ".</p>
+        <p>دي نتيجة العميل يقدر يتصرف بناءً عليها — يسد فتحة، يغيّر إجراء، ينقل صندوق قمامة. ودي كمان الفرق بين مورّد بيعالج ومورّد بينصح، وهو نفسه الفرق في اللي تقدر تتقاضاه.</p>
+
+        <h2>تسجيل اللي اتستخدم</h2>
+        <p>استهلاك المبيدات جزء من نفس السجل. لما يتسجّل وقت الزيارة بيرد على سؤال الحادثة — اتستخدم إيه وبكام وبواسطة مين — وبيصمد للمراجعة. لما يتسجّل بعدين من الذاكرة، ما بيصمدش.</p>
+
+        <h2>ملاحظات عملية</h2>
+        <ul>
+          <li><strong>الأكواد لازم تتحمّل البيئة.</strong> الملصق في ثلاجة أو منطقة غسيل حياته صعبة؛ خطط لاستبدالات.</li>
+          <li><strong>وثّق الأجهزة مرة واحدة صح.</strong> السجل هو الأساس — الجهاز اللي محدش سجّله ما ينفعش يتمسح.</li>
+          <li><strong>الشبكة هي القيد المعتاد.</strong> البدرومات والثلاجات هي مكان الاختبار. اسأل السؤال ده قبل الشراء.</li>
+        </ul>
+
+        <h2>إحنا بنعملها إزاي</h2>
+        <p><a href="/ar/solutions/pest-control-crm">نظام مكافحة الآفات</a> بتاعنا بيحتفظ بسجل أجهزة بأكواد QR ومواقع، وبيبني سجل مسح لكل جهاز، وبيسجّل استهلاك المبيدات وقت الزيارة، وبيظهر النشاط حسب الموقع عبر الوقت. اقرأ كمان: <a href="/ar/articles/pest-control-route-optimisation">جدولة خطوط السير لما كل حاجة بتتغيّر</a>.</p>
+      `,
+    },
+  },
+  "pharma-visit-verification": {
+    en: {
+      id: "pharma-visit-verification",
+      title: "When a Visit Report Is Just a Claim",
+      subtitle: "GPS verification, coverage you can trust, and what it does to a field team",
+      author: "Fox Systems Team",
+      date: "2026-09-24",
+      category: "CRM",
+      readTime: "7 min read",
+      image: "https://foxsystemstech.com/showcase/medical-crm/dashboard.webp",
+      content: `
+        <h2>The problem is not dishonesty</h2>
+        <p>It is worth saying plainly: most reps report accurately. The problem is that an unverified report cannot be told apart from an inaccurate one, so a manager who suspects a handful ends up discounting all of it. The data stops being used, and decisions go back to instinct and personality.</p>
+        <p>Verification is not about catching people. It is about making the honest majority's work count for something.</p>
+
+        <h2>What geofenced check-in actually does</h2>
+        <p>A rep checks in from their phone, and only from inside the institution's geofence. Location and accuracy are recorded with the visit. The report stops being a claim and becomes an event with evidence attached.</p>
+        <p>Two consequences follow, and the second matters more:</p>
+        <ul>
+          <li>Coverage figures become trustworthy enough to plan with.</li>
+          <li><strong>Good reps stop being tarred with the same brush.</strong> When everyone's visits are verifiable, effort is visible — which is usually welcomed by the people doing the work.</li>
+        </ul>
+
+        <h2>Introducing it without a fight</h2>
+        <p>This lands badly if it arrives as surveillance. What works:</p>
+        <ul>
+          <li><strong>Say what it is for</strong> — proving coverage to management and clients, not watching individuals.</li>
+          <li><strong>Be precise about what is recorded</strong> — a check-in location at the visit, not continuous tracking. If that is the design, say so; if it is not, expect resistance and deserve it.</li>
+          <li><strong>Give something back.</strong> If check-in also removes the evening paperwork, adoption takes care of itself.</li>
+          <li><strong>Handle the edge cases first.</strong> Poor signal, a moved appointment, a clinic inside a hospital complex. Reps will test these on day one, and an unanswered edge case becomes the reason the whole thing is "broken".</li>
+        </ul>
+
+        <h2>Coverage and frequency, measured while it matters</h2>
+        <p>Most coverage plans live in a spreadsheet that is already stale when read. The point of a field-force system is measuring against the plan while the month is running — which HCPs and institutions are covered, how often, by whom — so a gap can still be closed rather than explained afterwards.</p>
+
+        <h2>A note on the data you are holding</h2>
+        <p>These systems hold information about named healthcare professionals and their prescribing behaviour. That is commercially sensitive and, depending on what you record, personal data. Know where it is stored, who can read it, and what the audit log shows. If a vendor cannot answer those three questions, that is your answer.</p>
+
+        <h2>How we build it</h2>
+        <p>Our <a href="/solutions/medical-crm">medical CRM</a> records geofenced check-in with location and accuracy, measures coverage and frequency against plan, and keeps an audit trail. Related: <a href="/articles/pharma-sample-management">sample and batch accountability</a>.</p>
+      `,
+    },
+    ar: {
+      id: "pharma-visit-verification",
+      title: "لما تقرير الزيارة يبقى مجرد دعوى",
+      subtitle: "التحقق بـ GPS، وتغطية تقدر تثق فيها، وتأثير ده على الفريق الميداني",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-24",
+      category: "CRM",
+      readTime: "٧ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/medical-crm/dashboard.webp",
+      content: `
+        <h2>المشكلة مش عدم الأمانة</h2>
+        <p>يستاهل نقولها بوضوح: معظم المندوبين بيبلّغوا بدقة. المشكلة إن التقرير غير الموثّق ما ينفعش يتفرّق عن التقرير غير الدقيق، فالمدير اللي بيشك في قلة بينتهي بإهمال الكل. البيانات بتبطّل تتستخدم، والقرارات بترجع للحدس والشخصيات.</p>
+        <p>التوثيق مش عن الإمساك بالناس. هو عن إن شغل الأغلبية الأمينة يبقى ليه قيمة.</p>
+
+        <h2>تسجيل الحضور بالنطاق الجغرافي بيعمل إيه فعلًا</h2>
+        <p>المندوب بيسجّل حضوره من موبايله، ومن جوه النطاق الجغرافي للمؤسسة بس. الموقع ودقته بيتسجلوا مع الزيارة. التقرير بيبطّل يبقى دعوى ويبقى حدث وراه دليل.</p>
+        <p>وبيترتب على كده نتيجتين، والتانية أهم:</p>
+        <ul>
+          <li>أرقام التغطية بتبقى موثوقة كفاية إنك تخطط بيها.</li>
+          <li><strong>المندوبين الكويسين بيبطّلوا يتحاسبوا بنفس النظرة.</strong> لما زيارات الكل تبقى قابلة للتحقق، المجهود بيبان — وده اللي بيرحّب بيه اللي بيشتغل فعلًا.</li>
+        </ul>
+
+        <h2>تطبيقه من غير خناقة</h2>
+        <p>ده بينزل وحش لو وصل كمراقبة. اللي بينفع:</p>
+        <ul>
+          <li><strong>قول هو لإيه</strong> — إثبات التغطية للإدارة والعملاء، مش مراقبة أفراد.</li>
+          <li><strong>كن دقيق في اللي بيتسجّل</strong> — موقع تسجيل الحضور وقت الزيارة، مش تتبّع مستمر. لو ده التصميم قوله؛ ولو مش كده، استنى مقاومة وتستاهلها.</li>
+          <li><strong>اِدِّي حاجة في المقابل.</strong> لو تسجيل الحضور كمان بيشيل ورق آخر اليوم، التبنّي بيحصل لوحده.</li>
+          <li><strong>عالج الحالات الاستثنائية الأول.</strong> شبكة ضعيفة، موعد اتغيّر، عيادة جوه مجمع مستشفى. المندوبين هيجربوا دول أول يوم، والحالة اللي مالهاش رد بتبقى سبب إن "النظام باظ".</li>
+        </ul>
+
+        <h2>التغطية والتكرار، مقاسين وهما لسه مؤثرين</h2>
+        <p>معظم خطط التغطية عايشة في إكسل بيبقى قديم وقت ما يتقري. الهدف من نظام الفريق الميداني هو القياس على الخطة والشهر شغال — مين الأطباء والمؤسسات المغطاة، وكل قد إيه، وبواسطة مين — عشان الفجوة تتسد بدل ما تتفسّر بعدين.</p>
+
+        <h2>ملاحظة عن البيانات اللي بتحتفظ بيها</h2>
+        <p>الأنظمة دي بتحتفظ بمعلومات عن أطباء بالاسم وسلوكهم في الوصف. ده حساس تجاريًا، وحسب اللي بتسجله ممكن يكون بيانات شخصية. اعرف متخزنة فين، ومين يقدر يقراها، وسجل التدقيق بيوضّح إيه. لو المورّد ما قدرش يجاوب على التلاتة، ده هو ردّك.</p>
+
+        <h2>إحنا بنبنيه إزاي</h2>
+        <p><a href="/ar/solutions/medical-crm">نظام CRM الطبي</a> بتاعنا بيسجّل الحضور بنطاق جغرافي مع الموقع ودقته، وبيقيس التغطية والتكرار على الخطة، وبيحتفظ بسجل تدقيق. اقرأ كمان: <a href="/ar/articles/pharma-sample-management">المحاسبة على العيّنات والتشغيلات</a>.</p>
+      `,
+    },
+  },
+  "pharma-sample-management": {
+    en: {
+      id: "pharma-sample-management",
+      title: "Sample Accountability: A Custody Problem, Not a Stock Problem",
+      subtitle: "Batch tracking, expiry and the audit trail that makes both useful",
+      author: "Fox Systems Team",
+      date: "2026-09-24",
+      category: "CRM",
+      readTime: "7 min read",
+      image: "https://foxsystemstech.com/showcase/medical-crm/samples.webp",
+      content: `
+        <h2>Why ordinary stock control does not fit</h2>
+        <p>Warehouse inventory answers "how many do we have". Sample stock has to answer something harder: <em>where is this specific batch now, who has held it, and what happens when it expires</em>. It moves from a warehouse to a rep's car to a physician's office, often over weeks, and it carries regulatory weight the whole way.</p>
+        <p>Count-based stock control cannot answer that. It can tell you 500 units left the warehouse. It cannot tell you which batch is sitting in a car boot three weeks from expiry.</p>
+
+        <h2>Three things to track</h2>
+        <h3>1. Batch, not just quantity</h3>
+        <p>Every issue and receipt recorded against a batch number. This is the whole basis of accountability: without it, a query about one batch becomes a query about all your stock.</p>
+
+        <h3>2. Expiry, with warning</h3>
+        <p>Expiry dates are only useful early. A batch flagged at sixty days can still be redistributed to a rep who will use it. The same batch discovered at expiry is a write-off and, in some cases, a disposal record you must produce.</p>
+
+        <h3>3. Custody</h3>
+        <p>Who issued it, who received it, when. Not to assign blame, but because "we think it went to the northern team in March" is not an answer anyone can act on.</p>
+
+        <h2>The audit trail is the product</h2>
+        <p>Everything above is only as good as its history. An audit trail — who changed what, when — is what turns a stock screen into a defensible record. It is also what protects your reps: when the record shows exactly what was issued and signed for, an unexplained discrepancy stops being a suspicion about a person and becomes a gap in a process.</p>
+
+        <h2>What good looks like</h2>
+        <table>
+          <tr><th>Capability</th><th>Why it matters</th></tr>
+          <tr><td>Issue and receipt by batch</td><td>Every unit accounted for from warehouse to physician.</td></tr>
+          <tr><td>Expiry alerts in advance</td><td>Redistribution instead of disposal.</td></tr>
+          <tr><td>Per-rep holdings</td><td>You can see what is in the field right now.</td></tr>
+          <tr><td>Full audit trail</td><td>Answers the question an auditor actually asks.</td></tr>
+          <tr><td>Recorded at the visit</td><td>Written down later from memory is not a record.</td></tr>
+        </table>
+
+        <h2>The practical test</h2>
+        <p>When evaluating any system, ask for one thing: pick a batch number and show me its full history — received, issued to whom, remaining, expiry. If that takes more than a few seconds, or needs an export to Excel, it will not help you when someone is actually asking.</p>
+
+        <h2>How we handle it</h2>
+        <p>Our <a href="/solutions/medical-crm">medical CRM</a> tracks sample stock by batch and expiry with a full audit trail, raises alerts before a batch is wasted, and records issues against the rep who received them. Related: <a href="/articles/pharma-visit-verification">when a visit report is just a claim</a>.</p>
+      `,
+    },
+    ar: {
+      id: "pharma-sample-management",
+      title: "المحاسبة على العيّنات: مشكلة عهدة مش مشكلة مخزون",
+      subtitle: "تتبّع التشغيلات، وتاريخ الانتهاء، وسجل التدقيق اللي بيخلي الاتنين مفيدين",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-24",
+      category: "CRM",
+      readTime: "٧ دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/medical-crm/samples.webp",
+      content: `
+        <h2>ليه مراقبة المخزون العادية ما بتنفعش</h2>
+        <p>مخزون المستودع بيرد على "عندنا كام". مخزون العيّنات لازم يرد على حاجة أصعب: <em>التشغيلة دي فين دلوقتي، ومين مسكها، وبيحصل إيه لما تنتهي</em>. بتتنقل من المخزن لعربية المندوب لعيادة الدكتور، غالبًا على أسابيع، وشايلة وزن تنظيمي طول الطريق.</p>
+        <p>المراقبة بالعدد ما بتردش على ده. تقدر تقول لك ٥٠٠ وحدة خرجت من المخزن. ما تقدرش تقول لك أنهي تشغيلة قاعدة في شنطة عربية على بُعد تلات أسابيع من انتهائها.</p>
+
+        <h2>تلات حاجات تتتبّعها</h2>
+        <h3>١. التشغيلة، مش الكمية بس</h3>
+        <p>كل صرف واستلام متسجل على رقم تشغيلة. ده أساس المحاسبة كله: من غيره، سؤال عن تشغيلة واحدة بيبقى سؤال عن مخزونك كله.</p>
+
+        <h3>٢. تاريخ الانتهاء، بتحذير</h3>
+        <p>تواريخ الانتهاء مفيدة بدري بس. التشغيلة اللي بتتنبّه عليها قبل ٦٠ يوم لسه ممكن تتعاد لمندوب هيستخدمها. نفس التشغيلة لما تتكتشف عند انتهائها بتبقى خسارة، وفي حالات سجل إعدام لازم تطلعه.</p>
+
+        <h3>٣. العهدة</h3>
+        <p>مين صرفها، مين استلمها، وإمتى. مش عشان تلوم حد، لكن لأن "إحنا فاكرين إنها راحت لفريق الشمال في مارس" مش رد حد يقدر يتصرف بناءً عليه.</p>
+
+        <h2>سجل التدقيق هو المنتج</h2>
+        <p>كل اللي فوق قيمته من قيمة تاريخه. سجل التدقيق — مين غيّر إيه وإمتى — هو اللي بيحوّل شاشة مخزون لسجل قابل للدفاع عنه. وهو كمان اللي بيحمي مندوبينك: لما السجل يوضّح بالظبط اتصرف إيه واتستلم بإمضاء مين، الفرق غير المفسّر بيبطّل يبقى شك في شخص ويبقى فجوة في إجراء.</p>
+
+        <h2>الشكل الكويس إيه</h2>
+        <table>
+          <tr><th>الخاصية</th><th>ليه مهمة</th></tr>
+          <tr><td>الصرف والاستلام بالتشغيلة</td><td>كل وحدة محسوبة من المخزن للدكتور.</td></tr>
+          <tr><td>تنبيهات انتهاء مسبقة</td><td>إعادة توزيع بدل إعدام.</td></tr>
+          <tr><td>أرصدة كل مندوب</td><td>تقدر تشوف اللي في الميدان دلوقتي.</td></tr>
+          <tr><td>سجل تدقيق كامل</td><td>بيرد على السؤال اللي المدقّق بيسأله فعلًا.</td></tr>
+          <tr><td>التسجيل وقت الزيارة</td><td>اللي بيتكتب بعدين من الذاكرة مش سجل.</td></tr>
+        </table>
+
+        <h2>الاختبار العملي</h2>
+        <p>وإنت بتقيّم أي نظام، اطلب حاجة واحدة: اختار رقم تشغيلة وورّيني تاريخها كامل — اتستلمت إمتى، اتصرفت لمين، المتبقي، تاريخ الانتهاء. لو ده خد أكتر من ثواني، أو محتاج تصدير لإكسل، مش هيساعدك لما حد يكون بيسأل فعلًا.</p>
+
+        <h2>إحنا بنتعامل مع ده إزاي</h2>
+        <p><a href="/ar/solutions/medical-crm">نظام CRM الطبي</a> بتاعنا بيتتبّع مخزون العيّنات بالتشغيلة وتاريخ الانتهاء بسجل تدقيق كامل، وبيرفع تنبيهات قبل ما التشغيلة تتهدر، وبيسجّل الصرف على المندوب اللي استلمه. اقرأ كمان: <a href="/ar/articles/pharma-visit-verification">لما تقرير الزيارة يبقى مجرد دعوى</a>.</p>
+      `,
+    },
+  },
+
   "real-estate-crm-egypt": {
     en: {
       id: "real-estate-crm-egypt",

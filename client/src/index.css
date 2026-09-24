@@ -329,3 +329,28 @@
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+/* ---------------------------------------------------------------------------
+   Bidirectional text: keep Latin-script runs readable inside Arabic pages.
+
+   Under the Unicode bidi algorithm, a neutral character at the edge of a
+   number takes the direction of the surrounding text. In an RTL page that
+   rendered "+20 103 845 0546" as "0546 845 103 20+" and the stat "16+" as
+   "+16" — the digits stayed put while the sign jumped to the other end.
+
+   `unicode-bidi: isolate` treats each of these as its own self-contained run,
+   so the sign stays attached to its number regardless of the page direction.
+   Applied to phone links, stat figures and anything marked .ltr-text.
+   --------------------------------------------------------------------------- */
+a[href^="tel:"],
+a[href^="mailto:"],
+.stat-number,
+.ltr-text {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* Keep the icon-then-number order intact in RTL when the link is a flex row. */
+[dir="rtl"] a[href^="tel:"] {
+  justify-content: flex-start;
+}

@@ -120,12 +120,36 @@
       "destination": "/ar/articles/pbx-systems.html"
     },
     {
+      "source": "/ar/articles/pest-control-device-monitoring",
+      "destination": "/ar/articles/pest-control-device-monitoring.html"
+    },
+    {
+      "source": "/ar/articles/pest-control-route-optimisation",
+      "destination": "/ar/articles/pest-control-route-optimisation.html"
+    },
+    {
       "source": "/ar/articles/pest-control-software-egypt",
       "destination": "/ar/articles/pest-control-software-egypt.html"
     },
     {
+      "source": "/ar/articles/pharma-sample-management",
+      "destination": "/ar/articles/pharma-sample-management.html"
+    },
+    {
+      "source": "/ar/articles/pharma-visit-verification",
+      "destination": "/ar/articles/pharma-visit-verification.html"
+    },
+    {
       "source": "/ar/articles/real-estate-crm-egypt",
       "destination": "/ar/articles/real-estate-crm-egypt.html"
+    },
+    {
+      "source": "/ar/articles/real-estate-installment-management",
+      "destination": "/ar/articles/real-estate-installment-management.html"
+    },
+    {
+      "source": "/ar/articles/real-estate-lead-response-time",
+      "destination": "/ar/articles/real-estate-lead-response-time.html"
     },
     {
       "source": "/ar/articles/telecom-trends",
@@ -256,12 +280,36 @@
       "destination": "/articles/pbx-systems.html"
     },
     {
+      "source": "/articles/pest-control-device-monitoring",
+      "destination": "/articles/pest-control-device-monitoring.html"
+    },
+    {
+      "source": "/articles/pest-control-route-optimisation",
+      "destination": "/articles/pest-control-route-optimisation.html"
+    },
+    {
       "source": "/articles/pest-control-software-egypt",
       "destination": "/articles/pest-control-software-egypt.html"
     },
     {
+      "source": "/articles/pharma-sample-management",
+      "destination": "/articles/pharma-sample-management.html"
+    },
+    {
+      "source": "/articles/pharma-visit-verification",
+      "destination": "/articles/pharma-visit-verification.html"
+    },
+    {
       "source": "/articles/real-estate-crm-egypt",
       "destination": "/articles/real-estate-crm-egypt.html"
+    },
+    {
+      "source": "/articles/real-estate-installment-management",
+      "destination": "/articles/real-estate-installment-management.html"
+    },
+    {
+      "source": "/articles/real-estate-lead-response-time",
+      "destination": "/articles/real-estate-lead-response-time.html"
     },
     {
       "source": "/articles/telecom-trends",

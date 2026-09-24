@@ -45,18 +45,18 @@ const T = {
     unsureCta: "Talk to an engineer",
   },
   ar: {
-    kicker: "تحب تبدأ منين؟",
-    title: "محتاج إيه؟",
-    sub: "اختار الأقرب لحالتك وهنوديك عليه على طول. مش متأكد؟ قول لنا بتشتغل إزاي دلوقتي وهنقولك بصراحة إيه اللي يناسبك.",
+    kicker: "من أين تبدأ؟",
+    title: "ما الذي تحتاجه؟",
+    sub: "اختر الأقرب إلى حالتك وسننتقل بك إليه مباشرة. لستَ متأكدًا؟ أخبرنا بطريقة عملك الحالية وسنوضّح لك بصراحة ما يناسبك.",
     crmBadge: "نشاطنا الأساسي",
     crmTitle: "أنظمة CRM",
     crmDesc:
-      "مسار مبيعات وإدارة عملاء ومتابعة تلقائية، بالعربي والإنجليزي. بنطبّق CRM لفرق من ٥ أفراد لعدة مئات — وبنبني ونشغّل تلات أنظمة متخصصة بتاعتنا.",
-    crmCta: "شوف أنظمة CRM",
+      "قمع مبيعات وإدارة عملاء ومتابعة تلقائية، بالعربية والإنجليزية. نطبّق أنظمة CRM لفرق من خمسة أفراد إلى عدة مئات، ونبني ونشغّل ثلاثة أنظمة متخصصة خاصة بنا.",
+    crmCta: "استعرض أنظمة CRM",
     industryLabel: "أنظمة متخصصة من تنفيذنا وتشغيلنا",
-    othersLabel: "باقي اللي بنعمله",
-    unsure: "مش متأكد محتاج إيه؟",
-    unsureCta: "كلّم مهندس",
+    othersLabel: "بقية ما نقدّمه",
+    unsure: "لستَ متأكدًا مما تحتاجه؟",
+    unsureCta: "تحدّث إلى مهندس",
   },
 };
 
@@ -68,10 +68,10 @@ const INDUSTRY = [
 
 const OTHERS = [
   { id: "internet", Icon: Headphones, en: "Call Center & VoIP", ar: "مراكز الاتصال وVoIP", enD: "Grandstream and Cisco, IVR, call recording", arD: "Grandstream وCisco، IVR، تسجيل مكالمات" },
-  { id: "cybersecurity", Icon: Shield, en: "Firewall & Security", ar: "جدران الحماية والأمن", enD: "Sophos and Fortinet, endpoint, monitoring", arD: "سوفوس وفورتينت، حماية الأجهزة، مراقبة" },
-  { id: "infrastructure", Icon: Network, en: "Network & Infrastructure", ar: "الشبكات والبنية التحتية", enD: "Structured cabling, server rooms, wireless", arD: "كابلات منظمة، غرف خوادم، شبكات لاسلكية" },
-  { id: "hardware", Icon: Cpu, en: "Hardware & Servers", ar: "الأجهزة والخوادم", enD: "Servers, workstations, supply and setup", arD: "خوادم ومحطات عمل، توريد وتركيب" },
-  { id: "web-development", Icon: Globe, en: "Website Development", ar: "تطوير المواقع", enD: "Fast, bilingual, search-optimised sites", arD: "مواقع سريعة وثنائية اللغة ومهيأة للبحث" },
+  { id: "cybersecurity", Icon: Shield, en: "Firewall & Security", ar: "جدران الحماية والأمن", enD: "Sophos and Fortinet, endpoint, monitoring", arD: "Sophos وFortinet، حماية الأجهزة الطرفية، ومراقبة" },
+  { id: "infrastructure", Icon: Network, en: "Network & Infrastructure", ar: "الشبكات والبنية التحتية", enD: "Structured cabling, server rooms, wireless", arD: "كابلات منظّمة، غرف خوادم، وشبكات لاسلكية" },
+  { id: "hardware", Icon: Cpu, en: "Hardware & Servers", ar: "الأجهزة والخوادم", enD: "Servers, workstations, supply and setup", arD: "خوادم ومحطات عمل، توريدًا وتركيبًا" },
+  { id: "web-development", Icon: Globe, en: "Website Development", ar: "تطوير المواقع", enD: "Fast, bilingual, search-optimised sites", arD: "مواقع سريعة ثنائية اللغة ومهيّأة لمحركات البحث" },
 ];
 
 export default function ServiceChooser({ language }: Props) {

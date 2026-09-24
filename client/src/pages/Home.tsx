@@ -585,13 +585,11 @@ export default function Home({ language }: HomeProps) {
           the site and had no link from the home page at all — they were only
           reachable via /services/crm. Lazy-loaded so the solutions
           content stays out of the entry bundle. */}
-      <section className="py-4 bg-background">
-        <div className="container">
-          <React.Suspense fallback={<div className="h-48" />}>
-            <CrmProductsShowcase language={language} />
-          </React.Suspense>
-        </div>
-      </section>
+      <div className="container">
+        <React.Suspense fallback={<div className="h-48" />}>
+          <CrmProductsShowcase language={language} />
+        </React.Suspense>
+      </div>
 
       {/* ── STATS ── */}
       <section className="py-20 bg-[var(--navy)]">

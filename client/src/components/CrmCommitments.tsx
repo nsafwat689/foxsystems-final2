@@ -15,6 +15,10 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import {
   AlertCircle,
+  Languages,
+  Lock,
+  Minus,
+  Rocket,
   ArrowRight,
   CalendarX,
   Clock,
@@ -32,6 +36,11 @@ interface Props {
 
 const ITEMS = [
   {
+    Icon: Rocket,
+    en: { t: "Live in two weeks", d: "A standard setup is running and your team trained within two weeks. Customisation is scoped separately and quoted with its own timeline." },
+    ar: { t: "شغّال خلال أسبوعين", d: "التركيب القياسي بيبقى شغّال وفريقك متدرّب خلال أسبوعين. التخصيص بيتحدد نطاقه ويتسعّر بجدول زمني خاص بيه." },
+  },
+  {
     Icon: Clock,
     en: { t: "First response within 1 hour", d: "You hear back from us within the hour, any day of the week." },
     ar: { t: "أول رد خلال ساعة", d: "هترد عليك خلال ساعة، أي يوم في الأسبوع." },
@@ -42,6 +51,11 @@ const ITEMS = [
     ar: { t: "الأعطال الحرجة بتتحل فورًا", d: "النظام الواقف مش تذكرة في طابور. بنتحرك فورًا، وفي الموقع لو ده المطلوب." },
   },
   {
+    Icon: Languages,
+    en: { t: "Support in Arabic or English", d: "Whichever your team prefers, from people in the same time zone." },
+    ar: { t: "دعم بالعربي أو الإنجليزي", d: "زي ما فريقك يفضّل، من ناس في نفس التوقيت." },
+  },
+  {
     Icon: UserCheck,
     en: { t: "A named engineer on your account", d: "Someone who knows your setup, not whoever picks up the queue that day." },
     ar: { t: "مهندس محدد بالاسم لحسابك", d: "حد عارف نظامك، مش أي حد بيرد على الطابور في اليوم ده." },
@@ -50,6 +64,11 @@ const ITEMS = [
     Icon: Wallet,
     en: { t: "No setup fee", d: "Implementation, migration and training are in the price, not billed on top." },
     ar: { t: "من غير رسوم تركيب", d: "التركيب ونقل البيانات والتدريب داخل السعر، مش فاتورة زيادة." },
+  },
+  {
+    Icon: Lock,
+    en: { t: "Your price is locked", d: "The price agreed at signing holds for the whole contract term. It does not move under you." },
+    ar: { t: "سعرك مثبّت", d: "السعر المتفق عليه عند التوقيع ثابت طول مدة العقد. مش هيتغيّر عليك." },
   },
   {
     Icon: CalendarX,
@@ -83,6 +102,12 @@ const T = {
       "Log into a live demo and use it properly — click through every screen, add records, change things. It is a shared demo environment, not your own system, so whatever you enter is cleared when you log out. Nothing to install, nothing to pay, no card.",
     trialCta: "Ask for demo access",
     note: "Standard bundles are priced above. Customisation is quoted separately — talk to sales and you will get the scope and cost in writing before anything starts.",
+    notIncludedTitle: "What is not included",
+    notIncluded: [
+      "Tax. Prices are shown before tax.",
+      "Hardware, where the solution needs it — servers, phones or networking are quoted separately.",
+      "Customisation beyond the standard system, which is scoped and quoted on its own.",
+    ],
   },
   ar: {
     kicker: "التزاماتنا",
@@ -93,6 +118,12 @@ const T = {
       "ادخل على نسخة تجريبية شغالة واستخدمها بجد — اتنقل بين كل الشاشات، ضيف بيانات، غيّر حاجات. دي بيئة تجريبية مشتركة مش نظامك إنت، فأي حاجة تدخلها بتتمسح لما تخرج. من غير تركيب ولا دفع ولا كارت.",
     trialCta: "اطلب دخول للنسخة التجريبية",
     note: "الباقات القياسية أسعارها فوق. التخصيص بيتسعّر لوحده — كلّم المبيعات وهتاخد نطاق الشغل والتكلفة مكتوبين قبل ما يبدأ أي حاجة.",
+    notIncludedTitle: "إيه اللي مش مشمول",
+    notIncluded: [
+      "الضرائب. الأسعار معروضة قبل الضريبة.",
+      "الأجهزة، لو الحل محتاجها — الخوادم أو التليفونات أو الشبكات بتتسعّر لوحدها.",
+      "التخصيص الزيادة عن النظام القياسي، بيتحدد نطاقه ويتسعّر لوحده.",
+    ],
   },
 };
 
@@ -149,6 +180,22 @@ export default function CrmCommitments({ language }: Props) {
           {t.trialCta}
           <ArrowRight className={`w-4 h-4 ${isArabic ? "rotate-180" : ""}`} aria-hidden="true" />
         </Link>
+      </div>
+
+      {/* Stating the limits plainly makes the promises above more believable,
+          and stops a sales call starting with an expectation nobody set. */}
+      <div className="mt-6 p-6 rounded-xl border border-border bg-muted/30">
+        <h3 className="font-bold mb-3" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+          {t.notIncludedTitle}
+        </h3>
+        <ul className="space-y-2">
+          {t.notIncluded.map(item => (
+            <li key={item} className="flex gap-2.5 text-sm text-muted-foreground leading-relaxed">
+              <Minus className="w-4 h-4 flex-shrink-0 mt-0.5 text-muted-foreground/60" aria-hidden="true" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <p className="text-xs text-muted-foreground/80 mt-4 leading-relaxed">{t.note}</p>

@@ -10,15 +10,23 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Calculator, CalendarClock, Gauge, Percent } from "lucide-react";
+import { ArrowRight, Calculator, CalendarClock, FileText, Gauge, Percent } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { TOOLS, TOOL_IDS, TOOLS_INDEX_SEO, type ToolId } from "@/data/tools";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/utils/seo";
 
-const CrmCostCalculator = lazy(() => import("@/components/tools/CrmCostCalculator"));
+// One chunk per tool: a visitor opening the invoice generator should not also
+// download the bandwidth maths.
+const WIDGETS: Record<ToolId, React.LazyExoticComponent<React.ComponentType<{ language: "en" | "ar" }>>> = {
+  "crm-cost-calculator": lazy(() => import("@/components/tools/CrmCostCalculator")),
+  "bandwidth-calculator": lazy(() => import("@/components/tools/BandwidthCalculator")),
+  "commission-calculator": lazy(() => import("@/components/tools/CommissionCalculator")),
+  "installment-plan-generator": lazy(() => import("@/components/tools/InstallmentPlanGenerator")),
+  "invoice-generator": lazy(() => import("@/components/tools/InvoiceGenerator")),
+};
 
-const ICONS = { Calculator, Gauge, Percent, CalendarClock };
+const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText };
 
 const ORIGIN = "https://foxsystemstech.com";
 
@@ -62,6 +70,7 @@ export default function ToolDetail({ toolId, language }: Props) {
   const copy = tool[language];
   const seo = tool.seo[language];
   const Icon = ICONS[tool.icon];
+  const Widget = WIDGETS[toolId];
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: isArabic ? "الرئيسية" : "Home", url: isArabic ? `${ORIGIN}/ar` : `${ORIGIN}/` },
@@ -69,11 +78,10 @@ export default function ToolDetail({ toolId, language }: Props) {
     { name: copy.name, url: seo.canonicalUrl },
   ]);
 
-  // Annotated deliberately. TypeScript 5.5 infers a type predicate from the
-  // filter callback, and while TOOL_IDS holds a single literal it concludes
-  // `id is never`, so every property access below fails to compile. The
-  // annotation keeps it as ToolId[]; it becomes redundant once a second tool
-  // is added, and harmless either way.
+  // The annotation guards against TypeScript 5.5's inferred type predicates:
+  // when TOOL_IDS held a single literal, `id !== toolId` narrowed to `never`
+  // and every property access below failed to compile. It is redundant now
+  // there are several tools, and cheap insurance if that ever reverses.
   const others: ToolId[] = (TOOL_IDS as readonly ToolId[]).filter(id => id !== toolId);
 
   return (
@@ -133,7 +141,7 @@ export default function ToolDetail({ toolId, language }: Props) {
             <div className="py-20 text-center text-sm text-muted-foreground">{t.loading}</div>
           }
         >
-          {toolId === "crm-cost-calculator" && <CrmCostCalculator language={language} />}
+          <Widget language={language} />
         </Suspense>
 
         {/* method — the part that actually ranks */}

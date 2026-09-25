@@ -14,6 +14,13 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    include: ["server/**/*.test.ts", "server/**/*.spec.ts", "api/**/*.test.ts"],
+    include: [
+      "server/**/*.test.ts",
+      "server/**/*.spec.ts",
+      "api/**/*.test.ts",
+      // Pure logic in the client is testable too — the amount-in-words used on
+      // generated invoices is exactly the kind of thing that breaks silently.
+      "client/src/lib/**/*.test.ts",
+    ],
   },
 });

@@ -4,5 +4,11 @@
  * lazy-loaded, so importing tools.ts here would pull every intro, method
  * paragraph and FAQ in two languages into the entry bundle.
  */
-export const TOOL_IDS = ["crm-cost-calculator"] as const;
+export const TOOL_IDS = [
+  "crm-cost-calculator",
+  "bandwidth-calculator",
+  "commission-calculator",
+  "installment-plan-generator",
+  "invoice-generator",
+] as const;
 export type ToolId = (typeof TOOL_IDS)[number];

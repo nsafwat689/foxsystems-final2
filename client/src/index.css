@@ -354,3 +354,61 @@ a[href^="mailto:"],
 [dir="rtl"] a[href^="tel:"] {
   justify-content: flex-start;
 }
+
+/* ---------------------------------------------------------------------------
+   Print: the installment schedule and the invoice generator both print the
+   document alone. Everything that is chrome — nav, footers, the input panels,
+   the floating WhatsApp button — is dropped, and .print-area is lifted out of
+   its layout so it starts at the top of the page rather than wherever it sat
+   on screen.
+   --------------------------------------------------------------------------- */
+@media print {
+  header,
+  nav,
+  footer,
+  .no-print,
+  [data-print="hide"] {
+    display: none !important;
+  }
+
+  /* Anything that is not on the path to .print-area is hidden, so a tool page
+     prints its document without its own explanatory prose. */
+  body :not(:has(.print-area)):not(.print-area):not(.print-area *) {
+    visibility: hidden;
+  }
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+
+  .print-area {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .print-area table {
+    page-break-inside: auto;
+  }
+  .print-area tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  .print-area thead {
+    display: table-header-group;
+  }
+
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+}

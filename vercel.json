@@ -220,8 +220,24 @@
       "destination": "/ar/tools.html"
     },
     {
+      "source": "/ar/tools/bandwidth-calculator",
+      "destination": "/ar/tools/bandwidth-calculator.html"
+    },
+    {
+      "source": "/ar/tools/commission-calculator",
+      "destination": "/ar/tools/commission-calculator.html"
+    },
+    {
       "source": "/ar/tools/crm-cost-calculator",
       "destination": "/ar/tools/crm-cost-calculator.html"
+    },
+    {
+      "source": "/ar/tools/installment-plan-generator",
+      "destination": "/ar/tools/installment-plan-generator.html"
+    },
+    {
+      "source": "/ar/tools/invoice-generator",
+      "destination": "/ar/tools/invoice-generator.html"
     },
     {
       "source": "/articles",
@@ -388,8 +404,24 @@
       "destination": "/tools.html"
     },
     {
+      "source": "/tools/bandwidth-calculator",
+      "destination": "/tools/bandwidth-calculator.html"
+    },
+    {
+      "source": "/tools/commission-calculator",
+      "destination": "/tools/commission-calculator.html"
+    },
+    {
       "source": "/tools/crm-cost-calculator",
       "destination": "/tools/crm-cost-calculator.html"
+    },
+    {
+      "source": "/tools/installment-plan-generator",
+      "destination": "/tools/installment-plan-generator.html"
+    },
+    {
+      "source": "/tools/invoice-generator",
+      "destination": "/tools/invoice-generator.html"
     },
     {
       "source": "/((?!api/|assets/).*)",

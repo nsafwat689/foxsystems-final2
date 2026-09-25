@@ -36,7 +36,24 @@ export type ToolCopy = {
 export type Tool = {
   id: ToolId;
   /** lucide-react icon name, resolved in the pages. */
-  icon: "Calculator" | "Gauge" | "Percent" | "CalendarClock" | "FileText";
+  icon:
+    | "Calculator"
+    | "Gauge"
+    | "Percent"
+    | "CalendarClock"
+    | "FileText"
+    | "Receipt"
+    | "Wallet"
+    | "ShieldCheck"
+    | "Bug"
+    | "TrendingUp";
+  /**
+   * Tools that model tax or employment entitlements carry a standing caveat:
+   * rates and statute change, the defaults are starting points rather than
+   * advice, and the reader should confirm with their own accountant or
+   * lawyer. Set this and the page renders it above the widget.
+   */
+  advisory?: { en: string; ar: string };
   /** Which service or product page this tool should push traffic to. */
   related: { href: string; en: string; ar: string };
   en: ToolCopy;
@@ -571,6 +588,544 @@ export const TOOLS: Record<ToolId, Tool> = {
         ogDescription: "ضريبة القيمة المضافة والإجمالي بالحروف وعربية من اليمين لليسار، مع الطباعة أو الحفظ PDF. بلا رفع ولا حساب.",
         ogImage: `${ORIGIN}/tools/tools-og.jpg`,
         canonicalUrl: `${ORIGIN}/ar/tools/invoice-generator`,
+        language: "ar",
+      },
+    },
+  },
+
+  "vat-calculator": {
+    id: "vat-calculator",
+    icon: "Receipt",
+    related: { href: "/tools/invoice-generator", en: "Put this on an invoice", ar: "ضع هذا في فاتورة" },
+    advisory: {
+      en: "Rates are editable because they change and because they depend on what you sell. The defaults are common starting points, not advice — confirm the rate that applies to you with your accountant before you invoice on it.",
+      ar: "النسب قابلة للتعديل لأنها تتغيّر ولأنها تعتمد على ما تبيعه. والقيم الافتراضية نقاط بداية شائعة لا استشارة — تحقّق من النسبة التي تنطبق عليك مع محاسبك قبل أن تُصدر فاتورة بناءً عليها.",
+    },
+    en: {
+      name: "VAT & Withholding Tax Calculator",
+      tagline: "What you invoice, what the client withholds, and what actually reaches your bank",
+      intro:
+        "Two different taxes hit the same invoice from opposite directions and people mix them up constantly. VAT is added on top of your price and you collect it on the state's behalf. Withholding tax is deducted by your client before they pay you and remitted against your own income tax. Get them confused and you either under-invoice or are surprised by a smaller transfer than the invoice said. This works both out from either direction — including backwards from a VAT-inclusive price.",
+      method: {
+        title: "How this is calculated",
+        body: [
+          "VAT is charged on the net value of the supply. If your figure already includes VAT, the net is recovered by dividing by one plus the rate rather than by subtracting the percentage — a common and expensive slip, because subtracting 14 percent from a VAT-inclusive figure does not give you the net.",
+          "Withholding is deducted from the net value, not from the VAT-inclusive total. The client pays you the gross minus the withheld amount, and gives you a certificate for the amount withheld, which you then set against your own income tax liability. It is a prepayment of your tax, not a cost — though it is very much a cash-flow event.",
+          "The two do not interact. Changing the withholding rate does not change the VAT you owe, and vice versa; they are separate obligations with separate filings. The calculator keeps them separate for that reason, and shows the amount you remit as distinct from the amount you receive.",
+          "Every rate here is an input. The standard Egyptian VAT rate is widely applied at 14 percent, but reduced rates, exemptions and zero-rating for exports all exist, and withholding rates vary by the category of supply. Put your own figures in — the arithmetic is the part this tool is for.",
+        ],
+      },
+      faqs: [
+        {
+          q: "Why can I not just subtract 14 percent from a VAT-inclusive price?",
+          a: "Because the 14 percent was calculated on the smaller net figure, not on the total. On a 114 total, the VAT is 14 and the net is 100 — but subtracting 14 percent of 114 gives 98.04, which is wrong by nearly two units. To go backwards, divide by 1.14. This is the single most common arithmetic error on invoices, and it compounds across every line.",
+        },
+        {
+          q: "Is withholding tax a cost to my business?",
+          a: "No. It is your own income tax, paid early by your customer on your behalf. You receive a certificate for the amount and set it against what you owe at the year end. It does affect cash flow, though — the money is gone now and recovered later, which matters if you are financing work in progress.",
+        },
+        {
+          q: "Is withholding deducted before or after VAT?",
+          a: "It is calculated on the value of the supply, not on the VAT-inclusive total. So on a 100 supply with 14 VAT, the client pays 114 less the withholding on 100 — not the withholding on 114. Applying it to the gross overstates the deduction.",
+        },
+        {
+          q: "What rate should I use for withholding?",
+          a: "It depends on the category of what you supplied, and the schedule is revised from time to time. Rather than hard-code something that may be out of date by the time you read it, the field is editable — take the rate from your accountant or the current schedule and put it in. The tool handles the arithmetic and the direction, which is where mistakes actually happen.",
+        },
+        {
+          q: "Does this file anything for me?",
+          a: "No. It is a calculator, not a filing tool, and nothing you type leaves your browser. If you are inside the e-invoicing mandate your invoices must be submitted through the Tax Authority's own system, which is a separate matter from working out the numbers.",
+        },
+      ],
+    },
+    ar: {
+      name: "حاسبة ضريبة القيمة المضافة والخصم تحت حساب الضريبة",
+      tagline: "ما تُصدره في الفاتورة، وما يخصمه العميل، وما يصل إلى حسابك فعلًا",
+      intro:
+        "ضريبتان مختلفتان تصيبان الفاتورة نفسها من اتجاهين متعاكسين، والناس يخلطون بينهما باستمرار. فضريبة القيمة المضافة تُضاف فوق سعرك وتحصّلها أنت نيابةً عن الدولة، أما الخصم تحت حساب الضريبة فيقتطعه عميلك قبل أن يدفع لك ويورّده لحساب ضريبة دخلك أنت. والخلط بينهما يعني إما فاتورة ناقصة وإما مفاجأة بتحويل أقل مما تقوله الفاتورة. وتحسب هذه الأداة الاثنين من أي اتجاه، بما في ذلك الرجوع من سعر شامل الضريبة.",
+      method: {
+        title: "كيف تُحتسب هذه الأرقام",
+        body: [
+          "تُحتسب ضريبة القيمة المضافة على القيمة الصافية للتوريد. فإن كان رقمك شاملًا للضريبة أصلًا، فتُستخرج القيمة الصافية بالقسمة على واحد زائد النسبة لا بطرح النسبة المئوية — وهي زلّة شائعة ومكلفة، لأن طرح 14 بالمئة من رقم شامل للضريبة لا يعطيك الصافي.",
+          "ويُخصم مبلغ الخصم تحت حساب الضريبة من القيمة الصافية لا من الإجمالي الشامل للضريبة. فيدفع لك العميل الإجمالي ناقصًا المبلغ المخصوم، ويعطيك شهادة بذلك المبلغ، ثم تخصمها أنت من التزامك بضريبة الدخل. فهو دفعة مقدَّمة من ضريبتك لا تكلفة عليك، وإن كان حدثًا يمسّ التدفق النقدي بوضوح.",
+          "ولا تتفاعل الضريبتان إحداهما مع الأخرى. فتغيير نسبة الخصم لا يغيّر ما تدين به من ضريبة القيمة المضافة والعكس؛ فهما التزامان منفصلان بإقرارين منفصلين. ولهذا تفصل الحاسبة بينهما، وتعرض المبلغ الذي تورّده مستقلًا عن المبلغ الذي تستلمه.",
+          "وكل نسبة هنا حقل إدخال. فالنسبة القياسية لضريبة القيمة المضافة في مصر مطبَّقة على نطاق واسع عند 14 بالمئة، لكن ثمة نسبًا مخفَّضة وإعفاءات ونسبة صفرية للصادرات، وتتفاوت نسب الخصم بحسب فئة التوريد. فأدخل أرقامك أنت — فالعملية الحسابية هي ما وُجدت هذه الأداة من أجله.",
+        ],
+      },
+      faqs: [
+        {
+          q: "لماذا لا أطرح 14 بالمئة ببساطة من سعر شامل الضريبة؟",
+          a: "لأن الـ14 بالمئة حُسبت على الرقم الصافي الأصغر لا على الإجمالي. فعلى إجمالي 114 تكون الضريبة 14 والصافي 100، أما طرح 14 بالمئة من 114 فيعطي 98.04، وهو خطأ بنحو وحدتين. وللرجوع إلى الصافي اقسم على 1.14. وهذا أشهر خطأ حسابي في الفواتير، ويتراكم عبر كل بند.",
+        },
+        {
+          q: "هل الخصم تحت حساب الضريبة تكلفة على شركتي؟",
+          a: "لا. هو ضريبة دخلك أنت، يدفعها عميلك مبكرًا نيابةً عنك. وتستلم شهادة بالمبلغ تخصمها مما تدين به في نهاية السنة. لكنه يؤثر في التدفق النقدي: فالمال خرج الآن ويُسترد لاحقًا، وهو ما يهم إن كنت تموّل أعمالًا تحت التنفيذ.",
+        },
+        {
+          q: "هل يُخصم المبلغ قبل ضريبة القيمة المضافة أم بعدها؟",
+          a: "يُحتسب على قيمة التوريد لا على الإجمالي الشامل للضريبة. فعلى توريد بقيمة 100 وضريبة 14، يدفع العميل 114 مطروحًا منها الخصم المحسوب على 100 لا على 114. وتطبيقه على الإجمالي يضخّم المبلغ المخصوم.",
+        },
+        {
+          q: "ما النسبة التي ينبغي أن أستخدمها للخصم؟",
+          a: "تعتمد على فئة ما ورّدته، والجدول يُعدَّل من حين إلى آخر. وبدل تثبيت رقم قد يكون قديمًا حين تقرأ هذا، جُعل الحقل قابلًا للتعديل — خذ النسبة من محاسبك أو من الجدول الساري وأدخلها. وتتولى الأداة العملية الحسابية والاتجاه، وهما موضع الخطأ فعلًا.",
+        },
+        {
+          q: "هل تقدّم هذه الأداة أي إقرار نيابةً عني؟",
+          a: "لا. هي حاسبة لا أداة تقديم إقرارات، ولا يغادر ما تكتبه متصفحك. وإن كنت خاضعًا لإلزام الفاتورة الإلكترونية فيجب إرسال فواتيرك عبر منظومة مصلحة الضرائب نفسها، وهي مسألة منفصلة عن حساب الأرقام.",
+        },
+      ],
+    },
+    seo: {
+      en: {
+        title: "VAT & Withholding Tax Calculator Egypt | Free",
+        description:
+          "Work out VAT forwards or backwards from a VAT-inclusive price, plus withholding tax, and see what actually reaches your bank. Free, no sign-up.",
+        keywords:
+          "VAT calculator Egypt, withholding tax calculator, 14% VAT calculator, remove VAT from price, VAT inclusive calculator, حاسبة ضريبة القيمة المضافة, الخصم تحت حساب الضريبة, Egypt tax calculator, reverse VAT calculator",
+        ogTitle: "VAT & Withholding Tax Calculator - Egypt",
+        ogDescription: "VAT forwards and backwards, withholding on the net, and the amount that actually lands in your bank.",
+        ogImage: `${ORIGIN}/tools/tools-og.jpg`,
+        canonicalUrl: `${ORIGIN}/tools/vat-calculator`,
+        language: "en",
+      },
+      ar: {
+        title: "حاسبة ضريبة القيمة المضافة والخصم | مصر | مجانية",
+        description:
+          "احسب ضريبة القيمة المضافة طردًا أو عكسًا من سعر شامل، مع الخصم تحت حساب الضريبة، وشاهد ما يصل إلى حسابك فعلًا. مجانية وبلا تسجيل.",
+        keywords:
+          "حاسبة ضريبة القيمة المضافة, حاسبة الضريبة مصر, الخصم تحت حساب الضريبة, ضريبة 14 بالمئة, استخراج الضريبة من سعر شامل, حساب الضريبة المضافة, VAT calculator Egypt",
+        ogTitle: "حاسبة ضريبة القيمة المضافة والخصم - مصر",
+        ogDescription: "الضريبة طردًا وعكسًا، والخصم على الصافي، والمبلغ الذي يصل إلى حسابك فعلًا.",
+        ogImage: `${ORIGIN}/tools/tools-og.jpg`,
+        canonicalUrl: `${ORIGIN}/ar/tools/vat-calculator`,
+        language: "ar",
+      },
+    },
+  },
+
+  "end-of-service-calculator": {
+    id: "end-of-service-calculator",
+    icon: "Wallet",
+    related: { href: "/tools/vat-calculator", en: "VAT and withholding calculator", ar: "حاسبة الضريبة والخصم" },
+    advisory: {
+      en: "This models the formula YOU enter — the one in your contract, your staff handbook or your company policy. It is not a statement of statutory entitlement. Egypt's framework works differently from the Gulf's end-of-service gratuity, employment law is revised, and the answer depends on the wage base and the reason for leaving. Use this to model and budget, and confirm actual entitlements with a labour lawyer before paying or promising anything.",
+      ar: "تحاكي هذه الأداة الصيغة التي تُدخلها أنت — الواردة في عقدك أو لائحتك أو سياسة شركتك. وهي ليست بيانًا بالاستحقاق القانوني. فالإطار في مصر يختلف عن مكافأة نهاية الخدمة في دول الخليج، وقوانين العمل تُعدَّل، والإجابة تتوقف على أساس الأجر وسبب انتهاء العلاقة. فاستخدمها للنمذجة وإعداد الميزانية، وتحقّق من الاستحقاقات الفعلية مع محامٍ عمّالي قبل أن تدفع أو تَعِد بشيء.",
+    },
+    en: {
+      name: "End-of-Service Benefit Calculator",
+      tagline: "Model a gratuity or severance policy across years of service, and budget for it",
+      intro:
+        "Most companies discover what their end-of-service liability actually is when someone resigns, which is the worst possible moment to find out. This models the formula in your own contracts: how many days of wage accrue per year, whether that rate steps up after a number of years, what happens on resignation as opposed to termination, and whether a cap applies. It gives you a figure per employee and a total you can hold against a provision.",
+      method: {
+        title: "How this is calculated",
+        body: [
+          "Service is the period between the two dates you enter, in years and the remaining fraction. The fraction matters: most policies accrue pro rata rather than only on completed years, and rounding a partial year away is where the difference between your figure and the employee's usually comes from.",
+          "The daily wage is the monthly wage divided by thirty. Which monthly wage is the question that decides everything — basic salary alone produces a much smaller number than total wage including fixed allowances, and contracts differ. Whatever your contract says, enter that figure; the tool cannot know which you mean.",
+          "Accrual is split into two bands so you can model the common shape where a lower rate applies to early years and a higher rate afterwards. Set both rates the same if your policy is flat. The result shows each band separately, so you can see which part of the liability is driven by long service.",
+          "The leaving multiplier handles policies where resignation earns less than termination. It is applied to the whole accrued figure at the end, and the cap, if you set one, is applied last. Set the multiplier to 100 percent for a policy that makes no distinction.",
+        ],
+      },
+      faqs: [
+        {
+          q: "Does Egypt have end-of-service gratuity like the Gulf states?",
+          a: "Not in the same form. Egypt's system is built around the social insurance scheme rather than a universal employer-paid gratuity, and separate provisions deal with compensation for unlawful dismissal. Many employers nevertheless operate a contractual end-of-service benefit, and that is what this tool models. It calculates the policy you give it, not a statutory entitlement — so confirm what you actually owe with a labour lawyer.",
+        },
+        {
+          q: "Basic salary or total wage?",
+          a: "Whichever your contract specifies, and it is worth checking rather than assuming, because the gap between the two is often a third or more of the answer. Where a contract is silent or ambiguous, that ambiguity tends to be read against the employer, so it is cheaper to make it explicit in the contract than to argue it at the exit.",
+        },
+        {
+          q: "Should partial years count?",
+          a: "Under most policies, yes, pro rata. A policy that only credits completed years creates a visible cliff — an employee leaving at eleven months gets nothing while one leaving at thirteen gets a full year — and that is the kind of term that gets disputed. This tool accrues pro rata by default.",
+        },
+        {
+          q: "How do I turn this into a provision in my accounts?",
+          a: "Run it for every employee at their current wage and service, and total the result. That is your liability if everyone left today, which is the conservative basis most small companies use. It is a planning figure rather than an accounting standard — your auditor will tell you how they want it measured and discounted.",
+        },
+        {
+          q: "Is anything I enter stored?",
+          a: "No. It runs entirely in your browser and nothing is transmitted. That matters here more than on most of these tools, because salary figures are confidential.",
+        },
+      ],
+    },
+    ar: {
+      name: "حاسبة مكافأة نهاية الخدمة",
+      tagline: "احسب سياسة مكافأة أو تعويض على سنوات الخدمة، وخطّط لميزانيتها",
+      intro:
+        "تكتشف معظم الشركات حجم التزامها بمكافأة نهاية الخدمة حين يستقيل أحدهم، وهي أسوأ لحظة ممكنة لاكتشافه. وتحاكي هذه الأداة الصيغة الواردة في عقودك أنت: كم يومًا من الأجر يُستحق عن كل سنة، وهل ترتفع تلك النسبة بعد عدد من السنوات، وماذا يحدث عند الاستقالة مقابل إنهاء الخدمة، وهل ينطبق حدّ أقصى. وتعطيك رقمًا لكل موظف وإجماليًا يمكنك تكوين مخصّص في مقابله.",
+      method: {
+        title: "كيف تُحتسب هذه الأرقام",
+        body: [
+          "مدة الخدمة هي الفترة بين التاريخين اللذين تُدخلهما، بالسنوات وما تبقّى منها كسرًا. والكسر مهم: فمعظم السياسات تستحق بالتناسب لا عن السنوات الكاملة وحدها، وإهمال السنة الجزئية هو مصدر الفارق المعتاد بين رقمك ورقم الموظف.",
+          "ويُحسب الأجر اليومي بقسمة الأجر الشهري على ثلاثين. وأيّ أجر شهري هو السؤال الذي يحسم كل شيء: فالراتب الأساسي وحده يعطي رقمًا أصغر بكثير من الأجر الشامل للبدلات الثابتة، والعقود تختلف. فأدخل ما ينصّ عليه عقدك أيًّا كان؛ فالأداة لا تستطيع معرفة أيهما تقصد.",
+          "ويُقسَّم الاستحقاق إلى شريحتين لتتمكّن من محاكاة الشكل الشائع الذي تنطبق فيه نسبة أقل على السنوات الأولى ونسبة أعلى بعدها. واضبط النسبتين على القيمة نفسها إن كانت سياستك موحّدة. وتعرض النتيجة كل شريحة على حدة، لترى أي جزء من الالتزام تدفعه الخدمة الطويلة.",
+          "ويعالج معامل سبب الانتهاء السياسات التي تقلّ فيها الاستقالة عن إنهاء الخدمة. ويُطبَّق على الرقم المستحق كاملًا في النهاية، ثم يُطبَّق الحدّ الأقصى أخيرًا إن حدّدته. واضبط المعامل على 100 بالمئة لسياسة لا تفرّق بين الحالتين.",
+        ],
+      },
+      faqs: [
+        {
+          q: "هل في مصر مكافأة نهاية خدمة كدول الخليج؟",
+          a: "ليست بالصورة نفسها. فالنظام في مصر مبنيّ على منظومة التأمينات الاجتماعية لا على مكافأة شاملة يدفعها صاحب العمل، وثمة أحكام منفصلة تتناول التعويض عن الفصل غير المشروع. ومع ذلك يطبّق كثير من أصحاب الأعمال مكافأة نهاية خدمة تعاقدية، وهي ما تحاكيه هذه الأداة. فهي تحسب السياسة التي تعطيها إياها لا استحقاقًا قانونيًا — فتحقّق مما تدين به فعلًا مع محامٍ عمّالي.",
+        },
+        {
+          q: "الراتب الأساسي أم الأجر الشامل؟",
+          a: "ما ينصّ عليه عقدك، ويستحق التحقق لا الافتراض، لأن الفارق بين الاثنين يبلغ ثلث الإجابة أو أكثر غالبًا. وحين يسكت العقد أو يحتمل التأويل، يُفسَّر ذلك الغموض في غير صالح صاحب العمل عادةً، فالنصّ عليه صراحةً في العقد أرخص من التنازع عليه عند الخروج.",
+        },
+        {
+          q: "هل تُحتسب السنوات الجزئية؟",
+          a: "نعم بالتناسب في معظم السياسات. فالسياسة التي لا تحتسب إلا السنوات الكاملة تُنشئ هوّة ظاهرة — إذ لا ينال الموظف الذي يغادر بعد أحد عشر شهرًا شيئًا بينما ينال من يغادر بعد ثلاثة عشر شهرًا سنة كاملة — وهو نوع الشروط التي يكثر التنازع عليها. وتستحق هذه الأداة بالتناسب افتراضيًا.",
+        },
+        {
+          q: "كيف أحوّل هذا إلى مخصّص في دفاتري؟",
+          a: "احسبه لكل موظف بأجره ومدة خدمته الحاليين، ثم اجمع النتيجة. وهذا هو التزامك لو غادر الجميع اليوم، وهو الأساس المتحفّظ الذي تستخدمه معظم الشركات الصغيرة. وهو رقم تخطيطي لا معيار محاسبي — وسيخبرك مراجعك بالطريقة التي يريد قياسه وخصمه بها.",
+        },
+        {
+          q: "هل يُحفظ أي شيء مما أُدخله؟",
+          a: "لا. تعمل الأداة داخل متصفحك بالكامل ولا يُرسل شيء. وهذا يهم هنا أكثر من معظم هذه الأدوات، لأن أرقام الرواتب سرّية.",
+        },
+      ],
+    },
+    seo: {
+      en: {
+        title: "End-of-Service Benefit Calculator | Gratuity & Severance",
+        description:
+          "Model an end-of-service gratuity across years of service: accrual rates, resignation versus termination, and caps. Free, private, no sign-up.",
+        keywords:
+          "end of service calculator, gratuity calculator, severance pay calculator, end of service benefit, حاسبة مكافأة نهاية الخدمة, مكافأة نهاية الخدمة مصر, severance calculator Egypt, employee end of service",
+        ogTitle: "End-of-Service Benefit Calculator",
+        ogDescription: "Accrual by band, resignation multiplier and caps. Models your policy, privately, in your browser.",
+        ogImage: `${ORIGIN}/tools/tools-og.jpg`,
+        canonicalUrl: `${ORIGIN}/tools/end-of-service-calculator`,
+        language: "en",
+      },
+      ar: {
+        title: "حاسبة مكافأة نهاية الخدمة | التعويض والمستحقات",
+        description:
+          "احسب مكافأة نهاية الخدمة على سنوات الخدمة: نسب الاستحقاق، والاستقالة مقابل إنهاء الخدمة، والحدود القصوى. مجانية وخاصة وبلا تسجيل.",
+        keywords:
+          "حاسبة مكافأة نهاية الخدمة, مكافأة نهاية الخدمة مصر, حساب نهاية الخدمة, تعويض نهاية الخدمة, مستحقات نهاية الخدمة, end of service calculator Egypt, gratuity calculator",
+        ogTitle: "حاسبة مكافأة نهاية الخدمة",
+        ogDescription: "استحقاق بالشرائح، ومعامل الاستقالة، وحدّ أقصى. تحاكي سياستك أنت، داخل متصفحك.",
+        ogImage: `${ORIGIN}/tools/tools-og.jpg`,
+        canonicalUrl: `${ORIGIN}/ar/tools/end-of-service-calculator`,
+        language: "ar",
+      },
+    },
+  },
+
+  "security-self-check": {
+    id: "security-self-check",
+    icon: "ShieldCheck",
+    related: { href: "/services/cybersecurity", en: "See firewall and security services", ar: "اطّلع على خدمات جدران الحماية والأمن" },
+    en: {
+      name: "IT Security Self-Check",
+      tagline: "Twelve questions that tell you where you would actually lose data, and what to fix first",
+      intro:
+        "Most small-business security reviews produce a list of products to buy. This does not. It asks twelve questions about what you already do, scores them by how much each one reduces your real risk of losing data or money, and ranks what to fix first. The questions are the ones that matter in practice — restored backups, multi-factor authentication, leavers' accounts — rather than the ones that sound impressive.",
+      method: {
+        title: "How this is scored",
+        body: [
+          "Each question is weighted by how often its absence is the cause of a real incident, not by how technical it sounds. Backups you have actually restored from, multi-factor authentication on email, and promptly disabling leavers' accounts carry the most weight, because those three between them account for the majority of small-business losses we are called in after.",
+          "A partial answer earns partial credit. Most companies are not at zero or one on any of these — they have backups that have never been tested, or MFA on some accounts but not the ones that matter. Scoring that honestly is more useful than a pass-or-fail that everybody fails.",
+          "The result is a band rather than a precise number, because precision here would be false. What matters is the ordered list of gaps underneath it: fixing the top two items on that list will usually do more than anything else you could spend the same money on.",
+          "Nothing you answer is transmitted or stored. This is a self-assessment you can run honestly, which is the only way it is worth anything — a security questionnaire you feel watched while filling in produces optimistic answers and a useless result.",
+        ],
+      },
+      faqs: [
+        {
+          q: "Is an untested backup really no backup?",
+          a: "Close to it. The failure mode we see most often is not the absence of backups but the discovery, during an incident, that they have been silently failing for months, or that nobody knows how to restore from them, or that the restore takes four days and the business cannot survive four days. A backup you have restored from in the last quarter is a backup. The rest is an intention.",
+        },
+        {
+          q: "Why does multi-factor authentication score so highly?",
+          a: "Because the most common way a small business loses money is not a sophisticated intrusion — it is someone's email password being reused or phished, followed by an invoice being quietly redirected. MFA on email breaks that chain at the cheapest possible point, and it costs nothing but a few minutes per person.",
+        },
+        {
+          q: "We are small. Are we really a target?",
+          a: "Almost nothing that hits small businesses is targeted. It is automated and indiscriminate — credentials from a breach elsewhere, a mass phishing run, ransomware that scans for an exposed service. Being small does not remove you from those lists; it only means you are less likely to survive the result.",
+        },
+        {
+          q: "What should we fix first if we can only do one thing?",
+          a: "Restore something from a backup this week, and fix it if it fails. It is free, it takes an afternoon, and it is the one control that limits the damage of almost every other failure — including the ones you have not thought of.",
+        },
+        {
+          q: "Will you use my answers to sell me something?",
+          a: "We cannot. The answers never leave your browser and we never see them. If the result concerns you, you are welcome to talk to us, but the score is yours alone and the list of fixes is useful whether you call us or not.",
+        },
+      ],
+    },
+    ar: {
+      name: "الفحص الذاتي لأمن تقنية المعلومات",
+      tagline: "اثنا عشر سؤالًا تكشف لك أين قد تفقد بياناتك فعلًا، وما الذي تصلحه أولًا",
+      intro:
+        "تنتهي معظم مراجعات الأمن للشركات الصغيرة إلى قائمة منتجات للشراء. وهذه الأداة لا تفعل ذلك. فهي تسأل اثني عشر سؤالًا عمّا تفعله أنت بالفعل، وتمنحها أوزانًا بحسب ما يقلّله كل منها من خطرك الحقيقي في فقدان بيانات أو أموال، ثم ترتّب ما ينبغي إصلاحه أولًا. والأسئلة هي التي تهم عمليًا — نسخ احتياطية جرى الاسترجاع منها فعلًا، والتحقق بخطوتين، وحسابات المغادرين — لا التي تبدو مبهرة.",
+      method: {
+        title: "كيف تُحتسب النتيجة",
+        body: [
+          "لكل سؤال وزن بحسب تكرار كون غيابه سببًا لحادثة حقيقية، لا بحسب ما يبدو عليه من تعقيد تقني. فالنسخ الاحتياطية التي استرجعت منها فعلًا، والتحقق بخطوتين على البريد، وتعطيل حسابات المغادرين فورًا، تحمل أكبر الأوزان، لأن هذه الثلاثة مجتمعةً وراء غالبية خسائر الشركات الصغيرة التي نُستدعى إليها.",
+          "والإجابة الجزئية تنال رصيدًا جزئيًا. فمعظم الشركات ليست عند الصفر ولا عند الواحد في أيٍّ من هذه البنود — فلديها نسخ احتياطية لم تُختبر قط، أو تحقق بخطوتين على بعض الحسابات دون الحسابات المهمة. واحتساب ذلك بصدق أنفع من نجاحٍ أو رسوبٍ يرسب فيه الجميع.",
+          "والنتيجة شريحة لا رقم دقيق، لأن الدقة هنا ستكون زائفة. وما يهم هو قائمة الثغرات المرتّبة تحتها: فإصلاح أول بندين فيها يفوق عادةً أي شيء آخر تنفق عليه المبلغ نفسه.",
+          "ولا يُرسل شيء مما تجيب به ولا يُخزَّن. فهذا تقييم ذاتي تستطيع إجراءه بصدق، وهو السبيل الوحيد لأن يكون له قيمة — إذ إن استبيان أمن تشعر بأنك مراقَب وأنت تملؤه ينتج إجابات متفائلة ونتيجة بلا فائدة.",
+        ],
+      },
+      faqs: [
+        {
+          q: "هل النسخة الاحتياطية غير المختبَرة ليست نسخة احتياطية فعلًا؟",
+          a: "قريبة من ذلك. فأكثر أنماط الإخفاق التي نراها ليس غياب النسخ الاحتياطية، بل اكتشاف أثناء الحادثة أنها كانت تفشل بصمت منذ شهور، أو أن لا أحد يعرف كيف يسترجع منها، أو أن الاسترجاع يستغرق أربعة أيام ولا يحتمل العمل أربعة أيام. فالنسخة التي استرجعت منها خلال الربع الأخير نسخة احتياطية، وما عداها نيّة.",
+        },
+        {
+          q: "لماذا يحصل التحقق بخطوتين على وزن مرتفع؟",
+          a: "لأن أشهر طريقة تفقد بها شركة صغيرة أموالها ليست اختراقًا متطوّرًا، بل إعادة استخدام كلمة مرور بريد أحدهم أو اصطيادها، يتبعها تحويل فاتورة بهدوء إلى حساب آخر. والتحقق بخطوتين على البريد يقطع تلك السلسلة عند أرخص نقطة ممكنة، ولا يكلّف سوى دقائق لكل شخص.",
+        },
+        {
+          q: "نحن شركة صغيرة، فهل نحن هدف فعلًا؟",
+          a: "لا يكاد شيء مما يصيب الشركات الصغيرة يكون مستهدفًا. فهو آليّ وعشوائي: بيانات دخول من اختراق في مكان آخر، أو حملة اصطياد جماعية، أو برمجية فدية تمسح الشبكة بحثًا عن خدمة مكشوفة. وصِغَر حجمك لا يُخرجك من تلك القوائم، بل يعني فقط أنك أقل قدرةً على النجاة من النتيجة.",
+        },
+        {
+          q: "ما الذي نصلحه أولًا إن لم نستطع فعل غير شيء واحد؟",
+          a: "استرجع شيئًا من نسخة احتياطية هذا الأسبوع، وأصلحه إن فشل. فذلك مجاني ويستغرق بعد ظهر يوم، وهو الضابط الوحيد الذي يحدّ من ضرر كل إخفاق آخر تقريبًا، بما في ذلك ما لم يخطر لك.",
+        },
+        {
+          q: "هل ستستخدمون إجاباتي لبيع شيء لي؟",
+          a: "لا نستطيع. فالإجابات لا تغادر متصفحك ولا نراها إطلاقًا. وإن أقلقتك النتيجة فمرحبًا بحديثك إلينا، لكن النتيجة ملكك وحدك، وقائمة الإصلاحات نافعة سواء اتصلت بنا أم لا.",
+        },
+      ],
+    },
+    seo: {
+      en: {
+        title: "IT Security Self-Check for Small Business | Free Score",
+        description:
+          "Twelve questions, weighted by what actually causes data loss, with a score and a ranked list of what to fix first. Private — answers never leave your browser.",
+        keywords:
+          "IT security checklist, cyber security self assessment, small business security check, security audit checklist, ransomware readiness, backup checklist, فحص أمن المعلومات, cybersecurity assessment Egypt",
+        ogTitle: "IT Security Self-Check - Where Would You Actually Lose Data?",
+        ogDescription: "Twelve weighted questions, a score, and a ranked list of fixes. Nothing is transmitted or stored.",
+        ogImage: `${ORIGIN}/tools/tools-og.jpg`,
+        canonicalUrl: `${ORIGIN}/tools/security-self-check`,
+        language: "en",
+      },
+      ar: {
+        title: "الفحص الذاتي لأمن المعلومات للشركات | نتيجة مجانية",
+        description:
+          "اثنا عشر سؤالًا موزونة بحسب ما يسبّب فقدان البيانات فعلًا، مع نتيجة وقائمة مرتّبة بما تصلحه أولًا. خاصة — لا تغادر إجاباتك متصفحك.",
+        keywords:
+          "فحص أمن المعلومات, تقييم الأمن السيبراني, قائمة فحص الأمن, أمن الشركات الصغيرة, جاهزية برمجيات الفدية, نسخ احتياطي, IT security checklist Egypt",
+        ogTitle: "الفحص الذاتي لأمن المعلومات - أين قد تفقد بياناتك فعلًا؟",
+        ogDescription: "اثنا عشر سؤالًا موزونة، ونتيجة، وقائمة إصلاحات مرتّبة. لا يُرسل شيء ولا يُخزَّن.",
+        ogImage: `${ORIGIN}/tools/tools-og.jpg`,
+        canonicalUrl: `${ORIGIN}/ar/tools/security-self-check`,
+        language: "ar",
+      },
+    },
+  },
+
+  "pest-control-job-costing": {
+    id: "pest-control-job-costing",
+    icon: "Bug",
+    related: { href: "/solutions/pest-control-crm", en: "See the pest control system", ar: "استعرض نظام مكافحة الآفات" },
+    en: {
+      name: "Pest Control Job Costing Calculator",
+      tagline: "What a visit really costs you, and the contract price that leaves the margin you want",
+      intro:
+        "Field service contracts are usually priced from what the last one went for, which quietly turns loss-making work into a habit. The cost of a visit is not the chemical — it is mostly the technician's time, including the driving nobody bills for. This works out the true cost per visit and per annual contract, then tells you the price that produces the margin you are aiming at, and what margin your current price is actually producing.",
+      method: {
+        title: "How this is calculated",
+        body: [
+          "The cost of a visit is labour plus travel plus materials. Labour is the hours on site plus the hours driving, multiplied by your fully-loaded hourly cost — which is not the technician's wage. Loaded cost includes insurance, leave, training and the hours that are paid but not billable, and it is typically well above the headline wage. Using the wage alone is the most common reason a job that looked profitable was not.",
+          "Travel is costed twice over, deliberately: the kilometres at your running cost per kilometre, and the driving time inside the labour figure. Both are real and both are usually forgotten. On a spread-out route the driving can exceed the on-site time, which is why route density changes profitability more than chemical prices do.",
+          "Overhead is applied as a percentage on top of direct cost, covering the office, the scheduler, insurance, licensing and everything that exists whether or not you do this particular job. A contract priced to cover only direct cost contributes nothing to any of that.",
+          "The target margin is then applied to the full cost to produce a suggested contract price. Enter what you currently charge and the tool also shows the margin you are actually achieving, which is often the more uncomfortable and more useful number.",
+        ],
+      },
+      faqs: [
+        {
+          q: "What is a fully-loaded hourly cost?",
+          a: "The technician's wage plus everything that comes with employing them, divided by the hours they are actually available to be on a job. That means adding insurance, leave, training, phone, uniform and equipment, then dividing by billable hours rather than paid hours. The result is usually a good deal higher than the hourly wage, and it is the number that should price your work.",
+        },
+        {
+          q: "Why does route density matter so much?",
+          a: "Because driving time is labour you pay for and cannot bill. Eight jobs spread across a city can carry more unbillable driving than on-site work, while eight jobs in one district carry almost none. That is the same technician, the same chemicals and a completely different margin — which is why scheduling is a commercial function, not an administrative one.",
+        },
+        {
+          q: "Should I price per visit or per contract?",
+          a: "Quote the contract, but always know the per-visit cost underneath it. Annual contracts are what make field service businesses stable, but a contract priced without knowing the visit cost locks in whatever mistake you made for a year at a time — and the bigger the contract, the longer you carry it.",
+        },
+        {
+          q: "What margin should I be aiming for?",
+          a: "That is a decision about your market rather than a number we can hand you. What this tool is for is making sure the decision is deliberate: whatever margin you choose, you should know you are achieving it. Most of the trouble comes from not knowing, not from choosing wrong.",
+        },
+        {
+          q: "Does this include the cost of a re-visit under warranty?",
+          a: "Not automatically — add it to visits per year if your contracts include call-backs. Unbilled warranty visits are a real and frequently ignored cost, and on a problem site they can wipe out the margin on the whole contract. If you are tracking device history properly, you already know which sites those are.",
+        },
+      ],
+    },
+    ar: {
+      name: "حاسبة تكلفة مهام مكافحة الآفات",
+      tagline: "ما تكلّفك الزيارة فعلًا، وسعر العقد الذي يحقّق الهامش الذي تريده",
+      intro:
+        "تُسعَّر عقود الخدمات الميدانية عادةً بناءً على سعر العقد السابق، وهو ما يحوّل العمل الخاسر إلى عادة بهدوء. وتكلفة الزيارة ليست المبيد، بل هي في معظمها وقت الفني، بما في ذلك القيادة التي لا يحاسب عليها أحد. وتحسب هذه الأداة التكلفة الحقيقية للزيارة وللعقد السنوي، ثم تخبرك بالسعر الذي يحقّق الهامش الذي تستهدفه، وبالهامش الذي يحقّقه سعرك الحالي فعلًا.",
+      method: {
+        title: "كيف تُحتسب هذه الأرقام",
+        body: [
+          "تكلفة الزيارة هي العمالة مضافًا إليها الانتقال والمواد. والعمالة هي ساعات الموقع مضافًا إليها ساعات القيادة، مضروبةً في تكلفتك الساعية المحمَّلة بالكامل — وهي ليست أجر الفني. فالتكلفة المحمَّلة تشمل التأمين والإجازات والتدريب والساعات المدفوعة غير القابلة للتحصيل، وهي أعلى بكثير من الأجر المعلن عادةً. واستخدام الأجر وحده أشهر سبب لأن تبدو مهمة رابحة وهي ليست كذلك.",
+          "ويُحتسب الانتقال مرتين عن عمد: الكيلومترات بتكلفة التشغيل لكل كيلومتر، ووقت القيادة ضمن رقم العمالة. وكلاهما حقيقي وكلاهما يُنسى عادةً. وعلى خط سير متباعد قد تتجاوز القيادة الوقت على الموقع، ولهذا تغيّر كثافة خط السير الربحية أكثر مما تغيّرها أسعار المبيدات.",
+          "وتُطبَّق المصروفات غير المباشرة كنسبة فوق التكلفة المباشرة، لتغطية المكتب والموزِّع والتأمين والتراخيص وكل ما هو قائم سواء نفّذت هذه المهمة بعينها أم لا. والعقد المسعَّر لتغطية التكلفة المباشرة وحدها لا يسهم في أيٍّ من ذلك.",
+          "ثم يُطبَّق الهامش المستهدف على التكلفة الكاملة لإنتاج سعر عقد مقترح. وبإدخال ما تتقاضاه حاليًا تعرض الأداة كذلك الهامش الذي تحقّقه فعلًا، وهو غالبًا الرقم الأكثر إزعاجًا والأكثر نفعًا.",
+        ],
+      },
+      faqs: [
+        {
+          q: "ما التكلفة الساعية المحمَّلة بالكامل؟",
+          a: "أجر الفني مضافًا إليه كل ما يصاحب توظيفه، مقسومًا على الساعات التي يكون فيها متاحًا فعلًا للعمل على مهمة. أي تضيف التأمين والإجازات والتدريب والهاتف والزي والمعدات، ثم تقسم على الساعات القابلة للتحصيل لا على الساعات المدفوعة. والنتيجة أعلى كثيرًا من الأجر الساعي عادةً، وهي الرقم الذي ينبغي أن يسعّر عملك.",
+        },
+        {
+          q: "لماذا تهم كثافة خط السير إلى هذا الحد؟",
+          a: "لأن وقت القيادة عمالة تدفع ثمنها ولا تستطيع تحصيلها. فثماني مهام موزّعة على مدينة قد تحمل من القيادة غير القابلة للتحصيل أكثر مما تحمله من العمل على المواقع، بينما ثماني مهام في حي واحد لا تكاد تحمل شيئًا منها. وهو الفني نفسه والمبيدات نفسها وهامش مختلف تمامًا، ولهذا فالجدولة وظيفة تجارية لا إدارية.",
+        },
+        {
+          q: "هل أسعّر بالزيارة أم بالعقد؟",
+          a: "قدّم عرضك بالعقد، لكن اعرف دائمًا تكلفة الزيارة تحته. فالعقود السنوية هي ما يمنح شركات الخدمات الميدانية استقرارها، لكن العقد المسعَّر دون معرفة تكلفة الزيارة يثبّت خطأك لسنة كاملة في كل مرة — وكلما كبر العقد طالت مدة تحمّلك له.",
+        },
+        {
+          q: "ما الهامش الذي ينبغي أن أستهدفه؟",
+          a: "ذلك قرار يخصّ سوقك لا رقمًا نسلّمه لك. وما وُجدت له هذه الأداة هو أن يكون القرار مقصودًا: فأيًّا كان الهامش الذي تختاره، ينبغي أن تعرف أنك تحقّقه. فمعظم المتاعب تأتي من عدم المعرفة لا من سوء الاختيار.",
+        },
+        {
+          q: "هل تشمل تكلفة زيارة إعادة ضمن الضمان؟",
+          a: "ليس تلقائيًا — فأضفها إلى عدد الزيارات في السنة إن كانت عقودك تشمل زيارات استدعاء. فزيارات الضمان غير المحصَّلة تكلفة حقيقية يكثر إغفالها، وعلى موقع مشكِل قد تمحو هامش العقد بأكمله. وإن كنت تتتبّع تاريخ الأجهزة على نحو سليم فأنت تعرف تلك المواقع سلفًا.",
+        },
+      ],
+    },
+    seo: {
+      en: {
+        title: "Pest Control Job Costing Calculator | Price a Contract",
+        description:
+          "Work out the true cost of a service visit — loaded labour, driving time, travel and materials — and the contract price that hits your target margin. Free.",
+        keywords:
+          "pest control pricing calculator, job costing calculator, field service pricing, pest control contract price, service visit cost, تسعير عقود مكافحة الحشرات, pest control business costs, field service margin calculator",
+        ogTitle: "Pest Control Job Costing - Cost Per Visit and Contract Price",
+        ogDescription: "Loaded labour, driving time, travel and materials, then the price that hits your target margin.",
+        ogImage: `${ORIGIN}/tools/tools-og.jpg`,
+        canonicalUrl: `${ORIGIN}/tools/pest-control-job-costing`,
+        language: "en",
+      },
+      ar: {
+        title: "حاسبة تكلفة مهام مكافحة الآفات | تسعير العقود",
+        description:
+          "احسب التكلفة الحقيقية لزيارة الخدمة — العمالة المحمَّلة ووقت القيادة والانتقال والمواد — وسعر العقد الذي يحقّق هامشك المستهدف. مجانية.",
+        keywords:
+          "تسعير عقود مكافحة الحشرات, حاسبة تكلفة المهام, تسعير الخدمات الميدانية, تكلفة زيارة الخدمة, هامش الربح للخدمات الميدانية, شركات مكافحة الآفات, pest control pricing Egypt",
+        ogTitle: "حاسبة تكلفة مهام مكافحة الآفات - تكلفة الزيارة وسعر العقد",
+        ogDescription: "العمالة المحمَّلة ووقت القيادة والانتقال والمواد، ثم السعر الذي يحقّق هامشك المستهدف.",
+        ogImage: `${ORIGIN}/tools/tools-og.jpg`,
+        canonicalUrl: `${ORIGIN}/ar/tools/pest-control-job-costing`,
+        language: "ar",
+      },
+    },
+  },
+
+  "field-force-roi": {
+    id: "field-force-roi",
+    icon: "TrendingUp",
+    related: { href: "/solutions/medical-crm", en: "See the medical field force CRM", ar: "استعرض نظام CRM الطبي للفرق الميدانية" },
+    en: {
+      name: "Field Force Coverage Calculator",
+      tagline: "Whether your team can actually cover your target list at the frequency you planned",
+      intro:
+        "Coverage plans are usually built backwards from how many doctors the team would like to see, rather than forwards from how many visits the team can physically make. The two rarely meet. This works out your real monthly capacity from headcount, visits per day and working days, compares it with the list you are trying to cover at the frequency you want, and shows the size of the gap — plus what closing it would cost.",
+      method: {
+        title: "How this is calculated",
+        body: [
+          "Capacity is representatives multiplied by effective visits per day multiplied by working days per month. Effective is the word doing the work: the planned figure is rarely the achieved figure once travel, waiting, cancellations and administration are counted, which is why the tool asks for both and shows you the difference they make.",
+          "Required visits are the size of your target list multiplied by how often you intend to see each name per month. A list of four hundred doctors at twice a month is eight hundred visits, and no amount of planning changes that arithmetic — it either fits in your capacity or it does not.",
+          "The gap between the two is expressed three ways, because each one leads to a different decision: how many more representatives would close it, how many more visits per day would close it, and how far the frequency would have to fall to fit the team you have. Those are usually the only three levers, and the third is the one nobody writes down.",
+          "Cost per visit is the fully-loaded monthly cost of the team divided by the visits they actually achieve, not the visits they planned. That is the number to hold against what a visit is worth to you, and it moves sharply with effective visits per day — which is the argument for reducing the administrative load on a representative rather than adding headcount.",
+        ],
+      },
+      faqs: [
+        {
+          q: "What is a realistic number of visits per representative per day?",
+          a: "It depends entirely on territory density and call type, so the tool asks you rather than assuming. What matters more than the absolute number is the gap between planned and achieved: if your plan assumes ten and the team achieves six, every coverage figure built on that plan is out by forty percent, and no one will know until the quarter ends.",
+        },
+        {
+          q: "Why measure coverage monthly rather than quarterly?",
+          a: "Because a quarterly figure can only be reported after the quarter, when nothing can be done about it. A monthly figure, or better a running one, is still actionable — a gap spotted in week two can be closed in week three. Coverage reporting that arrives too late to change anything is bookkeeping, not management.",
+        },
+        {
+          q: "Our reported coverage looks fine. Why would this disagree?",
+          a: "Reported coverage is built from visit reports, and an unverified visit report is a claim rather than a record. Where reports are not tied to a verified check-in, reported coverage drifts upward from real coverage over time, and the plan built on it quietly stops matching what is happening in the field.",
+        },
+        {
+          q: "Is adding a representative always the answer to a gap?",
+          a: "It is the most expensive answer, and often not the best one. Raising effective visits per day by one — usually by removing administrative work rather than by pushing harder — can be worth more than a new hire and costs nothing per month. The calculator shows both so the comparison is explicit.",
+        },
+        {
+          q: "Does this account for different call frequencies by doctor tier?",
+          a: "Not directly; it uses one average frequency. If you segment your list, run it once per segment and add the required visits together — that is more accurate than an average, because a tiered plan concentrates visits on a small group and the average hides that.",
+        },
+      ],
+    },
+    ar: {
+      name: "حاسبة تغطية الفريق الميداني",
+      tagline: "هل يستطيع فريقك فعلًا تغطية قائمتك المستهدفة بالتواتر الذي خطّطت له",
+      intro:
+        "تُبنى خطط التغطية عادةً بالرجوع من عدد الأطباء الذين يودّ الفريق زيارتهم، لا بالتقدّم من عدد الزيارات التي يستطيع الفريق تنفيذها فعليًا. ونادرًا ما يلتقي الطرفان. وتحسب هذه الأداة طاقتك الشهرية الحقيقية من عدد المندوبين والزيارات اليومية وأيام العمل، وتقارنها بالقائمة التي تسعى إلى تغطيتها بالتواتر الذي تريده، وتُظهر حجم الفجوة وتكلفة سدّها.",
+      method: {
+        title: "كيف تُحتسب هذه الأرقام",
+        body: [
+          "الطاقة هي عدد المندوبين مضروبًا في الزيارات الفعلية يوميًا مضروبًا في أيام العمل شهريًا. وكلمة «الفعلية» هي محور المسألة: فالرقم المخطَّط نادرًا ما يكون الرقم المحقَّق بعد احتساب الانتقال والانتظار والإلغاءات والأعمال الإدارية، ولهذا تسأل الأداة عن الرقمين وتعرض لك الفارق الذي يحدثانه.",
+          "والزيارات المطلوبة هي حجم قائمتك المستهدفة مضروبًا في عدد مرات زيارة كل اسم شهريًا. فقائمة من أربعمئة طبيب بمعدّل مرتين شهريًا تساوي ثمانمئة زيارة، ولا يغيّر أي قدر من التخطيط هذه العملية الحسابية — فإما أن تتسع لها طاقتك وإما لا.",
+          "وتُعرض الفجوة بين الاثنين بثلاث طرق، لأن كلًّا منها يقود إلى قرار مختلف: كم مندوبًا إضافيًا يسدّها، وكم زيارة إضافية يوميًا تسدّها، وإلى أي حدّ ينبغي أن يهبط التواتر ليتسع للفريق الذي لديك. وهذه هي الروافع الثلاث الوحيدة عادةً، وثالثتها هي التي لا يدوّنها أحد.",
+          "وتكلفة الزيارة هي التكلفة الشهرية المحمَّلة بالكامل للفريق مقسومةً على الزيارات التي يحقّقها فعلًا لا التي خطّط لها. وهو الرقم الذي تضعه في مقابل ما تساويه الزيارة لديك، ويتحرك بحدّة مع الزيارات الفعلية يوميًا — وهو ما يسوّق لتخفيف العبء الإداري عن المندوب بدل زيادة عدد الموظفين.",
+        ],
+      },
+      faqs: [
+        {
+          q: "كم عدد الزيارات الواقعي لكل مندوب يوميًا؟",
+          a: "يعتمد كليًا على كثافة المنطقة ونوع الزيارة، ولذلك تسألك الأداة بدل أن تفترض. وما يهم أكثر من الرقم المطلق هو الفجوة بين المخطَّط والمحقَّق: فإن افترضت خطتك عشرًا وحقّق الفريق ستًّا، فكل رقم تغطية مبنيّ على تلك الخطة خاطئ بأربعين بالمئة، ولن يعلم أحد بذلك حتى ينتهي الربع.",
+        },
+        {
+          q: "لماذا تُقاس التغطية شهريًا لا ربع سنويًا؟",
+          a: "لأن الرقم الربع سنوي لا يمكن إصداره إلا بعد انتهاء الربع، حين لا يمكن فعل شيء حياله. أما الرقم الشهري، أو الجاري وهو أفضل، فيظل قابلًا للتصرف — إذ إن فجوة تُرصد في الأسبوع الثاني يمكن سدّها في الثالث. وتقارير التغطية التي تصل متأخرةً عن إمكان تغيير أي شيء مسك دفاتر لا إدارة.",
+        },
+        {
+          q: "أرقام التغطية لدينا تبدو جيدة، فلماذا تخالفها هذه الأداة؟",
+          a: "لأن التغطية المُبلَّغ عنها مبنيّة على تقارير الزيارات، وتقرير الزيارة غير الموثَّق ادّعاء لا سجل. وحيث لا تُربط التقارير بتسجيل حضور موثَّق، تنحرف التغطية المُبلَّغ عنها صعودًا عن التغطية الحقيقية مع الوقت، وتكفّ الخطة المبنية عليها بهدوء عن مطابقة ما يجري في الميدان.",
+        },
+        {
+          q: "هل إضافة مندوب هي الحل دائمًا للفجوة؟",
+          a: "هي أغلى الحلول، وليست أفضلها غالبًا. فرفع الزيارات الفعلية يوميًا بمقدار واحدة — عبر إزالة أعمال إدارية عادةً لا عبر مزيد من الضغط — قد يفوق في قيمته تعيينًا جديدًا ولا يكلّف شيئًا شهريًا. وتعرض الحاسبة الخيارين ليكون التفضيل بينهما صريحًا.",
+        },
+        {
+          q: "هل تراعي اختلاف تواتر الزيارة بحسب شريحة الطبيب؟",
+          a: "ليس مباشرةً؛ فهي تستخدم تواترًا متوسطًا واحدًا. فإن كنت تقسّم قائمتك إلى شرائح، فشغّلها مرة لكل شريحة واجمع الزيارات المطلوبة — وذلك أدقّ من المتوسط، لأن الخطة المتدرّجة تركّز الزيارات على مجموعة صغيرة ويخفي المتوسط ذلك.",
+        },
+      ],
+    },
+    seo: {
+      en: {
+        title: "Field Force Coverage Calculator | Pharma Rep Capacity",
+        description:
+          "Work out whether your medical reps can cover your target list at your planned frequency: capacity, the gap, cost per visit and what closes it. Free.",
+        keywords:
+          "field force calculator, pharma rep coverage, medical rep capacity, call frequency planning, sales force sizing, cost per call pharma, حاسبة تغطية المندوبين, field force effectiveness, pharma territory planning",
+        ogTitle: "Field Force Coverage Calculator - Capacity Versus Target List",
+        ogDescription: "Real monthly capacity, the coverage gap three ways, and cost per visit on achieved not planned calls.",
+        ogImage: `${ORIGIN}/tools/tools-og.jpg`,
+        canonicalUrl: `${ORIGIN}/tools/field-force-roi`,
+        language: "en",
+      },
+      ar: {
+        title: "حاسبة تغطية الفريق الميداني | طاقة مندوبي الدعاية",
+        description:
+          "احسب ما إذا كان مندوبوك قادرين على تغطية قائمتك المستهدفة بالتواتر المخطَّط: الطاقة والفجوة وتكلفة الزيارة وما يسدّها. مجانية.",
+        keywords:
+          "حاسبة تغطية المندوبين, طاقة الفريق الميداني, تواتر الزيارات, تخطيط المناطق الدوائية, تكلفة الزيارة الطبية, مندوبي الدعاية الطبية, field force calculator Egypt",
+        ogTitle: "حاسبة تغطية الفريق الميداني - الطاقة مقابل القائمة المستهدفة",
+        ogDescription: "الطاقة الشهرية الحقيقية، والفجوة بثلاث طرق، وتكلفة الزيارة على المحقَّق لا المخطَّط.",
+        ogImage: `${ORIGIN}/tools/tools-og.jpg`,
+        canonicalUrl: `${ORIGIN}/ar/tools/field-force-roi`,
         language: "ar",
       },
     },

@@ -7,13 +7,13 @@
  */
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Calculator, CalendarClock, FileText, Gauge, Percent } from "lucide-react";
+import { ArrowRight, Bug, Calculator, CalendarClock, FileText, Gauge, Percent, Receipt, ShieldCheck, TrendingUp, Wallet } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { TOOLS, TOOL_IDS, TOOLS_INDEX_SEO } from "@/data/tools";
 import { generateBreadcrumbSchema } from "@/utils/seo";
 
-const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText };
+const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText, Receipt, Wallet, ShieldCheck, Bug, TrendingUp };
 const ORIGIN = "https://foxsystemstech.com";
 
 const T = {

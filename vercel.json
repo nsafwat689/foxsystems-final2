@@ -232,12 +232,32 @@
       "destination": "/ar/tools/crm-cost-calculator.html"
     },
     {
+      "source": "/ar/tools/end-of-service-calculator",
+      "destination": "/ar/tools/end-of-service-calculator.html"
+    },
+    {
+      "source": "/ar/tools/field-force-roi",
+      "destination": "/ar/tools/field-force-roi.html"
+    },
+    {
       "source": "/ar/tools/installment-plan-generator",
       "destination": "/ar/tools/installment-plan-generator.html"
     },
     {
       "source": "/ar/tools/invoice-generator",
       "destination": "/ar/tools/invoice-generator.html"
+    },
+    {
+      "source": "/ar/tools/pest-control-job-costing",
+      "destination": "/ar/tools/pest-control-job-costing.html"
+    },
+    {
+      "source": "/ar/tools/security-self-check",
+      "destination": "/ar/tools/security-self-check.html"
+    },
+    {
+      "source": "/ar/tools/vat-calculator",
+      "destination": "/ar/tools/vat-calculator.html"
     },
     {
       "source": "/articles",
@@ -416,12 +436,32 @@
       "destination": "/tools/crm-cost-calculator.html"
     },
     {
+      "source": "/tools/end-of-service-calculator",
+      "destination": "/tools/end-of-service-calculator.html"
+    },
+    {
+      "source": "/tools/field-force-roi",
+      "destination": "/tools/field-force-roi.html"
+    },
+    {
       "source": "/tools/installment-plan-generator",
       "destination": "/tools/installment-plan-generator.html"
     },
     {
       "source": "/tools/invoice-generator",
       "destination": "/tools/invoice-generator.html"
+    },
+    {
+      "source": "/tools/pest-control-job-costing",
+      "destination": "/tools/pest-control-job-costing.html"
+    },
+    {
+      "source": "/tools/security-self-check",
+      "destination": "/tools/security-self-check.html"
+    },
+    {
+      "source": "/tools/vat-calculator",
+      "destination": "/tools/vat-calculator.html"
     },
     {
       "source": "/((?!api/|assets/).*)",

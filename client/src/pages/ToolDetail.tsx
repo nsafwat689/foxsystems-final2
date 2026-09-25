@@ -10,7 +10,7 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Calculator, CalendarClock, FileText, Gauge, Percent } from "lucide-react";
+import { AlertTriangle, ArrowRight, Bug, Calculator, CalendarClock, FileText, Gauge, Percent, Receipt, ShieldCheck, TrendingUp, Wallet } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { TOOLS, TOOL_IDS, TOOLS_INDEX_SEO, type ToolId } from "@/data/tools";
@@ -24,9 +24,14 @@ const WIDGETS: Record<ToolId, React.LazyExoticComponent<React.ComponentType<{ la
   "commission-calculator": lazy(() => import("@/components/tools/CommissionCalculator")),
   "installment-plan-generator": lazy(() => import("@/components/tools/InstallmentPlanGenerator")),
   "invoice-generator": lazy(() => import("@/components/tools/InvoiceGenerator")),
+  "vat-calculator": lazy(() => import("@/components/tools/VatCalculator")),
+  "end-of-service-calculator": lazy(() => import("@/components/tools/EndOfServiceCalculator")),
+  "security-self-check": lazy(() => import("@/components/tools/SecuritySelfCheck")),
+  "pest-control-job-costing": lazy(() => import("@/components/tools/PestControlJobCosting")),
+  "field-force-roi": lazy(() => import("@/components/tools/FieldForceRoi")),
 };
 
-const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText };
+const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText, Receipt, Wallet, ShieldCheck, Bug, TrendingUp };
 
 const ORIGIN = "https://foxsystemstech.com";
 
@@ -135,6 +140,16 @@ export default function ToolDetail({ toolId, language }: Props) {
 
       <div className="container py-14 min-w-0">
         <p className="max-w-3xl text-muted-foreground leading-relaxed mb-8">{copy.intro}</p>
+
+        {/* Tax and employment tools carry a standing caveat above the widget,
+            not buried in the FAQ: rates and statute change, and the defaults
+            are starting points rather than advice. */}
+        {tool.advisory && (
+          <div className="max-w-3xl mb-8 p-5 rounded-xl border border-amber-500/40 bg-amber-500/5 flex gap-3">
+            <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+            <p className="text-sm text-muted-foreground leading-relaxed">{tool.advisory[language]}</p>
+          </div>
+        )}
 
         <Suspense
           fallback={

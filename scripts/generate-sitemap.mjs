@@ -24,7 +24,7 @@ const SOLUTIONS = ["medical-crm", "real-estate-crm", "pest-control-crm"];
 // the sitemap, which wastes crawl budget and is flagged in Search Console.
 const SERVICES = ["internet", "crm", "hardware", "cybersecurity", "infrastructure", "web-development"];
 // Keep in step with TOOL_IDS in client/src/data/toolIds.ts.
-const TOOLS = ["crm-cost-calculator", "bandwidth-calculator", "commission-calculator", "installment-plan-generator", "invoice-generator"];
+const TOOLS = ["crm-cost-calculator", "bandwidth-calculator", "commission-calculator", "installment-plan-generator", "invoice-generator", "vat-calculator", "end-of-service-calculator", "security-self-check", "pest-control-job-costing", "field-force-roi"];
 
 /** Read the article ids straight from the content map so the two can't diverge. */
 function readArticleIds() {

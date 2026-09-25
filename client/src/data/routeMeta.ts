@@ -23,6 +23,7 @@ import {
   type SEOConfig,
 } from "@/utils/seo";
 import { SOLUTIONS, SOLUTION_IDS } from "./solutions";
+import { TOOLS, TOOL_IDS, TOOLS_INDEX_SEO } from "./tools";
 
 const ORIGIN = "https://foxsystemstech.com";
 
@@ -95,6 +96,8 @@ export function buildRouteMeta(): Record<string, SEOConfig> {
     "/ar/services": arabicSEOConfigs.services,
     "/solutions": SOLUTIONS_INDEX_SEO.en,
     "/ar/solutions": SOLUTIONS_INDEX_SEO.ar,
+    "/tools": TOOLS_INDEX_SEO.en,
+    "/ar/tools": TOOLS_INDEX_SEO.ar,
   };
 
   for (const id of SERVICE_IDS) {
@@ -105,6 +108,11 @@ export function buildRouteMeta(): Record<string, SEOConfig> {
   for (const id of SOLUTION_IDS) {
     map[`/solutions/${id}`] = SOLUTIONS[id].seo.en;
     map[`/ar/solutions/${id}`] = SOLUTIONS[id].seo.ar;
+  }
+
+  for (const id of TOOL_IDS) {
+    map[`/tools/${id}`] = TOOLS[id].seo.en;
+    map[`/ar/tools/${id}`] = TOOLS[id].seo.ar;
   }
 
   return map;

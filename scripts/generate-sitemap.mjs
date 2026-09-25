@@ -23,6 +23,8 @@ const SOLUTIONS = ["medical-crm", "real-estate-crm", "pest-control-crm"];
 // to "crm" on 2026-09-24; leaving it here would have kept a redirecting URL in
 // the sitemap, which wastes crawl budget and is flagged in Search Console.
 const SERVICES = ["internet", "crm", "hardware", "cybersecurity", "infrastructure", "web-development"];
+// Keep in step with TOOL_IDS in client/src/data/toolIds.ts.
+const TOOLS = ["crm-cost-calculator"];
 
 /** Read the article ids straight from the content map so the two can't diverge. */
 function readArticleIds() {
@@ -40,6 +42,8 @@ function buildRoutes() {
     ...SERVICES.map(s => ({ path: `/services/${s}`, changefreq: "monthly", priority: "0.9" })),
     { path: "/solutions", changefreq: "monthly", priority: "0.9" },
     ...SOLUTIONS.map(s => ({ path: `/solutions/${s}`, changefreq: "monthly", priority: "0.9" })),
+    { path: "/tools", changefreq: "monthly", priority: "0.8" },
+    ...TOOLS.map(s => ({ path: `/tools/${s}`, changefreq: "monthly", priority: "0.8" })),
     { path: "/industries", changefreq: "monthly", priority: "0.8" },
     { path: "/case-studies", changefreq: "monthly", priority: "0.8" },
     { path: "/resources/it-guide", changefreq: "monthly", priority: "0.7" },

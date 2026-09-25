@@ -216,6 +216,14 @@
       "destination": "/ar/solutions/real-estate-crm.html"
     },
     {
+      "source": "/ar/tools",
+      "destination": "/ar/tools.html"
+    },
+    {
+      "source": "/ar/tools/crm-cost-calculator",
+      "destination": "/ar/tools/crm-cost-calculator.html"
+    },
+    {
       "source": "/articles",
       "destination": "/articles.html"
     },
@@ -374,6 +382,14 @@
     {
       "source": "/solutions/real-estate-crm",
       "destination": "/solutions/real-estate-crm.html"
+    },
+    {
+      "source": "/tools",
+      "destination": "/tools.html"
+    },
+    {
+      "source": "/tools/crm-cost-calculator",
+      "destination": "/tools/crm-cost-calculator.html"
     },
     {
       "source": "/((?!api/|assets/).*)",

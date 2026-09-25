@@ -16,7 +16,7 @@ const translations = {
   en: {
     home: "Home", services: "Services", contact: "Contact Us",
     getStarted: "Schedule Consultation", articles: "Articles", industries: "Industries",
-    caseStudies: "Case Studies", crm: "CRM",
+    caseStudies: "Case Studies", crm: "CRM", tools: "Free Tools",
     internet: "Call Center & VoIP", software: "CRM Systems",
     hardware: "Hardware & Servers", cybersecurity: "Firewall & Security",
     infrastructure: "Network & Infrastructure", webDev: "Website Development",
@@ -27,7 +27,7 @@ const translations = {
   ar: {
     home: "الرئيسية", services: "الخدمات", contact: "اتصل بنا",
     getStarted: "احجز استشارة مجانية", articles: "المقالات", industries: "القطاعات",
-    caseStudies: "قصص النجاح", crm: "أنظمة CRM",
+    caseStudies: "قصص النجاح", crm: "أنظمة CRM", tools: "أدوات مجانية",
     internet: "مراكز الاتصال وVoIP", software: "أنظمة CRM",
     hardware: "الأجهزة والخوادم", cybersecurity: "جدران الحماية والأمن",
     infrastructure: "الشبكة والبنية التحتية", webDev: "تطوير المواقع",
@@ -80,7 +80,9 @@ export default function Header({ language }: HeaderProps) {
   };
 
   const navLinkCls = (active: boolean) =>
-    `relative text-sm font-semibold transition-colors duration-200 py-1
+    // whitespace-nowrap: with Tools added, "Free Tools", "Case Studies" and
+    // "Contact Us" each wrapped onto two lines at 1280px and broke the bar.
+    `relative text-sm font-semibold transition-colors duration-200 py-1 whitespace-nowrap
      ${active ? "text-primary" : "text-foreground/80 hover:text-primary"}
      after:absolute after:bottom-0 after:left-0 after:h-0.5 after:rounded-full after:bg-primary
      after:transition-all after:duration-300
@@ -127,7 +129,8 @@ export default function Header({ language }: HeaderProps) {
 
           {/* Desktop nav */}
           <div className="hidden md:flex justify-center">
-            <div className={`flex items-center gap-7 ${isArabic ? "flex-row-reverse" : ""}`}>
+            {/* gap tightens at the sizes where eight items no longer fit. */}
+            <div className={`flex items-center gap-4 lg:gap-6 xl:gap-7 ${isArabic ? "flex-row-reverse" : ""}`}>
               <Link href={isArabic ? "/ar" : "/"} onClick={handleHomeClick}
                 className={navLinkCls(location === "/" || location === "/ar")}>
                 {t.home}
@@ -168,6 +171,11 @@ export default function Header({ language }: HeaderProps) {
               <Link href={`${langPrefix}/industries`}
                 className={navLinkCls(location.includes("/industries"))}>
                 {t.industries}
+              </Link>
+
+              <Link href={`${langPrefix}/tools`}
+                className={navLinkCls(location.includes("/tools"))}>
+                {t.tools}
               </Link>
 
               <Link href={`${langPrefix}/articles`}
@@ -257,6 +265,11 @@ export default function Header({ language }: HeaderProps) {
               <Link href={`${langPrefix}/case-studies`} onClick={() => setIsMenuOpen(false)}
                 className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">
                 {t.caseStudies}
+              </Link>
+
+              <Link href={`${langPrefix}/tools`} onClick={() => setIsMenuOpen(false)}
+                className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">
+                {t.tools}
               </Link>
 
               <Link href={`${langPrefix}/articles`} onClick={() => setIsMenuOpen(false)}

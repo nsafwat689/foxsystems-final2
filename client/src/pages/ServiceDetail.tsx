@@ -478,15 +478,16 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                 </div>
               </div>
 
-              {/* Real software we shipped, shown where people shop for CRM. */}
-              {serviceId === "crm" && <CrmProductsShowcase language={language} />}
-              {serviceId === "crm" && <CrmPricing language={language} />}
-              {serviceId === "crm" && <CrmCommitments language={language} />}
-
               {/* ── SERVICE FAQ ── */}
               <ServiceFAQ serviceId={serviceId} isArabic={isArabic} langPrefix={langPrefix} />
             </div>
-            <div className="space-y-8">
+            {/* The sidebar holds ~600px of cards beside a column that runs to
+                nearly 8,000px on the CRM page, which left the other two thirds
+                of the row as a tall empty band in both languages. Sticking it
+                to the viewport keeps the CTA beside the reader the whole way
+                down instead of scrolling away after the first screen. */}
+            <div>
+              <div className="space-y-8 lg:sticky lg:top-24">
               <div className="rounded-2xl bg-primary p-7 text-white shadow-xl shadow-primary/30 space-y-4">
                 <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase tracking-widest">{isArabic?"ابدأ الآن":"Get Started"}</span>
                 <h3 className="text-xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{titles.customSolutionTitle}</h3>
@@ -520,8 +521,22 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                   </div>
                 ))}
               </div>
+              </div>
             </div>
           </div>
+
+          {/* Real software we shipped, shown where people shop for CRM.
+              These sit OUTSIDE the two-thirds column on purpose: the five
+              pricing cards and the comparison matrix were being squeezed into
+              781px, which wrapped every feature line onto four rows. They are
+              the reason this page is long, so they get the full width. */}
+          {serviceId === "crm" && (
+            <div className="min-w-0">
+              <CrmProductsShowcase language={language} />
+              <CrmPricing language={language} />
+              <CrmCommitments language={language} />
+            </div>
+          )}
         </div>
       </section>
 

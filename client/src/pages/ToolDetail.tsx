@@ -10,7 +10,7 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { AlertTriangle, ArrowRight, Bug, Calculator, CalendarClock, FileText, Gauge, Percent, Receipt, ShieldCheck, TrendingUp, Wallet } from "lucide-react";
+import { AlertTriangle, ArrowRight, Bug, Calculator, CalendarClock, FileText, Gauge, MessageCircle, Percent, Receipt, ShieldCheck, TrendingUp, Wallet } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { TOOLS, TOOL_IDS, TOOLS_INDEX_SEO, type ToolId } from "@/data/tools";
@@ -35,9 +35,33 @@ const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText, Receipt, Wa
 
 const ORIGIN = "https://foxsystemstech.com";
 
+const WHATSAPP = "https://wa.me/201038450546";
+
 const T = {
-  en: { badge: "Free tool", more: "Other free tools", related: "Related", back: "All tools", loading: "Loading…" },
-  ar: { badge: "أداة مجانية", more: "أدوات مجانية أخرى", related: "ذات صلة", back: "كل الأدوات", loading: "جارٍ التحميل…" },
+  en: {
+    badge: "Free tool",
+    more: "Other free tools",
+    related: "Related",
+    back: "All tools",
+    loading: "Loading…",
+    ctaTitle: "Want this checked against your own numbers?",
+    ctaSub: "Send us what you are working with and an engineer will go through it with you — including telling you when the cheaper option is the right one.",
+    cta: "Talk to an engineer",
+    wa: "Chat on WhatsApp",
+    rights: "All rights reserved.",
+  },
+  ar: {
+    badge: "أداة مجانية",
+    more: "أدوات مجانية أخرى",
+    related: "ذات صلة",
+    back: "كل الأدوات",
+    loading: "جارٍ التحميل…",
+    ctaTitle: "تريد مراجعة هذا بأرقامك أنت؟",
+    ctaSub: "أرسل لنا ما بين يديك وسيراجعه معك أحد المهندسين، بما في ذلك إخبارك متى يكون الخيار الأقل تكلفة هو الصحيح.",
+    cta: "تحدّث إلى مهندس",
+    wa: "تواصل عبر واتساب",
+    rights: "جميع الحقوق محفوظة.",
+  },
 };
 
 /**
@@ -225,7 +249,55 @@ export default function ToolDetail({ toolId, language }: Props) {
             </div>
           </section>
         )}
+
+        {/* Every other page type on the site offers WhatsApp; these ten did
+            not, which also meant whatsapp_click could never fire from the
+            highest-intent pages on the site. */}
+        <section className="mt-12 rounded-2xl bg-[var(--navy)] text-white p-8 flex flex-wrap items-center justify-between gap-6">
+          <div className="max-w-xl">
+            <h2 className="text-xl font-extrabold mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+              {t.ctaTitle}
+            </h2>
+            <p className="text-white/70 text-sm leading-relaxed">{t.ctaSub}</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href={`${prefix}/contact`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[var(--navy)] font-bold hover:gap-3 transition-all"
+            >
+              {t.cta}
+              <ArrowRight className={`w-4 h-4 ${isArabic ? "rotate-180" : ""}`} aria-hidden="true" />
+            </Link>
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/25 font-bold hover:bg-white/10 transition-colors"
+            >
+              <MessageCircle className="w-4 h-4" aria-hidden="true" />
+              {t.wa}
+            </a>
+          </div>
+        </section>
       </div>
+
+      <footer className="bg-[var(--navy)] text-white py-10">
+        <div className="container text-center">
+          <p className="text-white/40 text-sm">
+            © 2026 Fox Systems. {t.rights} · Egypt · Saudi Arabia · Kuwait
+          </p>
+        </div>
+      </footer>
+
+      <a
+        href={WHATSAPP}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+        aria-label={t.wa}
+      >
+        <MessageCircle className="w-7 h-7 text-white" />
+      </a>
     </div>
   );
 }

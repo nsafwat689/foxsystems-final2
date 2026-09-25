@@ -319,7 +319,11 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
       <section className="py-20 bg-background">
         <div className="container">
           <div className="grid lg:grid-cols-3 gap-14">
-            <div className={`lg:col-span-2 space-y-16 ${isArabic ? "text-right" : ""}`}>
+            {/* min-w-0: grid items default to min-width:auto, so a wide child
+                (the pricing comparison table) would stretch this column and
+                push the whole page sideways instead of scrolling inside its
+                own container. */}
+            <div className={`lg:col-span-2 min-w-0 space-y-16 ${isArabic ? "text-right" : ""}`}>
               {/* Overview */}
               <div className="space-y-5">
                 <h2 className="text-3xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{data.overviewTitle}</h2>

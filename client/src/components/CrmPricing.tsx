@@ -36,12 +36,40 @@ type Plan = {
 const PLANS: Plan[] = [
   // Lowered from $100 to $50 on the owner's instruction (2026-09-24) so the
   // entry tier sits at the low end of the market band rather than above it.
-  // At $25/user this now matches the cheapest of the $25-60 range most SMB
-  // CRMs charge, which makes every tier at or below that band.
-  { id: "starter", name: { en: "Starter", ar: "البداية" }, users: { en: "Up to 2 users", ar: "حتى مستخدمَين" }, monthly: 50 },
-  { id: "team", name: { en: "Team", ar: "الفريق" }, users: { en: "Up to 10 users", ar: "حتى 10 مستخدمين" }, monthly: 200 },
-  { id: "growth", name: { en: "Growth", ar: "النمو" }, users: { en: "Up to 15 users", ar: "حتى 15 مستخدمًا" }, monthly: 300 },
-  { id: "business", name: { en: "Business", ar: "الأعمال" }, users: { en: "Up to 25 users", ar: "حتى 25 مستخدمًا" }, monthly: 400 },
+  {
+    id: "starter",
+    name: { en: "Starter", ar: "البداية" },
+    users: { en: "Up to 2 users", ar: "حتى مستخدمَين" },
+    monthly: 50,
+    extras: [{ en: "3 months of audit history", ar: "سجل تدقيق لمدة 3 أشهر" }],
+  },
+  {
+    id: "team",
+    name: { en: "Team", ar: "الفريق" },
+    users: { en: "Up to 10 users", ar: "حتى 10 مستخدمين" },
+    monthly: 200,
+    extras: [{ en: "12 months of audit history", ar: "سجل تدقيق لمدة 12 شهرًا" }],
+  },
+  {
+    id: "growth",
+    name: { en: "Growth", ar: "النمو" },
+    users: { en: "Up to 15 users", ar: "حتى 15 مستخدمًا" },
+    monthly: 300,
+    extras: [{ en: "24 months of audit history", ar: "سجل تدقيق لمدة 24 شهرًا" }],
+  },
+  {
+    id: "business",
+    name: { en: "Business", ar: "الأعمال" },
+    users: { en: "Up to 25 users", ar: "حتى 25 مستخدمًا" },
+    monthly: 400,
+    extras: [
+      { en: "3 customisations included", ar: "3 تخصيصات مشمولة" },
+      { en: "API access and webhooks", ar: "الوصول إلى واجهة البرمجة (API) والـ Webhooks" },
+      { en: "Full audit history", ar: "سجل تدقيق كامل" },
+      { en: "A named engineer on your account", ar: "مهندس مخصّص لحسابك" },
+      { en: "Priority queue, same-day on-site", ar: "أولوية في الطابور، وزيارة ميدانية في اليوم نفسه" },
+    ],
+  },
   {
     id: "complete",
     name: { en: "Complete", ar: "الشامل" },
@@ -49,10 +77,86 @@ const PLANS: Plan[] = [
     monthly: 700,
     highlight: true,
     extras: [
+      { en: "10 customisations included", ar: "10 تخصيصات مشمولة" },
+      { en: "API access and webhooks", ar: "الوصول إلى واجهة البرمجة (API) والـ Webhooks" },
+      { en: "Full audit history", ar: "سجل تدقيق كامل" },
+      { en: "A named engineer on your account", ar: "مهندس مخصّص لحسابك" },
+      { en: "Priority queue, same-day on-site", ar: "أولوية في الطابور، وزيارة ميدانية في اليوم نفسه" },
       { en: "Business website included, free", ar: "موقع إلكتروني للشركة، مجانًا" },
       { en: "Mobile application included, free", ar: "تطبيق موبايل مجانًا" },
-      { en: "Priority support response", ar: "أولوية في زمن الاستجابة" },
     ],
+  },
+];
+
+/**
+ * The comparison matrix. Only six things actually differ between plans, and
+ * every one of them is something Fox Systems can hold to: seats, how many
+ * customisations are bundled, API access, how far the audit history reaches,
+ * the support tier and whether the free website and app are included.
+ *
+ * The sector features (GPS visits, installments, QR devices and so on) are
+ * deliberately NOT gated — they are the product, and the solution pages say
+ * so. Gating them here would contradict those pages.
+ *
+ * The 1-hour first response and 24/7 cover stay on EVERY plan, because that
+ * is already published in the commitments section. Business and Complete add
+ * a priority queue and a same-day on-site visit on top, so the row still
+ * differentiates without walking back a promise already made in public.
+ */
+type Cell = boolean | { en: string; ar: string };
+
+const FEATURE_ROWS: Array<{ label: { en: string; ar: string }; cells: Cell[] }> = [
+  {
+    label: { en: "Users", ar: "المستخدمون" },
+    cells: [
+      { en: "2", ar: "2" },
+      { en: "10", ar: "10" },
+      { en: "15", ar: "15" },
+      { en: "25", ar: "25" },
+      { en: "40", ar: "40" },
+    ],
+  },
+  {
+    label: { en: "Customisations included", ar: "التخصيصات المشمولة" },
+    cells: [
+      false,
+      false,
+      false,
+      { en: "3", ar: "3" },
+      { en: "10", ar: "10" },
+    ],
+  },
+  {
+    label: { en: "API access and webhooks", ar: "واجهة البرمجة (API) والـ Webhooks" },
+    cells: [false, false, false, true, true],
+  },
+  {
+    label: { en: "Audit history", ar: "سجل التدقيق" },
+    cells: [
+      { en: "3 months", ar: "3 أشهر" },
+      { en: "12 months", ar: "12 شهرًا" },
+      { en: "24 months", ar: "24 شهرًا" },
+      { en: "Full history", ar: "كامل السجل" },
+      { en: "Full history", ar: "كامل السجل" },
+    ],
+  },
+  {
+    label: { en: "Support response", ar: "الاستجابة والدعم" },
+    cells: [
+      { en: "1 hour, 24/7", ar: "ساعة واحدة، على مدار الساعة" },
+      { en: "1 hour, 24/7", ar: "ساعة واحدة، على مدار الساعة" },
+      { en: "1 hour, 24/7", ar: "ساعة واحدة، على مدار الساعة" },
+      { en: "1 hour, priority queue, same-day on-site", ar: "ساعة واحدة، بأولوية في الطابور وزيارة ميدانية في اليوم نفسه" },
+      { en: "1 hour, priority queue, same-day on-site", ar: "ساعة واحدة، بأولوية في الطابور وزيارة ميدانية في اليوم نفسه" },
+    ],
+  },
+  {
+    label: { en: "Named engineer on your account", ar: "مهندس مخصّص لحسابك" },
+    cells: [false, false, false, true, true],
+  },
+  {
+    label: { en: "Business website and mobile app", ar: "موقع إلكتروني وتطبيق موبايل" },
+    cells: [false, false, false, false, true],
   },
 ];
 
@@ -60,7 +164,7 @@ const T = {
   en: {
     kicker: "Pricing",
     title: "CRM pricing, in plain numbers",
-    sub: "Flat pricing per team, not per seat, for the standard CRM. Implementation, training and support are included — not billed separately once you have signed. Customisation is quoted on top.",
+    sub: "Flat pricing per team, not per seat, for the standard CRM. Implementation, training and support are included — not billed separately once you have signed. Business and Complete bundle customisations too; anything beyond that is quoted on its own.",
     monthly: "Monthly",
     annual: "Annual",
     annualNote: "Pay for 10 months instead of 12",
@@ -85,6 +189,10 @@ const T = {
     bigger: "More than 40 users?",
     biggerSub: "Larger teams are quoted individually, because the work stops being about seats and starts being about integration and rollout.",
     talk: "Talk to sales",
+    matrix: "What changes between plans",
+    matrixSub: "Every plan runs the same sector CRM with every feature in it — the visits, installments, devices and reports are the product, not an upgrade. These seven lines are the only things that differ.",
+    yes: "Included",
+    no: "Not included",
     compare: "How this compares",
     compareBody:
       "Published 2026 pricing puts most small-business CRMs between $25 and $60 per user per month, with implementation and support charged on top. From ten users up, these bundles work out between $16 and $20 per user with both included. Below that, a self-serve tool may cost you less per seat — we will tell you if that is the honest answer for your situation.",
@@ -94,7 +202,7 @@ const T = {
   ar: {
     kicker: "الأسعار",
     title: "أسعار الـ CRM بأرقام واضحة",
-    sub: "سعر ثابت للفريق لا لكل مستخدم، وذلك للنظام القياسي. التركيب والتدريب والدعم مشمولة في السعر ولا تُحتسب منفصلة بعد التوقيع. أما التخصيص فيُسعَّر إضافةً إليها.",
+    sub: "سعر ثابت للفريق لا لكل مستخدم، وذلك للنظام القياسي. التركيب والتدريب والدعم مشمولة في السعر ولا تُحتسب منفصلة بعد التوقيع. وتشمل باقتا الأعمال والشامل عددًا من التخصيصات، وما زاد عليها يُسعَّر على حدة.",
     monthly: "شهري",
     annual: "سنوي",
     annualNote: "ادفع عشرة أشهر بدلًا من اثني عشر",
@@ -119,6 +227,10 @@ const T = {
     bigger: "أكثر من 40 مستخدمًا؟",
     biggerSub: "الفرق الأكبر تُسعَّر بعرض خاص، لأن العمل عندئذٍ يتعلّق بالربط والتشغيل لا بعدد المستخدمين.",
     talk: "تواصل مع المبيعات",
+    matrix: "ما الذي يختلف بين الباقات",
+    matrixSub: "تعمل كل باقة على نظام القطاع نفسه بكامل مزاياه، فالزيارات والأقساط والأجهزة والتقارير هي المنتج ذاته لا ترقية تُشترى. وهذه السطور السبعة هي كل ما يختلف بينها.",
+    yes: "مشمول",
+    no: "غير مشمول",
     compare: "مقارنة بالسوق",
     compareBody:
       "تضع الأسعار المنشورة لعام 2026 معظم أنظمة CRM للشركات الصغيرة بين 25 و60 دولارًا لكل مستخدم شهريًا، مع احتساب التركيب والدعم إضافةً إليها. واعتبارًا من عشرة مستخدمين، تتراوح باقاتنا بين 16 و20 دولارًا لكل مستخدم شاملةً الاثنين. أما دون ذلك، فقد تكلّفك أداة جاهزة أقل لكل مستخدم، وسنخبرك بذلك صراحةً إن كان هو الأنسب لحالتك.",
@@ -219,6 +331,104 @@ export default function CrmPricing({ language }: Props) {
             </Link>
           </motion.div>
         ))}
+      </div>
+
+      {/* the only things that differ between plans */}
+      <div className="mt-8 min-w-0">
+        <h3 className="font-bold text-lg mb-1" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+          {t.matrix}
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-4">{t.matrixSub}</p>
+
+        {/* Desktop: the full grid. A phone cannot show five columns, and the
+            table's min-width drags the RTL page sideways, so phones get the
+            stacked version below instead. */}
+        <div className="hidden sm:block overflow-x-auto rounded-xl border border-border">
+          <table className="w-full min-w-[46rem] text-sm border-collapse">
+            <thead>
+              <tr className="bg-muted/50">
+                <th scope="col" className="text-start font-bold p-3 border-b border-border">
+                  <span className="sr-only">{t.matrix}</span>
+                </th>
+                {PLANS.map(p => (
+                  <th
+                    key={p.id}
+                    scope="col"
+                    className={`p-3 border-b border-border font-bold text-center ${p.highlight ? "text-primary" : ""}`}
+                  >
+                    {p.name[language]}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {FEATURE_ROWS.map((row, ri) => (
+                <tr key={row.label.en} className={ri % 2 ? "bg-muted/20" : ""}>
+                  <th scope="row" className="text-start font-semibold p-3 border-b border-border align-top">
+                    {row.label[language]}
+                  </th>
+                  {row.cells.map((cell, ci) => (
+                    <td key={PLANS[ci].id} className="p-3 border-b border-border text-center align-top">
+                      {cell === true ? (
+                        <>
+                          <Check className="w-4 h-4 text-primary inline" aria-hidden="true" />
+                          <span className="sr-only">{t.yes}</span>
+                        </>
+                      ) : cell === false ? (
+                        <>
+                          <span className="text-muted-foreground/50" aria-hidden="true">
+                            —
+                          </span>
+                          <span className="sr-only">{t.no}</span>
+                        </>
+                      ) : (
+                        <span className="leading-snug">{cell[language]}</span>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Phone: the same seven rows, stacked one plan at a time. */}
+        <div className="sm:hidden space-y-3">
+          {PLANS.map((p, pi) => (
+            <div
+              key={p.id}
+              className={`rounded-xl border p-4 ${
+                p.highlight ? "border-primary bg-primary/5" : "border-border bg-card"
+              }`}
+            >
+              <h4 className="font-extrabold mb-2.5" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+                {p.name[language]}
+              </h4>
+              <dl className="space-y-1.5">
+                {FEATURE_ROWS.map(row => {
+                  const cell = row.cells[pi];
+                  return (
+                    <div key={row.label.en} className="flex justify-between gap-3 text-sm">
+                      <dt className="text-muted-foreground">{row.label[language]}</dt>
+                      <dd className="font-semibold text-end">
+                        {cell === true ? (
+                          <>
+                            <Check className="w-4 h-4 text-primary inline" aria-hidden="true" />
+                            <span className="sr-only">{t.yes}</span>
+                          </>
+                        ) : cell === false ? (
+                          <span className="text-muted-foreground/60">{t.no}</span>
+                        ) : (
+                          cell[language]
+                        )}
+                      </dd>
+                    </div>
+                  );
+                })}
+              </dl>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* what every plan includes + contract terms */}

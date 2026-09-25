@@ -57,8 +57,8 @@ const ITEMS = [
   },
   {
     Icon: UserCheck,
-    en: { t: "A named engineer on your account", d: "Someone who knows your setup, not whoever picks up the queue that day." },
-    ar: { t: "مهندس مخصّص لحسابك", d: "شخص يعرف نظامك، لا من يتصادف وجوده على الدعم ذلك اليوم." },
+    en: { t: "A named engineer, on Business and Complete", d: "Someone who knows your setup, not whoever picks up the queue that day. Included on the Business and Complete plans." },
+    ar: { t: "مهندس مخصّص، في باقتَي الأعمال والشامل", d: "شخص يعرف نظامك، لا من يتصادف وجوده على الدعم ذلك اليوم. وهو مشمول في باقتَي الأعمال والشامل." },
   },
   {
     Icon: Wallet,
@@ -101,12 +101,12 @@ const T = {
     trialBody:
       "Log into a live demo and use it properly — click through every screen, add records, change things. It is a shared demo environment, not your own system, so whatever you enter is cleared when you log out. Nothing to install, nothing to pay, no card.",
     trialCta: "Ask for demo access",
-    note: "Standard bundles are priced above. Customisation is quoted separately — talk to sales and you will get the scope and cost in writing before anything starts.",
+    note: "Standard bundles are priced above. Business includes 3 customisations and Complete includes 10; beyond that, customisation is quoted separately — talk to sales and you will get the scope and cost in writing before anything starts.",
     notIncludedTitle: "What is not included",
     notIncluded: [
       "Tax. Prices are shown before tax.",
       "Hardware, where the solution needs it — servers, phones or networking are quoted separately.",
-      "Customisation beyond the standard system, which is scoped and quoted on its own.",
+      "Customisation beyond what your plan includes, which is scoped and quoted on its own.",
     ],
   },
   ar: {
@@ -117,7 +117,7 @@ const T = {
     trialBody:
       "ادخل إلى نسخة تجريبية فعلية واستخدمها كما لو كانت نظامك: تنقّل بين الشاشات، وأضف بيانات، وعدّل ما تشاء. وهي بيئة تجريبية مشتركة وليست نظامك الخاص، لذا يُمسح كل ما تُدخله بمجرد تسجيل الخروج. دون تركيب، ودون دفع، ودون بطاقة.",
     trialCta: "اطلب الدخول إلى النسخة التجريبية",
-    note: "أسعار الباقات القياسية مبيّنة أعلاه. أما التخصيص فيُسعَّر على حدة: تواصل مع المبيعات لتحصل على نطاق العمل والتكلفة مكتوبَين قبل بدء أي شيء.",
+    note: "أسعار الباقات القياسية مبيّنة أعلاه. وتشمل باقة الأعمال 3 تخصيصات، وتشمل باقة الشامل 10 تخصيصات، وما زاد عليها يُسعَّر على حدة: تواصل مع المبيعات لتحصل على نطاق العمل والتكلفة مكتوبَين قبل بدء أي شيء.",
     notIncludedTitle: "ما هو غير مشمول",
     notIncluded: [
       "الضرائب. الأسعار معروضة قبل الضريبة.",

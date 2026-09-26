@@ -25,7 +25,8 @@
  */
 import { chromium } from "playwright";
 
-const ORIGIN = "https://foxsystemstech.com";
+// AUDIT_ORIGIN checks a local build (e.g. http://localhost:4173 from vite preview) before it ships.
+const ORIGIN = process.env.AUDIT_ORIGIN || "https://foxsystemstech.com";
 const args = process.argv.slice(2);
 
 /**

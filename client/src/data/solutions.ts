@@ -75,6 +75,11 @@ export interface SolutionCopy {
 export interface Solution {
   id: SolutionId;
   showcaseBase: string;
+  /**
+   * A self-serve demo exists: the page shows the "Try the live demo" form
+   * (/api/demo-request). Only set it where the demo instance is really wired.
+   */
+  liveDemo?: boolean;
   /** lucide-react icon name, resolved by the page. */
   icon: "Stethoscope" | "Building2" | "Bug";
   en: SolutionCopy;
@@ -410,6 +415,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "real-estate-crm": {
     id: "real-estate-crm",
     showcaseBase: "realestate-crm",
+    liveDemo: true,
     icon: "Building2",
     en: {
       badge: "Built and run by Fox Systems",

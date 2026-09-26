@@ -14,6 +14,7 @@ import { ArrowRight, Bug, Building2, Check, CheckCircle2, MessageCircle, Stethos
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import SolutionShowcase from "@/components/SolutionShowcase";
+import LiveDemoForm from "@/components/LiveDemoForm";
 import { SOLUTIONS, type SolutionId } from "@/data/solutions";
 import { generateBreadcrumbSchema, generateFAQSchema, generateServiceSchema } from "@/utils/seo";
 
@@ -88,10 +89,19 @@ export default function SolutionDetail({ solutionId, language }: Props) {
             </h1>
             <p className="text-lg text-white/70 leading-relaxed max-w-2xl mb-8">{t.heroSub}</p>
             <div className={`flex flex-wrap gap-3 ${isArabic ? "justify-end" : ""}`}>
-              <Button asChild size="lg">
+              {solution.liveDemo && (
+                <Button asChild size="lg">
+                  <a href="#demo" onClick={() => window.trackCTA?.("live-demo-hero")}>
+                    {isArabic ? "جرّب النسخة التجريبية الآن" : "Try the live demo"}
+                    <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />
+                  </a>
+                </Button>
+              )}
+              <Button asChild size="lg" variant={solution.liveDemo ? "outline" : "default"}
+                className={solution.liveDemo ? "border-white/25 text-white hover:bg-white/10 hover:text-white" : undefined}>
                 <Link href={`${prefix}/contact`}>
                   {isArabic ? "احجز عرض عملي" : "Book a walkthrough"}
-                  <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />
+                  {!solution.liveDemo && <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />}
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/25 text-white hover:bg-white/10 hover:text-white">
@@ -244,6 +254,9 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         {/* Screens */}
         <SolutionShowcase base={solution.showcaseBase} copy={t} language={language} />
 
+        {/* Straight after the screenshots: seen enough, now use it. */}
+        {solution.liveDemo && <LiveDemoForm language={language} />}
+
         {/* FAQ */}
         <section className="mt-16 pt-14 border-t border-border">
           <h2
@@ -270,7 +283,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         {/* Other solutions — internal linking between the three verticals */}
         <section className="mt-16 pt-14 border-t border-border">
           <h2 className="text-xl font-extrabold mb-5" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
-            {isArabic ? "أنظمة تانية بنبنيها" : "The other systems we build"}
+            {isArabic ? "أنظمة أخرى نبنيها" : "The other systems we build"}
           </h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {Object.values(SOLUTIONS)
@@ -302,7 +315,15 @@ export default function SolutionDetail({ solutionId, language }: Props) {
           </h2>
           <p className="text-white/70 max-w-xl mx-auto mb-7 leading-relaxed">{t.ctaSub}</p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Button asChild size="lg">
+            {solution.liveDemo && (
+              <Button asChild size="lg">
+                <a href="#demo" onClick={() => window.trackCTA?.("live-demo-footer")}>
+                  {isArabic ? "جرّب النسخة التجريبية" : "Try the live demo"}
+                </a>
+              </Button>
+            )}
+            <Button asChild size="lg" variant={solution.liveDemo ? "outline" : "default"}
+              className={solution.liveDemo ? "border-white/25 text-white hover:bg-white/10 hover:text-white" : undefined}>
               <Link href={`${prefix}/contact`}>
                 {isArabic ? "احجز عرض عملي" : "Book a walkthrough"}
                 <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />

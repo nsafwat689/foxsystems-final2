@@ -56,6 +56,95 @@ export const SOLUTIONS_INDEX_SEO: Record<"en" | "ar", SEOConfig> = {
   },
 };
 
+/**
+ * Three pages whose SEO config used to live inside their React component,
+ * which meant the prerenderer could not see them: they fell through to the
+ * SPA catch-all and served index.html, whose canonical is the HOMEPAGE.
+ * Googlebot's first pass therefore read /industries, /case-studies and
+ * /resources/it-guide — in both languages — as duplicates of the home page.
+ * The pages import these, so the served HTML and the rendered page agree.
+ */
+export const INDUSTRIES_SEO: Record<"en" | "ar", SEOConfig> = {
+  en: {
+    title: "Industries We Serve | IT & CRM Solutions | Fox Systems",
+    description:
+      "Specialised CRM and IT solutions for banking, healthcare, education, manufacturing, retail and logistics across Egypt, Saudi Arabia and Kuwait.",
+    keywords:
+      "IT solutions Egypt industries, CRM banking Egypt, healthcare IT Egypt, education CRM Egypt, manufacturing ERP Egypt, retail IT solutions, government IT Egypt",
+    ogTitle: "Industries We Serve | Fox Systems",
+    ogDescription: "Specialized IT & CRM solutions for 8+ industries across Egypt & the Middle East",
+    ogImage: `${ORIGIN}/industries-og.jpg`,
+    canonicalUrl: `${ORIGIN}/industries`,
+    language: "en",
+  },
+  ar: {
+    title: "القطاعات التي نخدمها | فوكس سيستمز | حلول IT متخصصة",
+    description:
+      "فوكس سيستمز تقدم حلول CRM وIT متخصصة للبنوك والرعاية الصحية والتعليم والتصنيع والتجزئة والحكومة واللوجستيات في مصر والسعودية والكويت.",
+    keywords:
+      "القطاعات التي نخدمها, حلول IT للبنوك, تقنية المعلومات للرعاية الصحية, CRM للتعليم, حلول التصنيع, حلول التجزئة, IT solutions Egypt industries",
+    ogTitle: "القطاعات التي نخدمها | فوكس سيستمز",
+    ogDescription: "حلول IT و CRM متخصصة لأكثر من 8 قطاعات في مصر والشرق الأوسط",
+    ogImage: `${ORIGIN}/industries-og.jpg`,
+    canonicalUrl: `${ORIGIN}/ar/industries`,
+    language: "ar",
+  },
+};
+
+export const CASE_STUDIES_SEO: Record<"en" | "ar", SEOConfig> = {
+  en: {
+    title: "Client Case Studies | Real Results | Fox Systems",
+    description:
+      "See how Fox Systems transformed operations for 300+ businesses across Egypt, Saudi Arabia & Kuwait with CRM, Call Centers, cybersecurity, and IT infrastructure.",
+    keywords:
+      "Fox Systems case studies, CRM implementation Egypt, IT solutions Egypt results, cybersecurity Egypt, call center Egypt success story",
+    ogTitle: "Client Case Studies | Fox Systems",
+    ogDescription: "Real results from real businesses across Egypt & the Middle East",
+    ogImage: `${ORIGIN}/case-studies-og.jpg`,
+    canonicalUrl: `${ORIGIN}/case-studies`,
+    language: "en",
+  },
+  ar: {
+    title: "قصص نجاح عملائنا | حالات دراسية | فوكس سيستمز",
+    description:
+      "اكتشف كيف حوّلت فوكس سيستمز عمليات أكثر من 300 شركة في مصر والسعودية والكويت عبر CRM ومراكز الاتصال والأمن السيبراني والبنية التحتية.",
+    keywords:
+      "قصص نجاح فوكس سيستمز, حالات دراسية, تطبيق CRM في مصر, نتائج حلول تقنية المعلومات, نجاح مراكز الاتصال, Fox Systems case studies",
+    ogTitle: "قصص نجاح عملائنا | فوكس سيستمز",
+    ogDescription: "نتائج حقيقية من شركات حقيقية في مصر والشرق الأوسط",
+    ogImage: `${ORIGIN}/case-studies-og.jpg`,
+    canonicalUrl: `${ORIGIN}/ar/case-studies`,
+    language: "ar",
+  },
+};
+
+export const IT_GUIDE_SEO: Record<"en" | "ar", SEOConfig> = {
+  en: {
+    title: "Free IT Readiness Guide | Fox Systems Egypt",
+    description:
+      "Download the Ultimate IT Readiness Guide for Egyptian businesses — covering CRM, cybersecurity, networking & call centers. Completely free.",
+    keywords:
+      "free IT guide Egypt, CRM guide Egypt, cybersecurity checklist Egypt, IT readiness guide MENA, Fox Systems free download",
+    ogTitle: "Free IT Readiness Guide | Fox Systems",
+    ogDescription: "A practical guide for Egyptian businesses — completely free",
+    ogImage: `${ORIGIN}/guide-og.jpg`,
+    canonicalUrl: `${ORIGIN}/resources/it-guide`,
+    language: "en",
+  },
+  ar: {
+    title: "دليل الجاهزية التقنية المجاني | فوكس سيستمز",
+    description:
+      "حمّل الدليل الشامل للجاهزية التقنية للشركات المصرية — يغطي CRM والأمن السيبراني والشبكات ومراكز الاتصال. مجانًا.",
+    keywords:
+      "دليل تقني مجاني, دليل CRM مصر, قائمة فحص الأمن السيبراني, الجاهزية التقنية, تحميل مجاني, free IT guide Egypt",
+    ogTitle: "دليل الجاهزية التقنية المجاني | فوكس سيستمز",
+    ogDescription: "دليل عملي للشركات المصرية — مجانًا",
+    ogImage: `${ORIGIN}/guide-og.jpg`,
+    canonicalUrl: `${ORIGIN}/ar/resources/it-guide`,
+    language: "ar",
+  },
+};
+
 const SERVICE_IDS = [
   "internet",
   "crm",
@@ -98,6 +187,12 @@ export function buildRouteMeta(): Record<string, SEOConfig> {
     "/ar/solutions": SOLUTIONS_INDEX_SEO.ar,
     "/tools": TOOLS_INDEX_SEO.en,
     "/ar/tools": TOOLS_INDEX_SEO.ar,
+    "/industries": INDUSTRIES_SEO.en,
+    "/ar/industries": INDUSTRIES_SEO.ar,
+    "/case-studies": CASE_STUDIES_SEO.en,
+    "/ar/case-studies": CASE_STUDIES_SEO.ar,
+    "/resources/it-guide": IT_GUIDE_SEO.en,
+    "/ar/resources/it-guide": IT_GUIDE_SEO.ar,
   };
 
   for (const id of SERVICE_IDS) {

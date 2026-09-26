@@ -6,6 +6,7 @@ import { ArrowRight, MessageCircle, TrendingUp, Clock, Users, Shield, CheckCircl
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { generateBreadcrumbSchema } from "@/utils/seo";
+import { CASE_STUDIES_SEO } from "@/data/routeMeta";
 
 interface CaseStudiesProps { language: "en" | "ar"; }
 
@@ -273,16 +274,9 @@ export default function CaseStudies({ language }: CaseStudiesProps) {
 
   const filtered = activeTag === tags[0] ? cases : cases.filter(c => c.tag === activeTag);
 
-  const seoConfig = {
-    title: isArabic ? "قصص نجاح عملائنا | حالات دراسية | فوكس سيستمز" : "Client Case Studies | Real Results | Fox Systems",
-    description: isArabic ? "اكتشف كيف حوّلت فوكس سيستمز عمليات أكثر من 300 شركة في مصر والسعودية والكويت عبر CRM ومراكز الاتصال والأمن السيبراني والبنية التحتية." : "See how Fox Systems transformed operations for 300+ businesses across Egypt, Saudi Arabia & Kuwait with CRM, Call Centers, cybersecurity, and IT infrastructure.",
-    keywords: "Fox Systems case studies, CRM implementation Egypt, IT solutions Egypt results, cybersecurity Egypt, call center Egypt success story",
-    ogTitle: isArabic ? "قصص نجاح عملائنا | فوكس سيستمز" : "Client Case Studies | Fox Systems",
-    ogDescription: isArabic ? "نتائج حقيقية من شركات حقيقية في مصر والشرق الأوسط" : "Real results from real businesses across Egypt & the Middle East",
-    ogImage: "https://foxsystemstech.com/case-studies-og.jpg",
-    canonicalUrl: isArabic ? "https://foxsystemstech.com/ar/case-studies" : "https://foxsystemstech.com/case-studies",
-    language,
-  };
+  // Shared with routeMeta.ts so the prerendered HTML and the rendered page
+  // cannot disagree about the canonical.
+  const seoConfig = CASE_STUDIES_SEO[language];
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: isArabic ? "الرئيسية" : "Home", url: isArabic ? "https://foxsystemstech.com/ar" : "https://foxsystemstech.com/" },

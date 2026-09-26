@@ -5,6 +5,7 @@ import { ArrowRight, MessageCircle, CheckCircle2, Building2, Heart, GraduationCa
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { generateBreadcrumbSchema } from "@/utils/seo";
+import { INDUSTRIES_SEO } from "@/data/routeMeta";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -155,22 +156,9 @@ export default function Industries({ language }: IndustriesProps) {
   const isArabic = language === "ar";
   const langPrefix = isArabic ? "/ar" : "";
 
-  const seoConfig = {
-    title: isArabic
-      ? "القطاعات التي نخدمها | فوكس سيستمز | حلول IT متخصصة"
-      : "Industries We Serve | IT & CRM Solutions | Fox Systems",
-    description: isArabic
-      ? "فوكس سيستمز تقدم حلول CRM وIT متخصصة للبنوك والرعاية الصحية والتعليم والتصنيع والتجزئة والحكومة واللوجستيات في مصر والسعودية والكويت."
-      : "Specialised CRM and IT solutions for banking, healthcare, education, manufacturing, retail and logistics across Egypt, Saudi Arabia and Kuwait.",
-    keywords: "IT solutions Egypt industries, CRM banking Egypt, healthcare IT Egypt, education CRM Egypt, manufacturing ERP Egypt, retail IT solutions, government IT Egypt",
-    ogTitle: isArabic ? "القطاعات التي نخدمها | فوكس سيستمز" : "Industries We Serve | Fox Systems",
-    ogDescription: isArabic
-      ? "حلول IT و CRM متخصصة لأكثر من 8 قطاعات في مصر والشرق الأوسط"
-      : "Specialized IT & CRM solutions for 8+ industries across Egypt & the Middle East",
-    ogImage: "https://foxsystemstech.com/industries-og.jpg",
-    canonicalUrl: isArabic ? "https://foxsystemstech.com/ar/industries" : "https://foxsystemstech.com/industries",
-    language: language,
-  };
+  // Shared with routeMeta.ts so the prerendered HTML and the rendered page
+  // cannot disagree about the canonical.
+  const seoConfig = INDUSTRIES_SEO[language];
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: isArabic ? "الرئيسية" : "Home", url: isArabic ? "https://foxsystemstech.com/ar" : "https://foxsystemstech.com/" },

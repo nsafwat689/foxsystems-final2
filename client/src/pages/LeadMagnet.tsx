@@ -6,6 +6,7 @@ import { ArrowRight, MessageCircle, Download, CheckCircle2, Shield, FileText, St
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { generateBreadcrumbSchema } from "@/utils/seo";
+import { IT_GUIDE_SEO } from "@/data/routeMeta";
 import { submitLead, whatsAppFallbackUrl, SUPPORT_EMAIL, GUIDE_PDF_PATH, guidePdfIsAvailable, type Lead } from "@/lib/leads";
 
 interface LeadMagnetProps { language: "en" | "ar"; }
@@ -146,16 +147,9 @@ export default function LeadMagnet({ language }: LeadMagnetProps) {
     }
   };
 
-  const seoConfig = {
-    title: isArabic ? "دليل الجاهزية التقنية المجاني | فوكس سيستمز" : "Free IT Readiness Guide | Fox Systems Egypt",
-    description: isArabic ? "حمّل الدليل الشامل للجاهزية التقنية للشركات المصرية — يغطي CRM والأمن السيبراني والشبكات ومراكز الاتصال. مجاناً." : "Download the Ultimate IT Readiness Guide for Egyptian businesses — covering CRM, cybersecurity, networking & call centers. Completely free.",
-    keywords: "free IT guide Egypt, CRM guide Egypt, cybersecurity checklist Egypt, IT readiness guide MENA, Fox Systems free download",
-    ogTitle: isArabic ? "دليل الجاهزية التقنية المجاني | فوكس سيستمز" : "Free IT Readiness Guide | Fox Systems",
-    ogDescription: isArabic ? "دليل عملي للشركات المصرية — مجاناً" : "A practical guide for Egyptian businesses — completely free",
-    ogImage: "https://foxsystemstech.com/guide-og.jpg",
-    canonicalUrl: isArabic ? "https://foxsystemstech.com/ar/resources/it-guide" : "https://foxsystemstech.com/resources/it-guide",
-    language,
-  };
+  // Shared with routeMeta.ts so the prerendered HTML and the rendered page
+  // cannot disagree about the canonical.
+  const seoConfig = IT_GUIDE_SEO[language];
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: isArabic ? "الرئيسية" : "Home", url: isArabic ? "https://foxsystemstech.com/ar" : "https://foxsystemstech.com/" },

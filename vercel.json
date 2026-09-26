@@ -168,8 +168,20 @@
       "destination": "/ar/articles/website-design-trends.html"
     },
     {
+      "source": "/ar/case-studies",
+      "destination": "/ar/case-studies.html"
+    },
+    {
       "source": "/ar/contact",
       "destination": "/ar/contact.html"
+    },
+    {
+      "source": "/ar/industries",
+      "destination": "/ar/industries.html"
+    },
+    {
+      "source": "/ar/resources/it-guide",
+      "destination": "/ar/resources/it-guide.html"
     },
     {
       "source": "/ar/services",
@@ -372,8 +384,20 @@
       "destination": "/articles/website-design-trends.html"
     },
     {
+      "source": "/case-studies",
+      "destination": "/case-studies.html"
+    },
+    {
       "source": "/contact",
       "destination": "/contact.html"
+    },
+    {
+      "source": "/industries",
+      "destination": "/industries.html"
+    },
+    {
+      "source": "/resources/it-guide",
+      "destination": "/resources/it-guide.html"
     },
     {
       "source": "/services",

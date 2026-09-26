@@ -818,6 +818,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "pest-control-crm": {
     id: "pest-control-crm",
     showcaseBase: "pestcontrol-crm",
+    liveDemo: true,
     icon: "Bug",
     en: {
       badge: "Built and run by Fox Systems",

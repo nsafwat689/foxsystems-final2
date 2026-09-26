@@ -14,7 +14,7 @@ import { ArrowRight, Bug, Building2, Check, CheckCircle2, MessageCircle, Stethos
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import SolutionShowcase from "@/components/SolutionShowcase";
-import LiveDemoForm from "@/components/LiveDemoForm";
+import LiveDemoForm, { isDemoProduct } from "@/components/LiveDemoForm";
 import { SOLUTIONS, type SolutionId } from "@/data/solutions";
 import { generateBreadcrumbSchema, generateFAQSchema, generateServiceSchema } from "@/utils/seo";
 
@@ -255,7 +255,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         <SolutionShowcase base={solution.showcaseBase} copy={t} language={language} />
 
         {/* Straight after the screenshots: seen enough, now use it. */}
-        {solution.liveDemo && <LiveDemoForm language={language} />}
+        {solution.liveDemo && isDemoProduct(solution.id) && <LiveDemoForm language={language} product={solution.id} />}
 
         {/* FAQ */}
         <section className="mt-16 pt-14 border-t border-border">

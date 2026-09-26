@@ -1,24 +1,39 @@
 /**
  * "Try the live demo" endpoint.
  *
- * The visitor leaves a name and phone; we ask the CRM demo instance for a
- * personal demo account and hand the browser a one-time sign-in URL. The same
+ * The visitor leaves a name and phone; we ask that product's demo instance for
+ * a personal demo account and hand the browser a one-time sign-in URL. The same
  * details are emailed to LEAD_INBOX, so every demo is also a lead to follow up.
  *
  * Environment variables (Vercel → Settings → Environment Variables):
- *   DEMO_SIGNUP_SECRET  shared with the CRM: `select value from demo_config
- *                       where key = 'signup_secret'` on its Supabase project
- *   DEMO_CRM_URL        optional, defaults to the real estate demo below
+ *   DEMO_SIGNUP_SECRET               real estate CRM: `select value from demo_config
+ *                                    where key = 'signup_secret'` (Supabase epbsqguiexvnbbquihzi)
+ *   DEMO_SIGNUP_SECRET_PEST_CONTROL  pest control demo: `select value from demo_ops.config
+ *                                    where key = 'signup_secret'` (Supabase kopseksbjsajsixuswqp)
+ *   DEMO_CRM_URL, DEMO_PEST_URL      optional overrides of the endpoints below
  *   BREVO_API_KEY, LEAD_INBOX, LEAD_FROM   as for /api/contact
  *
- * Without DEMO_SIGNUP_SECRET the endpoint answers 503 { code: "not_configured" }
+ * Without the product's secret the endpoint answers 503 { code: "not_configured" }
  * and the form hands the visitor to WhatsApp instead.
  */
 import { z } from "zod";
 
 export const config = { runtime: "nodejs" };
 
-const DEFAULT_CRM_URL = "https://fox-realestate-crm-omega.vercel.app";
+const PRODUCTS = {
+  "real-estate-crm": {
+    label: "Real Estate CRM",
+    secretEnv: "DEMO_SIGNUP_SECRET",
+    endpoint: () =>
+      `${(process.env.DEMO_CRM_URL || "https://fox-realestate-crm-omega.vercel.app").replace(/\/+$/, "")}/api/public/demo-signup`,
+  },
+  "pest-control-crm": {
+    label: "Pest Control CRM",
+    secretEnv: "DEMO_SIGNUP_SECRET_PEST_CONTROL",
+    endpoint: () =>
+      process.env.DEMO_PEST_URL || "https://kopseksbjsajsixuswqp.supabase.co/functions/v1/api/demo/signup",
+  },
+} as const;
 
 const demoSchema = z.object({
   name: z.string().trim().min(2).max(120),
@@ -30,7 +45,7 @@ const demoSchema = z.object({
   email: z.union([z.string().trim().email().max(200), z.literal("")]).optional().default(""),
   company: z.string().trim().max(200).optional().default(""),
   teamSize: z.string().trim().max(40).optional().default(""),
-  product: z.enum(["real-estate-crm"]).optional().default("real-estate-crm"),
+  product: z.enum(["real-estate-crm", "pest-control-crm"]).optional().default("real-estate-crm"),
   language: z.enum(["en", "ar"]).optional().default("en"),
   // Honeypot, handled as in /api/contact: accepted, then quietly discarded.
   website: z.string().max(500).optional().default(""),
@@ -74,7 +89,7 @@ async function emailLead(demo: DemoRequest, accountCreated: boolean) {
     ["Email", demo.email],
     ["Company", demo.company],
     ["Team size", demo.teamSize],
-    ["Product", "Real Estate CRM"],
+    ["Product", PRODUCTS[demo.product].label],
     ["Language", demo.language === "ar" ? "Arabic" : "English"],
     ["Demo account", accountCreated ? "Created — they are in the demo now" : "NOT created — follow up manually"],
   ].filter(([, value]) => value !== "") as Array<[string, string]>;
@@ -100,7 +115,7 @@ ${rows
           sender: { email: from, name: "Fox Systems Website" },
           to: [{ email: inbox }],
           ...(demo.email ? { replyTo: { email: demo.email, name: demo.name } } : {}),
-          subject: `Live demo — ${demo.name}${demo.company ? ` (${demo.company})` : ""}`,
+          subject: `Live demo (${PRODUCTS[demo.product].label}) — ${demo.name}${demo.company ? ` (${demo.company})` : ""}`,
           htmlContent: html,
         }),
       })
@@ -138,20 +153,19 @@ export default async function handler(req: any, res: any) {
   const demo = parsed.data;
   if (demo.website) return res.status(200).json({ ok: true, url: null });
 
-  const secret = process.env.DEMO_SIGNUP_SECRET;
+  const product = PRODUCTS[demo.product];
+  const secret = process.env[product.secretEnv];
   if (!secret) {
-    console.error("[demo-request] DEMO_SIGNUP_SECRET is not set — no demo account created for", demo.phone);
+    console.error(`[demo-request] ${product.secretEnv} is not set — no demo account created for`, demo.phone);
     await emailLead(demo, false);
     return res.status(503).json({ ok: false, code: "not_configured" });
   }
-
-  const crmUrl = (process.env.DEMO_CRM_URL || DEFAULT_CRM_URL).replace(/\/+$/, "");
 
   let url: string | null = null;
   let code = "unavailable";
   try {
     const response = await withTimeout(15000, signal =>
-      fetch(`${crmUrl}/api/public/demo-signup`, {
+      fetch(product.endpoint(), {
         method: "POST",
         signal,
         headers: { "content-type": "application/json", "x-demo-secret": secret },

@@ -12,16 +12,62 @@ import { Button } from "@/components/ui/button";
 import { AlertCircle, ArrowRight, Clock, MessageCircle, RotateCcw, ShieldCheck } from "lucide-react";
 import { whatsAppFallbackUrl } from "@/lib/leads";
 
+/** What differs between the products' demos; everything else is shared below. */
+const PRODUCT_COPY = {
+  "real-estate-crm": {
+    en: {
+      sub: "Not screenshots: the real system, filled with a sample brokerage — branches, agents, leads, deals and instalment plans. You get your own login straight away.",
+      points: [
+        { icon: ShieldCheck, text: "You're signed in as the CEO and see every page" },
+        { icon: RotateCcw, text: "Sample data, reset every night, so explore freely" },
+        { icon: Clock, text: "Your login lasts 7 days" },
+      ],
+      sizeLbl: "Sales team size",
+      service: "Real Estate CRM — live demo",
+    },
+    ar: {
+      sub: "ليست صورًا للشاشات، بل النظام الفعلي ببيانات شركة عقارات نموذجية: فروع ووكلاء وعملاء محتملون وصفقات وخطط أقساط. تحصل على حساب خاص بك فورًا.",
+      points: [
+        { icon: ShieldCheck, text: "تدخل بصلاحيات المدير التنفيذي وترى جميع الصفحات" },
+        { icon: RotateCcw, text: "بيانات نموذجية تعود إلى حالتها كل ليلة، فجرّب بحرية" },
+        { icon: Clock, text: "حسابك صالح لمدة 7 أيام" },
+      ],
+      sizeLbl: "حجم فريق المبيعات",
+      service: "نظام إدارة العقارات — نسخة تجريبية",
+    },
+  },
+  "pest-control-crm": {
+    en: {
+      sub: "Not screenshots: the real system, filled with a sample pest control company — clients and branches, engineers, scheduled visits, service reports and QR-labelled devices. You get your own login straight away.",
+      points: [
+        { icon: ShieldCheck, text: "Your own login to the whole operation; deleting is switched off" },
+        { icon: RotateCcw, text: "Shared sample data that resets when visitors leave, so explore freely" },
+        { icon: Clock, text: "Your login lasts 7 days" },
+      ],
+      sizeLbl: "Field team size",
+      service: "Pest Control CRM — live demo",
+    },
+    ar: {
+      sub: "ليست صورًا للشاشات، بل النظام الفعلي ببيانات شركة مكافحة آفات نموذجية: عملاء وفروع ومهندسون وزيارات مجدولة وتقارير خدمة وأجهزة برموز QR. تحصل على حساب خاص بك فورًا.",
+      points: [
+        { icon: ShieldCheck, text: "حساب خاص بك للنظام كاملًا، مع تعطيل الحذف" },
+        { icon: RotateCcw, text: "بيانات نموذجية مشتركة تعود إلى حالتها بعد مغادرة الزوار، فجرّب بحرية" },
+        { icon: Clock, text: "حسابك صالح لمدة 7 أيام" },
+      ],
+      sizeLbl: "حجم الفريق الميداني",
+      service: "نظام مكافحة الآفات — نسخة تجريبية",
+    },
+  },
+};
+
+export type DemoProduct = keyof typeof PRODUCT_COPY;
+
+export const isDemoProduct = (id: string): id is DemoProduct => id in PRODUCT_COPY;
+
 const T = {
   en: {
     title: "Try the live demo now",
-    sub: "Not screenshots: the real system, filled with a sample brokerage — branches, agents, leads, deals and instalment plans. You get your own login straight away.",
-    points: [
-      { icon: ShieldCheck, text: "You're signed in as the CEO and see every page" },
-      { icon: RotateCcw, text: "Sample data, reset every night, so explore freely" },
-      { icon: Clock, text: "Your login lasts 7 days" },
-    ],
-    nameLbl: "Your name", phoneLbl: "Phone / WhatsApp", companyLbl: "Company", sizeLbl: "Sales team size",
+    nameLbl: "Your name", phoneLbl: "Phone / WhatsApp", companyLbl: "Company",
     sizeOpts: ["1–5", "6–15", "16–40", "40+"],
     submit: "Open the demo", opening: "Preparing your demo…",
     footnote: "We'll message you on WhatsApp to offer a 20-minute walkthrough. No spam.",
@@ -31,17 +77,10 @@ const T = {
     unavailableTitle: "The demo couldn't open right now",
     unavailable: "Message us on WhatsApp and we'll send you your access straight away. Your details are already filled in:",
     waBtn: "Message us on WhatsApp",
-    service: "Real Estate CRM — live demo",
   },
   ar: {
     title: "جرّب النسخة التجريبية الآن",
-    sub: "ليست صورًا للشاشات، بل النظام الفعلي ببيانات شركة عقارات نموذجية: فروع ووكلاء وعملاء محتملون وصفقات وخطط أقساط. تحصل على حساب خاص بك فورًا.",
-    points: [
-      { icon: ShieldCheck, text: "تدخل بصلاحيات المدير التنفيذي وترى جميع الصفحات" },
-      { icon: RotateCcw, text: "بيانات نموذجية تعود إلى حالتها كل ليلة، فجرّب بحرية" },
-      { icon: Clock, text: "حسابك صالح لمدة 7 أيام" },
-    ],
-    nameLbl: "اسمك", phoneLbl: "الهاتف / واتساب", companyLbl: "الشركة", sizeLbl: "حجم فريق المبيعات",
+    nameLbl: "اسمك", phoneLbl: "الهاتف / واتساب", companyLbl: "الشركة",
     // Worded, not "6–15": a bare numeric range renders reversed ("15–6") in RTL.
     sizeOpts: ["من 1 إلى 5", "من 6 إلى 15", "من 16 إلى 40", "أكثر من 40"],
     submit: "افتح النسخة التجريبية", opening: "جارٍ تجهيز النسخة التجريبية…",
@@ -52,7 +91,6 @@ const T = {
     unavailableTitle: "تعذّر فتح النسخة التجريبية الآن",
     unavailable: "راسلنا عبر واتساب وسنرسل إليك رابط الدخول فورًا. بياناتك مكتوبة في الرسالة مسبقًا:",
     waBtn: "راسلنا عبر واتساب",
-    service: "نظام إدارة العقارات — نسخة تجريبية",
   },
 };
 
@@ -60,10 +98,12 @@ type Status = "idle" | "sending" | "invalid" | "limited" | "unavailable";
 
 interface LiveDemoFormProps {
   language: "en" | "ar";
+  /** Which demo to open; must be a product /api/demo-request knows. */
+  product: DemoProduct;
 }
 
-export default function LiveDemoForm({ language }: LiveDemoFormProps) {
-  const t = T[language];
+export default function LiveDemoForm({ language, product }: LiveDemoFormProps) {
+  const t = { ...T[language], ...PRODUCT_COPY[product][language] };
   const isArabic = language === "ar";
   const [status, setStatus] = useState<Status>("idle");
   const [expired, setExpired] = useState(false);
@@ -89,7 +129,7 @@ export default function LiveDemoForm({ language }: LiveDemoFormProps) {
       const response = await fetch("/api/demo-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, product: "real-estate-crm", language }),
+        body: JSON.stringify({ ...form, product, language }),
       });
       const body = await response.json().catch(() => ({}));
 

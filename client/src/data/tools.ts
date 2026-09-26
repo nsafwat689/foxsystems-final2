@@ -708,8 +708,8 @@ export const TOOLS: Record<ToolId, Tool> = {
     icon: "Wallet",
     related: { href: "/tools/vat-calculator", en: "VAT and withholding calculator", ar: "حاسبة الضريبة والخصم" },
     advisory: {
-      en: "This models the formula YOU enter — the one in your contract, your staff handbook or your company policy. It is not a statement of statutory entitlement. Egypt's framework works differently from the Gulf's end-of-service gratuity, employment law is revised, and the answer depends on the wage base and the reason for leaving. Use this to model and budget, and confirm actual entitlements with a labour lawyer before paying or promising anything.",
-      ar: "تحاكي هذه الأداة الصيغة التي تُدخلها أنت — الواردة في عقدك أو لائحتك أو سياسة شركتك. وهي ليست بيانًا بالاستحقاق القانوني. فالإطار في مصر يختلف عن مكافأة نهاية الخدمة في دول الخليج، وقوانين العمل تُعدَّل، والإجابة تتوقف على أساس الأجر وسبب انتهاء العلاقة. فاستخدمها للنمذجة وإعداد الميزانية، وتحقّق من الاستحقاقات الفعلية مع محامٍ عمّالي قبل أن تدفع أو تَعِد بشيء.",
+      en: "This models the formula YOU enter — the one in your contract, your staff handbook or your company policy. It is not a statement of statutory entitlement. Do not assume the Gulf end-of-service model applies here; employment law is revised, and the answer depends on the contract, the wage base and the reason for leaving. Use this to model and budget, and confirm actual entitlements with a labour lawyer before paying or promising anything.",
+      ar: "تحاكي هذه الأداة الصيغة التي تُدخلها أنت — الواردة في عقدك أو لائحتك أو سياسة شركتك. وهي ليست بيانًا بالاستحقاق القانوني. ولا تفترض انطباق النموذج الخليجي لمكافأة نهاية الخدمة هنا؛ فقوانين العمل تُعدَّل، والإجابة تتوقف على العقد وأساس الأجر وسبب انتهاء العلاقة. فاستخدمها للنمذجة وإعداد الميزانية، وتحقّق من الاستحقاقات الفعلية مع محامٍ عمّالي قبل أن تدفع أو تَعِد بشيء.",
     },
     en: {
       name: "End-of-Service Benefit Calculator",
@@ -728,7 +728,7 @@ export const TOOLS: Record<ToolId, Tool> = {
       faqs: [
         {
           q: "Does Egypt have end-of-service gratuity like the Gulf states?",
-          a: "Not in the same form. Egypt's system is built around the social insurance scheme rather than a universal employer-paid gratuity, and separate provisions deal with compensation for unlawful dismissal. Many employers nevertheless operate a contractual end-of-service benefit, and that is what this tool models. It calculates the policy you give it, not a statutory entitlement — so confirm what you actually owe with a labour lawyer.",
+          a: "Do not assume the Gulf model applies. End-of-service works differently from one jurisdiction to another, and what an employer owes on termination in Egypt turns on the contract, the reason for leaving and the statutory position at the time — which is revised. Many employers here operate a contractual end-of-service benefit, and that is what this tool models: it calculates the policy you give it, not a statutory entitlement. Confirm what you actually owe with a labour lawyer before paying or promising anything.",
         },
         {
           q: "Basic salary or total wage?",
@@ -765,7 +765,7 @@ export const TOOLS: Record<ToolId, Tool> = {
       faqs: [
         {
           q: "هل في مصر مكافأة نهاية خدمة كدول الخليج؟",
-          a: "ليست بالصورة نفسها. فالنظام في مصر مبنيّ على منظومة التأمينات الاجتماعية لا على مكافأة شاملة يدفعها صاحب العمل، وثمة أحكام منفصلة تتناول التعويض عن الفصل غير المشروع. ومع ذلك يطبّق كثير من أصحاب الأعمال مكافأة نهاية خدمة تعاقدية، وهي ما تحاكيه هذه الأداة. فهي تحسب السياسة التي تعطيها إياها لا استحقاقًا قانونيًا — فتحقّق مما تدين به فعلًا مع محامٍ عمّالي.",
+          a: "لا تفترض انطباق النموذج الخليجي. فمكافأة نهاية الخدمة تختلف من ولاية قضائية إلى أخرى، وما يدين به صاحب العمل عند انتهاء العلاقة في مصر يتوقف على العقد وسبب الانتهاء والوضع التشريعي وقتها، وهو يُعدَّل. ويطبّق كثير من أصحاب الأعمال هنا مكافأة نهاية خدمة تعاقدية، وهي ما تحاكيه هذه الأداة: فهي تحسب السياسة التي تعطيها إياها لا استحقاقًا قانونيًا. فتحقّق مما تدين به فعلًا مع محامٍ عمّالي قبل أن تدفع أو تَعِد بشيء.",
         },
         {
           q: "الراتب الأساسي أم الأجر الشامل؟",

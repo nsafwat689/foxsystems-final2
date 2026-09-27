@@ -18,7 +18,7 @@ const ORIGIN = "https://foxsystemstech.com";
 const OUT = path.join("client", "public", "sitemap.xml");
 const ARTICLES_SRC = path.join("client", "src", "pages", "ArticleDetail.tsx");
 
-const SOLUTIONS = ["medical-crm", "real-estate-crm", "pest-control-crm"];
+const SOLUTIONS = ["medical-crm", "real-estate-crm", "pest-control-crm", "hr-crm"];
 // Keep in step with SERVICE_IDS in client/src/App.tsx. "software" was renamed
 // to "crm" on 2026-09-24; leaving it here would have kept a redirecting URL in
 // the sitemap, which wastes crawl budget and is flagged in Search Console.

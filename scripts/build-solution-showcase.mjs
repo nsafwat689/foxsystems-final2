@@ -8,7 +8,7 @@
  *
  *   node scripts/build-solution-showcase.mjs <set> <path-to-captures>
  *
- *   set = realestate-crm | pestcontrol-crm
+ *   set = realestate-crm | pestcontrol-crm | hr-crm
  *
  * Desktop screens land around 40-90 KB as WebP at 1800px wide, which is what
  * keeps the gallery off the bundle budget.
@@ -30,6 +30,11 @@ const SETS = {
   "realestate-crm": [
     "dashboard", "pipeline", "properties", "payments",
     "leads", "matching", "automations", "payouts",
+    "mobile",
+  ],
+  "hr-crm": [
+    "dashboard", "payroll", "payslip", "leave",
+    "attendance", "recruitment", "performance", "assistant",
     "mobile",
   ],
   "pestcontrol-crm": [

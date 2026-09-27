@@ -35,6 +35,7 @@ const ORIGINAL_ENV = { ...process.env };
 beforeEach(() => {
   delete process.env.DEMO_SIGNUP_SECRET;
   delete process.env.DEMO_CRM_URL;
+  delete process.env.DEMO_SIGNUP_SECRET_HR;
   process.env.BREVO_API_KEY = "xkeysib_test_key";
   process.env.LEAD_INBOX = "support@foxsystemstech.com";
   process.env.LEAD_FROM = "support@foxsystemstech.com";
@@ -165,6 +166,23 @@ describe("POST /api/demo-request", () => {
     expect(url).toBe("https://klnxievbzoiqjchjaxry.supabase.co/functions/v1/demo-signup");
     expect(init.headers["x-demo-secret"]).toBe("medical-secret");
     expect(JSON.parse((fetchSpy.mock.calls[1][1] as any).body).htmlContent).toContain("Medical CRM");
+  });
+
+  it("routes an HR request to the HR demo's function with its own secret", async () => {
+    process.env.DEMO_SIGNUP_SECRET_HR = "hr-secret";
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(async (url: any) =>
+      String(url).includes("kglepsmhcpqqrldntbol")
+        ? new Response(JSON.stringify({ url: "https://fox-hr-crm.vercel.app/demo/enter?token_hash=x" }), { status: 200 })
+        : new Response("{}", { status: 201 })
+    );
+    const res = mockRes();
+    await handler(req({ ...validDemo, product: "hr-crm" }), res);
+
+    expect(res.statusCode).toBe(200);
+    const [url, init] = fetchSpy.mock.calls[0] as [string, any];
+    expect(url).toBe("https://kglepsmhcpqqrldntbol.supabase.co/functions/v1/demo-signup");
+    expect(init.headers["x-demo-secret"]).toBe("hr-secret");
+    expect(JSON.parse((fetchSpy.mock.calls[1][1] as any).body).htmlContent).toContain("HR &amp; Payroll CRM");
   });
 
   it("needs the pest control secret even when the real estate one is set", async () => {

@@ -80,6 +80,28 @@ const PRODUCT_COPY = {
       service: "نظام إدارة المبيعات الطبية — نسخة تجريبية",
     },
   },
+  "hr-crm": {
+    en: {
+      sub: "Not screenshots: the real system, filled with a sample company in Egypt, Saudi Arabia and Kuwait — employees, contracts, leave, attendance from fingerprint machines, payroll with payslips, recruitment and FoxBot. You get your own login straight away.",
+      points: [
+        { icon: ShieldCheck, text: "You're signed in as the HR manager, with your own employee record to try self-service" },
+        { icon: RotateCcw, text: "Sample data, reset every night, so explore freely" },
+        { icon: Clock, text: "Your login lasts 7 days, then it and anything you added are deleted" },
+      ],
+      sizeLbl: "Number of employees",
+      service: "HR & Payroll CRM — live demo",
+    },
+    ar: {
+      sub: "ليست صورًا للشاشات، بل النظام الفعلي ببيانات شركة نموذجية في مصر والسعودية والكويت: موظفون وعقود وإجازات وحضور من أجهزة البصمة ورواتب بقسائمها وتوظيف ومساعد فوكس بوت. تحصل على حساب خاص بك فورًا.",
+      points: [
+        { icon: ShieldCheck, text: "تدخل بصلاحيات مدير الموارد البشرية، ولك سجل موظف لتجربة الخدمة الذاتية" },
+        { icon: RotateCcw, text: "بيانات نموذجية تعود إلى حالتها كل ليلة، فجرّب بحرية" },
+        { icon: Clock, text: "حسابك صالح لمدة 7 أيام، ثم يُحذف مع كل ما أضفته" },
+      ],
+      sizeLbl: "عدد الموظفين",
+      service: "نظام الموارد البشرية والرواتب — نسخة تجريبية",
+    },
+  },
 };
 
 export type DemoProduct = keyof typeof PRODUCT_COPY;

@@ -220,6 +220,10 @@
       "destination": "/ar/solutions.html"
     },
     {
+      "source": "/ar/solutions/hr-crm",
+      "destination": "/ar/solutions/hr-crm.html"
+    },
+    {
       "source": "/ar/solutions/medical-crm",
       "destination": "/ar/solutions/medical-crm.html"
     },
@@ -438,6 +442,10 @@
     {
       "source": "/solutions",
       "destination": "/solutions.html"
+    },
+    {
+      "source": "/solutions/hr-crm",
+      "destination": "/solutions/hr-crm.html"
     },
     {
       "source": "/solutions/medical-crm",

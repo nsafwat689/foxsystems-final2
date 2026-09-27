@@ -42,6 +42,7 @@ const CARDS = [
   ["solutions/medical-crm-og.jpg", "Medical and Pharmaceutical Field Force CRM", "Product"],
   ["solutions/real-estate-crm-og.jpg", "Real Estate CRM for Brokers and Developers", "Product"],
   ["solutions/pest-control-crm-og.jpg", "Pest Control Job and Route Management", "Product"],
+  ["solutions/hr-crm-og.jpg", "HR, Attendance and Payroll for Egypt and the Gulf", "Product"],
 ];
 
 const escapeXml = s =>

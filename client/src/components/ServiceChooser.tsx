@@ -23,6 +23,7 @@ import {
   Network,
   Shield,
   Stethoscope,
+  Users,
 } from "lucide-react";
 
 interface Props {
@@ -64,6 +65,7 @@ const INDUSTRY = [
   { id: "medical-crm", Icon: Stethoscope, en: "Medical & pharma", ar: "طبي ودوائي" },
   { id: "real-estate-crm", Icon: Building2, en: "Real estate", ar: "عقاري" },
   { id: "pest-control-crm", Icon: Bug, en: "Pest control", ar: "مكافحة آفات" },
+  { id: "hr-crm", Icon: Users, en: "HR & payroll", ar: "الموارد البشرية والرواتب" },
 ];
 
 const OTHERS = [

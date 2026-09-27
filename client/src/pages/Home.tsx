@@ -331,14 +331,20 @@ export default function Home({ language }: HomeProps) {
       <section
         className="relative min-h-[88vh] flex items-center overflow-hidden"
         style={{
-          backgroundImage: "url('/hero-tech.jpg')",
+          // The desk scene sits on the side away from the headline: right in
+          // English, and in Arabic the image is mirrored (screen kept readable)
+          // so the right-hand text gets the empty side.
+          backgroundImage: `url('${isArabic ? "/hero-crm-rtl.jpg" : "/hero-crm.jpg"}')`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: isArabic ? "left center" : "right center",
           backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Dark scrim so text is always legible */}
-        <div className="absolute inset-0 bg-[#0a1628]/75 pointer-events-none" />
+        {/* Scrim: solid behind the text, fading out over the scene. On a phone
+            the text covers the whole picture, so it stays dark all over. */}
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: `linear-gradient(to ${isArabic ? "left" : "right"}, rgba(10,22,40,0.94) 0%, rgba(10,22,40,0.82) 38%, rgba(10,22,40,0.25) 68%, rgba(10,22,40,0.05) 100%)` }} />
+        <div className="absolute inset-0 bg-[#0a1628]/60 md:hidden pointer-events-none" />
         {/* Dot grid overlay */}
         <div className="absolute inset-0 bg-dot-grid opacity-20 pointer-events-none" />
 
@@ -348,7 +354,7 @@ export default function Home({ language }: HomeProps) {
           <motion.div
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
             initial="hidden" animate="show"
-            className={`max-w-3xl ${isArabic ? "mr-auto ml-0 text-right" : ""}`}>
+            className={`max-w-3xl ${isArabic ? "ml-auto mr-0 text-right" : ""}`}>
 
             <motion.div variants={fadeUp}>
               <span className="pill pill-gold mb-6 inline-block">{t.heroBadge}</span>

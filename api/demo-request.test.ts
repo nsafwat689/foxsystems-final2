@@ -150,6 +150,23 @@ describe("POST /api/demo-request", () => {
     expect(JSON.parse((fetchSpy.mock.calls[1][1] as any).body).htmlContent).toContain("Pest Control CRM");
   });
 
+  it("routes a medical request to the medical demo's function with its own secret", async () => {
+    process.env.DEMO_SIGNUP_SECRET_MEDICAL = "medical-secret";
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(async (url: any) =>
+      String(url).includes("/functions/v1/demo-signup")
+        ? new Response(JSON.stringify({ url: "https://med.example/demo/enter?token_hash=x" }), { status: 200 })
+        : new Response("{}", { status: 201 })
+    );
+    const res = mockRes();
+    await handler(req({ ...validDemo, product: "medical-crm" }), res);
+
+    expect(res.statusCode).toBe(200);
+    const [url, init] = fetchSpy.mock.calls[0] as [string, any];
+    expect(url).toBe("https://klnxievbzoiqjchjaxry.supabase.co/functions/v1/demo-signup");
+    expect(init.headers["x-demo-secret"]).toBe("medical-secret");
+    expect(JSON.parse((fetchSpy.mock.calls[1][1] as any).body).htmlContent).toContain("Medical CRM");
+  });
+
   it("needs the pest control secret even when the real estate one is set", async () => {
     process.env.DEMO_SIGNUP_SECRET = "real-estate-secret";
     vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response("{}", { status: 201 }));

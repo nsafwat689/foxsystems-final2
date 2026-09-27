@@ -58,6 +58,28 @@ const PRODUCT_COPY = {
       service: "نظام مكافحة الآفات — نسخة تجريبية",
     },
   },
+  "medical-crm": {
+    en: {
+      sub: "Not screenshots: the real system, filled with a sample pharma field force — reps and managers, doctors and pharmacies, GPS-verified visits, samples and compliance alerts. You get your own login straight away.",
+      points: [
+        { icon: ShieldCheck, text: "You're signed in as the country manager and see every rep and territory" },
+        { icon: RotateCcw, text: "Sample data, reset every night, so explore freely" },
+        { icon: Clock, text: "Your login lasts 7 days" },
+      ],
+      sizeLbl: "Field force size",
+      service: "Medical CRM — live demo",
+    },
+    ar: {
+      sub: "ليست صورًا للشاشات، بل النظام الفعلي ببيانات فريق مبيعات دوائي نموذجي: مندوبون ومديرون وأطباء وصيدليات وزيارات موثّقة بتحديد الموقع وعينات وتنبيهات امتثال. تحصل على حساب خاص بك فورًا.",
+      points: [
+        { icon: ShieldCheck, text: "تدخل بصلاحيات مدير الدولة وترى جميع المندوبين والمناطق" },
+        { icon: RotateCcw, text: "بيانات نموذجية تعود إلى حالتها كل ليلة، فجرّب بحرية" },
+        { icon: Clock, text: "حسابك صالح لمدة 7 أيام" },
+      ],
+      sizeLbl: "حجم فريق المندوبين",
+      service: "نظام إدارة المبيعات الطبية — نسخة تجريبية",
+    },
+  },
 };
 
 export type DemoProduct = keyof typeof PRODUCT_COPY;

@@ -10,7 +10,9 @@
  *                                    where key = 'signup_secret'` (Supabase epbsqguiexvnbbquihzi)
  *   DEMO_SIGNUP_SECRET_PEST_CONTROL  pest control demo: `select value from demo_ops.config
  *                                    where key = 'signup_secret'` (Supabase kopseksbjsajsixuswqp)
- *   DEMO_CRM_URL, DEMO_PEST_URL      optional overrides of the endpoints below
+ *   DEMO_SIGNUP_SECRET_MEDICAL       medical CRM: `select value from demo_ops.config
+ *                                    where key = 'signup_secret'` (Supabase klnxievbzoiqjchjaxry)
+ *   DEMO_CRM_URL, DEMO_PEST_URL, DEMO_MEDICAL_URL   optional overrides of the endpoints below
  *   BREVO_API_KEY, LEAD_INBOX, LEAD_FROM   as for /api/contact
  *
  * Without the product's secret the endpoint answers 503 { code: "not_configured" }
@@ -33,6 +35,12 @@ const PRODUCTS = {
     endpoint: () =>
       process.env.DEMO_PEST_URL || "https://kopseksbjsajsixuswqp.supabase.co/functions/v1/api/demo/signup",
   },
+  "medical-crm": {
+    label: "Medical CRM",
+    secretEnv: "DEMO_SIGNUP_SECRET_MEDICAL",
+    endpoint: () =>
+      process.env.DEMO_MEDICAL_URL || "https://klnxievbzoiqjchjaxry.supabase.co/functions/v1/demo-signup",
+  },
 } as const;
 
 const demoSchema = z.object({
@@ -45,7 +53,7 @@ const demoSchema = z.object({
   email: z.union([z.string().trim().email().max(200), z.literal("")]).optional().default(""),
   company: z.string().trim().max(200).optional().default(""),
   teamSize: z.string().trim().max(40).optional().default(""),
-  product: z.enum(["real-estate-crm", "pest-control-crm"]).optional().default("real-estate-crm"),
+  product: z.enum(["real-estate-crm", "pest-control-crm", "medical-crm"]).optional().default("real-estate-crm"),
   language: z.enum(["en", "ar"]).optional().default("en"),
   // Honeypot, handled as in /api/contact: accepted, then quietly discarded.
   website: z.string().max(500).optional().default(""),

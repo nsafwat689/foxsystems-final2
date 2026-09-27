@@ -94,6 +94,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "medical-crm": {
     id: "medical-crm",
     showcaseBase: "medical-crm",
+    liveDemo: true,
     icon: "Stethoscope",
     en: {
       badge: "Built and run by Fox Systems",

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
+import { scrollToId } from "@/lib/scrollToId";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Moon, Sun, Menu, X, ChevronDown, Globe, Phone } from "lucide-react";
 import {
@@ -15,7 +16,7 @@ interface HeaderProps { language: "en" | "ar"; }
 const translations = {
   en: {
     home: "Home", services: "Services", contact: "Contact Us",
-    getStarted: "Schedule Consultation", articles: "Articles", industries: "Industries",
+    getStarted: "Try the live demo", articles: "Articles", industries: "Industries",
     caseStudies: "Case Studies", crm: "CRM", tools: "Free Tools",
     internet: "Call Center & VoIP", software: "CRM Systems",
     hardware: "Hardware & Servers", cybersecurity: "Firewall & Security",
@@ -26,7 +27,7 @@ const translations = {
   },
   ar: {
     home: "الرئيسية", services: "الخدمات", contact: "اتصل بنا",
-    getStarted: "احجز استشارة مجانية", articles: "المقالات", industries: "القطاعات",
+    getStarted: "جرّب النسخة التجريبية", articles: "المقالات", industries: "القطاعات",
     caseStudies: "قصص النجاح", crm: "أنظمة CRM", tools: "أدوات مجانية",
     internet: "مراكز الاتصال وVoIP", software: "أنظمة CRM",
     hardware: "الأجهزة والخوادم", cybersecurity: "جدران الحماية والأمن",
@@ -45,6 +46,16 @@ export default function Header({ language }: HeaderProps) {
   const t = translations[language] || translations.en;
   const isArabic = language === "ar";
   const langPrefix = isArabic ? "/ar" : "";
+
+  // "Try the live demo" goes to the product chooser on the CRM page. When we
+  // are already on that page the path does not change, so the router's
+  // scroll-on-navigate never runs — scroll to the chooser directly.
+  const openDemos = () => {
+    window.trackCTA?.("live-demo-header");
+    if (location === `${langPrefix}/services/crm`) {
+      scrollToId("try-demo");
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 30);
@@ -210,7 +221,7 @@ export default function Header({ language }: HeaderProps) {
 
             <Button asChild size="sm"
               className="ml-1 h-9 px-5 rounded-full font-bold text-sm shadow-md shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02] transition-all">
-              <Link href={`${langPrefix}/contact`}>{t.getStarted}</Link>
+              <Link href={`${langPrefix}/services/crm#try-demo`} onClick={openDemos}>{t.getStarted}</Link>
             </Button>
           </div>
 
@@ -288,7 +299,7 @@ export default function Header({ language }: HeaderProps) {
                   <Globe className="w-4 h-4 mr-2" /> {t.switchLang}
                 </Button>
                 <Button asChild className="w-full rounded-full font-bold shadow-md shadow-primary/25">
-                  <Link href={`${langPrefix}/contact`} onClick={() => setIsMenuOpen(false)}>
+                  <Link href={`${langPrefix}/services/crm#try-demo`} onClick={() => { setIsMenuOpen(false); openDemos(); }}>
                     {t.getStarted}
                   </Link>
                 </Button>

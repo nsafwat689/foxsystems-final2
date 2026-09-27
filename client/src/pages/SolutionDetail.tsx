@@ -15,6 +15,7 @@ import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import SolutionShowcase from "@/components/SolutionShowcase";
 import LiveDemoForm, { isDemoProduct } from "@/components/LiveDemoForm";
+import { scrollToId } from "@/lib/scrollToId";
 import { SOLUTIONS, type SolutionId } from "@/data/solutions";
 import { generateBreadcrumbSchema, generateFAQSchema, generateServiceSchema } from "@/utils/seo";
 
@@ -91,7 +92,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
             <div className={`flex flex-wrap gap-3 ${isArabic ? "justify-end" : ""}`}>
               {solution.liveDemo && (
                 <Button asChild size="lg">
-                  <a href="#demo" onClick={() => window.trackCTA?.("live-demo-hero")}>
+                  <a href="#demo" onClick={e => { window.trackCTA?.("live-demo-hero"); if (scrollToId("demo")) e.preventDefault(); }}>
                     {isArabic ? "جرّب النسخة التجريبية الآن" : "Try the live demo"}
                     <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />
                   </a>
@@ -317,7 +318,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
           <div className="flex flex-wrap gap-3 justify-center">
             {solution.liveDemo && (
               <Button asChild size="lg">
-                <a href="#demo" onClick={() => window.trackCTA?.("live-demo-footer")}>
+                <a href="#demo" onClick={e => { window.trackCTA?.("live-demo-footer"); if (scrollToId("demo")) e.preventDefault(); }}>
                   {isArabic ? "جرّب النسخة التجريبية" : "Try the live demo"}
                 </a>
               </Button>

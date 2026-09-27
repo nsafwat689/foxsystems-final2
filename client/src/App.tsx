@@ -4,6 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch, useLocation } from "wouter";
 import { lazy, Suspense, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { scrollToId, HEADER_OFFSET } from "@/lib/scrollToId";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -89,8 +90,38 @@ function Router() {
   const isArabic = location.startsWith("/ar");
   const language: "en" | "ar" = isArabic ? "ar" : "en";
 
+  // New page: start at the top — unless the URL names a section (#demo,
+  // #pricing, #try-demo), which the demo buttons, the CRMs' "Get it for my
+  // company" and the expired-link redirect all rely on. Pages are lazy-loaded,
+  // so the target may not exist yet; keep looking for a few seconds.
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      return;
+    }
+    let tries = 0;
+    const settle: number[] = [];
+    const timer = window.setInterval(() => {
+      if (scrollToId(id)) {
+        window.clearInterval(timer);
+        // The page transition and lazy images keep moving things for a moment
+        // after the scroll starts; correct once it has settled.
+        for (const ms of [900, 1800]) {
+          settle.push(window.setTimeout(() => {
+            const el = document.getElementById(id);
+            if (el && Math.abs(el.getBoundingClientRect().top - HEADER_OFFSET) > 40) scrollToId(id, "auto");
+          }, ms));
+        }
+      } else if (++tries > 40) {
+        window.clearInterval(timer);
+        window.scrollTo({ top: 0, behavior: "auto" });
+      }
+    }, 100);
+    return () => {
+      window.clearInterval(timer);
+      settle.forEach(window.clearTimeout);
+    };
   }, [location]);
 
   return (

@@ -171,6 +171,7 @@ export default async function handler(req: any, res: any) {
 
   let url: string | null = null;
   let code = "unavailable";
+  let endsAt: string | null = null;
   try {
     const response = await withTimeout(15000, signal =>
       fetch(product.endpoint(), {
@@ -191,6 +192,13 @@ export default async function handler(req: any, res: any) {
     );
     if (response.ok) {
       url = ((await response.json()) as { url?: string }).url ?? null;
+    } else if (response.status === 409) {
+      // One trial at a time per email / company: someone else from this
+      // email or company already has one running (the same phone would
+      // simply have been given its login back).
+      const body = (await response.json().catch(() => ({}))) as { ends_at?: string };
+      code = "active_trial";
+      endsAt = body.ends_at ?? null;
     } else {
       code = response.status === 429 ? "rate_limited" : "unavailable";
       console.error("[demo-request] CRM refused the signup:", response.status, await response.text().catch(() => ""));
@@ -201,6 +209,7 @@ export default async function handler(req: any, res: any) {
 
   await emailLead(demo, Boolean(url));
 
+  if (code === "active_trial") return res.status(409).json({ ok: false, code, ends_at: endsAt });
   if (!url) return res.status(code === "rate_limited" ? 429 : 502).json({ ok: false, code });
   return res.status(200).json({ ok: true, url });
 }

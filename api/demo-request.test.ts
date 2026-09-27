@@ -175,6 +175,19 @@ describe("POST /api/demo-request", () => {
     expect(res.statusCode).toBe(503);
   });
 
+  it("passes an active trial for the same email or company through as 409 with its end date", async () => {
+    process.env.DEMO_SIGNUP_SECRET = "s3cret";
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (url: any) =>
+      String(url).includes("/api/public/demo-signup")
+        ? new Response(JSON.stringify({ error: "active_trial", matched_by: "company", ends_at: "2026-09-30T10:00:00Z" }), { status: 409 })
+        : new Response("{}", { status: 201 })
+    );
+    const res = mockRes();
+    await handler(req(validDemo), res);
+    expect(res.statusCode).toBe(409);
+    expect(res.body).toEqual({ ok: false, code: "active_trial", ends_at: "2026-09-30T10:00:00Z" });
+  });
+
   it("passes the CRM's rate limit through as 429", async () => {
     process.env.DEMO_SIGNUP_SECRET = "s3cret";
     vi.spyOn(globalThis, "fetch").mockImplementation(async (url: any) =>

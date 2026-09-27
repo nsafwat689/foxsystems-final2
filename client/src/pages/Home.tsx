@@ -25,13 +25,13 @@ const T = {
     heroTitle2: "CRM & IT Solutions",
     heroTitle3: "Company",
     heroSub: "We implement powerful CRM systems, set up Call Centers, deploy Firewall security, and build complete IT infrastructure — with 16+ years of expertise and round-the-clock support.",
-    heroCTA: "Get Free CRM Demo",
+    heroCTA: "Try a Live CRM Demo",
     heroSecondary: "Explore Services",
     trust1: "16+ Years Experience", trust2: "300+ Happy Clients", trust3: "500+ Projects Delivered",
     crmBannerBadge: "⭐  Our Core Expertise",
     crmBannerTitle: "Grow Your Business with a Powerful CRM System",
     crmBannerSub: "Fox Systems specializes in CRM implementation tailored for businesses in Egypt, Saudi Arabia, and Kuwait. Manage customers, automate sales, and track results — all in Arabic & English.",
-    crmCTA: "Request a Free Demo",
+    crmCTA: "Open a 3-Day Live Demo",
     crmF1:"Customer & Lead Management", crmF2:"Sales Pipeline & Automation",
     crmF3:"Real-time Reports & Analytics", crmF4:"Multi-branch & Multi-user",
     crmF5:"Call Center & VoIP Integration", crmF6:"Arabic & English Interface",
@@ -112,13 +112,13 @@ const T = {
     heroTitle2: "لأنظمة CRM وحلول",
     heroTitle3: "تكنولوجيا المعلومات",
     heroSub: "نطبق أنظمة CRM القوية، ونُنشئ مراكز الاتصال، ونوفر جدران الحماية، ونبني البنية التحتية الكاملة لتكنولوجيا المعلومات — بخبرة تزيد عن 16 عامًا ودعم على مدار الساعة.",
-    heroCTA: "احصل على عرض CRM مجاني",
+    heroCTA: "جرّب نظام CRM مباشرة",
     heroSecondary: "استكشف الخدمات",
     trust1: "أكثر من 16 سنة خبرة", trust2: "أكثر من 300 عميل", trust3: "أكثر من 500 مشروع منجز",
     crmBannerBadge: "⭐  خبرتنا الأساسية",
     crmBannerTitle: "نمّ عملك مع نظام CRM قوي",
     crmBannerSub: "فوكس سيستمز متخصصة في تطبيق أنظمة CRM للشركات في مصر والسعودية والكويت. أدر عملاءك، أتمت المبيعات، وتتبع النتائج — بالعربية والإنجليزية.",
-    crmCTA: "اطلب عرضًا مجانيًا",
+    crmCTA: "افتح نسخة تجريبية لمدة 3 أيام",
     crmF1:"إدارة العملاء والعملاء المحتملين", crmF2:"قمع المبيعات والأتمتة",
     crmF3:"تقارير وتحليلات فورية", crmF4:"متعدد الفروع والمستخدمين",
     crmF5:"تكامل مع مركز الاتصال وVoIP", crmF6:"واجهة عربية وإنجليزية",
@@ -368,7 +368,8 @@ export default function Home({ language }: HomeProps) {
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-              <Link href={`${langPrefix}/contact`}>
+              {/* Straight to the product chooser: a live login converts better than a form. */}
+              <Link href={`${langPrefix}/services/crm#try-demo`} onClick={() => window.trackCTA?.("live-demo-home-hero")}>
                 <Button size="lg"
                   className="h-13 px-8 text-base rounded-full font-bold shadow-2xl shadow-primary/40 hover:scale-[1.03] hover:shadow-primary/60 transition-all duration-200">
                   {t.heroCTA}
@@ -432,7 +433,7 @@ export default function Home({ language }: HomeProps) {
                 {t.crmBannerSub}
               </motion.p>
               <motion.div variants={fadeUp}>
-                <Link href={`${langPrefix}/contact`}>
+                <Link href={`${langPrefix}/services/crm#try-demo`} onClick={() => window.trackCTA?.("live-demo-home-crm")}>
                   <Button size="lg"
                     className="font-bold rounded-full h-13 px-8 shadow-xl hover:scale-[1.02] transition-all"
                     style={{ background:"#1d4ed8", color:"white", boxShadow:"0 0 30px rgba(29,78,216,0.5)" }}

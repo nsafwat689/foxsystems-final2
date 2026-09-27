@@ -6,6 +6,10 @@
  * page, where the full screen gallery, feature list and FAQ live — this is the
  * chooser, not the detail.
  *
+ * Each card also offers the product's live demo: signing up for a 3-day login
+ * is the fastest way from "interested" to "convinced", so it is the primary
+ * button and the header's "Try the live demo" lands here (#try-demo).
+ *
  * Thumbnails reuse the first screen of each product's gallery. Missing files
  * fall back to the product icon rather than a broken image: the SPA rewrite
  * answers a missing asset with index.html, so onError is the only reliable
@@ -14,7 +18,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Bug, Building2, Stethoscope } from "lucide-react";
+import { ArrowRight, Bug, Building2, PlayCircle, Stethoscope } from "lucide-react";
 import { SOLUTIONS } from "@/data/solutions";
 
 const ICONS = { Stethoscope, Building2, Bug };
@@ -25,14 +29,16 @@ const T = {
     title: "CRM Systems We Build and Run",
     sub: "Three industry CRMs, each built for one sector rather than configured into it. All three run in production today, in Arabic and English. Open one to see its screens, features and answers to the usual questions.",
     open: "See the system",
-    note: "Screens show demonstration data.",
+    demo: "Try it live — 3 days",
+    note: "Screens show demonstration data. Every live demo is a real login to the running system with sample data.",
   },
   ar: {
     badge: "من تنفيذ فوكس سيستمز",
     title: "أنظمة CRM من تنفيذنا وتشغيلنا",
     sub: "ثلاثة أنظمة CRM، كلٌّ منها مبنيّ لقطاع واحد لا مكيَّف عليه. وكلها تعمل اليوم في بيئة الإنتاج، بالعربية والإنجليزية. افتح أيًّا منها لتطّلع على شاشاته ومزاياه وإجاباته عن الأسئلة المعتادة.",
-    open: "شوف النظام",
-    note: "الشاشات تعرض بيانات توضيحية.",
+    open: "اطّلع على النظام",
+    demo: "جرّبه مباشرة — 3 أيام",
+    note: "الشاشات تعرض بيانات توضيحية. كل نسخة تجريبية هي دخول فعلي إلى النظام العامل ببيانات نموذجية.",
   },
 };
 
@@ -47,7 +53,7 @@ export default function CrmProductsShowcase({ language }: Props) {
   const [failed, setFailed] = useState<Record<string, boolean>>({});
 
   return (
-    <section className="mt-16 pt-14 border-t border-border">
+    <section id="try-demo" className="mt-16 pt-14 border-t border-border scroll-mt-24">
       <div className="flex flex-col gap-3 mb-7">
         <span className="pill pill-gold self-start">{t.badge}</span>
         <h2
@@ -73,10 +79,8 @@ export default function CrmProductsShowcase({ language }: Props) {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] as const }}
             >
-              <Link
-                href={`${prefix}/solutions/${solution.id}`}
-                className="group flex flex-col h-full rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-lg transition-all"
-              >
+              <div className="group flex flex-col h-full rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-lg transition-all">
+              <Link href={`${prefix}/solutions/${solution.id}`} className="flex flex-col flex-1">
                 <div className="bg-[#0f172a] border-b border-border">
                   {failed[solution.id] ? (
                     <div className="flex items-center justify-center" style={{ aspectRatio: "16 / 9" }}>
@@ -106,12 +110,28 @@ export default function CrmProductsShowcase({ language }: Props) {
                   </h3>
                   <p className="text-sm font-semibold text-foreground/80 mb-3">{copy.heroTitle}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed flex-1">{copy.heroSub}</p>
-                  <span className="inline-flex items-center gap-2 mt-5 font-semibold text-primary group-hover:gap-3 transition-all">
-                    {t.open}
-                    <ArrowRight className={`w-4 h-4 ${isArabic ? "rotate-180" : ""}`} aria-hidden="true" />
-                  </span>
                 </div>
               </Link>
+                <div className="flex flex-wrap items-center gap-3 px-6 pb-6">
+                  {solution.liveDemo && (
+                    <Link
+                      href={`${prefix}/solutions/${solution.id}#demo`}
+                      onClick={() => window.trackCTA?.(`live-demo-card-${solution.id}`)}
+                      className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition"
+                    >
+                      <PlayCircle className="w-4 h-4" aria-hidden="true" />
+                      {t.demo}
+                    </Link>
+                  )}
+                  <Link
+                    href={`${prefix}/solutions/${solution.id}`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+                  >
+                    {t.open}
+                    <ArrowRight className={`w-4 h-4 ${isArabic ? "rotate-180" : ""}`} aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
             </motion.div>
           );
         })}

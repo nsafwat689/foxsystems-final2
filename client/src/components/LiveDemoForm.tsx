@@ -20,7 +20,7 @@ const PRODUCT_COPY = {
       points: [
         { icon: ShieldCheck, text: "You're signed in as the CEO and see every page" },
         { icon: RotateCcw, text: "Sample data, reset every night, so explore freely" },
-        { icon: Clock, text: "Your login lasts 7 days" },
+        { icon: Clock, text: "Your login lasts 3 days, then it and anything you added are deleted" },
       ],
       sizeLbl: "Sales team size",
       service: "Real Estate CRM — live demo",
@@ -30,7 +30,7 @@ const PRODUCT_COPY = {
       points: [
         { icon: ShieldCheck, text: "تدخل بصلاحيات المدير التنفيذي وترى جميع الصفحات" },
         { icon: RotateCcw, text: "بيانات نموذجية تعود إلى حالتها كل ليلة، فجرّب بحرية" },
-        { icon: Clock, text: "حسابك صالح لمدة 7 أيام" },
+        { icon: Clock, text: "حسابك صالح لمدة 3 أيام، ثم يُحذف مع كل ما أضفته" },
       ],
       sizeLbl: "حجم فريق المبيعات",
       service: "نظام إدارة العقارات — نسخة تجريبية",
@@ -42,7 +42,7 @@ const PRODUCT_COPY = {
       points: [
         { icon: ShieldCheck, text: "Your own login to the whole operation; deleting is switched off" },
         { icon: RotateCcw, text: "Shared sample data that resets when visitors leave, so explore freely" },
-        { icon: Clock, text: "Your login lasts 7 days" },
+        { icon: Clock, text: "Your login lasts 3 days, then it and anything you added are deleted" },
       ],
       sizeLbl: "Field team size",
       service: "Pest Control CRM — live demo",
@@ -52,7 +52,7 @@ const PRODUCT_COPY = {
       points: [
         { icon: ShieldCheck, text: "حساب خاص بك للنظام كاملًا، مع تعطيل الحذف" },
         { icon: RotateCcw, text: "بيانات نموذجية مشتركة تعود إلى حالتها بعد مغادرة الزوار، فجرّب بحرية" },
-        { icon: Clock, text: "حسابك صالح لمدة 7 أيام" },
+        { icon: Clock, text: "حسابك صالح لمدة 3 أيام، ثم يُحذف مع كل ما أضفته" },
       ],
       sizeLbl: "حجم الفريق الميداني",
       service: "نظام مكافحة الآفات — نسخة تجريبية",
@@ -64,7 +64,7 @@ const PRODUCT_COPY = {
       points: [
         { icon: ShieldCheck, text: "You're signed in as the country manager and see every rep and territory" },
         { icon: RotateCcw, text: "Sample data, reset every night, so explore freely" },
-        { icon: Clock, text: "Your login lasts 7 days" },
+        { icon: Clock, text: "Your login lasts 3 days, then it and anything you added are deleted" },
       ],
       sizeLbl: "Field force size",
       service: "Medical CRM — live demo",
@@ -74,7 +74,7 @@ const PRODUCT_COPY = {
       points: [
         { icon: ShieldCheck, text: "تدخل بصلاحيات مدير الدولة وترى جميع المندوبين والمناطق" },
         { icon: RotateCcw, text: "بيانات نموذجية تعود إلى حالتها كل ليلة، فجرّب بحرية" },
-        { icon: Clock, text: "حسابك صالح لمدة 7 أيام" },
+        { icon: Clock, text: "حسابك صالح لمدة 3 أيام، ثم يُحذف مع كل ما أضفته" },
       ],
       sizeLbl: "حجم فريق المندوبين",
       service: "نظام إدارة المبيعات الطبية — نسخة تجريبية",
@@ -89,7 +89,8 @@ export const isDemoProduct = (id: string): id is DemoProduct => id in PRODUCT_CO
 const T = {
   en: {
     title: "Try the live demo now",
-    nameLbl: "Your name", phoneLbl: "Phone / WhatsApp", companyLbl: "Company",
+    nameLbl: "Your name", phoneLbl: "Phone / WhatsApp", companyLbl: "Company", emailLbl: "Work email",
+    activeTrial: (until: string) => `Your company or email already has a live demo running until ${until}. Ask whoever started it for their link, or message us on WhatsApp and we will help.`,
     sizeOpts: ["1–5", "6–15", "16–40", "40+"],
     submit: "Open the demo", opening: "Preparing your demo…",
     footnote: "We'll message you on WhatsApp to offer a 20-minute walkthrough. No spam.",
@@ -102,7 +103,8 @@ const T = {
   },
   ar: {
     title: "جرّب النسخة التجريبية الآن",
-    nameLbl: "اسمك", phoneLbl: "الهاتف / واتساب", companyLbl: "الشركة",
+    nameLbl: "اسمك", phoneLbl: "الهاتف / واتساب", companyLbl: "الشركة", emailLbl: "البريد الإلكتروني للعمل",
+    activeTrial: (until: string) => `لدى شركتك أو بريدك نسخة تجريبية جارية حتى ${until}. اطلب الرابط ممن بدأها، أو راسلنا عبر واتساب وسنساعدك.`,
     // Worded, not "6–15": a bare numeric range renders reversed ("15–6") in RTL.
     sizeOpts: ["من 1 إلى 5", "من 6 إلى 15", "من 16 إلى 40", "أكثر من 40"],
     submit: "افتح النسخة التجريبية", opening: "جارٍ تجهيز النسخة التجريبية…",
@@ -116,7 +118,7 @@ const T = {
   },
 };
 
-type Status = "idle" | "sending" | "invalid" | "limited" | "unavailable";
+type Status = "idle" | "sending" | "invalid" | "limited" | "unavailable" | "active_trial";
 
 interface LiveDemoFormProps {
   language: "en" | "ar";
@@ -129,7 +131,8 @@ export default function LiveDemoForm({ language, product }: LiveDemoFormProps) {
   const isArabic = language === "ar";
   const [status, setStatus] = useState<Status>("idle");
   const [expired, setExpired] = useState(false);
-  const [form, setForm] = useState({ name: "", phone: "", company: "", teamSize: t.sizeOpts[1], website: "" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", company: "", teamSize: t.sizeOpts[1], website: "" });
+  const [trialEnds, setTrialEnds] = useState<string | null>(null);
 
   // The CRM sends a visitor back here with ?demo=expired when a link was reused.
   useEffect(() => {
@@ -160,6 +163,11 @@ export default function LiveDemoForm({ language, product }: LiveDemoFormProps) {
         // to leave before the page is replaced.
         window.trackFormSubmit?.(t.service);
         setTimeout(() => window.location.assign(body.url), 350);
+        return;
+      }
+      if (response.status === 409 && body.code === "active_trial") {
+        setTrialEnds(body.ends_at ?? null);
+        setStatus("active_trial");
         return;
       }
       setStatus(response.status === 400 ? "invalid" : response.status === 429 ? "limited" : "unavailable");
@@ -196,6 +204,23 @@ export default function LiveDemoForm({ language, product }: LiveDemoFormProps) {
             </div>
           )}
 
+          {status === "active_trial" && (
+            <div role="alert" className="rounded-xl border border-primary/30 bg-primary/5 p-4 space-y-3">
+              <p className="text-sm">
+                {t.activeTrial(
+                  trialEnds
+                    ? new Date(trialEnds).toLocaleString(isArabic ? "ar-EG" : "en-GB", { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })
+                    : isArabic ? "انتهائها" : "it ends"
+                )}
+              </p>
+              <a href={waUrl} target="_blank" rel="noopener noreferrer">
+                <Button type="button" size="sm" className="rounded-full gap-2">
+                  <MessageCircle className="w-4 h-4" /> {t.waBtn}
+                </Button>
+              </a>
+            </div>
+          )}
+
           {(status === "invalid" || status === "limited") && (
             <div role="alert" className="rounded-xl border border-destructive/30 bg-destructive/5 p-4 flex items-start gap-2.5">
               <AlertCircle className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
@@ -224,6 +249,7 @@ export default function LiveDemoForm({ language, product }: LiveDemoFormProps) {
             {([
               { lbl: t.nameLbl,    type: "text", field: "name"    as const, autoComplete: "name",         required: true },
               { lbl: t.phoneLbl,   type: "tel",  field: "phone"   as const, autoComplete: "tel",          required: true },
+              { lbl: t.emailLbl,   type: "email", field: "email"   as const, autoComplete: "email",        required: false },
               { lbl: t.companyLbl, type: "text", field: "company" as const, autoComplete: "organization", required: false },
             ]).map(({ lbl, type, field, autoComplete, required }) => (
               <div key={field} className="space-y-1.5">
@@ -233,7 +259,7 @@ export default function LiveDemoForm({ language, product }: LiveDemoFormProps) {
                 <input
                   id={fid(field)} name={field} type={type} autoComplete={autoComplete}
                   required={required} value={form[field]} onChange={set(field)}
-                  dir={type === "tel" ? "ltr" : undefined}
+                  dir={type === "tel" || type === "email" ? "ltr" : undefined}
                   className="form-input"
                 />
               </div>

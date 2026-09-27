@@ -20,6 +20,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Check, Headphones, MapPin, Sparkles } from "lucide-react";
 import { PLANS, FEATURE_ROWS, effectiveMonthly, type Plan } from "@/data/crmPlans";
+import { scrollToId } from "@/lib/scrollToId";
 
 interface Props {
   language: "en" | "ar";
@@ -27,6 +28,8 @@ interface Props {
 
 const T = {
   en: {
+    demoNudge: "Try before you decide: open a 3-day live demo of any of the three systems.",
+    demoLink: "Choose a demo",
     kicker: "Pricing",
     title: "CRM pricing, in plain numbers",
     sub: "Flat pricing per team, not per seat, for the standard CRM. Implementation, training and support are included — not billed separately once you have signed. Business and Complete bundle customisations too; anything beyond that is quoted on its own.",
@@ -65,6 +68,8 @@ const T = {
     fineprint: "Prices in USD per month, excluding tax. A written quote is valid for a stated period.",
   },
   ar: {
+    demoNudge: "جرّب قبل أن تقرر: افتح نسخة تجريبية مباشرة لمدة 3 أيام من أي نظام من الأنظمة الثلاثة.",
+    demoLink: "اختر نسخة تجريبية",
     kicker: "الأسعار",
     title: "أسعار الـ CRM بأرقام واضحة",
     sub: "سعر ثابت للفريق لا لكل مستخدم، وذلك للنظام القياسي. التركيب والتدريب والدعم مشمولة في السعر ولا تُحتسب منفصلة بعد التوقيع. وتشمل باقتا الأعمال والشامل عددًا من التخصيصات، وما زاد عليها يُسعَّر على حدة.",
@@ -114,13 +119,23 @@ export default function CrmPricing({ language }: Props) {
   const shown = (p: Plan) => effectiveMonthly(p, annual);
 
   return (
-    <section className="mt-16 pt-14 border-t border-border" dir={isArabic ? "rtl" : "ltr"}>
+    <section id="pricing" className="mt-16 pt-14 border-t border-border scroll-mt-24" dir={isArabic ? "rtl" : "ltr"}>
+      {/* #pricing: where the demos' "Get it for my company" buttons land. */}
       <div className="flex flex-col gap-3 mb-7">
         <span className="pill pill-gold self-start">{t.kicker}</span>
         <h2 className="text-2xl md:text-3xl font-extrabold" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
           {t.title}
         </h2>
         <p className="text-muted-foreground leading-relaxed max-w-2xl">{t.sub}</p>
+        <p className="text-sm">
+          {t.demoNudge}{" "}
+          {/* Same page as the product cards. scrollToId, not the browser's own
+              #jump, which also scrolls the clipped page wrappers. */}
+          <a href="#try-demo" onClick={e => { if (scrollToId("try-demo")) e.preventDefault(); }}
+            className="font-semibold text-primary hover:underline">
+            {t.demoLink}
+          </a>
+        </p>
       </div>
 
       {/* billing toggle */}

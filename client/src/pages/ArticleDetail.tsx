@@ -450,7 +450,7 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
   "pharma-sample-management": {
     en: {
       id: "pharma-sample-management",
-      title: "Sample Accountability: A Custody Problem, Not a Stock Problem",
+      title: "Sample Accountability Is a Custody Problem, Not a Stock One",
       subtitle: "Batch tracking, expiry and the audit trail that makes both useful",
       author: "Fox Systems Team",
       date: "2026-09-24",
@@ -633,7 +633,7 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
   "pest-control-software-egypt": {
     en: {
       id: "pest-control-software-egypt",
-      title: "Pest Control Software: What Field Service Teams Actually Need",
+      title: "Pest Control Software: What Field Teams Actually Need",
       subtitle: "Routes, devices and proof — the three things a whiteboard cannot give you",
       author: "Fox Systems Team",
       date: "2026-09-23",
@@ -790,7 +790,7 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
   "ai-infrastructure-2026": {
     en: {
       id: "ai-infrastructure-2026",
-      title: "The Future of Enterprise IT Infrastructure in 2026: AI-Native Foundations",
+      title: "Enterprise IT Infrastructure in 2026: AI-Native Foundations",
       subtitle: "Build a resilient foundation for the AI era",
       author: "Fox Systems Team",
       date: "2026-04-10",
@@ -821,7 +821,7 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
     },
     ar: {
       id: "ai-infrastructure-2026",
-      title: "مستقبل البنية التحتية لتكنولوجيا المعلومات للمؤسسات في عام 2026: أسس تعتمد على الذكاء الاصطناعي",
+      title: "بنية تقنية المعلومات في 2026: أسس قائمة على الذكاء الاصطناعي",
       subtitle: "بناء أساس مرن لعصر الذكاء الاصطناعي",
       author: "فريق فوكس سيستمز",
       date: "2026-04-10",
@@ -877,7 +877,7 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
     },
     ar: {
       id: "odoo-erp-sme-2026",
-      title: "لماذا يعد عام 2026 العام الحاسم للشركات الصغيرة والمتوسطة لاعتماد Odoo ERP",
+      title: "لماذا 2026 هو عام Odoo ERP للشركات الصغيرة والمتوسطة",
       subtitle: "أطلق العنان لإمكانيات عملك مع نظام ERP المعياري",
       author: "فريق فوكس سيستمز",
       date: "2026-04-08",

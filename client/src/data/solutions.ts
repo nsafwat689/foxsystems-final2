@@ -217,8 +217,8 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           a: "It depends on team size and how much historical data you want migrated. Come to us with your numbers and we will give you a real timeline, not a brochure one.",
         },
         {
-          q: "Can it integrate with our ERP?",
-          a: "Order and stock data are the usual integration points. Bring your ERP and we will scope it.",
+          q: "Can it integrate with our ERP or other systems?",
+          a: "Yes. The CRM has an API: your administrator creates keys with only the permissions you choose, such as reading HCPs and institutions or updating order status. Signed webhooks tell your ERP the moment an order is created or changes status, a visit is completed or an expense is submitted. API access and webhooks come with the Business and Complete plans, and we scope the ERP side with you.",
         },
         {
           q: "What does it cost?",
@@ -359,8 +359,8 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           a: "يعتمد على حجم الفريق وحجم البيانات القديمة المراد نقلها. زوّدنا بأرقامك ونمنحك جدولًا زمنيًا واقعيًا.",
         },
         {
-          q: "هل يمكن ربطه بنظام ERP لدينا؟",
-          a: "بيانات الطلبات والمخزون هي نقاط الربط المعتادة. أخبرنا بنظام ERP لديك ونحدّد نطاق الربط.",
+          q: "هل يمكن ربطه بنظام ERP لدينا أو بأنظمة أخرى؟",
+          a: "نعم. يتضمن النظام واجهة برمجة (API): يُنشئ المسؤول مفاتيح بالصلاحيات التي تحددها فقط، مثل قراءة بيانات الأطباء والمؤسسات أو تحديث حالة الطلبات. وتُرسل Webhooks موقّعة إلى نظام ERP لديك فور إنشاء طلب أو تغيّر حالته، أو اكتمال زيارة، أو تقديم مصروف. تتوفر واجهة البرمجة والـ Webhooks في باقتَي الأعمال والشامل، ونحدّد معك نطاق الربط من جهة نظام ERP.",
         },
         {
           q: "كم تبلغ التكلفة؟",
@@ -599,6 +599,10 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           q: "Can it be changed to fit how we work?",
           a: "Within reason, yes — we build and run it, so stages, roles, commission rules and automations are ours to adjust. Tell us what is different about your process and we will tell you honestly whether it is a setting, a change, or a bad idea.",
         },
+        {
+          q: "Can it connect to our website and other systems?",
+          a: "Yes. Leads from your website forms can go straight into the CRM through its API, and signed webhooks tell your other systems the moment a lead is created, a deal is won or an invoice is raised. Your administrator creates API keys with only the permissions you choose across leads, contacts, properties, deals, activities and invoices. API access and webhooks come with the Business and Complete plans.",
+        },
       ],
       ctaTitle: "See it with your own inventory",
       ctaSub: "Book a walkthrough and we will run the system against how your sales team actually works.",
@@ -674,7 +678,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         },
         {
           title: "مطابقة العملاء بالوحدات",
-          desc: "تنبيهات مطابقة بقواعد بتربط العميل بالوحدات المناسبة لنوعه وميزانيته ومنطقته، وتبلّغ المندوب بدل ما تستنى حد يدوّر.",
+          desc: "تنبيهات مطابقة قائمة على قواعد تربط العميل بالوحدات المناسبة لنوعه وميزانيته ومنطقته، وتُبلغ المندوب فورًا بدلًا من انتظار أن يبحث أحد عنها.",
         },
         {
           title: "أتمتة بدون كود",
@@ -724,7 +728,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           tab: "المطابقة الذكية",
           alt: "شاشة المطابقة تربط العملاء بالوحدات المناسبة لميزانيتهم ومنطقتهم",
           caption:
-            "تنبيهات المطابقة بتربط العميل بالوحدات المناسبة لنوعه وميزانيته ومنطقته، وتبلّغ المندوب بدل ما تستنى حد يدوّر.",
+            "تنبيهات المطابقة تربط العميل بالوحدات المناسبة لنوعه وميزانيته ومنطقته، وتُبلغ المندوب فورًا بدلًا من انتظار أن يبحث أحد عنها.",
         },
         {
           id: "automations",
@@ -781,9 +785,13 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           q: "ينفع يتعدّل على طريقة شغلنا؟",
           a: "نعم في حدود المعقول. نحن من يبنيه ويشغّله، فالمراحل والأدوار وقواعد العمولة والأتمتة كلها بأيدينا. أخبرنا بما يختلف في عمليتك ونوضّح لك بصراحة أهو إعداد، أم تعديل، أم فكرة غير سديدة.",
         },
+        {
+          q: "هل يمكن ربطه بموقعنا الإلكتروني وبأنظمتنا الأخرى؟",
+          a: "نعم. يمكن إدخال العملاء المحتملين من نماذج موقعك مباشرةً إلى النظام عبر واجهة البرمجة (API)، وتُرسل Webhooks موقّعة إلى أنظمتك الأخرى فور إضافة عميل محتمل أو إتمام صفقة أو إصدار فاتورة. ويُنشئ المسؤول مفاتيح API بالصلاحيات التي تحددها فقط على العملاء المحتملين وجهات الاتصال والوحدات والصفقات والأنشطة والفواتير. تتوفر واجهة البرمجة والـ Webhooks في باقتَي الأعمال والشامل.",
+        },
       ],
-      ctaTitle: "شوفه على مخزونك إنت",
-      ctaSub: "احجز عرض عملي وهنشغّل النظام على طريقة شغل فريق المبيعات عندك.",
+      ctaTitle: "شاهده على مخزونك العقاري",
+      ctaSub: "احجز عرضًا عمليًا وسنشغّل النظام وفق طريقة عمل فريق المبيعات لديك.",
       note: "الشاشات تعرض بيانات توضيحية، ولا تتضمن أي بيانات عملاء حقيقية.",
     },
     seo: {
@@ -995,6 +1003,10 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           q: "Who can see what?",
           a: "A permission matrix across roles and individual users, enforced in the database rather than by hiding menu items. A technician sees their own round; a client sees only their own sites.",
         },
+        {
+          q: "Can service requests come from our website or customer portal?",
+          a: "Yes. Service requests, leads, clients and branches can be created through the CRM's API, and requests land in the office's queue like any other. Signed webhooks tell your systems the moment a visit is scheduled or completed, a report is finished, an invoice is paid or a monitoring device records pest activity. Keys carry only the permissions you choose. API access and webhooks come with the Business and Complete plans.",
+        },
       ],
       ctaTitle: "See it against your own rounds",
       ctaSub: "Book a walkthrough and we will run the dispatch board with your sites and service days.",
@@ -1172,6 +1184,10 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         {
           q: "من يطّلع على ماذا؟",
           a: "مصفوفة صلاحيات على مستوى الأدوار والمستخدمين، مفروضة في قاعدة البيانات لا بإخفاء عناصر من القائمة. يطّلع الفني على خط سيره وحده، ويطّلع العميل على مواقعه وحدها.",
+        },
+        {
+          q: "هل يمكن أن تصل طلبات الخدمة من موقعنا أو من بوابة العملاء؟",
+          a: "نعم. يمكن إنشاء طلبات الخدمة والعملاء المحتملين والعملاء والفروع عبر واجهة البرمجة (API)، وتصل الطلبات إلى قائمة المكتب كأي طلب آخر. وتُرسل Webhooks موقّعة إلى أنظمتك فور جدولة زيارة أو اكتمالها، أو إنهاء تقرير، أو سداد فاتورة، أو تسجيل نشاط آفات على أحد أجهزة المراقبة. ولكل مفتاح الصلاحيات التي تحددها فقط. تتوفر واجهة البرمجة والـ Webhooks في باقتَي الأعمال والشامل.",
         },
       ],
       ctaTitle: "شاهده على خطوط السير لديك",

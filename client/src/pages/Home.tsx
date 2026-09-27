@@ -21,9 +21,9 @@ import LeadForm from "@/components/LeadForm";
 const T = {
   en: {
     heroBadge: "Trusted by 300+ Businesses — Egypt · KSA · Kuwait",
-    heroTitle1: "Egypt's #1",
-    heroTitle2: "CRM & IT Solutions",
-    heroTitle3: "Company",
+    heroTitle1: "Industry CRMs",
+    heroTitle2: "& Complete IT Solutions",
+    heroTitle3: "for Egypt & the Gulf",
     heroSub: "We implement powerful CRM systems, set up Call Centers, deploy Firewall security, and build complete IT infrastructure — with 16+ years of expertise and round-the-clock support.",
     heroCTA: "Try a Live CRM Demo",
     heroSecondary: "Explore Services",
@@ -83,8 +83,8 @@ const T = {
         a: "A CRM (Customer Relationship Management) system helps businesses manage customer data, track sales pipelines, automate follow-ups, and generate reports. It increases sales efficiency by up to 40% and improves customer retention. Fox Systems implements CRM solutions tailored to your industry and business size in Egypt, KSA, and Kuwait." },
       { q: "How long does CRM implementation take?",
         a: "Fox Systems CRM implementation typically takes 2–8 weeks depending on your business size and requirements. We handle everything: setup, data migration, staff training, and post-launch support. Our bilingual (Arabic/English) team ensures a smooth rollout across Egypt, Saudi Arabia, and Kuwait." },
-      { q: "What makes Fox Systems the best CRM provider in Egypt?",
-        a: "16+ years of experience, 300+ successful deployments, full Arabic interface support, local after-sales service, 24/7 technical support, and seamless integration with Call Center and VoIP systems — all at competitive prices. No other provider in Egypt offers this level of end-to-end service." },
+      { q: "What makes Fox Systems different from other CRM providers in Egypt?",
+        a: "16+ years of experience, 300+ successful deployments, full Arabic interface support, local after-sales service, 24/7 technical support, and seamless integration with Call Center and VoIP systems — at published prices, with a 3-day live demo before you decide." },
       { q: "Are you an authorized Sophos & Fortinet partner?",
         a: "Yes. Fox Systems is an authorized partner for both Sophos and Fortinet firewall solutions. We provide professional installation, configuration, endpoint protection, and 24/7 security monitoring across Egypt, KSA, and Kuwait." },
       { q: "Can you set up a complete Call Center from scratch?",
@@ -108,9 +108,9 @@ const T = {
   },
   ar: {
     heroBadge: "يثق بنا أكثر من 300 شركة — مصر · السعودية · الكويت",
-    heroTitle1: "الشركة الأولى في مصر",
-    heroTitle2: "لأنظمة CRM وحلول",
-    heroTitle3: "تكنولوجيا المعلومات",
+    heroTitle1: "أنظمة CRM لقطاعك",
+    heroTitle2: "وحلول تقنية متكاملة",
+    heroTitle3: "لمصر والخليج",
     heroSub: "نطبق أنظمة CRM القوية، ونُنشئ مراكز الاتصال، ونوفر جدران الحماية، ونبني البنية التحتية الكاملة لتكنولوجيا المعلومات — بخبرة تزيد عن 16 عامًا ودعم على مدار الساعة.",
     heroCTA: "جرّب نظام CRM مباشرة",
     heroSecondary: "استكشف الخدمات",
@@ -168,7 +168,7 @@ const T = {
     faqs: [
       { q: "ما هو نظام CRM ولماذا يحتاجه عملي؟", a: "نظام CRM يساعد الشركات على إدارة بيانات العملاء، وتتبع قمع المبيعات، وأتمتة المتابعات، وإنشاء التقارير. يزيد كفاءة المبيعات بنسبة تصل إلى 40%. فوكس سيستمز تطبق حلول CRM مخصصة لصناعتك وحجم عملك في مصر والسعودية والكويت." },
       { q: "كم من الوقت يستغرق تطبيق نظام CRM؟", a: "يستغرق التطبيق عادةً من 2 إلى 8 أسابيع. نتولى كل شيء: الإعداد وترحيل البيانات والتدريب والدعم. فريقنا يتحدث العربية والإنجليزية لضمان انطلاق سلس." },
-      { q: "ما الذي يجعل فوكس سيستمز أفضل مزود CRM في مصر؟", a: "أكثر من 16 عام خبرة، أكثر من 300 عميل، دعم عربي كامل، خدمة ما بعد البيع المحلية، دعم 24/7، وتكامل مع مراكز الاتصال وأنظمة VoIP — بأسعار تنافسية." },
+      { q: "ما الذي يميّز فوكس سيستمز عن غيرها من مزودي CRM في مصر؟", a: "أكثر من 16 عام خبرة، أكثر من 300 عميل، دعم عربي كامل، خدمة ما بعد البيع المحلية، دعم 24/7، وتكامل مع مراكز الاتصال وأنظمة VoIP — بأسعار تنافسية." },
       { q: "هل أنتم شريك Sophos وFortinet المعتمد؟", a: "نعم. فوكس سيستمز شريك معتمد لكل من Sophos وFortinet. نوفر التركيب والتكوين والحماية والمراقبة الأمنية 24/7 في مصر والسعودية والكويت." },
       { q: "هل يمكنكم إنشاء مركز اتصال كامل من الصفر؟", a: "بالتأكيد. نتخصص في إعداد مراكز الاتصال الكاملة: أنظمة VoIP من Grandstream وCisco، تكامل CRM، IVR، تسجيل مكالمات، ولوحات تحكم فورية." },
       { q: "هل تخدمون السعودية والكويت؟", a: "نعم. فوكس سيستمز تقدم خدماتها في مصر والسعودية والكويت — عن بُعد وفي الموقع. فريقنا متاح في جميع أنحاء الشرق الأوسط." },
@@ -380,6 +380,10 @@ export default function Home({ language }: HomeProps) {
                   className="h-13 px-8 text-base rounded-full font-semibold border-white/25 text-white hover:bg-white/10 hover:border-white/40 transition-all">
                   {t.heroSecondary}
                 </Button>
+              </Link>
+              <Link href={`${langPrefix}/pricing`}
+                className="inline-flex items-center h-13 px-4 text-base font-semibold text-white/85 underline-offset-4 hover:underline">
+                {isArabic ? "اطّلع على الأسعار" : "See prices"}
               </Link>
             </motion.div>
 

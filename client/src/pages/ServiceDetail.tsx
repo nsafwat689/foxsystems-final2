@@ -46,7 +46,7 @@ const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
   software: {
     en: {
       title: "CRM Systems & Software Solutions",
-      subtitle: "Egypt's #1 CRM implementation company. We help businesses manage customers, automate sales, and grow revenue — with full Arabic & English support across Egypt, Saudi Arabia & Kuwait.",
+      subtitle: "CRM systems built and implemented for your industry. We help businesses manage customers, automate sales, and grow revenue — with full Arabic & English support across Egypt, Saudi Arabia & Kuwait.",
       icon: Cpu,
       overview: "Fox Systems is the leading CRM provider in Egypt and the Middle East. Our CRM solutions are designed specifically for businesses in Egypt, Saudi Arabia, and Kuwait — with full Arabic interface, local support, and integration with your Call Center, VoIP, and existing systems. We implement, train your team, and support you 24/7.",
       capabilities: [
@@ -236,6 +236,12 @@ function ServiceFAQ({ serviceId, isArabic, langPrefix }: { serviceId: string; is
   );
 }
 
+/** Which tab of /pricing answers "how much?" for each service page. */
+const PRICING_TAB: Record<string, string> = {
+  internet: "call-center", crm: "crm", hardware: "cctv", cybersecurity: "cybersecurity",
+  infrastructure: "infrastructure", "web-development": "web-development",
+};
+
 export default function ServiceDetail({ serviceId, language }: ServiceDetailProps) {
   const [location] = useLocation();
   const isArabic = language === "ar";
@@ -311,6 +317,10 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </Button>
               </a>
+              <Link href={`${langPrefix}/pricing#${PRICING_TAB[serviceId] ?? "crm"}`}
+                className="inline-flex items-center h-12 px-6 rounded-full text-white/90 font-semibold underline-offset-4 hover:underline">
+                {isArabic ? "اطّلع على الأسعار" : "See prices"}
+              </Link>
             </div>
           </motion.div>
         </div>

@@ -22,7 +22,7 @@ const T = {
     pageDesc: "Fox Systems delivers end-to-end IT solutions — with CRM as our core expertise — for businesses in Egypt, Saudi Arabia & Kuwait.",
     crmDemoBadge: "⭐ Our Core Expertise",
     crmTitle: "CRM Systems",
-    crmDesc: "We are Egypt's #1 CRM implementation partner. Our solutions help businesses manage customers, automate sales pipelines, and generate real-time insights — with full Arabic & English support.",
+    crmDesc: "We build and implement CRM systems that help businesses manage customers, automate sales pipelines, and generate real-time insights — with full Arabic & English support.",
     crmBullets: [
       "Customer & lead management", "Sales pipeline & forecasting",
       "Automated follow-ups & reminders", "Real-time dashboards & reports",

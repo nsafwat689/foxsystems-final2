@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import handler from "./demo-request";
+import handler, { clientIp, isCloudflare } from "./demo-request";
 
 function mockRes() {
   const res: any = {
@@ -213,5 +213,33 @@ describe("POST /api/demo-request", () => {
     const mail = JSON.parse((fetchSpy.mock.calls[1][1] as any).body);
     expect(mail.htmlContent).not.toContain("<img");
     expect(mail.htmlContent).toContain("&lt;img");
+  });
+});
+
+describe("clientIp", () => {
+  const r = (headers: Record<string, string>) => ({ headers });
+
+  it("uses the visitor's address when the request came through Cloudflare", () => {
+    expect(clientIp(r({ "x-forwarded-for": "162.158.217.132", "cf-connecting-ip": "196.138.161.208" })))
+      .toBe("196.138.161.208");
+    expect(clientIp(r({ "x-forwarded-for": "2a06:98c0:3600::103", "cf-connecting-ip": "41.33.1.2" })))
+      .toBe("41.33.1.2");
+  });
+
+  it("ignores cf-connecting-ip that did not come from Cloudflare", () => {
+    expect(clientIp(r({ "x-forwarded-for": "41.0.0.1, 10.0.0.1", "cf-connecting-ip": "1.2.3.4" })))
+      .toBe("41.0.0.1");
+  });
+
+  it("falls back to x-real-ip, then unknown", () => {
+    expect(clientIp(r({ "x-real-ip": "41.0.0.9" }))).toBe("41.0.0.9");
+    expect(clientIp(r({}))).toBe("unknown");
+  });
+
+  it("knows Cloudflare's ranges", () => {
+    expect(isCloudflare("172.71.141.124")).toBe(true);
+    expect(isCloudflare("104.16.0.1")).toBe(true);
+    expect(isCloudflare("172.72.0.1")).toBe(false);
+    expect(isCloudflare("196.138.161.208")).toBe(false);
   });
 });

@@ -180,6 +180,10 @@
       "destination": "/ar/industries.html"
     },
     {
+      "source": "/ar/pricing",
+      "destination": "/ar/pricing.html"
+    },
+    {
       "source": "/ar/resources/it-guide",
       "destination": "/ar/resources/it-guide.html"
     },
@@ -394,6 +398,10 @@
     {
       "source": "/industries",
       "destination": "/industries.html"
+    },
+    {
+      "source": "/pricing",
+      "destination": "/pricing.html"
     },
     {
       "source": "/resources/it-guide",

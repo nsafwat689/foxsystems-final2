@@ -17,7 +17,7 @@ const translations = {
   en: {
     home: "Home", services: "Services", contact: "Contact Us",
     getStarted: "Try the live demo", articles: "Articles", industries: "Industries",
-    caseStudies: "Case Studies", crm: "CRM", tools: "Free Tools",
+    caseStudies: "Case Studies", crm: "CRM", tools: "Free Tools", pricing: "Pricing",
     internet: "Call Center & VoIP", software: "CRM Systems",
     hardware: "Hardware & Servers", cybersecurity: "Firewall & Security",
     infrastructure: "Network & Infrastructure", webDev: "Website Development",
@@ -28,7 +28,7 @@ const translations = {
   ar: {
     home: "الرئيسية", services: "الخدمات", contact: "اتصل بنا",
     getStarted: "جرّب النسخة التجريبية", articles: "المقالات", industries: "القطاعات",
-    caseStudies: "قصص النجاح", crm: "أنظمة CRM", tools: "أدوات مجانية",
+    caseStudies: "قصص النجاح", crm: "أنظمة CRM", tools: "أدوات مجانية", pricing: "الأسعار",
     internet: "مراكز الاتصال وVoIP", software: "أنظمة CRM",
     hardware: "الأجهزة والخوادم", cybersecurity: "جدران الحماية والأمن",
     infrastructure: "الشبكة والبنية التحتية", webDev: "تطوير المواقع",
@@ -138,8 +138,10 @@ export default function Header({ language }: HeaderProps) {
             </div>
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex justify-center">
+          {/* Desktop nav. Only from 1280px: with Pricing it is nine items, and
+              below that width the bar pushed the page sideways (it already did
+              at 1024px with eight). Narrower screens get the menu button. */}
+          <div className="hidden xl:flex justify-center">
             {/* gap tightens at the sizes where eight items no longer fit. */}
             <div className={`flex items-center gap-4 lg:gap-6 xl:gap-7 ${isArabic ? "flex-row-reverse" : ""}`}>
               <Link href={isArabic ? "/ar" : "/"} onClick={handleHomeClick}
@@ -179,6 +181,11 @@ export default function Header({ language }: HeaderProps) {
                 {t.crm}
               </Link>
 
+              <Link href={`${langPrefix}/pricing`}
+                className={navLinkCls(location.includes("/pricing"))}>
+                {t.pricing}
+              </Link>
+
               <Link href={`${langPrefix}/industries`}
                 className={navLinkCls(location.includes("/industries"))}>
                 {t.industries}
@@ -207,7 +214,7 @@ export default function Header({ language }: HeaderProps) {
           </div>
 
           {/* Right controls */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden xl:flex items-center gap-2">
             <button onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-muted transition text-muted-foreground hover:text-foreground">
               {theme === "light" ? <Moon className="w-4.5 h-4.5" /> : <Sun className="w-4.5 h-4.5" />}
@@ -226,7 +233,7 @@ export default function Header({ language }: HeaderProps) {
           </div>
 
           {/* Mobile controls */}
-          <div className="flex md:hidden items-center gap-1.5 col-start-3">
+          <div className="flex xl:hidden items-center gap-1.5 col-start-3">
             <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-muted transition">
               {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </button>
@@ -239,7 +246,7 @@ export default function Header({ language }: HeaderProps) {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden glass-nav border-t border-border shadow-xl">
+          <div className="xl:hidden glass-nav border-t border-border shadow-xl">
             <div className={`flex flex-col gap-1 p-4 ${isArabic ? "items-end text-right" : "items-start"}`}>
               {[
                 { href: isArabic ? "/ar" : "/", label: t.home, onClick: handleHomeClick },
@@ -276,6 +283,11 @@ export default function Header({ language }: HeaderProps) {
               <Link href={`${langPrefix}/case-studies`} onClick={() => setIsMenuOpen(false)}
                 className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">
                 {t.caseStudies}
+              </Link>
+
+              <Link href={`${langPrefix}/pricing`} onClick={() => setIsMenuOpen(false)}
+                className="w-full px-3 py-2.5 rounded-xl text-base font-semibold hover:bg-muted transition">
+                {t.pricing}
               </Link>
 
               <Link href={`${langPrefix}/tools`} onClick={() => setIsMenuOpen(false)}

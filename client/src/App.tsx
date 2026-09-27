@@ -27,6 +27,7 @@ const Solutions = lazy(() => import("./pages/Solutions"));
 const SolutionDetail = lazy(() => import("./pages/SolutionDetail"));
 const Tools = lazy(() => import("./pages/Tools"));
 const ToolDetail = lazy(() => import("./pages/ToolDetail"));
+const Pricing = lazy(() => import("./pages/Pricing"));
 
 const SERVICE_IDS = [
   "internet",
@@ -72,6 +73,7 @@ function localeRoutes(language: "en" | "ar") {
         {() => <ToolDetail toolId={id} language={language} />}
       </Route>
     )),
+    <Route key={`${language}-pricing`} path={`${prefix}/pricing`}>{() => <Pricing language={language} />}</Route>,
     <Route key={`${language}-industries`} path={`${prefix}/industries`}>{() => <Industries language={language} />}</Route>,
     <Route key={`${language}-cases`} path={`${prefix}/case-studies`}>{() => <CaseStudies language={language} />}</Route>,
     <Route key={`${language}-guide`} path={`${prefix}/resources/it-guide`}>{() => <LeadMagnet language={language} />}</Route>,

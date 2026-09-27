@@ -42,6 +42,7 @@ function buildRoutes() {
     ...SERVICES.map(s => ({ path: `/services/${s}`, changefreq: "monthly", priority: "0.9" })),
     { path: "/solutions", changefreq: "monthly", priority: "0.9" },
     ...SOLUTIONS.map(s => ({ path: `/solutions/${s}`, changefreq: "monthly", priority: "0.9" })),
+    { path: "/pricing", changefreq: "monthly", priority: "0.9" },
     { path: "/tools", changefreq: "monthly", priority: "0.8" },
     ...TOOLS.map(s => ({ path: `/tools/${s}`, changefreq: "monthly", priority: "0.8" })),
     { path: "/industries", changefreq: "monthly", priority: "0.8" },

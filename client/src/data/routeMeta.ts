@@ -24,6 +24,7 @@ import {
 } from "@/utils/seo";
 import { SOLUTIONS, SOLUTION_IDS } from "./solutions";
 import { TOOLS, TOOL_IDS, TOOLS_INDEX_SEO } from "./tools";
+import { PRICING_SEO } from "./servicePricing";
 
 const ORIGIN = "https://foxsystemstech.com";
 
@@ -191,6 +192,8 @@ export function buildRouteMeta(): Record<string, SEOConfig> {
     "/ar/industries": INDUSTRIES_SEO.ar,
     "/case-studies": CASE_STUDIES_SEO.en,
     "/ar/case-studies": CASE_STUDIES_SEO.ar,
+    "/pricing": PRICING_SEO.en,
+    "/ar/pricing": PRICING_SEO.ar,
     "/resources/it-guide": IT_GUIDE_SEO.en,
     "/ar/resources/it-guide": IT_GUIDE_SEO.ar,
   };

@@ -7,5 +7,5 @@
  * ~26 kB in front of the first paint for data no visitor needs until they
  * open a product page.
  */
-export const SOLUTION_IDS = ["medical-crm", "real-estate-crm", "pest-control-crm", "hr-crm"] as const;
+export const SOLUTION_IDS = ["medical-crm", "real-estate-crm", "pest-control-crm", "hr-crm", "finance-crm"] as const;
 export type SolutionId = (typeof SOLUTION_IDS)[number];

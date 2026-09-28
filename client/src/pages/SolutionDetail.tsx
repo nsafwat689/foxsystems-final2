@@ -10,7 +10,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Bug, Building2, Check, CheckCircle2, MessageCircle, PlayCircle, Stethoscope, Users, X } from "lucide-react";
+import { ArrowRight, Bug, Building2, Landmark, Check, CheckCircle2, MessageCircle, PlayCircle, Stethoscope, Users, X } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import SolutionShowcase from "@/components/SolutionShowcase";
@@ -22,7 +22,7 @@ import { COMPARISON_FOR } from "@/data/comparisonIds";
 import { PRODUCT_STORIES } from "@/data/productStories";
 import { generateBreadcrumbSchema, generateFAQSchema, generateServiceSchema } from "@/utils/seo";
 
-const ICONS = { Stethoscope, Building2, Bug, Users };
+const ICONS = { Stethoscope, Building2, Bug, Users, Landmark };
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },

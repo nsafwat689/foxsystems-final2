@@ -1,5 +1,5 @@
 /** Comparison page ids, apart from the content (see solutionIds.ts for why). */
-export const COMPARISON_IDS = ["real-estate-crm", "pharma-crm", "pest-control-software", "hr-payroll-software"] as const;
+export const COMPARISON_IDS = ["real-estate-crm", "pharma-crm", "pest-control-software", "hr-payroll-software", "finance-lending-software"] as const;
 export type ComparisonId = (typeof COMPARISON_IDS)[number];
 
 /** The comparison page for each product, for the link on its solution page. */
@@ -8,4 +8,5 @@ export const COMPARISON_FOR = {
   "medical-crm": { id: "pharma-crm", en: "Compare with Veeva and IQVIA OCE", ar: "قارنه بـ Veeva وIQVIA OCE" },
   "pest-control-crm": { id: "pest-control-software", en: "Compare with PestPac and GorillaDesk", ar: "قارنه بـ PestPac وGorillaDesk" },
   "hr-crm": { id: "hr-payroll-software", en: "Compare with ZenHR, Jisr and Bayzat", ar: "قارنه بـ ZenHR وJisr وBayzat" },
+  "finance-crm": { id: "finance-lending-software", en: "Compare with Odoo, Zoho Books and lending platforms", ar: "قارنه بـ Odoo وZoho Books ومنصات الإقراض" },
 } as const satisfies Record<string, { id: ComparisonId; en: string; ar: string }>;

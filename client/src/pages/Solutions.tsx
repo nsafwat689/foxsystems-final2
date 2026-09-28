@@ -8,14 +8,14 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Bug, Building2, MessageCircle, Stethoscope, Users } from "lucide-react";
+import { ArrowRight, Bug, Building2, Landmark, MessageCircle, Stethoscope, Users } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { SOLUTIONS } from "@/data/solutions";
 import { generateBreadcrumbSchema } from "@/utils/seo";
 import { SOLUTIONS_INDEX_SEO } from "@/data/routeMeta";
 
-const ICONS = { Stethoscope, Building2, Bug, Users };
+const ICONS = { Stethoscope, Building2, Bug, Users, Landmark };
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },

@@ -14,7 +14,7 @@ import { BOOKING_TZ, SESSION_MINUTES, bookingDays } from "@/lib/bookingSlots";
 import { whatsAppFallbackUrl } from "@/lib/leads";
 
 const H = { fontFamily: "'Plus Jakarta Sans',sans-serif" };
-const PRODUCTS = ["real-estate-crm", "medical-crm", "pest-control-crm", "hr-crm", "it-services"] as const;
+const PRODUCTS = ["real-estate-crm", "medical-crm", "pest-control-crm", "hr-crm", "finance-crm", "it-services"] as const;
 type Product = (typeof PRODUCTS)[number];
 
 const T = {
@@ -22,7 +22,7 @@ const T = {
     badge: "Book a walkthrough", title: "Pick a time that suits you",
     sub: `A ${SESSION_MINUTES}-minute online session with the team that builds the system: we show it working on a company like yours and answer your questions.`,
     points: [[Video, "Online — Google Meet, Zoom or Teams, your choice"], [Clock, `${SESSION_MINUTES} minutes, Sunday to Thursday`], [CheckCircle2, "Confirmed by our team within one working day"]] as const,
-    product: "What would you like to see?", products: { "real-estate-crm": "Real Estate CRM", "medical-crm": "Medical CRM", "pest-control-crm": "Pest Control CRM", "hr-crm": "HR & Payroll", "it-services": "IT services / a custom system" },
+    product: "What would you like to see?", products: { "real-estate-crm": "Real Estate CRM", "medical-crm": "Medical CRM", "pest-control-crm": "Pest Control CRM", "hr-crm": "HR & Payroll", "finance-crm": "Finance & Lending", "it-services": "IT services / a custom system" },
     day: "Day", time: "Time (Cairo)", yourTime: "your time",
     name: "Your name", email: "Email", phone: "Phone / WhatsApp", company: "Company", notes: "Anything we should prepare? (optional)",
     submit: "Request this time", sending: "Sending…", pick: "Pick a day and a time first.",
@@ -36,7 +36,7 @@ const T = {
     badge: "احجز عرضًا عمليًا", title: "اختر الموعد المناسب لك",
     sub: `جلسة عبر الإنترنت مدتها ${SESSION_MINUTES} دقيقة مع الفريق الذي يبني النظام: نعرضه يعمل على شركة مثل شركتك ونجيب عن أسئلتك.`,
     points: [[Video, "عبر الإنترنت: Google Meet أو Zoom أو Teams حسب اختيارك"], [Clock, `${SESSION_MINUTES} دقيقة، من الأحد إلى الخميس`], [CheckCircle2, "يؤكد فريقنا الموعد خلال يوم عمل"]] as const,
-    product: "ماذا تريد أن تشاهد؟", products: { "real-estate-crm": "فوكس لإدارة العقارات", "medical-crm": "فوكس للمبيعات الطبية", "pest-control-crm": "فوكس لإدارة مكافحة الآفات", "hr-crm": "فوكس للموارد البشرية", "it-services": "خدمات تقنية المعلومات أو نظام مخصص" },
+    product: "ماذا تريد أن تشاهد؟", products: { "real-estate-crm": "فوكس لإدارة العقارات", "medical-crm": "فوكس للمبيعات الطبية", "pest-control-crm": "فوكس لإدارة مكافحة الآفات", "hr-crm": "فوكس للموارد البشرية", "finance-crm": "فوكس للتمويل", "it-services": "خدمات تقنية المعلومات أو نظام مخصص" },
     day: "اليوم", time: "الوقت (بتوقيت القاهرة)", yourTime: "بتوقيتك",
     name: "الاسم", email: "البريد الإلكتروني", phone: "الهاتف / واتساب", company: "الشركة", notes: "هل هناك ما نجهّزه لك؟ (اختياري)",
     submit: "اطلب هذا الموعد", sending: "جارٍ الإرسال…", pick: "اختر اليوم والوقت أولًا.",

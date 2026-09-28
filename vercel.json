@@ -201,6 +201,10 @@
       "destination": "/ar/case-studies.html"
     },
     {
+      "source": "/ar/compare/finance-lending-software",
+      "destination": "/ar/compare/finance-lending-software.html"
+    },
+    {
       "source": "/ar/compare/hr-payroll-software",
       "destination": "/ar/compare/hr-payroll-software.html"
     },
@@ -263,6 +267,10 @@
     {
       "source": "/ar/solutions",
       "destination": "/ar/solutions.html"
+    },
+    {
+      "source": "/ar/solutions/finance-crm",
+      "destination": "/ar/solutions/finance-crm.html"
     },
     {
       "source": "/ar/solutions/hr-crm",
@@ -461,6 +469,10 @@
       "destination": "/case-studies.html"
     },
     {
+      "source": "/compare/finance-lending-software",
+      "destination": "/compare/finance-lending-software.html"
+    },
+    {
       "source": "/compare/hr-payroll-software",
       "destination": "/compare/hr-payroll-software.html"
     },
@@ -523,6 +535,10 @@
     {
       "source": "/solutions",
       "destination": "/solutions.html"
+    },
+    {
+      "source": "/solutions/finance-crm",
+      "destination": "/solutions/finance-crm.html"
     },
     {
       "source": "/solutions/hr-crm",

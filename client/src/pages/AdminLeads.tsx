@@ -19,7 +19,7 @@ const STATUS_TONE: Record<Status, string> = { new: "bg-blue-100 text-blue-700", 
   proposal: "bg-cyan-100 text-cyan-700", won: "bg-emerald-100 text-emerald-700", lost: "bg-slate-200 text-slate-600" };
 const PRODUCT: Record<string, { en: string; ar: string }> = {
   "real-estate-crm": { en: "Real Estate CRM", ar: "فوكس لإدارة العقارات" }, "medical-crm": { en: "Medical CRM", ar: "فوكس للمبيعات الطبية" },
-  "pest-control-crm": { en: "Pest Control CRM", ar: "فوكس لإدارة مكافحة الآفات" }, "hr-crm": { en: "HR & Payroll", ar: "فوكس للموارد البشرية" },
+  "pest-control-crm": { en: "Pest Control CRM", ar: "فوكس لإدارة مكافحة الآفات" }, "hr-crm": { en: "HR & Payroll", ar: "فوكس للموارد البشرية" }, "finance-crm": { en: "Finance & Lending", ar: "فوكس للتمويل" },
   "it-services": { en: "IT services", ar: "خدمات تقنية المعلومات" },
 };
 const SOURCE_ICON = { demo: MonitorPlay, booking: CalendarDays, contact: Mail };

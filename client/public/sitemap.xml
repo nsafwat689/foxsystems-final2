@@ -237,6 +237,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://foxsystemstech.com/solutions/hr-crm" />
   </url>
   <url>
+    <loc>https://foxsystemstech.com/solutions/finance-crm</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/solutions/finance-crm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/solutions/finance-crm" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://foxsystemstech.com/solutions/finance-crm" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/solutions/finance-crm</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/solutions/finance-crm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/solutions/finance-crm" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://foxsystemstech.com/solutions/finance-crm" />
+  </url>
+  <url>
     <loc>https://foxsystemstech.com/pricing</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -325,6 +343,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/compare/hr-payroll-software" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/compare/hr-payroll-software" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://foxsystemstech.com/compare/hr-payroll-software" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/compare/finance-lending-software</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/compare/finance-lending-software" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/compare/finance-lending-software" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://foxsystemstech.com/compare/finance-lending-software" />
+  </url>
+  <url>
+    <loc>https://foxsystemstech.com/ar/compare/finance-lending-software</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://foxsystemstech.com/compare/finance-lending-software" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://foxsystemstech.com/ar/compare/finance-lending-software" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://foxsystemstech.com/compare/finance-lending-software" />
   </url>
   <url>
     <loc>https://foxsystemstech.com/book</loc>

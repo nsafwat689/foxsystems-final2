@@ -18,10 +18,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Bug, Building2, PlayCircle, Stethoscope, Users } from "lucide-react";
+import { ArrowRight, Bug, Building2, Landmark, PlayCircle, Stethoscope, Users } from "lucide-react";
 import { SOLUTIONS } from "@/data/solutions";
 
-const ICONS = { Stethoscope, Building2, Bug, Users };
+const ICONS = { Stethoscope, Building2, Bug, Users, Landmark };
 
 const T = {
   en: {

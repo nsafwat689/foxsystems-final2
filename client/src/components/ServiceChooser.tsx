@@ -20,6 +20,7 @@ import {
   Cpu,
   Globe,
   Headphones,
+  Landmark,
   Network,
   Shield,
   Stethoscope,
@@ -66,6 +67,7 @@ const INDUSTRY = [
   { id: "real-estate-crm", Icon: Building2, en: "Real estate", ar: "عقاري" },
   { id: "pest-control-crm", Icon: Bug, en: "Pest control", ar: "مكافحة آفات" },
   { id: "hr-crm", Icon: Users, en: "HR & payroll", ar: "الموارد البشرية والرواتب" },
+  { id: "finance-crm", Icon: Landmark, en: "Finance & lending", ar: "المالية والتمويل" },
 ];
 
 const OTHERS = [

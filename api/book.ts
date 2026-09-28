@@ -19,6 +19,7 @@ const PRODUCTS = {
   "real-estate-crm": { en: "Real Estate CRM", ar: "فوكس لإدارة العقارات" },
   "pest-control-crm": { en: "Pest Control CRM", ar: "فوكس لإدارة مكافحة الآفات" },
   "hr-crm": { en: "HR & Payroll", ar: "فوكس للموارد البشرية" },
+  "finance-crm": { en: "Finance & Lending", ar: "فوكس للتمويل" },
   "it-services": { en: "IT services / custom system", ar: "خدمات تقنية المعلومات أو نظام مخصص" },
 } as const;
 

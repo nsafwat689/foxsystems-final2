@@ -10,6 +10,7 @@
  */
 import { z } from "zod";
 import { isBookableSlot, SESSION_MINUTES, BOOKING_TZ } from "../client/src/lib/bookingSlots.js";
+import { recordLead } from "./_leads.js";
 
 export const config = { runtime: "nodejs" };
 
@@ -103,6 +104,9 @@ export default async function handler(req: any, res: any) {
 
   const apiKey = process.env.BREVO_API_KEY, inbox = process.env.LEAD_INBOX, from = process.env.LEAD_FROM;
   if (!apiKey || !inbox || !from) { console.error("[book] mail not configured"); return res.status(503).json({ ok: false, code: "unavailable" }); }
+
+  await recordLead({ source: "booking", product: b.product, name: b.name, email: b.email, phone: b.phone, company: b.company,
+    language: b.language, booking_at: b.slot, details: { notes: b.notes, timezone: b.timezone } });
 
   const ics = Buffer.from(buildIcs(b)).toString("base64");
   const attachment = [{ content: ics, name: "fox-systems-walkthrough.ics" }];

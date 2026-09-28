@@ -33,6 +33,7 @@ const Pricing = lazy(() => import("./pages/Pricing"));
 const Compare = lazy(() => import("./pages/Compare"));
 const Book = lazy(() => import("./pages/Book"));
 const ProductStory = lazy(() => import("./pages/ProductStory"));
+const AdminLeads = lazy(() => import("./pages/AdminLeads"));
 
 const SERVICE_IDS = [
   "internet",
@@ -157,6 +158,9 @@ function Router() {
             {/* Arabic first: /ar/services must match before the English table. */}
             {localeRoutes("ar")}
             {localeRoutes("en")}
+
+            {/* Private follow-up list (noindex, robots-disallowed, key-protected API) */}
+            <Route path="/admin/leads" component={AdminLeads} />
 
             {/* 404 Not Found - Must be last */}
             <Route component={NotFound} />

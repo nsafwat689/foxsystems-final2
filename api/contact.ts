@@ -19,6 +19,7 @@
  * the message was sent.
  */
 import { z } from "zod";
+import { recordLead } from "./_leads.js";
 
 export const config = { runtime: "nodejs" };
 
@@ -95,6 +96,11 @@ export default async function handler(req: any, res: any) {
 
   // Honeypot tripped — accept silently so the bot doesn't learn anything.
   if (lead.website) return res.status(200).json({ ok: true });
+
+  // Stored first, so the enquiry is kept even if the email below fails.
+  await recordLead({ source: "contact", product: lead.service, name: lead.name, email: lead.email, phone: lead.phone, company: lead.company,
+    team_size: lead.companySize, language: lead.language,
+    details: { message: lead.message, budget: lead.budget, timeline: lead.timeline, form: lead.source } });
 
   const apiKey = process.env.BREVO_API_KEY;
   const inbox = process.env.LEAD_INBOX;

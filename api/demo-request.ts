@@ -20,6 +20,7 @@
  * and the form hands the visitor to WhatsApp instead.
  */
 import { z } from "zod";
+import { recordLead } from "./_leads.js";
 
 export const config = { runtime: "nodejs" };
 
@@ -348,6 +349,11 @@ async function scheduleFollowUps(demo: DemoRequest, login: Login, now = Date.now
   }
 }
 
+function demoLead(demo: DemoRequest, details: Record<string, unknown>, endsAt: string | null = null) {
+  return { source: "demo" as const, product: demo.product, name: demo.name, email: demo.email, phone: demo.phone, company: demo.company,
+    team_size: demo.teamSize, language: demo.language, details, demo_ends_at: endsAt };
+}
+
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -378,6 +384,7 @@ export default async function handler(req: any, res: any) {
   if (!secret) {
     console.error(`[demo-request] ${product.secretEnv} is not set — no demo account created for`, demo.phone);
     await emailLead(demo, false);
+    await recordLead(demoLead(demo, { account_created: false, reason: "not_configured" }));
     return res.status(503).json({ ok: false, code: "not_configured" });
   }
 
@@ -427,6 +434,8 @@ export default async function handler(req: any, res: any) {
   const loginSent = url && login ? await emailVisitorLogin(demo, login) : false;
   await emailLead(demo, Boolean(url), loginSent);
   if (url && login && loginSent && !returning) await scheduleFollowUps(demo, login);
+  await recordLead(demoLead(demo, { account_created: Boolean(url), returning, login_emailed: loginSent, result: url ? "ok" : code },
+    url ? new Date(Date.now() + PRODUCTS[demo.product].days * 864e5).toISOString() : null));
 
   if (code === "active_trial") return res.status(409).json({ ok: false, code, ends_at: endsAt });
   if (!url) return res.status(code === "rate_limited" ? 429 : 502).json({ ok: false, code });

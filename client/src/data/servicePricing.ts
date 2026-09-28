@@ -623,7 +623,7 @@ export const PRICING_SEO: Record<"en" | "ar", SEOConfig> = {
   en: {
     title: "Prices: CRM, Websites, IT Support, Hardware | Fox Systems",
     description:
-      "Published prices for CRM systems, websites, call centers, CCTV and monthly IT support, plus laptops, PCs, FortiGate, Sophos and Grandstream quoted on request. EGP, SAR, KWD or USD.",
+      "Prices for CRM, websites, call centers, CCTV and monthly IT support. Laptops, PCs, FortiGate, Sophos and Grandstream quoted on request. EGP, SAR, KWD, USD.",
     keywords:
       "CRM price Egypt, HR system price Egypt, website design price Egypt, call center price Egypt, CCTV installation price Egypt, IT support contract price Egypt, managed IT services Cairo, IT support per hour Egypt, used laptops for companies Egypt, FortiGate price Egypt, Sophos firewall Egypt, Grandstream IP phone Egypt, IT services prices Saudi Arabia, IT services prices Kuwait, اسعار تصميم المواقع, سعر نظام CRM, سعر عقد دعم فني, لابتوب مستعمل للشركات",
     ogTitle: "Fox Systems prices, in plain numbers",
@@ -635,7 +635,7 @@ export const PRICING_SEO: Record<"en" | "ar", SEOConfig> = {
   ar: {
     title: "أسعار CRM والمواقع والدعم الفني والأجهزة | فوكس سيستمز",
     description:
-      "أسعار منشورة لأنظمة CRM والمواقع ومراكز الاتصال والكاميرات وعقود الدعم الفني الشهرية، مع اللابتوب والكمبيوتر وFortiGate وSophos وGrandstream بعرض سعر، بالجنيه أو الريال أو الدينار أو الدولار.",
+      "أسعار أنظمة CRM والمواقع ومراكز الاتصال والكاميرات وعقود الدعم الفني، واللابتوب والكمبيوتر وFortiGate وSophos وGrandstream بعرض سعر. بالجنيه والريال والدينار.",
     keywords:
       "سعر نظام CRM, سعر نظام موارد بشرية, اسعار تصميم المواقع, سعر مركز اتصال, اسعار كاميرات المراقبة, سعر عقد دعم فني للشركات, دعم فني بالساعة, لابتوب مستعمل للشركات, سعر فورتي جيت, جدار حماية سوفوس, هواتف جراندستريم, اسعار خدمات تقنية المعلومات, فوكس سيستمز",
     ogTitle: "أسعار فوكس سيستمز بأرقام واضحة",

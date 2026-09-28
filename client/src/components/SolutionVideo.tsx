@@ -5,10 +5,12 @@
  */
 import { PlayCircle } from "lucide-react";
 
-export type SolutionVideoInfo = { base: string; minutes: number };
+/** `v` is bumped whenever the files are replaced, so caches never serve the old cut. */
+export type SolutionVideoInfo = { base: string; minutes: number; v?: number };
 
 export function videoSrc(v: SolutionVideoInfo, language: "en" | "ar") {
-  return { mp4: `/videos/${v.base}-${language}.mp4`, poster: `/videos/${v.base}-${language}.jpg` };
+  const q = v.v ? `?v=${v.v}` : "";
+  return { mp4: `/videos/${v.base}-${language}.mp4${q}`, poster: `/videos/${v.base}-${language}.jpg${q}` };
 }
 
 /** schema.org VideoObject, so the tour can show up in video results. */

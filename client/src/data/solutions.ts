@@ -83,7 +83,7 @@ export interface Solution {
   /** lucide-react icon name, resolved by the page. */
   icon: "Stethoscope" | "Building2" | "Bug" | "Users";
   /** Narrated product tour: /videos/<base>-<en|ar>.mp4 (+ .jpg poster). */
-  video?: { base: string; minutes: number };
+  video?: { base: string; minutes: number; v?: number };
   en: SolutionCopy;
   ar: SolutionCopy;
   seo: { en: SEOConfig; ar: SEOConfig };
@@ -1280,7 +1280,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "hr-crm": {
     id: "hr-crm",
     showcaseBase: "hr-crm",
-    video: { base: "fox-hr-tour", minutes: 3 },
+    video: { base: "fox-hr-tour", minutes: 3, v: 2 },
     liveDemo: true,
     icon: "Users",
     en: {

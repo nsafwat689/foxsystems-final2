@@ -879,6 +879,255 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
     },
   },
 
+  "saudi-payroll-wps-mudad": {
+    en: {
+      id: "saudi-payroll-wps-mudad",
+      title: "Payroll in Saudi Arabia: Wage Protection, Mudad and GOSI",
+      subtitle: "What a Saudi payroll has to produce each month, and where companies usually slip",
+      author: "Fox Systems Team",
+      date: "2026-09-29",
+      category: "Software",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/showcase/hr-crm/payslip.webp",
+      content: `
+        <h2>Paying salaries is only half the job</h2>
+        <p>In Saudi Arabia, paying staff on time is not enough: the company also has to prove it. The Wage Protection System of the Ministry of Human Resources and Social Development compares what each employee was actually paid with what their contract and records say. Gaps between the two, late salaries or missing files can lead to penalties and restrictions on the ministry's services. So a Saudi payroll has to produce three things every month: the salaries, the bank payment and the wage file.</p>
+
+        <h2>The wage file and Mudad</h2>
+        <p>Wage files are submitted through an approved platform, most commonly Mudad. The file lists each employee with their ID or iqama number, bank account (IBAN), basic salary, housing allowance, other earnings and deductions. The layout your account expects is shown inside the platform, and it can differ from one account to another, so the safest approach is a payroll system that exports the file directly from the approved run, with the columns set once to match your template.</p>
+        <p>Most rejected files come from a small list of causes: an IBAN that fails its check digits, an iqama number that does not match the employee, a salary that differs from the registered contract, or an employee who left but is still in the file. A good payroll system checks these before the file is exported, not after the bank or the platform rejects it.</p>
+
+        <h2>GOSI contributions</h2>
+        <p>For Saudi employees, both the employer and the employee contribute to GOSI, and employees who joined the labour market after July 2024 follow a newer schedule that rises each July until 2028. For non-Saudi employees, the employer pays the occupational hazards contribution. Each rate applies from a date, so payroll software should store every rate with the date it took effect and apply the right one for each month, including when you recalculate an old month.</p>
+
+        <h2>Overtime and end of service</h2>
+        <p>The Saudi Labour Law pays overtime at the hourly wage plus 50% of the basic hourly wage, and work on rest days and official holidays counts as overtime. End-of-service benefit is half a month's wage for each of the first five years and a full month for each year after that, reduced on resignation depending on years of service. Both are easy to get wrong in a spreadsheet, and both are easy to check once the system shows how each figure was calculated.</p>
+
+        <h2>A monthly checklist</h2>
+        <ul>
+          <li>Attendance and approved overtime closed for the month.</li>
+          <li>New joiners, leavers and salary changes entered before the run.</li>
+          <li>Payroll run reviewed as a draft, then approved and locked.</li>
+          <li>IBANs and ID numbers checked, then the wage file exported from the approved run.</li>
+          <li>Salaries paid, and the wage file submitted on time.</li>
+          <li>Payslips released to employees, showing each earning and deduction.</li>
+        </ul>
+
+        <h2>The system we build</h2>
+        <p><a href="/solutions/hr-crm">Fox HR</a> runs Saudi payroll next to Egyptian and Kuwaiti payroll: GOSI with dated rules, overtime from attendance, loans and advances, and a Mudad/WPS export with IBAN and ID checks. You can compare it with other HR platforms on our <a href="/compare/hr-payroll-software">comparison page</a>, open a live demo, or <a href="/book?product=hr-crm">book a walkthrough</a>.</p>
+      `,
+    },
+    ar: {
+      id: "saudi-payroll-wps-mudad",
+      title: "الرواتب في السعودية: حماية الأجور ومدد والتأمينات الاجتماعية",
+      subtitle: "ما الذي يجب أن تُخرجه دورة الرواتب السعودية كل شهر، وأين تتعثر الشركات عادةً",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-29",
+      category: "البرمجيات",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/hr-crm/payslip.webp",
+      content: `
+        <h2>صرف الرواتب نصف المهمة فقط</h2>
+        <p>في السعودية لا يكفي أن تصرف الرواتب في موعدها، بل يجب أن تُثبت ذلك. فنظام حماية الأجور التابع لوزارة الموارد البشرية والتنمية الاجتماعية يقارن ما صُرف فعلًا لكل موظف بما يرد في عقده وسجلاته. وقد يؤدي الفرق بينهما، أو تأخر الرواتب، أو عدم رفع الملفات، إلى غرامات وقيود على خدمات الوزارة. لذا يجب أن تُخرج دورة الرواتب السعودية ثلاثة أشياء كل شهر: الرواتب، والتحويل البنكي، وملف الأجور.</p>
+
+        <h2>ملف الأجور ومنصة مدد</h2>
+        <p>تُرفع ملفات الأجور عبر منصة معتمدة، وأكثرها استخدامًا منصة مدد. ويتضمن الملف كل موظف برقم الهوية أو الإقامة، والحساب البنكي (IBAN)، والراتب الأساسي، وبدل السكن، والإضافات والاستقطاعات الأخرى. ويظهر التنسيق المطلوب داخل المنصة، وقد يختلف من حساب إلى آخر، لذا فالأسلم نظام رواتب يُصدر الملف مباشرةً من الدورة المعتمدة، مع ضبط الأعمدة مرة واحدة لتطابق نموذجك.</p>
+        <p>وترجع معظم الملفات المرفوضة إلى أسباب قليلة: رقم IBAN لا يجتاز خانات التحقق، أو رقم إقامة لا يطابق الموظف، أو راتب يختلف عن العقد المسجل، أو موظف ترك العمل وما زال في الملف. والنظام الجيد يفحص هذه الأخطاء قبل التصدير، لا بعد أن يرفض البنك أو المنصة الملف.</p>
+
+        <h2>اشتراكات التأمينات الاجتماعية</h2>
+        <p>يشترك صاحب العمل والموظف السعودي معًا في التأمينات الاجتماعية، ويخضع من دخل سوق العمل بعد يوليو 2024 لجدول أحدث يرتفع كل يوليو حتى 2028. أما الموظف غير السعودي فيدفع عنه صاحب العمل اشتراك الأخطار المهنية. ولكل نسبة تاريخ سريان، لذا يجب أن يحفظ برنامج الرواتب كل نسبة بتاريخها ويطبّق الصحيحة على كل شهر، حتى عند إعادة احتساب شهر قديم.</p>
+
+        <h2>العمل الإضافي ومكافأة نهاية الخدمة</h2>
+        <p>يحسب نظام العمل السعودي أجر العمل الإضافي بأجر الساعة مضافًا إليه 50% من أجر الساعة الأساسي، ويُعد العمل في أيام الراحة والعطلات الرسمية عملًا إضافيًا. وتُحتسب مكافأة نهاية الخدمة بنصف شهر عن كل سنة من السنوات الخمس الأولى وشهر كامل عن كل سنة بعدها، وتُخفَّض عند الاستقالة بحسب مدة الخدمة. وكلاهما سهل الخطأ في جدول إكسل، وسهل المراجعة حين يوضح النظام طريقة حساب كل رقم.</p>
+
+        <h2>قائمة مراجعة شهرية</h2>
+        <ul>
+          <li>إقفال الحضور والعمل الإضافي المعتمد للشهر.</li>
+          <li>إدخال الموظفين الجدد والمغادرين وتغييرات الرواتب قبل الدورة.</li>
+          <li>مراجعة دورة الرواتب مسودةً، ثم اعتمادها وإقفالها.</li>
+          <li>فحص أرقام IBAN والهويات، ثم تصدير ملف الأجور من الدورة المعتمدة.</li>
+          <li>صرف الرواتب ورفع ملف الأجور في موعده.</li>
+          <li>إتاحة قسائم الرواتب للموظفين موضحًا فيها كل إضافة واستقطاع.</li>
+        </ul>
+
+        <h2>النظام الذي نبنيه</h2>
+        <p>يدير <a href="/ar/solutions/hr-crm">فوكس للموارد البشرية</a> رواتب السعودية إلى جانب رواتب مصر والكويت: التأمينات بقواعد مؤرّخة، والعمل الإضافي من الحضور، والقروض والسلف، وتصدير ملف مدد وحماية الأجور مع فحص IBAN والهويات. ويمكنك مقارنته بمنصات الموارد البشرية الأخرى في <a href="/ar/compare/hr-payroll-software">صفحة المقارنة</a>، أو فتح نسخة تجريبية حية، أو <a href="/ar/book?product=hr-crm">حجز عرض عملي</a>.</p>
+      `,
+    },
+  },
+
+  "medical-rep-app": {
+    en: {
+      id: "medical-rep-app",
+      title: "Medical Rep App: What Reps and Sales Managers Actually Need",
+      subtitle: "The daily work of a pharma rep, and the features that make it measurable",
+      author: "Fox Systems Team",
+      date: "2026-09-29",
+      category: "Software",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/showcase/medical-crm/gps-check-in.webp",
+      content: `
+        <h2>Two people, two different needs</h2>
+        <p>A medical rep wants an app that is quick: see today's doctors, record the visit, give samples, take an order and move on. The sales manager wants to know whether the visits really happened, whether the right doctors were covered, and whether the calls are turning into sales. A good medical rep app serves both without making the rep type twice.</p>
+
+        <h2>What the rep needs</h2>
+        <ul>
+          <li><strong>A daily plan</strong> built from the cycle plan: which doctors and pharmacies, in which order.</li>
+          <li><strong>One-tap check-in</strong> at the clinic or hospital, confirmed by location.</li>
+          <li><strong>Product presentation</strong> on the phone or tablet, with the right slides for each specialty.</li>
+          <li><strong>Samples with a signature</strong>: the batch comes out of the rep's stock and the doctor signs on screen.</li>
+          <li><strong>Orders</strong> from pharmacies, sent to the distributor without paperwork.</li>
+          <li><strong>Work without signal</strong>: hospitals and basements have none, and nothing should be lost.</li>
+          <li><strong>Expenses</strong> with a photo of the receipt.</li>
+        </ul>
+
+        <h2>What the manager needs</h2>
+        <ul>
+          <li><strong>Proof of visits</strong>: check-in accepted only within the institution's area, with the location recorded.</li>
+          <li><strong>Coverage and frequency</strong> per doctor class, against the plan.</li>
+          <li><strong>Sample custody</strong> from warehouse to rep to doctor, by batch and expiry date.</li>
+          <li><strong>Sales against calls</strong>: distributor sales imported and compared with the visits made.</li>
+          <li><strong>Targets and incentives</strong> calculated from verified work, so the bonus discussion is about facts.</li>
+        </ul>
+
+        <h2>Why Arabic and offline matter</h2>
+        <p>Many reps in Egypt and the Gulf prefer to work in Arabic, and many spend a large part of the day in buildings with no signal. An app that fails on either point is quietly abandoned, and the data goes back to WhatsApp messages and Excel sheets. Before choosing, test both: switch the phone to Arabic, turn on airplane mode, record a full visit, then turn the signal back on and check that it arrived.</p>
+
+        <h2>The system we build</h2>
+        <p><a href="/solutions/medical-crm">Fox Medical CRM</a> covers the list above: GPS-verified visits, e-detailing, samples by batch with signatures, orders, expenses, offline work, sales-data import, and targets and incentives, in Arabic and English. See how it compares with global pharma CRMs on our <a href="/compare/pharma-crm">comparison page</a>, open a live demo, or <a href="/book?product=medical-crm">book a walkthrough</a>.</p>
+      `,
+    },
+    ar: {
+      id: "medical-rep-app",
+      title: "برنامج المندوب الطبي: ما يحتاجه المندوب ومدير المبيعات فعلًا",
+      subtitle: "العمل اليومي لمندوب الأدوية، والخصائص التي تجعله قابلًا للقياس",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-29",
+      category: "البرمجيات",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/medical-crm/gps-check-in.webp",
+      content: `
+        <h2>شخصان واحتياجان مختلفان</h2>
+        <p>يريد المندوب الطبي تطبيقًا سريعًا: يرى أطباء اليوم، ويسجل الزيارة، ويسلّم العينات، ويأخذ الطلبية، ثم ينتقل إلى التالي. أما مدير المبيعات فيريد أن يعرف هل تمت الزيارات فعلًا، وهل غُطّي الأطباء المستهدفون، وهل تتحول الزيارات إلى مبيعات. وبرنامج المندوب الطبي الجيد يخدم الاثنين دون أن يكتب المندوب البيانات مرتين.</p>
+
+        <h2>ما يحتاجه المندوب</h2>
+        <ul>
+          <li><strong>خطة يومية</strong> مأخوذة من خطة الدورة: أي الأطباء والصيدليات، وبأي ترتيب.</li>
+          <li><strong>تسجيل وصول بلمسة واحدة</strong> في العيادة أو المستشفى، مؤكد بالموقع.</li>
+          <li><strong>عرض المنتجات</strong> على الهاتف أو الجهاز اللوحي، بالشرائح المناسبة لكل تخصص.</li>
+          <li><strong>عينات بتوقيع الطبيب</strong>: تُخصم التشغيلة من مخزون المندوب ويوقّع الطبيب على الشاشة.</li>
+          <li><strong>طلبيات</strong> الصيدليات تُرسل إلى الموزع دون أوراق.</li>
+          <li><strong>العمل دون إشارة</strong>: المستشفيات والطوابق السفلية بلا إشارة، ويجب ألا يضيع شيء.</li>
+          <li><strong>المصروفات</strong> مع صورة الإيصال.</li>
+        </ul>
+
+        <h2>ما يحتاجه المدير</h2>
+        <ul>
+          <li><strong>إثبات الزيارات</strong>: لا يُقبل تسجيل الوصول إلا داخل نطاق المؤسسة، مع حفظ الموقع.</li>
+          <li><strong>التغطية ومعدل الزيارات</strong> لكل فئة من الأطباء مقارنةً بالخطة.</li>
+          <li><strong>عهدة العينات</strong> من المخزن إلى المندوب إلى الطبيب، بالتشغيلة وتاريخ الصلاحية.</li>
+          <li><strong>المبيعات مقابل الزيارات</strong>: استيراد مبيعات الموزع ومقارنتها بالزيارات المنفذة.</li>
+          <li><strong>الأهداف والحوافز</strong> محسوبة من العمل الموثّق، فيكون نقاش الحافز حول حقائق.</li>
+        </ul>
+
+        <h2>لماذا تهم العربية والعمل دون اتصال</h2>
+        <p>يفضّل كثير من المندوبين في مصر والخليج العمل بالعربية، ويقضي كثير منهم جزءًا كبيرًا من يومه في مبانٍ بلا إشارة. والتطبيق الذي يتعثر في أي منهما يُهجر بهدوء، فتعود البيانات إلى رسائل واتساب وجداول إكسل. لذا اختبر الأمرين قبل الاختيار: حوّل الهاتف إلى العربية، وفعّل وضع الطيران، وسجّل زيارة كاملة، ثم أعد الإشارة وتحقق من وصولها.</p>
+
+        <h2>النظام الذي نبنيه</h2>
+        <p>يغطي <a href="/ar/solutions/medical-crm">فوكس للمبيعات الطبية</a> القائمة السابقة: زيارات موثّقة بالموقع، وعرض إلكتروني للمنتجات، وعينات بالتشغيلة مع التوقيع، وطلبيات، ومصروفات، وعمل دون اتصال، واستيراد بيانات المبيعات، والأهداف والحوافز، بالعربية والإنجليزية. اطّلع على مقارنته بأنظمة الأدوية العالمية في <a href="/ar/compare/pharma-crm">صفحة المقارنة</a>، أو افتح نسخة تجريبية حية، أو <a href="/ar/book?product=medical-crm">احجز عرضًا عمليًا</a>.</p>
+      `,
+    },
+  },
+
+  "e-detailing-pharma": {
+    en: {
+      id: "e-detailing-pharma",
+      title: "E-detailing for Pharma Reps: A Practical Guide",
+      subtitle: "How to move product presentations to the tablet, and what to measure once you do",
+      author: "Fox Systems Team",
+      date: "2026-09-29",
+      category: "Software",
+      readTime: "5 min read",
+      image: "https://foxsystemstech.com/showcase/medical-crm/dashboard.webp",
+      content: `
+        <h2>What e-detailing is</h2>
+        <p>E-detailing means presenting a product to a doctor from a phone or tablet instead of a printed leaflet. The slides are the same message the marketing team approved, but now every presentation is recorded: which product, which slides, and how long the doctor spent on each one.</p>
+
+        <h2>Why it is worth doing</h2>
+        <ul>
+          <li><strong>One approved message</strong>: every rep shows the current version; old leaflets disappear.</li>
+          <li><strong>Evidence the product was presented</strong>, attached to the visit itself.</li>
+          <li><strong>Learning which slides work</strong>: if doctors skip the efficacy slide and linger on dosing, the next deck changes.</li>
+          <li><strong>Lower printing costs</strong> and faster updates when a message changes.</li>
+        </ul>
+
+        <h2>Starting well</h2>
+        <ol>
+          <li>Begin with your top two or three products and eight to twelve slides each. Shorter decks get finished.</li>
+          <li>Keep one idea per slide, with large text readable at arm's length.</li>
+          <li>Order the slides for a three-minute conversation, and put the key message in the first three.</li>
+          <li>Add a short note for the rep on each slide: what to say and which question to ask.</li>
+          <li>Make sure the presentation works without signal: it will be used in hospitals.</li>
+        </ol>
+
+        <h2>What to measure</h2>
+        <ul>
+          <li><strong>Share of visits with a presentation</strong>, by rep and by product.</li>
+          <li><strong>Average time per slide</strong>, to find the slides doctors actually read.</li>
+          <li><strong>Completion</strong>: how often the deck is shown to the end.</li>
+          <li><strong>Presentations against sales</strong>, once distributor sales are imported.</li>
+        </ul>
+        <p>Read these as signals, not as grades: a short presentation to a busy consultant can be a good visit. Use them to improve the decks and to coach, not to punish.</p>
+
+        <h2>The system we build</h2>
+        <p><a href="/solutions/medical-crm">Fox Medical CRM</a> includes e-detailing: slide decks per product, a presenter that records the time on each slide with the visit, works offline, and reports on the slides that hold attention. You can try it in the live demo or <a href="/book?product=medical-crm">book a walkthrough</a>.</p>
+      `,
+    },
+    ar: {
+      id: "e-detailing-pharma",
+      title: "العرض الإلكتروني للمنتجات الطبية (e-detailing): دليل عملي للمندوبين",
+      subtitle: "كيف تنقل عروض المنتجات إلى الجهاز اللوحي، وماذا تقيس بعد ذلك",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-29",
+      category: "البرمجيات",
+      readTime: "5 دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/medical-crm/dashboard.webp",
+      content: `
+        <h2>ما العرض الإلكتروني للمنتجات؟</h2>
+        <p>العرض الإلكتروني (e-detailing) هو أن يعرض المندوب المنتج على الطبيب من الهاتف أو الجهاز اللوحي بدلًا من النشرة المطبوعة. والشرائح هي الرسالة نفسها التي اعتمدها فريق التسويق، لكن كل عرض يُسجَّل الآن: أي منتج، وأي شرائح، وكم من الوقت قضى الطبيب على كل منها.</p>
+
+        <h2>لماذا يستحق التطبيق</h2>
+        <ul>
+          <li><strong>رسالة معتمدة واحدة</strong>: يعرض كل مندوب النسخة الحالية، وتختفي النشرات القديمة.</li>
+          <li><strong>دليل على عرض المنتج</strong> مرتبط بالزيارة نفسها.</li>
+          <li><strong>معرفة الشرائح المؤثرة</strong>: إذا تجاوز الأطباء شريحة الفعالية وتوقفوا عند الجرعات، تتغير النسخة التالية.</li>
+          <li><strong>تكلفة طباعة أقل</strong> وتحديث أسرع عند تغيّر الرسالة.</li>
+        </ul>
+
+        <h2>بداية صحيحة</h2>
+        <ol>
+          <li>ابدأ بأهم منتجين أو ثلاثة، من ثماني شرائح إلى اثنتي عشرة لكل منتج؛ فالعروض الأقصر تُستكمل.</li>
+          <li>فكرة واحدة لكل شريحة، بخط كبير يُقرأ من مسافة ذراع.</li>
+          <li>رتّب الشرائح لمحادثة مدتها ثلاث دقائق، وضع الرسالة الأساسية في الشرائح الثلاث الأولى.</li>
+          <li>أضف ملاحظة قصيرة للمندوب على كل شريحة: ماذا يقول وأي سؤال يطرح.</li>
+          <li>تأكد من أن العرض يعمل دون إشارة، فسيُستخدم داخل المستشفيات.</li>
+        </ol>
+
+        <h2>ماذا تقيس</h2>
+        <ul>
+          <li><strong>نسبة الزيارات التي تضمنت عرضًا</strong> لكل مندوب ولكل منتج.</li>
+          <li><strong>متوسط الوقت لكل شريحة</strong> لمعرفة الشرائح التي يقرؤها الأطباء فعلًا.</li>
+          <li><strong>الاكتمال</strong>: كم مرة يُعرض العرض حتى نهايته.</li>
+          <li><strong>العروض مقابل المبيعات</strong> بعد استيراد مبيعات الموزع.</li>
+        </ul>
+        <p>اقرأ هذه الأرقام مؤشرات لا درجات: فالعرض القصير لاستشاري مشغول قد يكون زيارة جيدة. استخدمها لتحسين العروض وتوجيه المندوبين، لا للعقاب.</p>
+
+        <h2>النظام الذي نبنيه</h2>
+        <p>يتضمن <a href="/ar/solutions/medical-crm">فوكس للمبيعات الطبية</a> العرض الإلكتروني: عروض شرائح لكل منتج، وأداة عرض تسجل الوقت على كل شريحة ضمن الزيارة، وتعمل دون اتصال، وتقارير عن الشرائح التي تجذب الانتباه. يمكنك تجربته في النسخة التجريبية الحية أو <a href="/ar/book?product=medical-crm">حجز عرض عملي</a>.</p>
+      `,
+    },
+  },
+
   "ai-infrastructure-2026": {
     en: {
       id: "ai-infrastructure-2026",

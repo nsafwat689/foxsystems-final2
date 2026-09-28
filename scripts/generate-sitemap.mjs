@@ -17,6 +17,7 @@ import path from "node:path";
 const ORIGIN = "https://foxsystemstech.com";
 const OUT = path.join("client", "public", "sitemap.xml");
 const ARTICLES_SRC = path.join("client", "src", "pages", "ArticleDetail.tsx");
+const STORIES_SRC = path.join("client", "src", "data", "productStories.ts");
 
 const SOLUTIONS = ["medical-crm", "real-estate-crm", "pest-control-crm", "hr-crm"];
 // Keep in step with COMPARISON_IDS in client/src/data/comparisonIds.ts.
@@ -36,6 +37,12 @@ function readArticleIds() {
   return ids;
 }
 
+/** Client stories: uncommented `id:` lines of the PRODUCT_STORIES list (may be none). */
+function readStoryIds() {
+  const source = fs.readFileSync(STORIES_SRC, "utf8");
+  return [...source.matchAll(/^ {4}id: "([a-z0-9-]+)",/gm)].map(m => m[1]);
+}
+
 function buildRoutes() {
   const articles = readArticleIds();
   return [
@@ -51,6 +58,7 @@ function buildRoutes() {
     ...TOOLS.map(s => ({ path: `/tools/${s}`, changefreq: "monthly", priority: "0.8" })),
     { path: "/industries", changefreq: "monthly", priority: "0.8" },
     { path: "/case-studies", changefreq: "monthly", priority: "0.8" },
+    ...readStoryIds().map(id => ({ path: `/case-studies/${id}`, changefreq: "monthly", priority: "0.8" })),
     { path: "/resources/it-guide", changefreq: "monthly", priority: "0.7" },
     { path: "/contact", changefreq: "monthly", priority: "0.8" },
     { path: "/articles", changefreq: "weekly", priority: "0.7" },

@@ -28,6 +28,7 @@ import { PRICING_SEO } from "./servicePricing";
 import { COMPARISONS } from "./comparisons";
 import { COMPARISON_IDS } from "./comparisonIds";
 import { BOOK_SEO } from "./bookSeo";
+import { PRODUCT_STORIES, storySeo } from "./productStories";
 
 const ORIGIN = "https://foxsystemstech.com";
 
@@ -211,6 +212,11 @@ export function buildRouteMeta(): Record<string, SEOConfig> {
   for (const id of SOLUTION_IDS) {
     map[`/solutions/${id}`] = SOLUTIONS[id].seo.en;
     map[`/ar/solutions/${id}`] = SOLUTIONS[id].seo.ar;
+  }
+
+  for (const s of PRODUCT_STORIES) {
+    map[`/case-studies/${s.id}`] = storySeo(s, "en");
+    map[`/ar/case-studies/${s.id}`] = storySeo(s, "ar");
   }
 
   for (const id of COMPARISON_IDS) {

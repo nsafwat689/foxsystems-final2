@@ -105,6 +105,10 @@
       "destination": "/ar/articles/domain-dns-management.html"
     },
     {
+      "source": "/ar/articles/e-detailing-pharma",
+      "destination": "/ar/articles/e-detailing-pharma.html"
+    },
+    {
       "source": "/ar/articles/firewall-security",
       "destination": "/ar/articles/firewall-security.html"
     },
@@ -119,6 +123,10 @@
     {
       "source": "/ar/articles/medical-crm-pharma-egypt",
       "destination": "/ar/articles/medical-crm-pharma-egypt.html"
+    },
+    {
+      "source": "/ar/articles/medical-rep-app",
+      "destination": "/ar/articles/medical-rep-app.html"
     },
     {
       "source": "/ar/articles/network-infrastructure",
@@ -163,6 +171,10 @@
     {
       "source": "/ar/articles/real-estate-lead-response-time",
       "destination": "/ar/articles/real-estate-lead-response-time.html"
+    },
+    {
+      "source": "/ar/articles/saudi-payroll-wps-mudad",
+      "destination": "/ar/articles/saudi-payroll-wps-mudad.html"
     },
     {
       "source": "/ar/articles/telecom-trends",
@@ -353,6 +365,10 @@
       "destination": "/articles/domain-dns-management.html"
     },
     {
+      "source": "/articles/e-detailing-pharma",
+      "destination": "/articles/e-detailing-pharma.html"
+    },
+    {
       "source": "/articles/firewall-security",
       "destination": "/articles/firewall-security.html"
     },
@@ -367,6 +383,10 @@
     {
       "source": "/articles/medical-crm-pharma-egypt",
       "destination": "/articles/medical-crm-pharma-egypt.html"
+    },
+    {
+      "source": "/articles/medical-rep-app",
+      "destination": "/articles/medical-rep-app.html"
     },
     {
       "source": "/articles/network-infrastructure",
@@ -411,6 +431,10 @@
     {
       "source": "/articles/real-estate-lead-response-time",
       "destination": "/articles/real-estate-lead-response-time.html"
+    },
+    {
+      "source": "/articles/saudi-payroll-wps-mudad",
+      "destination": "/articles/saudi-payroll-wps-mudad.html"
     },
     {
       "source": "/articles/telecom-trends",

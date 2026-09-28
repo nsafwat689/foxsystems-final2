@@ -19,6 +19,7 @@ import LiveDemoForm, { isDemoProduct } from "@/components/LiveDemoForm";
 import { scrollToId } from "@/lib/scrollToId";
 import { SOLUTIONS, type SolutionId } from "@/data/solutions";
 import { COMPARISON_FOR } from "@/data/comparisonIds";
+import { PRODUCT_STORIES } from "@/data/productStories";
 import { generateBreadcrumbSchema, generateFAQSchema, generateServiceSchema } from "@/utils/seo";
 
 const ICONS = { Stethoscope, Building2, Bug, Users };
@@ -337,6 +338,19 @@ export default function SolutionDetail({ solutionId, language }: Props) {
             {COMPARISON_FOR[solution.id][language]}
           </Link>
         </section>
+        {/* Client results, once a real story exists (data/productStories.ts) */}
+        {PRODUCT_STORIES.filter(s => s.solution === solution.id).map(story => (
+          <Link key={story.id} href={`${prefix}/case-studies/${story.id}`}
+            className="mt-10 block rounded-2xl border border-primary/30 bg-primary/5 p-7 hover:border-primary/60 transition-colors">
+            <span className="text-xs font-bold uppercase tracking-wide text-primary">{isArabic ? "قصة عميل" : "Client story"} · {story[language].client}</span>
+            <span className="block text-xl font-extrabold mt-2" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{story[language].title}</span>
+            <span className="flex flex-wrap gap-6 mt-4">
+              {story[language].results.slice(0, 3).map(r => (
+                <span key={r.label}><span className="block text-2xl font-extrabold text-primary stat-number">{r.metric}</span><span className="text-sm text-muted-foreground">{r.label}</span></span>
+              ))}
+            </span>
+          </Link>
+        ))}
         {/* Other solutions — internal linking between the verticals */}
         <section className="mt-16 pt-14 border-t border-border">
           <h2 className="text-xl font-extrabold mb-5" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>

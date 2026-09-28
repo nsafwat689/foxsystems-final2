@@ -9,7 +9,7 @@
  * Env: BREVO_API_KEY, LEAD_INBOX, LEAD_FROM (as for /api/contact).
  */
 import { z } from "zod";
-import { isBookableSlot, SESSION_MINUTES, BOOKING_TZ } from "../client/src/lib/bookingSlots";
+import { isBookableSlot, SESSION_MINUTES, BOOKING_TZ } from "../client/src/lib/bookingSlots.js";
 
 export const config = { runtime: "nodejs" };
 

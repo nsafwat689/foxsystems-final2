@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import handler, { buildIcs, slotLabel } from "./book";
-import { bookingDays, cairoInstant, cairoParts, isBookableSlot } from "../client/src/lib/bookingSlots";
+import { bookingDays, cairoInstant, cairoParts, isBookableSlot } from "../client/src/lib/bookingSlots.js";
 
 // Wednesday 2026-10-07 09:00 UTC (12:00 Cairo, summer time UTC+3).
 const NOW = Date.UTC(2026, 9, 7, 9);

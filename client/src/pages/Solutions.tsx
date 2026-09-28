@@ -30,7 +30,7 @@ const T = {
   en: {
     badge: "Our Products",
     title: "CRM Systems We Build and Run",
-    sub: "Three industry CRMs, each built for one sector rather than configured into it: pharmaceutical field teams, real estate sales, and pest control operations. All of them run in production today, in Arabic and English.",
+    sub: "Four industry systems, each built for one sector rather than configured into it: pharmaceutical field teams, real estate sales, pest control operations, and HR and payroll for Egypt, Saudi Arabia and Kuwait. All in Arabic and English, each with a video tour and a live demo.",
     open: "See the system",
     ctaTitle: "Not sure which fits?",
     ctaSub: "Tell us how your team works today and we will tell you honestly whether one of these fits, needs adapting, or is the wrong shape for you.",
@@ -40,7 +40,7 @@ const T = {
   ar: {
     badge: "منتجاتنا",
     title: "أنظمة CRM من تنفيذنا وتشغيلنا",
-    sub: "ثلاثة أنظمة CRM، كل منها مبنيّ لقطاع واحد لا مُكيَّف عليه: الفرق الميدانية في شركات الأدوية، ومبيعات العقارات، وعمليات مكافحة الآفات. وجميعها تعمل في الإنتاج اليوم، بالعربية والإنجليزية.",
+    sub: "أربعة أنظمة متخصصة، كل منها مبنيّ لقطاع واحد لا مُكيَّف عليه: الفرق الميدانية في شركات الأدوية، ومبيعات العقارات، وعمليات مكافحة الآفات، والموارد البشرية والرواتب لمصر والسعودية والكويت. جميعها بالعربية والإنجليزية، ولكلٍّ منها جولة بالفيديو ونسخة تجريبية حية.",
     open: "استعرض النظام",
     ctaTitle: "لستَ متأكدًا أيها يناسبك؟",
     ctaSub: "أخبرنا بطريقة عمل فريقك الحالية، وسنوضّح لك بصراحة ما إذا كان أحدها يناسبك، أم يحتاج إلى تعديل، أم أنه ليس الخيار الصحيح لك.",

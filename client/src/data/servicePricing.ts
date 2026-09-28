@@ -18,7 +18,7 @@
  * pricing table, the calculator and this page can never disagree.
  */
 import type { LucideIcon } from "lucide-react";
-import { Camera, Globe, Headphones, Network, ShieldCheck, Wifi, LayoutGrid } from "lucide-react";
+import { Camera, Cpu, Globe, Headphones, Network, ShieldCheck, Wifi, LayoutGrid } from "lucide-react";
 import { PLANS } from "./crmPlans";
 import type { SEOConfig } from "@/utils/seo";
 
@@ -38,7 +38,7 @@ export const FX = {
 export type L = { en: string; ar: string };
 /** One figure in both lists. */
 export type Price = { egp: number; usd: number };
-export type Unit = "once" | "month" | "per-agent-month" | "per-camera";
+export type Unit = "once" | "month" | "per-agent-month" | "per-camera" | "per-user-month" | "per-hour";
 
 export type PlanItem = {
   id: string;
@@ -76,7 +76,21 @@ export type Service = {
   quoteOnly?: { what: L[] };
   /** On-site work: Gulf prices shown are for Egypt; KSA/Kuwait quoted on survey. */
   onSite?: boolean;
+  /** Priced after a site visit, shown under the plans (e.g. network projects next to support plans). */
+  surveyNote?: { title: L; what: L[] };
+  /** A products list without prices: the visitor picks quantities and asks for a quote. */
+  catalogue?: CatalogueGroup[];
 };
+
+export type CatalogueItem = {
+  id: string;
+  name: L;
+  /** Brands and typical models, so the visitor knows what we mean. */
+  detail: L;
+  /** New and/or refurbished (used, grade A). Omitted = new only. */
+  conditions?: ("new" | "used")[];
+};
+export type CatalogueGroup = { id: string; name: L; items: CatalogueItem[] };
 
 /** Converts a price into the chosen currency, rounded to a figure people write. */
 export function amount(p: Price, c: Currency): number {
@@ -407,17 +421,179 @@ export const SERVICES: Service[] = [
       ar: "التمديدات وتصميم الشبكات وغرف الخوادم وعقود الدعم الفني الشهرية.",
     },
     href: "/services/infrastructure",
-    plans: [],
-    addons: [],
-    always: [],
-    quoteOnly: {
+    onSite: true,
+    // Support plans: researched 2026-09-28. Egyptian managed-IT contracts start
+    // around EGP 4,000/month for ~10 users; a Cairo network support engineer
+    // bills about EGP 120–130/hour employed, 300–500 freelance. Plans sit at or
+    // just under that; the hourly rates are the freelance average.
+    plans: [
+      {
+        id: "support-essential",
+        name: { en: "IT support — Essential", ar: "الدعم الفني — الأساسية" },
+        price: { egp: 3900, usd: 390 },
+        unit: "month",
+        includes: [
+          { en: "Up to 10 users and their devices", ar: "حتى 10 مستخدمين وأجهزتهم" },
+          { en: "Remote help desk, working hours", ar: "دعم فني عن بُعد في أوقات العمل" },
+          { en: "Windows, Microsoft 365 and email support", ar: "دعم ويندوز ومايكروسوفت 365 والبريد الإلكتروني" },
+          { en: "Antivirus and updates checked monthly", ar: "متابعة الحماية والتحديثات شهريًا" },
+          { en: "Monthly health report", ar: "تقرير شهري عن حالة الأجهزة" },
+        ],
+      },
+      {
+        id: "support-business",
+        name: { en: "IT support — Business", ar: "الدعم الفني — الأعمال" },
+        price: { egp: 8900, usd: 890 },
+        unit: "month",
+        highlight: true,
+        includes: [
+          { en: "Up to 25 users and their devices", ar: "حتى 25 مستخدمًا وأجهزتهم" },
+          { en: "Remote help desk + 2 on-site visits a month", ar: "دعم عن بُعد وزيارتان ميدانيتان شهريًا" },
+          { en: "Network, Wi-Fi, printers and firewall looked after", ar: "متابعة الشبكة والواي فاي والطابعات وجدار الحماية" },
+          { en: "Backups checked every week", ar: "مراجعة النسخ الاحتياطي أسبوعيًا" },
+          { en: "Reply within 8 working hours", ar: "الرد خلال 8 ساعات عمل" },
+        ],
+      },
+      {
+        id: "support-complete",
+        name: { en: "IT support — Complete", ar: "الدعم الفني — الشاملة" },
+        price: { egp: 16900, usd: 1690 },
+        unit: "month",
+        from: true,
+        includes: [
+          { en: "Up to 50 users, servers included", ar: "حتى 50 مستخدمًا مع الخوادم" },
+          { en: "Remote help desk + 4 on-site visits a month", ar: "دعم عن بُعد و4 زيارات ميدانية شهريًا" },
+          { en: "Priority: on the problem within 4 hours", ar: "أولوية: بدء العمل على المشكلة خلال 4 ساعات" },
+          { en: "Monitoring, patching and licence renewals", ar: "المراقبة والتحديثات وتجديد التراخيص" },
+          { en: "A named engineer who knows your network", ar: "مهندس مسؤول يعرف شبكتك" },
+        ],
+      },
+    ],
+    addons: [
+      {
+        id: "extra-users",
+        name: { en: "Extra users on a support plan", ar: "مستخدمون إضافيون في باقة الدعم" },
+        price: { egp: 350, usd: 30 },
+        unit: "per-user-month",
+        qty: { label: { en: "Users", ar: "عدد المستخدمين" }, min: 0, max: 200 },
+      },
+      {
+        id: "remote-hours",
+        name: { en: "Support by the hour, remote (no contract)", ar: "دعم بالساعة عن بُعد (دون عقد)" },
+        price: { egp: 350, usd: 35 },
+        unit: "per-hour",
+        qty: { label: { en: "Hours", ar: "عدد الساعات" }, min: 0, max: 100 },
+      },
+      {
+        id: "onsite-hours",
+        name: { en: "Support by the hour, on site (2-hour minimum)", ar: "دعم بالساعة في الموقع (ساعتان حدًا أدنى)" },
+        price: { egp: 500, usd: 60 },
+        unit: "per-hour",
+        qty: { label: { en: "Hours", ar: "عدد الساعات" }, min: 0, max: 100, step: 1 },
+        note: { en: "Greater Cairo; other cities add travel", ar: "داخل القاهرة الكبرى، وتُضاف تكلفة الانتقال للمدن الأخرى" },
+      },
+    ],
+    always: [
+      { en: "Month to month — no long lock-in", ar: "تعاقد شهري دون التزام طويل" },
+      { en: "Arabic and English support", ar: "دعم بالعربية والإنجليزية" },
+      { en: "Hardware at our price when you need it", ar: "الأجهزة بأسعارنا عند الحاجة" },
+    ],
+    surveyNote: {
+      title: { en: "Network and infrastructure projects are priced after a site visit", ar: "مشروعات الشبكات والبنية التحتية تُسعَّر بعد زيارة الموقع" },
       what: [
         { en: "Structured cabling, priced per network point", ar: "تمديدات الشبكة، بسعر لكل نقطة" },
-        { en: "Network design, switches and Wi-Fi", ar: "تصميم الشبكة والسويتشات والواي فاي" },
-        { en: "Server room and rack installation", ar: "تجهيز غرفة الخوادم وتركيب الكبائن" },
-        { en: "Monthly IT support contract", ar: "عقد دعم فني شهري" },
+        { en: "Network design, switches and Wi-Fi coverage", ar: "تصميم الشبكة والسويتشات وتغطية الواي فاي" },
+        { en: "Server room, racks and UPS", ar: "تجهيز غرفة الخوادم والكبائن ووحدات UPS" },
+        { en: "Linking branches over VPN", ar: "ربط الفروع عبر VPN" },
+        { en: "The site visit is free inside Greater Cairo", ar: "زيارة الموقع مجانية داخل القاهرة الكبرى" },
       ],
     },
+  },
+  {
+    id: "hardware",
+    icon: Cpu,
+    name: { en: "Computers & IT hardware", ar: "الأجهزة والمعدات التقنية" },
+    tagline: {
+      en: "Laptops, PCs, servers, firewalls, network and phone equipment — new or used, delivered and set up. Pick what you need and we send today's price.",
+      ar: "لابتوب وكمبيوتر وخوادم وجدران حماية ومعدات شبكات وهواتف، جديدة أو مستعملة، مع التوصيل والتهيئة. اختر ما تحتاجه ونرسل لك سعر اليوم.",
+    },
+    href: "/services/hardware",
+    plans: [],
+    addons: [],
+    always: [
+      { en: "Delivered, installed and set up by our engineers", ar: "التوصيل والتركيب والتهيئة على يد مهندسينا" },
+      { en: "Manufacturer warranty on new devices", ar: "ضمان الوكيل على الأجهزة الجديدة" },
+      { en: "Used devices are grade A, tested, with our warranty", ar: "الأجهزة المستعملة فئة A ومختبرة وبضماننا" },
+      { en: "Prices follow the market daily, so we quote on request", ar: "الأسعار تتغير يوميًا مع السوق، لذلك نرسل عرض السعر عند الطلب" },
+    ],
+    catalogue: [
+      {
+        id: "computers",
+        name: { en: "Computers", ar: "أجهزة الكمبيوتر" },
+        items: [
+          { id: "laptop", name: { en: "Laptops", ar: "لابتوب" }, detail: { en: "Dell Latitude, HP ProBook / EliteBook, Lenovo ThinkPad", ar: "Dell Latitude وHP ProBook / EliteBook وLenovo ThinkPad" }, conditions: ["new", "used"] },
+          { id: "desktop", name: { en: "Desktop PCs", ar: "كمبيوتر مكتبي" }, detail: { en: "Dell OptiPlex, HP ProDesk / EliteDesk, Lenovo ThinkCentre", ar: "Dell OptiPlex وHP ProDesk / EliteDesk وLenovo ThinkCentre" }, conditions: ["new", "used"] },
+          { id: "aio", name: { en: "All-in-one PCs", ar: "كمبيوتر All-in-One" }, detail: { en: "Dell, HP and Lenovo, 24-inch", ar: "Dell وHP وLenovo مقاس 24 بوصة" }, conditions: ["new", "used"] },
+          { id: "workstation", name: { en: "Workstations", ar: "محطات عمل" }, detail: { en: "Dell Precision, HP Z — design, CAD and video", ar: "Dell Precision وHP Z للتصميم والرسم الهندسي والفيديو" }, conditions: ["new", "used"] },
+          { id: "monitor", name: { en: "Monitors", ar: "شاشات" }, detail: { en: "22–27 inch, Dell, HP, Samsung, LG", ar: "من 22 إلى 27 بوصة، Dell وHP وSamsung وLG" }, conditions: ["new", "used"] },
+        ],
+      },
+      {
+        id: "servers",
+        name: { en: "Servers, storage & power", ar: "الخوادم والتخزين والطاقة" },
+        items: [
+          { id: "server", name: { en: "Servers", ar: "خوادم" }, detail: { en: "Dell PowerEdge, HPE ProLiant — tower or rack", ar: "Dell PowerEdge وHPE ProLiant، برجي أو للكابينة" }, conditions: ["new", "used"] },
+          { id: "nas", name: { en: "Network storage (NAS)", ar: "وحدات تخزين شبكية (NAS)" }, detail: { en: "Synology, QNAP — file sharing and backup", ar: "Synology وQNAP لمشاركة الملفات والنسخ الاحتياطي" } },
+          { id: "ups", name: { en: "UPS", ar: "وحدات UPS" }, detail: { en: "APC, Eaton — from one PC to a server room", ar: "APC وEaton، من جهاز واحد حتى غرفة خوادم" } },
+          { id: "rack", name: { en: "Racks and cabinets", ar: "كبائن وخزائن الشبكة" }, detail: { en: "Wall and floor racks, patch panels, PDUs", ar: "كبائن حائط وأرضية ولوحات توصيل وموزعات كهرباء" } },
+        ],
+      },
+      {
+        id: "network",
+        name: { en: "Network & Wi-Fi", ar: "الشبكات والواي فاي" },
+        items: [
+          { id: "switch", name: { en: "Switches", ar: "سويتشات" }, detail: { en: "Cisco, Aruba, TP-Link Omada, MikroTik — managed and PoE", ar: "Cisco وAruba وTP-Link Omada وMikroTik، مُدارة وPoE" }, conditions: ["new", "used"] },
+          { id: "ap", name: { en: "Wi-Fi access points", ar: "نقاط وصول واي فاي" }, detail: { en: "Ubiquiti UniFi, Aruba Instant On, TP-Link Omada", ar: "Ubiquiti UniFi وAruba Instant On وTP-Link Omada" } },
+          { id: "router", name: { en: "Routers", ar: "راوترات" }, detail: { en: "MikroTik, Cisco — load balancing and VPN", ar: "MikroTik وCisco لتوزيع الأحمال وVPN" } },
+        ],
+      },
+      {
+        id: "security",
+        name: { en: "Firewalls & protection", ar: "جدران الحماية والأمان" },
+        items: [
+          { id: "fortigate", name: { en: "Fortinet FortiGate", ar: "Fortinet FortiGate" }, detail: { en: "40F, 60F, 100F and up, with FortiGuard licences", ar: "40F و60F و100F وما فوقها، مع تراخيص FortiGuard" } },
+          { id: "sophos", name: { en: "Sophos firewalls", ar: "جدران حماية Sophos" }, detail: { en: "XGS series with Xstream protection licences", ar: "سلسلة XGS مع تراخيص Xstream Protection" } },
+          { id: "endpoint", name: { en: "Endpoint protection licences", ar: "تراخيص حماية الأجهزة" }, detail: { en: "Sophos, ESET, Kaspersky, Microsoft Defender — per device", ar: "Sophos وESET وKaspersky وMicrosoft Defender، لكل جهاز" } },
+        ],
+      },
+      {
+        id: "phones",
+        name: { en: "Phones & call center", ar: "الهواتف ومراكز الاتصال" },
+        items: [
+          { id: "gs-phone", name: { en: "Grandstream IP phones", ar: "هواتف Grandstream IP" }, detail: { en: "GRP and GXP series, desk and reception", ar: "سلسلتا GRP وGXP للمكاتب والاستقبال" } },
+          { id: "gs-ucm", name: { en: "Grandstream UCM phone system", ar: "سنترال Grandstream UCM" }, detail: { en: "UCM6300 series IP PBX", ar: "سنترال IP من سلسلة UCM6300" } },
+          { id: "yealink", name: { en: "Yealink IP phones", ar: "هواتف Yealink IP" }, detail: { en: "T3 and T5 series", ar: "سلسلتا T3 وT5" } },
+          { id: "headset", name: { en: "Call-center headsets", ar: "سماعات مراكز الاتصال" }, detail: { en: "Jabra, Poly — USB and wireless", ar: "Jabra وPoly، سلكية USB ولاسلكية" } },
+        ],
+      },
+      {
+        id: "cameras",
+        name: { en: "Cameras & access control", ar: "الكاميرات والتحكم في الدخول" },
+        items: [
+          { id: "ipcam", name: { en: "IP cameras and recorders", ar: "كاميرات IP وأجهزة التسجيل" }, detail: { en: "Hikvision, Dahua — cameras, NVRs and hard disks", ar: "Hikvision وDahua: كاميرات وأجهزة تسجيل شبكية وأقراص" } },
+          { id: "zkteco", name: { en: "Fingerprint & face attendance", ar: "أجهزة حضور بالبصمة والوجه" }, detail: { en: "ZKTeco terminals — link straight to Fox HR", ar: "أجهزة ZKTeco، ترتبط مباشرةً بنظام فوكس للموارد البشرية" } },
+          { id: "door", name: { en: "Door access control", ar: "التحكم في الأبواب" }, detail: { en: "Card, fingerprint and face readers with magnetic locks", ar: "قارئات بالكارت والبصمة والوجه مع أقفال مغناطيسية" } },
+        ],
+      },
+      {
+        id: "office",
+        name: { en: "Printers & software", ar: "الطابعات والبرامج" },
+        items: [
+          { id: "printer", name: { en: "Printers and scanners", ar: "طابعات وماسحات ضوئية" }, detail: { en: "HP, Canon, Epson — office and multifunction", ar: "HP وCanon وEpson، مكتبية ومتعددة الوظائف" }, conditions: ["new", "used"] },
+          { id: "m365", name: { en: "Microsoft 365 and Windows", ar: "Microsoft 365 وWindows" }, detail: { en: "Genuine licences, set up with your company email", ar: "تراخيص أصلية مع تهيئة بريد الشركة" } },
+        ],
+      },
+    ],
   },
   {
     id: "internet",
@@ -445,25 +621,25 @@ export const SERVICES: Service[] = [
 /** /pricing, shared with pages/Pricing.tsx so the two agree. */
 export const PRICING_SEO: Record<"en" | "ar", SEOConfig> = {
   en: {
-    title: "Prices: CRM, Websites, Call Center, CCTV | Fox Systems",
+    title: "Prices: CRM, Websites, IT Support, Hardware | Fox Systems",
     description:
-      "Published prices for CRM systems, websites and online stores, cloud call centers, phone systems and security cameras. See totals in EGP, SAR, KWD or USD.",
+      "Published prices for CRM systems, websites, call centers, CCTV and monthly IT support, plus laptops, PCs, FortiGate, Sophos and Grandstream quoted on request. EGP, SAR, KWD or USD.",
     keywords:
-      "CRM price Egypt, website design price Egypt, call center price Egypt, CCTV installation price Egypt, IT services prices Saudi Arabia, IT services prices Kuwait, اسعار تصميم المواقع, اسعار كاميرات المراقبة, سعر نظام CRM",
+      "CRM price Egypt, HR system price Egypt, website design price Egypt, call center price Egypt, CCTV installation price Egypt, IT support contract price Egypt, managed IT services Cairo, IT support per hour Egypt, used laptops for companies Egypt, FortiGate price Egypt, Sophos firewall Egypt, Grandstream IP phone Egypt, IT services prices Saudi Arabia, IT services prices Kuwait, اسعار تصميم المواقع, سعر نظام CRM, سعر عقد دعم فني, لابتوب مستعمل للشركات",
     ogTitle: "Fox Systems prices, in plain numbers",
-    ogDescription: "CRM, websites, call centers and CCTV: pick a service and your currency, and see the total.",
+    ogDescription: "CRM, websites, call centers, CCTV and IT support: pick a service and your currency and see the total. Hardware quoted on request.",
     ogImage: `${ORIGIN}/services-og.jpg`,
     canonicalUrl: `${ORIGIN}/pricing`,
     language: "en",
   },
   ar: {
-    title: "أسعار CRM والمواقع ومراكز الاتصال والكاميرات | فوكس سيستمز",
+    title: "أسعار CRM والمواقع والدعم الفني والأجهزة | فوكس سيستمز",
     description:
-      "أسعار منشورة لأنظمة CRM والمواقع والمتاجر الإلكترونية ومراكز الاتصال السحابية والسنترالات وكاميرات المراقبة، بالجنيه أو الريال أو الدينار أو الدولار.",
+      "أسعار منشورة لأنظمة CRM والمواقع ومراكز الاتصال والكاميرات وعقود الدعم الفني الشهرية، مع اللابتوب والكمبيوتر وFortiGate وSophos وGrandstream بعرض سعر، بالجنيه أو الريال أو الدينار أو الدولار.",
     keywords:
-      "سعر نظام CRM, اسعار تصميم المواقع, سعر مركز اتصال, اسعار كاميرات المراقبة, اسعار خدمات تقنية المعلومات, فوكس سيستمز",
+      "سعر نظام CRM, سعر نظام موارد بشرية, اسعار تصميم المواقع, سعر مركز اتصال, اسعار كاميرات المراقبة, سعر عقد دعم فني للشركات, دعم فني بالساعة, لابتوب مستعمل للشركات, سعر فورتي جيت, جدار حماية سوفوس, هواتف جراندستريم, اسعار خدمات تقنية المعلومات, فوكس سيستمز",
     ogTitle: "أسعار فوكس سيستمز بأرقام واضحة",
-    ogDescription: "أنظمة CRM والمواقع ومراكز الاتصال والكاميرات: اختر الخدمة والعملة لترى الإجمالي.",
+    ogDescription: "أنظمة CRM والمواقع ومراكز الاتصال والكاميرات والدعم الفني: اختر الخدمة والعملة لترى الإجمالي، والأجهزة بعرض سعر.",
     ogImage: `${ORIGIN}/services-og.jpg`,
     canonicalUrl: `${ORIGIN}/ar/pricing`,
     language: "ar",

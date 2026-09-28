@@ -244,6 +244,28 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
       image: "https://foxsystemstech.com/showcase/medical-crm/dashboard.webp",
     },
   },
+  "hr-payroll-software-egypt-gulf": {
+    en: {
+      id: "hr-payroll-software-egypt-gulf",
+      title: "HR and Payroll Software for Egypt, Saudi Arabia and Kuwait",
+      excerpt: "Payroll across the region is a legal calculation, not a spreadsheet: social insurance, tax bands and leave all change by country and by date.",
+      category: "Software",
+      author: "Fox Systems Team",
+      date: "2026-09-28",
+      readTime: "7 min read",
+      image: "https://foxsystemstech.com/showcase/hr-crm/payroll.webp",
+    },
+    ar: {
+      id: "hr-payroll-software-egypt-gulf",
+      title: "برنامج الموارد البشرية والرواتب لمصر والسعودية والكويت",
+      excerpt: "الرواتب في المنطقة حساب قانوني لا جدول إكسل: التأمينات الاجتماعية وشرائح الضريبة والإجازات تختلف باختلاف الدولة والتاريخ.",
+      category: "البرمجيات",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-28",
+      readTime: "7 دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/hr-crm/payroll.webp",
+    },
+  },
 
   "ai-infrastructure-2026": {
     en: {

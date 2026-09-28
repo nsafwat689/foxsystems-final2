@@ -10,10 +10,11 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Bug, Building2, Check, CheckCircle2, MessageCircle, Stethoscope, Users, X } from "lucide-react";
+import { ArrowRight, Bug, Building2, Check, CheckCircle2, MessageCircle, PlayCircle, Stethoscope, Users, X } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import SolutionShowcase from "@/components/SolutionShowcase";
+import SolutionVideo, { videoSchema } from "@/components/SolutionVideo";
 import LiveDemoForm, { isDemoProduct } from "@/components/LiveDemoForm";
 import { scrollToId } from "@/lib/scrollToId";
 import { SOLUTIONS, type SolutionId } from "@/data/solutions";
@@ -50,7 +51,12 @@ export default function SolutionDetail({ solutionId, language }: Props) {
     { name: isArabic ? "المنتجات" : "Solutions", url: `${origin}${prefix}/solutions` },
     { name: t.name, url: seoConfig.canonicalUrl },
   ]);
-  const productSchema = generateServiceSchema(t.name, seoConfig.description, seoConfig.canonicalUrl);
+  const serviceSchema = generateServiceSchema(t.name, seoConfig.description, seoConfig.canonicalUrl);
+  // With a video tour, the page carries a VideoObject next to the Service.
+  const productSchema = solution.video
+    ? JSON.stringify([JSON.parse(serviceSchema), videoSchema(solution.video, language,
+        isArabic ? `جولة بالفيديو في ${t.name}` : `${t.name} — video tour`, seoConfig.description)])
+    : serviceSchema;
   const faqSchema = generateFAQSchema(t.faqs);
 
   return (
@@ -105,6 +111,14 @@ export default function SolutionDetail({ solutionId, language }: Props) {
                   {!solution.liveDemo && <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />}
                 </Link>
               </Button>
+              {solution.video && (
+                <Button asChild size="lg" variant="outline" className="border-white/25 text-white hover:bg-white/10 hover:text-white">
+                  <a href="#video-tour" onClick={e => { window.trackCTA?.("video-tour-hero"); if (scrollToId("video-tour")) e.preventDefault(); }}>
+                    <PlayCircle className={`w-4 h-4 ${isArabic ? "ml-2" : "mr-2"}`} />
+                    {isArabic ? "شاهد الجولة بالفيديو" : "Watch the video tour"}
+                  </a>
+                </Button>
+              )}
               <Button asChild size="lg" variant="outline" className="border-white/25 text-white hover:bg-white/10 hover:text-white">
                 <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className={`w-4 h-4 ${isArabic ? "ml-2" : "mr-2"}`} />
@@ -145,6 +159,9 @@ export default function SolutionDetail({ solutionId, language }: Props) {
       </section>
 
       <div className="container py-16">
+        {/* The narrated tour first: the quickest way to see the whole product. */}
+        {solution.video && <SolutionVideo video={solution.video} language={language} productName={t.name} />}
+
         {/* Generic CRM vs this one */}
         <section className="mb-16 pb-14 border-b border-border">
           <div className="flex flex-col gap-3 mb-7">
@@ -281,7 +298,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
           </div>
         </section>
 
-        {/* Other solutions — internal linking between the three verticals */}
+        {/* Other solutions — internal linking between the verticals */}
         <section className="mt-16 pt-14 border-t border-border">
           <h2 className="text-xl font-extrabold mb-5" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
             {isArabic ? "أنظمة أخرى نبنيها" : "The other systems we build"}

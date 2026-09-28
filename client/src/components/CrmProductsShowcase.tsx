@@ -27,7 +27,7 @@ const T = {
   en: {
     badge: "Built by Fox Systems",
     title: "CRM Systems We Build and Run",
-    sub: "Three industry CRMs, each built for one sector rather than configured into it. All three run in production today, in Arabic and English. Open one to see its screens, features and answers to the usual questions.",
+    sub: "Four industry systems, each built for one sector rather than configured into it, in Arabic and English. Open one to watch its video tour, see its screens and features, and try it live for 3 days.",
     open: "See the system",
     demo: "Try it live — 3 days",
     note: "Screens show demonstration data. Every live demo is a real login to the running system with sample data.",
@@ -35,7 +35,7 @@ const T = {
   ar: {
     badge: "من تنفيذ فوكس سيستمز",
     title: "أنظمة CRM من تنفيذنا وتشغيلنا",
-    sub: "ثلاثة أنظمة CRM، كلٌّ منها مبنيّ لقطاع واحد لا مكيَّف عليه. وكلها تعمل اليوم في بيئة الإنتاج، بالعربية والإنجليزية. افتح أيًّا منها لتطّلع على شاشاته ومزاياه وإجاباته عن الأسئلة المعتادة.",
+    sub: "أربعة أنظمة متخصصة، كلٌّ منها مبنيّ لقطاع واحد لا مكيَّف عليه، بالعربية والإنجليزية. افتح أيًّا منها لتشاهد جولته بالفيديو وتطّلع على شاشاته ومزاياه، وجرّبه مباشرةً لمدة 3 أيام.",
     open: "اطّلع على النظام",
     demo: "جرّبه مباشرة — 3 أيام",
     note: "الشاشات تعرض بيانات توضيحية. كل نسخة تجريبية هي دخول فعلي إلى النظام العامل ببيانات نموذجية.",

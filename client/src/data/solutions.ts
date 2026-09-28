@@ -82,6 +82,8 @@ export interface Solution {
   liveDemo?: boolean;
   /** lucide-react icon name, resolved by the page. */
   icon: "Stethoscope" | "Building2" | "Bug" | "Users";
+  /** Narrated product tour: /videos/<base>-<en|ar>.mp4 (+ .jpg poster). */
+  video?: { base: string; minutes: number };
   en: SolutionCopy;
   ar: SolutionCopy;
   seo: { en: SEOConfig; ar: SEOConfig };
@@ -94,6 +96,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "medical-crm": {
     id: "medical-crm",
     showcaseBase: "medical-crm",
+    video: { base: "fox-medical-tour", minutes: 4 },
     liveDemo: true,
     icon: "Stethoscope",
     en: {
@@ -163,6 +166,14 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           title: "Compliance & audit",
           desc: "Role-based access across the team, with an audit log behind the records that matter for regulatory review.",
         },
+        {
+          title: "Approvals, expenses & live tracking",
+          desc: "Tour plans, flagged visits and expenses with receipts go to one approval inbox, and managers see where the field force is on a live map.",
+        },
+        {
+          title: "API & webhooks",
+          desc: "Connect your ERP with API keys and signed webhooks for orders, visits and expenses, so nothing is typed twice.",
+        },
       ],
       screensTitle: "Inside the system",
       screensSub: "Real screens from the running product.",
@@ -222,7 +233,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         },
         {
           q: "What does it cost?",
-          a: "It depends on team size, how many modules you need and how much historical data is migrated, so we quote after we have seen how you work rather than publishing a number that would be wrong for most people. Ask and we will give you a real figure.",
+          a: "It follows our published CRM plans: one monthly price for the whole team by number of users, not per user, with implementation, data migration and training included. The pricing page shows every plan in EGP, SAR, KWD or USD. Custom changes are quoted separately.",
         },
         {
           q: "Can we bring our existing data in?",
@@ -308,6 +319,14 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           title: "الالتزام والتدقيق",
           desc: "صلاحيات حسب الدور على مستوى الفريق، وسجل تدقيق وراء البيانات المهمة للمراجعة التنظيمية.",
         },
+        {
+          title: "الاعتمادات والمصروفات والتتبع المباشر",
+          desc: "تصل خطط الجولات والزيارات المُعلَّمة والمصروفات بإيصالاتها إلى صندوق اعتماد واحد، ويرى المديرون مواقع الفريق الميداني على خريطة مباشرة.",
+        },
+        {
+          title: "الربط والـ API",
+          desc: "اربط نظام ERP بمفاتيح API وWebhooks موقّعة للطلبات والزيارات والمصروفات، فلا يُكتب شيء مرتين.",
+        },
       ],
       screensTitle: "من داخل النظام",
       screensSub: "شاشات حقيقية من المنتج العامل.",
@@ -364,7 +383,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         },
         {
           q: "كم تبلغ التكلفة؟",
-          a: "يعتمد على حجم الفريق وعدد الوحدات المطلوبة وحجم البيانات المنقولة، لذا نُسعّر بعد الاطلاع على طريقة عملك بدلًا من نشر رقم يكون خاطئًا لمعظم الحالات. اسألنا ونعطيك رقمًا واقعيًا.",
+          a: "يتبع باقات أنظمة CRM المعلنة لدينا: سعر شهري واحد للفريق كله حسب عدد المستخدمين، لا لكل مستخدم، ويشمل التركيب ونقل البيانات والتدريب. تعرض صفحة الأسعار كل الباقات بالجنيه أو الريال أو الدينار أو الدولار، والتعديلات الخاصة تُسعَّر منفصلة.",
         },
         {
           q: "هل يمكننا إدخال بياناتنا الحالية؟",
@@ -416,6 +435,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "real-estate-crm": {
     id: "real-estate-crm",
     showcaseBase: "realestate-crm",
+    video: { base: "fox-realestate-tour", minutes: 4 },
     liveDemo: true,
     icon: "Building2",
     en: {
@@ -497,6 +517,14 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         {
           title: "Roles, branches & security",
           desc: "Role-based permissions across branches, Google sign-in, two-factor authentication, and an audit log behind every record.",
+        },
+        {
+          title: "AI writing assistant",
+          desc: "Writes follow-up emails and WhatsApp messages, analyses a lead and drafts property pitches, in Arabic or English.",
+        },
+        {
+          title: "API & webhooks",
+          desc: "Leads from your website or forms arrive through the API, and signed webhooks tell your other systems when a deal moves.",
         },
       ],
       screensTitle: "Inside the system",
@@ -585,7 +613,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         },
         {
           q: "What does it cost?",
-          a: "It depends on team size, branches and how much historical data is migrated, so we quote after we have seen how you sell rather than publishing a number that would be wrong for most people. Ask and we will give you a real figure.",
+          a: "It follows our published CRM plans: one monthly price for the whole team by number of users, not per user, with implementation, data migration and training included. The pricing page shows every plan in EGP, SAR, KWD or USD. Custom changes are quoted separately.",
         },
         {
           q: "Can we bring our existing leads and inventory in?",
@@ -688,6 +716,14 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           title: "الأدوار والفروع والأمان",
           desc: "صلاحيات حسب الدور عبر الفروع، وتسجيل دخول بجوجل، ومصادقة ثنائية، وسجل تدقيق وراء كل سجل.",
         },
+        {
+          title: "مساعد كتابة بالذكاء الاصطناعي",
+          desc: "يكتب رسائل المتابعة عبر البريد وواتساب، ويحلّل العميل، ويصوغ عروض العقارات، بالعربية أو الإنجليزية.",
+        },
+        {
+          title: "الربط والـ API",
+          desc: "تصل العملاء من موقعك ونماذجك عبر واجهة API، وتُبلغ Webhooks موقّعة أنظمتك الأخرى عند تقدّم أي صفقة.",
+        },
       ],
       screensTitle: "من داخل النظام",
       screensSub: "شاشات حقيقية من المنتج العامل.",
@@ -771,7 +807,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         },
         {
           q: "كم تبلغ التكلفة؟",
-          a: "يعتمد على حجم الفريق وعدد الفروع وحجم البيانات المنقولة، لذا نُسعّر بعد الاطلاع على طريقة بيعك بدلًا من نشر رقم يكون خاطئًا لمعظم الحالات. اسألنا ونعطيك رقمًا واقعيًا.",
+          a: "يتبع باقات أنظمة CRM المعلنة لدينا: سعر شهري واحد للفريق كله حسب عدد المستخدمين، لا لكل مستخدم، ويشمل التركيب ونقل البيانات والتدريب. تعرض صفحة الأسعار كل الباقات بالجنيه أو الريال أو الدينار أو الدولار، والتعديلات الخاصة تُسعَّر منفصلة.",
         },
         {
           q: "نقدر ندخّل عملاءنا ومخزوننا الحالي؟",
@@ -827,6 +863,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "pest-control-crm": {
     id: "pest-control-crm",
     showcaseBase: "pestcontrol-crm",
+    video: { base: "fox-pestcontrol-tour", minutes: 5 },
     liveDemo: true,
     icon: "Bug",
     en: {
@@ -904,6 +941,14 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         {
           title: "Roles & permissions",
           desc: "A permission matrix across roles and individual users, enforced in the database rather than by hiding menu items.",
+        },
+        {
+          title: "Chemicals, stock & shifts",
+          desc: "Chemical stock with active ingredient and hazard class, low-stock alerts and usage per visit, plus weekly shifts with an auto-roster by area.",
+        },
+        {
+          title: "Exports, audit pack & API",
+          desc: "Reports to Excel, CSV or a printable audit binder for inspections, and an API with signed webhooks for your ERP or accounting.",
         },
       ],
       screensTitle: "Inside the system",
@@ -989,7 +1034,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         },
         {
           q: "What does it cost?",
-          a: "It depends on how many technicians and sites you run and how much history is migrated, so we quote after we have seen your rounds rather than publishing a number that would be wrong for most people. Ask and we will give you a real figure.",
+          a: "It follows our published CRM plans: one monthly price for the whole team by number of users, not per user, with implementation, data migration and training included. The pricing page shows every plan in EGP, SAR, KWD or USD. Custom changes are quoted separately.",
         },
         {
           q: "Can we bring our existing clients and devices in?",
@@ -1088,6 +1133,14 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           title: "الأدوار والصلاحيات",
           desc: "مصفوفة صلاحيات على مستوى الأدوار والمستخدمين، مفروضة في قاعدة البيانات لا بإخفاء عناصر من القائمة.",
         },
+        {
+          title: "المبيدات والمخزون والورديات",
+          desc: "مخزون المبيدات بالمادة الفعالة وفئة الخطورة، مع تنبيه انخفاض المخزون والاستهلاك لكل زيارة، وورديات أسبوعية بتوزيع تلقائي حسب المنطقة.",
+        },
+        {
+          title: "التصدير وملف التدقيق والـ API",
+          desc: "التقارير إلى Excel وCSV أو ملف تدقيق مطبوع لجهات التفتيش، مع واجهة API وWebhooks موقّعة لنظام ERP أو الحسابات.",
+        },
       ],
       screensTitle: "من داخل النظام",
       screensSub: "شاشات حقيقية من المنتج العامل.",
@@ -1171,7 +1224,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         },
         {
           q: "كم تبلغ التكلفة؟",
-          a: "يعتمد على عدد الفنيين والمواقع وحجم البيانات المنقولة، لذا نُسعّر بعد الاطلاع على خطوط سيرك بدلًا من نشر رقم يكون خاطئًا لمعظم الحالات. اسألنا ونعطيك رقمًا واقعيًا.",
+          a: "يتبع باقات أنظمة CRM المعلنة لدينا: سعر شهري واحد للفريق كله حسب عدد المستخدمين، لا لكل مستخدم، ويشمل التركيب ونقل البيانات والتدريب. تعرض صفحة الأسعار كل الباقات بالجنيه أو الريال أو الدينار أو الدولار، والتعديلات الخاصة تُسعَّر منفصلة.",
         },
         {
           q: "نقدر ندخّل عملاءنا وأجهزتنا الحالية؟",
@@ -1227,6 +1280,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "hr-crm": {
     id: "hr-crm",
     showcaseBase: "hr-crm",
+    video: { base: "fox-hr-tour", minutes: 4 },
     liveDemo: true,
     icon: "Users",
     en: {

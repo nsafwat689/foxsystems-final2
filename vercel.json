@@ -29,6 +29,15 @@
       ]
     },
     {
+      "source": "/videos/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
@@ -98,6 +107,10 @@
     {
       "source": "/ar/articles/firewall-security",
       "destination": "/ar/articles/firewall-security.html"
+    },
+    {
+      "source": "/ar/articles/hr-payroll-software-egypt-gulf",
+      "destination": "/ar/articles/hr-payroll-software-egypt-gulf.html"
     },
     {
       "source": "/ar/articles/it-support-contracts",
@@ -322,6 +335,10 @@
     {
       "source": "/articles/firewall-security",
       "destination": "/articles/firewall-security.html"
+    },
+    {
+      "source": "/articles/hr-payroll-software-egypt-gulf",
+      "destination": "/articles/hr-payroll-software-egypt-gulf.html"
     },
     {
       "source": "/articles/it-support-contracts",

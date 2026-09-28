@@ -38,7 +38,7 @@ const T = {
     crmBadge: "Our core business",
     crmTitle: "CRM Systems",
     crmDesc:
-      "Sales pipeline, customer management and automated follow-up, in Arabic and English. We implement CRM for teams of five to several hundred — and we build and run three industry systems of our own.",
+      "Sales pipeline, customer management and automated follow-up, in Arabic and English. We implement CRM for teams of five to several hundred — and we build and run four industry systems of our own, including HR and payroll.",
     crmCta: "See CRM systems",
     industryLabel: "Industry systems we build and run",
     othersLabel: "Everything else we do",
@@ -52,7 +52,7 @@ const T = {
     crmBadge: "نشاطنا الأساسي",
     crmTitle: "أنظمة CRM",
     crmDesc:
-      "قمع مبيعات وإدارة عملاء ومتابعة تلقائية، بالعربية والإنجليزية. نطبّق أنظمة CRM لفرق من خمسة أفراد إلى عدة مئات، ونبني ونشغّل ثلاثة أنظمة متخصصة خاصة بنا.",
+      "قمع مبيعات وإدارة عملاء ومتابعة تلقائية، بالعربية والإنجليزية. نطبّق أنظمة CRM لفرق من خمسة أفراد إلى عدة مئات، ونبني ونشغّل أربعة أنظمة متخصصة خاصة بنا، منها نظام الموارد البشرية والرواتب.",
     crmCta: "استعرض أنظمة CRM",
     industryLabel: "أنظمة متخصصة من تنفيذنا وتشغيلنا",
     othersLabel: "بقية ما نقدّمه",

@@ -82,9 +82,10 @@ const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
         { title: "Design & Sizing", desc: "Custom hardware design and sizing based on your specific needs." },
         { title: "Rack & Stack Installation", desc: "Professional installation of servers, networking equipment, and storage." },
         { title: "Cabling", desc: "Structured cabling solutions for optimal network performance." },
-        { title: "Surveillance Installation", desc: "Complete CCTV and surveillance system installation and configuration." }
+        { title: "Surveillance Installation", desc: "Complete CCTV and surveillance system installation and configuration." },
+        { title: "New & Used Devices", desc: "New laptops, PCs, servers and monitors with the maker's warranty, or tested grade-A used devices with ours — in the quantity you need." }
       ],
-      partners: ["Dell", "HP", "Lenovo", "Cisco", "Grandstream", "Aruba", "Hikvision"]
+      partners: ["Dell", "HP", "Lenovo", "Cisco", "Fortinet", "Sophos", "Grandstream", "Aruba", "Hikvision", "ZKTeco"]
     },
     ar: serviceDetailsAr.hardware
   },
@@ -238,7 +239,7 @@ function ServiceFAQ({ serviceId, isArabic, langPrefix }: { serviceId: string; is
 
 /** Which tab of /pricing answers "how much?" for each service page. */
 const PRICING_TAB: Record<string, string> = {
-  internet: "call-center", crm: "crm", hardware: "cctv", cybersecurity: "cybersecurity",
+  internet: "call-center", crm: "crm", hardware: "hardware", cybersecurity: "cybersecurity",
   infrastructure: "infrastructure", "web-development": "web-development",
 };
 

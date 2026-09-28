@@ -20,7 +20,7 @@ import { WHATSAPP_NUMBER } from "@/lib/leads";
 import { planForSeats } from "@/data/crmPlans";
 import {
   CURRENCIES, CURRENCY_NAME, FX, PRICING_SEO, SERVICES, amount, formatMoney, guessCurrency,
-  type AddOn, type Currency, type PlanItem, type Service, type Unit,
+  type AddOn, type CatalogueItem, type Currency, type PlanItem, type Service, type Unit,
 } from "@/data/servicePricing";
 
 const ORIGIN = "https://foxsystemstech.com";
@@ -40,6 +40,17 @@ const T = {
     month: "/month",
     perAgent: "per agent / month",
     perCamera: "per camera",
+    perUser: "per user / month",
+    perHour: "per hour",
+    surveyBtn: "Book a site visit",
+    catSub: "Hardware prices change with the market every day, so we don't print them. Choose the devices and quantities, and we send today's price on WhatsApp.",
+    condNew: "New",
+    condUsed: "Used (grade A)",
+    request: "Your request",
+    reqEmpty: "Add devices to build your request.",
+    reqSend: "Ask for today's prices on WhatsApp",
+    reqIntro: "Hello Fox Systems, please send me your prices for:",
+    qty: "Quantity",
     choose: "Choose",
     chosen: "Selected",
     popular: "Most popular",
@@ -61,12 +72,12 @@ const T = {
     quoteSub: "This depends on your site and equipment, so we look first and then give you a written quote — no charge for the visit.",
     quoteCovers: "The quote covers",
     askQuote: "Request a free survey",
-    demo: "Try any of our three CRMs free for 3 days before you decide.",
+    demo: "Try any of our four CRMs — real estate, medical, pest control and HR — for 3 days before you decide.",
     demoLink: "Open a live demo",
     fine: [
       "Prices exclude VAT. A written quote is valid for the period stated on it.",
       "Saudi riyal and Kuwaiti dinar prices come from the dollar list at fixed rates.",
-      "For on-site work (cameras, phone systems) the prices are for Egypt; installation in Saudi Arabia and Kuwait is quoted after a survey.",
+      "For on-site work (cameras, phone systems, IT support visits) the prices are for Egypt; work in Saudi Arabia and Kuwait is quoted after a survey.",
     ],
     rates: "Rates as of",
     rights: "All rights reserved.",
@@ -88,6 +99,17 @@ const T = {
     month: "/شهريًا",
     perAgent: "لكل موظف شهريًا",
     perCamera: "لكل كاميرا",
+    perUser: "لكل مستخدم شهريًا",
+    perHour: "للساعة",
+    surveyBtn: "احجز زيارة للموقع",
+    catSub: "أسعار الأجهزة تتغير يوميًا مع السوق، لذلك لا ننشرها. اختر الأجهزة والكميات، ونرسل لك سعر اليوم عبر واتساب.",
+    condNew: "جديد",
+    condUsed: "مستعمل (فئة A)",
+    request: "طلبك",
+    reqEmpty: "أضف الأجهزة لتكوين طلبك.",
+    reqSend: "اطلب أسعار اليوم عبر واتساب",
+    reqIntro: "مرحبًا فوكس سيستمز، أرجو إرسال أسعاركم لما يلي:",
+    qty: "الكمية",
     choose: "اختر",
     chosen: "تم الاختيار",
     popular: "الأكثر طلبًا",
@@ -109,12 +131,12 @@ const T = {
     quoteSub: "يعتمد السعر على موقعك ومعداتك، لذا نعاين أولًا ثم نرسل عرض سعر مكتوبًا، والزيارة مجانية.",
     quoteCovers: "يشمل العرض",
     askQuote: "اطلب معاينة مجانية",
-    demo: "جرّب أيًّا من أنظمة CRM الثلاثة مجانًا لمدة 3 أيام قبل أن تقرر.",
+    demo: "جرّب أيًّا من أنظمتنا الأربعة، العقارات والمبيعات الطبية ومكافحة الآفات والموارد البشرية، لمدة 3 أيام قبل أن تقرر.",
     demoLink: "افتح نسخة تجريبية",
     fine: [
       "الأسعار لا تشمل ضريبة القيمة المضافة، وعرض السعر المكتوب صالح للمدة المذكورة فيه.",
       "أسعار الريال السعودي والدينار الكويتي محسوبة من قائمة الدولار بأسعار صرف ثابتة.",
-      "أسعار الأعمال الميدانية (الكاميرات والسنترالات) خاصة بمصر، ويُعدّ عرض سعر للتركيب في السعودية والكويت بعد المعاينة.",
+      "أسعار الأعمال الميدانية (الكاميرات والسنترالات وزيارات الدعم الفني) خاصة بمصر، ويُعدّ عرض سعر للأعمال في السعودية والكويت بعد المعاينة.",
     ],
     rates: "أسعار الصرف بتاريخ",
     rights: "جميع الحقوق محفوظة.",
@@ -126,6 +148,9 @@ const T = {
 };
 
 interface Props { language: "en" | "ar"; }
+
+/** Units billed every month (the rest are paid once, or as used). */
+const MONTHLY: Unit[] = ["month", "per-agent-month", "per-user-month"];
 
 export default function Pricing({ language }: Props) {
   const isArabic = language === "ar";
@@ -263,7 +288,7 @@ function ServicePanel({ service, currency, language, prefix }: {
 }) {
   const t = T[language];
   const isArabic = language === "ar";
-  const recurring = service.plans.some(p => p.unit !== "once") || service.addons.some(a => a.unit !== "once" && a.unit !== "per-camera");
+  const recurring = service.plans.some(p => MONTHLY.includes(p.unit)) || service.addons.some(a => MONTHLY.includes(a.unit));
   const [annual, setAnnual] = useState(false);
   const [planId, setPlanId] = useState<string | null>(service.plans.find(p => p.highlight)?.id ?? service.plans[0]?.id ?? null);
   const [picked, setPicked] = useState<Record<string, number>>({});
@@ -286,22 +311,23 @@ function ServicePanel({ service, currency, language, prefix }: {
     return currency === "EGP" ? Math.round(v / 10) * 10 : currency === "KWD" ? Math.round(v * 2) / 2 : Math.round(v);
   };
   const unitLabel = (u: Unit) =>
-    u === "once" ? t.once : u === "month" ? t.month : u === "per-agent-month" ? t.perAgent : t.perCamera;
-  const shown = (n: number, u: Unit) => (u === "month" || u === "per-agent-month" ? perMonth(n) : n);
+    u === "once" ? t.once : u === "month" ? t.month : u === "per-agent-month" ? t.perAgent
+      : u === "per-user-month" ? t.perUser : u === "per-hour" ? t.perHour : t.perCamera;
+  const shown = (n: number, u: Unit) => (MONTHLY.includes(u) ? perMonth(n) : n);
 
   const totals = useMemo(() => {
     let once = 0, month = 0;
     const lines: string[] = [];
     if (plan) {
       const v = amount(plan.price, currency);
-      if (plan.unit === "once") once += v; else month += v;
+      if (MONTHLY.includes(plan.unit)) month += v; else once += v;
       lines.push(`• ${service.name[language]}: ${plan.name[language]}${isCrm ? ` (${seats})` : ""}`);
     }
     for (const a of service.addons) {
       const q = picked[a.id] ?? 0;
       if (!q) continue;
       const v = amount(a.price, currency) * q;
-      if (a.unit === "month" || a.unit === "per-agent-month") month += v; else once += v;
+      if (MONTHLY.includes(a.unit)) month += v; else once += v;
       lines.push(`• ${a.name[language]}${a.qty ? ` × ${q}` : ""}`);
     }
     return { once, month, lines };
@@ -317,6 +343,8 @@ function ServicePanel({ service, currency, language, prefix }: {
       totals.month ? `${t.perMonth} ${money(monthShown)}${annual ? ` — ${t.annual}` : ""}` : ""}`,
   ].join("\n");
   const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
+
+  if (service.catalogue) return <CataloguePanel service={service} language={language} prefix={prefix} />;
 
   if (service.quoteOnly) {
     const q = `${t.waIntro}\n• ${service.name[language]}`;
@@ -421,6 +449,22 @@ function ServicePanel({ service, currency, language, prefix }: {
             </ul>
           </div>
         )}
+
+        {service.surveyNote && (
+          <div className="mt-8 rounded-2xl border border-dashed border-primary/40 bg-primary/5 p-6">
+            <h3 className="font-bold mb-3 flex items-center gap-2"><Info className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />{service.surveyNote.title[language]}</h3>
+            <ul className="grid sm:grid-cols-2 gap-2.5">
+              {service.surveyNote.what.map(w => (
+                <li key={w.en} className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />{w[language]}</li>
+              ))}
+            </ul>
+            <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`${t.waIntro}\n• ${service.surveyNote.title[language]}`)}`}
+              target="_blank" rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white font-bold">
+              <MessageCircle className="w-4 h-4" aria-hidden="true" />{t.surveyBtn}
+            </a>
+          </div>
+        )}
       </div>
 
       {/* The estimate: sticky beside the plans on a wide screen, after them on a phone. */}
@@ -523,6 +567,111 @@ function AddOnRow({ addon, language, value, price, unit, onChange }: {
           <input type="checkbox" aria-label={addon.name[language]} checked={value > 0} onChange={e => onChange(e.target.checked ? 1 : 0)} className="w-5 h-5 accent-[var(--primary)]" />
         </label>
       )}
+    </div>
+  );
+}
+
+/** Hardware: no prices — the visitor builds a list and asks for today's quote. */
+function CataloguePanel({ service, language, prefix }: { service: Service; language: "en" | "ar"; prefix: string }) {
+  const t = T[language];
+  const isArabic = language === "ar";
+  const [qty, setQty] = useState<Record<string, number>>({});
+  const [cond, setCond] = useState<Record<string, "new" | "used">>({});
+  const items = service.catalogue!.flatMap(g => g.items);
+  const lines = items.filter(i => (qty[i.id] ?? 0) > 0).map(i => {
+    const c = (i.conditions?.length ?? 0) > 1 ? ` — ${(cond[i.id] ?? "new") === "new" ? t.condNew : t.condUsed}` : "";
+    return `${i.name[language]}${c} × ${qty[i.id]}`;
+  });
+  const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent([t.reqIntro, ...lines.map(l => `• ${l}`)].join("\n"))}`;
+
+  return (
+    <div className="mt-8 grid lg:grid-cols-3 gap-6 items-start">
+      <div className="lg:col-span-2 min-w-0">
+        <h2 className="text-2xl font-extrabold mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{service.name[language]}</h2>
+        <p className="text-muted-foreground text-sm leading-relaxed mb-4">{service.tagline[language]}</p>
+        <p className="mb-6 flex gap-2 text-sm rounded-xl bg-primary/10 text-foreground p-3">
+          <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />{t.catSub}
+        </p>
+        <div className="space-y-8">
+          {service.catalogue!.map(g => (
+            <div key={g.id}>
+              <h3 className="font-bold mb-3">{g.name[language]}</h3>
+              <div className="space-y-3">
+                {g.items.map(i => (
+                  <CatalogueRow key={i.id} item={i} language={language} value={qty[i.id] ?? 0} cond={cond[i.id] ?? "new"}
+                    onQty={v => setQty(s => ({ ...s, [i.id]: v }))} onCond={c => setCond(s => ({ ...s, [i.id]: c }))} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        {service.always.length > 0 && (
+          <div className="mt-8">
+            <h3 className="font-bold mb-3">{t.always}</h3>
+            <ul className="grid sm:grid-cols-2 gap-2.5">
+              {service.always.map(w => (
+                <li key={w.en} className="flex gap-2 text-sm"><Check className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />{w[language]}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      <aside className="rounded-2xl bg-[var(--navy)] text-white p-6 lg:sticky lg:top-28">
+        <h3 className="text-lg font-extrabold mb-4" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{t.request}</h3>
+        {lines.length === 0 ? (
+          <p className="text-white/60 text-sm">{t.reqEmpty}</p>
+        ) : (
+          <ul className="space-y-1.5 text-sm text-white/80">{lines.map(l => <li key={l}>{l}</li>)}</ul>
+        )}
+        <a href={waHref} target="_blank" rel="noopener noreferrer"
+          className={`mt-6 w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#25D366] text-white font-bold text-center ${
+            lines.length ? "" : "opacity-50 pointer-events-none"}`}>
+          <MessageCircle className="w-4 h-4 shrink-0" aria-hidden="true" />{t.reqSend}
+        </a>
+        <Link href={`${prefix}/contact`} className="mt-3 w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-white/25 font-bold hover:bg-white/10 transition-colors">
+          {t.talk}
+        </Link>
+        <Link href={`${prefix}${service.href}`} className="mt-4 inline-flex items-center gap-2 text-sm text-white/70 hover:text-white">
+          {t.details}<ArrowRight className={`w-4 h-4 ${isArabic ? "rotate-180" : ""}`} aria-hidden="true" />
+        </Link>
+      </aside>
+    </div>
+  );
+}
+
+function CatalogueRow({ item, language, value, cond, onQty, onCond }: {
+  item: CatalogueItem; language: "en" | "ar"; value: number; cond: "new" | "used";
+  onQty: (v: number) => void; onCond: (c: "new" | "used") => void;
+}) {
+  const t = T[language];
+  const both = (item.conditions?.length ?? 0) > 1;
+  return (
+    <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-xl border border-border bg-card">
+      <div className="min-w-0 flex-1 basis-56">
+        <p className="font-semibold text-sm">{item.name[language]}</p>
+        <p className="text-xs text-muted-foreground">{item.detail[language]}</p>
+      </div>
+      {both && (
+        <div className="inline-flex p-1 rounded-full bg-muted" role="radiogroup" aria-label={item.name[language]}>
+          {(["new", "used"] as const).map(c => (
+            <button key={c} type="button" role="radio" aria-checked={cond === c} onClick={() => onCond(c)}
+              className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${
+                cond === c ? "bg-primary text-white shadow" : "text-muted-foreground hover:text-foreground"}`}>
+              {c === "new" ? t.condNew : t.condUsed}
+            </button>
+          ))}
+        </div>
+      )}
+      <div className="flex items-center gap-2">
+        <button type="button" aria-label="−" onClick={() => onQty(Math.max(0, value - 1))}
+          className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:border-primary"><Minus className="w-4 h-4" /></button>
+        <input type="number" inputMode="numeric" min={0} max={999} value={value}
+          onChange={e => onQty(Math.min(999, Math.max(0, Number(e.target.value) || 0)))}
+          className="w-14 text-center rounded-lg border border-border bg-background py-1" aria-label={`${t.qty}: ${item.name[language]}`} />
+        <button type="button" aria-label="+" onClick={() => onQty(Math.min(999, value + 1))}
+          className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:border-primary"><Plus className="w-4 h-4" /></button>
+      </div>
     </div>
   );
 }

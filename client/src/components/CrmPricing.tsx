@@ -28,7 +28,7 @@ interface Props {
 
 const T = {
   en: {
-    demoNudge: "Try before you decide: open a 3-day live demo of any of the three systems.",
+    demoNudge: "Try before you decide: open a 3-day live demo of any of the four systems.",
     demoLink: "Choose a demo",
     kicker: "Pricing",
     title: "CRM pricing, in plain numbers",
@@ -68,7 +68,7 @@ const T = {
     fineprint: "Prices in USD per month, excluding tax. A written quote is valid for a stated period.",
   },
   ar: {
-    demoNudge: "جرّب قبل أن تقرر: افتح نسخة تجريبية مباشرة لمدة 3 أيام من أي نظام من الأنظمة الثلاثة.",
+    demoNudge: "جرّب قبل أن تقرر: افتح نسخة تجريبية مباشرة لمدة 3 أيام من أي نظام من الأنظمة الأربعة.",
     demoLink: "اختر نسخة تجريبية",
     kicker: "الأسعار",
     title: "أسعار الـ CRM بأرقام واضحة",

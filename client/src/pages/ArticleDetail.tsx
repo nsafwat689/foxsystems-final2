@@ -786,6 +786,98 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
       `,
     },
   },
+  "hr-payroll-software-egypt-gulf": {
+    en: {
+      id: "hr-payroll-software-egypt-gulf",
+      title: "HR and Payroll Software for Egypt, Saudi Arabia and Kuwait",
+      subtitle: "Why regional payroll is a legal calculation, and what the software has to get right",
+      author: "Fox Systems Team",
+      date: "2026-09-28",
+      category: "Software",
+      readTime: "7 min read",
+      image: "https://foxsystemstech.com/showcase/hr-crm/payroll.webp",
+      content: `
+        <h2>Payroll is the law, applied every month</h2>
+        <p>A payslip in this region is the result of several legal rules at once: social insurance with its own ceilings, salary tax in bands, and deductions for unpaid leave. Each country has different rules, and each rule changes on a known date. A spreadsheet can hold one version of them. A company with staff in more than one country, or that keeps records for more than a year, needs the software to hold every version and know which one applied in which month.</p>
+
+        <h2>Three countries, three systems</h2>
+        <ul>
+          <li><strong>Egypt</strong>: social insurance on the insurable wage within the yearly ceiling, and salary tax calculated in the bands set by Law 7 of 2024.</li>
+          <li><strong>Saudi Arabia</strong>: GOSI contributions for Saudi nationals, where employees who joined before and after July 2024 are on different schedules, and the new schedule rises each July until 2028.</li>
+          <li><strong>Kuwait</strong>: PIFSS contributions for Kuwaiti nationals, including the supplementary part with its own ceiling.</li>
+        </ul>
+        <p>What matters is not only that these rates are right today, but that each is stored with the date it took effect. When the law changes, it should take one update, and last year's payslips must still show last year's figures.</p>
+
+        <h2>Leave is also a legal entitlement</h2>
+        <p>Egypt's Labour Law 14 of 2025 sets annual leave at 15, 21, 30 or 45 days depending on service, age and the kind of work. Saudi and Kuwaiti law have their own entitlements. Leave also has to skip weekends and public holidays, and unpaid leave has to flow into payroll without anyone re-typing it. When the balance an employee sees and the deduction payroll makes come from the same rules, arguments about leave mostly disappear.</p>
+
+        <h2>Attendance you can trust</h2>
+        <p>Attendance data is only as good as how it is collected. Fingerprint and face machines that push each punch straight to the system remove the monthly export and re-entry. For staff who work away from a machine, phone check-in should only be accepted inside the branch's geofence, with the location recorded.</p>
+
+        <h2>Documents that expire</h2>
+        <p>In Saudi Arabia and Kuwait especially, an expired iqama or work permit means fines. HR software should store passports, residence permits, work permits and contracts privately per employee and warn well before each one expires.</p>
+
+        <h2>What to look for</h2>
+        <ul>
+          <li><strong>Dated legal rules</strong> for social insurance, tax and leave, per country.</li>
+          <li><strong>A payroll run you can review</strong>: draft, check and approve, then locked.</li>
+          <li><strong>Bilingual payslips</strong> that show each deduction and the rule behind it.</li>
+          <li><strong>Fingerprint machine integration</strong> without manual imports.</li>
+          <li><strong>Strict access</strong>: only HR and payroll see salaries; employees see their own.</li>
+          <li><strong>Self-service on the phone</strong> for leave requests, payslips and check-in.</li>
+          <li><strong>An API</strong> to pass payroll totals to your ERP or accounting system.</li>
+        </ul>
+
+        <h2>The system we build</h2>
+        <p>Fox Systems builds and runs <a href="/solutions/hr-crm">Fox HR</a>, an HR and payroll system for Egypt, Saudi Arabia and Kuwait. It includes dated legal rules, leave by law, ZKTeco-compatible attendance, document expiry alerts, recruitment and performance reviews, and the FoxBot assistant. You can watch the video tour or open a live demo on the product page. Plans are listed on our <a href="/pricing">pricing page</a>.</p>
+      `,
+    },
+    ar: {
+      id: "hr-payroll-software-egypt-gulf",
+      title: "برنامج الموارد البشرية والرواتب لمصر والسعودية والكويت",
+      subtitle: "لماذا تُعد الرواتب في المنطقة حسابًا قانونيًا، وما الذي يجب أن يُتقنه البرنامج",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-28",
+      category: "البرمجيات",
+      readTime: "7 دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/hr-crm/payroll.webp",
+      content: `
+        <h2>الرواتب قانونٌ يُطبَّق كل شهر</h2>
+        <p>قسيمة الراتب في منطقتنا نتيجة عدة قواعد قانونية معًا: تأمينات اجتماعية لها حدودها، وضريبة على شرائح، واستقطاعات للإجازات بدون أجر. ولكل دولة قواعدها، وكل قاعدة تتغير في تاريخ معروف. وقد يستوعب جدول إكسل نسخة واحدة منها، أما الشركة التي لديها موظفون في أكثر من دولة، أو تحتفظ بسجلات لأكثر من عام، فتحتاج إلى برنامج يحفظ كل نسخة ويعرف أيها طُبِّق في أي شهر.</p>
+
+        <h2>ثلاث دول وثلاثة أنظمة</h2>
+        <ul>
+          <li><strong>مصر</strong>: التأمينات الاجتماعية على الأجر التأميني في حدود الحد الأقصى السنوي، وضريبة كسب العمل وفق شرائح القانون 7 لسنة 2024.</li>
+          <li><strong>السعودية</strong>: اشتراكات التأمينات الاجتماعية (GOSI) للمواطنين السعوديين، ويخضع من التحق بالعمل قبل يوليو 2024 وبعده لجدولين مختلفين، ويرتفع الجدول الجديد كل يوليو حتى 2028.</li>
+          <li><strong>الكويت</strong>: اشتراكات المؤسسة العامة للتأمينات الاجتماعية للمواطنين الكويتيين، بما فيها الاشتراك التكميلي وحدّه الخاص.</li>
+        </ul>
+        <p>والمهم ليس صحة هذه النسب اليوم فقط، بل أن تُحفظ كل نسبة بتاريخ سريانها. فعندما يتغير القانون يكفي تحديث واحد، وتبقى قسائم العام الماضي بأرقام العام الماضي.</p>
+
+        <h2>الإجازات حق قانوني كذلك</h2>
+        <p>يحدد قانون العمل المصري 14 لسنة 2025 الإجازة السنوية بـ 15 أو 21 أو 30 أو 45 يومًا بحسب مدة الخدمة والسن وطبيعة العمل، وللقانونين السعودي والكويتي استحقاقاتهما. ويجب ألا تُحتسب عطلات نهاية الأسبوع والعطلات الرسمية، وأن تنتقل الإجازات بدون أجر إلى الرواتب دون إعادة إدخال. وحين يأتي الرصيد الذي يراه الموظف والاستقطاع الذي تُجريه الرواتب من القواعد نفسها، تختفي معظم الخلافات حول الإجازات.</p>
+
+        <h2>حضور يمكن الوثوق به</h2>
+        <p>لا تكون بيانات الحضور أدق من طريقة جمعها. فأجهزة البصمة والوجه التي ترسل كل بصمة إلى النظام مباشرةً تُغني عن التصدير الشهري وإعادة الإدخال. أما من يعمل بعيدًا عن الجهاز فلا يُقبل تسجيله من الهاتف إلا داخل النطاق الجغرافي للفرع، مع حفظ الموقع.</p>
+
+        <h2>مستندات تنتهي صلاحيتها</h2>
+        <p>في السعودية والكويت خاصةً، تعني الإقامة أو تصريح العمل المنتهي غرامات. لذا يجب أن يحفظ البرنامج جوازات السفر والإقامات وتصاريح العمل والعقود بخصوصية لكل موظف، وأن ينبّه قبل انتهاء كل منها بوقت كافٍ.</p>
+
+        <h2>ما ينبغي البحث عنه</h2>
+        <ul>
+          <li><strong>قواعد قانونية مؤرّخة</strong> للتأمينات والضريبة والإجازات في كل دولة.</li>
+          <li><strong>دورة رواتب قابلة للمراجعة</strong>: مسودة ثم مراجعة ثم اعتماد، فتُقفل بعده.</li>
+          <li><strong>قسائم رواتب بالعربية والإنجليزية</strong> توضح كل استقطاع والقاعدة التي يستند إليها.</li>
+          <li><strong>ربط أجهزة البصمة</strong> دون استيراد يدوي.</li>
+          <li><strong>صلاحيات صارمة</strong>: لا يرى الرواتب إلا الموارد البشرية والرواتب، ويرى كل موظف بياناته.</li>
+          <li><strong>خدمة ذاتية من الهاتف</strong> لطلب الإجازات وعرض القسائم وتسجيل الحضور.</li>
+          <li><strong>واجهة API</strong> لنقل إجماليات الرواتب إلى نظام ERP أو برنامج الحسابات.</li>
+        </ul>
+
+        <h2>النظام الذي نبنيه</h2>
+        <p>تبني فوكس سيستمز وتشغّل <a href="/ar/solutions/hr-crm">فوكس للموارد البشرية</a>، نظام الموارد البشرية والرواتب لمصر والسعودية والكويت. ويتضمن قواعد قانونية مؤرّخة، وإجازات وفق القانون، وحضورًا متوافقًا مع أجهزة ZKTeco، وتنبيهات انتهاء المستندات، والتوظيف وتقييم الأداء، والمساعد فوكس بوت. ويمكنك مشاهدة الجولة بالفيديو أو فتح نسخة تجريبية حية من صفحة المنتج، والباقات موضحة في <a href="/ar/pricing">صفحة الأسعار</a>.</p>
+      `,
+    },
+  },
 
   "ai-infrastructure-2026": {
     en: {

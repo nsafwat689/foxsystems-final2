@@ -26,7 +26,8 @@ declare global {
     clarity?: ((...args: unknown[]) => void) & { q?: unknown[] };
     trackCTA?: (label: string) => void;
     trackWhatsApp?: () => void;
-    trackFormSubmit?: (service?: string) => void;
+    trackFormSubmit?: (service?: string, extra?: Record<string, string>) => void;
+    trackVideo?: (action: "start" | "progress" | "complete", video: { product: string; language: string; percent?: number }) => void;
   }
 }
 
@@ -135,14 +136,28 @@ export function initAnalytics() {
     { capture: true }
   );
 
-  window.trackFormSubmit = service => {
+  window.trackFormSubmit = (service, extra) => {
     // "generate_lead" is GA4's recommended lead event, and deliberately NOT
     // "form_submit": that name collides with GA4 Enhanced Measurement's own
     // automatic form_submit, which fires on any submission including ones that
     // failed to deliver — so the two together would overstate conversions.
-    event("generate_lead", { event_category: "lead", event_label: service || "General" });
+    // `extra` carries stable ids (product, language) so one product is one row in the
+    // reports, whatever language the visitor used.
+    event("generate_lead", { event_category: "lead", event_label: service || "General", ...extra });
     // Fired only after the lead was actually accepted — see LeadForm.tsx, which
     // calls this inside the success branch, so a failed send is not a conversion.
-    fbqTrack("Lead", true, { content_name: service || "General" });
+    fbqTrack("Lead", true, { content_name: service || "General", ...extra });
+  };
+
+  /**
+   * The product tour videos: started, 25/50/75 % watched, finished. GA4's own
+   * video_* names (its automatic ones only cover YouTube embeds, so nothing is
+   * counted twice), and custom Meta events so an audience of people who watched
+   * the tour can be built for ads.
+   */
+  window.trackVideo = (action, v) => {
+    const params = { video_title: v.product, language: v.language, ...(v.percent != null ? { video_percent: v.percent } : {}) };
+    event(`video_${action}`, params);
+    fbqTrack(action === "start" ? "VideoStart" : action === "complete" ? "VideoComplete" : "VideoProgress", false, params);
   };
 }

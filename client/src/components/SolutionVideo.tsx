@@ -3,6 +3,7 @@
  * Files: /videos/<base>-<en|ar>.mp4 with a .jpg poster beside it. preload="none"
  * so the page pays nothing until the visitor presses play.
  */
+import { useRef } from "react";
 import { PlayCircle } from "lucide-react";
 
 /** `v` is bumped whenever the files are replaced, so caches never serve the old cut. */
@@ -30,9 +31,17 @@ export function videoSchema(v: SolutionVideoInfo, language: "en" | "ar", name: s
   };
 }
 
-export default function SolutionVideo({ video, language, productName }: {
-  video: SolutionVideoInfo; language: "en" | "ar"; productName: string;
+export default function SolutionVideo({ video, language, productName, product }: {
+  video: SolutionVideoInfo; language: "en" | "ar"; productName: string; product: string;
 }) {
+  // each milestone is reported once per page view
+  const sent = useRef(new Set<string>());
+  const once = (key: string, fn: () => void) => { if (!sent.current.has(key)) { sent.current.add(key); fn(); } };
+  const onTime = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const el = e.currentTarget; if (!el.duration) return;
+    const pct = (el.currentTime / el.duration) * 100;
+    for (const p of [25, 50, 75]) if (pct >= p) once(`p${p}`, () => window.trackVideo?.("progress", { product, language, percent: p }));
+  };
   const isArabic = language === "ar";
   const { mp4, poster } = videoSrc(video, language);
   return (
@@ -50,6 +59,9 @@ export default function SolutionVideo({ video, language, productName }: {
       </div>
       <div className="rounded-2xl overflow-hidden border border-border bg-black shadow-xl max-w-5xl">
         <video controls preload="none" playsInline poster={poster} className="w-full aspect-video block"
+          onPlay={() => once("start", () => window.trackVideo?.("start", { product, language }))}
+          onTimeUpdate={onTime}
+          onEnded={() => once("complete", () => window.trackVideo?.("complete", { product, language }))}
           aria-label={isArabic ? `جولة بالفيديو في ${productName}` : `Video tour of ${productName}`}>
           <source src={mp4} type="video/mp4" />
         </video>

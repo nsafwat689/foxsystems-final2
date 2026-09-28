@@ -242,6 +242,112 @@ ${row(t.page, login.url)}${row(t.user, login.email)}${row(t.pass, login.password
   }
 }
 
+// ---- follow-ups ----------------------------------------------------------
+// Two emails scheduled with Brevo at sign-up (scheduledAt allows up to 72 h
+// ahead, and a demo lasts 72 h): tips on day 2, and a last-day note on what
+// happens next. Only for a NEW demo account: a returning visitor already has
+// them queued.
+const WHATSAPP = "201038450546";
+const TIPS: Record<DemoRequest["product"], { en: string[]; ar: string[] }> = {
+  "real-estate-crm": {
+    en: ["Open <b>AI Matching</b>, pick a lead and press <b>Find Best Matches</b>: the system ranks the properties that fit their budget and area.",
+         "Look at <b>Payments</b>: every unit's instalments, what is due and what is overdue.",
+         "In the <b>AI assistant</b>, ask it to write a WhatsApp follow-up to one of your leads."],
+    ar: ["افتح <b>المطابقة بالذكاء الاصطناعي</b>، واختر عميلًا ثم اضغط <b>ابحث عن أفضل عقار</b>: يرتّب النظام العقارات المناسبة لميزانيته ومنطقته.",
+         "اطّلع على <b>المدفوعات</b>: أقساط كل وحدة، وما يستحق وما تأخر.",
+         "اطلب من <b>المساعد الذكي</b> كتابة رسالة متابعة عبر واتساب لأحد العملاء."],
+  },
+  "medical-crm": {
+    en: ["Open <b>My Day</b> and try a <b>GPS check-in</b>: a visit only counts inside the institution's geofence.",
+         "Look at <b>Samples</b>: stock by batch and expiry, with every unit issued on record.",
+         "Open <b>Reports</b> and the <b>Leaderboard</b> to see each rep's visits, GPS verification and quality."],
+    ar: ["افتح <b>يومي</b> وجرّب <b>تسجيل الزيارة بالموقع</b>: لا تُحتسب الزيارة إلا داخل نطاق المؤسسة.",
+         "اطّلع على <b>العينات</b>: المخزون بالتشغيلة وتاريخ الصلاحية، مع سجل لكل وحدة تُصرف.",
+         "افتح <b>التقارير</b> و<b>لوحة الصدارة</b> لترى زيارات كل مندوب ونسبة التوثيق بالموقع والجودة."],
+  },
+  "pest-control-crm": {
+    en: ["Open <b>Dispatch</b> and drag a visit onto another engineer or day, then optimise the route.",
+         "Open <b>Reports</b>, pick a service report and download it, or export the audit pack.",
+         "Look at <b>Device QR Codes</b>: every bait station and trap with its inspection history."],
+    ar: ["افتح <b>التوزيع</b> واسحب زيارة إلى مهندس أو يوم آخر، ثم حسّن المسار.",
+         "افتح <b>التقارير</b> واختر تقرير خدمة ونزّله، أو صدّر ملف التدقيق.",
+         "اطّلع على <b>أجهزة QR</b>: كل محطة طُعم ومصيدة مع سجل فحصها."],
+  },
+  "hr-crm": {
+    en: ["Open <b>Payroll</b>, open a payroll run and then a payslip: every deduction shows the legal rule behind it.",
+         "Approve a request in <b>Leave</b>: weekends and public holidays are never counted.",
+         "Try the <b>Salary calculator</b> for Egypt, Saudi Arabia or Kuwait, including end-of-service pay."],
+    ar: ["افتح <b>الرواتب</b> ثم دورة رواتب ثم قسيمة: كل استقطاع يوضّح القاعدة القانونية وراءه.",
+         "اعتمد طلبًا في <b>الإجازات</b>: لا تُحتسب عطلات نهاية الأسبوع والعطلات الرسمية.",
+         "جرّب <b>حاسبة الرواتب</b> لمصر أو السعودية أو الكويت، بما فيها مكافأة نهاية الخدمة."],
+  },
+};
+
+export function followUpEmails(demo: DemoRequest, login: Login) {
+  const ar = demo.language === "ar";
+  const app = PRODUCTS[demo.product].name[ar ? "ar" : "en"];
+  const first = escapeHtml(demo.name.split(/\s+/)[0]);
+  const pricing = `https://foxsystemstech.com${ar ? "/ar" : ""}/services/crm#pricing`;
+  const wa = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(ar ? `مرحبًا، جرّبت ${app} وأرغب في معرفة المزيد.` : `Hi, I've been trying ${app} and would like to know more.`)}`;
+  const button = (href: string, label: string, bg = "#2b87f2") =>
+    `<a href="${escapeHtml(href)}" style="display:inline-block;background:${bg};color:#fff;text-decoration:none;padding:10px 20px;border-radius:8px;font-weight:600;margin:4px 0">${label}</a>`;
+  const wrap = (body: string) => `<div dir="${ar ? "rtl" : "ltr"}" style="font:15px/1.6 system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif;color:#0f172a;max-width:560px">${body}
+<p style="color:#94a3b8;font-size:12px;margin-top:24px">${ar ? "تصلك هذه الرسالة لأنك طلبت نسخة تجريبية على foxsystemstech.com. لإيقافها، رُدّ بكلمة «إيقاف»." : "You are getting this because you requested a demo on foxsystemstech.com. Reply \"stop\" and we won't email you again."}</p></div>`;
+  const tips = TIPS[demo.product][ar ? "ar" : "en"].map(t => `<li style="margin:6px 0">${t}</li>`).join("");
+  const day2 = {
+    subject: ar ? `3 أشياء جرّبها في ${app} قبل انتهاء النسخة التجريبية` : `3 things to try in ${app} before your demo ends`,
+    html: wrap(`<p>${ar ? `مرحبًا ${first}،` : `Hi ${first},`}</p>
+<p>${ar ? "ما زالت نسختك التجريبية تعمل. هذه أكثر ثلاثة أشياء يلفت انتباه عملائنا:" : "Your demo is still running. These are the three things our customers find most useful:"}</p>
+<ol>${tips}</ol>
+<p>${button(login.url, ar ? "افتح النسخة التجريبية" : "Open the demo")}</p>
+<p>${ar ? "هل تفضّل أن نعرضه لك على بيانات تشبه شركتك؟ رُدّ على هذه الرسالة أو راسلنا على واتساب." : "Would you rather we showed it to you on data like your company's? Reply to this email or message us on WhatsApp."}</p>
+<p>${button(wa, ar ? "تحدّث معنا على واتساب" : "Chat on WhatsApp", "#25D366")}</p>
+<p>${ar ? "فريق فوكس سيستمز" : "The Fox Systems team"}</p>`),
+  };
+  const last = {
+    subject: ar ? `تنتهي نسختك التجريبية من ${app} اليوم` : `Your ${app} demo ends today`,
+    html: wrap(`<p>${ar ? `مرحبًا ${first}،` : `Hi ${first},`}</p>
+<p>${ar ? `تنتهي نسختك التجريبية من ${app} اليوم، وتُحذف بياناتها.` : `Your ${app} demo ends today, and its data is removed.`}</p>
+<p>${ar ? "إذا أردت النظام لشركتك، نجهّزه ببياناتك: التركيب ونقل البيانات وتدريب الفريق مشمولة، بسعر شهري واحد للفريق كله حسب عدد المستخدمين." : "If you want it for your company, we set it up with your own data: installation, data migration and team training are included, at one monthly price for the whole team, based on the number of users."}</p>
+<p>${button(pricing, ar ? "اطّلع على الباقات والأسعار" : "See plans and prices")} &nbsp; ${button(wa, ar ? "تحدّث معنا على واتساب" : "Chat on WhatsApp", "#25D366")}</p>
+<p>${ar ? "أو رُدّ على هذه الرسالة لنرتّب مكالمة قصيرة في الوقت الذي يناسبك." : "Or reply to this email and we'll arrange a short call at a time that suits you."}</p>
+<p>${ar ? "فريق فوكس سيستمز" : "The Fox Systems team"}</p>`),
+  };
+  return { day2, last };
+}
+
+/** Best effort, like the other mail: a scheduling failure never costs the visitor their demo. */
+async function scheduleFollowUps(demo: DemoRequest, login: Login, now = Date.now()) {
+  const apiKey = process.env.BREVO_API_KEY;
+  const from = process.env.LEAD_FROM;
+  const replyTo = process.env.LEAD_INBOX;
+  if (!apiKey || !from) return;
+  const { day2, last } = followUpEmails(demo, login);
+  for (const [mail, hours] of [[day2, 24], [last, 70]] as const) {
+    try {
+      const response = await withTimeout(8000, signal =>
+        fetch("https://api.brevo.com/v3/smtp/email", {
+          method: "POST",
+          signal,
+          headers: { "api-key": apiKey, "content-type": "application/json", accept: "application/json" },
+          body: JSON.stringify({
+            sender: { email: from, name: "Fox Systems" },
+            to: [{ email: demo.email, name: demo.name }],
+            ...(replyTo ? { replyTo: { email: replyTo, name: "Fox Systems" } } : {}),
+            subject: mail.subject,
+            htmlContent: mail.html,
+            scheduledAt: new Date(now + hours * 3600_000).toISOString(),
+            tags: ["demo-follow-up", demo.product],
+          }),
+        })
+      );
+      if (!response.ok) console.error("[demo-request] Brevo refused a follow-up:", response.status, await response.text().catch(() => ""));
+    } catch (error: any) {
+      console.error("[demo-request] Failed to schedule a follow-up:", error?.name === "AbortError" ? "timeout" : error?.message);
+    }
+  }
+}
+
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -279,6 +385,7 @@ export default async function handler(req: any, res: any) {
   let login: Login | null = null;
   let code = "unavailable";
   let endsAt: string | null = null;
+  let returning = false;
   try {
     const response = await withTimeout(15000, signal =>
       fetch(product.endpoint(), {
@@ -298,8 +405,9 @@ export default async function handler(req: any, res: any) {
       })
     );
     if (response.ok) {
-      const answer = (await response.json()) as { url?: string; login?: Login };
+      const answer = (await response.json()) as { url?: string; login?: Login; returning?: boolean };
       url = answer.url ?? null;
+      returning = answer.returning === true;
       if (answer.login?.email && answer.login?.password && answer.login?.url) login = answer.login;
     } else if (response.status === 409) {
       // One trial at a time per email / company: someone else from this
@@ -318,6 +426,7 @@ export default async function handler(req: any, res: any) {
 
   const loginSent = url && login ? await emailVisitorLogin(demo, login) : false;
   await emailLead(demo, Boolean(url), loginSent);
+  if (url && login && loginSent && !returning) await scheduleFollowUps(demo, login);
 
   if (code === "active_trial") return res.status(409).json({ ok: false, code, ends_at: endsAt });
   if (!url) return res.status(code === "rate_limited" ? 429 : 502).json({ ok: false, code });

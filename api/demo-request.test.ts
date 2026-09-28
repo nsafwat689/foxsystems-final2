@@ -221,6 +221,45 @@ describe("POST /api/demo-request", () => {
     expect(leadMail.htmlContent).not.toContain("Demo-Xy7kP3mQ9a");            // your inbox never gets visitors' passwords
   });
 
+  it("schedules the day-2 tips and the last-day email for a new demo, in the visitor's language", async () => {
+    process.env.DEMO_SIGNUP_SECRET_HR = "hr-secret";
+    const login = { email: "visitor-ab12@demo.foxhr.app", password: "Demo-Xy7kP3mQ9a", url: "https://fox-hr-crm.vercel.app/login" };
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(async (url: any) =>
+      String(url).includes("kglepsmhcpqqrldntbol")
+        ? new Response(JSON.stringify({ url: "https://fox-hr-crm.vercel.app/demo/enter?token_hash=x", returning: false, login }), { status: 200 })
+        : new Response("{}", { status: 201 })
+    );
+    const before = Date.now();
+    await handler(req({ ...validDemo, product: "hr-crm" }), mockRes());
+
+    expect(fetchSpy).toHaveBeenCalledTimes(5); // signup, login mail, lead mail, 2 follow-ups
+    const [day2, last] = [3, 4].map(i => JSON.parse((fetchSpy.mock.calls[i][1] as any).body));
+    const hoursAhead = (m: any) => (Date.parse(m.scheduledAt) - before) / 3600_000;
+    expect(hoursAhead(day2)).toBeGreaterThan(23.9);
+    expect(hoursAhead(day2)).toBeLessThan(24.1);
+    expect(hoursAhead(last)).toBeGreaterThan(69.9);
+    expect(hoursAhead(last)).toBeLessThan(72);                 // Brevo schedules at most 72 h ahead
+    expect(day2.to).toEqual([{ email: "ahmed@nilehomes.example", name: "Ahmed Nabil" }]);
+    expect(day2.htmlContent).toContain('dir="rtl"');
+    expect(day2.htmlContent).toContain("حاسبة الرواتب");         // HR's own tips
+    expect(last.subject).toContain("تنتهي");
+    expect(last.htmlContent).toContain("/ar/services/crm#pricing");
+    expect(day2.htmlContent).not.toContain("Demo-Xy7kP3mQ9a");  // the password is only in the first email
+  });
+
+  it("does not schedule the follow-ups again for a returning visitor", async () => {
+    process.env.DEMO_SIGNUP_SECRET = "real-estate-secret";
+    const login = { email: "visitor-cd34@demo.foxsystemstech.local", password: "Pw-1", url: "https://fox-realestate-crm-omega.vercel.app/login" };
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(async (url: any) =>
+      String(url).includes("demo-signup")
+        ? new Response(JSON.stringify({ url: "https://fox-realestate-crm-omega.vercel.app/demo/enter?token_hash=y", returning: true, login }), { status: 200 })
+        : new Response("{}", { status: 201 })
+    );
+    await handler(req({ ...validDemo, language: "en" }), mockRes());
+    expect(fetchSpy).toHaveBeenCalledTimes(3); // signup, login mail, lead mail — nothing scheduled
+    expect(fetchSpy.mock.calls.some(c => JSON.parse(String((c[1] as any)?.body ?? "{}")).scheduledAt)).toBe(false);
+  });
+
   it("needs the pest control secret even when the real estate one is set", async () => {
     process.env.DEMO_SIGNUP_SECRET = "real-estate-secret";
     vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response("{}", { status: 201 }));

@@ -270,7 +270,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         <SolutionShowcase base={solution.showcaseBase} copy={t} language={language} />
 
         {/* After the screenshots: the whole product in a few minutes, then the demo form. */}
-        {solution.video && <SolutionVideo video={solution.video} language={language} productName={t.name} />}
+        {solution.video && <SolutionVideo video={solution.video} language={language} productName={t.name} product={solution.id} />}
 
         {/* Straight after the video: seen enough, now use it. */}
         {solution.liveDemo && isDemoProduct(solution.id) && <LiveDemoForm language={language} product={solution.id} />}

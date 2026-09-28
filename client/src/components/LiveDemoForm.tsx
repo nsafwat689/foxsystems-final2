@@ -183,7 +183,7 @@ export default function LiveDemoForm({ language, product }: LiveDemoFormProps) {
       if (response.ok && body.url) {
         // A lead only once an account really exists. Give the beacons a moment
         // to leave before the page is replaced.
-        window.trackFormSubmit?.(t.service);
+        window.trackFormSubmit?.(t.service, { product, language });
         setTimeout(() => window.location.assign(body.url), 350);
         return;
       }

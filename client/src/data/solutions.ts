@@ -96,7 +96,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "medical-crm": {
     id: "medical-crm",
     showcaseBase: "medical-crm",
-    video: { base: "fox-medical-tour", minutes: 4 },
+    video: { base: "fox-medical-tour", minutes: 3, v: 2 },
     liveDemo: true,
     icon: "Stethoscope",
     en: {
@@ -435,7 +435,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "real-estate-crm": {
     id: "real-estate-crm",
     showcaseBase: "realestate-crm",
-    video: { base: "fox-realestate-tour", minutes: 4 },
+    video: { base: "fox-realestate-tour", minutes: 3, v: 2 },
     liveDemo: true,
     icon: "Building2",
     en: {
@@ -863,7 +863,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "pest-control-crm": {
     id: "pest-control-crm",
     showcaseBase: "pestcontrol-crm",
-    video: { base: "fox-pestcontrol-tour", minutes: 5 },
+    video: { base: "fox-pestcontrol-tour", minutes: 3, v: 2 },
     liveDemo: true,
     icon: "Bug",
     en: {

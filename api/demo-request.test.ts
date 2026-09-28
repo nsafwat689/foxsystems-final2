@@ -215,7 +215,7 @@ describe("POST /api/demo-request", () => {
     expect(visitorMail.htmlContent).toContain("Demo-Xy7kP3mQ9a");
     expect(visitorMail.htmlContent).toContain("visitor-ab12@demo.foxhr.app");
     expect(visitorMail.htmlContent).toContain('dir="rtl"');
-    expect(visitorMail.htmlContent).toContain("7 أيام");
+    expect(visitorMail.htmlContent).toContain("3 أيام");
     const leadMail = JSON.parse((fetchSpy.mock.calls[2][1] as any).body);
     expect(leadMail.htmlContent).toContain("Login emailed to them");
     expect(leadMail.htmlContent).not.toContain("Demo-Xy7kP3mQ9a");            // your inbox never gets visitors' passwords

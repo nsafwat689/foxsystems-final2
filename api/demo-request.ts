@@ -43,7 +43,7 @@ const PRODUCTS = {
   "hr-crm": {
     label: "HR & Payroll CRM",
     name: { en: "Fox HR", ar: "فوكس للموارد البشرية" },
-    days: 7,
+    days: 3,
     secretEnv: "DEMO_SIGNUP_SECRET_HR",
     endpoint: () =>
       process.env.DEMO_HR_URL || "https://kglepsmhcpqqrldntbol.supabase.co/functions/v1/demo-signup",
@@ -154,7 +154,7 @@ async function emailLead(demo: DemoRequest, accountCreated: boolean, loginSent =
   ].filter(([, value]) => value !== "") as Array<[string, string]>;
 
   const html = `<h2>${accountCreated ? "Someone is trying the live demo" : "Live demo request (account not created)"}</h2>
-<p style="font:14px system-ui,sans-serif">Message them while they are still in it — the demo account lasts 7 days.</p>
+<p style="font:14px system-ui,sans-serif">Message them while they are still in it — the demo account lasts ${PRODUCTS[demo.product].days} days.</p>
 <table cellpadding="6" style="border-collapse:collapse;font:14px system-ui,sans-serif">
 ${rows
   .map(

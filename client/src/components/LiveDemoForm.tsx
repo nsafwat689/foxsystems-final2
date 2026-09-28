@@ -86,7 +86,7 @@ const PRODUCT_COPY = {
       points: [
         { icon: ShieldCheck, text: "You're signed in as the HR manager, with your own employee record to try self-service" },
         { icon: RotateCcw, text: "Sample data, reset every night, so explore freely" },
-        { icon: Clock, text: "Your login lasts 7 days, then it and anything you added are deleted" },
+        { icon: Clock, text: "Your login lasts 3 days, then it and anything you added are deleted" },
       ],
       sizeLbl: "Number of employees",
       service: "HR & Payroll CRM — live demo",
@@ -96,7 +96,7 @@ const PRODUCT_COPY = {
       points: [
         { icon: ShieldCheck, text: "تدخل بصلاحيات مدير الموارد البشرية، ولك سجل موظف لتجربة الخدمة الذاتية" },
         { icon: RotateCcw, text: "بيانات نموذجية تعود إلى حالتها كل ليلة، فجرّب بحرية" },
-        { icon: Clock, text: "حسابك صالح لمدة 7 أيام، ثم يُحذف مع كل ما أضفته" },
+        { icon: Clock, text: "حسابك صالح لمدة 3 أيام، ثم يُحذف مع كل ما أضفته" },
       ],
       sizeLbl: "عدد الموظفين",
       service: "نظام الموارد البشرية والرواتب — نسخة تجريبية",

@@ -1280,7 +1280,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "hr-crm": {
     id: "hr-crm",
     showcaseBase: "hr-crm",
-    video: { base: "fox-hr-tour", minutes: 4 },
+    video: { base: "fox-hr-tour", minutes: 3 },
     liveDemo: true,
     icon: "Users",
     en: {

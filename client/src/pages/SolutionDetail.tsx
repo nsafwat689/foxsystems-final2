@@ -159,11 +159,39 @@ export default function SolutionDetail({ solutionId, language }: Props) {
       </section>
 
       <div className="container py-16">
-        {/* The narrated tour first: the quickest way to see the whole product. */}
-        {solution.video && <SolutionVideo video={solution.video} language={language} productName={t.name} />}
+        {/* Pains */}
+        <section>
+          <div className="flex flex-col gap-3 mb-7">
+            <h2
+              className="text-2xl md:text-3xl font-extrabold"
+              style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}
+            >
+              {t.painTitle}
+            </h2>
+            <p className="text-muted-foreground leading-relaxed max-w-2xl">{t.painSub}</p>
+          </div>
+          <ul className="grid md:grid-cols-2 gap-4">
+            {t.pains.map((pain, i) => (
+              <motion.li
+                key={pain}
+                custom={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-60px" }}
+                className="flex gap-3 p-5 rounded-xl border border-border bg-muted/30"
+              >
+                <span className="text-primary font-bold flex-shrink-0" aria-hidden="true">
+                  —
+                </span>
+                <span className="text-sm leading-relaxed text-muted-foreground">{pain}</span>
+              </motion.li>
+            ))}
+          </ul>
+        </section>
 
         {/* Generic CRM vs this one */}
-        <section className="mb-16 pb-14 border-b border-border">
+        <section className="mt-16 pt-14 border-t border-border">
           <div className="flex flex-col gap-3 mb-7">
             <h2
               className="text-2xl md:text-3xl font-extrabold"
@@ -206,37 +234,6 @@ export default function SolutionDetail({ solutionId, language }: Props) {
           </div>
         </section>
 
-        {/* Pains */}
-        <section>
-          <div className="flex flex-col gap-3 mb-7">
-            <h2
-              className="text-2xl md:text-3xl font-extrabold"
-              style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}
-            >
-              {t.painTitle}
-            </h2>
-            <p className="text-muted-foreground leading-relaxed max-w-2xl">{t.painSub}</p>
-          </div>
-          <ul className="grid md:grid-cols-2 gap-4">
-            {t.pains.map((pain, i) => (
-              <motion.li
-                key={pain}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-60px" }}
-                className="flex gap-3 p-5 rounded-xl border border-border bg-muted/30"
-              >
-                <span className="text-primary font-bold flex-shrink-0" aria-hidden="true">
-                  —
-                </span>
-                <span className="text-sm leading-relaxed text-muted-foreground">{pain}</span>
-              </motion.li>
-            ))}
-          </ul>
-        </section>
-
         {/* Features */}
         <section className="mt-16 pt-14 border-t border-border">
           <div className="flex flex-col gap-3 mb-7">
@@ -272,7 +269,10 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         {/* Screens */}
         <SolutionShowcase base={solution.showcaseBase} copy={t} language={language} />
 
-        {/* Straight after the screenshots: seen enough, now use it. */}
+        {/* After the screenshots: the whole product in a few minutes, then the demo form. */}
+        {solution.video && <SolutionVideo video={solution.video} language={language} productName={t.name} />}
+
+        {/* Straight after the video: seen enough, now use it. */}
         {solution.liveDemo && isDemoProduct(solution.id) && <LiveDemoForm language={language} product={solution.id} />}
 
         {/* FAQ */}
@@ -298,6 +298,40 @@ export default function SolutionDetail({ solutionId, language }: Props) {
           </div>
         </section>
 
+        {/* CTA */}
+        <section className="mt-16 rounded-2xl bg-[var(--navy)] text-white p-10 text-center">
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-3" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+            {t.ctaTitle}
+          </h2>
+          <p className="text-white/70 max-w-xl mx-auto mb-7 leading-relaxed">{t.ctaSub}</p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            {solution.liveDemo && (
+              <Button asChild size="lg">
+                <a href="#demo" onClick={e => { window.trackCTA?.("live-demo-footer"); if (scrollToId("demo")) e.preventDefault(); }}>
+                  {isArabic ? "جرّب النسخة التجريبية" : "Try the live demo"}
+                </a>
+              </Button>
+            )}
+            <Button asChild size="lg" variant={solution.liveDemo ? "outline" : "default"}
+              className={solution.liveDemo ? "border-white/25 text-white hover:bg-white/10 hover:text-white" : undefined}>
+              <Link href={`${prefix}/contact`}>
+                {isArabic ? "احجز عرض عملي" : "Book a walkthrough"}
+                <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-white/25 text-white hover:bg-white/10 hover:text-white">
+              <Link href={`${prefix}/services/crm#pricing`} onClick={() => window.trackCTA?.("plans-footer")}>
+                {isArabic ? "الباقات والأسعار" : "See plans and prices"}
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-white/25 text-white hover:bg-white/10 hover:text-white">
+              <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className={`w-4 h-4 ${isArabic ? "ml-2" : "mr-2"}`} />
+                {isArabic ? "تواصل على واتساب" : "Chat on WhatsApp"}
+              </a>
+            </Button>
+          </div>
+        </section>
         {/* Other solutions — internal linking between the verticals */}
         <section className="mt-16 pt-14 border-t border-border">
           <h2 className="text-xl font-extrabold mb-5" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
@@ -323,36 +357,6 @@ export default function SolutionDetail({ solutionId, language }: Props) {
                   </Link>
                 );
               })}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="mt-16 rounded-2xl bg-[var(--navy)] text-white p-10 text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-3" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
-            {t.ctaTitle}
-          </h2>
-          <p className="text-white/70 max-w-xl mx-auto mb-7 leading-relaxed">{t.ctaSub}</p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {solution.liveDemo && (
-              <Button asChild size="lg">
-                <a href="#demo" onClick={e => { window.trackCTA?.("live-demo-footer"); if (scrollToId("demo")) e.preventDefault(); }}>
-                  {isArabic ? "جرّب النسخة التجريبية" : "Try the live demo"}
-                </a>
-              </Button>
-            )}
-            <Button asChild size="lg" variant={solution.liveDemo ? "outline" : "default"}
-              className={solution.liveDemo ? "border-white/25 text-white hover:bg-white/10 hover:text-white" : undefined}>
-              <Link href={`${prefix}/contact`}>
-                {isArabic ? "احجز عرض عملي" : "Book a walkthrough"}
-                <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-white/25 text-white hover:bg-white/10 hover:text-white">
-              <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className={`w-4 h-4 ${isArabic ? "ml-2" : "mr-2"}`} />
-                {isArabic ? "تواصل على واتساب" : "Chat on WhatsApp"}
-              </a>
-            </Button>
           </div>
         </section>
       </div>

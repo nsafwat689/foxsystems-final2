@@ -180,6 +180,11 @@ export default function Pricing({ language }: Props) {
     try { history.replaceState(null, "", `#${id}`); } catch { /* ignore */ }
   };
   const service = SERVICES.find(s => s.id === serviceId)!;
+  // A service sold in fewer currencies shows only those; the visitor's own
+  // choice is kept for the other tabs.
+  const offered = service.currencies ?? CURRENCIES;
+  const shownCurrency: Currency = offered.includes(currency) ? currency
+    : offered.includes(guessCurrency()) ? guessCurrency() : offered[offered.length - 1];
 
   // Keep the chosen tab visible in the phone scroller. By hand, not
   // scrollIntoView, which would also move the page itself.
@@ -218,11 +223,11 @@ export default function Pricing({ language }: Props) {
 
           <div className="mt-8 flex flex-wrap items-center gap-3" role="radiogroup" aria-label={t.currency}>
             <span className="text-white/60 text-sm font-semibold">{t.currency}</span>
-            {CURRENCIES.map(c => (
-              <button key={c} type="button" role="radio" aria-checked={currency === c}
+            {offered.map(c => (
+              <button key={c} type="button" role="radio" aria-checked={shownCurrency === c}
                 title={CURRENCY_NAME[c][language]} onClick={() => pickCurrency(c)}
                 className={`px-4 py-2 rounded-full text-sm font-bold transition-colors ${
-                  currency === c ? "bg-white text-[var(--navy)]" : "bg-white/10 text-white hover:bg-white/20"}`}>
+                  shownCurrency === c ? "bg-white text-[var(--navy)]" : "bg-white/10 text-white hover:bg-white/20"}`}>
                 {c}
               </button>
             ))}
@@ -249,7 +254,7 @@ export default function Pricing({ language }: Props) {
           </div>
         </div>
 
-        <ServicePanel key={service.id} service={service} currency={currency} language={language} prefix={prefix} />
+        <ServicePanel key={service.id} service={service} currency={shownCurrency} language={language} prefix={prefix} />
 
         <div className="mt-10 rounded-2xl border border-border bg-card p-6 flex flex-wrap items-center justify-between gap-4">
           <p className="font-semibold flex items-center gap-2">

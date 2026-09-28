@@ -80,6 +80,8 @@ export type Service = {
   surveyNote?: { title: L; what: L[] };
   /** A products list without prices: the visitor picks quantities and asks for a quote. */
   catalogue?: CatalogueGroup[];
+  /** Only these currencies are offered (default: all). */
+  currencies?: Currency[];
 };
 
 export type CatalogueItem = {
@@ -421,7 +423,8 @@ export const SERVICES: Service[] = [
       ar: "التمديدات وتصميم الشبكات وغرف الخوادم وعقود الدعم الفني الشهرية.",
     },
     href: "/services/infrastructure",
-    onSite: true,
+    // Owner's rule (2026-09-28): IT support is not sold in Egyptian pounds.
+    currencies: ["SAR", "KWD", "USD"],
     // Support plans: researched 2026-09-28. Egyptian managed-IT contracts start
     // around EGP 4,000/month for ~10 users; a Cairo network support engineer
     // bills about EGP 120–130/hour employed, 300–500 freelance. Plans sit at or
@@ -490,7 +493,7 @@ export const SERVICES: Service[] = [
         price: { egp: 500, usd: 60 },
         unit: "per-hour",
         qty: { label: { en: "Hours", ar: "عدد الساعات" }, min: 0, max: 100, step: 1 },
-        note: { en: "Greater Cairo; other cities add travel", ar: "داخل القاهرة الكبرى، وتُضاف تكلفة الانتقال للمدن الأخرى" },
+        note: { en: "Travel outside the city is added", ar: "تُضاف تكلفة الانتقال خارج المدينة" },
       },
     ],
     always: [
@@ -505,7 +508,7 @@ export const SERVICES: Service[] = [
         { en: "Network design, switches and Wi-Fi coverage", ar: "تصميم الشبكة والسويتشات وتغطية الواي فاي" },
         { en: "Server room, racks and UPS", ar: "تجهيز غرفة الخوادم والكبائن ووحدات UPS" },
         { en: "Linking branches over VPN", ar: "ربط الفروع عبر VPN" },
-        { en: "The site visit is free inside Greater Cairo", ar: "زيارة الموقع مجانية داخل القاهرة الكبرى" },
+        { en: "A site visit comes before any quote", ar: "زيارة الموقع تسبق أي عرض سعر" },
       ],
     },
   },

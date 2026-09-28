@@ -34,7 +34,7 @@ export default function SolutionVideo({ video, language, productName }: {
   const isArabic = language === "ar";
   const { mp4, poster } = videoSrc(video, language);
   return (
-    <section id="video-tour" className="mb-16 pb-14 border-b border-border scroll-mt-28">
+    <section id="video-tour" className="mt-16 pt-14 border-t border-border scroll-mt-28">
       <div className="flex flex-col gap-3 mb-7">
         <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
           <PlayCircle className="w-7 h-7 text-primary shrink-0" aria-hidden="true" />

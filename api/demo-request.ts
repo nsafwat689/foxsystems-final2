@@ -1,7 +1,7 @@
 /**
  * "Try the live demo" endpoint.
  *
- * The visitor leaves a name and phone; we ask that product's demo instance for
+ * The visitor leaves a name, phone and email; we ask that product's demo instance for
  * a personal demo account and hand the browser a one-time sign-in URL. The same
  * details are emailed to LEAD_INBOX, so every demo is also a lead to follow up.
  *
@@ -26,24 +26,32 @@ export const config = { runtime: "nodejs" };
 const PRODUCTS = {
   "real-estate-crm": {
     label: "Real Estate CRM",
+    name: { en: "Fox Real Estate CRM", ar: "نظام فوكس لإدارة العقارات" },
+    days: 3,
     secretEnv: "DEMO_SIGNUP_SECRET",
     endpoint: () =>
       `${(process.env.DEMO_CRM_URL || "https://fox-realestate-crm-omega.vercel.app").replace(/\/+$/, "")}/api/public/demo-signup`,
   },
   "pest-control-crm": {
     label: "Pest Control CRM",
+    name: { en: "Fox Pest Control CRM", ar: "نظام فوكس لمكافحة الآفات" },
+    days: 3,
     secretEnv: "DEMO_SIGNUP_SECRET_PEST_CONTROL",
     endpoint: () =>
       process.env.DEMO_PEST_URL || "https://kopseksbjsajsixuswqp.supabase.co/functions/v1/api/demo/signup",
   },
   "hr-crm": {
     label: "HR & Payroll CRM",
+    name: { en: "Fox HR", ar: "فوكس للموارد البشرية" },
+    days: 7,
     secretEnv: "DEMO_SIGNUP_SECRET_HR",
     endpoint: () =>
       process.env.DEMO_HR_URL || "https://kglepsmhcpqqrldntbol.supabase.co/functions/v1/demo-signup",
   },
   "medical-crm": {
     label: "Medical CRM",
+    name: { en: "Fox Medical CRM", ar: "نظام فوكس للمبيعات الطبية" },
+    days: 3,
     secretEnv: "DEMO_SIGNUP_SECRET_MEDICAL",
     endpoint: () =>
       process.env.DEMO_MEDICAL_URL || "https://klnxievbzoiqjchjaxry.supabase.co/functions/v1/demo-signup",
@@ -57,7 +65,8 @@ const demoSchema = z.object({
     .trim()
     .max(40)
     .refine(v => v.replace(/\D/g, "").length >= 7, "phone"),
-  email: z.union([z.string().trim().email().max(200), z.literal("")]).optional().default(""),
+  // required: the visitor's demo login is emailed here
+  email: z.string().trim().email().max(200),
   company: z.string().trim().max(200).optional().default(""),
   teamSize: z.string().trim().max(40).optional().default(""),
   product: z.enum(["real-estate-crm", "pest-control-crm", "medical-crm", "hr-crm"]).optional().default("real-estate-crm"),
@@ -123,7 +132,7 @@ async function withTimeout<T>(ms: number, run: (signal: AbortSignal) => Promise<
 }
 
 /** Best effort: a mail failure must not cost the visitor their demo. */
-async function emailLead(demo: DemoRequest, accountCreated: boolean) {
+async function emailLead(demo: DemoRequest, accountCreated: boolean, loginSent = false) {
   const apiKey = process.env.BREVO_API_KEY;
   const inbox = process.env.LEAD_INBOX;
   const from = process.env.LEAD_FROM;
@@ -141,6 +150,7 @@ async function emailLead(demo: DemoRequest, accountCreated: boolean) {
     ["Product", PRODUCTS[demo.product].label],
     ["Language", demo.language === "ar" ? "Arabic" : "English"],
     ["Demo account", accountCreated ? "Created — they are in the demo now" : "NOT created — follow up manually"],
+    ["Login emailed to them", loginSent ? "Yes" : "No"],
   ].filter(([, value]) => value !== "") as Array<[string, string]>;
 
   const html = `<h2>${accountCreated ? "Someone is trying the live demo" : "Live demo request (account not created)"}</h2>
@@ -174,6 +184,61 @@ ${rows
     }
   } catch (error: any) {
     console.error("[demo-request] Failed to email demo lead:", error?.name === "AbortError" ? "timeout" : error?.message);
+  }
+}
+
+type Login = { email: string; password: string; url: string };
+
+/** The visitor's own copy of their demo login, so they can come back from any device. */
+export async function emailVisitorLogin(demo: DemoRequest, login: Login): Promise<boolean> {
+  const apiKey = process.env.BREVO_API_KEY;
+  const from = process.env.LEAD_FROM;
+  const replyTo = process.env.LEAD_INBOX;
+  if (!apiKey || !from) return false;
+  const product = PRODUCTS[demo.product];
+  const ar = demo.language === "ar";
+  const app = product.name[ar ? "ar" : "en"];
+  const first = escapeHtml(demo.name.split(/\s+/)[0]);
+  const row = (label: string, value: string) =>
+    `<tr><td style="padding:8px 12px;color:#64748b">${label}</td><td style="padding:8px 12px;font-family:Consolas,monospace;font-size:15px;color:#0f172a" dir="ltr">${escapeHtml(value)}</td></tr>`;
+  const t = ar
+    ? { subject: `بيانات دخولك إلى النسخة التجريبية من ${app}`, hi: `مرحبًا ${first}،`,
+        intro: `هذه بيانات دخولك إلى النسخة التجريبية من ${app}. يمكنك العودة إليها من أي جهاز طوال مدة التجربة.`,
+        page: "صفحة الدخول", user: "البريد الإلكتروني", pass: "كلمة المرور", button: "افتح النسخة التجريبية",
+        note: `حسابك صالح لمدة ${product.days} أيام، والبيانات النموذجية تعود إلى حالتها كل ليلة.`,
+        help: "هل تريد جولة تعريفية؟ رُدّ على هذه الرسالة وسنرتّب موعدًا يناسبك.", team: "فريق فوكس سيستمز" }
+    : { subject: `Your ${app} demo login`, hi: `Hi ${first},`,
+        intro: `Here is your login for the ${app} live demo. You can come back from any device while your trial lasts.`,
+        page: "Sign-in page", user: "Email", pass: "Password", button: "Open the demo",
+        note: `Your login lasts ${product.days} days, and the sample data resets every night.`,
+        help: "Would you like a walkthrough? Reply to this email and we'll arrange a time.", team: "The Fox Systems team" };
+  const html = `<div dir="${ar ? "rtl" : "ltr"}" style="font:15px/1.6 system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif;color:#0f172a;max-width:560px">
+<p>${t.hi}</p><p>${t.intro}</p>
+<table style="border-collapse:collapse;background:#f1f5f9;border-radius:10px;margin:16px 0">
+${row(t.page, login.url)}${row(t.user, login.email)}${row(t.pass, login.password)}
+</table>
+<p><a href="${escapeHtml(login.url)}" style="display:inline-block;background:#2b87f2;color:#fff;text-decoration:none;padding:10px 20px;border-radius:8px;font-weight:600">${t.button}</a></p>
+<p style="color:#64748b">${t.note}</p><p>${t.help}</p><p>${t.team}</p></div>`;
+  try {
+    const response = await withTimeout(8000, signal =>
+      fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
+        signal,
+        headers: { "api-key": apiKey, "content-type": "application/json", accept: "application/json" },
+        body: JSON.stringify({
+          sender: { email: from, name: "Fox Systems" },
+          to: [{ email: demo.email, name: demo.name }],
+          ...(replyTo ? { replyTo: { email: replyTo, name: "Fox Systems" } } : {}),
+          subject: t.subject,
+          htmlContent: html,
+        }),
+      })
+    );
+    if (!response.ok) console.error("[demo-request] Brevo rejected the visitor login email:", response.status);
+    return response.ok;
+  } catch (error: any) {
+    console.error("[demo-request] Failed to email the visitor their login:", error?.name === "AbortError" ? "timeout" : error?.message);
+    return false;
   }
 }
 
@@ -211,6 +276,7 @@ export default async function handler(req: any, res: any) {
   }
 
   let url: string | null = null;
+  let login: Login | null = null;
   let code = "unavailable";
   let endsAt: string | null = null;
   try {
@@ -232,7 +298,9 @@ export default async function handler(req: any, res: any) {
       })
     );
     if (response.ok) {
-      url = ((await response.json()) as { url?: string }).url ?? null;
+      const answer = (await response.json()) as { url?: string; login?: Login };
+      url = answer.url ?? null;
+      if (answer.login?.email && answer.login?.password && answer.login?.url) login = answer.login;
     } else if (response.status === 409) {
       // One trial at a time per email / company: someone else from this
       // email or company already has one running (the same phone would
@@ -248,7 +316,8 @@ export default async function handler(req: any, res: any) {
     console.error("[demo-request] CRM unreachable:", error?.name === "AbortError" ? "timeout" : error?.message);
   }
 
-  await emailLead(demo, Boolean(url));
+  const loginSent = url && login ? await emailVisitorLogin(demo, login) : false;
+  await emailLead(demo, Boolean(url), loginSent);
 
   if (code === "active_trial") return res.status(409).json({ ok: false, code, ends_at: endsAt });
   if (!url) return res.status(code === "rate_limited" ? 429 : 502).json({ ok: false, code });

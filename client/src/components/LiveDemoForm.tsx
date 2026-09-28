@@ -111,13 +111,13 @@ export const isDemoProduct = (id: string): id is DemoProduct => id in PRODUCT_CO
 const T = {
   en: {
     title: "Try the live demo now",
-    nameLbl: "Your name", phoneLbl: "Phone / WhatsApp", companyLbl: "Company", emailLbl: "Work email",
+    nameLbl: "Your name", phoneLbl: "Phone / WhatsApp", companyLbl: "Company", emailLbl: "Work email (we'll send your login here)",
     activeTrial: (until: string) => `Your company or email already has a live demo running until ${until}. Ask whoever started it for their link, or message us on WhatsApp and we will help.`,
     sizeOpts: ["1–5", "6–15", "16–40", "40+"],
     submit: "Open the demo", opening: "Preparing your demo…",
-    footnote: "We'll message you on WhatsApp to offer a 20-minute walkthrough. No spam.",
+    footnote: "We email you your login so you can come back from any device during the trial, and message you on WhatsApp to offer a 20-minute walkthrough. No spam.",
     expired: "That sign-in link has already been used or has expired. Request a new one below; the same phone number keeps your account.",
-    invalid: "Please enter your name and a phone number we can reach.",
+    invalid: "Please enter your name, a phone number we can reach and your email.",
     limited: "Too many requests from this connection. Please try again in an hour, or message us on WhatsApp.",
     unavailableTitle: "The demo couldn't open right now",
     unavailable: "Message us on WhatsApp and we'll send you your access straight away. Your details are already filled in:",
@@ -125,14 +125,14 @@ const T = {
   },
   ar: {
     title: "جرّب النسخة التجريبية الآن",
-    nameLbl: "اسمك", phoneLbl: "الهاتف / واتساب", companyLbl: "الشركة", emailLbl: "البريد الإلكتروني للعمل",
+    nameLbl: "اسمك", phoneLbl: "الهاتف / واتساب", companyLbl: "الشركة", emailLbl: "البريد الإلكتروني للعمل (نرسل إليه بيانات الدخول)",
     activeTrial: (until: string) => `لدى شركتك أو بريدك نسخة تجريبية جارية حتى ${until}. اطلب الرابط ممن بدأها، أو راسلنا عبر واتساب وسنساعدك.`,
     // Worded, not "6–15": a bare numeric range renders reversed ("15–6") in RTL.
     sizeOpts: ["من 1 إلى 5", "من 6 إلى 15", "من 16 إلى 40", "أكثر من 40"],
     submit: "افتح النسخة التجريبية", opening: "جارٍ تجهيز النسخة التجريبية…",
-    footnote: "سنتواصل معك عبر واتساب لنعرض عليك جولة تعريفية مدتها 20 دقيقة. لا رسائل مزعجة.",
+    footnote: "نرسل إليك بيانات الدخول بالبريد لتعود من أي جهاز طوال مدة التجربة، ونتواصل معك عبر واتساب لنعرض عليك جولة تعريفية مدتها 20 دقيقة. لا رسائل مزعجة.",
     expired: "رابط الدخول هذا استُخدم من قبل أو انتهت صلاحيته. اطلب رابطًا جديدًا أدناه، ويحتفظ رقم الهاتف نفسه بحسابك.",
-    invalid: "يُرجى إدخال اسمك ورقم هاتف يمكننا التواصل معك عليه.",
+    invalid: "يُرجى إدخال اسمك ورقم هاتف يمكننا التواصل معك عليه وبريدك الإلكتروني.",
     limited: "طلبات كثيرة من هذا الاتصال. يُرجى المحاولة بعد ساعة، أو مراسلتنا عبر واتساب.",
     unavailableTitle: "تعذّر فتح النسخة التجريبية الآن",
     unavailable: "راسلنا عبر واتساب وسنرسل إليك رابط الدخول فورًا. بياناتك مكتوبة في الرسالة مسبقًا:",
@@ -165,7 +165,7 @@ export default function LiveDemoForm({ language, product }: LiveDemoFormProps) {
     setForm(prev => ({ ...prev, [field]: e.target.value }));
 
   const waUrl = whatsAppFallbackUrl({
-    name: form.name, email: "", phone: form.phone, company: form.company,
+    name: form.name, email: form.email, phone: form.phone, company: form.company,
     service: t.service, language,
   });
 
@@ -271,7 +271,7 @@ export default function LiveDemoForm({ language, product }: LiveDemoFormProps) {
             {([
               { lbl: t.nameLbl,    type: "text", field: "name"    as const, autoComplete: "name",         required: true },
               { lbl: t.phoneLbl,   type: "tel",  field: "phone"   as const, autoComplete: "tel",          required: true },
-              { lbl: t.emailLbl,   type: "email", field: "email"   as const, autoComplete: "email",        required: false },
+              { lbl: t.emailLbl,   type: "email", field: "email"   as const, autoComplete: "email",        required: true },
               { lbl: t.companyLbl, type: "text", field: "company" as const, autoComplete: "organization", required: false },
             ]).map(({ lbl, type, field, autoComplete, required }) => (
               <div key={field} className="space-y-1.5">

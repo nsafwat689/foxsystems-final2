@@ -25,6 +25,7 @@ function mockRes() {
 const validDemo = {
   name: "Ahmed Nabil",
   phone: "+20 100 000 0000",
+  email: "ahmed@nilehomes.example",
   company: "Nile Homes",
   teamSize: "6-15",
   language: "ar",
@@ -183,6 +184,41 @@ describe("POST /api/demo-request", () => {
     expect(url).toBe("https://kglepsmhcpqqrldntbol.supabase.co/functions/v1/demo-signup");
     expect(init.headers["x-demo-secret"]).toBe("hr-secret");
     expect(JSON.parse((fetchSpy.mock.calls[1][1] as any).body).htmlContent).toContain("HR &amp; Payroll CRM");
+  });
+
+  it("refuses a sign-up without an email address", async () => {
+    process.env.DEMO_SIGNUP_SECRET = "s3cret";
+    const fetchSpy = vi.spyOn(globalThis, "fetch");
+    const { email: _omit, ...noEmail } = validDemo;
+    const res = mockRes();
+    await handler(req(noEmail), res);
+    expect(res.statusCode).toBe(400);
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it("emails the visitor their login, in their language, and tells the lead inbox it did", async () => {
+    process.env.DEMO_SIGNUP_SECRET_HR = "hr-secret";
+    const login = { email: "visitor-ab12@demo.foxhr.app", password: "Demo-Xy7kP3mQ9a", url: "https://fox-hr-crm.vercel.app/login" };
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(async (url: any) =>
+      String(url).includes("kglepsmhcpqqrldntbol")
+        ? new Response(JSON.stringify({ url: "https://fox-hr-crm.vercel.app/demo/enter?token_hash=x", login }), { status: 200 })
+        : new Response("{}", { status: 201 })
+    );
+    const res = mockRes();
+    await handler(req({ ...validDemo, product: "hr-crm" }), res);
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toEqual({ ok: true, url: "https://fox-hr-crm.vercel.app/demo/enter?token_hash=x" }); // the password never reaches the browser
+    const visitorMail = JSON.parse((fetchSpy.mock.calls[1][1] as any).body);
+    expect(visitorMail.to).toEqual([{ email: "ahmed@nilehomes.example", name: "Ahmed Nabil" }]);
+    expect(visitorMail.subject).toContain("فوكس للموارد البشرية");
+    expect(visitorMail.htmlContent).toContain("Demo-Xy7kP3mQ9a");
+    expect(visitorMail.htmlContent).toContain("visitor-ab12@demo.foxhr.app");
+    expect(visitorMail.htmlContent).toContain('dir="rtl"');
+    expect(visitorMail.htmlContent).toContain("7 أيام");
+    const leadMail = JSON.parse((fetchSpy.mock.calls[2][1] as any).body);
+    expect(leadMail.htmlContent).toContain("Login emailed to them");
+    expect(leadMail.htmlContent).not.toContain("Demo-Xy7kP3mQ9a");            // your inbox never gets visitors' passwords
   });
 
   it("needs the pest control secret even when the real estate one is set", async () => {

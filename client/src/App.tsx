@@ -10,6 +10,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import { SOLUTION_IDS } from "./data/solutionIds";
+import { COMPARISON_IDS } from "./data/comparisonIds";
 import { TOOL_IDS } from "./data/toolIds";
 
 // Only the home page ships in the entry bundle. Everything else loads on
@@ -28,6 +29,8 @@ const SolutionDetail = lazy(() => import("./pages/SolutionDetail"));
 const Tools = lazy(() => import("./pages/Tools"));
 const ToolDetail = lazy(() => import("./pages/ToolDetail"));
 const Pricing = lazy(() => import("./pages/Pricing"));
+const Compare = lazy(() => import("./pages/Compare"));
+const Book = lazy(() => import("./pages/Book"));
 
 const SERVICE_IDS = [
   "internet",
@@ -74,6 +77,12 @@ function localeRoutes(language: "en" | "ar") {
       </Route>
     )),
     <Route key={`${language}-pricing`} path={`${prefix}/pricing`}>{() => <Pricing language={language} />}</Route>,
+    ...COMPARISON_IDS.map(id => (
+      <Route key={`${language}-compare-${id}`} path={`${prefix}/compare/${id}`}>
+        {() => <Compare comparisonId={id} language={language} />}
+      </Route>
+    )),
+    <Route key={`${language}-book`} path={`${prefix}/book`}>{() => <Book language={language} />}</Route>,
     <Route key={`${language}-industries`} path={`${prefix}/industries`}>{() => <Industries language={language} />}</Route>,
     <Route key={`${language}-cases`} path={`${prefix}/case-studies`}>{() => <CaseStudies language={language} />}</Route>,
     <Route key={`${language}-guide`} path={`${prefix}/resources/it-guide`}>{() => <LeadMagnet language={language} />}</Route>,

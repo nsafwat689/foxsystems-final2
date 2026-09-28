@@ -25,6 +25,9 @@ import {
 import { SOLUTIONS, SOLUTION_IDS } from "./solutions";
 import { TOOLS, TOOL_IDS, TOOLS_INDEX_SEO } from "./tools";
 import { PRICING_SEO } from "./servicePricing";
+import { COMPARISONS } from "./comparisons";
+import { COMPARISON_IDS } from "./comparisonIds";
+import { BOOK_SEO } from "./bookSeo";
 
 const ORIGIN = "https://foxsystemstech.com";
 
@@ -196,6 +199,8 @@ export function buildRouteMeta(): Record<string, SEOConfig> {
     "/ar/pricing": PRICING_SEO.ar,
     "/resources/it-guide": IT_GUIDE_SEO.en,
     "/ar/resources/it-guide": IT_GUIDE_SEO.ar,
+    "/book": BOOK_SEO.en,
+    "/ar/book": BOOK_SEO.ar,
   };
 
   for (const id of SERVICE_IDS) {
@@ -206,6 +211,11 @@ export function buildRouteMeta(): Record<string, SEOConfig> {
   for (const id of SOLUTION_IDS) {
     map[`/solutions/${id}`] = SOLUTIONS[id].seo.en;
     map[`/ar/solutions/${id}`] = SOLUTIONS[id].seo.ar;
+  }
+
+  for (const id of COMPARISON_IDS) {
+    map[`/compare/${id}`] = COMPARISONS[id].seo.en;
+    map[`/ar/compare/${id}`] = COMPARISONS[id].seo.ar;
   }
 
   for (const id of TOOL_IDS) {

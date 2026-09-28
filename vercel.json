@@ -181,8 +181,28 @@
       "destination": "/ar/articles/website-design-trends.html"
     },
     {
+      "source": "/ar/book",
+      "destination": "/ar/book.html"
+    },
+    {
       "source": "/ar/case-studies",
       "destination": "/ar/case-studies.html"
+    },
+    {
+      "source": "/ar/compare/hr-payroll-software",
+      "destination": "/ar/compare/hr-payroll-software.html"
+    },
+    {
+      "source": "/ar/compare/pest-control-software",
+      "destination": "/ar/compare/pest-control-software.html"
+    },
+    {
+      "source": "/ar/compare/pharma-crm",
+      "destination": "/ar/compare/pharma-crm.html"
+    },
+    {
+      "source": "/ar/compare/real-estate-crm",
+      "destination": "/ar/compare/real-estate-crm.html"
     },
     {
       "source": "/ar/contact",
@@ -409,8 +429,28 @@
       "destination": "/articles/website-design-trends.html"
     },
     {
+      "source": "/book",
+      "destination": "/book.html"
+    },
+    {
       "source": "/case-studies",
       "destination": "/case-studies.html"
+    },
+    {
+      "source": "/compare/hr-payroll-software",
+      "destination": "/compare/hr-payroll-software.html"
+    },
+    {
+      "source": "/compare/pest-control-software",
+      "destination": "/compare/pest-control-software.html"
+    },
+    {
+      "source": "/compare/pharma-crm",
+      "destination": "/compare/pharma-crm.html"
+    },
+    {
+      "source": "/compare/real-estate-crm",
+      "destination": "/compare/real-estate-crm.html"
     },
     {
       "source": "/contact",

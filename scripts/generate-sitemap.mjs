@@ -19,6 +19,8 @@ const OUT = path.join("client", "public", "sitemap.xml");
 const ARTICLES_SRC = path.join("client", "src", "pages", "ArticleDetail.tsx");
 
 const SOLUTIONS = ["medical-crm", "real-estate-crm", "pest-control-crm", "hr-crm"];
+// Keep in step with COMPARISON_IDS in client/src/data/comparisonIds.ts.
+const COMPARISONS = ["real-estate-crm", "pharma-crm", "pest-control-software", "hr-payroll-software"];
 // Keep in step with SERVICE_IDS in client/src/App.tsx. "software" was renamed
 // to "crm" on 2026-09-24; leaving it here would have kept a redirecting URL in
 // the sitemap, which wastes crawl budget and is flagged in Search Console.
@@ -43,6 +45,8 @@ function buildRoutes() {
     { path: "/solutions", changefreq: "monthly", priority: "0.9" },
     ...SOLUTIONS.map(s => ({ path: `/solutions/${s}`, changefreq: "monthly", priority: "0.9" })),
     { path: "/pricing", changefreq: "monthly", priority: "0.9" },
+    ...COMPARISONS.map(s => ({ path: `/compare/${s}`, changefreq: "monthly", priority: "0.8" })),
+    { path: "/book", changefreq: "monthly", priority: "0.8" },
     { path: "/tools", changefreq: "monthly", priority: "0.8" },
     ...TOOLS.map(s => ({ path: `/tools/${s}`, changefreq: "monthly", priority: "0.8" })),
     { path: "/industries", changefreq: "monthly", priority: "0.8" },

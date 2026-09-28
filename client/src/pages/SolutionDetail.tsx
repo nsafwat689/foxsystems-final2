@@ -18,6 +18,7 @@ import SolutionVideo, { videoSchema } from "@/components/SolutionVideo";
 import LiveDemoForm, { isDemoProduct } from "@/components/LiveDemoForm";
 import { scrollToId } from "@/lib/scrollToId";
 import { SOLUTIONS, type SolutionId } from "@/data/solutions";
+import { COMPARISON_FOR } from "@/data/comparisonIds";
 import { generateBreadcrumbSchema, generateFAQSchema, generateServiceSchema } from "@/utils/seo";
 
 const ICONS = { Stethoscope, Building2, Bug, Users };
@@ -106,8 +107,8 @@ export default function SolutionDetail({ solutionId, language }: Props) {
               )}
               <Button asChild size="lg" variant={solution.liveDemo ? "outline" : "default"}
                 className={solution.liveDemo ? "border-white/25 text-white hover:bg-white/10 hover:text-white" : undefined}>
-                <Link href={`${prefix}/contact`}>
-                  {isArabic ? "احجز عرض عملي" : "Book a walkthrough"}
+                <Link href={`${prefix}/book?product=${solution.id}`} onClick={() => window.trackCTA?.("book-hero")}>
+                  {isArabic ? "احجز عرضًا عمليًا" : "Book a walkthrough"}
                   {!solution.liveDemo && <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />}
                 </Link>
               </Button>
@@ -314,8 +315,8 @@ export default function SolutionDetail({ solutionId, language }: Props) {
             )}
             <Button asChild size="lg" variant={solution.liveDemo ? "outline" : "default"}
               className={solution.liveDemo ? "border-white/25 text-white hover:bg-white/10 hover:text-white" : undefined}>
-              <Link href={`${prefix}/contact`}>
-                {isArabic ? "احجز عرض عملي" : "Book a walkthrough"}
+              <Link href={`${prefix}/book?product=${solution.id}`} onClick={() => window.trackCTA?.("book-footer")}>
+                {isArabic ? "احجز عرضًا عمليًا" : "Book a walkthrough"}
                 <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />
               </Link>
             </Button>
@@ -331,6 +332,10 @@ export default function SolutionDetail({ solutionId, language }: Props) {
               </a>
             </Button>
           </div>
+          <Link href={`${prefix}/compare/${COMPARISON_FOR[solution.id].id}`}
+            className="inline-block mt-6 text-sm text-white/70 underline underline-offset-4 hover:text-white">
+            {COMPARISON_FOR[solution.id][language]}
+          </Link>
         </section>
         {/* Other solutions — internal linking between the verticals */}
         <section className="mt-16 pt-14 border-t border-border">

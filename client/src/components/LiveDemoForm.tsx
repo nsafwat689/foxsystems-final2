@@ -80,6 +80,28 @@ const PRODUCT_COPY = {
       service: "نظام إدارة المبيعات الطبية — نسخة تجريبية",
     },
   },
+  "finance-crm": {
+    en: {
+      sub: "Not screenshots: the real system, filled with a sample financing company — six months of books, a financing portfolio with late contracts, collections, provisions, expense claims, fixed assets, a budget and VAT returns, plus the finance assistant. You get your own login straight away.",
+      points: [
+        { icon: ShieldCheck, text: "You're signed in as an administrator, so you can approve, post and run everything" },
+        { icon: RotateCcw, text: "Sample data, reset every night, so explore freely" },
+        { icon: Clock, text: "Your login lasts 3 days, then it and anything you added are deleted" },
+      ],
+      sizeLbl: "Size of the finance team",
+      service: "Fox Finance — live demo",
+    },
+    ar: {
+      sub: "ليست صورًا للشاشات، بل النظام الفعلي ببيانات شركة تمويل نموذجية: ستة أشهر من الدفاتر، ومحفظة تمويل فيها عقود متأخرة، والتحصيل والمخصصات، ومطالبات المصروفات، والأصول الثابتة، وموازنة، وإقرارات القيمة المضافة، مع المساعد المالي. تحصل على حساب خاص بك فورًا.",
+      points: [
+        { icon: ShieldCheck, text: "تدخل بصلاحيات مدير النظام، فتعتمد وترحّل وتشغّل كل شيء" },
+        { icon: RotateCcw, text: "بيانات نموذجية تعود إلى حالتها كل ليلة، فجرّب بحرية" },
+        { icon: Clock, text: "حسابك صالح لمدة 3 أيام، ثم يُحذف مع كل ما أضفته" },
+      ],
+      sizeLbl: "حجم الفريق المالي",
+      service: "فوكس للتمويل — نسخة تجريبية",
+    },
+  },
   "hr-crm": {
     en: {
       sub: "Not screenshots: the real system, filled with a sample company in Egypt, Saudi Arabia and Kuwait — employees, contracts, leave, attendance from fingerprint machines, payroll with payslips, recruitment and FoxBot. You get your own login straight away.",

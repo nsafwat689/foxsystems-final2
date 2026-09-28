@@ -1480,6 +1480,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "finance-crm": {
     id: "finance-crm",
     showcaseBase: "finance-crm",
+    liveDemo: true,
     icon: "Landmark",
     en: {
       badge: "Built and run by Fox Systems",
@@ -1530,6 +1531,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         { title: "Banks and reconciliation", desc: "Bank and cash accounts, statements imported from Excel or CSV, automatic matching against the books, and transfers." },
         { title: "Lending from application to disbursement", desc: "Products, borrower KYC, applications with a rule-based credit check, recommendation and approval by role, and disbursement that books the fee." },
         { title: "Collections and provisions", desc: "Daily accrual, late fees after a grace period, a days-past-due queue with WhatsApp reminders, promises to pay, provisioning by bucket and write-off." },
+        { title: "Expense claims", desc: "Staff record what they spent with a photo of the receipt; a finance manager approves, which books it, and the treasurer pays everyone back in one go." },
+        { title: "Fixed assets and budgets", desc: "An asset register with monthly straight-line depreciation and disposal with gain or loss, and monthly budgets compared with the actual figures." },
+        { title: "VAT returns and an AI assistant", desc: "The VAT return for each month or quarter, settled and paid from the system, and an assistant that answers questions about your figures in Arabic or English." },
       ],
       screensTitle: "Inside the system",
       screensSub: "Real screens from the system, with a fictional sample financing company.",
@@ -1558,6 +1562,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         { q: "How are provisions calculated?", a: "By days past due. You set the rate for each bucket to match your policy or your regulator's minimums, run it at month end, and the system books only the change against the allowance, with the detail kept for every run." },
         { q: "Who can see and post what?", a: "Roles decide it: owner, administrator, finance manager, accountant, receivables and payables clerks, treasurer, credit officer, collector, auditor and viewer. A payables clerk can prepare a bill but not post it. These rules are enforced in the database, not just hidden on the screen." },
         { q: "Can we bring our existing data in?", a: "Yes. Opening balances go in as a journal entry, and bank statements import from Excel or CSV. For customers, vendors and an existing loan book we map your data during setup. Send us a sample and we will tell you what maps cleanly." },
+        { q: "Can I try it?", a: "Yes. Open the live demo on this page: you get your own administrator login for 3 days in a sample financing company, reset every night." },
         { q: "What does it cost?", a: "It depends on the modules you need and the number of users. Book a walkthrough and we will give you a figure for your company." },
       ],
       ctaTitle: "See it with your own numbers",
@@ -1613,6 +1618,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         { title: "البنوك والتسوية", desc: "حسابات بنكية وخزائن، واستيراد كشف الحساب من Excel أو CSV، ومطابقة تلقائية مع الدفاتر، وتحويلات." },
         { title: "التمويل من الطلب حتى الصرف", desc: "منتجات، وبيانات العميل والتحقق منها، وطلبات بتقييم ائتماني قائم على القواعد، وتوصية واعتماد حسب الدور، وصرف يقيّد الرسوم." },
         { title: "التحصيل والمخصصات", desc: "استحقاق يومي، وغرامات تأخير بعد فترة سماح، وقائمة حسب أيام التأخير مع تذكير عبر واتساب، ووعود بالسداد، ومخصصات حسب عمر التأخر، وإعدام الديون." },
+        { title: "مطالبات المصروفات", desc: "يسجّل الموظفون ما أنفقوه مع صورة الإيصال، ويعتمده المدير المالي فيُقيَّد، ويرد أمين الخزينة المبالغ للجميع دفعة واحدة." },
+        { title: "الأصول الثابتة والموازنات", desc: "سجل للأصول بإهلاك شهري بطريقة القسط الثابت، واستبعاد بربح أو خسارة، وموازنات شهرية تُقارن بالأرقام الفعلية." },
+        { title: "إقرارات القيمة المضافة ومساعد ذكي", desc: "إقرار ضريبة القيمة المضافة لكل شهر أو ربع سنة، يُسوّى ويُسدَّد من النظام، ومساعد يجيب عن أسئلتك حول أرقامك بالعربية أو الإنجليزية." },
       ],
       screensTitle: "من داخل النظام",
       screensSub: "شاشات حقيقية من النظام لشركة تمويل نموذجية غير حقيقية.",
@@ -1641,6 +1649,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         { q: "كيف تُحسب المخصصات؟", a: "حسب أيام التأخير. تحدد نسبة كل فئة وفق سياستك أو الحدود الدنيا لجهة الرقابة، وتشغّل الاحتساب في نهاية الشهر، فيقيّد النظام التغيير فقط على المخصص، مع حفظ تفاصيل كل احتساب." },
         { q: "من يرى ماذا ومن يرحّل؟", a: "الأدوار هي التي تحدد: المالك، ومدير النظام، والمدير المالي، والمحاسب، ومسؤولا المبيعات والمشتريات، وأمين الخزينة، ومسؤول الائتمان، والمحصّل، والمراجع، والمشاهد. يستطيع مسؤول المشتريات إعداد فاتورة مورد دون ترحيلها. وتُطبَّق هذه القواعد في قاعدة البيانات نفسها، لا بإخفائها من الشاشة فحسب." },
         { q: "هل يمكن نقل بياناتنا الحالية؟", a: "نعم. تُدخل الأرصدة الافتتاحية قيدًا يوميًا، وتُستورد كشوف البنوك من Excel أو CSV. أما العملاء والموردون ومحفظة التمويل القائمة فننقلها أثناء التجهيز. أرسل لنا عينة ونخبرك بما ينتقل مباشرةً." },
+        { q: "هل يمكنني تجربته؟", a: "نعم. افتح النسخة التجريبية الحية من هذه الصفحة: تحصل على حساب مدير نظام خاص بك لمدة 3 أيام في شركة تمويل نموذجية تُعاد إلى حالتها كل ليلة." },
         { q: "كم التكلفة؟", a: "تعتمد على الوحدات التي تحتاجها وعدد المستخدمين. احجز عرضًا عمليًا ونعطيك رقمًا لشركتك." },
       ],
       ctaTitle: "شاهده بأرقامك",
@@ -1651,7 +1660,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
       en: {
         title: "Finance & Lending Software Egypt, KSA | Fox Systems",
         description:
-          "Accounting, receivables, payables, bank reconciliation and a full lending cycle for finance companies in Egypt, Saudi Arabia, Kuwait and the UAE. Arabic & English.",
+          "Accounting, receivables, payables, banks, expenses, fixed assets, budgets, VAT returns and a full lending cycle for finance companies in Egypt and the Gulf. Try the live demo.",
         keywords:
           "loan management software Egypt, lending software, microfinance software Egypt, consumer finance software, murabaha software, loan management system Saudi Arabia, accounting software Egypt, accounting software Saudi Arabia, collections software, IFRS 9 provisioning, bank reconciliation software, ZATCA QR invoice, برنامج محاسبة, برنامج إدارة القروض, نظام تمويل, برنامج شركات التمويل, برنامج تحصيل",
         ogTitle: "Accounting and Lending Software for Finance Companies - Fox Systems",
@@ -1663,7 +1672,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
       ar: {
         title: "برنامج محاسبة وإدارة تمويل لشركات التمويل | فوكس",
         description:
-          "محاسبة وعملاء وموردون وتسوية بنكية ودورة تمويل كاملة لشركات التمويل في مصر والسعودية والكويت والإمارات: تقييم ائتماني وتحصيل ومخصصات. عربي وإنجليزي.",
+          "محاسبة وعملاء وموردون وبنوك ومصروفات وأصول وموازنات وإقرارات ضريبية ودورة تمويل كاملة لشركات التمويل في مصر والخليج. جرّب النسخة الحية.",
         keywords:
           "برنامج محاسبة, برنامج إدارة القروض, نظام إدارة التمويل, برنامج شركات التمويل, برنامج تمويل استهلاكي, برنامج مرابحة, برنامج تحصيل أقساط, برنامج محاسبة مصر, برنامج محاسبة السعودية, تسوية بنكية, مخصصات خسائر الائتمان, فاتورة ضريبية QR, loan management software Egypt, lending software",
         ogTitle: "نظام محاسبة وتمويل لشركات التمويل والإدارات المالية - فوكس سيستمز",

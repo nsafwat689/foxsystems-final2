@@ -11,6 +11,8 @@
  *   DEMO_SIGNUP_SECRET_PEST_CONTROL  pest control demo: `select value from demo_ops.config
  *                                    where key = 'signup_secret'` (Supabase kopseksbjsajsixuswqp)
  *   DEMO_SIGNUP_SECRET_HR            HR CRM: `select value from demo_ops.config where key = 'signup_secret'`
+ *   DEMO_SIGNUP_SECRET_FINANCE       finance: `select value from demo_ops.config where key = 'signup_secret'`
+ *                                    (Supabase qdhwgkfkutexuuzqfgni)
  *   DEMO_SIGNUP_SECRET_MEDICAL       medical CRM: `select value from demo_ops.config
  *                                    where key = 'signup_secret'` (Supabase klnxievbzoiqjchjaxry)
  *   DEMO_CRM_URL, DEMO_PEST_URL, DEMO_MEDICAL_URL   optional overrides of the endpoints below
@@ -49,6 +51,14 @@ const PRODUCTS = {
     endpoint: () =>
       process.env.DEMO_HR_URL || "https://kglepsmhcpqqrldntbol.supabase.co/functions/v1/demo-signup",
   },
+  "finance-crm": {
+    label: "Finance & Lending",
+    name: { en: "Fox Finance", ar: "فوكس للتمويل" },
+    days: 3,
+    secretEnv: "DEMO_SIGNUP_SECRET_FINANCE",
+    endpoint: () =>
+      process.env.DEMO_FINANCE_URL || "https://qdhwgkfkutexuuzqfgni.supabase.co/functions/v1/demo-signup",
+  },
   "medical-crm": {
     label: "Medical CRM",
     name: { en: "Fox Medical CRM", ar: "نظام فوكس للمبيعات الطبية" },
@@ -70,7 +80,7 @@ const demoSchema = z.object({
   email: z.string().trim().email().max(200),
   company: z.string().trim().max(200).optional().default(""),
   teamSize: z.string().trim().max(40).optional().default(""),
-  product: z.enum(["real-estate-crm", "pest-control-crm", "medical-crm", "hr-crm"]).optional().default("real-estate-crm"),
+  product: z.enum(["real-estate-crm", "pest-control-crm", "medical-crm", "hr-crm", "finance-crm"]).optional().default("real-estate-crm"),
   language: z.enum(["en", "ar"]).optional().default("en"),
   // Honeypot, handled as in /api/contact: accepted, then quietly discarded.
   website: z.string().max(500).optional().default(""),
@@ -250,6 +260,14 @@ ${row(t.page, login.url)}${row(t.user, login.email)}${row(t.pass, login.password
 // them queued.
 const WHATSAPP = "201038450546";
 const TIPS: Record<DemoRequest["product"], { en: string[]; ar: string[] }> = {
+  "finance-crm": {
+    en: ["Open <b>Collections</b>: the late contracts, most urgent first, with a WhatsApp reminder one click away.",
+         "Open an application in <b>Applications</b> and approve it: the credit check, schedule and disbursement are all there.",
+         "Ask the <b>Finance assistant</b> in Arabic or English, for example which customers owe the most."],
+    ar: ["افتح <b>التحصيل</b>: العقود المتأخرة، الأكثر إلحاحًا أولًا، مع تذكير واتساب بضغطة واحدة.",
+         "افتح طلبًا في <b>طلبات التمويل</b> واعتمده: التقييم الائتماني والجدول والصرف كلها هناك.",
+         "اسأل <b>المساعد المالي</b> بالعربية أو الإنجليزية، مثلًا أي العملاء مدينون بأكبر المبالغ."],
+  },
   "real-estate-crm": {
     en: ["Open <b>AI Matching</b>, pick a lead and press <b>Find Best Matches</b>: the system ranks the properties that fit their budget and area.",
          "Look at <b>Payments</b>: every unit's instalments, what is due and what is overdue.",

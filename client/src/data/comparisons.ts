@@ -405,7 +405,7 @@ export const COMPARISONS: Record<ComparisonId, Comparison> = {
       faqs: [
         { q: "Can we move our existing loan book?", a: "Yes. We map your contracts and their payment history during setup, and check the migrated balances against your ledger before you go live." },
         { q: "Can we use only the accounting part?", a: "Yes. Modules are switched on per company, so a finance department in a trading or services company can use accounting, receivables, payables and banking without lending." },
-        { q: "Can I see it?", a: "Book a walkthrough and we will show it with a sample financing company, or with one of your own products." },
+        { q: "Can I try it?", a: "Open the live demo on the product page: your own login for 3 days in a sample financing company. Or book a walkthrough with one of your own products." },
       ],
       ctaTitle: "See it with your own numbers",
       note: NOTE_EN,
@@ -442,7 +442,7 @@ export const COMPARISONS: Record<ComparisonId, Comparison> = {
       faqs: [
         { q: "هل يمكن نقل محفظة التمويل الحالية؟", a: "نعم. نطابق عقودكم وتاريخ سدادها أثناء التجهيز، ونراجع الأرصدة المنقولة مع دفتر الأستاذ قبل التشغيل." },
         { q: "هل يمكن استخدام جزء المحاسبة فقط؟", a: "نعم. تُفعَّل الوحدات لكل شركة، فتستطيع الإدارة المالية في شركة تجارية أو خدمية استخدام المحاسبة والعملاء والموردين والبنوك دون التمويل." },
-        { q: "هل يمكنني مشاهدته؟", a: "احجز عرضًا عمليًا ونعرضه على شركة تمويل نموذجية، أو على أحد منتجاتكم." },
+        { q: "هل يمكنني تجربته؟", a: "افتح النسخة التجريبية الحية من صفحة المنتج: حساب خاص بك لمدة 3 أيام في شركة تمويل نموذجية. أو احجز عرضًا عمليًا على أحد منتجاتكم." },
       ],
       ctaTitle: "شاهده بأرقامك",
       note: NOTE_AR,

@@ -13,6 +13,7 @@ import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { SOLUTIONS } from "@/data/solutions";
 import { generateBreadcrumbSchema } from "@/utils/seo";
+import MobileActionBar from "@/components/MobileActionBar";
 import { SOLUTIONS_INDEX_SEO } from "@/data/routeMeta";
 
 const ICONS = { Stethoscope, Building2, Bug, Users, Landmark };
@@ -159,11 +160,13 @@ export default function Solutions({ language }: Props) {
           </p>
         </div>
       </footer>
+      <MobileActionBar language={language} source="solutions"
+        demo={{ id: "try-demo", href: `${prefix}/services/crm#try-demo` }} prices={{ id: "pricing", href: `${prefix}/services/crm#pricing` }} />
       <a
         href="https://wa.me/201038450546"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+        className="max-md:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
         aria-label="Chat on WhatsApp"
       >
         <MessageCircle className="w-7 h-7 text-white" />

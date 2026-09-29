@@ -65,7 +65,8 @@ export default function CrmProductsShowcase({ language }: Props) {
         <p className="text-muted-foreground leading-relaxed max-w-2xl">{t.sub}</p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      {/* phones: one swipe row of systems instead of five stacked cards */}
+      <div className="grid md:grid-cols-3 gap-6 max-md:flex max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory max-md:-mx-4 max-md:px-4 max-md:pb-2 max-md:gap-4 [scrollbar-width:none]">
         {Object.values(SOLUTIONS).map((solution, i) => {
           const Icon = ICONS[solution.icon];
           const copy = isArabic ? solution.ar : solution.en;
@@ -78,6 +79,7 @@ export default function CrmProductsShowcase({ language }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] as const }}
+              className="max-md:shrink-0 max-md:w-[82%] max-md:snap-start"
             >
               <div className="group flex flex-col h-full rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-lg transition-all">
               <Link href={`${prefix}/solutions/${solution.id}`} className="flex flex-col flex-1">

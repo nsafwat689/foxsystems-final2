@@ -18,6 +18,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import MobileFold from "@/components/MobileFold";
 import { ArrowRight, Check, Headphones, MapPin, Sparkles } from "lucide-react";
 import { PLANS, FEATURE_ROWS, effectiveMonthly, type Plan } from "@/data/crmPlans";
 import { scrollToId } from "@/lib/scrollToId";
@@ -156,7 +157,8 @@ export default function CrmPricing({ language }: Props) {
         ))}
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      {/* below sm the five plans are one swipe row instead of five screens of cards */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 max-sm:flex max-sm:overflow-x-auto max-sm:snap-x max-sm:snap-mandatory max-sm:-mx-4 max-sm:px-4 max-sm:pb-2 [scrollbar-width:none]">
         {PLANS.map((p, i) => (
           <motion.div
             key={p.id}
@@ -164,7 +166,7 @@ export default function CrmPricing({ language }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.4, delay: i * 0.05 }}
-            className={`flex flex-col p-5 rounded-2xl border ${
+            className={`flex flex-col p-5 rounded-2xl border max-sm:shrink-0 max-sm:w-[78%] max-sm:snap-start ${
               p.highlight ? "border-2 border-primary bg-primary/5 shadow-lg shadow-primary/10" : "border-border bg-card"
             }`}
           >
@@ -214,7 +216,8 @@ export default function CrmPricing({ language }: Props) {
       </div>
 
       {/* the only things that differ between plans */}
-      <div className="mt-8 min-w-0">
+      <MobileFold language={language} peek={260} className="mt-8">
+      <div className="min-w-0">
         <h3 className="font-bold text-lg mb-1" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
           {t.matrix}
         </h3>
@@ -349,6 +352,8 @@ export default function CrmPricing({ language }: Props) {
           </div>
         </div>
       </div>
+
+      </MobileFold>
 
       {/* honest market comparison */}
       <div className="mt-6 p-6 rounded-xl border border-border bg-card">

@@ -12,6 +12,8 @@ import { serviceDetailsAr } from "@/data/serviceDetailsAr";
 import CrmProductsShowcase from "@/components/CrmProductsShowcase";
 import CrmPricing from "@/components/CrmPricing";
 import CrmCommitments from "@/components/CrmCommitments";
+import MobileFold from "@/components/MobileFold";
+import MobileActionBar from "@/components/MobileActionBar";
 
 interface ServiceDetailProps {
   serviceId: string;
@@ -283,6 +285,10 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
     { name: data.title, url: seoConfig.canonicalUrl },
   ]);
 
+  // The CRM page is the long one: on phones its long sections fold (see MobileFold).
+  const crm = serviceId === "crm";
+  const fold = (node: React.ReactNode, peek?: number) => (crm ? <MobileFold language={language} peek={peek}>{node}</MobileFold> : node);
+
   return (
     <div className={`min-h-screen bg-background text-foreground ${isArabic ? "rtl" : "ltr"}`} dir={isArabic ? "rtl" : "ltr"}>
       <SEOHead config={seoConfig} organizationSchema additionalSchema={serviceSchema} breadcrumbSchema={breadcrumbSchema} />
@@ -327,14 +333,16 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
         </div>
       </section>
 
+      {/* Phones (below md) on the CRM page: the systems, prices and contact come first and the long
+          sections open with "Show more"; from md up the layout is unchanged. */}
       <section className="py-20 bg-background">
-        <div className="container">
-          <div className="grid lg:grid-cols-3 gap-14">
+        <div className={`container ${crm ? "max-md:flex max-md:flex-col" : ""}`}>
+          <div className={`grid lg:grid-cols-3 gap-14 ${crm ? "max-md:contents" : ""}`}>
             {/* min-w-0: grid items default to min-width:auto, so a wide child
                 (the pricing comparison table) would stretch this column and
                 push the whole page sideways instead of scrolling inside its
                 own container. */}
-            <div className={`lg:col-span-2 min-w-0 space-y-16 ${isArabic ? "text-right" : ""}`}>
+            <div className={`lg:col-span-2 min-w-0 space-y-16 ${isArabic ? "text-right" : ""} ${crm ? "max-md:order-4 max-md:mt-16" : ""}`}>
               {/* Overview */}
               <div className="space-y-5">
                 <h2 className="text-3xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{data.overviewTitle}</h2>
@@ -343,7 +351,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
               </div>
 
               {/* Capabilities */}
-              <div className="space-y-7">
+              {fold(<div className="space-y-7">
                 <h2 className="text-3xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{data.capabilitiesTitle}</h2>
                 <div className="grid md:grid-cols-2 gap-4">
                   {data.capabilities.map((cap: any, idx: number) => (
@@ -357,10 +365,10 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                     </motion.div>
                   ))}
                 </div>
-              </div>
+              </div>)}
 
               {/* Steps (If available) */}
-              {data.steps && (
+              {data.steps && fold(
                 <div className="space-y-8">
                   <h2 className="text-3xl font-bold">{data.stepsTitle}</h2>
                   <div className="space-y-6">
@@ -434,7 +442,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
               </motion.div>
 
               {/* ── PROBLEMS WE SOLVE ── */}
-              <div className="space-y-7">
+              {fold(<div className="space-y-7">
                 <h2 className="text-3xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
                   {isArabic ? "المشكلات التي نحلها" : "Problems We Solve"}
                 </h2>
@@ -464,10 +472,10 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                     </motion.div>
                   ))}
                 </div>
-              </div>
+              </div>)}
 
               {/* ── INDUSTRIES SERVED ── */}
-              <div className="space-y-6">
+              {fold(<div className="space-y-6">
                 <h2 className="text-3xl font-extrabold" style={{fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
                   {isArabic ? "القطاعات التي نخدمها" : "Industries We Serve"}
                 </h2>
@@ -487,7 +495,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                     </span>
                   ))}
                 </div>
-              </div>
+              </div>, 140)}
 
               {/* ── SERVICE FAQ ── */}
               <ServiceFAQ serviceId={serviceId} isArabic={isArabic} langPrefix={langPrefix} />
@@ -497,7 +505,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
                 of the row as a tall empty band in both languages. Sticking it
                 to the viewport keeps the CTA beside the reader the whole way
                 down instead of scrolling away after the first screen. */}
-            <div>
+            <div className={crm ? "max-md:order-3 max-md:mt-12" : undefined}>
               <div className="space-y-8 lg:sticky lg:top-24">
               <div className="rounded-2xl bg-primary p-7 text-white shadow-xl shadow-primary/30 space-y-4">
                 <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase tracking-widest">{isArabic?"ابدأ الآن":"Get Started"}</span>
@@ -542,10 +550,10 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
               781px, which wrapped every feature line onto four rows. They are
               the reason this page is long, so they get the full width. */}
           {serviceId === "crm" && (
-            <div className="min-w-0">
-              <CrmProductsShowcase language={language} />
-              <CrmPricing language={language} />
-              <CrmCommitments language={language} />
+            <div className="min-w-0 max-md:contents">
+              <div className="max-md:order-1"><CrmProductsShowcase language={language} /></div>
+              <div className="max-md:order-2"><CrmPricing language={language} /></div>
+              <div className="max-md:order-5">{fold(<CrmCommitments language={language} />, 320)}</div>
             </div>
           )}
         </div>
@@ -557,8 +565,9 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
           <p className="text-white/40 text-sm">© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait</p>
         </div>
       </footer>
+      {crm && <MobileActionBar language={language} source="services-crm" demo={{ id: "try-demo", href: "#try-demo" }} prices={{ id: "pricing", href: "#pricing" }} />}
       <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+        className={`${crm ? "max-md:hidden " : ""}fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform`}
         aria-label="Chat on WhatsApp">
         <MessageCircle className="w-7 h-7 text-white" />
       </a>

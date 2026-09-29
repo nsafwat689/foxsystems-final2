@@ -16,6 +16,7 @@ import SEOHead from "@/components/SEOHead";
 import SolutionShowcase from "@/components/SolutionShowcase";
 import SolutionVideo, { videoSchema } from "@/components/SolutionVideo";
 import SolutionPlans from "@/components/SolutionPlans";
+import MobileActionBar from "@/components/MobileActionBar";
 import LiveDemoForm, { isDemoProduct } from "@/components/LiveDemoForm";
 import { HEADER_OFFSET } from "@/lib/scrollToId";
 import { SOLUTIONS, type SolutionId } from "@/data/solutions";
@@ -415,11 +416,14 @@ export default function SolutionDetail({ solutionId, language }: Props) {
           </p>
         </div>
       </footer>
+      <MobileActionBar language={language} source={solution.id}
+        demo={solution.liveDemo && isDemoProduct(solution.id) ? { id: "demo", href: "#demo" } : { id: "book", href: `${prefix}/book?product=${solution.id}` }}
+        prices={{ id: "pricing", href: "#pricing" }} />
       <a
         href="https://wa.me/201038450546"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+        className="max-md:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
         aria-label="Chat on WhatsApp"
       >
         <MessageCircle className="w-7 h-7 text-white" />

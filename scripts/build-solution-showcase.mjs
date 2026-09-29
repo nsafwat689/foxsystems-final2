@@ -40,7 +40,7 @@ const SETS = {
   "finance-crm": [
     "dashboard", "portfolio", "contract", "collections",
     "credit", "invoice", "reconciliation", "balance-sheet",
-    "mobile",
+    "budget", "assistant", "mobile",
   ],
   "pestcontrol-crm": [
     "dispatch", "schedule", "reports", "analytics",

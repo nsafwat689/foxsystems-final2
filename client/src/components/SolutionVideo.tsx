@@ -53,7 +53,7 @@ export default function SolutionVideo({ video, language, productName, product }:
         </h2>
         <p className="text-muted-foreground leading-relaxed max-w-2xl">
           {isArabic
-            ? `نحو ${video.minutes} دقائق على النظام الحقيقي، شاشةً بعد شاشة، مع شرح مكتوب لكل خطوة.`
+            ? `نحو ${video.minutes === 2 ? "دقيقتين" : video.minutes + " دقائق"} على النظام الحقيقي، شاشةً بعد شاشة، مع شرح مكتوب لكل خطوة.`
             : `About ${video.minutes} minutes on the real system, screen by screen, with a written explanation of every step.`}
         </p>
       </div>

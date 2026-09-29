@@ -1480,6 +1480,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
   "finance-crm": {
     id: "finance-crm",
     showcaseBase: "finance-crm",
+    video: { base: "fox-finance-tour", minutes: 2, v: 1 },
     liveDemo: true,
     icon: "Landmark",
     en: {
@@ -1546,6 +1547,8 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         { id: "invoice", tab: "Invoice", alt: "Printable tax invoice with VAT and company details", caption: "Bilingual tax invoices and credit notes that post to the ledger the moment they are issued." },
         { id: "reconciliation", tab: "Bank", alt: "Bank reconciliation with book balance, statement balance and unmatched lines", caption: "Import the bank statement, match it automatically, and post what is left, like bank fees and interest." },
         { id: "balance-sheet", tab: "Balance sheet", alt: "Balance sheet with assets, liabilities and equity that balance", caption: "Reports are built from the posted ledger, so the balance sheet always balances and ties back to every entry." },
+        { id: "budget", tab: "Budget", alt: "Budget compared with actual income and expenses, account by account", caption: "Plan the year month by month, then follow the actual figures against the plan, account by account." },
+        { id: "assistant", tab: "Assistant", alt: "Finance assistant listing the most overdue financing contracts and what collectors should do first", caption: "Ask about your figures in Arabic or English: here, which contracts are most overdue and where collectors should start." },
       ],
       mobile: {
         id: "mobile",
@@ -1633,6 +1636,8 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         { id: "invoice", tab: "الفاتورة", alt: "فاتورة ضريبية قابلة للطباعة بضريبة القيمة المضافة وبيانات الشركة", caption: "فواتير ضريبية وإشعارات دائنة باللغتين، تُرحَّل إلى الدفاتر فور إصدارها." },
         { id: "reconciliation", tab: "البنك", alt: "تسوية بنكية برصيد الدفاتر ورصيد الكشف والسطور غير المطابقة", caption: "استورد كشف البنك وطابقه تلقائيًا، ثم رحّل ما تبقى مثل الرسوم البنكية والفوائد." },
         { id: "balance-sheet", tab: "الميزانية", alt: "الميزانية العمومية بالأصول والالتزامات وحقوق الملكية متوازنة", caption: "التقارير مبنية على دفتر الأستاذ المرحَّل، فتتوازن الميزانية دائمًا وترتبط بكل قيد." },
+        { id: "budget", tab: "الموازنة", alt: "الموازنة مقارنةً بالإيرادات والمصروفات الفعلية حسابًا بحساب", caption: "خطط للعام شهرًا بشهر، ثم تابع الأرقام الفعلية مقابل الخطة حسابًا بحساب." },
+        { id: "assistant", tab: "المساعد", alt: "المساعد المالي يعرض أكثر عقود التمويل تأخرًا وما يبدأ به المحصّلون", caption: "اسأل عن أرقامك بالعربية أو الإنجليزية: هنا أكثر العقود تأخرًا ومن أين يبدأ المحصّلون." },
       ],
       mobile: {
         id: "mobile",

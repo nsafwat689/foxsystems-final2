@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { lazyRetry } from "@/lib/lazyRetry";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -14,8 +15,8 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 
 // Lazy: pulls in data/solutions.ts, which must not land in the entry bundle.
-const CrmProductsShowcase = React.lazy(() => import("@/components/CrmProductsShowcase"));
-const ServiceChooser = React.lazy(() => import("@/components/ServiceChooser"));
+const CrmProductsShowcase = lazyRetry(() => import("@/components/CrmProductsShowcase"));
+const ServiceChooser = lazyRetry(() => import("@/components/ServiceChooser"));
 import LeadForm from "@/components/LeadForm";
 
 const T = {

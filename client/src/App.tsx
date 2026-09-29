@@ -2,7 +2,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch, useLocation } from "wouter";
-import { lazy, Suspense, useEffect } from "react";
+import { Suspense, useEffect } from "react";
+import { lazyRetry } from "./lib/lazyRetry";
 import { motion, AnimatePresence } from "framer-motion";
 import { scrollToId, HEADER_OFFSET } from "@/lib/scrollToId";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -17,23 +18,23 @@ import { TOOL_IDS } from "./data/toolIds";
 // Only the home page ships in the entry bundle. Everything else loads on
 // demand — carrying all eleven pages up front put ~900 kB of JavaScript in
 // front of the first paint.
-const Industries = lazy(() => import("./pages/Industries"));
-const CaseStudies = lazy(() => import("./pages/CaseStudies"));
-const LeadMagnet = lazy(() => import("./pages/LeadMagnet"));
-const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
-const Services = lazy(() => import("./pages/Services"));
-const Contact = lazy(() => import("./pages/Contact"));
-const Articles = lazy(() => import("./pages/Articles"));
-const ArticleDetail = lazy(() => import("./pages/ArticleDetail"));
-const Solutions = lazy(() => import("./pages/Solutions"));
-const SolutionDetail = lazy(() => import("./pages/SolutionDetail"));
-const Tools = lazy(() => import("./pages/Tools"));
-const ToolDetail = lazy(() => import("./pages/ToolDetail"));
-const Pricing = lazy(() => import("./pages/Pricing"));
-const Compare = lazy(() => import("./pages/Compare"));
-const Book = lazy(() => import("./pages/Book"));
-const ProductStory = lazy(() => import("./pages/ProductStory"));
-const AdminLeads = lazy(() => import("./pages/AdminLeads"));
+const Industries = lazyRetry(() => import("./pages/Industries"));
+const CaseStudies = lazyRetry(() => import("./pages/CaseStudies"));
+const LeadMagnet = lazyRetry(() => import("./pages/LeadMagnet"));
+const ServiceDetail = lazyRetry(() => import("./pages/ServiceDetail"));
+const Services = lazyRetry(() => import("./pages/Services"));
+const Contact = lazyRetry(() => import("./pages/Contact"));
+const Articles = lazyRetry(() => import("./pages/Articles"));
+const ArticleDetail = lazyRetry(() => import("./pages/ArticleDetail"));
+const Solutions = lazyRetry(() => import("./pages/Solutions"));
+const SolutionDetail = lazyRetry(() => import("./pages/SolutionDetail"));
+const Tools = lazyRetry(() => import("./pages/Tools"));
+const ToolDetail = lazyRetry(() => import("./pages/ToolDetail"));
+const Pricing = lazyRetry(() => import("./pages/Pricing"));
+const Compare = lazyRetry(() => import("./pages/Compare"));
+const Book = lazyRetry(() => import("./pages/Book"));
+const ProductStory = lazyRetry(() => import("./pages/ProductStory"));
+const AdminLeads = lazyRetry(() => import("./pages/AdminLeads"));
 
 const SERVICE_IDS = [
   "internet",

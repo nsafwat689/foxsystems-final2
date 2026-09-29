@@ -7,7 +7,8 @@
  * people actually type. Both come from data/tools.ts, so a new tool brings
  * its own content rather than inheriting an empty shell.
  */
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
+import { lazyRetry } from "@/lib/lazyRetry";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { AlertTriangle, ArrowRight, Bug, Calculator, CalendarClock, FileText, Gauge, MessageCircle, Percent, Receipt, ShieldCheck, TrendingUp, Wallet, Landmark, Scale, PiggyBank, TrendingDown } from "lucide-react";
@@ -19,20 +20,20 @@ import { generateBreadcrumbSchema, generateFAQSchema } from "@/utils/seo";
 // One chunk per tool: a visitor opening the invoice generator should not also
 // download the bandwidth maths.
 const WIDGETS: Record<ToolId, React.LazyExoticComponent<React.ComponentType<{ language: "en" | "ar" }>>> = {
-  "crm-cost-calculator": lazy(() => import("@/components/tools/CrmCostCalculator")),
-  "bandwidth-calculator": lazy(() => import("@/components/tools/BandwidthCalculator")),
-  "commission-calculator": lazy(() => import("@/components/tools/CommissionCalculator")),
-  "installment-plan-generator": lazy(() => import("@/components/tools/InstallmentPlanGenerator")),
-  "invoice-generator": lazy(() => import("@/components/tools/InvoiceGenerator")),
-  "vat-calculator": lazy(() => import("@/components/tools/VatCalculator")),
-  "end-of-service-calculator": lazy(() => import("@/components/tools/EndOfServiceCalculator")),
-  "security-self-check": lazy(() => import("@/components/tools/SecuritySelfCheck")),
-  "pest-control-job-costing": lazy(() => import("@/components/tools/PestControlJobCosting")),
-  "field-force-roi": lazy(() => import("@/components/tools/FieldForceRoi")),
-  "financing-calculator": lazy(() => import("@/components/tools/FinancingCalculator")),
-  "dbr-calculator": lazy(() => import("@/components/tools/DbrCalculator")),
-  "deposit-calculator": lazy(() => import("@/components/tools/DepositCalculator")),
-  "depreciation-calculator": lazy(() => import("@/components/tools/DepreciationCalculator")),
+  "crm-cost-calculator": lazyRetry(() => import("@/components/tools/CrmCostCalculator")),
+  "bandwidth-calculator": lazyRetry(() => import("@/components/tools/BandwidthCalculator")),
+  "commission-calculator": lazyRetry(() => import("@/components/tools/CommissionCalculator")),
+  "installment-plan-generator": lazyRetry(() => import("@/components/tools/InstallmentPlanGenerator")),
+  "invoice-generator": lazyRetry(() => import("@/components/tools/InvoiceGenerator")),
+  "vat-calculator": lazyRetry(() => import("@/components/tools/VatCalculator")),
+  "end-of-service-calculator": lazyRetry(() => import("@/components/tools/EndOfServiceCalculator")),
+  "security-self-check": lazyRetry(() => import("@/components/tools/SecuritySelfCheck")),
+  "pest-control-job-costing": lazyRetry(() => import("@/components/tools/PestControlJobCosting")),
+  "field-force-roi": lazyRetry(() => import("@/components/tools/FieldForceRoi")),
+  "financing-calculator": lazyRetry(() => import("@/components/tools/FinancingCalculator")),
+  "dbr-calculator": lazyRetry(() => import("@/components/tools/DbrCalculator")),
+  "deposit-calculator": lazyRetry(() => import("@/components/tools/DepositCalculator")),
+  "depreciation-calculator": lazyRetry(() => import("@/components/tools/DepreciationCalculator")),
 };
 
 const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText, Receipt, Wallet, ShieldCheck, Bug, TrendingUp, Landmark, Scale, PiggyBank, TrendingDown };

@@ -22,6 +22,8 @@ import { extractArticles } from "./lib/extract-articles.mjs";
 
 const CONFIG = "vercel.json";
 const SPA_FALLBACK = { source: "/((?!api/|assets/).*)", destination: "/index.html" };
+// Missing /assets files get an uncacheable 404 (see api/missing-asset.ts).
+const MISSING_ASSET = { source: "/assets/:path*", destination: "/api/missing-asset" };
 
 const bundlePath = path.join("dist", ".routeMeta.sync.mjs");
 fs.mkdirSync("dist", { recursive: true });
@@ -50,6 +52,7 @@ const routes = [...Object.keys(buildRouteMeta()), ...articleRoutes]
 const config = JSON.parse(fs.readFileSync(CONFIG, "utf8"));
 config.rewrites = [
   ...routes.map(r => ({ source: r, destination: `${r}.html` })),
+  MISSING_ASSET,
   SPA_FALLBACK,
 ];
 fs.writeFileSync(CONFIG, `${JSON.stringify(config, null, 2)}\n`);

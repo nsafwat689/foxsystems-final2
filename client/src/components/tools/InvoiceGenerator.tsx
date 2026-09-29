@@ -99,7 +99,7 @@ const T = {
 };
 
 const fmt = (n: number) => n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const today = () => new Date().toISOString().slice(0, 10);
+const today = () => new Date().toLocaleDateString("en-CA"); // local day, not UTC
 const plusDays = (iso: string, days: number) => {
   const d = new Date(iso + "T00:00:00Z");
   if (Number.isNaN(d.getTime())) return iso;

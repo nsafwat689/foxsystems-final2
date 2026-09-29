@@ -117,7 +117,7 @@ export default function InstallmentPlanGenerator({ language }: Props) {
   const [handoverPct, setHandoverPct] = useState(5);
   const [years, setYears] = useState(5);
   const [freq, setFreq] = useState("quarterly");
-  const [start, setStart] = useState(() => new Date().toISOString().slice(0, 10));
+  const [start, setStart] = useState(() => new Date().toLocaleDateString("en-CA"));
 
   const r = useMemo(() => {
     const p = Math.max(0, price);

@@ -92,7 +92,7 @@ export default function EndOfServiceCalculator({ language }: Props) {
 
   const [wage, setWage] = useState(12000);
   const [start, setStart] = useState("2019-01-01");
-  const [end, setEnd] = useState(() => new Date().toISOString().slice(0, 10));
+  const [end, setEnd] = useState(() => new Date().toLocaleDateString("en-CA"));
   const [band1Days, setBand1Days] = useState(15);
   const [band1Years, setBand1Years] = useState(5);
   const [band2Days, setBand2Days] = useState(30);

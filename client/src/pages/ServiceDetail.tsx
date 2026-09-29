@@ -193,7 +193,7 @@ function ServiceFAQ({ serviceId, isArabic, langPrefix }: { serviceId: string; is
     ],
   };
 
-  const faqs = faqMap[serviceId] || (isArabic ? [
+  const faqs = faqMap[contentId(serviceId)] || (isArabic ? [
     { q: "ما هي مناطق خدمتكم؟", a: "نخدم مصر بالكامل، السعودية، الكويت، وسائر دول الخليج عن بُعد." },
     { q: "هل تقدمون ضمان على أعمالكم؟", a: "نعم. جميع أعمالنا مضمونة مع دعم فني مستمر 24/7 بعد الانتهاء." },
     { q: "كيف أحصل على عرض سعر؟", a: "تواصل معنا عبر الهاتف أو واتس آب أو ملء النموذج — وسنرسل لك عرضاً مخصصاً خلال 24 ساعة." },
@@ -245,12 +245,16 @@ const PRICING_TAB: Record<string, string> = {
   infrastructure: "infrastructure", "web-development": "web-development",
 };
 
+// The CRM page's content is still keyed "software" (the URL became /services/crm on
+// 2026-09-24); without this it fell back to the call-center content.
+const contentId = (id: string) => (id === "crm" ? "software" : id);
+
 export default function ServiceDetail({ serviceId, language }: ServiceDetailProps) {
   const [location] = useLocation();
   const isArabic = language === "ar";
   const langPrefix = isArabic ? "/ar" : "";
   
-  const serviceBase = serviceDetails[serviceId] || serviceDetails.internet;
+  const serviceBase = serviceDetails[contentId(serviceId)] || serviceDetails.internet;
   const rawData = serviceBase[language];
   const titles = isArabic ? serviceDetailsAr : enTitles;
   

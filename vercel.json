@@ -109,8 +109,16 @@
       "destination": "/ar/articles/e-detailing-pharma.html"
     },
     {
+      "source": "/ar/articles/eta-e-invoicing-egypt-guide",
+      "destination": "/ar/articles/eta-e-invoicing-egypt-guide.html"
+    },
+    {
       "source": "/ar/articles/firewall-security",
       "destination": "/ar/articles/firewall-security.html"
+    },
+    {
+      "source": "/ar/articles/flat-vs-reducing-interest-rate",
+      "destination": "/ar/articles/flat-vs-reducing-interest-rate.html"
     },
     {
       "source": "/ar/articles/hr-payroll-software-egypt-gulf",
@@ -119,6 +127,10 @@
     {
       "source": "/ar/articles/it-support-contracts",
       "destination": "/ar/articles/it-support-contracts.html"
+    },
+    {
+      "source": "/ar/articles/loan-management-software-finance-companies",
+      "destination": "/ar/articles/loan-management-software-finance-companies.html"
     },
     {
       "source": "/ar/articles/medical-crm-pharma-egypt",
@@ -305,12 +317,28 @@
       "destination": "/ar/tools/crm-cost-calculator.html"
     },
     {
+      "source": "/ar/tools/dbr-calculator",
+      "destination": "/ar/tools/dbr-calculator.html"
+    },
+    {
+      "source": "/ar/tools/deposit-calculator",
+      "destination": "/ar/tools/deposit-calculator.html"
+    },
+    {
+      "source": "/ar/tools/depreciation-calculator",
+      "destination": "/ar/tools/depreciation-calculator.html"
+    },
+    {
       "source": "/ar/tools/end-of-service-calculator",
       "destination": "/ar/tools/end-of-service-calculator.html"
     },
     {
       "source": "/ar/tools/field-force-roi",
       "destination": "/ar/tools/field-force-roi.html"
+    },
+    {
+      "source": "/ar/tools/financing-calculator",
+      "destination": "/ar/tools/financing-calculator.html"
     },
     {
       "source": "/ar/tools/installment-plan-generator",
@@ -377,8 +405,16 @@
       "destination": "/articles/e-detailing-pharma.html"
     },
     {
+      "source": "/articles/eta-e-invoicing-egypt-guide",
+      "destination": "/articles/eta-e-invoicing-egypt-guide.html"
+    },
+    {
       "source": "/articles/firewall-security",
       "destination": "/articles/firewall-security.html"
+    },
+    {
+      "source": "/articles/flat-vs-reducing-interest-rate",
+      "destination": "/articles/flat-vs-reducing-interest-rate.html"
     },
     {
       "source": "/articles/hr-payroll-software-egypt-gulf",
@@ -387,6 +423,10 @@
     {
       "source": "/articles/it-support-contracts",
       "destination": "/articles/it-support-contracts.html"
+    },
+    {
+      "source": "/articles/loan-management-software-finance-companies",
+      "destination": "/articles/loan-management-software-finance-companies.html"
     },
     {
       "source": "/articles/medical-crm-pharma-egypt",
@@ -573,12 +613,28 @@
       "destination": "/tools/crm-cost-calculator.html"
     },
     {
+      "source": "/tools/dbr-calculator",
+      "destination": "/tools/dbr-calculator.html"
+    },
+    {
+      "source": "/tools/deposit-calculator",
+      "destination": "/tools/deposit-calculator.html"
+    },
+    {
+      "source": "/tools/depreciation-calculator",
+      "destination": "/tools/depreciation-calculator.html"
+    },
+    {
       "source": "/tools/end-of-service-calculator",
       "destination": "/tools/end-of-service-calculator.html"
     },
     {
       "source": "/tools/field-force-roi",
       "destination": "/tools/field-force-roi.html"
+    },
+    {
+      "source": "/tools/financing-calculator",
+      "destination": "/tools/financing-calculator.html"
     },
     {
       "source": "/tools/installment-plan-generator",

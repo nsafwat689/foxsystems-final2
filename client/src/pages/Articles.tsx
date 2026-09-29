@@ -45,6 +45,72 @@ const getBreadcrumbSchema = (lang: "en" | "ar") => {
 };
 
 const articles: Record<string, Record<"en" | "ar", Article>> = {
+  "flat-vs-reducing-interest-rate": {
+    en: {
+      id: "flat-vs-reducing-interest-rate",
+      title: "Flat vs Reducing Interest Rate: What a Financing Offer Really Costs",
+      excerpt: "Why 20% flat and 20% reducing are very different prices: a worked example, the true APR, and how to compare two financing offers.",
+      category: "Finance",
+      author: "Fox Systems Team",
+      date: "2026-09-29",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/showcase/finance-crm/contract.webp",
+    },
+    ar: {
+      id: "flat-vs-reducing-interest-rate",
+      title: "الفائدة الثابتة أم المتناقصة: كم يكلّفك عرض التمويل فعلًا؟",
+      excerpt: "لماذا يختلف سعر 20% ثابتة عن 20% متناقصة كثيرًا: مثال محسوب، ومعدل التكلفة الحقيقي، وكيف تقارن بين عرضَي تمويل.",
+      category: "التمويل",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-29",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/finance-crm/contract.webp",
+    },
+  },
+  "eta-e-invoicing-egypt-guide": {
+    en: {
+      id: "eta-e-invoicing-egypt-guide",
+      title: "Egypt's ETA E-Invoicing: A Practical Guide for Companies",
+      excerpt: "What the Tax Authority needs from each invoice, how e-seal signing works, why documents get rejected, and how to connect your system.",
+      category: "Finance",
+      author: "Fox Systems Team",
+      date: "2026-09-29",
+      readTime: "7 min read",
+      image: "https://foxsystemstech.com/showcase/finance-crm/invoice.webp",
+    },
+    ar: {
+      id: "eta-e-invoicing-egypt-guide",
+      title: "منظومة الفاتورة الإلكترونية في مصر: دليل عملي للشركات",
+      excerpt: "ما تحتاجه مصلحة الضرائب من كل فاتورة، وكيف يعمل التوقيع بالختم الإلكتروني، وأسباب رفض المستندات، وكيف تربط نظامك.",
+      category: "التمويل",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-29",
+      readTime: "7 دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/finance-crm/invoice.webp",
+    },
+  },
+  "loan-management-software-finance-companies": {
+    en: {
+      id: "loan-management-software-finance-companies",
+      title: "Loan Management Software for Finance Companies: What to Look For",
+      excerpt: "From the credit check to provisions: what a finance company should expect from its loan management system, and why it must post to the ledger.",
+      category: "Finance",
+      author: "Fox Systems Team",
+      date: "2026-09-29",
+      readTime: "7 min read",
+      image: "https://foxsystemstech.com/showcase/finance-crm/portfolio.webp",
+    },
+    ar: {
+      id: "loan-management-software-finance-companies",
+      title: "برنامج إدارة القروض لشركات التمويل: ما الذي تبحث عنه",
+      excerpt: "من التقييم الائتماني حتى المخصصات: ما تتوقعه شركة التمويل من نظام إدارة القروض، ولماذا يجب أن يرحّل إلى الدفاتر.",
+      category: "التمويل",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-29",
+      readTime: "7 دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/finance-crm/portfolio.webp",
+    },
+  },
   "real-estate-installment-management": {
     en: {
       id: "real-estate-installment-management",

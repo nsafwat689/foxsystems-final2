@@ -1,0 +1,34 @@
+# Fox Systems
+
+> Fox Systems (foxsystemstech.com) builds and runs business systems and provides IT services for companies in Egypt, Saudi Arabia and Kuwait. Every product has English and Arabic versions, a video tour and, for most, a self-service live demo.
+
+## Products (each page has a video tour, screenshots, FAQ and plans)
+
+- [Fox Finance — banking, lending and accounting](https://foxsystemstech.com/solutions/finance-crm): deposit accounts and teller, financing from application and credit check to collections and provisions, loan servicing, AML compliance, accounting, receivables and payables, bank reconciliation, Egyptian ETA e-invoicing, expenses, fixed assets, budgets, VAT returns and an AI finance assistant. Arabic: https://foxsystemstech.com/ar/solutions/finance-crm
+- [Fox HR — HR, attendance and payroll](https://foxsystemstech.com/solutions/hr-crm): payroll for Egypt, Saudi Arabia and Kuwait with dated legal rules, leave by law, fingerprint machines, documents, recruitment and performance.
+- [Fox Real Estate CRM](https://foxsystemstech.com/solutions/real-estate-crm): leads, properties, deals, instalment plans and commissions for brokers and developers.
+- [Fox Medical CRM](https://foxsystemstech.com/solutions/medical-crm): GPS-verified visits, samples and orders for pharmaceutical field teams.
+- [Fox Pest Control CRM](https://foxsystemstech.com/solutions/pest-control-crm): scheduling, routes, service reports and QR-labelled bait stations.
+
+## Free tools
+
+- [Financing calculator: flat vs reducing rate and true APR](https://foxsystemstech.com/tools/financing-calculator)
+- [Debt-burden ratio (DBR) calculator](https://foxsystemstech.com/tools/dbr-calculator)
+- [Deposit and certificate interest calculator](https://foxsystemstech.com/tools/deposit-calculator)
+- [Depreciation calculator](https://foxsystemstech.com/tools/depreciation-calculator)
+- [VAT and withholding calculator](https://foxsystemstech.com/tools/vat-calculator)
+- [End-of-service calculator](https://foxsystemstech.com/tools/end-of-service-calculator)
+- [All tools](https://foxsystemstech.com/tools)
+
+## Guides
+
+- [Flat vs reducing interest rate](https://foxsystemstech.com/articles/flat-vs-reducing-interest-rate)
+- [Egypt ETA e-invoicing guide](https://foxsystemstech.com/articles/eta-e-invoicing-egypt-guide)
+- [Loan management software for finance companies](https://foxsystemstech.com/articles/loan-management-software-finance-companies)
+- [HR and payroll software for Egypt and the Gulf](https://foxsystemstech.com/articles/hr-payroll-software-egypt-gulf)
+- [All articles](https://foxsystemstech.com/articles)
+
+## Company
+
+- [Services](https://foxsystemstech.com/services) · [Pricing](https://foxsystemstech.com/pricing) · [Book a walkthrough](https://foxsystemstech.com/book) · [Contact](https://foxsystemstech.com/contact)
+- Phone and WhatsApp: +20 103 845 0546 · support@foxsystemstech.com

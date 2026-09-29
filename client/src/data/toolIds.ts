@@ -15,5 +15,9 @@ export const TOOL_IDS = [
   "security-self-check",
   "pest-control-job-costing",
   "field-force-roi",
+  "financing-calculator",
+  "dbr-calculator",
+  "deposit-calculator",
+  "depreciation-calculator",
 ] as const;
 export type ToolId = (typeof TOOL_IDS)[number];

@@ -46,7 +46,11 @@ export type Tool = {
     | "Wallet"
     | "ShieldCheck"
     | "Bug"
-    | "TrendingUp";
+    | "TrendingUp"
+    | "Landmark"
+    | "Scale"
+    | "PiggyBank"
+    | "TrendingDown";
   /**
    * Tools that model tax or employment entitlements carry a standing caveat:
    * rates and statute change, the defaults are starting points rather than
@@ -1130,13 +1134,282 @@ export const TOOLS: Record<ToolId, Tool> = {
       },
     },
   },
+  "financing-calculator": {
+    id: "financing-calculator",
+    icon: "Landmark",
+    related: { href: "/solutions/finance-crm", en: "See how Fox Finance prices and schedules financing", ar: "شاهد كيف يسعّر فوكس للتمويل العقود ويجدولها" },
+    en: {
+      name: "Financing Calculator: Flat vs Reducing Rate and True APR",
+      tagline: "The monthly installment, the total cost and the true annual rate, for flat, reducing-balance and murabaha pricing",
+      intro:
+        "Two offers that both say \"20%\" can cost very different amounts. A flat or murabaha rate charges profit on the original amount for the whole term, even as you pay it down; a reducing-balance rate charges it only on what you still owe. This calculator shows the installment, the total you repay and the true annual rate once the admin fee is counted, so two offers can be compared on the same footing.",
+      method: {
+        title: "How this is calculated",
+        body: [
+          "Flat and murabaha: the profit is the amount × the yearly rate × the number of years, added to the amount and divided evenly across the months. Every installment carries the same share of principal and profit.",
+          "Reducing balance: a standard annuity. Each month's profit is the monthly rate on the balance still owed, so early installments are mostly profit and later ones mostly principal, while the installment itself stays the same.",
+          "The true APR is the monthly rate at which the cash you actually receive (the amount less the admin fee) equals the present value of all your installments, multiplied by twelve. The effective annual rate compounds that monthly rate over a year. Both are what a flat rate hides.",
+          "Figures are before any insurance, stamp duty or other charges your lender adds; ask for the full cost in writing and put those into the fee field if they are taken at disbursement.",
+        ],
+      },
+      faqs: [
+        { q: "Why is the APR almost double the flat rate?", a: "Because with a flat rate you pay profit on money you have already repaid. Halfway through a 3-year loan you owe about half the amount, but you are still paying profit on all of it. The APR spreads the same cost over the balance you really owe, which is roughly twice the flat rate for common terms." },
+        { q: "Is murabaha different from flat in the numbers?", a: "The installment works the same way: the profit is agreed up front on the price and spread evenly. The difference is in the contract — the financier buys the asset and sells it to you at the agreed price — not in the arithmetic." },
+        { q: "Can I use this for a car or a personal loan offer?", a: "Yes. Enter the amount, the rate and term you were quoted and the admin fee, and pick how the rate is applied. If the offer does not say whether the rate is flat or reducing, ask: it changes the cost more than any other term in the offer." },
+      ],
+    },
+    ar: {
+      name: "حاسبة التمويل: العائد الثابت مقابل المتناقص والتكلفة الحقيقية",
+      tagline: "القسط الشهري والتكلفة الإجمالية ومعدل التكلفة السنوي الحقيقي، للعائد الثابت والمتناقص والمرابحة",
+      intro:
+        "عرضان يقول كلاهما «20%» قد تختلف تكلفتهما كثيرًا. فالعائد الثابت والمرابحة يُحسبان على المبلغ الأصلي طوال المدة حتى وأنت تسدد، أما العائد المتناقص فيُحسب على ما تبقى عليك فقط. وتعرض هذه الحاسبة القسط وإجمالي ما تسدده ومعدل التكلفة السنوي الحقيقي بعد احتساب المصاريف الإدارية، لتقارن بين عرضين على أساس واحد.",
+      method: {
+        title: "كيف تُحتسب هذه الأرقام",
+        body: [
+          "العائد الثابت والمرابحة: العائد = المبلغ × النسبة السنوية × عدد السنوات، يُضاف إلى المبلغ ويُقسَّم بالتساوي على الأشهر، فيحمل كل قسط الحصة نفسها من الأصل والعائد.",
+          "العائد المتناقص: قسط ثابت بطريقة الدفعات المتساوية، ويُحسب عائد كل شهر على الرصيد المتبقي، فتكون الأقساط الأولى في معظمها عائدًا والأخيرة في معظمها أصلًا، بينما يبقى القسط نفسه ثابتًا.",
+          "معدل التكلفة السنوي الحقيقي هو المعدل الشهري الذي تتساوى عنده النقدية التي تستلمها فعلًا (المبلغ ناقص المصاريف) مع القيمة الحالية لكل أقساطك، مضروبًا في اثني عشر. والمعدل السنوي الفعلي يركّب هذا المعدل الشهري على سنة. وكلاهما ما يخفيه العائد الثابت.",
+          "الأرقام قبل أي تأمين أو دمغة أو رسوم أخرى تضيفها الجهة المموّلة؛ اطلب التكلفة الكاملة كتابةً وأضف ما يُخصم عند الصرف إلى خانة المصاريف.",
+        ],
+      },
+      faqs: [
+        { q: "لماذا يقارب المعدل الحقيقي ضعف العائد الثابت؟", a: "لأنك في العائد الثابت تدفع عائدًا على مال سددته بالفعل. ففي منتصف تمويل مدته ثلاث سنوات يتبقى عليك نحو نصف المبلغ، لكنك ما زلت تدفع العائد على كامله. والمعدل الحقيقي يوزّع التكلفة نفسها على الرصيد الذي تدين به فعلًا، فيقارب ضعف العائد الثابت في المدد الشائعة." },
+        { q: "هل تختلف المرابحة عن العائد الثابت في الأرقام؟", a: "يُحسب القسط بالطريقة نفسها: يُتفق على الربح مسبقًا ويُوزَّع بالتساوي. والفرق في العقد، إذ تشتري الجهة المموّلة الأصل وتبيعه لك بالسعر المتفق عليه، لا في الحساب." },
+        { q: "هل أستخدمها لعرض تمويل سيارة أو تمويل شخصي؟", a: "نعم. أدخل المبلغ والعائد والمدة التي عُرضت عليك والمصاريف الإدارية، واختر طريقة احتساب العائد. وإن لم يوضح العرض إن كان العائد ثابتًا أم متناقصًا فاسأل، فهذا يغيّر التكلفة أكثر من أي بند آخر." },
+      ],
+    },
+    seo: {
+      en: {
+        title: "Financing Calculator: Flat vs Reducing Rate, True APR | Fox",
+        description: "Monthly installment, total cost and true APR for flat, reducing-balance and murabaha financing, with the admin fee included. Free, no sign-up.",
+        keywords: "loan calculator Egypt, financing calculator, flat rate vs reducing rate, flat to reducing rate converter, APR calculator, murabaha calculator, car loan calculator Egypt, personal loan calculator, حاسبة التمويل, حاسبة القرض",
+        ogTitle: "Financing Calculator - Flat vs Reducing Rate and True APR",
+        ogDescription: "Why a 20% flat offer costs far more than 20% reducing. Installment, total cost and the true annual rate.",
+        ogImage: `${ORIGIN}/tools/financing-calculator-og.jpg`,
+        canonicalUrl: `${ORIGIN}/tools/financing-calculator`,
+        language: "en",
+      },
+      ar: {
+        title: "حاسبة التمويل: العائد الثابت والمتناقص والتكلفة الحقيقية | فوكس",
+        description: "القسط الشهري والتكلفة الإجمالية ومعدل التكلفة السنوي الحقيقي للتمويل بعائد ثابت أو متناقص أو مرابحة، شاملًا المصاريف الإدارية. مجانية وبلا تسجيل.",
+        keywords: "حاسبة التمويل, حاسبة القرض, حاسبة قسط القرض, الفرق بين العائد الثابت والمتناقص, تحويل الفائدة الثابتة إلى متناقصة, حاسبة المرابحة, حاسبة تمويل سيارة, حاسبة القرض الشخصي, loan calculator Egypt",
+        ogTitle: "حاسبة التمويل - العائد الثابت مقابل المتناقص والتكلفة الحقيقية",
+        ogDescription: "لماذا يكلّف عرض 20% ثابت أكثر بكثير من 20% متناقص. القسط والتكلفة والمعدل السنوي الحقيقي.",
+        ogImage: `${ORIGIN}/tools/financing-calculator-og.jpg`,
+        canonicalUrl: `${ORIGIN}/ar/tools/financing-calculator`,
+        language: "ar",
+      },
+    },
+  },
+
+  "dbr-calculator": {
+    id: "dbr-calculator",
+    icon: "Scale",
+    related: { href: "/solutions/finance-crm", en: "See the credit check in Fox Finance", ar: "شاهد التقييم الائتماني في فوكس للتمويل" },
+    en: {
+      name: "Debt-Burden Ratio (DBR) Calculator",
+      tagline: "How much of an income already goes to debt, the largest new installment allowed and the amount it can finance",
+      intro:
+        "Lenders cap how much of a borrower's income may go to installments — the debt-burden ratio. This works out a borrower's ratio today, the largest new installment a given ceiling leaves room for, and the largest amount that installment can finance at a given rate and term. It is the same check a credit officer runs before an application goes further.",
+      method: {
+        title: "How this is calculated",
+        body: [
+          "The debt-burden ratio is all monthly debt installments divided by net monthly income. The room for a new installment is the income × the ceiling, less the installments already being paid.",
+          "The largest amount is that installment turned back into a principal: for reducing-balance pricing, the present value of the installments at the monthly rate; for flat pricing, the installments over the term divided by one plus the total profit rate.",
+          "If you enter a requested amount, its installment is added to the existing ones to show the ratio after the new financing, and whether that stays within the ceiling.",
+        ],
+      },
+      faqs: [
+        { q: "What ceiling should I use?", a: "It depends on the lender, the product and the regulator. Consumer lenders commonly use 35–50% of net income; some allow more for higher incomes or secured financing. Use the ceiling in your own credit policy." },
+        { q: "Which installments count as obligations?", a: "Every regular debt payment: other loans and financing, car installments, credit card minimums and any installment the borrower guarantees. Rent and living costs are usually handled through the ceiling itself rather than added here." },
+        { q: "Does passing the DBR mean approval?", a: "No. It is one test. A credit decision also looks at verified income, arrears on existing financing, past write-offs, the product's own limits and any collateral. Fox Finance runs all of these on every application and leaves the decision with your team." },
+      ],
+    },
+    ar: {
+      name: "حاسبة نسبة عبء الدين (DBR)",
+      tagline: "ما يذهب من الدخل إلى الديون حاليًا، وأكبر قسط جديد مسموح، والمبلغ الذي يمكن أن يموّله",
+      intro:
+        "تضع الجهات المموّلة حدًا لما يمكن أن يذهب من دخل العميل إلى الأقساط، وهي نسبة عبء الدين. وتحسب هذه الأداة نسبة العميل الحالية، وأكبر قسط جديد يسمح به الحد المحدد، وأكبر مبلغ يمكن أن يموّله هذا القسط بعائد ومدة معينين. وهو الفحص نفسه الذي يجريه مسؤول الائتمان قبل أن يمضي الطلب.",
+      method: {
+        title: "كيف تُحتسب هذه الأرقام",
+        body: [
+          "نسبة عبء الدين = مجموع أقساط الديون الشهرية ÷ صافي الدخل الشهري. والمساحة المتاحة لقسط جديد = الدخل × الحد، ناقص الأقساط المدفوعة حاليًا.",
+          "وأكبر مبلغ هو هذا القسط محوَّلًا إلى أصل: في العائد المتناقص هو القيمة الحالية للأقساط بالمعدل الشهري، وفي العائد الثابت هو مجموع الأقساط على المدة مقسومًا على واحد زائد نسبة العائد الإجمالية.",
+          "وإن أدخلت مبلغًا مطلوبًا، يُضاف قسطه إلى الأقساط الحالية لتظهر النسبة بعد التمويل الجديد، وهل تبقى في حدود النسبة المسموحة.",
+        ],
+      },
+      faqs: [
+        { q: "ما الحد الذي أستخدمه؟", a: "يتوقف على الجهة المموّلة والمنتج وجهة الرقابة. وتستخدم جهات التمويل الاستهلاكي عادةً 35% إلى 50% من صافي الدخل، وتسمح بعضها بأكثر للدخول الأعلى أو التمويل المضمون. استخدم الحد الوارد في سياستك الائتمانية." },
+        { q: "أي الأقساط تُحتسب التزامات؟", a: "كل سداد منتظم لدين: القروض والتمويلات الأخرى، وأقساط السيارة، والحد الأدنى لبطاقات الائتمان، وأي قسط يضمنه العميل. أما الإيجار ونفقات المعيشة فتُراعى عادةً من خلال الحد نفسه لا بإضافتها هنا." },
+        { q: "هل اجتياز النسبة يعني الموافقة؟", a: "لا، فهي اختبار واحد. ويراعي القرار الائتماني أيضًا الدخل الموثّق، والمتأخرات على التمويلات الحالية، والإعدامات السابقة، وحدود المنتج، وأي ضمانات. ويجري فوكس للتمويل كل هذه الفحوص على كل طلب ويترك القرار لفريقك." },
+      ],
+    },
+    seo: {
+      en: {
+        title: "Debt-Burden Ratio (DBR) Calculator | Max Loan Amount | Fox",
+        description: "Work out a borrower's debt-burden ratio, the largest new installment a ceiling allows and the maximum amount it can finance. Flat or reducing rate. Free.",
+        keywords: "debt burden ratio calculator, DBR calculator, debt to income ratio calculator, maximum loan amount calculator, how much loan can I get, loan eligibility calculator Egypt, حاسبة عبء الدين, حاسبة الحد الأقصى للقرض",
+        ogTitle: "Debt-Burden Ratio (DBR) Calculator - Max Installment and Loan Amount",
+        ogDescription: "The same check a credit officer runs: DBR today, room for a new installment and the maximum amount.",
+        ogImage: `${ORIGIN}/tools/dbr-calculator-og.jpg`,
+        canonicalUrl: `${ORIGIN}/tools/dbr-calculator`,
+        language: "en",
+      },
+      ar: {
+        title: "حاسبة نسبة عبء الدين وأقصى مبلغ تمويل | فوكس",
+        description: "احسب نسبة عبء الدين للعميل، وأكبر قسط جديد يسمح به الحد، وأقصى مبلغ يمكن تمويله بعائد ثابت أو متناقص. مجانية وبلا تسجيل.",
+        keywords: "حاسبة عبء الدين, نسبة عبء الدين, حاسبة الحد الأقصى للقرض, كم قرض أستطيع أن آخذ, حاسبة أهلية التمويل, نسبة الاستقطاع من الراتب, DBR calculator",
+        ogTitle: "حاسبة نسبة عبء الدين - أقصى قسط وأقصى مبلغ تمويل",
+        ogDescription: "الفحص الذي يجريه مسؤول الائتمان: النسبة الحالية والمساحة لقسط جديد وأقصى مبلغ.",
+        ogImage: `${ORIGIN}/tools/dbr-calculator-og.jpg`,
+        canonicalUrl: `${ORIGIN}/ar/tools/dbr-calculator`,
+        language: "ar",
+      },
+    },
+  },
+
+  "deposit-calculator": {
+    id: "deposit-calculator",
+    icon: "PiggyBank",
+    advisory: {
+      en: "Tax on interest and rates differ by product and by who holds the deposit. The defaults are examples; check your own terms.",
+      ar: "تختلف الضريبة على العائد والنسب حسب المنتج وصاحب الوديعة. القيم الافتراضية أمثلة؛ راجع شروطك.",
+    },
+    related: { href: "/solutions/finance-crm", en: "See deposit accounts in Fox Finance", ar: "شاهد حسابات الودائع في فوكس للتمويل" },
+    en: {
+      name: "Deposit & Certificate Interest Calculator",
+      tagline: "What a term deposit, certificate or savings balance earns after tax, paid monthly, at maturity or compounded",
+      intro:
+        "The headline rate on a deposit is not what reaches you. Tax withheld on interest comes off first, and how the interest is paid changes the total: paid out monthly, it earns nothing further; added to the balance, it earns interest itself. This shows the net interest, the monthly income and the balance at the end for each choice.",
+      method: {
+        title: "How this is calculated",
+        body: [
+          "Paid monthly or at maturity: simple interest, the amount × the yearly rate × the term in years. Tax is the chosen percentage of that interest.",
+          "Added to the balance: each month's interest is calculated on the balance, the tax is taken off, and the rest is added, so later months earn on earlier interest.",
+          "The net yield a year is the net interest over the amount deposited, scaled to twelve months, which makes deposits of different terms comparable.",
+        ],
+      },
+      faqs: [
+        { q: "Which is better, monthly or at maturity?", a: "At the same rate, at maturity and monthly pay the same total; monthly gives you the income sooner. Only compounding — interest added to the balance — earns more, which is why savings accounts that credit monthly can beat a slightly higher simple rate." },
+        { q: "Why is my bank's figure a little different?", a: "Banks usually calculate on actual days (365 a year) and may round each month's interest. The difference is normally small; the calculation in Fox Finance uses the daily balance exactly as a bank does." },
+        { q: "What if I break a term deposit early?", a: "Most banks forfeit part of the interest or pay a lower rate. The penalty is in your deposit's terms; Fox Finance applies it automatically when a term deposit is broken." },
+      ],
+    },
+    ar: {
+      name: "حاسبة عائد الودائع والشهادات",
+      tagline: "ما تحققه الوديعة أو الشهادة أو رصيد التوفير بعد الضريبة، شهريًا أو عند الاستحقاق أو بإضافته إلى الرصيد",
+      intro:
+        "النسبة المعلنة على الوديعة ليست ما يصل إليك. فالضريبة المخصومة من العائد تُقتطع أولًا، وطريقة صرف العائد تغيّر الإجمالي: إن صُرف شهريًا لا يربح شيئًا بعد ذلك، وإن أُضيف إلى الرصيد ربح هو نفسه عائدًا. وتعرض هذه الأداة صافي العائد والدخل الشهري والرصيد في النهاية لكل اختيار.",
+      method: {
+        title: "كيف تُحتسب هذه الأرقام",
+        body: [
+          "عند الصرف شهريًا أو عند الاستحقاق: عائد بسيط = المبلغ × النسبة السنوية × المدة بالسنوات، والضريبة هي النسبة المختارة من هذا العائد.",
+          "عند الإضافة إلى الرصيد: يُحسب عائد كل شهر على الرصيد، وتُخصم منه الضريبة، ويُضاف الباقي، فتربح الأشهر اللاحقة على العائد السابق.",
+          "وصافي العائد السنوي هو صافي العائد مقسومًا على المبلغ المودَع ومحوَّلًا إلى اثني عشر شهرًا، فتصبح الودائع مختلفة المدد قابلة للمقارنة.",
+        ],
+      },
+      faqs: [
+        { q: "أيهما أفضل: شهريًا أم عند الاستحقاق؟", a: "بالنسبة نفسها يتساوى الإجمالي في الحالتين، لكن الصرف الشهري يعطيك الدخل أسرع. ووحدها الإضافة إلى الرصيد تحقق أكثر، ولهذا قد يتفوق حساب توفير يضيف العائد شهريًا على نسبة بسيطة أعلى قليلًا." },
+        { q: "لماذا يختلف رقم البنك قليلًا؟", a: "تحسب البنوك عادةً على الأيام الفعلية (365 يومًا في السنة) وقد تقرّب عائد كل شهر. والفرق صغير عادةً، ويحسب فوكس للتمويل العائد على الرصيد اليومي كما يفعل البنك." },
+        { q: "ماذا لو كسرت الوديعة قبل موعدها؟", a: "تُسقط معظم البنوك جزءًا من العائد أو تطبّق نسبة أقل، والغرامة مذكورة في شروط وديعتك، ويطبّقها فوكس للتمويل تلقائيًا عند كسر الوديعة." },
+      ],
+    },
+    seo: {
+      en: {
+        title: "Deposit & Certificate Interest Calculator | After Tax | Fox",
+        description: "Net interest on a term deposit, certificate or savings balance after the tax on interest, paid monthly, at maturity or compounded. Free, no sign-up.",
+        keywords: "deposit interest calculator, certificate interest calculator Egypt, term deposit calculator, savings interest calculator, bank certificate return calculator, fixed deposit calculator, حاسبة الوديعة, حاسبة عائد الشهادات",
+        ogTitle: "Deposit & Certificate Interest Calculator - Net of Tax",
+        ogDescription: "What a deposit really earns after tax, and why interest added to the balance beats a slightly higher simple rate.",
+        ogImage: `${ORIGIN}/tools/deposit-calculator-og.jpg`,
+        canonicalUrl: `${ORIGIN}/tools/deposit-calculator`,
+        language: "en",
+      },
+      ar: {
+        title: "حاسبة عائد الودائع والشهادات بعد الضريبة | فوكس",
+        description: "صافي العائد على الوديعة لأجل أو الشهادة أو رصيد التوفير بعد الضريبة، شهريًا أو عند الاستحقاق أو مع التراكم. مجانية وبلا تسجيل.",
+        keywords: "حاسبة الوديعة, حاسبة عائد الشهادات, حاسبة فوائد البنك, حاسبة الودائع لأجل, حاسبة عائد التوفير, حاسبة الشهادات البنكية, العائد الشهري للوديعة, deposit interest calculator Egypt",
+        ogTitle: "حاسبة عائد الودائع والشهادات - بعد الضريبة",
+        ogDescription: "ما تحققه الوديعة فعلًا بعد الضريبة، ولماذا يتفوق العائد المُضاف إلى الرصيد.",
+        ogImage: `${ORIGIN}/tools/deposit-calculator-og.jpg`,
+        canonicalUrl: `${ORIGIN}/ar/tools/deposit-calculator`,
+        language: "ar",
+      },
+    },
+  },
+
+  "depreciation-calculator": {
+    id: "depreciation-calculator",
+    icon: "TrendingDown",
+    related: { href: "/solutions/finance-crm", en: "See fixed assets in Fox Finance", ar: "شاهد الأصول الثابتة في فوكس للتمويل" },
+    en: {
+      name: "Depreciation Calculator: Straight Line and Declining Balance",
+      tagline: "A year-by-year depreciation schedule with accumulated depreciation and book value",
+      intro:
+        "Depreciation spreads what an asset cost over the years it is used. This builds the schedule for straight-line depreciation, the same charge every year, or declining balance, a larger charge early on, and shows the accumulated depreciation and the book value at the end of each year.",
+      method: {
+        title: "How this is calculated",
+        body: [
+          "Straight line: (cost − residual value) ÷ useful life, every year. The monthly figure is that divided by twelve, which is how an accounting system books it.",
+          "Declining balance: each year the book value × (factor ÷ life). When the straight-line charge on what is left becomes larger, the schedule switches to it, and it never takes the book value below the residual.",
+          "The last year takes whatever is left, so the book value ends exactly at the residual value.",
+        ],
+      },
+      faqs: [
+        { q: "Which method should I use?", a: "Straight line suits most assets and most accounts; it is the simplest to explain and audit. Declining balance fits assets that lose value fast, like vehicles and computers. Tax rules may set their own rates; your accountant decides which applies to your books." },
+        { q: "What useful life is usual?", a: "Commonly around 3 years for computers, 5 for vehicles and 5–10 for furniture and fit-out, but it should reflect how long you will really use the asset." },
+        { q: "Can a system do this every month?", a: "Yes. Fox Finance keeps an asset register and books the depreciation automatically on the first of each month, so the accounts and the register always agree." },
+      ],
+    },
+    ar: {
+      name: "حاسبة الإهلاك: القسط الثابت والقسط المتناقص",
+      tagline: "جدول إهلاك سنة بسنة مع مجمع الإهلاك والقيمة الدفترية",
+      intro:
+        "يوزّع الإهلاك تكلفة الأصل على سنوات استخدامه. وتبني هذه الأداة الجدول بطريقة القسط الثابت، أي المبلغ نفسه كل سنة، أو القسط المتناقص، أي مبلغ أكبر في البداية، وتعرض مجمع الإهلاك والقيمة الدفترية في نهاية كل سنة.",
+      method: {
+        title: "كيف تُحتسب هذه الأرقام",
+        body: [
+          "القسط الثابت: (التكلفة − القيمة المتبقية) ÷ العمر الإنتاجي كل سنة، والرقم الشهري هو ذلك مقسومًا على اثني عشر، وهكذا يقيّده النظام المحاسبي.",
+          "القسط المتناقص: كل سنة القيمة الدفترية × (المعامل ÷ العمر). وعندما يصبح القسط الثابت على المتبقي أكبر، ينتقل الجدول إليه، ولا ينزل بالقيمة الدفترية عن القيمة المتبقية أبدًا.",
+          "وتأخذ السنة الأخيرة ما تبقى، فتنتهي القيمة الدفترية عند القيمة المتبقية تمامًا.",
+        ],
+      },
+      faqs: [
+        { q: "أي طريقة أستخدم؟", a: "يناسب القسط الثابت معظم الأصول ومعظم الحسابات، وهو الأسهل في الشرح والمراجعة. ويناسب القسط المتناقص الأصول التي تفقد قيمتها سريعًا كالسيارات والحاسبات. وقد تحدد القواعد الضريبية نسبها الخاصة، ويقرر محاسبك ما ينطبق على دفاترك." },
+        { q: "ما العمر الإنتاجي المعتاد؟", a: "عادةً نحو 3 سنوات للحاسبات و5 للسيارات و5 إلى 10 للأثاث والتجهيزات، لكن يجب أن يعكس المدة التي ستستخدم فيها الأصل فعلًا." },
+        { q: "هل يمكن لنظام أن يفعل ذلك كل شهر؟", a: "نعم. يحتفظ فوكس للتمويل بسجل للأصول ويقيّد الإهلاك تلقائيًا في أول كل شهر، فتتطابق الحسابات مع السجل دائمًا." },
+      ],
+    },
+    seo: {
+      en: {
+        title: "Depreciation Calculator: Straight Line & Declining Balance | Fox",
+        description: "Year-by-year depreciation schedule with accumulated depreciation and book value, straight line or declining balance. Free, no sign-up.",
+        keywords: "depreciation calculator, straight line depreciation calculator, declining balance depreciation, double declining balance calculator, depreciation schedule, fixed asset depreciation, حاسبة الإهلاك, جدول الإهلاك",
+        ogTitle: "Depreciation Calculator - Straight Line and Declining Balance",
+        ogDescription: "A full schedule with accumulated depreciation and book value each year.",
+        ogImage: `${ORIGIN}/tools/depreciation-calculator-og.jpg`,
+        canonicalUrl: `${ORIGIN}/tools/depreciation-calculator`,
+        language: "en",
+      },
+      ar: {
+        title: "حاسبة الإهلاك: القسط الثابت والمتناقص | فوكس",
+        description: "جدول إهلاك سنة بسنة مع مجمع الإهلاك والقيمة الدفترية، بطريقة القسط الثابت أو المتناقص. مجانية وبلا تسجيل.",
+        keywords: "حاسبة الإهلاك, طريقة القسط الثابت, طريقة القسط المتناقص, جدول الإهلاك, إهلاك الأصول الثابتة, حساب الإهلاك, depreciation calculator",
+        ogTitle: "حاسبة الإهلاك - القسط الثابت والمتناقص",
+        ogDescription: "جدول كامل بمجمع الإهلاك والقيمة الدفترية لكل سنة.",
+        ogImage: `${ORIGIN}/tools/depreciation-calculator-og.jpg`,
+        canonicalUrl: `${ORIGIN}/ar/tools/depreciation-calculator`,
+        language: "ar",
+      },
+    },
+  },
 };
 
 export const TOOLS_INDEX_SEO: Record<"en" | "ar", SEOConfig> = {
   en: {
     title: "Free Business Tools & Calculators | Fox Systems",
     description:
-      "Free calculators for CRM cost, bandwidth sizing, sales commission and payment plans. Built for businesses in Egypt, Saudi Arabia and Kuwait. No sign-up.",
+      "Free calculators for financing and APR, debt-burden ratio, deposit interest, depreciation, VAT, CRM cost, commission and payment plans. For Egypt and the Gulf. No sign-up.",
     keywords:
       "free business calculators, CRM cost calculator, bandwidth calculator, commission calculator, installment plan calculator, free business tools Egypt, IT calculators, أدوات مجانية للشركات, حاسبة تكلفة CRM",
     ogTitle: "Free Business Tools & Calculators - Fox Systems",
@@ -1148,7 +1421,7 @@ export const TOOLS_INDEX_SEO: Record<"en" | "ar", SEOConfig> = {
   ar: {
     title: "أدوات وحاسبات مجانية للشركات | فوكس سيستمز",
     description:
-      "حاسبات مجانية لتكلفة نظام CRM، وتحديد سعة الإنترنت، وعمولات المبيعات، وخطط السداد. مبنية لشركات مصر والسعودية والكويت. بلا تسجيل.",
+      "حاسبات مجانية للتمويل والتكلفة الحقيقية، ونسبة عبء الدين، وعائد الودائع، والإهلاك، وضريبة القيمة المضافة، وتكلفة CRM، والعمولات، وخطط السداد. لمصر والخليج. بلا تسجيل.",
     keywords:
       "أدوات مجانية للشركات, حاسبة تكلفة CRM, حاسبة سعة الإنترنت, حاسبة العمولة, حاسبة خطة الأقساط, حاسبات مجانية, أدوات تقنية مجانية, free business calculators Egypt",
     ogTitle: "أدوات وحاسبات مجانية للشركات - فوكس سيستمز",

@@ -7,13 +7,13 @@
  */
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Bug, Calculator, CalendarClock, FileText, Gauge, MessageCircle, Percent, Receipt, ShieldCheck, TrendingUp, Wallet } from "lucide-react";
+import { ArrowRight, Bug, Calculator, CalendarClock, FileText, Gauge, MessageCircle, Percent, Receipt, ShieldCheck, TrendingUp, Wallet, Landmark, Scale, PiggyBank, TrendingDown } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { TOOLS, TOOL_IDS, TOOLS_INDEX_SEO } from "@/data/tools";
 import { generateBreadcrumbSchema } from "@/utils/seo";
 
-const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText, Receipt, Wallet, ShieldCheck, Bug, TrendingUp };
+const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText, Receipt, Wallet, ShieldCheck, Bug, TrendingUp, Landmark, Scale, PiggyBank, TrendingDown };
 const ORIGIN = "https://foxsystemstech.com";
 const WHATSAPP = "https://wa.me/201038450546";
 

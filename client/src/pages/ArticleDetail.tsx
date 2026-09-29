@@ -13,6 +13,242 @@ interface ArticleDetailProps {
 }
 
 const articleContent: Record<string, Record<"en" | "ar", any>> = {
+  "flat-vs-reducing-interest-rate": {
+    en: {
+      id: "flat-vs-reducing-interest-rate",
+      title: "Flat vs Reducing Interest Rate: What a Financing Offer Really Costs",
+      subtitle: "Why 20% flat and 20% reducing are very different prices, with a worked example",
+      author: "Fox Systems Team",
+      date: "2026-09-29",
+      category: "Finance",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/showcase/finance-crm/contract.webp",
+      content: `
+        <h2>The same number, two different prices</h2>
+        <p>Car, personal and SME financing in Egypt and the Gulf is often quoted as a flat rate. A flat rate charges profit on the original amount for the whole term, even though you repay part of that amount every month. A reducing-balance rate charges profit only on what you still owe. The quoted percentage can be the same; the cost is not.</p>
+
+        <h2>A worked example</h2>
+        <p>Take 200,000 over 36 months at 20% a year, with a 1.5% admin fee taken at disbursement:</p>
+        <ul>
+          <li><strong>Flat 20%</strong>: the profit is 200,000 × 20% × 3 years = 120,000. The installment is (200,000 + 120,000) ÷ 36 = <strong>8,888.89</strong> a month.</li>
+          <li><strong>Reducing 20%</strong>: the installment is <strong>7,432.72</strong> a month, and the total profit is about 67,600.</li>
+        </ul>
+        <p>Counting the admin fee, the flat offer's true annual rate (APR) is about <strong>34.8%</strong> — close to double the 20% on the offer. Murabaha pricing works like flat in the numbers: the profit is fixed up front and spread evenly.</p>
+
+        <h2>How to compare two offers</h2>
+        <ol>
+          <li>Ask whether the rate is flat, reducing or murabaha. It changes the cost more than any other term.</li>
+          <li>Ask for every fee taken at disbursement: admin fee, insurance, stamp duty.</li>
+          <li>Compare the APR, not the quoted rate. Our free <a href="/tools/financing-calculator">financing calculator</a> gives it for both methods, fees included.</li>
+          <li>Check what early settlement costs: with flat pricing, is the unearned profit waived, and is there a fee?</li>
+        </ol>
+
+        <h2>Can you afford it?</h2>
+        <p>Lenders cap the share of your income that may go to installments. The <a href="/tools/dbr-calculator">debt-burden ratio calculator</a> shows your ratio today and the largest amount you can finance at a given rate and term.</p>
+
+        <h2>For finance companies</h2>
+        <p><a href="/solutions/finance-crm">Fox Finance</a> handles flat, reducing-balance and murabaha products, shows the schedule before approval, and quotes early settlement with future profit waived — all on the same ledger as the accounts. You can try it in the live demo.</p>
+      `,
+    },
+    ar: {
+      id: "flat-vs-reducing-interest-rate",
+      title: "الفائدة الثابتة أم المتناقصة: كم يكلّفك عرض التمويل فعلًا؟",
+      subtitle: "لماذا يختلف سعر 20% ثابتة عن 20% متناقصة كثيرًا، مع مثال محسوب",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-29",
+      category: "التمويل",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/finance-crm/contract.webp",
+      content: `
+        <h2>الرقم نفسه وسعران مختلفان</h2>
+        <p>كثيرًا ما يُعرض تمويل السيارات والتمويل الشخصي وتمويل المشروعات في مصر والخليج بعائد ثابت. والعائد الثابت يُحسب على المبلغ الأصلي طوال المدة، رغم أنك تسدد جزءًا منه كل شهر. أما العائد المتناقص فيُحسب على ما تبقى عليك فقط. وقد تكون النسبة المعلنة واحدة، لكن التكلفة ليست كذلك.</p>
+
+        <h2>مثال محسوب</h2>
+        <p>لنفترض 200,000 على 36 شهرًا بعائد 20% سنويًا، مع مصاريف إدارية 1.5% تُخصم عند الصرف:</p>
+        <ul>
+          <li><strong>20% ثابتة</strong>: العائد = 200,000 × 20% × 3 سنوات = 120,000، والقسط = (200,000 + 120,000) ÷ 36 = <strong>8,888.89</strong> شهريًا.</li>
+          <li><strong>20% متناقصة</strong>: القسط <strong>7,432.72</strong> شهريًا، وإجمالي العائد نحو 67,600.</li>
+        </ul>
+        <p>وباحتساب المصاريف الإدارية، يبلغ معدل التكلفة السنوي الحقيقي للعرض الثابت نحو <strong>34.8%</strong>، أي قرابة ضعف نسبة 20% المعلنة. والمرابحة تعمل في الأرقام كالعائد الثابت: يُحدد الربح مسبقًا ويُوزَّع بالتساوي.</p>
+
+        <h2>كيف تقارن بين عرضين</h2>
+        <ol>
+          <li>اسأل: هل العائد ثابت أم متناقص أم مرابحة؟ فهذا يغيّر التكلفة أكثر من أي بند آخر.</li>
+          <li>اسأل عن كل ما يُخصم عند الصرف: المصاريف الإدارية والتأمين والدمغة.</li>
+          <li>قارن معدل التكلفة الحقيقي لا النسبة المعلنة، وتحسبه لك <a href="/ar/tools/financing-calculator">حاسبة التمويل</a> المجانية بالطريقتين شاملًا المصاريف.</li>
+          <li>اعرف تكلفة السداد المعجل: في العائد الثابت، هل يُعفى العائد غير المستحق؟ وهل توجد رسوم؟</li>
+        </ol>
+
+        <h2>هل تقدر على القسط؟</h2>
+        <p>تضع الجهات المموّلة حدًا لما يذهب من دخلك إلى الأقساط، وتعرض <a href="/ar/tools/dbr-calculator">حاسبة نسبة عبء الدين</a> نسبتك الحالية وأكبر مبلغ يمكنك تمويله بعائد ومدة معينين.</p>
+
+        <h2>لشركات التمويل</h2>
+        <p>يدير <a href="/ar/solutions/finance-crm">فوكس للتمويل</a> منتجات العائد الثابت والمتناقص والمرابحة، ويعرض الجدول قبل الاعتماد، ويحسب السداد المعجل مع الإعفاء من العائد المستقبلي، وكل ذلك على دفتر الأستاذ نفسه مع الحسابات. ويمكنك تجربته في النسخة التجريبية الحية.</p>
+      `,
+    },
+  },
+  "eta-e-invoicing-egypt-guide": {
+    en: {
+      id: "eta-e-invoicing-egypt-guide",
+      title: "Egypt's ETA E-Invoicing: A Practical Guide for Companies",
+      subtitle: "What the Tax Authority needs from each invoice, how signing works, and how to connect your system",
+      author: "Fox Systems Team",
+      date: "2026-09-29",
+      category: "Finance",
+      readTime: "7 min read",
+      image: "https://foxsystemstech.com/showcase/finance-crm/invoice.webp",
+      content: `
+        <h2>What e-invoicing means in Egypt</h2>
+        <p>Under the Egyptian Tax Authority's (ETA) e-invoicing system, a registered company does not just issue an invoice to its customer: it submits the invoice to ETA as a structured electronic document, signed with the company's e-seal, and ETA validates it. Each accepted document gets a unique ID and a public link, and your customer can see the same document you submitted.</p>
+
+        <h2>What you need before the first invoice</h2>
+        <ul>
+          <li><strong>Registration on the ETA portal</strong>, with your tax registration number and activity code.</li>
+          <li><strong>An ERP system registered on the portal</strong>, which gives you the API client ID and secret your accounting system uses to connect.</li>
+          <li><strong>Item codes</strong> for what you sell: GS1 codes for goods that carry them, or EGS codes you register for your own items and services.</li>
+          <li><strong>An e-seal</strong> on a USB token from an approved provider, used to sign each document.</li>
+          <li><strong>Structured addresses</strong> for your branches and your business customers, and the customer's tax number (or national ID for larger invoices to individuals).</li>
+        </ul>
+
+        <h2>How a document is signed</h2>
+        <p>The system turns the invoice into ETA's canonical text form and signs it with the e-seal (a CAdES-BES signature). Because the token is a physical device, signing happens on the computer it is plugged into. Cloud systems solve this with a small signing agent on that computer: it collects the documents waiting for a signature, signs them locally and sends back only the signature.</p>
+
+        <h2>Common reasons ETA rejects a document</h2>
+        <ul>
+          <li>An item without a valid code, or a code not registered to your company.</li>
+          <li>A business customer without a valid tax registration number or address.</li>
+          <li>Totals that do not add up line by line, often from rounding or discounts.</li>
+          <li>A document issued too long before it is submitted; send invoices as they are posted.</li>
+          <li>A credit note that does not reference the original invoice's ETA ID.</li>
+        </ul>
+
+        <h2>Start on pre-production</h2>
+        <p>ETA provides a pre-production (testing) environment. Connect and send test documents there first, fix what it rejects, and switch to production once your integration is approved.</p>
+
+        <h2>How Fox Finance handles it</h2>
+        <p><a href="/solutions/finance-crm">Fox Finance</a> checks each posted invoice and credit note against ETA's rules before sending, builds and signs the document through the Fox signer agent in your office, submits it, and shows on the invoice whether ETA marked it valid, with the reasons if not. We set up the connection with you on pre-production first.</p>
+      `,
+    },
+    ar: {
+      id: "eta-e-invoicing-egypt-guide",
+      title: "منظومة الفاتورة الإلكترونية في مصر: دليل عملي للشركات",
+      subtitle: "ما تحتاجه مصلحة الضرائب من كل فاتورة، وكيف يتم التوقيع، وكيف تربط نظامك",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-29",
+      category: "التمويل",
+      readTime: "7 دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/finance-crm/invoice.webp",
+      content: `
+        <h2>ماذا تعني الفاتورة الإلكترونية في مصر</h2>
+        <p>في منظومة الفاتورة الإلكترونية لدى مصلحة الضرائب المصرية، لا تكتفي الشركة المسجلة بإصدار الفاتورة لعميلها، بل ترسلها إلى المصلحة مستندًا إلكترونيًا منظمًا موقّعًا بالختم الإلكتروني للشركة، فتتحقق منه المصلحة. ويحصل كل مستند مقبول على رقم فريد ورابط عام، ويرى العميل المستند نفسه الذي أرسلته.</p>
+
+        <h2>ما تحتاجه قبل أول فاتورة</h2>
+        <ul>
+          <li><strong>التسجيل على بوابة المنظومة</strong> برقم التسجيل الضريبي وكود النشاط.</li>
+          <li><strong>تسجيل نظام ERP على البوابة</strong>، وهو ما يعطيك معرّف النظام والرمز السري اللذين يستخدمهما برنامج الحسابات للربط.</li>
+          <li><strong>أكواد الأصناف</strong> لما تبيعه: أكواد GS1 للسلع التي تحملها، أو أكواد EGS تسجلها لأصنافك وخدماتك.</li>
+          <li><strong>ختم إلكتروني</strong> على وحدة USB من جهة معتمدة، يُوقَّع به كل مستند.</li>
+          <li><strong>عناوين منظمة</strong> لفروعك وللعملاء من الشركات، والرقم الضريبي للعميل (أو الرقم القومي للفواتير الأكبر للأفراد).</li>
+        </ul>
+
+        <h2>كيف يُوقَّع المستند</h2>
+        <p>يحوّل النظام الفاتورة إلى الصيغة النصية المعتمدة لدى المصلحة ويوقّعها بالختم الإلكتروني (توقيع CAdES-BES). ولأن الوحدة جهاز مادي، يتم التوقيع على الجهاز المتصل بها. وتحل الأنظمة السحابية ذلك بوكيل توقيع صغير على هذا الجهاز: يستلم المستندات المنتظرة للتوقيع، ويوقّعها محليًا، ولا يعيد إلا التوقيع.</p>
+
+        <h2>أسباب شائعة لرفض المستند</h2>
+        <ul>
+          <li>صنف بلا كود صحيح، أو كود غير مسجل باسم شركتك.</li>
+          <li>عميل من الشركات بلا رقم تسجيل ضريبي أو عنوان صحيح.</li>
+          <li>إجماليات لا تتطابق سطرًا بسطر، غالبًا بسبب التقريب أو الخصومات.</li>
+          <li>مستند صدر قبل إرساله بمدة طويلة؛ أرسل الفواتير فور ترحيلها.</li>
+          <li>إشعار دائن لا يشير إلى رقم الفاتورة الأصلية لدى المصلحة.</li>
+        </ul>
+
+        <h2>ابدأ ببيئة الاختبار</h2>
+        <p>توفر المصلحة بيئة اختبار (Pre-production). اربط نظامك وأرسل مستندات تجريبية إليها أولًا، وعالج ما ترفضه، ثم انتقل إلى الإنتاج بعد اعتماد الربط.</p>
+
+        <h2>كيف يتعامل فوكس للتمويل مع ذلك</h2>
+        <p>يفحص <a href="/ar/solutions/finance-crm">فوكس للتمويل</a> كل فاتورة وإشعار دائن مرحَّل وفق قواعد المصلحة قبل الإرسال، ويبني المستند ويوقّعه عبر وكيل التوقيع في مكتبك، ثم يرسله، ويعرض على الفاتورة إن اعتبرته المصلحة صالحًا مع الأسباب إن رُفض. ونجهّز الربط معك على بيئة الاختبار أولًا.</p>
+      `,
+    },
+  },
+  "loan-management-software-finance-companies": {
+    en: {
+      id: "loan-management-software-finance-companies",
+      title: "Loan Management Software for Finance Companies: What to Look For",
+      subtitle: "From the credit check to provisions, and why the loan book and the ledger must be one system",
+      author: "Fox Systems Team",
+      date: "2026-09-29",
+      category: "Finance",
+      readTime: "7 min read",
+      image: "https://foxsystemstech.com/showcase/finance-crm/portfolio.webp",
+      content: `
+        <h2>The problem with a loan sheet next to the books</h2>
+        <p>Many consumer, auto and SME finance companies still run the loan book in spreadsheets or a lending tool that does not post to the accounts. At month end someone re-keys disbursements, installments and fees as journal entries, and the two never quite agree. The fix is not a better spreadsheet: it is a system where every lending event posts its own entry.</p>
+
+        <h2>What the lending side needs</h2>
+        <ul>
+          <li><strong>Products with their pricing</strong>: flat, reducing-balance or murabaha, with limits, admin and late fees, grace periods and a debt-burden ceiling.</li>
+          <li><strong>A credit check on every application</strong>: product limits, verified income, <a href="/tools/dbr-calculator">debt-burden ratio</a>, current arrears and past write-offs, with the decision recorded by role.</li>
+          <li><strong>Daily accrual</strong> of profit and late fees, and payments allocated in a fixed order: fees, then profit, then principal.</li>
+          <li><strong>Collections</strong> by days past due, with call and WhatsApp from the list and promises to pay tracked.</li>
+          <li><strong>Provisions</strong> by overdue bucket at your policy's rates, booked monthly and traceable to each contract.</li>
+          <li><strong>Servicing</strong>: collateral and guarantors, early settlement that waives unearned profit, and rescheduling.</li>
+        </ul>
+
+        <h2>What the finance side needs</h2>
+        <p>The same system should keep the general ledger, receivables and payables, bank reconciliation, fixed assets, budgets and the VAT return, and in Egypt connect to <a href="/articles/eta-e-invoicing-egypt-guide">ETA e-invoicing</a>. Institutions licensed to take deposits also need deposit accounts, a teller and AML monitoring on the same ledger.</p>
+
+        <h2>Questions to ask a vendor</h2>
+        <ol>
+          <li>Does every disbursement, installment, fee and provision post its own journal entry?</li>
+          <li>Can I see the credit check and who approved each application?</li>
+          <li>How are provisions calculated, and can the auditor trace them to each contract?</li>
+          <li>Is it in Arabic, and who sets it up and answers the phone?</li>
+        </ol>
+
+        <h2>What we built</h2>
+        <p><a href="/solutions/finance-crm">Fox Finance</a> does all of the above on one ledger, in Arabic and English, with modules switched on per company. Watch the video tour or open the live demo on the product page, or <a href="/compare/finance-lending-software">compare it with Odoo, Zoho Books and lending platforms</a>.</p>
+      `,
+    },
+    ar: {
+      id: "loan-management-software-finance-companies",
+      title: "برنامج إدارة القروض لشركات التمويل: ما الذي تبحث عنه",
+      subtitle: "من التقييم الائتماني حتى المخصصات، ولماذا يجب أن تكون المحفظة ودفتر الأستاذ نظامًا واحدًا",
+      author: "فريق فوكس سيستمز",
+      date: "2026-09-29",
+      category: "التمويل",
+      readTime: "7 دقائق قراءة",
+      image: "https://foxsystemstech.com/showcase/finance-crm/portfolio.webp",
+      content: `
+        <h2>مشكلة جدول القروض بجوار الدفاتر</h2>
+        <p>ما زالت شركات كثيرة للتمويل الاستهلاكي وتمويل السيارات والمشروعات تدير محفظتها في جداول بيانات أو أداة تمويل لا ترحّل إلى الحسابات. وفي نهاية الشهر يعيد أحدهم إدخال الصرف والأقساط والرسوم قيودًا يومية، فلا يتطابق الاثنان تمامًا أبدًا. والحل ليس جدولًا أفضل، بل نظام يرحّل فيه كل حدث تمويلي قيده بنفسه.</p>
+
+        <h2>ما يحتاجه جانب التمويل</h2>
+        <ul>
+          <li><strong>منتجات بتسعيرها</strong>: عائد ثابت أو متناقص أو مرابحة، بحدود ومصاريف إدارية وغرامات تأخير وفترات سماح وحد لعبء الدين.</li>
+          <li><strong>تقييم ائتماني لكل طلب</strong>: حدود المنتج والدخل الموثّق و<a href="/ar/tools/dbr-calculator">نسبة عبء الدين</a> والمتأخرات الحالية والإعدامات السابقة، مع تسجيل القرار حسب الدور.</li>
+          <li><strong>استحقاق يومي</strong> للعائد وغرامات التأخير، وتوزيع السداد بترتيب ثابت: الرسوم ثم العائد ثم الأصل.</li>
+          <li><strong>تحصيل</strong> حسب أيام التأخير، مع الاتصال وواتساب من القائمة ومتابعة الوعود بالسداد.</li>
+          <li><strong>مخصصات</strong> حسب عمر التأخر بنسب سياستك، تُقيَّد شهريًا ويمكن تتبعها حتى كل عقد.</li>
+          <li><strong>خدمة العقود</strong>: الضمانات والضامنون، والسداد المعجل مع الإعفاء من العائد غير المستحق، وإعادة الجدولة.</li>
+        </ul>
+
+        <h2>ما يحتاجه الجانب المالي</h2>
+        <p>يجب أن يحتفظ النظام نفسه بدفتر الأستاذ والعملاء والموردين والتسوية البنكية والأصول الثابتة والموازنات وإقرار القيمة المضافة، وأن يرتبط في مصر <a href="/ar/articles/eta-e-invoicing-egypt-guide">بمنظومة الفاتورة الإلكترونية</a>. وتحتاج الجهات المرخّص لها بقبول الودائع أيضًا إلى حسابات الودائع والصرافة ومراقبة غسل الأموال على الدفتر نفسه.</p>
+
+        <h2>أسئلة تطرحها على المورّد</h2>
+        <ol>
+          <li>هل يرحّل كل صرف وقسط ورسوم ومخصص قيده الخاص؟</li>
+          <li>هل أرى التقييم الائتماني ومن اعتمد كل طلب؟</li>
+          <li>كيف تُحسب المخصصات، وهل يستطيع المراجع تتبعها حتى كل عقد؟</li>
+          <li>هل النظام بالعربية، ومن يجهّزه ويرد على الهاتف؟</li>
+        </ol>
+
+        <h2>ما بنيناه</h2>
+        <p>يقدّم <a href="/ar/solutions/finance-crm">فوكس للتمويل</a> كل ما سبق على دفتر أستاذ واحد، بالعربية والإنجليزية، مع تفعيل الوحدات لكل شركة. شاهد الجولة بالفيديو أو افتح النسخة التجريبية من صفحة المنتج، أو <a href="/ar/compare/finance-lending-software">قارنه بـ Odoo وZoho Books ومنصات الإقراض</a>.</p>
+      `,
+    },
+  },
   "real-estate-installment-management": {
     en: {
       id: "real-estate-installment-management",

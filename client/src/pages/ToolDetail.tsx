@@ -10,7 +10,7 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { AlertTriangle, ArrowRight, Bug, Calculator, CalendarClock, FileText, Gauge, MessageCircle, Percent, Receipt, ShieldCheck, TrendingUp, Wallet } from "lucide-react";
+import { AlertTriangle, ArrowRight, Bug, Calculator, CalendarClock, FileText, Gauge, MessageCircle, Percent, Receipt, ShieldCheck, TrendingUp, Wallet, Landmark, Scale, PiggyBank, TrendingDown } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { TOOLS, TOOL_IDS, TOOLS_INDEX_SEO, type ToolId } from "@/data/tools";
@@ -29,9 +29,13 @@ const WIDGETS: Record<ToolId, React.LazyExoticComponent<React.ComponentType<{ la
   "security-self-check": lazy(() => import("@/components/tools/SecuritySelfCheck")),
   "pest-control-job-costing": lazy(() => import("@/components/tools/PestControlJobCosting")),
   "field-force-roi": lazy(() => import("@/components/tools/FieldForceRoi")),
+  "financing-calculator": lazy(() => import("@/components/tools/FinancingCalculator")),
+  "dbr-calculator": lazy(() => import("@/components/tools/DbrCalculator")),
+  "deposit-calculator": lazy(() => import("@/components/tools/DepositCalculator")),
+  "depreciation-calculator": lazy(() => import("@/components/tools/DepreciationCalculator")),
 };
 
-const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText, Receipt, Wallet, ShieldCheck, Bug, TrendingUp };
+const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText, Receipt, Wallet, ShieldCheck, Bug, TrendingUp, Landmark, Scale, PiggyBank, TrendingDown };
 
 const ORIGIN = "https://foxsystemstech.com";
 

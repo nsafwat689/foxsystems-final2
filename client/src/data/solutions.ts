@@ -1486,9 +1486,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
     en: {
       badge: "Built and run by Fox Systems",
       name: "Fox Finance",
-      heroTitle: "Accounting and Lending Software for Finance Companies",
+      heroTitle: "Banking, Lending and Accounting Software for Finance Companies",
       heroSub:
-        "One system for a financing company's whole back office, or for the finance department of a company in any other field. Double-entry accounting, receivables, payables, banks and cheques, and a complete lending cycle from application and credit check to collections and provisions, all posting to one ledger. We switch on only the modules your company needs.",
+        "One system for a financing company's whole back office, or for the finance department of a company in any other field. Double-entry accounting, receivables, payables, banks and cheques, customer deposit accounts with a teller, and a complete lending cycle from application and credit check to collections and provisions, all posting to one ledger. We switch on only the modules your company needs.",
       highlights: [
         { title: "One ledger for everything", desc: "Invoices, bills, bank lines, disbursements, installments and provisions all post their own journal entries. The reports always agree." },
         { title: "Modules per company", desc: "A financing company gets lending and collections; a trading company's finance team gets accounting, receivables and payables. Nothing else in the way." },
@@ -1513,6 +1513,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           "Profit and late fees accrued daily, payments split between fees, profit and principal, all posted automatically.",
           "A collections queue by days past due, with call and WhatsApp in one tap and every promise to pay recorded.",
           "Provisions by overdue bucket at the rates you set, with the change booked each month and traceable to each contract.",
+          "Current, savings and term deposit accounts with a teller, interest on the daily balance and AML alerts, on the same ledger as the loans.",
         ],
       },
       painTitle: "If you run finance or a lending book, you know these",
@@ -1535,6 +1536,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         { title: "Expense claims", desc: "Staff record what they spent with a photo of the receipt; a finance manager approves, which books it, and the treasurer pays everyone back in one go." },
         { title: "Fixed assets and budgets", desc: "An asset register with monthly straight-line depreciation and disposal with gain or loss, and monthly budgets compared with the actual figures." },
         { title: "VAT returns and an AI assistant", desc: "The VAT return for each month or quarter, settled and paid from the system, and an assistant that answers questions about your figures in Arabic or English." },
+        { title: "Deposits and teller", desc: "Current, savings and term deposit accounts: a teller counter with cash drawers, transfers, interest on the daily balance with tax withheld, monthly fees, maturities and early breaks, and statements." },
+        { title: "Loan servicing", desc: "Collateral and guarantors on every contract, installments paid automatically from the customer's account, an early-settlement quote that waives future profit, and rescheduling." },
+        { title: "AML compliance", desc: "Customer risk ratings and PEP flags, and alerts on large cash, structuring just under the threshold and daily cash limits, each closed or reported with a written reason." },
       ],
       screensTitle: "Inside the system",
       screensSub: "Real screens from the system, with a fictional sample financing company.",
@@ -1549,6 +1553,8 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         { id: "balance-sheet", tab: "Balance sheet", alt: "Balance sheet with assets, liabilities and equity that balance", caption: "Reports are built from the posted ledger, so the balance sheet always balances and ties back to every entry." },
         { id: "budget", tab: "Budget", alt: "Budget compared with actual income and expenses, account by account", caption: "Plan the year month by month, then follow the actual figures against the plan, account by account." },
         { id: "assistant", tab: "Assistant", alt: "Finance assistant listing the most overdue financing contracts and what collectors should do first", caption: "Ask about your figures in Arabic or English: here, which contracts are most overdue and where collectors should start." },
+        { id: "deposits", tab: "Deposits", alt: "Deposit accounts with current, savings and term deposit totals", caption: "Current, savings and term deposit accounts, with interest credited on the daily balance at each month end." },
+        { id: "compliance", tab: "AML", alt: "AML alerts for structuring and a high-risk customer with a review decision", caption: "Cash that looks unusual is flagged automatically; each alert is closed or reported with a written reason." },
       ],
       mobile: {
         id: "mobile",
@@ -1560,6 +1566,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
       faqs: [
         { q: "Who is it for?", a: "Two kinds of company. Consumer, auto and SME financing companies that need lending, collections and provisions on top of their accounts, and companies in any other field whose finance department needs accounting, receivables, payables and banking. We switch on the modules each company needs and leave the rest off." },
         { q: "Which countries does it support?", a: "Egypt, Saudi Arabia, Kuwait and the UAE: each company gets its base currency, VAT rate and a chart of accounts on setup, and can hold transactions in other currencies with exchange rates. Saudi invoices carry the ZATCA phase-1 QR code." },
+        { q: "Can it hold customer deposits?", a: "Yes, for institutions licensed to take them: current, savings and term deposit accounts with a teller, interest on the daily balance, tax withheld on interest, maturities and statements, all on the same ledger as the loans, with AML monitoring of cash. Finance companies that may not take deposits simply keep the module switched off." },
         { q: "Does it connect to Egypt's e-invoicing system?", a: "Yes. Posted invoices and credit notes are checked against ETA's rules, built as ETA documents, signed with your company's e-seal and submitted, and each invoice shows whether ETA marked it valid, with the reasons if not. The e-seal token stays in your office: a small Fox signer agent on the PC where it is plugged in signs the documents. We set up the connection with you on ETA's pre-production environment first." },
         { q: "Which financing methods does it handle?", a: "Flat rate, reducing balance and murabaha. Each product has its own rate, amount and term limits, admin fee, late fee and grace period, and maximum debt-burden ratio." },
         { q: "Does the credit check decide for us?", a: "No. It runs the rules you set (product limits, verified income, debt-burden ratio, current arrears and any past write-off) and shows a score and the reasons. A credit officer recommends and an authorised manager approves or rejects." },
@@ -1576,9 +1583,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
     ar: {
       badge: "من تطوير فوكس سيستمز وتشغيلها",
       name: "فوكس للتمويل",
-      heroTitle: "نظام محاسبة وتمويل لشركات التمويل والإدارات المالية",
+      heroTitle: "نظام مصرفي وتمويلي ومحاسبي لشركات التمويل والإدارات المالية",
       heroSub:
-        "نظام واحد لكل الأعمال المالية في شركة التمويل، أو للإدارة المالية في شركة من أي مجال آخر. محاسبة بالقيد المزدوج، والعملاء والموردون، والبنوك والشيكات، ودورة تمويل كاملة من الطلب والتقييم الائتماني حتى التحصيل والمخصصات، وكلها تُرحَّل إلى دفتر أستاذ واحد. ونفعّل لكل شركة الوحدات التي تحتاجها فقط.",
+        "نظام واحد لكل الأعمال المالية في شركة التمويل، أو للإدارة المالية في شركة من أي مجال آخر. محاسبة بالقيد المزدوج، والعملاء والموردون، والبنوك والشيكات، وحسابات ودائع العملاء مع الصرافة، ودورة تمويل كاملة من الطلب والتقييم الائتماني حتى التحصيل والمخصصات، وكلها تُرحَّل إلى دفتر أستاذ واحد. ونفعّل لكل شركة الوحدات التي تحتاجها فقط.",
       highlights: [
         { title: "دفتر أستاذ واحد لكل شيء", desc: "الفواتير وفواتير الموردين وحركات البنوك والصرف والأقساط والمخصصات تُنشئ قيودها بنفسها، فتتطابق التقارير دائمًا." },
         { title: "وحدات لكل شركة", desc: "تحصل شركة التمويل على التمويل والتحصيل، وتحصل الإدارة المالية في شركة تجارية على المحاسبة والعملاء والموردين، دون ما لا تحتاجه." },
@@ -1603,6 +1610,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
           "استحقاقًا يوميًا للعائد وغرامات التأخير، وتوزيعًا للسداد بين الرسوم والعائد والأصل، مع ترحيل تلقائي.",
           "قائمة تحصيل حسب أيام التأخير، مع الاتصال وواتساب بضغطة واحدة وتسجيل كل وعد بالسداد.",
           "مخصصات حسب عمر التأخر بالنسب التي تحددها، يُقيَّد التغيير فيها كل شهر ويمكن تتبعه حتى كل عقد.",
+          "حسابات جارية وتوفير وودائع لأجل مع الصرافة، وعائد على الرصيد اليومي، وتنبيهات مكافحة غسل الأموال، على دفتر الأستاذ نفسه الذي يضم التمويل.",
         ],
       },
       painTitle: "إذا كنت تدير المالية أو محفظة تمويل، فأنت تعرف هذه المشكلات",
@@ -1625,6 +1633,9 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         { title: "مطالبات المصروفات", desc: "يسجّل الموظفون ما أنفقوه مع صورة الإيصال، ويعتمده المدير المالي فيُقيَّد، ويرد أمين الخزينة المبالغ للجميع دفعة واحدة." },
         { title: "الأصول الثابتة والموازنات", desc: "سجل للأصول بإهلاك شهري بطريقة القسط الثابت، واستبعاد بربح أو خسارة، وموازنات شهرية تُقارن بالأرقام الفعلية." },
         { title: "إقرارات القيمة المضافة ومساعد ذكي", desc: "إقرار ضريبة القيمة المضافة لكل شهر أو ربع سنة، يُسوّى ويُسدَّد من النظام، ومساعد يجيب عن أسئلتك حول أرقامك بالعربية أو الإنجليزية." },
+        { title: "الودائع والصرافة", desc: "حسابات جارية وتوفير وودائع لأجل: شباك صرافة بخزائن، وتحويلات، وعائد على الرصيد اليومي مع خصم الضريبة، ورسوم شهرية، واستحقاق الودائع وكسرها مبكرًا، وكشوف حساب." },
+        { title: "خدمة عقود التمويل", desc: "الضمانات والضامنون على كل عقد، وسداد الأقساط تلقائيًا من حساب العميل، وعرض سداد معجل يُعفي من العائد المستقبلي، وإعادة الجدولة." },
+        { title: "الامتثال ومكافحة غسل الأموال", desc: "تصنيف مخاطر العملاء والأشخاص المعرّضين سياسيًا، وتنبيهات للنقد الكبير والتجزئة أسفل الحد والحد اليومي للنقد، يُغلق كلٌّ منها أو يُبلَّغ عنه بسبب مكتوب." },
       ],
       screensTitle: "من داخل النظام",
       screensSub: "شاشات حقيقية من النظام لشركة تمويل نموذجية غير حقيقية.",
@@ -1639,6 +1650,8 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         { id: "balance-sheet", tab: "الميزانية", alt: "الميزانية العمومية بالأصول والالتزامات وحقوق الملكية متوازنة", caption: "التقارير مبنية على دفتر الأستاذ المرحَّل، فتتوازن الميزانية دائمًا وترتبط بكل قيد." },
         { id: "budget", tab: "الموازنة", alt: "الموازنة مقارنةً بالإيرادات والمصروفات الفعلية حسابًا بحساب", caption: "خطط للعام شهرًا بشهر، ثم تابع الأرقام الفعلية مقابل الخطة حسابًا بحساب." },
         { id: "assistant", tab: "المساعد", alt: "المساعد المالي يعرض أكثر عقود التمويل تأخرًا وما يبدأ به المحصّلون", caption: "اسأل عن أرقامك بالعربية أو الإنجليزية: هنا أكثر العقود تأخرًا ومن أين يبدأ المحصّلون." },
+        { id: "deposits", tab: "الودائع", alt: "حسابات الودائع بإجماليات الجاري والتوفير والودائع لأجل", caption: "حسابات جارية وتوفير وودائع لأجل، يُضاف عائدها على الرصيد اليومي في نهاية كل شهر." },
+        { id: "compliance", tab: "مكافحة غسل الأموال", alt: "تنبيهات مكافحة غسل الأموال للتجزئة ولعميل عالي المخاطر مع قرار المراجعة", caption: "يُبلَّغ عن النقد غير المعتاد تلقائيًا، ويُغلق كل تنبيه أو يُبلَّغ عنه بسبب مكتوب." },
       ],
       mobile: {
         id: "mobile",
@@ -1650,6 +1663,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
       faqs: [
         { q: "لمن هذا النظام؟", a: "لنوعين من الشركات: شركات التمويل الاستهلاكي وتمويل السيارات والمشروعات التي تحتاج التمويل والتحصيل والمخصصات فوق حساباتها، والشركات في أي مجال آخر التي تحتاج إدارتها المالية إلى المحاسبة والعملاء والموردين والبنوك. نفعّل لكل شركة الوحدات التي تحتاجها ونترك الباقي مغلقًا." },
         { q: "ما الدول التي يدعمها؟", a: "مصر والسعودية والكويت والإمارات: تحصل كل شركة عند التجهيز على عملتها الأساسية ونسبة ضريبة القيمة المضافة ودليل حسابات، ويمكنها تسجيل معاملات بعملات أخرى بأسعار صرف. وتحمل الفواتير السعودية رمز QR للمرحلة الأولى من هيئة الزكاة والضريبة والجمارك." },
+        { q: "هل يدير ودائع العملاء؟", a: "نعم، للجهات المرخّص لها بقبولها: حسابات جارية وتوفير وودائع لأجل مع الصرافة، وعائد على الرصيد اليومي، وخصم الضريبة من العائد، واستحقاق الودائع، وكشوف الحساب، وكلها على دفتر الأستاذ نفسه مع التمويل، ومع مراقبة النقد لمكافحة غسل الأموال. أما شركات التمويل غير المرخّص لها بقبول الودائع فتُبقي هذه الوحدة مغلقة." },
         { q: "هل يرتبط بمنظومة الفاتورة الإلكترونية المصرية؟", a: "نعم. تُفحص الفواتير والإشعارات الدائنة المرحَّلة وفق قواعد مصلحة الضرائب، وتُبنى مستنداتٍ بصيغة المنظومة، وتُوقَّع بالختم الإلكتروني للشركة وتُرسل، وتظهر على كل فاتورة حالتها لدى المصلحة مع الأسباب إن رُفضت. تبقى وحدة الختم في مكتبك: يوقّع المستندات وكيل فوكس صغير على الجهاز المتصل بها. ونجهّز الربط معك على بيئة الاختبار لدى المصلحة أولًا." },
         { q: "ما طرق التمويل التي يتعامل معها؟", a: "العائد الثابت، والعائد على الرصيد المتناقص، والمرابحة. لكل منتج نسبته وحدود مبلغه ومدته، ورسوم إدارية، وغرامة تأخير وفترة سماح، وحد أقصى لنسبة عبء الدين." },
         { q: "هل يتخذ التقييم الائتماني القرار بدلًا منا؟", a: "لا. يطبّق القواعد التي تحددها (حدود المنتج، والدخل الموثّق، ونسبة عبء الدين، والمتأخرات الحالية، وأي إعدام سابق) ثم يعرض درجة وأسبابها. يوصي مسؤول الائتمان، ويعتمد المدير المفوَّض أو يرفض." },
@@ -1665,11 +1679,11 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
     },
     seo: {
       en: {
-        title: "Finance & Lending Software Egypt, KSA | Fox Systems",
+        title: "Banking & Lending Software for Finance Companies | Fox",
         description:
-          "Accounting, receivables, payables, banks, expenses, fixed assets, budgets, VAT returns and a full lending cycle for finance companies in Egypt and the Gulf. Try the live demo.",
+          "Deposits and teller, a full lending cycle, AML, accounting, e-invoicing, expenses, assets, budgets and VAT for finance companies in Egypt and the Gulf. Try the live demo.",
         keywords:
-          "loan management software Egypt, lending software, microfinance software Egypt, consumer finance software, murabaha software, loan management system Saudi Arabia, accounting software Egypt, accounting software Saudi Arabia, collections software, IFRS 9 provisioning, bank reconciliation software, ZATCA QR invoice, ETA e-invoice integration Egypt, Egypt e-invoicing software, برنامج محاسبة, برنامج إدارة القروض, نظام تمويل, برنامج شركات التمويل, برنامج تحصيل",
+          "loan management software Egypt, lending software, microfinance software Egypt, consumer finance software, murabaha software, loan management system Saudi Arabia, accounting software Egypt, accounting software Saudi Arabia, collections software, IFRS 9 provisioning, bank reconciliation software, ZATCA QR invoice, ETA e-invoice integration Egypt, Egypt e-invoicing software, core banking software, deposit management system, teller software, AML software Egypt, microfinance core banking, loan servicing software, برنامج محاسبة, برنامج إدارة القروض, نظام تمويل, برنامج شركات التمويل, برنامج تحصيل",
         ogTitle: "Accounting and Lending Software for Finance Companies - Fox Systems",
         ogDescription: "One ledger for accounting, banks and a full lending cycle: credit check, collections and provisions. Arabic & English.",
         ogImage: `${ORIGIN}/solutions/finance-crm-og.jpg`,
@@ -1677,11 +1691,11 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         language: "en",
       },
       ar: {
-        title: "برنامج محاسبة وإدارة تمويل لشركات التمويل | فوكس",
+        title: "نظام مصرفي وتمويلي ومحاسبي لشركات التمويل | فوكس",
         description:
-          "محاسبة وعملاء وموردون وبنوك ومصروفات وأصول وموازنات وإقرارات ضريبية ودورة تمويل كاملة لشركات التمويل في مصر والخليج. جرّب النسخة الحية.",
+          "ودائع وصرافة ودورة تمويل كاملة ومكافحة غسل الأموال ومحاسبة وفاتورة إلكترونية ومصروفات وأصول وموازنات لشركات التمويل في مصر والخليج. جرّب النسخة الحية.",
         keywords:
-          "برنامج محاسبة, برنامج إدارة القروض, نظام إدارة التمويل, برنامج شركات التمويل, برنامج تمويل استهلاكي, برنامج مرابحة, برنامج تحصيل أقساط, برنامج محاسبة مصر, برنامج محاسبة السعودية, تسوية بنكية, مخصصات خسائر الائتمان, فاتورة ضريبية QR, الفاتورة الإلكترونية مصر, ربط منظومة الفاتورة الإلكترونية, loan management software Egypt, lending software",
+          "برنامج محاسبة, برنامج إدارة القروض, نظام إدارة التمويل, برنامج شركات التمويل, برنامج تمويل استهلاكي, برنامج مرابحة, برنامج تحصيل أقساط, برنامج محاسبة مصر, برنامج محاسبة السعودية, تسوية بنكية, مخصصات خسائر الائتمان, فاتورة ضريبية QR, الفاتورة الإلكترونية مصر, ربط منظومة الفاتورة الإلكترونية, نظام مصرفي, نظام إدارة الودائع, برنامج صرافة, برنامج مكافحة غسل الأموال, نظام التمويل متناهي الصغر, loan management software Egypt, lending software",
         ogTitle: "نظام محاسبة وتمويل لشركات التمويل والإدارات المالية - فوكس سيستمز",
         ogDescription: "دفتر أستاذ واحد للمحاسبة والبنوك ودورة تمويل كاملة: تقييم ائتماني وتحصيل ومخصصات. عربي وإنجليزي.",
         ogImage: `${ORIGIN}/solutions/finance-crm-og.jpg`,

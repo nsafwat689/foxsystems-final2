@@ -50,7 +50,7 @@ export default function SolutionShowcase({ base, copy, language }: Props) {
   const panelId = `${base}-showcase-panel`;
 
   return (
-    <section className="mt-16 pt-14 border-t border-border">
+    <section id="screens" className="mt-4 pt-4 md:mt-16 md:pt-14 md:border-t border-border scroll-mt-32">
       <div className="flex flex-col gap-3 mb-7">
         <h2
           className="text-2xl md:text-3xl font-extrabold"

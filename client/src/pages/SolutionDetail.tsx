@@ -16,7 +16,7 @@ import SEOHead from "@/components/SEOHead";
 import SolutionShowcase from "@/components/SolutionShowcase";
 import SolutionVideo, { videoSchema } from "@/components/SolutionVideo";
 import LiveDemoForm, { isDemoProduct } from "@/components/LiveDemoForm";
-import { scrollToId } from "@/lib/scrollToId";
+import { HEADER_OFFSET } from "@/lib/scrollToId";
 import { SOLUTIONS, type SolutionId } from "@/data/solutions";
 import { COMPARISON_FOR } from "@/data/comparisonIds";
 import { PRODUCT_STORIES } from "@/data/productStories";
@@ -47,6 +47,11 @@ export default function SolutionDetail({ solutionId, language }: Props) {
 
   const origin = "https://foxsystemstech.com";
   const prefix = isArabic ? "/ar" : "";
+  // below the sticky header and the jump bar
+  const jumpTo = (id: string) => {
+    const el = document.getElementById(id); if (!el) return false;
+    window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET - 44), behavior: "smooth" }); return true;
+  };
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: isArabic ? "الرئيسية" : "Home", url: isArabic ? `${origin}/ar` : `${origin}/` },
@@ -76,7 +81,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
       <Header language={language} />
 
       {/* Hero */}
-      <section className="relative py-28 bg-hero-pattern overflow-hidden">
+      <section className="relative py-12 md:py-28 bg-hero-pattern overflow-hidden">
         <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
         <div className="absolute top-1/3 left-1/4 w-80 h-80 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
         <div className="container relative z-10">
@@ -86,28 +91,28 @@ export default function SolutionDetail({ solutionId, language }: Props) {
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] as const }}
             className={`max-w-3xl ${isArabic ? "text-right mr-auto ml-0" : ""}`}
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl mb-7 ring-1 ring-white/20">
+            <div className="hidden md:inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl mb-7 ring-1 ring-white/20">
               <Icon className="w-8 h-8 text-white" />
             </div>
             <span className="pill pill-gold mb-5 inline-block">{t.badge}</span>
             <h1
-              className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-5"
+              className="text-3xl md:text-6xl font-extrabold text-white leading-tight mb-4 md:mb-5"
               style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: "-0.025em" }}
             >
               {t.heroTitle}
             </h1>
-            <p className="text-lg text-white/70 leading-relaxed max-w-2xl mb-8">{t.heroSub}</p>
+            <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-2xl mb-6 md:mb-8">{t.heroSub}</p>
             <div className={`flex flex-wrap gap-3 ${isArabic ? "justify-end" : ""}`}>
               {solution.liveDemo && (
                 <Button asChild size="lg">
-                  <a href="#demo" onClick={e => { window.trackCTA?.("live-demo-hero"); if (scrollToId("demo")) e.preventDefault(); }}>
+                  <a href="#demo" onClick={e => { window.trackCTA?.("live-demo-hero"); if (jumpTo("demo")) e.preventDefault(); }}>
                     {isArabic ? "جرّب النسخة التجريبية الآن" : "Try the live demo"}
                     <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />
                   </a>
                 </Button>
               )}
               <Button asChild size="lg" variant={solution.liveDemo ? "outline" : "default"}
-                className={solution.liveDemo ? "border-white/25 text-white hover:bg-white/10 hover:text-white" : undefined}>
+                className={solution.liveDemo ? "max-md:hidden border-white/25 text-white hover:bg-white/10 hover:text-white" : undefined}>
                 <Link href={`${prefix}/book?product=${solution.id}`} onClick={() => window.trackCTA?.("book-hero")}>
                   {isArabic ? "احجز عرضًا عمليًا" : "Book a walkthrough"}
                   {!solution.liveDemo && <ArrowRight className={`w-4 h-4 ${isArabic ? "mr-2 rotate-180" : "ml-2"}`} />}
@@ -115,13 +120,13 @@ export default function SolutionDetail({ solutionId, language }: Props) {
               </Button>
               {solution.video && (
                 <Button asChild size="lg" variant="outline" className="border-white/25 text-white hover:bg-white/10 hover:text-white">
-                  <a href="#video-tour" onClick={e => { window.trackCTA?.("video-tour-hero"); if (scrollToId("video-tour")) e.preventDefault(); }}>
+                  <a href="#video-tour" onClick={e => { window.trackCTA?.("video-tour-hero"); if (jumpTo("video-tour")) e.preventDefault(); }}>
                     <PlayCircle className={`w-4 h-4 ${isArabic ? "ml-2" : "mr-2"}`} />
                     {isArabic ? "شاهد الجولة بالفيديو" : "Watch the video tour"}
                   </a>
                 </Button>
               )}
-              <Button asChild size="lg" variant="outline" className="border-white/25 text-white hover:bg-white/10 hover:text-white">
+              <Button asChild size="lg" variant="outline" className="max-md:hidden border-white/25 text-white hover:bg-white/10 hover:text-white">
                 <a href="https://wa.me/201038450546" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className={`w-4 h-4 ${isArabic ? "ml-2" : "mr-2"}`} />
                   {isArabic ? "تواصل على واتساب" : "Chat on WhatsApp"}
@@ -132,11 +137,29 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         </div>
       </section>
 
+      {/* Jump bar: one tap to the screens, the tour, the demo, prices or questions (sticky under the header). */}
+      <nav aria-label={isArabic ? "أقسام الصفحة" : "On this page"} className="sticky top-[68px] z-40 bg-background/95 backdrop-blur border-b border-border">
+        <div className="container flex gap-2 overflow-x-auto py-2 [scrollbar-width:none]">
+          {[
+            ["screens", isArabic ? "الشاشات" : "Screens"],
+            ...(solution.video ? [["video-tour", isArabic ? "الفيديو" : "Video tour"]] : []),
+            ...(solution.liveDemo ? [["demo", isArabic ? "النسخة التجريبية" : "Live demo"]] : []),
+            ["features", isArabic ? "المزايا" : "Features"],
+            ["pricing", isArabic ? "الأسعار" : "Prices"],
+            ["faq", isArabic ? "الأسئلة" : "FAQ"],
+          ].map(([id, label]) => id === "pricing"
+            ? <Link key={id} href={`${prefix}/services/crm#pricing`} className="shrink-0 rounded-full border border-border px-3.5 py-1.5 text-sm font-medium hover:border-primary hover:text-primary">{label}</Link>
+            : <a key={id} href={`#${id}`} onClick={e => { window.trackCTA?.(`jump-${id}`); if (jumpTo(id)) e.preventDefault(); }}
+                className={`shrink-0 rounded-full px-3.5 py-1.5 text-sm font-medium ${id === "demo" ? "bg-primary text-primary-foreground" : "border border-border hover:border-primary hover:text-primary"}`}>{label}</a>)}
+        </div>
+      </nav>
+
       {/* Highlights — the first thing after the hero, so the claim that this is
           a real running system lands before the reader has to scroll. */}
       <section className="border-b border-border bg-muted/30">
-        <div className="container py-10">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="container py-4 md:py-10">
+          {/* phones: a row you swipe, so the screens and the demo stay close to the top */}
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:overflow-visible">
             {t.highlights.map((h, i) => (
               <motion.div
                 key={h.title}
@@ -145,6 +168,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-60px" }}
+                className="min-w-[78%] snap-start rounded-xl bg-background/60 p-4 md:min-w-0 md:bg-transparent md:p-0"
               >
                 <p
                   className="font-extrabold mb-1.5 flex items-center gap-2"
@@ -160,9 +184,10 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         </div>
       </section>
 
-      <div className="container py-16">
+      {/* On phones the screens, the tour and the demo come first (order-N); desktop keeps the reading order. */}
+      <div className="container pt-2 pb-10 md:py-16 flex flex-col">
         {/* Pains */}
-        <section>
+        <section className="order-5 md:order-none max-md:mt-16 max-md:pt-14 max-md:border-t max-md:border-border">
           <div className="flex flex-col gap-3 mb-7">
             <h2
               className="text-2xl md:text-3xl font-extrabold"
@@ -193,7 +218,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         </section>
 
         {/* Generic CRM vs this one */}
-        <section className="mt-16 pt-14 border-t border-border">
+        <section className="order-6 md:order-none mt-16 pt-14 border-t border-border">
           <div className="flex flex-col gap-3 mb-7">
             <h2
               className="text-2xl md:text-3xl font-extrabold"
@@ -237,7 +262,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         </section>
 
         {/* Features */}
-        <section className="mt-16 pt-14 border-t border-border">
+        <section id="features" className="order-4 md:order-none mt-16 pt-14 border-t border-border scroll-mt-32">
           <div className="flex flex-col gap-3 mb-7">
             <h2
               className="text-2xl md:text-3xl font-extrabold"
@@ -269,16 +294,16 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         </section>
 
         {/* Screens */}
-        <SolutionShowcase base={solution.showcaseBase} copy={t} language={language} />
+        <div className="order-1 md:order-none"><SolutionShowcase base={solution.showcaseBase} copy={t} language={language} /></div>
 
         {/* After the screenshots: the whole product in a few minutes, then the demo form. */}
-        {solution.video && <SolutionVideo video={solution.video} language={language} productName={t.name} product={solution.id} />}
+        {solution.video && <div className="order-2 md:order-none"><SolutionVideo video={solution.video} language={language} productName={t.name} product={solution.id} /></div>}
 
         {/* Straight after the video: seen enough, now use it. */}
-        {solution.liveDemo && isDemoProduct(solution.id) && <LiveDemoForm language={language} product={solution.id} />}
+        {solution.liveDemo && isDemoProduct(solution.id) && <div className="order-3 md:order-none"><LiveDemoForm language={language} product={solution.id} /></div>}
 
         {/* FAQ */}
-        <section className="mt-16 pt-14 border-t border-border">
+        <section id="faq" className="order-7 md:order-none mt-16 pt-14 border-t border-border scroll-mt-32">
           <h2
             className="text-2xl md:text-3xl font-extrabold mb-7"
             style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}
@@ -301,7 +326,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         </section>
 
         {/* CTA */}
-        <section className="mt-16 rounded-2xl bg-[var(--navy)] text-white p-10 text-center">
+        <section className="order-8 md:order-none mt-16 rounded-2xl bg-[var(--navy)] text-white p-10 text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold mb-3" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
             {t.ctaTitle}
           </h2>
@@ -309,7 +334,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
           <div className="flex flex-wrap gap-3 justify-center">
             {solution.liveDemo && (
               <Button asChild size="lg">
-                <a href="#demo" onClick={e => { window.trackCTA?.("live-demo-footer"); if (scrollToId("demo")) e.preventDefault(); }}>
+                <a href="#demo" onClick={e => { window.trackCTA?.("live-demo-footer"); if (jumpTo("demo")) e.preventDefault(); }}>
                   {isArabic ? "جرّب النسخة التجريبية" : "Try the live demo"}
                 </a>
               </Button>
@@ -341,7 +366,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
         {/* Client results, once a real story exists (data/productStories.ts) */}
         {PRODUCT_STORIES.filter(s => s.solution === solution.id).map(story => (
           <Link key={story.id} href={`${prefix}/case-studies/${story.id}`}
-            className="mt-10 block rounded-2xl border border-primary/30 bg-primary/5 p-7 hover:border-primary/60 transition-colors">
+            className="order-9 md:order-none mt-10 block rounded-2xl border border-primary/30 bg-primary/5 p-7 hover:border-primary/60 transition-colors">
             <span className="text-xs font-bold uppercase tracking-wide text-primary">{isArabic ? "قصة عميل" : "Client story"} · {story[language].client}</span>
             <span className="block text-xl font-extrabold mt-2" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{story[language].title}</span>
             <span className="flex flex-wrap gap-6 mt-4">
@@ -352,7 +377,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
           </Link>
         ))}
         {/* Other solutions — internal linking between the verticals */}
-        <section className="mt-16 pt-14 border-t border-border">
+        <section className="order-10 md:order-none mt-16 pt-14 border-t border-border">
           <h2 className="text-xl font-extrabold mb-5" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
             {isArabic ? "أنظمة أخرى نبنيها" : "The other systems we build"}
           </h2>

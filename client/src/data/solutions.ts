@@ -1528,7 +1528,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
       features: [
         { title: "Accounting core", desc: "Chart of accounts per company, journal entries that lock once posted and reverse cleanly, cost centers, multi-currency with exchange rates, and monthly periods you close." },
         { title: "Financial reports", desc: "Trial balance, income statement, balance sheet, general ledger, receivables and payables aging, and customer and vendor statements. Excel export and print." },
-        { title: "Receivables and payables", desc: "Invoices and credit notes with a ZATCA phase-1 QR code for Saudi invoices, receipts, bills that need approval before posting, payments with withholding tax, and cheques." },
+        { title: "Receivables and payables", desc: "Invoices and credit notes sent to Egypt's ETA e-invoicing system (signed with your e-seal) or carrying the ZATCA phase-1 QR code in Saudi Arabia, receipts, bills that need approval before posting, payments with withholding tax, and cheques." },
         { title: "Banks and reconciliation", desc: "Bank and cash accounts, statements imported from Excel or CSV, automatic matching against the books, and transfers." },
         { title: "Lending from application to disbursement", desc: "Products, borrower KYC, applications with a rule-based credit check, recommendation and approval by role, and disbursement that books the fee." },
         { title: "Collections and provisions", desc: "Daily accrual, late fees after a grace period, a days-past-due queue with WhatsApp reminders, promises to pay, provisioning by bucket and write-off." },
@@ -1560,6 +1560,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
       faqs: [
         { q: "Who is it for?", a: "Two kinds of company. Consumer, auto and SME financing companies that need lending, collections and provisions on top of their accounts, and companies in any other field whose finance department needs accounting, receivables, payables and banking. We switch on the modules each company needs and leave the rest off." },
         { q: "Which countries does it support?", a: "Egypt, Saudi Arabia, Kuwait and the UAE: each company gets its base currency, VAT rate and a chart of accounts on setup, and can hold transactions in other currencies with exchange rates. Saudi invoices carry the ZATCA phase-1 QR code." },
+        { q: "Does it connect to Egypt's e-invoicing system?", a: "Yes. Posted invoices and credit notes are checked against ETA's rules, built as ETA documents, signed with your company's e-seal and submitted, and each invoice shows whether ETA marked it valid, with the reasons if not. The e-seal token stays in your office: a small Fox signer agent on the PC where it is plugged in signs the documents. We set up the connection with you on ETA's pre-production environment first." },
         { q: "Which financing methods does it handle?", a: "Flat rate, reducing balance and murabaha. Each product has its own rate, amount and term limits, admin fee, late fee and grace period, and maximum debt-burden ratio." },
         { q: "Does the credit check decide for us?", a: "No. It runs the rules you set (product limits, verified income, debt-burden ratio, current arrears and any past write-off) and shows a score and the reasons. A credit officer recommends and an authorised manager approves or rejects." },
         { q: "How are provisions calculated?", a: "By days past due. You set the rate for each bucket to match your policy or your regulator's minimums, run it at month end, and the system books only the change against the allowance, with the detail kept for every run." },
@@ -1617,7 +1618,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
       features: [
         { title: "المحاسبة الأساسية", desc: "دليل حسابات لكل شركة، وقيود يومية تُقفل بعد الترحيل وتُعكس بقيد عكسي، ومراكز تكلفة، وعملات متعددة بأسعار صرف، وفترات شهرية تُغلق." },
         { title: "التقارير المالية", desc: "ميزان المراجعة، وقائمة الدخل، والميزانية العمومية، ودفتر الأستاذ، وأعمار ديون العملاء والموردين، وكشوف حساباتهم. تصدير إلى Excel وطباعة." },
-        { title: "العملاء والموردون", desc: "فواتير وإشعارات دائنة برمز QR للمرحلة الأولى من هيئة الزكاة والضريبة والجمارك للفواتير السعودية، وسندات قبض، وفواتير موردين تحتاج اعتمادًا قبل الترحيل، ومدفوعات بخصم المنبع، وشيكات." },
+        { title: "العملاء والموردون", desc: "فواتير وإشعارات دائنة تُرسل إلى منظومة الفاتورة الإلكترونية المصرية موقّعةً بختمك الإلكتروني، أو تحمل رمز QR للمرحلة الأولى من هيئة الزكاة والضريبة والجمارك في السعودية، وسندات قبض، وفواتير موردين تحتاج اعتمادًا قبل الترحيل، ومدفوعات بخصم المنبع، وشيكات." },
         { title: "البنوك والتسوية", desc: "حسابات بنكية وخزائن، واستيراد كشف الحساب من Excel أو CSV، ومطابقة تلقائية مع الدفاتر، وتحويلات." },
         { title: "التمويل من الطلب حتى الصرف", desc: "منتجات، وبيانات العميل والتحقق منها، وطلبات بتقييم ائتماني قائم على القواعد، وتوصية واعتماد حسب الدور، وصرف يقيّد الرسوم." },
         { title: "التحصيل والمخصصات", desc: "استحقاق يومي، وغرامات تأخير بعد فترة سماح، وقائمة حسب أيام التأخير مع تذكير عبر واتساب، ووعود بالسداد، ومخصصات حسب عمر التأخر، وإعدام الديون." },
@@ -1649,6 +1650,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
       faqs: [
         { q: "لمن هذا النظام؟", a: "لنوعين من الشركات: شركات التمويل الاستهلاكي وتمويل السيارات والمشروعات التي تحتاج التمويل والتحصيل والمخصصات فوق حساباتها، والشركات في أي مجال آخر التي تحتاج إدارتها المالية إلى المحاسبة والعملاء والموردين والبنوك. نفعّل لكل شركة الوحدات التي تحتاجها ونترك الباقي مغلقًا." },
         { q: "ما الدول التي يدعمها؟", a: "مصر والسعودية والكويت والإمارات: تحصل كل شركة عند التجهيز على عملتها الأساسية ونسبة ضريبة القيمة المضافة ودليل حسابات، ويمكنها تسجيل معاملات بعملات أخرى بأسعار صرف. وتحمل الفواتير السعودية رمز QR للمرحلة الأولى من هيئة الزكاة والضريبة والجمارك." },
+        { q: "هل يرتبط بمنظومة الفاتورة الإلكترونية المصرية؟", a: "نعم. تُفحص الفواتير والإشعارات الدائنة المرحَّلة وفق قواعد مصلحة الضرائب، وتُبنى مستنداتٍ بصيغة المنظومة، وتُوقَّع بالختم الإلكتروني للشركة وتُرسل، وتظهر على كل فاتورة حالتها لدى المصلحة مع الأسباب إن رُفضت. تبقى وحدة الختم في مكتبك: يوقّع المستندات وكيل فوكس صغير على الجهاز المتصل بها. ونجهّز الربط معك على بيئة الاختبار لدى المصلحة أولًا." },
         { q: "ما طرق التمويل التي يتعامل معها؟", a: "العائد الثابت، والعائد على الرصيد المتناقص، والمرابحة. لكل منتج نسبته وحدود مبلغه ومدته، ورسوم إدارية، وغرامة تأخير وفترة سماح، وحد أقصى لنسبة عبء الدين." },
         { q: "هل يتخذ التقييم الائتماني القرار بدلًا منا؟", a: "لا. يطبّق القواعد التي تحددها (حدود المنتج، والدخل الموثّق، ونسبة عبء الدين، والمتأخرات الحالية، وأي إعدام سابق) ثم يعرض درجة وأسبابها. يوصي مسؤول الائتمان، ويعتمد المدير المفوَّض أو يرفض." },
         { q: "كيف تُحسب المخصصات؟", a: "حسب أيام التأخير. تحدد نسبة كل فئة وفق سياستك أو الحدود الدنيا لجهة الرقابة، وتشغّل الاحتساب في نهاية الشهر، فيقيّد النظام التغيير فقط على المخصص، مع حفظ تفاصيل كل احتساب." },
@@ -1667,7 +1669,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         description:
           "Accounting, receivables, payables, banks, expenses, fixed assets, budgets, VAT returns and a full lending cycle for finance companies in Egypt and the Gulf. Try the live demo.",
         keywords:
-          "loan management software Egypt, lending software, microfinance software Egypt, consumer finance software, murabaha software, loan management system Saudi Arabia, accounting software Egypt, accounting software Saudi Arabia, collections software, IFRS 9 provisioning, bank reconciliation software, ZATCA QR invoice, برنامج محاسبة, برنامج إدارة القروض, نظام تمويل, برنامج شركات التمويل, برنامج تحصيل",
+          "loan management software Egypt, lending software, microfinance software Egypt, consumer finance software, murabaha software, loan management system Saudi Arabia, accounting software Egypt, accounting software Saudi Arabia, collections software, IFRS 9 provisioning, bank reconciliation software, ZATCA QR invoice, ETA e-invoice integration Egypt, Egypt e-invoicing software, برنامج محاسبة, برنامج إدارة القروض, نظام تمويل, برنامج شركات التمويل, برنامج تحصيل",
         ogTitle: "Accounting and Lending Software for Finance Companies - Fox Systems",
         ogDescription: "One ledger for accounting, banks and a full lending cycle: credit check, collections and provisions. Arabic & English.",
         ogImage: `${ORIGIN}/solutions/finance-crm-og.jpg`,
@@ -1679,7 +1681,7 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         description:
           "محاسبة وعملاء وموردون وبنوك ومصروفات وأصول وموازنات وإقرارات ضريبية ودورة تمويل كاملة لشركات التمويل في مصر والخليج. جرّب النسخة الحية.",
         keywords:
-          "برنامج محاسبة, برنامج إدارة القروض, نظام إدارة التمويل, برنامج شركات التمويل, برنامج تمويل استهلاكي, برنامج مرابحة, برنامج تحصيل أقساط, برنامج محاسبة مصر, برنامج محاسبة السعودية, تسوية بنكية, مخصصات خسائر الائتمان, فاتورة ضريبية QR, loan management software Egypt, lending software",
+          "برنامج محاسبة, برنامج إدارة القروض, نظام إدارة التمويل, برنامج شركات التمويل, برنامج تمويل استهلاكي, برنامج مرابحة, برنامج تحصيل أقساط, برنامج محاسبة مصر, برنامج محاسبة السعودية, تسوية بنكية, مخصصات خسائر الائتمان, فاتورة ضريبية QR, الفاتورة الإلكترونية مصر, ربط منظومة الفاتورة الإلكترونية, loan management software Egypt, lending software",
         ogTitle: "نظام محاسبة وتمويل لشركات التمويل والإدارات المالية - فوكس سيستمز",
         ogDescription: "دفتر أستاذ واحد للمحاسبة والبنوك ودورة تمويل كاملة: تقييم ائتماني وتحصيل ومخصصات. عربي وإنجليزي.",
         ogImage: `${ORIGIN}/solutions/finance-crm-og.jpg`,

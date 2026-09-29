@@ -15,6 +15,7 @@ import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import SolutionShowcase from "@/components/SolutionShowcase";
 import SolutionVideo, { videoSchema } from "@/components/SolutionVideo";
+import SolutionPlans from "@/components/SolutionPlans";
 import LiveDemoForm, { isDemoProduct } from "@/components/LiveDemoForm";
 import { HEADER_OFFSET } from "@/lib/scrollToId";
 import { SOLUTIONS, type SolutionId } from "@/data/solutions";
@@ -147,9 +148,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
             ["features", isArabic ? "المزايا" : "Features"],
             ["pricing", isArabic ? "الأسعار" : "Prices"],
             ["faq", isArabic ? "الأسئلة" : "FAQ"],
-          ].map(([id, label]) => id === "pricing"
-            ? <Link key={id} href={`${prefix}/services/crm#pricing`} className="shrink-0 rounded-full border border-border px-3.5 py-1.5 text-sm font-medium hover:border-primary hover:text-primary">{label}</Link>
-            : <a key={id} href={`#${id}`} onClick={e => { window.trackCTA?.(`jump-${id}`); if (jumpTo(id)) e.preventDefault(); }}
+          ].map(([id, label]) => <a key={id} href={`#${id}`} onClick={e => { window.trackCTA?.(`jump-${id}`); if (jumpTo(id)) e.preventDefault(); }}
                 className={`shrink-0 rounded-full px-3.5 py-1.5 text-sm font-medium ${id === "demo" ? "bg-primary text-primary-foreground" : "border border-border hover:border-primary hover:text-primary"}`}>{label}</a>)}
         </div>
       </nav>
@@ -301,6 +300,9 @@ export default function SolutionDetail({ solutionId, language }: Props) {
 
         {/* Straight after the video: seen enough, now use it. */}
         {solution.liveDemo && isDemoProduct(solution.id) && <div className="order-3 md:order-none"><LiveDemoForm language={language} product={solution.id} /></div>}
+
+        {/* Plans: the same for every system, read from the shared price list. */}
+        <SolutionPlans language={language} className="order-4 md:order-none" />
 
         {/* FAQ */}
         <section id="faq" className="order-7 md:order-none mt-16 pt-14 border-t border-border scroll-mt-32">

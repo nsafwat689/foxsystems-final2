@@ -4,7 +4,7 @@
 
 ## Products (each page has a video tour, screenshots, FAQ and plans)
 
-- [Fox Finance — banking, lending and accounting](https://foxsystemstech.com/solutions/finance-crm): deposit accounts and teller, financing from application and credit check to collections and provisions, loan servicing, AML compliance, accounting, receivables and payables, bank reconciliation, Egyptian ETA e-invoicing, expenses, fixed assets, budgets, VAT returns and an AI finance assistant. Arabic: https://foxsystemstech.com/ar/solutions/finance-crm
+- [Fox Finance — banking, lending and accounting](https://foxsystemstech.com/solutions/finance-crm): deposit accounts and teller, financing from application and credit check to collections and provisions, loan servicing, AML compliance, a customer portal for borrowers and depositors, branches, portfolio and regulatory reports, accounting, receivables and payables, bank reconciliation, Egyptian ETA e-invoicing, expenses, fixed assets, budgets, VAT returns and an AI finance assistant. Arabic: https://foxsystemstech.com/ar/solutions/finance-crm
 - [Fox HR — HR, attendance and payroll](https://foxsystemstech.com/solutions/hr-crm): payroll for Egypt, Saudi Arabia and Kuwait with dated legal rules, leave by law, fingerprint machines, documents, recruitment and performance.
 - [Fox Real Estate CRM](https://foxsystemstech.com/solutions/real-estate-crm): leads, properties, deals, instalment plans and commissions for brokers and developers.
 - [Fox Medical CRM](https://foxsystemstech.com/solutions/medical-crm): GPS-verified visits, samples and orders for pharmaceutical field teams.

@@ -11,7 +11,7 @@
  *      LEADS_DB_SECRET, LEADS_ADMIN_KEY (the /admin/leads password).
  */
 export interface LeadRecord {
-  source: "demo" | "booking" | "contact";
+  source: "demo" | "booking" | "contact" | "outreach";
   product?: string;
   name: string;
   email?: string;

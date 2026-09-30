@@ -7,4 +7,4 @@ Product facts and prices come from the site data, so regenerate after changing `
    (`--alias:@=./client/src --platform=node --format=esm`), run it and save the output as `data.json` next to `build.mjs`; delete the temp file.
 2. In a folder with `docx`, `qrcode` and `pdf-lib` installed and Playwright available: `node build.mjs "<output folder>"`.
 
-`sales.mjs` holds the selling copy (who to call, questions, demo flow, objections, follow-ups). Keep it to what the site says.
+`sales.mjs` holds the selling copy (who to call, questions, demo flow, objections, follow-ups); `outreach.mjs` holds the outreach playbook and the founding-customer programme (kit-wide documents; `ONLY=extras` rebuilds just those). Keep it to what the site says.

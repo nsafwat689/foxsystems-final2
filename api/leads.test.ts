@@ -54,6 +54,34 @@ describe("lead store", () => {
     expect(JSON.parse(fetchMock.mock.calls[0][1].body).p_days).toBe(30);
   });
 
+  it("POST adds an outreach prospect, with notes, behind the key", async () => {
+    const denied = mockRes();
+    await handler({ method: "POST", headers: {}, body: { name: "Omar", product: "hr-crm" } }, denied);
+    expect(denied.statusCode).toBe(401);
+    expect(fetchMock).not.toHaveBeenCalled();
+    fetchMock.mockResolvedValueOnce(new Response("42", { status: 200 })).mockResolvedValueOnce(new Response(null, { status: 204 }));
+    const ok = mockRes();
+    await handler({ method: "POST", headers: { authorization: `Bearer ${ENV.LEADS_ADMIN_KEY}` },
+      body: { name: "Omar", company: "Nile Foods", phone: "+20 100 000 0000", email: "", product: "hr-crm", language: "ar", notes: "Met at the expo" } }, ok);
+    expect(ok.body).toEqual({ ok: true, id: 42 });
+    const add = JSON.parse(fetchMock.mock.calls[0][1].body);
+    expect(fetchMock.mock.calls[0][0]).toMatch(/rpc\/fox_lead_add$/);
+    expect(add.p_lead).toMatchObject({ source: "outreach", name: "Omar", company: "Nile Foods", product: "hr-crm", language: "ar" });
+    expect(add.p_lead.notes).toBeUndefined();
+    const upd = JSON.parse(fetchMock.mock.calls[1][1].body);
+    expect(fetchMock.mock.calls[1][0]).toMatch(/rpc\/fox_lead_update$/);
+    expect(upd).toMatchObject({ p_id: 42, p_status: null, p_notes: "Met at the expo" });
+  });
+
+  it("POST rejects a prospect without a name or with an unknown product", async () => {
+    for (const body of [{ product: "hr-crm" }, { name: "A", product: "crypto" }, { name: "A", product: "hr-crm", email: "not-an-email" }]) {
+      const r = mockRes();
+      await handler({ method: "POST", headers: { authorization: `Bearer ${ENV.LEADS_ADMIN_KEY}` }, body }, r);
+      expect(r.statusCode).toBe(400);
+    }
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it("PATCH validates the status", async () => {
     const bad = mockRes();
     await handler({ method: "PATCH", headers: { authorization: `Bearer ${ENV.LEADS_ADMIN_KEY}` }, body: { id: 1, status: "hacked" } }, bad);

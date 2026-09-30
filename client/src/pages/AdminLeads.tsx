@@ -4,11 +4,11 @@
  * after the first sign-in), noindex, not linked from the site.
  */
 import { useEffect, useMemo, useState } from "react";
-import { CalendarDays, Download, LogOut, MessageCircle, MonitorPlay, Phone, RefreshCw, Search, Mail } from "lucide-react";
+import { CalendarDays, Download, LogOut, MessageCircle, MonitorPlay, Phone, Plus, RefreshCw, Search, Mail, Target } from "lucide-react";
 
 type Status = "new" | "contacted" | "meeting" | "proposal" | "won" | "lost";
 interface Lead {
-  id: number; created_at: string; source: "demo" | "booking" | "contact"; product: string; name: string; email: string; phone: string;
+  id: number; created_at: string; source: "demo" | "booking" | "contact" | "outreach"; product: string; name: string; email: string; phone: string;
   company: string; team_size: string; language: string; details: Record<string, any>; demo_ends_at: string | null; booking_at: string | null;
   status: Status; next_action_at: string | null; notes: string; updated_at: string;
 }
@@ -22,7 +22,16 @@ const PRODUCT: Record<string, { en: string; ar: string }> = {
   "pest-control-crm": { en: "Pest Control CRM", ar: "فوكس لإدارة مكافحة الآفات" }, "hr-crm": { en: "HR & Payroll", ar: "فوكس للموارد البشرية" }, "finance-crm": { en: "Finance & Lending", ar: "فوكس للتمويل" },
   "it-services": { en: "IT services", ar: "خدمات تقنية المعلومات" },
 };
-const SOURCE_ICON = { demo: MonitorPlay, booking: CalendarDays, contact: Mail };
+const SOURCE_ICON = { demo: MonitorPlay, booking: CalendarDays, contact: Mail, outreach: Target };
+// The opening question per product, from the sales kit's outreach playbook
+// (scripts/sales-kit/outreach.mjs) — keep the two in step.
+const HOOK: Record<string, { en: string; ar: string }> = {
+  "real-estate-crm": { en: "When a lead from your ads arrives at 9 pm, who calls them back, and how fast?", ar: "عندما يصلكم عميل محتمل من إعلاناتكم في التاسعة مساءً، من يتصل به، وبأي سرعة؟" },
+  "medical-crm": { en: "How do you know today that each of your reps' visits really happened?", ar: "كيف تتأكدون اليوم من أن كل زيارة لمندوبيكم تمت فعلًا؟" },
+  "pest-control-crm": { en: "When a client's auditor asks for proof that every bait station was checked, how long does it take you to produce it?", ar: "عندما يطلب مراجع أحد عملائكم إثباتًا بأن كل محطة طُعم فُحصت، كم يستغرق تجهيز هذا الإثبات؟" },
+  "hr-crm": { en: "How long does payroll take you each month, and what happens when insurance or GOSI rates change?", ar: "كم يستغرق إعداد الرواتب لديكم كل شهر، وماذا يحدث عندما تتغير نسب التأمينات الاجتماعية؟" },
+  "finance-crm": { en: "How many spreadsheets does it take today to see your overdue loans by branch?", ar: "كم جدول بيانات تحتاجون اليوم لمعرفة القروض المتأخرة لكل فرع؟" },
+};
 const readKey = () => { try { return localStorage.getItem(KEY_STORE) || ""; } catch { return ""; } };
 const saveKey = (k: string) => { try { k ? localStorage.setItem(KEY_STORE, k) : localStorage.removeItem(KEY_STORE); } catch { /* private mode */ } };
 const fmt = (s: string | null) => s ? new Date(s).toLocaleString("en-GB", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" }) : "—";
@@ -38,6 +47,19 @@ function waMessage(l: Lead): string {
     const when = new Date(l.booking_at).toLocaleString(ar ? "ar-EG-u-nu-latn" : "en-GB", { timeZone: "Africa/Cairo", weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
     return ar ? `مرحبًا ${first}، معك فريق فوكس سيستمز. نؤكد موعد العرض العملي لـ ${p} يوم ${when} بتوقيت القاهرة. هل تفضّل Google Meet أم Zoom أم Teams؟`
               : `Hello ${first}, this is Fox Systems. Confirming your ${p} walkthrough on ${when} (Cairo time). Would you prefer Google Meet, Zoom or Teams?`;
+  }
+  if (l.source === "outreach") {
+    // new → the day-1 opener; after that → the day-3 message with the video tour
+    const page = `https://foxsystemstech.com/${ar ? "ar/" : ""}solutions/${l.product}`;
+    const hook = HOOK[l.product]?.[ar ? "ar" : "en"] ?? "";
+    const co = l.company || (ar ? "شركتكم" : "your company");
+    if (l.status === "new")
+      return ar ? `مرحبًا ${first}، معك [اسمك] من فوكس سيستمز. ${hook} صمّمنا ${p} لشركات مثل ${co}. هل يفيدك فيديو قصير؟ يمكنني إرساله هنا.`
+                : `Hello ${first}, I'm [your name] from Fox Systems. ${hook} We built ${p} for companies like ${co}. Would a short video help? I can send it here.`;
+    return ar ? `مرحبًا ${first}، هذه جولة الفيديو التي ذكرتها عن ${p}: ${page}
+وإن أردت تجربته بنفسك، فالنسخة التجريبية الحية تمنحك حسابًا خاصًا لمدة 3 أيام من الصفحة نفسها.`
+              : `Hello ${first}, here is the ${p} video tour I mentioned: ${page}
+If you'd like to try it yourself, the live demo gives you your own login for 3 days from the same page.`;
   }
   if (l.source === "demo") {
     const ended = l.demo_ends_at && new Date(l.demo_ends_at).getTime() < now;
@@ -61,6 +83,7 @@ export default function AdminLeads() {
   const [view, setView] = useState<"todo" | "open" | "all">("todo");
   const [source, setSource] = useState<"" | Lead["source"]>("");
   const [open, setOpen] = useState<number | null>(null);
+  const [adding, setAdding] = useState(false);
 
   useEffect(() => {
     const m = document.createElement("meta"); m.name = "robots"; m.content = "noindex, nofollow"; document.head.appendChild(m);
@@ -88,6 +111,17 @@ export default function AdminLeads() {
     const r = await fetch("/api/leads", { method: "PATCH", headers: { authorization: `Bearer ${key}`, "content-type": "application/json" },
       body: JSON.stringify({ id: l.id, status: next.status, notes: next.notes, next_action_at: next.next_action_at }) });
     if (!r.ok) { setErr("Could not save — reloading."); load(); }
+  }
+
+  async function addProspect(form: HTMLFormElement) {
+    const f = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
+    setBusy(true); setErr(null);
+    try {
+      const r = await fetch("/api/leads", { method: "POST", headers: { authorization: `Bearer ${key}`, "content-type": "application/json" }, body: JSON.stringify(f) });
+      const body = await r.json().catch(() => ({}));
+      if (!r.ok || !body.ok) { setErr(r.status === 400 ? "Check the prospect: a name, a product and a valid email (or none)." : "Could not add the prospect."); return; }
+      setAdding(false); form.reset(); setView("todo"); await load();
+    } finally { setBusy(false); }
   }
 
   const now = Date.now();
@@ -138,11 +172,34 @@ export default function AdminLeads() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-2xl font-bold">Leads</h1>
           <div className="flex gap-2">
+            <button onClick={() => setAdding(a => !a)} className="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white inline-flex items-center gap-2 text-sm font-semibold"><Plus className="w-4 h-4" /> Add prospect</button>
             <button onClick={() => load()} className="px-3 py-2 border border-slate-300 rounded-lg bg-white inline-flex items-center gap-2 text-sm"><RefreshCw className={`w-4 h-4 ${busy ? "animate-spin" : ""}`} /> Refresh</button>
             <button onClick={exportCsv} className="px-3 py-2 border border-slate-300 rounded-lg bg-white inline-flex items-center gap-2 text-sm"><Download className="w-4 h-4" /> CSV</button>
             <button onClick={() => { saveKey(""); setKey(""); setLeads(null); }} className="px-3 py-2 border border-slate-300 rounded-lg bg-white inline-flex items-center gap-2 text-sm"><LogOut className="w-4 h-4" /> Sign out</button>
           </div>
         </div>
+
+        {adding && (
+          <form onSubmit={e => { e.preventDefault(); addProspect(e.currentTarget); }} className="bg-white rounded-xl border border-blue-200 p-4 grid md:grid-cols-4 gap-3 text-sm">
+            <div className="md:col-span-4 font-semibold">New prospect <span className="font-normal text-slate-500">— a company you are contacting (outreach playbook). The first message is due now.</span></div>
+            <input name="name" required maxLength={120} placeholder="Contact name *" className="px-3 py-2 border border-slate-300 rounded-lg" />
+            <input name="company" maxLength={200} placeholder="Company" className="px-3 py-2 border border-slate-300 rounded-lg" />
+            <input name="phone" maxLength={40} placeholder="Phone / WhatsApp" dir="ltr" className="px-3 py-2 border border-slate-300 rounded-lg" />
+            <input name="email" type="email" maxLength={200} placeholder="Email" dir="ltr" className="px-3 py-2 border border-slate-300 rounded-lg" />
+            <select name="product" required defaultValue="" className="px-3 py-2 border border-slate-300 rounded-lg bg-white">
+              <option value="" disabled>Product *</option>
+              {Object.entries(PRODUCT).map(([id, n]) => <option key={id} value={id}>{n.en}</option>)}
+            </select>
+            <select name="language" defaultValue="ar" className="px-3 py-2 border border-slate-300 rounded-lg bg-white">
+              <option value="ar">Writes in Arabic</option><option value="en">Writes in English</option>
+            </select>
+            <input name="notes" maxLength={4000} placeholder="Notes (where you found them, title…)" className="px-3 py-2 border border-slate-300 rounded-lg md:col-span-2" />
+            <div className="md:col-span-4 flex gap-2 justify-end">
+              <button type="button" onClick={() => setAdding(false)} className="px-3 py-2 border border-slate-300 rounded-lg bg-white">Cancel</button>
+              <button disabled={busy} className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold disabled:opacity-60">Add</button>
+            </div>
+          </form>
+        )}
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
           {stats.map(([k, v]) => <div key={k} className="bg-white rounded-xl border border-slate-200 p-4"><div className="text-xs text-slate-500">{k}</div><div className="text-2xl font-bold">{v}</div></div>)}
@@ -153,7 +210,7 @@ export default function AdminLeads() {
             <button key={k} onClick={() => setView(k)} className={`px-3 py-1.5 rounded-full border ${view === k ? "bg-slate-900 text-white border-slate-900" : "bg-white border-slate-300"}`}>{l}</button>
           ))}
           <select value={source} onChange={e => setSource(e.target.value as any)} className="px-3 py-1.5 rounded-full border border-slate-300 bg-white">
-            <option value="">All sources</option><option value="demo">Demo</option><option value="booking">Booking</option><option value="contact">Contact form</option>
+            <option value="">All sources</option><option value="demo">Demo</option><option value="booking">Booking</option><option value="contact">Contact form</option><option value="outreach">Outreach</option>
           </select>
           <label className="relative flex-1 min-w-[180px]"><Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" />
             <input value={q} onChange={e => setQ(e.target.value)} placeholder="Search name, company, phone, notes" className="w-full pl-9 pr-3 py-1.5 rounded-full border border-slate-300" /></label>
@@ -215,7 +272,7 @@ export default function AdminLeads() {
             })}
           </div>
         )}
-        <p className="text-xs text-slate-400">Every demo request, walkthrough booking and contact enquiry from foxsystemstech.com is recorded here. WhatsApp opens with a message that fits the lead; a new lead moves to “contacted” with a follow-up in two days.</p>
+        <p className="text-xs text-slate-400">Every demo request, walkthrough booking and contact enquiry from foxsystemstech.com is recorded here, with the prospects you add yourself. WhatsApp opens with a message that fits the lead; a new lead moves to “contacted” with a follow-up in two days.</p>
       </div>
     </div>
   );

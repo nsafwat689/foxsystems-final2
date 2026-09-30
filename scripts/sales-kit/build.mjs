@@ -8,6 +8,7 @@ import { pathToFileURL } from "node:url";
 import QRCode from "qrcode";
 import * as D from "docx";
 import { CONTACT, COMMON_OBJECTIONS, PRODUCTS, FOLLOWUPS } from "./sales.mjs";
+import { OUTREACH, OUTREACH_T, FOUNDING } from "./outreach.mjs";
 
 const require = createRequire(import.meta.url);
 const { chromium } = require("C:/Users/A.Safwat/node_modules/playwright");
@@ -15,7 +16,7 @@ const data = JSON.parse(fs.readFileSync(new URL("./data.json", import.meta.url),
 const OUT = process.argv[2] ?? "C:/Users/A.Safwat/Desktop/Fox Sales Kit";
 const PUB = "C:/Users/A.Safwat/foxsystems-final2/client/public";
 const SITE = "https://foxsystemstech.com";
-const ONLY = process.env.ONLY; // e.g. "finance-crm:ar" for a quick check
+const ONLY = process.env.ONLY; // e.g. "finance-crm:ar" for a quick check, "extras" for the kit-wide documents only
 
 const FX = data.FX;
 const roundNice = (n, step) => Math.max(step, Math.round(n / step) * step);
@@ -91,6 +92,7 @@ ol.q { margin: 0; padding-inline-start: 5mm } ol.q li { margin-bottom: 1.4mm }
 .flow td:first-child { width: 7mm; font-weight: 700; color: #2b87f2 } .flow img { width: 34mm; border-radius: 4px; border: 1px solid #e2e8f0 }
 .obj { margin-bottom: 2.6mm } .obj b { display: block } .obj span { color: #334155 }
 .msg { border-inline-start: 3px solid #25D366; background: #f0fdf4; padding: 2.5mm 3.5mm; margin-bottom: 3mm; white-space: pre-wrap; font-size: 9.5pt } .msg b { display: block; white-space: normal; margin-bottom: 1mm; color: #166534 }
+.msg bdi { display: inline-block }
 .warn { background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; border-radius: 8px; padding: 3mm 4mm; font-size: 9.5pt }
 `;
 const HEAD = (dir, title) => `<!doctype html><html lang="${dir === "rtl" ? "ar" : "en"}" dir="${dir}"><head><meta charset="utf-8"><title>${esc(title)}</title>
@@ -242,6 +244,109 @@ function proposal(id, lang) {
     sections: [{ properties: { page: { margin: { top: 1000, bottom: 1000, left: 1100, right: 1100 } } }, children }] });
 }
 
+// ------------------------------------------------- outreach playbook (PDF)
+const fill = (s, map) => Object.entries(map).reduce((a, [k, v]) => a.replaceAll(`{${k}}`, v), s);
+// Links and phone numbers keep left-to-right order inside Arabic text.
+const ltrBits = html => html.replace(/https?:\/\/[^\s<]+|‎?\+\d[\d ]*\d/g, m => `<bdi dir="ltr">${m.replace("‎", "")}</bdi>`);
+function outreachDoc(lang) {
+  const t = OUTREACH_T[lang], d = T[lang], ar = lang === "ar", pre = ar ? "ar/" : "";
+  const ids = Object.keys(OUTREACH).filter(id => data.SOLUTIONS[id]);
+  return HEAD(d.dir, t.title) + FLOW + `
+<div class="page">${band(d, t.title, t.sub)}
+  <div class="warn">${esc(d.rule)}</div>
+  <h2>${esc(t.rulesT)}</h2><ul class="x ok">${t.rules.map(r => `<li>${esc(r)}</li>`).join("")}</ul>
+  <h2>${esc(t.dayT)}</h2><ol class="q">${t.day.map(r => `<li>${esc(r)}</li>`).join("")}</ol>
+  <h2>${esc(t.trackerT)}</h2><div class="box">${esc(t.tracker)}</div>
+  <h2>${esc(t.seqT)}</h2>
+  <table><tbody>${t.steps.map(([h]) => `<tr><td><b>${esc(h)}</b></td></tr>`).join("")}</tbody></table>
+</div>
+${ids.map(id => {
+  const O = OUTREACH[id][lang], name = data.SOLUTIONS[id][lang].name;
+  const map = { product: name, hook: O.hook, value: O.value, topic: O.topic, page: `${SITE}/${pre}solutions/${id}`, book: `${SITE}/${pre}book?product=${id}` };
+  return `<div class="page">
+  <h2 style="font-size:15pt;margin-top:4mm">${esc(name)}</h2>
+  <div class="grid2" style="grid-template-columns:1fr 1fr">
+    <div><b>${esc(t.findT)}</b><ul class="x ok" style="margin-top:1.5mm">${O.find.map(f => `<li>${esc(f)}</li>`).join("")}</ul></div>
+    <div><div class="box"><b style="display:block">${esc(t.hookT)}</b>${esc(O.hook)}</div><div class="box" style="margin-top:3mm"><b style="display:block">${esc(t.valueT)}</b>${esc(O.value)}</div></div>
+  </div>
+  <h2>${esc(t.seqT)}</h2>
+  ${t.steps.map(([h, m]) => `<div class="msg" style="font-size:8.8pt;padding:2mm 3mm;margin-bottom:2.2mm"><b>${esc(h)}</b>${ltrBits(esc(fill(m, map)).replace(/\n\n/g, "\n"))}</div>`).join("")}
+</div>`; }).join("")}
+</body></html>`;
+}
+
+// --------------------------------------------- founding programme (PDF)
+function foundingDoc(lang) {
+  const F = FOUNDING[lang], d = T[lang];
+  const ids = Object.keys(F.measure).filter(id => data.SOLUTIONS[id]);
+  const list = (a, cls = "x ok") => `<ul class="${cls}">${a.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
+  return HEAD(d.dir, F.title) + FLOW + `
+<div class="page">${band(d, F.title, F.sub)}
+  <h2>${esc(F.whyT)}</h2><p>${esc(F.why)}</p>
+  <div class="box"><b style="display:block">${esc(F.firstT)}</b>${esc(F.first)}</div>
+  <h2>${esc(F.pickT)}</h2>${list(F.pick)}
+  <div class="grid2" style="margin-top:2mm">
+    <div><h2>${esc(F.giveT)}</h2>${list(F.give)}</div>
+    <div><h2>${esc(F.askT)}</h2>${list(F.ask)}</div>
+  </div>
+  <h2>${esc(F.measureT)}</h2>
+  <table><tbody>${ids.map(id => `<tr><td style="width:32%"><b>${esc(data.SOLUTIONS[id][lang].name)}</b></td><td>${F.measure[id].map(esc).join(" · ")}</td></tr>`).join("")}</tbody></table>
+  <h2>${esc(F.stepsT)}</h2><ol class="q">${F.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>
+  <h2>${esc(F.ruleT)}</h2><div class="warn">${F.rules.map(esc).join("<br>")}</div>
+</div></body></html>`;
+}
+
+// ------------------------------------- founding customer agreement (.docx)
+function foundingAgreement(lang) {
+  const ar = lang === "ar", font = ar ? "Arial" : "Calibri", F = FOUNDING[lang];
+  const L = (en, a) => (ar ? a : en);
+  const run = (text, o = {}) => new D.TextRun({ text, font, rightToLeft: ar, size: o.size ?? 22, bold: o.bold, color: o.color, italics: o.italics });
+  const para = (parts, o = {}) => new D.Paragraph({ bidirectional: ar, alignment: ar ? D.AlignmentType.RIGHT : D.AlignmentType.LEFT, spacing: { after: o.after ?? 120 },
+    children: (Array.isArray(parts) ? parts : [parts]).map(p => typeof p === "string" ? run(p, o) : p) });
+  const h = text => para(text, { bold: true, size: 26, color: "0A1E3F", after: 140 });
+  const ph = text => run(text, { color: "B45309", bold: true });
+  const bullet = parts => new D.Paragraph({ bidirectional: ar, alignment: ar ? D.AlignmentType.RIGHT : D.AlignmentType.LEFT, bullet: { level: 0 }, spacing: { after: 60 },
+    children: (Array.isArray(parts) ? parts : [parts]).map(p => typeof p === "string" ? run(p) : p) });
+  const cell = (text, o = {}) => new D.TableCell({ shading: o.head ? { fill: "EEF2F7" } : undefined, margins: { top: 80, bottom: 80, left: 100, right: 100 },
+    children: [new D.Paragraph({ bidirectional: ar, alignment: ar ? D.AlignmentType.RIGHT : D.AlignmentType.LEFT, children: [typeof text === "string" ? run(text, { bold: o.head, size: 20 }) : text] })] });
+  const table = rows => new D.Table({ width: { size: 100, type: D.WidthType.PERCENTAGE }, visuallyRightToLeft: ar, rows: rows.map(r => new D.TableRow({ children: r })) });
+  const children = [
+    new D.Paragraph({ alignment: ar ? D.AlignmentType.RIGHT : D.AlignmentType.LEFT, children: [new D.ImageRun({ type: "jpg", data: fs.readFileSync(`${PUB}/logo.jpg`), transformation: { width: 70, height: 76 } })] }),
+    para(L("Fox Systems", "فوكس سيستمز"), { bold: true, color: "2B87F2" }),
+    para(F.agreementT, { bold: true, size: 38, color: "0A1E3F", after: 80 }),
+    para([run(L("Between Fox Systems and ", "بين فوكس سيستمز و")), ph(L("[Client company]", "[اسم الشركة]")), run(L(" for ", " بخصوص ")), ph(L("[product]", "[المنتج]")), run(L(" · Date: ", " · التاريخ: ")), ph(L("[date]", "[التاريخ]"))], { after: 280 }),
+    h(L("1. The founding benefit", "1. ميزة العميل المؤسس")),
+    para([run(L("As one of the first customers of ", "بصفتكم من أوائل عملاء ")), ph(L("[product]", "[المنتج]")), run(L(", you receive: ", "، تحصلون على: ")), ph(L("[benefit and duration, as agreed with management]", "[الميزة ومدتها، كما اتفقت عليها الإدارة]")), run(".")]),
+    bullet(L("Priority setup and a direct line to the Fox team during the first 3 months.", "أولوية في التركيب وتواصل مباشر مع فريق فوكس خلال الأشهر الثلاثة الأولى.")),
+    bullet(L("A say in what we build next for your sector.", "رأي فيما نطوّره لاحقًا لقطاعكم.")),
+    bullet(L("Everything your plan includes as standard: implementation, data migration, training and support.", "كل ما تشمله باقتكم بشكل قياسي: التركيب ونقل البيانات والتدريب والدعم.")),
+    para("", { after: 120 }),
+    h(L("2. What we measure together", "2. ما نقيسه معًا")),
+    para(L("We agree three numbers now, before go-live, and measure them again after 60 to 90 days.", "نتفق الآن، قبل التشغيل، على ثلاثة أرقام، ونقيسها مرة أخرى بعد 60 إلى 90 يومًا.")),
+    table([[cell(L("What we measure", "ما نقيسه"), { head: true }), cell(L("Before go-live", "قبل التشغيل"), { head: true }), cell(L("After 60–90 days", "بعد 60–90 يومًا"), { head: true })],
+      ...[1, 2, 3].map(() => [cell(ph(L("[measure]", "[المقياس]"))), cell(""), cell("")])]),
+    para("", { after: 120 }),
+    h(L("3. What you agree to", "3. ما توافقون عليه")),
+    bullet(L("A 30-minute interview after 60 to 90 days about your experience.", "مقابلة مدتها 30 دقيقة بعد 60 إلى 90 يومًا عن تجربتكم.")),
+    bullet(L("Fox Systems may publish a short story of your experience with your company name and logo, only after you approve the final text in writing.", "يجوز لفوكس سيستمز نشر قصة قصيرة عن تجربتكم باسم شركتكم وشعارها، وذلك فقط بعد موافقتكم كتابيًا على النص النهائي.")),
+    bullet(L("Up to 2 reference calls or messages a quarter with serious prospects, arranged in advance.", "حتى مكالمتَي أو رسالتَي استشهاد كل ربع سنة مع عملاء محتملين جادّين، بترتيب مسبق.")),
+    bullet([run(L("Optional: a short quote or video for our marketing. ", "اختياري: تعليق قصير أو فيديو لتسويقنا. ")), ph(L("[yes / no]", "[نعم / لا]"))]),
+    para("", { after: 120 }),
+    h(L("4. Your control", "4. الأمر بيدكم")),
+    bullet(L("Nothing about you is published without your written approval, and you may withdraw it later for future use.", "لا يُنشر عنكم شيء دون موافقتكم الكتابية، ويمكنكم سحبها لاحقًا للاستخدام المستقبلي.")),
+    bullet(L("Numbers are reported as measured. Your data stays yours, as in your main contract.", "تُعرض الأرقام كما قيست. وتبقى بياناتكم ملككم، كما في عقدكم الأساسي.")),
+    bullet(L("This agreement sits alongside your main subscription contract and does not change its terms.", "تُكمل هذه الاتفاقية عقد الاشتراك الأساسي ولا تغيّر شروطه.")),
+    para("", { after: 200 }),
+    table([[cell(L("For the client", "عن العميل"), { head: true }), cell(L("For Fox Systems", "عن فوكس سيستمز"), { head: true })],
+      [cell(L("Name:", "الاسم:")), cell(L("Name:", "الاسم:"))], [cell(L("Title:", "المنصب:")), cell(L("Title:", "المنصب:"))],
+      [cell(L("Signature:", "التوقيع:")), cell(L("Signature:", "التوقيع:"))], [cell(L("Date:", "التاريخ:")), cell(L("Date:", "التاريخ:"))]]),
+    para("", { after: 200 }),
+    para(`Fox Systems · ${CONTACT.phone} · ${CONTACT.email} · ${CONTACT.site}`, { size: 18, color: "64748B" }),
+  ];
+  return new D.Document({ creator: "Fox Systems", title: F.agreementT, styles: { default: { document: { run: { font, size: 22 } } } },
+    sections: [{ properties: { page: { margin: { top: 1000, bottom: 1000, left: 1100, right: 1100 } } }, children }] });
+}
+
 // ---------------------------------------------------------------- run
 const b = await chromium.launch();
 const done = [];
@@ -261,6 +366,23 @@ for (const id of Object.keys(data.SOLUTIONS)) for (const lang of ["en", "ar"]) {
   }
   fs.writeFileSync(path.join(dir, files.prop), await D.Packer.toBuffer(proposal(id, lang)));
   done.push(`${lang} ${id} proposal`);
+}
+// kit-wide documents, one set per language
+if (!ONLY || ONLY === "extras") for (const lang of ["en", "ar"]) {
+  const dir = path.join(OUT, lang === "ar" ? "العربية" : "English");
+  const names = lang === "ar"
+    ? { out: "دليل التواصل الأول.pdf", fp: "برنامج العملاء المؤسسين.pdf", fa: "اتفاقية العميل المؤسس.docx", csv: "نموذج قائمة العملاء المستهدفين.csv" }
+    : { out: "Outreach playbook.pdf", fp: "Founding customer programme.pdf", fa: "Founding customer agreement.docx", csv: "Prospect list template.csv" };
+  for (const [key, html] of [["out", outreachDoc(lang)], ["fp", foundingDoc(lang)]]) {
+    const tmp = path.join(process.env.TEMP, `kit-${key}-${lang}.html`); fs.writeFileSync(tmp, html);
+    const p = await b.newPage(); await p.goto(pathToFileURL(tmp).href, { waitUntil: "networkidle" }); await p.evaluate(() => document.fonts.ready);
+    await p.pdf({ path: path.join(dir, names[key]), format: "A4", printBackground: true, preferCSSPageSize: true }); await p.close();
+    done.push(`${lang} ${names[key]}`);
+  }
+  fs.writeFileSync(path.join(dir, names.fa), await D.Packer.toBuffer(foundingAgreement(lang)));
+  // UTF-8 with BOM so Excel opens Arabic correctly
+  fs.writeFileSync(path.join(dir, names.csv), "﻿" + OUTREACH_T[lang].csvCols.map(c => `"${c}"`).join(",") + "\r\n");
+  done.push(`${lang} ${names.fa}`, `${lang} ${names.csv}`);
 }
 await b.close();
 console.log(done.join("\n"));

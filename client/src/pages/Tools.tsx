@@ -12,6 +12,7 @@ import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { TOOLS, TOOL_IDS, TOOLS_INDEX_SEO } from "@/data/tools";
 import { generateBreadcrumbSchema } from "@/utils/seo";
+import SocialLinks from "@/components/SocialLinks";
 
 const ICONS = { Calculator, Gauge, Percent, CalendarClock, FileText, Receipt, Wallet, ShieldCheck, Bug, TrendingUp, Landmark, Scale, PiggyBank, TrendingDown };
 const ORIGIN = "https://foxsystemstech.com";
@@ -150,6 +151,7 @@ export default function Tools({ language }: Props) {
 
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">
             © 2026 Fox Systems. {t.rights} · Egypt · Saudi Arabia · Kuwait
           </p>

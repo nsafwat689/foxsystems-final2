@@ -6,6 +6,7 @@ import { useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import { serviceSEOConfigs, arabicSEOConfigs, generateBreadcrumbSchema } from "@/utils/seo";
 import Header from "@/components/Header";
+import SocialLinks from "@/components/SocialLinks";
 
 interface Article {
   id: string;
@@ -903,6 +904,7 @@ export default function Articles({ language }: ArticlesProps) {
         <footer className="bg-foreground/5 border-t border-border py-8 mt-12">
           <div className="container">
             <div className="text-center text-sm text-muted-foreground">
+              <SocialLinks isArabic={isArabic} tone="light" className="justify-center mb-4" />
               <p>© 2024 Fox Systems. {language === "en" ? "All rights reserved." : "جميع الحقوق محفوظة."}</p>
             </div>
           </div>

@@ -16,6 +16,7 @@ import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { TOOLS, TOOL_IDS, TOOLS_INDEX_SEO, type ToolId } from "@/data/tools";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/utils/seo";
+import SocialLinks from "@/components/SocialLinks";
 
 // One chunk per tool: a visitor opening the invoice generator should not also
 // download the bandwidth maths.
@@ -288,6 +289,7 @@ export default function ToolDetail({ toolId, language }: Props) {
 
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">
             © 2026 Fox Systems. {t.rights} · Egypt · Saudi Arabia · Kuwait
           </p>

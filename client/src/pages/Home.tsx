@@ -18,6 +18,7 @@ import Header from "@/components/Header";
 const CrmProductsShowcase = lazyRetry(() => import("@/components/CrmProductsShowcase"));
 const ServiceChooser = lazyRetry(() => import("@/components/ServiceChooser"));
 import LeadForm from "@/components/LeadForm";
+import SocialLinks from "@/components/SocialLinks";
 
 const T = {
   en: {
@@ -844,6 +845,7 @@ export default function Home({ language }: HomeProps) {
                 className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#25D366] rounded-full text-sm font-bold hover:bg-[#1ebc59] transition">
                 <MessageCircle className="w-4 h-4" /> WhatsApp
               </a>
+              <SocialLinks isArabic={isArabic} />
             </div>
 
             <div>

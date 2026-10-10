@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { PRODUCT_STORIES, storySeo } from "@/data/productStories";
 import { generateBreadcrumbSchema } from "@/utils/seo";
+import SocialLinks from "@/components/SocialLinks";
 
 const H = { fontFamily: "'Plus Jakarta Sans',sans-serif" };
 
@@ -83,7 +84,7 @@ export default function ProductStory({ storyId, language }: { storyId: string; l
       </div>
 
       <footer className="bg-[var(--navy)] text-white py-10">
-        <div className="container text-center"><p className="text-white/40 text-sm">© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait</p></div>
+        <div className="container text-center"><SocialLinks isArabic={isArabic} className="justify-center mb-4" /><p className="text-white/40 text-sm">© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait</p></div>
       </footer>
     </div>
   );

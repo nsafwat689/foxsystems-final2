@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { generateBreadcrumbSchema } from "@/utils/seo";
 import { INDUSTRIES_SEO } from "@/data/routeMeta";
+import SocialLinks from "@/components/SocialLinks";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -301,6 +302,7 @@ export default function Industries({ language }: IndustriesProps) {
       {/* Footer */}
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">
             © 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة" : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait
           </p>

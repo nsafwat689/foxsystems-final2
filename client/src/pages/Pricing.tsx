@@ -18,6 +18,7 @@ import SEOHead from "@/components/SEOHead";
 import { generateBreadcrumbSchema } from "@/utils/seo";
 import { WHATSAPP_NUMBER } from "@/lib/leads";
 import { planForSeats } from "@/data/crmPlans";
+import SocialLinks from "@/components/SocialLinks";
 import {
   CURRENCIES, CURRENCY_NAME, FX, PRICING_SEO, SERVICES, amount, formatMoney, guessCurrency,
   type AddOn, type CatalogueItem, type Currency, type PlanItem, type Service, type Unit,
@@ -276,6 +277,7 @@ export default function Pricing({ language }: Props) {
 
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">© 2026 Fox Systems. {t.rights} · Egypt · Saudi Arabia · Kuwait</p>
         </div>
       </footer>

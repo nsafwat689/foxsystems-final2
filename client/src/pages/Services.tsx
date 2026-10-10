@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { serviceSEOConfigs, arabicSEOConfigs, generateBreadcrumbSchema } from "@/utils/seo";
 import { motion } from "framer-motion";
+import SocialLinks from "@/components/SocialLinks";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -337,6 +338,7 @@ export default function Services({ language }: ServicesProps) {
       {/* Footer */}
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">
             © 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة" : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait · Middle East
           </p>

@@ -23,6 +23,7 @@ import { SOLUTIONS, type SolutionId } from "@/data/solutions";
 import { COMPARISON_FOR } from "@/data/comparisonIds";
 import { PRODUCT_STORIES } from "@/data/productStories";
 import { generateBreadcrumbSchema, generateFAQSchema, generateServiceSchema } from "@/utils/seo";
+import SocialLinks from "@/components/SocialLinks";
 
 const ICONS = { Stethoscope, Building2, Bug, Users, Landmark };
 
@@ -410,6 +411,7 @@ export default function SolutionDetail({ solutionId, language }: Props) {
 
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">
             © 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."} · Egypt · Saudi
             Arabia · Kuwait

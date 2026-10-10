@@ -15,6 +15,7 @@ import { SOLUTIONS } from "@/data/solutions";
 import { generateBreadcrumbSchema } from "@/utils/seo";
 import MobileActionBar from "@/components/MobileActionBar";
 import { SOLUTIONS_INDEX_SEO } from "@/data/routeMeta";
+import SocialLinks from "@/components/SocialLinks";
 
 const ICONS = { Stethoscope, Building2, Bug, Users, Landmark };
 
@@ -154,6 +155,7 @@ export default function Solutions({ language }: Props) {
 
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">
             © 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."} · Egypt · Saudi
             Arabia · Kuwait

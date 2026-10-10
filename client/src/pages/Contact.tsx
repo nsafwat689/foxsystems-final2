@@ -6,6 +6,7 @@ import SEOHead from "@/components/SEOHead";
 import { arabicSEOConfigs, generateBreadcrumbSchema } from "@/utils/seo";
 import { Link } from "wouter";
 import LeadForm from "@/components/LeadForm";
+import SocialLinks from "@/components/SocialLinks";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -219,6 +220,7 @@ export default function Contact({ language }: ContactProps) {
       {/* Footer */}
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">
             © 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة" : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait · Middle East
           </p>

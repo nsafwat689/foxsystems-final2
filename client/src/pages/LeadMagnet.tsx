@@ -8,6 +8,7 @@ import SEOHead from "@/components/SEOHead";
 import { generateBreadcrumbSchema } from "@/utils/seo";
 import { IT_GUIDE_SEO } from "@/data/routeMeta";
 import { submitLead, whatsAppFallbackUrl, SUPPORT_EMAIL, GUIDE_PDF_PATH, guidePdfIsAvailable, type Lead } from "@/lib/leads";
+import SocialLinks from "@/components/SocialLinks";
 
 interface LeadMagnetProps { language: "en" | "ar"; }
 
@@ -372,6 +373,7 @@ export default function LeadMagnet({ language }: LeadMagnetProps) {
 
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة" : "All rights reserved."}</p>
         </div>
       </footer>

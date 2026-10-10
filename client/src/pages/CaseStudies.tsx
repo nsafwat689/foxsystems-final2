@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { generateBreadcrumbSchema } from "@/utils/seo";
 import { CASE_STUDIES_SEO } from "@/data/routeMeta";
+import SocialLinks from "@/components/SocialLinks";
 
 interface CaseStudiesProps { language: "en" | "ar"; }
 
@@ -434,6 +435,7 @@ export default function CaseStudies({ language }: CaseStudiesProps) {
 
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة" : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait</p>
         </div>
       </footer>

@@ -12,6 +12,7 @@ import SEOHead from "@/components/SEOHead";
 import { BOOK_SEO } from "@/data/bookSeo";
 import { BOOKING_TZ, SESSION_MINUTES, bookingDays } from "@/lib/bookingSlots";
 import { whatsAppFallbackUrl } from "@/lib/leads";
+import SocialLinks from "@/components/SocialLinks";
 
 const H = { fontFamily: "'Plus Jakarta Sans',sans-serif" };
 const PRODUCTS = ["real-estate-crm", "medical-crm", "pest-control-crm", "hr-crm", "finance-crm", "it-services"] as const;
@@ -203,6 +204,7 @@ export default function Book({ language }: { language: "en" | "ar" }) {
 
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait</p>
         </div>
       </footer>

@@ -14,6 +14,7 @@ import CrmPricing from "@/components/CrmPricing";
 import CrmCommitments from "@/components/CrmCommitments";
 import MobileFold from "@/components/MobileFold";
 import MobileActionBar from "@/components/MobileActionBar";
+import SocialLinks from "@/components/SocialLinks";
 
 interface ServiceDetailProps {
   serviceId: string;
@@ -566,6 +567,7 @@ export default function ServiceDetail({ serviceId, language }: ServiceDetailProp
       {/* Footer */}
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait</p>
         </div>
       </footer>

@@ -13,6 +13,7 @@ import SEOHead from "@/components/SEOHead";
 import { COMPARISONS } from "@/data/comparisons";
 import type { ComparisonId } from "@/data/comparisonIds";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/utils/seo";
+import SocialLinks from "@/components/SocialLinks";
 
 const H = { fontFamily: "'Plus Jakarta Sans',sans-serif" };
 
@@ -148,6 +149,7 @@ export default function Compare({ comparisonId, language }: { comparisonId: Comp
 
       <footer className="bg-[var(--navy)] text-white py-10">
         <div className="container text-center">
+          <SocialLinks isArabic={isArabic} className="justify-center mb-4" />
           <p className="text-white/40 text-sm">© 2026 Fox Systems. {isArabic ? "جميع الحقوق محفوظة." : "All rights reserved."} · Egypt · Saudi Arabia · Kuwait</p>
         </div>
       </footer>

@@ -846,6 +846,10 @@ export default function Home({ language }: HomeProps) {
                 <MessageCircle className="w-4 h-4" /> WhatsApp
               </a>
               <SocialLinks isArabic={isArabic} />
+              {/* TechBehemoths company verification badge (must stay a follow link) */}
+              <a href="https://techbehemoths.com/company/fox-systems" target="_blank" rel="noopener" data-techbehemoths-verification className="inline-block">
+                <img src="https://cdn.techbehemoths.com/public/static/validation/tb-verified-logo.svg" alt="TechBehemoths Verification" loading="lazy" className="h-10 w-auto" />
+              </a>
             </div>
 
             <div>

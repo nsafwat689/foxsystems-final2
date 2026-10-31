@@ -245,6 +245,29 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
     },
   },
 
+  "shop-accounting-software": {
+    en: {
+      id: "shop-accounting-software",
+      title: "How to Choose Accounting Software for Your Shop",
+      excerpt: "Good sales but no profit at month end? The six things shop accounting and inventory software must do, and when Excel stops being enough.",
+      category: "Software",
+      author: "Fox Systems Team",
+      date: "2026-10-31",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+    },
+    ar: {
+      id: "shop-accounting-software",
+      title: "كيف تختار برنامج حسابات للمحلات",
+      excerpt: "مبيعات جيدة وربح غائب آخر الشهر؟ ستة أمور يجب أن يؤديها برنامج الحسابات والمخازن، ومتى لا يكفي الإكسل.",
+      category: "البرمجيات",
+      author: "فريق فوكس سيستمز",
+      date: "2026-10-31",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+    },
+  },
+
   "real-estate-crm-egypt": {
     en: {
       id: "real-estate-crm-egypt",

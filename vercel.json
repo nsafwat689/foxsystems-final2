@@ -189,6 +189,10 @@
       "destination": "/ar/articles/saudi-payroll-wps-mudad.html"
     },
     {
+      "source": "/ar/articles/shop-accounting-software",
+      "destination": "/ar/articles/shop-accounting-software.html"
+    },
+    {
       "source": "/ar/articles/telecom-trends",
       "destination": "/ar/articles/telecom-trends.html"
     },
@@ -487,6 +491,10 @@
     {
       "source": "/articles/saudi-payroll-wps-mudad",
       "destination": "/articles/saudi-payroll-wps-mudad.html"
+    },
+    {
+      "source": "/articles/shop-accounting-software",
+      "destination": "/articles/shop-accounting-software.html"
     },
     {
       "source": "/articles/telecom-trends",

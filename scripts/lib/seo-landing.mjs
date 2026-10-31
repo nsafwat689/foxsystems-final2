@@ -133,6 +133,7 @@ export const LANDING = {
 /** Arabic pages every Arabic route links to, so link equity reaches the buyer pages. */
 export const AR_LINKS = [
   ["/ar/services/accounting", "برنامج حسابات للمحلات"],
+  ["/ar/articles/shop-accounting-software", "كيف تختار برنامج حسابات للمحلات"],
   ["/ar/solutions/real-estate-crm", "نظام CRM عقاري"],
   ["/ar/solutions/hr-crm", "برنامج موارد بشرية ورواتب"],
   ["/ar/solutions/medical-crm", "نظام CRM للمندوبين الطبيين"],
@@ -145,6 +146,7 @@ export const AR_LINKS = [
 
 export const EN_LINKS = [
   ["/services/accounting", "Accounting & inventory software for shops"],
+  ["/articles/shop-accounting-software", "How to choose shop accounting software"],
   ["/solutions/real-estate-crm", "Real estate CRM"],
   ["/solutions/hr-crm", "HR & payroll software"],
   ["/solutions/medical-crm", "Medical rep CRM"],

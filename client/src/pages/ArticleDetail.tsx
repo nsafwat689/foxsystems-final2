@@ -774,6 +774,93 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
     },
   },
 
+  "shop-accounting-software": {
+    en: {
+      id: "shop-accounting-software",
+      title: "How to Choose Accounting Software for Your Shop",
+      subtitle: "Sales are good but the month-end profit is missing: what shop accounting and inventory software must do",
+      author: "Fox Systems Team",
+      date: "2026-10-31",
+      category: "Software",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+      content: `
+        <h2>Good sales, empty drawer</h2>
+        <p>Many shops sell well and still cannot say where the profit went at the end of the month. The cause is rarely the sales themselves. It is three silent leaks: credit sales written in a notebook, stock that leaves without an invoice, and small daily expenses that nobody records.</p>
+
+        <h2>Six things shop accounting software must do</h2>
+        <h3>1. An invoice for every sale</h3>
+        <p>A fast cashier or sales invoice, with returns, discounts and VAT, printed or sent on WhatsApp. If an invoice takes longer than the sale, staff will skip it.</p>
+        <h3>2. Stock that moves with the invoice</h3>
+        <p>Every sale reduces stock automatically, every purchase increases it, and a minimum-stock alert tells you what to reorder before you run out.</p>
+        <h3>3. Credit sales with a statement</h3>
+        <p>Each customer has a balance, a list of what they owe and since when, and a statement you can send. This alone recovers money most shops have quietly written off.</p>
+        <h3>4. Purchases and suppliers</h3>
+        <p>Purchase invoices, supplier balances and what is due this week, so payments are planned rather than discovered.</p>
+        <h3>5. Today's real profit</h3>
+        <p>Sales minus the cost of what was sold, minus expenses, every day. Not the cash in the drawer, which is a different number.</p>
+        <h3>6. Accounting entries without an accountant typing them</h3>
+        <p>Each invoice posts its own double-entry journal, so the trial balance, profit and loss and balance sheet are always up to date.</p>
+
+        <h2>When is Excel no longer enough?</h2>
+        <p>Excel works when there are a few dozen items and one person. Once you have hundreds of items, more than one cashier or a second branch, files start to disagree and nobody trusts the totals. That is the point to move.</p>
+
+        <h2>Questions to ask before you buy</h2>
+        <ul>
+          <li>Can I try it on my own items and opening stock before paying?</li>
+          <li>Does it work on a phone as well as a computer, in Arabic?</li>
+          <li>Can I export all my data at any time?</li>
+          <li>Who helps me load my items and balances on day one?</li>
+        </ul>
+
+        <h2>Try it on your shop</h2>
+        <p>Fox Systems sets up <a href="/services/accounting">accounting, sales and inventory software for shops</a> in Egypt, Saudi Arabia and Kuwait, in Arabic and English, with a free 3-day trial on your own data.</p>
+      `,
+    },
+    ar: {
+      id: "shop-accounting-software",
+      title: "كيف تختار برنامج حسابات للمحلات",
+      subtitle: "المبيعات جيدة والربح غائب آخر الشهر: ما يجب أن يقدمه برنامج الحسابات والمخازن لمحلك",
+      author: "فريق فوكس سيستمز",
+      date: "2026-10-31",
+      category: "البرمجيات",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+      content: `
+        <h2>مبيعات جيدة ودرج فارغ</h2>
+        <p>كثير من المحلات مبيعاتها جيدة، ومع ذلك لا يعرف صاحبها في آخر الشهر أين ذهب الربح. والسبب نادرًا ما يكون البيع نفسه، بل ثلاثة تسريبات صامتة: البيع الآجل المكتوب في دفتر، وبضاعة تخرج بلا فاتورة، ومصاريف صغيرة يومية لا يسجلها أحد.</p>
+
+        <h2>ستة أمور يجب أن يؤديها برنامج حسابات المحل</h2>
+        <h3>1. فاتورة لكل بيع</h3>
+        <p>فاتورة بيع أو كاشير سريعة مع المرتجعات والخصومات وضريبة القيمة المضافة، تُطبع أو تُرسل على واتساب. فإن استغرقت الفاتورة وقتًا أطول من البيع، تجاوزها الموظفون.</p>
+        <h3>2. مخزون يتحرك مع الفاتورة</h3>
+        <p>كل بيع ينقص المخزون تلقائيًا، وكل شراء يزيده، وتنبيه حد الطلب يخبرك بما يجب طلبه قبل أن ينفد.</p>
+        <h3>3. بيع آجل بكشف حساب</h3>
+        <p>لكل عميل رصيد وقائمة بما عليه ومنذ متى، وكشف حساب يمكن إرساله. وهذا وحده يستعيد أموالًا تعدها كثير من المحلات ضائعة.</p>
+        <h3>4. المشتريات والموردون</h3>
+        <p>فواتير الشراء وأرصدة الموردين وما يستحق هذا الأسبوع، فتُخطط المدفوعات بدل أن تُفاجئك.</p>
+        <h3>5. ربح اليوم الحقيقي</h3>
+        <p>المبيعات ناقص تكلفة ما بيع ناقص المصاريف، يوميًا. وهو رقم يختلف عن النقدية الموجودة في الدرج.</p>
+        <h3>6. قيود محاسبية دون إدخال يدوي</h3>
+        <p>كل فاتورة تُنشئ قيدها بالقيد المزدوج تلقائيًا، فيبقى ميزان المراجعة وقائمة الدخل والميزانية محدَّثة دائمًا.</p>
+
+        <h2>متى لا يكفي الإكسل؟</h2>
+        <p>الإكسل مناسب حين تكون الأصناف عشرات قليلة ويعمل عليه شخص واحد. فإذا وصلت الأصناف إلى المئات، أو صار لديك أكثر من كاشير أو فرع ثانٍ، تبدأ الملفات في التعارض ولا يثق أحد في الإجماليات. وهذه هي لحظة الانتقال.</p>
+
+        <h2>أسئلة تطرحها قبل الشراء</h2>
+        <ul>
+          <li>هل أستطيع تجربته على أصنافي ومخزوني الافتتاحي قبل الدفع؟</li>
+          <li>هل يعمل على الهاتف والكمبيوتر وبالعربية؟</li>
+          <li>هل أستطيع تصدير بياناتي كاملة في أي وقت؟</li>
+          <li>من يساعدني في إدخال الأصناف والأرصدة في اليوم الأول؟</li>
+        </ul>
+
+        <h2>جرّبه على محلك</h2>
+        <p>تجهّز فوكس سيستمز <a href="/ar/services/accounting">برنامج حسابات ومبيعات ومخازن للمحلات</a> في مصر والسعودية والكويت، بالعربية والإنجليزية، مع تجربة مجانية لمدة 3 أيام على بياناتك. اقرأ أيضًا: <a href="/ar/tools/vat-calculator">حاسبة ضريبة القيمة المضافة</a> و<a href="/ar/tools/invoice-generator">مولّد الفواتير المجاني</a>.</p>
+      `,
+    },
+  },
+
   "real-estate-crm-egypt": {
     en: {
       id: "real-estate-crm-egypt",

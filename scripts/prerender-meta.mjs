@@ -26,6 +26,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { build } from "esbuild";
 import { extractArticles } from "./lib/extract-articles.mjs";
+import { LANDING, AR_LINKS, EN_LINKS } from "./lib/seo-landing.mjs";
 
 const DIST = path.join("dist", "public");
 const SHELL = path.join(DIST, "index.html");
@@ -100,6 +101,43 @@ function hreflangFor(pathname) {
   ].join("\n    ");
 }
 
+/**
+ * Static body for <div id="root">: the route's own <h1>, its description and
+ * links to the buyer pages, plus long copy and an FAQPage schema where
+ * seo-landing.mjs has it. Without this every URL served an empty root and the
+ * shell's <noscript> "Fox Systems" heading, so Google's first pass saw the
+ * same h1 on all 150 pages. createRoot() replaces it on mount.
+ */
+function rootBody(route, cfg) {
+  const ar = cfg.language === "ar";
+  const page = LANDING[route];
+  const h1 = page?.h1 ?? cfg.title.split(" | ")[0];
+  const parts = [`<h1>${esc(h1)}</h1>`, `<p>${esc(page?.intro ?? cfg.description)}</p>`];
+  for (const s of page?.sections ?? []) {
+    parts.push(`<h2>${esc(s.h2)}</h2>`);
+    if (s.items) parts.push(`<ul>${s.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`);
+    if (s.text) parts.push(`<p>${esc(s.text)}</p>`);
+  }
+  if (page?.faq) {
+    parts.push(`<h2>${ar ? "أسئلة شائعة" : "FAQ"}</h2>`);
+    for (const [q, a] of page.faq) parts.push(`<h3>${esc(q)}</h3><p>${esc(a)}</p>`);
+  }
+  const links = (ar ? AR_LINKS : EN_LINKS).filter(([href]) => href !== route);
+  parts.push(`<nav><ul>${links.map(([href, label]) => `<li><a href="${href}">${esc(label)}</a></li>`).join("")}</ul></nav>`);
+  return `<div style="max-width:760px;margin:0 auto;padding:32px 20px;font:16px/1.7 system-ui,sans-serif">${parts.join("")}</div>`;
+}
+
+function faqSchema(route) {
+  const faq = LANDING[route]?.faq;
+  if (!faq) return "";
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+  };
+  return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
+}
+
 let written = 0;
 for (const [route, cfg] of Object.entries(routes)) {
   let html = shell;
@@ -133,6 +171,12 @@ for (const [route, cfg] of Object.entries(routes)) {
 
   // lang/dir so a non-rendering reader sees the right direction too.
   html = html.replace(/<html[^>]*>/i, `<html lang="${cfg.language}" dir="${cfg.language === "ar" ? "rtl" : "ltr"}">`);
+
+  html = html.replace(/<div id="root"><\/div>/, `<div id="root">${rootBody(route, cfg)}</div>`);
+  // The <noscript> fallback keeps its contact links but must not add a second, generic h1.
+  html = html.replace(/(<noscript>[\s\S]*?)<h1([^>]*)>([\s\S]*?)<\/h1>/, "$1<p$2>$3</p>");
+  const faq = faqSchema(route);
+  if (faq) html = html.replace("</head>", `    ${faq}\n  </head>`);
 
   const out = route === "/" ? SHELL : path.join(DIST, `${route.replace(/^\//, "")}.html`);
   fs.mkdirSync(path.dirname(out), { recursive: true });

@@ -157,6 +157,7 @@ const SERVICE_IDS = [
   "cybersecurity",
   "infrastructure",
   "web-development",
+  "accounting",
 ] as const;
 
 /** Keyed by path, English unprefixed and Arabic under /ar, as the app routes. */

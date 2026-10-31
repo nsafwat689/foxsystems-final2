@@ -43,6 +43,7 @@ const SERVICE_IDS = [
   "cybersecurity",
   "infrastructure",
   "web-development",
+  "accounting",
 ] as const;
 
 function PageFallback() {

@@ -253,6 +253,10 @@
       "destination": "/ar/services.html"
     },
     {
+      "source": "/ar/services/accounting",
+      "destination": "/ar/services/accounting.html"
+    },
+    {
       "source": "/ar/services/crm",
       "destination": "/ar/services/crm.html"
     },
@@ -547,6 +551,10 @@
     {
       "source": "/services",
       "destination": "/services.html"
+    },
+    {
+      "source": "/services/accounting",
+      "destination": "/services/accounting.html"
     },
     {
       "source": "/services/crm",

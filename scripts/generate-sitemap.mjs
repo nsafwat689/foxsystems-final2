@@ -25,7 +25,7 @@ const COMPARISONS = ["real-estate-crm", "pharma-crm", "pest-control-software", "
 // Keep in step with SERVICE_IDS in client/src/App.tsx. "software" was renamed
 // to "crm" on 2026-09-24; leaving it here would have kept a redirecting URL in
 // the sitemap, which wastes crawl budget and is flagged in Search Console.
-const SERVICES = ["internet", "crm", "hardware", "cybersecurity", "infrastructure", "web-development"];
+const SERVICES = ["internet", "crm", "hardware", "cybersecurity", "infrastructure", "web-development", "accounting"];
 // Keep in step with TOOL_IDS in client/src/data/toolIds.ts.
 const TOOLS = ["crm-cost-calculator", "bandwidth-calculator", "commission-calculator", "installment-plan-generator", "invoice-generator", "vat-calculator", "end-of-service-calculator", "security-self-check", "pest-control-job-costing", "field-force-roi", "financing-calculator", "dbr-calculator", "deposit-calculator", "depreciation-calculator"];
 

@@ -20,7 +20,7 @@ const translations = {
     caseStudies: "Case Studies", crm: "CRM", tools: "Free Tools", pricing: "Pricing",
     internet: "Call Center & VoIP", software: "CRM Systems",
     hardware: "Hardware & Servers", cybersecurity: "Firewall & Security",
-    infrastructure: "Network & Infrastructure", webDev: "Website Development",
+    infrastructure: "Network & Infrastructure", webDev: "Website Development", accounting: "Accounting & Inventory",
     switchLang: "العربية", viewAll: "View All Services",
     topBar: "🇪🇬 Egypt · Saudi Arabia · Kuwait — 24/7 Support",
     phone: "+20 103 845 0546",
@@ -31,7 +31,7 @@ const translations = {
     caseStudies: "قصص النجاح", crm: "أنظمة CRM", tools: "أدوات مجانية", pricing: "الأسعار",
     internet: "مراكز الاتصال وVoIP", software: "أنظمة CRM",
     hardware: "الأجهزة والخوادم", cybersecurity: "جدران الحماية والأمن",
-    infrastructure: "الشبكة والبنية التحتية", webDev: "تطوير المواقع",
+    infrastructure: "الشبكة والبنية التحتية", webDev: "تطوير المواقع", accounting: "برنامج حسابات ومخازن",
     switchLang: "English", viewAll: "عرض جميع الخدمات",
     topBar: "🇪🇬 مصر · السعودية · الكويت — دعم 24/7",
     phone: "+20 103 845 0546",
@@ -72,6 +72,7 @@ export default function Header({ language }: HeaderProps) {
     { name: t.infrastructure,  href: `${langPrefix}/services/infrastructure`,   icon: "🌐" },
     { name: t.hardware,        href: `${langPrefix}/services/hardware`,         icon: "🖥️" },
     { name: t.webDev,          href: `${langPrefix}/services/web-development`,  icon: "💻" },
+    { name: t.accounting,      href: `${langPrefix}/services/accounting`,       icon: "🧾" },
   ];
 
   const toggleLanguage = () => {

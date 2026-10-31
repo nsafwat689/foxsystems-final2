@@ -124,6 +124,16 @@ export const serviceSEOConfigs: Record<string, SEOConfig> = {
     canonicalUrl: "https://foxsystemstech.com/services/web-development",
     language: "en",
   },
+  accounting: {
+    title: "Accounting & Inventory Software for Shops | Fox Systems",
+    description: "Accounting, sales, purchases and inventory system for shops and small companies in Egypt, KSA and Kuwait. Invoices, stock, credit sales and daily profit.",
+    keywords: "accounting software for shops Egypt, inventory software Egypt, POS Egypt, sales and inventory system, retail accounting software, accounting software Saudi Arabia, inventory management Kuwait",
+    ogTitle: "Accounting & Inventory Software for Shops - Fox Systems",
+    ogDescription: "Sales, purchases, stock and daily profit in one system. Arabic and English.",
+    ogImage: "https://foxsystemstech.com/services/crm-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/services/accounting",
+    language: "en",
+  },
 };
 
 export const arabicSEOConfigs: Record<string, SEOConfig> = {
@@ -229,6 +239,16 @@ export const arabicSEOConfigs: Record<string, SEOConfig> = {
     ogDescription: "مواقع احترافية وSEO للظهور في الصفحة الأولى من جوجل. عربي وإنجليزي.",
     ogImage: "https://foxsystemstech.com/services/web-development-og.jpg",
     canonicalUrl: "https://foxsystemstech.com/ar/services/web-development",
+    language: "ar",
+  },
+  accounting: {
+    title: "برنامج حسابات للمحلات | مبيعات ومشتريات ومخازن | فوكس",
+    description: "برنامج حسابات ومبيعات ومشتريات ومخازن للمحلات والشركات الصغيرة في مصر والسعودية والكويت: فواتير ومخزون وبيع آجل وربح اليوم الحقيقي.",
+    keywords: "برنامج حسابات للمحلات, برنامج حسابات محل, برنامج مبيعات ومشتريات ومخازن, برنامج مخازن, برنامج كاشير, برنامج حسابات شركات, برنامج محاسبي مصر, برنامج حسابات السعودية",
+    ogTitle: "برنامج حسابات ومخازن للمحلات - فوكس سيستمز",
+    ogDescription: "المبيعات والمشتريات والمخزون وربح اليوم في نظام واحد. عربي وإنجليزي.",
+    ogImage: "https://foxsystemstech.com/services/crm-og.jpg",
+    canonicalUrl: "https://foxsystemstech.com/ar/services/accounting",
     language: "ar",
   },
 };

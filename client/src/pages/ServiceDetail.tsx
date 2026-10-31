@@ -2,7 +2,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link, useLocation } from "wouter";
-import { ArrowRight, CheckCircle, MessageCircle, Phone, Globe, Shield, Cpu, Network, Server, Zap, Send, MapPin, Mail } from "lucide-react";
+import { ArrowRight, CheckCircle, MessageCircle, Phone, Globe, Shield, Cpu, Network, Server, Zap, Send, MapPin, Mail, Calculator } from "lucide-react";
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import { motion } from "framer-motion";
@@ -140,6 +140,30 @@ const serviceDetails: Record<string, Record<"en" | "ar", any>> = {
       ]
     },
     ar: serviceDetailsAr["web-development"]
+  },
+  accounting: {
+    en: {
+      title: "Accounting, Sales & Inventory System for Shops",
+      subtitle: "One system for sales invoices, purchases, stock and daily profit, for shops, wholesalers and small companies in Egypt, Saudi Arabia and Kuwait.",
+      icon: Calculator,
+      overview: "Many shops sell well and still cannot say where the profit went at the end of the month: stock is counted in a notebook, credit sales live in WhatsApp, and Excel files disagree. We set up an accounting, sales and inventory system on our own accounting engine and adapt it to how your shop works, in Arabic and English, on the computer and the phone.",
+      capabilities: [
+        { title: "Sales & Invoicing", desc: "Fast cashier or sales invoices, returns, discounts and VAT, printed or sent on WhatsApp." },
+        { title: "Purchases & Suppliers", desc: "Purchase invoices, supplier balances and what is due to each supplier this week." },
+        { title: "Inventory & Warehouses", desc: "Stock per item and per branch, minimum-stock alerts, transfers and stock counts." },
+        { title: "Customer Credit & Collections", desc: "Credit sales, instalments and a daily list of who owes what and since when." },
+        { title: "Daily Profit & Reports", desc: "Today's sales, cost and real profit, best and slowest items, and the cash in each drawer." },
+        { title: "Double-Entry Accounting", desc: "Every invoice posts its journal entry automatically: trial balance, profit and loss, balance sheet." }
+      ],
+      steps: [
+        { title: "Free Assessment", desc: "We look at how you sell, buy and count stock today, and what reports you need." },
+        { title: "Setup & Data Migration", desc: "We load your items, opening stock, customers and suppliers from your Excel files." },
+        { title: "Training", desc: "Short hands-on training for the owner, cashiers and the accountant." },
+        { title: "Go-Live & Support", desc: "You start selling on the system with our support in Arabic or English." }
+      ],
+      partners: ["ZATCA e-invoicing (KSA)", "ETA e-invoice (Egypt)", "Thermal receipt printers", "Barcode scanners"]
+    },
+    ar: serviceDetailsAr.accounting
   }
 };
 
@@ -243,7 +267,7 @@ function ServiceFAQ({ serviceId, isArabic, langPrefix }: { serviceId: string; is
 /** Which tab of /pricing answers "how much?" for each service page. */
 const PRICING_TAB: Record<string, string> = {
   internet: "call-center", crm: "crm", hardware: "hardware", cybersecurity: "cybersecurity",
-  infrastructure: "infrastructure", "web-development": "web-development",
+  infrastructure: "infrastructure", "web-development": "web-development", accounting: "crm",
 };
 
 // The CRM page's content is still keyed "software" (the URL became /services/crm on

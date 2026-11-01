@@ -861,6 +861,101 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
     },
   },
 
+  "shop-cashier-software": {
+    en: {
+      id: "shop-cashier-software",
+      title: "Cashier Software for Shops: Is a Free One Enough?",
+      subtitle: "What a shop POS must do, where free cashier programs stop, and the questions to ask before you choose",
+      author: "Fox Systems Team",
+      date: "2026-11-01",
+      category: "Software",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+      content: `
+        <h2>The first question every shop asks</h2>
+        <p>Most shop owners looking for cashier software start with one word: free. That is a fair start. A free cashier program can print a receipt and total the day. The real question is what happens after the receipt: does the sale reduce stock, does a credit sale reach the customer's account, and can you see today's profit, not only today's cash?</p>
+
+        <h2>What shop cashier software must do</h2>
+        <h3>1. A fast sale at the counter</h3>
+        <p>Barcode or quick search, discounts, returns and VAT on the same screen, with a printed receipt or one sent on WhatsApp. If the cashier screen is slower than the queue, staff will skip it.</p>
+        <h3>2. Stock that follows every sale</h3>
+        <p>Each sale reduces the item's balance and each purchase increases it, with a reorder alert before an item runs out.</p>
+        <h3>3. Cash per drawer and per shift</h3>
+        <p>Opening balance, cash and card sales, and the closing count for each cashier, so a difference is found the same day.</p>
+        <h3>4. Credit sales with a customer balance</h3>
+        <p>When a regular customer pays later, the amount must land on their account with a statement, not on a piece of paper next to the till.</p>
+        <h3>5. Reports the owner actually reads</h3>
+        <p>Today's profit after cost, best and slowest items, and sales by cashier and by branch.</p>
+
+        <h2>Where free cashier programs usually stop</h2>
+        <ul>
+          <li>One device only, with the data stored on that computer and no backup if it fails.</li>
+          <li>No link between the cashier, the stock and the accounts, so the books are kept somewhere else.</li>
+          <li>No support when a printer or barcode reader stops working in the middle of the day.</li>
+          <li>Limits on items, invoices or users that appear once the shop grows.</li>
+        </ul>
+        <p>For a small shop with one cashier and a few dozen items, a free program can be enough. Once there are hundreds of items, credit customers, a second cashier or a second branch, the cost of the gaps is usually higher than the cost of a proper system.</p>
+
+        <h2>Questions to ask before you choose</h2>
+        <ul>
+          <li>Can I try it on my own items before paying?</li>
+          <li>Does it work in Arabic, on a computer and on a phone?</li>
+          <li>Where is my data kept, and can I export all of it at any time?</li>
+          <li>Who helps me load my items and opening stock on day one?</li>
+        </ul>
+
+        <h2>Try it on your shop</h2>
+        <p>Fox Systems sets up <a href="/services/accounting">cashier, sales, inventory and accounting software for shops</a> in Egypt, Saudi Arabia and Kuwait, in Arabic and English, with a free 3-day trial on your own data. See also the free <a href="/tools/invoice-generator">invoice generator</a>.</p>
+      `,
+    },
+    ar: {
+      id: "shop-cashier-software",
+      title: "برنامج كاشير للمحلات: هل يكفي البرنامج المجاني؟",
+      subtitle: "ما يجب أن يؤديه برنامج الكاشير للمحل، وأين تتوقف البرامج المجانية، وأسئلة تطرحها قبل الاختيار",
+      author: "فريق فوكس سيستمز",
+      date: "2026-11-01",
+      category: "البرمجيات",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+      content: `
+        <h2>السؤال الأول لكل صاحب محل</h2>
+        <p>يبدأ أغلب أصحاب المحلات البحث عن برنامج كاشير للمحلات بكلمة واحدة: مجاني. وهذه بداية مفهومة، فالبرنامج المجاني يطبع الإيصال ويجمع إيراد اليوم. لكن السؤال الحقيقي هو ما يحدث بعد الإيصال: هل ينقص المخزون مع البيع؟ وهل يصل البيع الآجل إلى حساب العميل؟ وهل ترى ربح اليوم، لا نقدية اليوم فقط؟</p>
+
+        <h2>ماذا يجب أن يؤدي برنامج الكاشير للمحل؟</h2>
+        <h3>1. بيع سريع عند الكاشير</h3>
+        <p>باركود أو بحث سريع، مع الخصومات والمرتجعات وضريبة القيمة المضافة في الشاشة نفسها، وإيصال مطبوع أو مرسل على واتساب. فإذا كانت شاشة الكاشير أبطأ من طابور العملاء، تجاوزها الموظفون.</p>
+        <h3>2. مخزون يتبع كل عملية بيع</h3>
+        <p>كل بيع ينقص رصيد الصنف، وكل شراء يزيده، مع تنبيه حد الطلب قبل أن ينفد الصنف.</p>
+        <h3>3. نقدية كل درج وكل وردية</h3>
+        <p>رصيد افتتاحي، ومبيعات نقدية وبطاقات، وجرد إغلاق لكل كاشير، فيظهر أي فرق في اليوم نفسه.</p>
+        <h3>4. بيع آجل برصيد للعميل</h3>
+        <p>عندما يدفع العميل الدائم لاحقًا، يجب أن يُسجل المبلغ في حسابه مع كشف حساب، لا في ورقة بجوار الدرج.</p>
+        <h3>5. تقارير يقرؤها صاحب المحل فعلًا</h3>
+        <p>ربح اليوم بعد التكلفة، والأصناف الأكثر والأقل بيعًا، والمبيعات لكل كاشير ولكل فرع.</p>
+
+        <h2>أين تتوقف برامج الكاشير المجانية عادةً؟</h2>
+        <ul>
+          <li>جهاز واحد فقط، والبيانات محفوظة على ذلك الكمبيوتر بلا نسخة احتياطية إذا تعطل.</li>
+          <li>لا ربط بين الكاشير والمخزون والحسابات، فتُمسك الدفاتر في مكان آخر.</li>
+          <li>لا دعم عندما تتوقف الطابعة أو قارئ الباركود في منتصف اليوم.</li>
+          <li>حدود على عدد الأصناف أو الفواتير أو المستخدمين تظهر عندما يكبر المحل.</li>
+        </ul>
+        <p>للمحل الصغير بكاشير واحد وعشرات قليلة من الأصناف قد يكفي البرنامج المجاني. أما حين تصل الأصناف إلى المئات، أو يوجد عملاء آجل، أو كاشير ثانٍ أو فرع ثانٍ، فإن تكلفة هذه الثغرات تكون عادةً أعلى من تكلفة نظام مناسب.</p>
+
+        <h2>أسئلة تطرحها قبل اختيار برنامج الكاشير</h2>
+        <ul>
+          <li>هل أستطيع تجربته على أصنافي قبل الدفع؟</li>
+          <li>هل يعمل بالعربية على الكمبيوتر والهاتف؟</li>
+          <li>أين تُحفظ بياناتي، وهل أستطيع تصديرها كاملة في أي وقت؟</li>
+          <li>من يساعدني في إدخال الأصناف والمخزون الافتتاحي في اليوم الأول؟</li>
+        </ul>
+
+        <h2>جرّبه على محلك</h2>
+        <p>تجهّز فوكس سيستمز <a href="/ar/services/accounting">برنامج كاشير ومبيعات ومخازن وحسابات للمحلات</a> في مصر والسعودية والكويت، بالعربية والإنجليزية، مع تجربة مجانية لمدة 3 أيام على بياناتك. اقرأ أيضًا: <a href="/ar/articles/shop-accounting-software">كيف تختار برنامج حسابات للمحلات</a>، وجرّب <a href="/ar/tools/invoice-generator">مولّد الفواتير المجاني</a>.</p>
+      `,
+    },
+  },
+
   "real-estate-crm-egypt": {
     en: {
       id: "real-estate-crm-egypt",

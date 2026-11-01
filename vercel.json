@@ -193,6 +193,10 @@
       "destination": "/ar/articles/shop-accounting-software.html"
     },
     {
+      "source": "/ar/articles/shop-cashier-software",
+      "destination": "/ar/articles/shop-cashier-software.html"
+    },
+    {
       "source": "/ar/articles/telecom-trends",
       "destination": "/ar/articles/telecom-trends.html"
     },
@@ -495,6 +499,10 @@
     {
       "source": "/articles/shop-accounting-software",
       "destination": "/articles/shop-accounting-software.html"
+    },
+    {
+      "source": "/articles/shop-cashier-software",
+      "destination": "/articles/shop-cashier-software.html"
     },
     {
       "source": "/articles/telecom-trends",

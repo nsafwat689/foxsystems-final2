@@ -268,6 +268,29 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
     },
   },
 
+  "shop-cashier-software": {
+    en: {
+      id: "shop-cashier-software",
+      title: "Cashier Software for Shops: Is a Free One Enough?",
+      excerpt: "What a shop POS must do, where free cashier programs stop, and the questions to ask before you choose.",
+      category: "Software",
+      author: "Fox Systems Team",
+      date: "2026-11-01",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+    },
+    ar: {
+      id: "shop-cashier-software",
+      title: "برنامج كاشير للمحلات: هل يكفي البرنامج المجاني؟",
+      excerpt: "ما يجب أن يؤديه برنامج الكاشير للمحل، وأين تتوقف البرامج المجانية، وأسئلة تطرحها قبل الاختيار.",
+      category: "البرمجيات",
+      author: "فريق فوكس سيستمز",
+      date: "2026-11-01",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+    },
+  },
+
   "real-estate-crm-egypt": {
     en: {
       id: "real-estate-crm-egypt",

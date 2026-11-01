@@ -71,7 +71,7 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
   "eta-e-invoicing-egypt-guide": {
     en: {
       id: "eta-e-invoicing-egypt-guide",
-      title: "Egypt's ETA E-Invoicing: A Practical Guide for Companies",
+      title: "ETA Tax Invoices in Egypt: Setup, Signing, Rejections",
       excerpt: "What the Tax Authority needs from each invoice, how e-seal signing works, why documents get rejected, and how to connect your system.",
       category: "Finance",
       author: "Fox Systems Team",
@@ -81,7 +81,7 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
     },
     ar: {
       id: "eta-e-invoicing-egypt-guide",
-      title: "منظومة الفاتورة الإلكترونية في مصر: دليل عملي للشركات",
+      title: "الفاتورة الإلكترونية في مصر ETA: التسجيل والتوقيع وأسباب الرفض",
       excerpt: "ما تحتاجه مصلحة الضرائب من كل فاتورة، وكيف يعمل التوقيع بالختم الإلكتروني، وأسباب رفض المستندات، وكيف تربط نظامك.",
       category: "التمويل",
       author: "فريق فوكس سيستمز",
@@ -93,7 +93,7 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
   "loan-management-software-finance-companies": {
     en: {
       id: "loan-management-software-finance-companies",
-      title: "Loan Management Software for Finance Companies: What to Look For",
+      title: "Loan Accounting Software for Lending Businesses",
       excerpt: "From the credit check to provisions: what a finance company should expect from its loan management system, and why it must post to the ledger.",
       category: "Finance",
       author: "Fox Systems Team",
@@ -381,7 +381,7 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
   "medical-rep-app": {
     en: {
       id: "medical-rep-app",
-      title: "Medical Rep App: What Reps and Sales Managers Actually Need",
+      title: "Medical Rep App: What Pharma Reps and Managers Need",
       excerpt: "The rep wants speed; the manager wants proof, coverage and sales against calls. The features that serve both, and how to test Arabic and offline before you choose.",
       category: "Software",
       author: "Fox Systems Team",

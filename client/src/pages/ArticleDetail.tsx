@@ -90,8 +90,8 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
   "eta-e-invoicing-egypt-guide": {
     en: {
       id: "eta-e-invoicing-egypt-guide",
-      title: "Egypt's ETA E-Invoicing: A Practical Guide for Companies",
-      subtitle: "What the Tax Authority needs from each invoice, how signing works, and how to connect your system",
+      title: "ETA Tax Invoices in Egypt: Setup, Signing, Rejections",
+      subtitle: "What the Egyptian Tax Authority (ETA) needs on every e-invoice, how signing works, why documents get rejected, and how to connect your system",
       author: "Fox Systems Team",
       date: "2026-09-29",
       category: "Finance",
@@ -131,7 +131,7 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
     },
     ar: {
       id: "eta-e-invoicing-egypt-guide",
-      title: "منظومة الفاتورة الإلكترونية في مصر: دليل عملي للشركات",
+      title: "الفاتورة الإلكترونية في مصر ETA: التسجيل والتوقيع وأسباب الرفض",
       subtitle: "ما تحتاجه مصلحة الضرائب من كل فاتورة، وكيف يتم التوقيع، وكيف تربط نظامك",
       author: "فريق فوكس سيستمز",
       date: "2026-09-29",
@@ -174,8 +174,8 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
   "loan-management-software-finance-companies": {
     en: {
       id: "loan-management-software-finance-companies",
-      title: "Loan Management Software for Finance Companies: What to Look For",
-      subtitle: "From the credit check to provisions, and why the loan book and the ledger must be one system",
+      title: "Loan Accounting Software for Lending Businesses",
+      subtitle: "What loan management and accounting software must do for a finance company, from the credit check to provisions, on one ledger",
       author: "Fox Systems Team",
       date: "2026-09-29",
       category: "Finance",
@@ -1282,8 +1282,8 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
   "medical-rep-app": {
     en: {
       id: "medical-rep-app",
-      title: "Medical Rep App: What Reps and Sales Managers Actually Need",
-      subtitle: "The daily work of a pharma rep, and the features that make it measurable",
+      title: "Medical Rep App: What Pharma Reps and Managers Need",
+      subtitle: "How to choose a medical representative app: what the rep needs in the field, what the manager needs to measure, and why Arabic and offline matter",
       author: "Fox Systems Team",
       date: "2026-09-29",
       category: "Software",

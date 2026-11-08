@@ -956,6 +956,119 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
     },
   },
 
+  "cctv-installation-for-companies": {
+    en: {
+      id: "cctv-installation-for-companies",
+      title: "CCTV Installation for Companies: How to Choose the Right System",
+      subtitle: "Cameras are cheap; a system that records the right thing, keeps it long enough and works from your phone is not. What to check before you install",
+      author: "Fox Systems Team",
+      date: "2026-11-08",
+      category: "Infrastructure",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/services/hardware-og.jpg",
+      content: `
+        <h2>The camera was there, the footage was not</h2>
+        <p>Most companies think about CCTV installation only after an incident, and then discover the real problem: the camera was there, but it was pointed at the wrong place, the recorder had overwritten the day they needed, or nobody could open the footage from outside the office. Choosing a system for a company is less about the camera and more about what you need to see, for how long, and who can reach it.</p>
+
+        <h2>CCTV installation for companies: start with what you need to see</h2>
+        <p>Walk the site before you count cameras. For each point, decide what the picture must show:</p>
+        <ul>
+          <li><strong>Identify a face or a plate</strong> at entrances, the cashier and the gate. This needs a closer, sharper view.</li>
+          <li><strong>See what happened</strong> in a warehouse aisle, a corridor or a car park. A wider view is enough.</li>
+          <li><strong>Watch a process</strong> such as loading, the production line or the cash drawer.</li>
+        </ul>
+        <p>One well-placed camera at the door is worth more than three cameras that all look at the ceiling.</p>
+
+        <h2>Analogue HD or network (IP) cameras?</h2>
+        <h3>Analogue HD (with a DVR)</h3>
+        <p>Lower cost, simple to install and a good fit for shops, small offices and up to about eight cameras on one site.</p>
+        <h3>Network IP cameras (with an NVR)</h3>
+        <p>Sharper images, easier to extend, can run over the company network and suit larger sites, several buildings or many cameras. They need a properly planned network and switch, which is where most bad installations fail.</p>
+
+        <h2>Recording: how many days do you really keep?</h2>
+        <p>Ask how many days of footage the recorder keeps before it overwrites, at the resolution you chose. It depends on the number of cameras, the resolution, the recording mode (continuous or on motion) and the video compression (H.265 uses far less space than H.264). Many disputes are discovered a week or more after they happen, so size the hard disk for the period you actually need, not the cheapest disk that fits.</p>
+
+        <h2>Viewing from your phone, safely</h2>
+        <p>Remote viewing is now expected. Make sure it is set up with a strong password changed from the default, a separate user for each person, and updated recorder firmware. A recorder left on its factory password and open to the internet is a security risk, not a convenience.</p>
+
+        <h2>Mistakes we see on site</h2>
+        <ul>
+          <li>Cameras facing a bright door or window, so faces appear as dark shapes.</li>
+          <li>No infrared or night coverage outdoors.</li>
+          <li>Cheap cable and unprotected outdoor connections that fail after the first winter.</li>
+          <li>No backup power for the recorder, so the footage stops exactly when the power cuts.</li>
+          <li>Nobody knows how to export a clip when it is needed.</li>
+        </ul>
+
+        <h2>Questions to ask the installer</h2>
+        <ul>
+          <li>Will you visit the site before quoting, and show me the planned camera positions?</li>
+          <li>How many days will the recorder keep at this resolution?</li>
+          <li>Which brand of cameras and recorder, and what warranty?</li>
+          <li>Will you set up phone viewing and train us to export footage?</li>
+        </ul>
+
+        <h2>Get a site visit</h2>
+        <p>Fox Systems supplies and installs <a href="/services/hardware">CCTV and surveillance systems for companies</a> (Hikvision and Dahua cameras and recorders), sets up phone viewing and gives a 1-year warranty on supplied equipment. The site visit before the quote is free, and the published packages are on our <a href="/pricing">pricing page</a>. If the cameras will run on your network, check your capacity with the free <a href="/tools/bandwidth-calculator">bandwidth calculator</a>.</p>
+      `,
+    },
+    ar: {
+      id: "cctv-installation-for-companies",
+      title: "تركيب كاميرات مراقبة للشركات: كيف تختار النظام المناسب",
+      subtitle: "الكاميرا رخيصة، أما النظام الذي يسجّل ما تحتاجه ويحتفظ به مدة كافية ويعمل من هاتفك فهو المهم. ما يجب أن تتأكد منه قبل التركيب",
+      author: "فريق فوكس سيستمز",
+      date: "2026-11-08",
+      category: "البنية التحتية",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/services/hardware-og.jpg",
+      content: `
+        <h2>الكاميرا موجودة والتسجيل غائب</h2>
+        <p>تفكر معظم الشركات في تركيب كاميرات مراقبة للشركات بعد وقوع مشكلة، ثم تكتشف المشكلة الحقيقية: الكاميرا كانت موجودة، لكنها موجهة إلى المكان الخطأ، أو أن جهاز التسجيل مسح اليوم المطلوب، أو أن أحدًا لا يستطيع فتح التسجيل من خارج المكتب. فاختيار نظام المراقبة لشركة لا يتعلق بالكاميرا بقدر ما يتعلق بما تحتاج أن تراه، والمدة التي تحتفظ فيها بالتسجيل، ومن يستطيع الوصول إليه.</p>
+
+        <h2>تركيب كاميرات مراقبة للشركات: ابدأ بما تحتاج أن تراه</h2>
+        <p>تجوّل في الموقع قبل أن تعد الكاميرات، وحدد لكل نقطة ما يجب أن تُظهره الصورة:</p>
+        <ul>
+          <li><strong>التعرف على وجه أو لوحة سيارة</strong> عند المداخل والكاشير والبوابة، وهذا يحتاج إلى زاوية أقرب وصورة أوضح.</li>
+          <li><strong>معرفة ما حدث</strong> في ممر المخزن أو الطرقة أو الجراج، وتكفي هنا زاوية أوسع.</li>
+          <li><strong>متابعة عملية</strong> مثل التحميل أو خط الإنتاج أو درج النقدية.</li>
+        </ul>
+        <p>كاميرا واحدة في مكان صحيح عند الباب أنفع من ثلاث كاميرات تنظر إلى السقف.</p>
+
+        <h2>كاميرات تناظرية عالية الدقة أم كاميرات شبكية IP؟</h2>
+        <h3>الكاميرات التناظرية عالية الدقة (مع جهاز DVR)</h3>
+        <p>تكلفة أقل وتركيب أبسط، وهي مناسبة للمحلات والمكاتب الصغيرة وحتى نحو ثماني كاميرات في موقع واحد.</p>
+        <h3>الكاميرات الشبكية IP (مع جهاز NVR)</h3>
+        <p>صورة أوضح وتوسع أسهل، ويمكن تشغيلها على شبكة الشركة، وتناسب المواقع الكبيرة أو المباني المتعددة أو العدد الكبير من الكاميرات. لكنها تحتاج إلى شبكة وسويتش مخطط لهما جيدًا، وهنا تفشل معظم التركيبات السيئة.</p>
+
+        <h2>التسجيل: كم يومًا تحتفظ فعلًا؟</h2>
+        <p>اسأل عن عدد أيام التسجيل التي يحتفظ بها الجهاز قبل أن يكتب فوقها، بالدقة التي اخترتها. ويعتمد ذلك على عدد الكاميرات والدقة ونمط التسجيل (مستمر أو عند الحركة) وضغط الفيديو، إذ يستهلك H.265 مساحة أقل بكثير من H.264. وكثير من الخلافات لا تُكتشف إلا بعد أسبوع أو أكثر، لذا اختر سعة القرص للمدة التي تحتاجها فعلًا، لا أرخص قرص متاح.</p>
+
+        <h2>المشاهدة من الهاتف بأمان</h2>
+        <p>أصبحت المشاهدة عن بعد أمرًا متوقعًا. تأكد أنها مهيأة بكلمة مرور قوية غير كلمة المصنع، ومستخدم منفصل لكل شخص، وتحديث برنامج جهاز التسجيل. فجهاز تسجيل بكلمة مرور المصنع ومفتوح على الإنترنت خطر أمني وليس ميزة.</p>
+
+        <h2>أخطاء نراها في المواقع</h2>
+        <ul>
+          <li>كاميرات موجهة إلى باب أو نافذة مضيئة، فتظهر الوجوه ظلالًا داكنة.</li>
+          <li>غياب الرؤية الليلية بالأشعة تحت الحمراء في الأماكن الخارجية.</li>
+          <li>كابلات رخيصة ووصلات خارجية غير محمية تتعطل بعد أول شتاء.</li>
+          <li>عدم وجود مصدر طاقة احتياطي لجهاز التسجيل، فيتوقف التسجيل لحظة انقطاع الكهرباء تحديدًا.</li>
+          <li>لا أحد يعرف كيف يستخرج مقطعًا حين يحتاج إليه.</li>
+        </ul>
+
+        <h2>أسئلة تطرحها على شركة التركيب</h2>
+        <ul>
+          <li>هل ستزورون الموقع قبل عرض السعر وتوضحون أماكن الكاميرات المقترحة؟</li>
+          <li>كم يومًا سيحتفظ الجهاز بالتسجيل بهذه الدقة؟</li>
+          <li>ما ماركة الكاميرات وجهاز التسجيل، وما مدة الضمان؟</li>
+          <li>هل ستهيئون المشاهدة من الهاتف وتدربوننا على استخراج التسجيلات؟</li>
+        </ul>
+
+        <h2>اطلب زيارة للموقع</h2>
+        <p>توفر فوكس سيستمز <a href="/ar/services/hardware">توريد وتركيب كاميرات المراقبة للشركات</a> (كاميرات وأجهزة تسجيل Hikvision وDahua)، وتهيئ المشاهدة من الهاتف، مع ضمان لمدة عام على المعدات الموردة. زيارة الموقع قبل عرض السعر مجانية، والباقات المنشورة موجودة في <a href="/ar/pricing">صفحة الأسعار</a>. وإن كانت الكاميرات ستعمل على شبكتك، فاحسب سعتها بـ<a href="/ar/tools/bandwidth-calculator">حاسبة سرعة الإنترنت المجانية</a>.</p>
+      `,
+    },
+  },
+
   "real-estate-crm-egypt": {
     en: {
       id: "real-estate-crm-egypt",

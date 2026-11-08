@@ -81,6 +81,10 @@
       "destination": "/ar/articles/business-continuity-planning.html"
     },
     {
+      "source": "/ar/articles/cctv-installation-for-companies",
+      "destination": "/ar/articles/cctv-installation-for-companies.html"
+    },
+    {
       "source": "/ar/articles/cloud-infrastructure",
       "destination": "/ar/articles/cloud-infrastructure.html"
     },
@@ -387,6 +391,10 @@
     {
       "source": "/articles/business-continuity-planning",
       "destination": "/articles/business-continuity-planning.html"
+    },
+    {
+      "source": "/articles/cctv-installation-for-companies",
+      "destination": "/articles/cctv-installation-for-companies.html"
     },
     {
       "source": "/articles/cloud-infrastructure",

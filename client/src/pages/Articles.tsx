@@ -291,6 +291,29 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
     },
   },
 
+  "cctv-installation-for-companies": {
+    en: {
+      id: "cctv-installation-for-companies",
+      title: "CCTV Installation for Companies: How to Choose the Right System",
+      excerpt: "What to see, how many days to keep, analogue or IP, safe phone viewing, and the mistakes we find on site. A practical checklist before you install.",
+      category: "Infrastructure",
+      author: "Fox Systems Team",
+      date: "2026-11-08",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/services/hardware-og.jpg",
+    },
+    ar: {
+      id: "cctv-installation-for-companies",
+      title: "تركيب كاميرات مراقبة للشركات: كيف تختار النظام المناسب",
+      excerpt: "ماذا تحتاج أن ترى، وكم يومًا تحتفظ بالتسجيل، وتناظرية أم IP، والمشاهدة الآمنة من الهاتف، والأخطاء الشائعة. قائمة عملية قبل التركيب.",
+      category: "البنية التحتية",
+      author: "فريق فوكس سيستمز",
+      date: "2026-11-08",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/services/hardware-og.jpg",
+    },
+  },
+
   "real-estate-crm-egypt": {
     en: {
       id: "real-estate-crm-egypt",

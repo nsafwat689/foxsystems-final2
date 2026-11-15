@@ -10,7 +10,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Bug, Building2, Landmark, Check, CheckCircle2, MessageCircle, PlayCircle, Stethoscope, Users, X } from "lucide-react";
+import { ArrowRight, Bug, Building2, Landmark, Check, CheckCircle2, MessageCircle, PlayCircle, Stethoscope, Users, X, Cloud, Server } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import SolutionShowcase from "@/components/SolutionShowcase";
@@ -25,7 +25,7 @@ import { PRODUCT_STORIES } from "@/data/productStories";
 import { generateBreadcrumbSchema, generateFAQSchema, generateServiceSchema } from "@/utils/seo";
 import SocialLinks from "@/components/SocialLinks";
 
-const ICONS = { Stethoscope, Building2, Bug, Users, Landmark };
+const ICONS = { Stethoscope, Building2, Bug, Users, Landmark, Cloud, Server };
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -362,10 +362,12 @@ export default function SolutionDetail({ solutionId, language }: Props) {
               </a>
             </Button>
           </div>
-          <Link href={`${prefix}/compare/${COMPARISON_FOR[solution.id].id}`}
-            className="inline-block mt-6 text-sm text-white/70 underline underline-offset-4 hover:text-white">
-            {COMPARISON_FOR[solution.id][language]}
-          </Link>
+          {(COMPARISON_FOR as Record<string, { id: string; en: string; ar: string }>)[solution.id] && (
+            <Link href={`${prefix}/compare/${(COMPARISON_FOR as Record<string, { id: string; en: string; ar: string }>)[solution.id].id}`}
+              className="inline-block mt-6 text-sm text-white/70 underline underline-offset-4 hover:text-white">
+              {(COMPARISON_FOR as Record<string, { id: string; en: string; ar: string }>)[solution.id][language]}
+            </Link>
+          )}
         </section>
         {/* Client results, once a real story exists (data/productStories.ts) */}
         {PRODUCT_STORIES.filter(s => s.solution === solution.id).map(story => (

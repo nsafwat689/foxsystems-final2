@@ -317,6 +317,14 @@
       "destination": "/ar/solutions/real-estate-crm.html"
     },
     {
+      "source": "/ar/solutions/saas-platform",
+      "destination": "/ar/solutions/saas-platform.html"
+    },
+    {
+      "source": "/ar/solutions/vps-hosting",
+      "destination": "/ar/solutions/vps-hosting.html"
+    },
+    {
       "source": "/ar/tools",
       "destination": "/ar/tools.html"
     },
@@ -627,6 +635,14 @@
     {
       "source": "/solutions/real-estate-crm",
       "destination": "/solutions/real-estate-crm.html"
+    },
+    {
+      "source": "/solutions/saas-platform",
+      "destination": "/solutions/saas-platform.html"
+    },
+    {
+      "source": "/solutions/vps-hosting",
+      "destination": "/solutions/vps-hosting.html"
     },
     {
       "source": "/tools",

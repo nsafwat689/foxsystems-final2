@@ -8,7 +8,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Bug, Building2, Landmark, MessageCircle, Stethoscope, Users } from "lucide-react";
+import { ArrowRight, Bug, Building2, Landmark, MessageCircle, Stethoscope, Users, Cloud, Server } from "lucide-react";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { SOLUTIONS } from "@/data/solutions";
@@ -17,7 +17,7 @@ import MobileActionBar from "@/components/MobileActionBar";
 import { SOLUTIONS_INDEX_SEO } from "@/data/routeMeta";
 import SocialLinks from "@/components/SocialLinks";
 
-const ICONS = { Stethoscope, Building2, Bug, Users, Landmark };
+const ICONS = { Stethoscope, Building2, Bug, Users, Landmark, Cloud, Server };
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },

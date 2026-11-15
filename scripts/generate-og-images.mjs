@@ -44,6 +44,8 @@ const CARDS = [
   ["solutions/pest-control-crm-og.jpg", "Pest Control Job and Route Management", "Product"],
   ["solutions/hr-crm-og.jpg", "HR, Attendance and Payroll for Egypt and the Gulf", "Product"],
   ["solutions/finance-crm-og.jpg", "Banking, Lending and Accounting for Finance Companies", "Product"],
+  ["solutions/saas-platform-og.jpg", "Turn Your Software Into a Subscription SaaS Business", "Product"],
+  ["solutions/vps-hosting-og.jpg", "Private VPS and Server Infrastructure for Businesses", "Product"],
 ];
 
 const escapeXml = s =>

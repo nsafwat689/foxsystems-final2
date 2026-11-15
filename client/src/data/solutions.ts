@@ -81,7 +81,7 @@ export interface Solution {
    */
   liveDemo?: boolean;
   /** lucide-react icon name, resolved by the page. */
-  icon: "Stethoscope" | "Building2" | "Bug" | "Users" | "Landmark";
+  icon: "Stethoscope" | "Building2" | "Bug" | "Users" | "Landmark" | "Cloud" | "Server";
   /** Narrated product tour: /videos/<base>-<en|ar>.mp4 (+ .jpg poster). */
   video?: { base: string; minutes: number; v?: number };
   en: SolutionCopy;
@@ -1710,6 +1710,602 @@ export const SOLUTIONS: Record<SolutionId, Solution> = {
         ogDescription: "دفتر أستاذ واحد للمحاسبة والبنوك ودورة تمويل كاملة: تقييم ائتماني وتحصيل ومخصصات. عربي وإنجليزي.",
         ogImage: `${ORIGIN}/solutions/finance-crm-og.jpg`,
         canonicalUrl: `${ORIGIN}/ar/solutions/finance-crm`,
+        language: "ar",
+      },
+    },
+  },
+
+  // ---------------------------------------------------------- saas + vps
+  "saas-platform": {
+    id: "saas-platform",
+    showcaseBase: "saas-platform",
+    icon: "Cloud",
+    en: {
+          "badge": "Built and run by Fox Systems",
+          "name": "Fox SaaS Platform",
+          "heroTitle": "Turn Your Software Into a Subscription SaaS Business",
+          "heroSub": "A multi-tenant platform that lets one product serve many customer companies, each in its own isolated workspace. Tenants, subscription plans and billing, per-customer branding, usage analytics and an admin console come ready, so you sell your system by the month instead of one project at a time.",
+          "highlights": [
+                {
+                      "title": "One product, many customers",
+                      "desc": "Every customer company gets an isolated workspace with its own users, data and settings."
+                },
+                {
+                      "title": "Plans and billing built in",
+                      "desc": "Starter, business and enterprise tiers, trials, upgrades, coupons and invoices, all managed from one console."
+                },
+                {
+                      "title": "Arabic and English",
+                      "desc": "A full right-to-left interface in formal Arabic next to English, with local currencies and VAT."
+                },
+                {
+                      "title": "We build and support it",
+                      "desc": "The team that writes the code sets it up and answers the phone. No reseller in between."
+                }
+          ],
+          "why": {
+                "title": "Why not just sell the software one customer at a time?",
+                "sub": "Selling a separate copy to each client means a new server, a new setup and a new set of problems for every sale. A SaaS platform turns the same work into monthly recurring revenue.",
+                "genericTitle": "Selling copies gives you",
+                "generic": [
+                      "One installation, one server and one upgrade per customer, so support grows with every sale.",
+                      "Income only when a project is sold, with nothing predictable between sales.",
+                      "No view of which customers actually use the product or which modules matter to them.",
+                      "Pricing negotiated from scratch each time instead of published plans."
+                ],
+                "ourTitle": "The platform gives you",
+                "ours": [
+                      "A single deployment serving every customer, upgraded once for everyone.",
+                      "Subscription plans with trials, upgrades, downgrades and automatic renewal reminders.",
+                      "Usage analytics by tenant and by module, so you see who is active and who is about to leave.",
+                      "Per-tenant branding, roles and feature flags, so a plan switches modules on or off.",
+                      "An admin console for support: create tenants, reset access, and read the audit log."
+                ]
+          },
+          "painTitle": "If you build software for businesses, you know these",
+          "painSub": "The platform exists to remove each of them.",
+          "pains": [
+                "Every new client needs a new server and a week of setup before they can start.",
+                "A fix has to be rolled out to many separate installations by hand.",
+                "You cannot tell which customers use the system and which have quietly stopped.",
+                "Revenue depends on the next project, not on the customers you already have."
+          ],
+          "featureTitle": "What the platform does",
+          "featureSub": "The building blocks of a subscription product.",
+          "features": [
+                {
+                      "title": "Tenant management",
+                      "desc": "Create, suspend and configure customer workspaces, each isolated from the others."
+                },
+                {
+                      "title": "Plans and pricing",
+                      "desc": "Define tiers with user limits, storage and the modules each plan includes."
+                },
+                {
+                      "title": "Subscriptions and billing",
+                      "desc": "Trials, renewals, upgrades, coupons, invoices and payment records per tenant."
+                },
+                {
+                      "title": "Roles and access",
+                      "desc": "Owner, administrator and staff roles per workspace, enforced on the server."
+                },
+                {
+                      "title": "Usage analytics",
+                      "desc": "Active users, activity by module and storage per tenant, over any period."
+                },
+                {
+                      "title": "Feature flags",
+                      "desc": "Switch modules on for a plan or a single customer without a new release."
+                },
+                {
+                      "title": "API and integrations",
+                      "desc": "Keys per tenant, webhooks and a documented API for customer integrations."
+                },
+                {
+                      "title": "Audit log",
+                      "desc": "Every sensitive action recorded with who did it and when."
+                }
+          ],
+          "screensTitle": "Inside the platform",
+          "screensSub": "Screens from the admin console, with fictional sample tenants.",
+          "screens": [
+                {
+                      "id": "tenants",
+                      "tab": "Tenants",
+                      "alt": "SaaS admin console listing customer workspaces with plan, users, storage and status",
+                      "caption": "Every customer workspace in one list: plan, users, storage, status and renewal date."
+                },
+                {
+                      "id": "plans",
+                      "tab": "Plans",
+                      "alt": "Subscription plans page with starter, business and enterprise tiers and revenue by plan",
+                      "caption": "Published tiers and the revenue each one brings in, with upgrades and downgrades for the month."
+                },
+                {
+                      "id": "usage",
+                      "tab": "Usage",
+                      "alt": "Usage analytics with daily active users and most used modules",
+                      "caption": "Daily active users and the modules customers use most, to spot growth and churn early."
+                }
+          ],
+          "faqTitle": "Questions we get asked",
+          "faqs": [
+                {
+                      "q": "What is a multi-tenant SaaS platform?",
+                      "a": "One system serving many customer companies at the same time. Each company, called a tenant, has its own users and data, kept separate from every other tenant, while you run and upgrade a single deployment."
+                },
+                {
+                      "q": "Can you turn my existing system into a SaaS product?",
+                      "a": "Yes. We look at the system you have, add tenant isolation, plans, billing and an admin console around it, and migrate your current customers. We scope it after seeing the code."
+                },
+                {
+                      "q": "Do you also build the product that runs on the platform?",
+                      "a": "Yes. The platform is the base for our CRM, HR, real estate, medical and finance products, and we can build a new vertical on it the same way."
+                },
+                {
+                      "q": "Where does it run, and who owns the code?",
+                      "a": "On a server you control, either a private VPS we set up for you or your own cloud account. You receive the code and the documentation."
+                },
+                {
+                      "q": "How is it priced?",
+                      "a": "As a project, based on the scope: the platform base, the modules you need and the number of integrations. We quote after a short call."
+                }
+          ],
+          "ctaTitle": "Plan your SaaS product with us",
+          "ctaSub": "Book a call and we will map your system to tenants, plans and billing.",
+          "note": "The screens show fictional sample tenants and figures."
+    },
+    ar: {
+          "badge": "من تطوير فوكس سيستمز وتشغيلها",
+          "name": "فوكس لمنصات SaaS",
+          "heroTitle": "حوّل برنامجك إلى منتج SaaS يُباع بالاشتراك الشهري",
+          "heroSub": "منصة متعددة المستأجرين تخدم فيها نسخة واحدة من المنتج عدة شركات عملاء، لكل منها مساحة عمل معزولة. تأتيك جاهزة بإدارة العملاء وخطط الاشتراك والفوترة وهوية كل عميل وتحليلات الاستخدام ولوحة إدارة، فتبيع نظامك شهريًا بدل بيع مشروع واحد في كل مرة.",
+          "highlights": [
+                {
+                      "title": "منتج واحد وعملاء كثر",
+                      "desc": "كل شركة عميلة تحصل على مساحة عمل معزولة بمستخدميها وبياناتها وإعداداتها."
+                },
+                {
+                      "title": "الخطط والفوترة جاهزة",
+                      "desc": "باقات أساسية ومتوسطة ومؤسسية، وفترات تجريبية وترقيات وكوبونات وفواتير، تُدار من لوحة واحدة."
+                },
+                {
+                      "title": "العربية والإنجليزية",
+                      "desc": "واجهة كاملة من اليمين إلى اليسار بالعربية الفصحى إلى جانب الإنجليزية، مع العملات المحلية وضريبة القيمة المضافة."
+                },
+                {
+                      "title": "نطوّرها وندعمها بأنفسنا",
+                      "desc": "الفريق الذي يكتب الكود يجهّز النظام ويرد على الهاتف، دون وسيط."
+                }
+          ],
+          "why": {
+                "title": "لماذا لا تكتفي ببيع البرنامج لعميل بعد عميل؟",
+                "sub": "بيع نسخة منفصلة لكل عميل يعني خادمًا جديدًا وتجهيزًا جديدًا ومشكلات جديدة مع كل صفقة. أما منصة SaaS فتحوّل العمل نفسه إلى إيراد شهري متكرر.",
+                "genericTitle": "بيع النسخ يعطيك",
+                "generic": [
+                      "تثبيتًا وخادمًا وتحديثًا منفصلًا لكل عميل، فيكبر الدعم مع كل صفقة.",
+                      "دخلًا لا يأتي إلا عند بيع مشروع، ولا شيء متوقعًا بين صفقة وأخرى.",
+                      "لا رؤية لمن يستخدم المنتج فعلًا ولا للوحدات التي تهمه.",
+                      "تسعيرًا يُتفاوض عليه من الصفر في كل مرة بدل خطط معلنة."
+                ],
+                "ourTitle": "المنصة تعطيك",
+                "ours": [
+                      "نشرًا واحدًا يخدم جميع العملاء، ويُحدَّث مرة واحدة للجميع.",
+                      "خطط اشتراك مع فترات تجريبية وترقية وتخفيض وتذكير بالتجديد.",
+                      "تحليلات استخدام لكل عميل ولكل وحدة، فترى من يعمل ومن يوشك على المغادرة.",
+                      "هوية وأدوارًا وخصائص لكل عميل، فتفعّل الباقة وحدات معينة أو تعطّلها.",
+                      "لوحة إدارة للدعم: إنشاء عملاء وإعادة ضبط الوصول وقراءة سجل المراجعة."
+                ]
+          },
+          "painTitle": "إذا كنت تبني برامج للشركات، فأنت تعرف هذه المشكلات",
+          "painSub": "وُجدت المنصة لإزالة كل واحدة منها.",
+          "pains": [
+                "كل عميل جديد يحتاج خادمًا جديدًا وأسبوعًا من التجهيز قبل أن يبدأ.",
+                "إصلاح واحد يجب نشره يدويًا على تثبيتات منفصلة كثيرة.",
+                "لا تعرف أي العملاء يستخدمون النظام وأيهم توقف بهدوء.",
+                "الإيراد يعتمد على المشروع القادم لا على العملاء الذين لديك بالفعل."
+          ],
+          "featureTitle": "ما تقدّمه المنصة",
+          "featureSub": "اللبنات الأساسية لمنتج بالاشتراك.",
+          "features": [
+                {
+                      "title": "إدارة العملاء (المستأجرين)",
+                      "desc": "إنشاء مساحات عمل العملاء وإيقافها وضبطها، كل منها معزولة عن الأخرى."
+                },
+                {
+                      "title": "الخطط والأسعار",
+                      "desc": "تعريف الباقات بحدود المستخدمين والتخزين والوحدات التي تشملها كل باقة."
+                },
+                {
+                      "title": "الاشتراكات والفوترة",
+                      "desc": "فترات تجريبية وتجديدات وترقيات وكوبونات وفواتير وسجلات دفع لكل عميل."
+                },
+                {
+                      "title": "الأدوار والصلاحيات",
+                      "desc": "أدوار المالك والمدير والموظف في كل مساحة عمل، تُفرض من الخادم."
+                },
+                {
+                      "title": "تحليلات الاستخدام",
+                      "desc": "المستخدمون النشطون والنشاط حسب الوحدة والتخزين لكل عميل، على أي فترة."
+                },
+                {
+                      "title": "مفاتيح الخصائص",
+                      "desc": "تفعيل وحدة لباقة أو لعميل واحد دون إصدار جديد."
+                },
+                {
+                      "title": "الواجهة البرمجية والتكامل",
+                      "desc": "مفاتيح لكل عميل وإشعارات ويب وواجهة موثقة لتكاملات العملاء."
+                },
+                {
+                      "title": "سجل المراجعة",
+                      "desc": "كل إجراء حساس يُسجَّل مع من نفّذه ووقت تنفيذه."
+                }
+          ],
+          "screensTitle": "داخل المنصة",
+          "screensSub": "شاشات من لوحة الإدارة، مع عملاء وأرقام تجريبية خيالية.",
+          "screens": [
+                {
+                      "id": "tenants",
+                      "tab": "العملاء",
+                      "alt": "لوحة إدارة SaaS تعرض مساحات عمل العملاء مع الباقة والمستخدمين والتخزين والحالة",
+                      "caption": "كل مساحات عمل العملاء في قائمة واحدة: الباقة والمستخدمون والتخزين والحالة وموعد التجديد."
+                },
+                {
+                      "id": "plans",
+                      "tab": "الخطط",
+                      "alt": "صفحة خطط الاشتراك بالباقات الأساسية والمتوسطة والمؤسسية والإيراد حسب الباقة",
+                      "caption": "الباقات المعلنة وما تدرّه كل منها، مع الترقيات والتخفيضات خلال الشهر."
+                },
+                {
+                      "id": "usage",
+                      "tab": "الاستخدام",
+                      "alt": "تحليلات الاستخدام بالمستخدمين النشطين يوميًا والوحدات الأكثر استخدامًا",
+                      "caption": "المستخدمون النشطون يوميًا والوحدات الأكثر استخدامًا، لاكتشاف النمو والانسحاب مبكرًا."
+                }
+          ],
+          "faqTitle": "أسئلة نتلقاها",
+          "faqs": [
+                {
+                      "q": "ما منصة SaaS متعددة المستأجرين؟",
+                      "a": "نظام واحد يخدم عدة شركات عملاء في الوقت نفسه. لكل شركة، وتُسمى مستأجرًا، مستخدموها وبياناتها المفصولة عن بقية المستأجرين، بينما تشغّل أنت نشرًا واحدًا وتحدّثه."
+                },
+                {
+                      "q": "هل يمكن تحويل نظامي الحالي إلى منتج SaaS؟",
+                      "a": "نعم. نراجع نظامك الحالي ونضيف حوله عزل المستأجرين والخطط والفوترة ولوحة الإدارة، وننقل عملاءك الحاليين. ونحدد النطاق بعد الاطلاع على الكود."
+                },
+                {
+                      "q": "هل تبنون أيضًا المنتج الذي يعمل على المنصة؟",
+                      "a": "نعم. المنصة هي الأساس لمنتجاتنا في إدارة العملاء والموارد البشرية والعقارات والطب والتمويل، ويمكننا بناء قطاع جديد عليها بالطريقة نفسها."
+                },
+                {
+                      "q": "أين يعمل النظام ومن يملك الكود؟",
+                      "a": "على خادم تتحكم فيه أنت، إما خادم خاص نجهّزه لك أو حسابك السحابي. وتتسلم الكود والتوثيق."
+                },
+                {
+                      "q": "كيف يُسعَّر؟",
+                      "a": "كمشروع بحسب النطاق: أساس المنصة والوحدات التي تحتاجها وعدد التكاملات. نقدّم عرضًا بعد مكالمة قصيرة."
+                }
+          ],
+          "ctaTitle": "خطّط لمنتج SaaS الخاص بك معنا",
+          "ctaSub": "احجز مكالمة وسنحوّل نظامك إلى عملاء وخطط وفوترة.",
+          "note": "الشاشات تعرض عملاء وأرقامًا تجريبية خيالية."
+    },
+    seo: {
+      en: {
+        title: "SaaS Platform Development | Multi-Tenant Subscription Software | Fox",
+        description: "Turn your software into a subscription SaaS product: multi-tenant workspaces, plans, billing, usage analytics and an admin console. Built in Egypt, Arabic and English.",
+        keywords: "SaaS development Egypt, multi-tenant SaaS platform, SaaS software development company, subscription software, convert software to SaaS, SaaS billing system, SaaS CRM development, تطوير SaaS, منصة SaaS",
+        ogTitle: "SaaS Platform Development - Fox Systems",
+        ogDescription: "Multi-tenant workspaces, subscription plans, billing and analytics for software companies. Arabic & English.",
+        ogImage: `${ORIGIN}/solutions/saas-platform-og.jpg`,
+        canonicalUrl: `${ORIGIN}/solutions/saas-platform`,
+        language: "en",
+      },
+      ar: {
+        title: "تطوير منصات SaaS متعددة المستأجرين بنظام الاشتراك | فوكس",
+        description: "حوّل برنامجك إلى منتج SaaS بالاشتراك: مساحات عمل معزولة وخطط وفوترة وتحليلات ولوحة إدارة. تطوير في مصر بالعربية والإنجليزية.",
+        keywords: "تطوير SaaS, منصة SaaS, برنامج بالاشتراك, تحويل البرنامج إلى SaaS, نظام فوترة اشتراكات, شركة تطوير برمجيات مصر, SaaS development Egypt",
+        ogTitle: "تطوير منصات SaaS بالاشتراك - فوكس سيستمز",
+        ogDescription: "مساحات عمل معزولة وخطط اشتراك وفوترة وتحليلات لشركات البرمجيات. عربي وإنجليزي.",
+        ogImage: `${ORIGIN}/solutions/saas-platform-og.jpg`,
+        canonicalUrl: `${ORIGIN}/ar/solutions/saas-platform`,
+        language: "ar",
+      },
+    },
+  },
+  "vps-hosting": {
+    id: "vps-hosting",
+    showcaseBase: "vps-hosting",
+    icon: "Server",
+    en: {
+          "badge": "Set up and managed by Fox Systems",
+          "name": "Fox Private VPS",
+          "heroTitle": "Private VPS and Server Infrastructure for Growing Businesses",
+          "heroSub": "A private, isolated server built for companies with many users and heavy workloads. We size it to your load, harden it, put it behind a firewall and VPN-only admin access, back it up every day and watch it around the clock. Move your CRM, ERP or high-traffic website onto it without a long outage.",
+          "highlights": [
+                {
+                      "title": "Private and isolated",
+                      "desc": "Your own server resources, not a shared hosting account, sized to your users and load."
+                },
+                {
+                      "title": "Hardened from day one",
+                      "desc": "Firewall deny-by-default, VPN-only admin access, SSL and patching set up at the start."
+                },
+                {
+                      "title": "Backed up and tested",
+                      "desc": "Daily backups, frequent snapshots and a restore test, because a backup nobody has tried is a guess."
+                },
+                {
+                      "title": "We run it with you",
+                      "desc": "The engineers who set it up monitor it and answer when something needs attention."
+                }
+          ],
+          "why": {
+                "title": "Why not ordinary shared hosting?",
+                "sub": "Shared hosting is fine for a brochure site. A system many people depend on all day needs its own resources, controlled access and a plan for when something breaks.",
+                "genericTitle": "Shared hosting gives you",
+                "generic": [
+                      "Resources shared with strangers, so a neighbour's spike slows your system.",
+                      "Open admin access that anyone can try to guess.",
+                      "Backups that exist on paper but have never been restored.",
+                      "No one watching: you learn about an outage from your customers."
+                ],
+                "ourTitle": "A private VPS gives you",
+                "ours": [
+                      "Dedicated CPU, memory and storage sized to your real load.",
+                      "A firewall that denies by default and admin access only through a VPN.",
+                      "Automatic daily backups with snapshots, retention you choose and a weekly restore test.",
+                      "Monitoring and alerts for CPU, memory, disk, certificates and uptime.",
+                      "A migration plan that moves your existing system with minimal downtime."
+                ]
+          },
+          "painTitle": "If your system lives on a server, you know these",
+          "painSub": "Each one is something this setup is meant to prevent.",
+          "pains": [
+                "The system slows down every afternoon and nobody knows why.",
+                "A server that has never been patched because nobody wants to touch it.",
+                "Brute-force login attempts in the logs every single night.",
+                "A backup that turned out to be empty on the day it was needed."
+          ],
+          "featureTitle": "What is included",
+          "featureSub": "The setup we do for every server.",
+          "features": [
+                {
+                      "title": "Sizing and provisioning",
+                      "desc": "We choose CPU, memory and disk from your users and workload, on the provider you prefer."
+                },
+                {
+                      "title": "Operating system hardening",
+                      "desc": "Linux or Windows Server, updated, with unused services off and accounts locked down."
+                },
+                {
+                      "title": "Firewall and VPN access",
+                      "desc": "Deny-by-default rules, with SSH and RDP reachable only from your VPN or office."
+                },
+                {
+                      "title": "SSL and domains",
+                      "desc": "Certificates that renew themselves and DNS configured for your domains."
+                },
+                {
+                      "title": "Backups and snapshots",
+                      "desc": "Scheduled backups, snapshots, retention and a restore test."
+                },
+                {
+                      "title": "Monitoring and alerts",
+                      "desc": "Live metrics and alerts for load, disk, certificates and downtime."
+                },
+                {
+                      "title": "Migration",
+                      "desc": "Moving your website or system to the new server with a planned cut-over."
+                },
+                {
+                      "title": "Ongoing management",
+                      "desc": "Monthly patching, reviews and support, agreed separately if you want it."
+                }
+          ],
+          "screensTitle": "What it looks like",
+          "screensSub": "Screens from the server console, with fictional sample servers.",
+          "screens": [
+                {
+                      "id": "servers",
+                      "tab": "Servers",
+                      "alt": "Server fleet table with hostnames, operating systems, resources and status",
+                      "caption": "Every server with its operating system, resources and status."
+                },
+                {
+                      "id": "monitoring",
+                      "tab": "Monitoring",
+                      "alt": "Server monitoring with CPU load chart and recent alerts",
+                      "caption": "Live load over the last day, with the alerts that need attention."
+                },
+                {
+                      "id": "security",
+                      "tab": "Security",
+                      "alt": "Firewall rules and backup schedule",
+                      "caption": "Deny-by-default firewall rules and the backup schedule, in one view."
+                }
+          ],
+          "faqTitle": "Questions we get asked",
+          "faqs": [
+                {
+                      "q": "What is a private VPS?",
+                      "a": "A virtual server with dedicated resources that only you use, as opposed to shared hosting where many sites compete for the same resources."
+                },
+                {
+                      "q": "Do you provide the hosting itself?",
+                      "a": "We set up and manage the server on the provider you choose, such as a cloud provider or a local data centre. The hosting subscription is paid to the provider, and we help you pick one."
+                },
+                {
+                      "q": "Can you move my existing website or system?",
+                      "a": "Yes. We plan the cut-over, copy everything across, test it and switch with the shortest outage we can."
+                },
+                {
+                      "q": "How do you keep it secure?",
+                      "a": "A deny-by-default firewall, admin access only through a VPN, regular updates, monitoring for attacks and backups that are restored on a schedule. No setup can promise zero risk, but these steps close the common ways in."
+                },
+                {
+                      "q": "What does it cost?",
+                      "a": "A one-off setup fee that depends on the server size and the systems on it, plus an optional monthly management plan. We quote after a short call."
+                }
+          ],
+          "ctaTitle": "Plan your server with us",
+          "ctaSub": "Tell us your users and systems and we will size the server and quote the setup.",
+          "note": "The screens show fictional sample servers."
+    },
+    ar: {
+          "badge": "من إعداد فوكس سيستمز وإدارتها",
+          "name": "فوكس لخوادم VPS الخاصة",
+          "heroTitle": "خوادم VPS خاصة وبنية تحتية للشركات المتنامية",
+          "heroSub": "خادم خاص ومعزول للشركات ذات المستخدمين الكثيرين والأحمال الثقيلة. نحدد حجمه بحسب حملك، ونحصّنه، ونضعه خلف جدار حماية ودخول إداري عبر VPN فقط، ونأخذ نسخًا احتياطية يوميًا، ونراقبه على مدار الساعة. وانقل نظام إدارة العملاء أو الموارد أو موقعك كثيف الزيارات إليه دون انقطاع طويل.",
+          "highlights": [
+                {
+                      "title": "خاص ومعزول",
+                      "desc": "موارد خادم خاصة بك لا حساب استضافة مشتركًا، بحجم يناسب مستخدميك وحملك."
+                },
+                {
+                      "title": "محصّن من اليوم الأول",
+                      "desc": "جدار حماية يمنع كل شيء افتراضيًا، ودخول إداري عبر VPN فقط، وشهادات SSL وتحديثات منذ البداية."
+                },
+                {
+                      "title": "نسخ احتياطية مُختبَرة",
+                      "desc": "نسخ يومية ولقطات متكررة واختبار استعادة، لأن النسخة التي لم تُجرَّب تخمين."
+                },
+                {
+                      "title": "نديره معك",
+                      "desc": "المهندسون الذين جهّزوه يراقبونه ويردون عندما يحتاج إلى تدخل."
+                }
+          ],
+          "why": {
+                "title": "لماذا لا تكتفي بالاستضافة المشتركة؟",
+                "sub": "الاستضافة المشتركة تكفي لموقع تعريفي. أما نظام يعتمد عليه الناس طوال اليوم فيحتاج موارد خاصة به ووصولًا مضبوطًا وخطة لما قد ينكسر.",
+                "genericTitle": "الاستضافة المشتركة تعطيك",
+                "generic": [
+                      "موارد مشتركة مع غرباء، فيبطئ نظامك ذروة جار لك.",
+                      "دخولًا إداريًا مفتوحًا يمكن لأي أحد تخمينه.",
+                      "نسخًا احتياطية على الورق لم تُستعَد قط.",
+                      "لا أحد يراقب: فتعلم بالانقطاع من عملائك."
+                ],
+                "ourTitle": "الخادم الخاص يعطيك",
+                "ours": [
+                      "معالجًا وذاكرة وتخزينًا مخصصة بحجم حملك الفعلي.",
+                      "جدار حماية يمنع افتراضيًا ودخولًا إداريًا عبر VPN فقط.",
+                      "نسخًا احتياطية يومية تلقائية مع لقطات وفترة احتفاظ تختارها واختبار استعادة أسبوعي.",
+                      "مراقبة وتنبيهات للمعالج والذاكرة والقرص والشهادات والتوفر.",
+                      "خطة نقل تنقل نظامك الحالي بأقل انقطاع ممكن."
+                ]
+          },
+          "painTitle": "إذا كان نظامك يعمل على خادم، فأنت تعرف هذه المشكلات",
+          "painSub": "كل واحدة منها ما صُمم هذا الإعداد لمنعه.",
+          "pains": [
+                "النظام يبطؤ كل عصر ولا أحد يعرف السبب.",
+                "خادم لم يُحدَّث قط لأن لا أحد يريد لمسه.",
+                "محاولات تخمين كلمات المرور في السجلات كل ليلة.",
+                "نسخة احتياطية تبيّن أنها فارغة يوم الحاجة إليها."
+          ],
+          "featureTitle": "ما يشمله الإعداد",
+          "featureSub": "الإعداد الذي نجريه لكل خادم.",
+          "features": [
+                {
+                      "title": "تحديد الحجم والتجهيز",
+                      "desc": "نختار المعالج والذاكرة والقرص من عدد مستخدميك وحملك، لدى المزوّد الذي تفضله."
+                },
+                {
+                      "title": "تحصين نظام التشغيل",
+                      "desc": "لينكس أو ويندوز سيرفر، محدَّثًا، مع إيقاف الخدمات غير اللازمة وإحكام الحسابات."
+                },
+                {
+                      "title": "جدار الحماية والدخول عبر VPN",
+                      "desc": "قواعد تمنع افتراضيًا، مع إتاحة SSH وRDP من شبكتك الافتراضية الخاصة أو مكتبك فقط."
+                },
+                {
+                      "title": "شهادات SSL والنطاقات",
+                      "desc": "شهادات تتجدد تلقائيًا وإعداد DNS لنطاقاتك."
+                },
+                {
+                      "title": "النسخ الاحتياطي واللقطات",
+                      "desc": "نسخ مجدولة ولقطات وفترات احتفاظ واختبار استعادة."
+                },
+                {
+                      "title": "المراقبة والتنبيهات",
+                      "desc": "مؤشرات مباشرة وتنبيهات للحمل والقرص والشهادات والانقطاع."
+                },
+                {
+                      "title": "النقل",
+                      "desc": "نقل موقعك أو نظامك إلى الخادم الجديد بخطة تحويل مدروسة."
+                },
+                {
+                      "title": "الإدارة المستمرة",
+                      "desc": "تحديثات ومراجعات ودعم شهري، يُتفق عليه منفصلًا إن رغبت."
+                }
+          ],
+          "screensTitle": "كيف يبدو",
+          "screensSub": "شاشات من لوحة الخوادم، مع خوادم تجريبية خيالية.",
+          "screens": [
+                {
+                      "id": "servers",
+                      "tab": "الخوادم",
+                      "alt": "جدول الخوادم بأسماء المضيفين ونظم التشغيل والموارد والحالة",
+                      "caption": "كل خادم مع نظام تشغيله وموارده وحالته."
+                },
+                {
+                      "id": "monitoring",
+                      "tab": "المراقبة",
+                      "alt": "مراقبة الخادم بمخطط حمل المعالج وآخر التنبيهات",
+                      "caption": "الحمل المباشر خلال آخر يوم، مع التنبيهات التي تحتاج انتباهًا."
+                },
+                {
+                      "id": "security",
+                      "tab": "الأمان",
+                      "alt": "قواعد جدار الحماية وجدول النسخ الاحتياطي",
+                      "caption": "قواعد جدار الحماية التي تمنع افتراضيًا وجدول النسخ الاحتياطي في عرض واحد."
+                }
+          ],
+          "faqTitle": "أسئلة نتلقاها",
+          "faqs": [
+                {
+                      "q": "ما الخادم الخاص VPS؟",
+                      "a": "خادم افتراضي بموارد مخصصة لك وحدك، بخلاف الاستضافة المشتركة التي تتنافس فيها مواقع كثيرة على الموارد نفسها."
+                },
+                {
+                      "q": "هل تقدمون الاستضافة نفسها؟",
+                      "a": "نجهّز الخادم وندير لدى المزوّد الذي تختاره، كمزوّد سحابي أو مركز بيانات محلي. اشتراك الاستضافة يُدفع للمزوّد، ونساعدك في اختياره."
+                },
+                {
+                      "q": "هل يمكنكم نقل موقعي أو نظامي الحالي؟",
+                      "a": "نعم. نخطط للتحويل وننسخ كل شيء ونختبره ثم نبدّل بأقصر انقطاع ممكن."
+                },
+                {
+                      "q": "كيف تحافظون على الأمان؟",
+                      "a": "جدار حماية يمنع افتراضيًا، ودخول إداري عبر VPN فقط، وتحديثات منتظمة، ومراقبة للهجمات، ونسخ احتياطية تُستعاد وفق جدول. لا إعداد يعد بانعدام المخاطر، لكن هذه الخطوات تغلق المنافذ الشائعة."
+                },
+                {
+                      "q": "كم التكلفة؟",
+                      "a": "رسم إعداد لمرة واحدة يتوقف على حجم الخادم والأنظمة عليه، وخطة إدارة شهرية اختيارية. نقدّم عرضًا بعد مكالمة قصيرة."
+                }
+          ],
+          "ctaTitle": "خطّط لخادمك معنا",
+          "ctaSub": "أخبرنا بعدد مستخدميك وأنظمتك وسنحدد حجم الخادم ونقدّم عرض الإعداد.",
+          "note": "الشاشات تعرض خوادم تجريبية خيالية."
+    },
+    seo: {
+      en: {
+        title: "Private VPS Setup & Server Management for Businesses | Fox",
+        description: "Private, hardened VPS servers for companies with many users: firewall, VPN-only admin access, SSL, daily backups with restore tests, monitoring and migration.",
+        keywords: "VPS setup Egypt, private VPS server, server management company Egypt, dedicated server setup, cloud server setup, server hardening, VPS migration, server backup, إعداد VPS, خادم VPS خاص",
+        ogTitle: "Private VPS & Server Management - Fox Systems",
+        ogDescription: "Private hardened servers with firewall, VPN access, backups and monitoring for growing businesses.",
+        ogImage: `${ORIGIN}/solutions/vps-hosting-og.jpg`,
+        canonicalUrl: `${ORIGIN}/solutions/vps-hosting`,
+        language: "en",
+      },
+      ar: {
+        title: "إعداد وإدارة خوادم VPS خاصة للشركات | فوكس سيستمز",
+        description: "خوادم VPS خاصة ومحصّنة للشركات ذات المستخدمين الكثيرين: جدار حماية ودخول إداري عبر VPN وSSL ونسخ احتياطية يومية مع اختبار استعادة ومراقبة ونقل.",
+        keywords: "إعداد VPS, خادم VPS خاص, إدارة الخوادم, شركة إدارة خوادم مصر, إعداد خادم, تحصين الخوادم, نقل الموقع إلى VPS, نسخ احتياطي للخادم, VPS setup Egypt",
+        ogTitle: "إعداد وإدارة خوادم VPS خاصة - فوكس سيستمز",
+        ogDescription: "خوادم خاصة محصّنة بجدار حماية ودخول عبر VPN ونسخ احتياطية ومراقبة للشركات المتنامية.",
+        ogImage: `${ORIGIN}/solutions/vps-hosting-og.jpg`,
+        canonicalUrl: `${ORIGIN}/ar/solutions/vps-hosting`,
         language: "ar",
       },
     },

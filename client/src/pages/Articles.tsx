@@ -314,6 +314,29 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
     },
   },
 
+  "warehouse-inventory-software": {
+    en: {
+      id: "warehouse-inventory-software",
+      title: "Warehouse and Inventory Software: What to Look For",
+      excerpt: "Stock that never matches the shelf? Seven things warehouse software must do, common mistakes, and questions to ask before you buy.",
+      category: "Software",
+      author: "Fox Systems Team",
+      date: "2026-11-15",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+    },
+    ar: {
+      id: "warehouse-inventory-software",
+      title: "برنامج مخازن: ما الذي تبحث عنه قبل أن تختار",
+      excerpt: "مخزون لا يطابق الرف؟ سبعة أمور يجب أن يؤديها برنامج المخازن، وأخطاء شائعة، وأسئلة تطرحها قبل الشراء.",
+      category: "البرمجيات",
+      author: "فريق فوكس سيستمز",
+      date: "2026-11-15",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+    },
+  },
+
   "real-estate-crm-egypt": {
     en: {
       id: "real-estate-crm-egypt",

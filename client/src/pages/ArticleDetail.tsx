@@ -1069,6 +1069,107 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
     },
   },
 
+  "warehouse-inventory-software": {
+    en: {
+      id: "warehouse-inventory-software",
+      title: "Warehouse and Inventory Software: What to Look For",
+      subtitle: "How to choose warehouse software (برنامج مخازن) that keeps stock, incoming and outgoing goods accurate",
+      author: "Fox Systems Team",
+      date: "2026-11-15",
+      category: "Software",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+      content: `
+        <h2>Why stock numbers stop matching</h2>
+        <p>If you are looking for warehouse software (برنامج مخازن), you probably have one of two problems: the count on the shelf differs from the count in the file, or you only discover a shortage when a customer is already waiting. Both come from goods moving without a record.</p>
+
+        <h2>What good warehouse software must do</h2>
+        <h3>1. Record every movement</h3>
+        <p>Receipts, issues, transfers between stores, returns and adjustments, each with a date, a user and a reason. Stock should never change without a document behind it.</p>
+        <h3>2. Several stores and locations</h3>
+        <p>Main warehouse, branch store, van stock. You need the balance per location and a transfer document that reduces one and increases the other.</p>
+        <h3>3. Minimum levels and reorder alerts</h3>
+        <p>A minimum quantity per item, and a list of what to buy this week, so you reorder before the shelf is empty.</p>
+        <h3>4. Cost and stock value</h3>
+        <p>The value of what you hold, using a clear costing method. Without it, the balance sheet and the physical stock never agree.</p>
+        <h3>5. Batches and expiry dates where they matter</h3>
+        <p>For food, cosmetics and medical items, track batch numbers and expiry so the oldest stock leaves first.</p>
+        <h3>6. Stock counts that adjust cleanly</h3>
+        <p>A periodic count screen that shows the difference and posts the adjustment with a reason, rather than overwriting numbers.</p>
+        <h3>7. Link to sales and purchases</h3>
+        <p>When a sales invoice is issued stock drops, and when a purchase invoice is received it rises. Separate systems mean double entry and mistakes.</p>
+
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>Loading items without opening quantities, so every balance starts wrong.</li>
+          <li>Letting staff issue goods verbally and record them later.</li>
+          <li>Using one shared login, so nobody is accountable for a movement.</li>
+          <li>Never counting the shelf against the system.</li>
+        </ul>
+
+        <h2>Questions to ask before you buy</h2>
+        <ul>
+          <li>Can I import my item list from Excel?</li>
+          <li>Can I try it on my own items before paying?</li>
+          <li>Does it work in Arabic and on a phone?</li>
+          <li>Can I export all my data at any time?</li>
+        </ul>
+
+        <h2>Try it on your stock</h2>
+        <p>Fox Systems sets up <a href="/services/accounting">accounting, sales and inventory software</a> in Egypt, Saudi Arabia and Kuwait, in Arabic and English, with a free 3-day trial on your own data. See also the free <a href="/tools/invoice-generator">invoice generator</a>.</p>
+      `,
+    },
+    ar: {
+      id: "warehouse-inventory-software",
+      title: "برنامج مخازن: ما الذي تبحث عنه قبل أن تختار",
+      subtitle: "كيف تختار برنامج مخازن يضبط المخزون والوارد والمنصرف ويكشف النقص قبل أن يطلبه العميل",
+      author: "فريق فوكس سيستمز",
+      date: "2026-11-15",
+      category: "البرمجيات",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+      content: `
+        <h2>لماذا لا يطابق المخزون الأرقام؟</h2>
+        <p>إذا كنت تبحث عن برنامج مخازن، فغالبًا لديك إحدى مشكلتين: عدد البضاعة على الرف يختلف عن الرقم في الملف، أو لا تعرف بوجود نقص إلا والعميل ينتظر. والسبب في الحالتين واحد: بضاعة تتحرك دون سجل.</p>
+
+        <h2>ما الذي يجب أن يؤديه برنامج المخازن الجيد؟</h2>
+        <h3>1. تسجيل كل حركة</h3>
+        <p>استلام وصرف وتحويل بين المخازن ومرتجعات وتسويات، لكل منها تاريخ ومستخدم وسبب. ولا ينبغي أن يتغير المخزون دون مستند خلفه.</p>
+        <h3>2. أكثر من مخزن وموقع</h3>
+        <p>مخزن رئيسي ومخزن فرع وبضاعة السيارة. تحتاج رصيدًا لكل موقع، وإذن تحويل ينقص من موقع ويزيد في آخر.</p>
+        <h3>3. حد أدنى وتنبيهات إعادة الطلب</h3>
+        <p>كمية دنيا لكل صنف، وقائمة بما يجب شراؤه هذا الأسبوع، فتطلب قبل أن يفرغ الرف.</p>
+        <h3>4. التكلفة وقيمة المخزون</h3>
+        <p>قيمة ما تملكه بطريقة تكلفة واضحة. وبدونها لا يتفق رصيد الميزانية مع المخزون الفعلي أبدًا.</p>
+        <h3>5. التشغيلات وتواريخ الصلاحية حيث تلزم</h3>
+        <p>في الأغذية ومستحضرات التجميل والمستلزمات الطبية، تتبَّع رقم التشغيلة وتاريخ الانتهاء ليخرج الأقدم أولًا.</p>
+        <h3>6. جرد يُسوَّى بوضوح</h3>
+        <p>شاشة جرد دوري تعرض الفرق وتسجل التسوية مع سببها، بدل الكتابة فوق الأرقام.</p>
+        <h3>7. ربط بالمبيعات والمشتريات</h3>
+        <p>عند إصدار فاتورة بيع ينقص المخزون، وعند استلام فاتورة شراء يزيد. أما الأنظمة المنفصلة فتعني إدخالًا مزدوجًا وأخطاء.</p>
+
+        <h2>أخطاء شائعة</h2>
+        <ul>
+          <li>إدخال الأصناف دون كميات افتتاحية، فيبدأ كل رصيد خاطئًا.</li>
+          <li>صرف البضاعة شفهيًا وتسجيلها لاحقًا.</li>
+          <li>استخدام حساب دخول واحد مشترك، فلا يُحاسَب أحد على حركة.</li>
+          <li>عدم مطابقة الرف بالنظام مطلقًا.</li>
+        </ul>
+
+        <h2>أسئلة تطرحها قبل الشراء</h2>
+        <ul>
+          <li>هل أستطيع استيراد قائمة أصنافي من الإكسل؟</li>
+          <li>هل أستطيع تجربته على أصنافي قبل الدفع؟</li>
+          <li>هل يعمل بالعربية وعلى الهاتف؟</li>
+          <li>هل أستطيع تصدير بياناتي كاملة في أي وقت؟</li>
+        </ul>
+
+        <h2>جرّبه على مخزونك</h2>
+        <p>تجهّز فوكس سيستمز <a href="/ar/services/accounting">برنامج حسابات ومبيعات ومخازن</a> في مصر والسعودية والكويت، بالعربية والإنجليزية، مع تجربة مجانية لمدة 3 أيام على بياناتك. جرّب أيضًا <a href="/ar/tools/invoice-generator">مولّد الفواتير المجاني</a>.</p>
+      `,
+    },
+  },
+
   "real-estate-crm-egypt": {
     en: {
       id: "real-estate-crm-egypt",

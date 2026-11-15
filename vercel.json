@@ -213,6 +213,10 @@
       "destination": "/ar/articles/voip-security.html"
     },
     {
+      "source": "/ar/articles/warehouse-inventory-software",
+      "destination": "/ar/articles/warehouse-inventory-software.html"
+    },
+    {
       "source": "/ar/articles/website-design-trends",
       "destination": "/ar/articles/website-design-trends.html"
     },
@@ -531,6 +535,10 @@
     {
       "source": "/articles/voip-security",
       "destination": "/articles/voip-security.html"
+    },
+    {
+      "source": "/articles/warehouse-inventory-software",
+      "destination": "/articles/warehouse-inventory-software.html"
     },
     {
       "source": "/articles/website-design-trends",

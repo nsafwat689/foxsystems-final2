@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" role="img" aria-label="PhantomVPS">
+  <rect x="2" y="2" width="36" height="36" rx="8" fill="#1e40af"/>
+  <rect x="7" y="10" width="26" height="5" rx="1.5" fill="#93c5fd"/>
+  <circle cx="28" cy="12.5" r="1.5" fill="#10b981"/>
+  <rect x="7" y="18" width="26" height="5" rx="1.5" fill="#60a5fa"/>
+  <circle cx="28" cy="20.5" r="1.5" fill="#10b981"/>
+  <rect x="7" y="26" width="26" height="5" rx="1.5" fill="#3b82f6"/>
+  <circle cx="28" cy="28.5" r="1.5" fill="#10b981"/>
+</svg>

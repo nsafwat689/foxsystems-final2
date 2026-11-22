@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { scrollToId, HEADER_OFFSET } from "@/lib/scrollToId";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToTop from "./components/ScrollToTop";
+import HostingPartner from "./components/HostingPartner";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import { SOLUTION_IDS } from "./data/solutionIds";
@@ -168,6 +169,7 @@ function Router() {
             <Route component={NotFound} />
           </Switch>
         </Suspense>
+        <HostingPartner language={language} />
         <ScrollToTop language={language} />
       </motion.div>
     </AnimatePresence>

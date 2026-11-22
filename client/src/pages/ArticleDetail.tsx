@@ -13,6 +13,96 @@ interface ArticleDetailProps {
 }
 
 const articleContent: Record<string, Record<"en" | "ar", any>> = {
+  "vps-hosting-voip-pbx-servers": {
+    en: {
+      id: "vps-hosting-voip-pbx-servers",
+      title: "Where to Host a PBX or VoIP Server: What to Check Before You Order",
+      subtitle: "Bandwidth, clock speed, the console you need at 2 am, and how crypto payment works",
+      author: "Fox Systems Team",
+      date: "2026-11-21",
+      category: "Infrastructure",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/hero-tech.jpg",
+      content: `
+        <h2>Voice is not a web workload</h2>
+        <p>Most people pick a server for a PBX the way they pick one for a website: count the cores, count the gigabytes, take the cheapest. Then they spend three weeks chasing one-way audio. A phone system fails differently from a web app, so it should be specified differently.</p>
+
+        <h2>Start with the bandwidth</h2>
+        <p>One G.711 call needs about 85-90 kbps in <strong>each</strong> direction once IP, UDP and RTP headers sit on top of the 64 kbps payload. So:</p>
+        <ul>
+          <li>10 concurrent calls: roughly 0.9 Mbps up and down</li>
+          <li>50 concurrent calls: roughly 4.5 Mbps each way</li>
+          <li>100 concurrent calls: roughly 9 Mbps each way</li>
+        </ul>
+        <p>Those numbers are small. What matters is that they have to be steady — fifty packets a second per call, with nothing pausing to think. A gigabit port on an oversubscribed host serves voice worse than a clean 100 Mbps port.</p>
+
+        <h2>Clock speed beats core count</h2>
+        <p>Media handling is single-threaded per call, so a 3.8 GHz processor with four cores carries more concurrent calls than a 2.1 GHz processor with sixteen. Read the plan for the actual processor model, then check its single-thread performance.</p>
+        <p>Two cases behave very differently. Pass-through calls, where the codec matches on both legs and nothing is being recorded, cost almost nothing — a modest VPS handles hundreds. Transcoding is the wall: convert G.711 to G.729 on every leg and the same machine manages a fraction of that. Recording and call-detail writes are disk load rather than CPU, which NVMe solves.</p>
+
+        <h2>Measure the route, not the brochure</h2>
+        <p>Before paying anyone, ping and traceroute from your own connection to the location you intend to use, and look for jitter under 30 ms, packet loss under 1%, and a one-way trip under 150 ms. A provider that publishes a test IP per location is inviting that check, which tells you something in itself.</p>
+        <p>Then put the server near whichever end is less flexible — your agents or your carriers. For a team in Egypt or the Gulf terminating to Europe or the United States, a European location is usually the better compromise than either coast.</p>
+
+        <h2>Root access, and a way back in</h2>
+        <p>You will need root: kernel network tuning, media proxies, firewall rules and NAT handling are not possible behind a managed control panel. You will also, eventually, lock yourself out — everyone who has tightened a firewall on a SIP server late at night has done it. What saves the night is out-of-band access: IPMI on a dedicated server, an emergency VNC console on a VPS. Confirm it exists, and that you can reinstall the operating system from it, before you need it.</p>
+
+        <h2>Paying for the server</h2>
+        <p>Card payment is the default and for most buyers that is the end of the matter. Two reasons it sometimes is not: cards issued in Egypt and parts of the Gulf are declined by overseas hosts more often than anyone admits, and some operators would rather not route infrastructure spend through a card at all.</p>
+        <p>Crypto covers both cases, and the flow is unremarkable. You order, the panel raises an invoice, you pay it in Monero, Bitcoin, Litecoin, USDT, USDC, SOL or TRX, and the invoice marks itself paid once the network confirms. Renewal invoices are issued ten days ahead, so nothing switches off while a payment settles. A card route through a processor stays available if you prefer it.</p>
+
+        <h2>What we use</h2>
+        <p>Our own servers sit with <a href="https://phantomvps.com/vpn-vps" target="_blank" rel="noopener noreferrer">PhantomVPS</a>: NVMe and bare-metal machines, full root, IPMI on dedicated and VNC on VPS, delivery usually within minutes, and the payment flow above. Plans start at $7.99 a month, and every plan states its processor, network port and location before you order — which is exactly the information this article says to look for.</p>
+
+        <h2>If you would rather not do any of this</h2>
+        <p>We size, deploy and maintain PBX and call-centre servers as part of our <a href="/services/internet">call-centre and VoIP work</a>, including the firewall and the monitoring around them. Tell us the number of concurrent calls and where your people sit, and the specification follows from that.</p>
+      `,
+    },
+    ar: {
+      id: "vps-hosting-voip-pbx-servers",
+      title: "أين تستضيف سيرفر السنترال أو الـ VoIP؟ ما يجب التأكد منه قبل الطلب",
+      subtitle: "الباندويدث، وسرعة المعالج، والكونسول الذي ستحتاجه في الثانية صباحًا، والدفع بالعملات الرقمية",
+      author: "فريق فوكس سيستمز",
+      date: "2026-11-21",
+      category: "البنية التحتية",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/hero-tech.jpg",
+      content: `
+        <h2>الصوت ليس مثل الموقع</h2>
+        <p>معظم الناس يختارون سيرفر السنترال كما يختارون سيرفر موقع: عدد الأنوية، حجم الرام، والأرخص سعرًا. ثم يقضون ثلاثة أسابيع في مطاردة مشكلة الصوت في اتجاه واحد. السنترال يفشل بطريقة مختلفة عن الموقع، فيجب أن تُحدَّد مواصفاته بطريقة مختلفة.</p>
+
+        <h2>ابدأ من الباندويدث</h2>
+        <p>المكالمة الواحدة بكودك G.711 تحتاج حوالي 85-90 كيلوبت/ث في <strong>كل</strong> اتجاه بعد إضافة ترويسات IP وUDP وRTP على الـ 64 كيلوبت الأساسية. أي:</p>
+        <ul>
+          <li>10 مكالمات متزامنة: حوالي 0.9 ميجابت/ث صعودًا ونزولًا</li>
+          <li>50 مكالمة متزامنة: حوالي 4.5 ميجابت/ث في كل اتجاه</li>
+          <li>100 مكالمة متزامنة: حوالي 9 ميجابت/ث في كل اتجاه</li>
+        </ul>
+        <p>أرقام صغيرة، والمهم أن تكون ثابتة: خمسون حزمة في الثانية لكل مكالمة بلا تردد. بورت جيجابت على سيرفر مزدحم يخدم الصوت أسوأ من بورت 100 ميجابت نظيف.</p>
+
+        <h2>سرعة المعالج أهم من عدد الأنوية</h2>
+        <p>معالجة الصوت تعمل على نواة واحدة لكل مكالمة، لذلك معالج بسرعة 3.8 جيجاهرتز بأربع أنوية يحمل مكالمات متزامنة أكثر من معالج 2.1 جيجاهرتز بستة عشر نواة. اقرأ موديل المعالج نفسه في الخطة، ثم راجع أداء النواة الواحدة له.</p>
+        <p>هناك حالتان مختلفتان تمامًا. المكالمات التي تمر كما هي — نفس الكودك على الطرفين وبدون تسجيل — تكاد لا تستهلك شيئًا، وسيرفر متوسط يحمل المئات منها. أما التحويل بين الكودكات فهو الحد الفاصل: تحويل G.711 إلى G.729 على كل مكالمة يخفض الطاقة إلى جزء صغير. التسجيل وكتابة تفاصيل المكالمات حمل على القرص لا على المعالج، وNVMe يحل ذلك.</p>
+
+        <h2>قِس المسار بنفسك</h2>
+        <p>قبل الدفع لأي مزوّد، اعمل ping وtraceroute من خطك إلى الموقع الذي تنوي استخدامه، وابحث عن jitter أقل من 30 ملّي ثانية، وفقد حزم أقل من 1%، وزمن اتجاه واحد أقل من 150 ملّي ثانية. المزوّد الذي ينشر IP للاختبار في كل موقع يدعوك إلى هذا القياس، وهذا في ذاته مؤشر.</p>
+        <p>ثم ضع السيرفر قريبًا من الطرف الأقل مرونة: فريقك أو شبكات التوصيل. لفريق في مصر أو الخليج يتعامل مع أوروبا أو أمريكا، الموقع الأوروبي عادةً حل وسط أفضل من أي من الساحلين.</p>
+
+        <h2>صلاحية root ومنفذ للعودة</h2>
+        <p>ستحتاج صلاحية root: ضبط الشبكة على مستوى النواة، وبروكسي الوسائط، وقواعد الفايروول، ومعالجة NAT — لا شيء من ذلك ممكن خلف لوحة تحكم مُدارة. وستغلق على نفسك الوصول في وقت ما؛ كل من ضبط فايروول على سيرفر SIP ليلًا فعلها. ما ينجّي الليلة هو وصول خارج النطاق: IPMI على السيرفر المخصص، وكونسول VNC للطوارئ على الـ VPS. تأكد من وجوده وأنك تستطيع إعادة تثبيت النظام منه، قبل أن تحتاجه.</p>
+
+        <h2>الدفع</h2>
+        <p>الدفع بالكارت هو الأساس، ويكفي معظم الناس. لكن هناك سببان قد يمنعانه: الكروت الصادرة من مصر وبعض دول الخليج تُرفض من المزوّدين في الخارج أكثر مما يُقال، وبعض المشغّلين يفضّلون ألا يمرّ صرف البنية التحتية على الكارت أصلًا.</p>
+        <p>العملات الرقمية تحل الحالتين، والخطوات عادية: تطلب الخطة، فتُصدر اللوحة فاتورة، تدفعها بـ Monero أو Bitcoin أو Litecoin أو USDT أو USDC أو SOL أو TRX، وتُعلَّم الفاتورة مدفوعة بعد تأكيد الشبكة. فواتير التجديد تُصدر قبل عشرة أيام من الاستحقاق، فلا يتوقف شيء أثناء تأكيد الدفع. والدفع بالكارت عبر معالج دفع متاح لمن يفضّله.</p>
+
+        <h2>ما نستخدمه نحن</h2>
+        <p>سيرفراتنا عند <a href="https://phantomvps.com/vpn-vps" target="_blank" rel="noopener noreferrer">PhantomVPS</a>: أجهزة NVMe وبير ميتال، صلاحية root كاملة، IPMI على المخصص وVNC على الـ VPS، والتسليم عادةً في دقائق، مع طريقة الدفع السابقة. الخطط تبدأ من 7.99 دولار شهريًا، وكل خطة تذكر معالجها وبورت الشبكة والموقع قبل الطلب — وهي بالضبط المعلومات التي يطلب هذا المقال البحث عنها.</p>
+
+        <h2>إذا لم ترغب في عمل كل هذا</h2>
+        <p>نحدد المواصفات وننفّذ ونصين سيرفرات السنترال والكول سنتر ضمن <a href="/ar/services/internet">أعمال الكول سنتر والـ VoIP</a> عندنا، مع الفايروول والمراقبة حولها. أخبرنا بعدد المكالمات المتزامنة وأين يجلس فريقك، وتخرج المواصفة من ذلك.</p>
+      `,
+    },
+  },
   "flat-vs-reducing-interest-rate": {
     en: {
       id: "flat-vs-reducing-interest-rate",

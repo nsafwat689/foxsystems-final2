@@ -129,6 +129,10 @@
       "destination": "/ar/articles/hr-payroll-software-egypt-gulf.html"
     },
     {
+      "source": "/ar/articles/installment-sales-software",
+      "destination": "/ar/articles/installment-sales-software.html"
+    },
+    {
       "source": "/ar/articles/it-support-contracts",
       "destination": "/ar/articles/it-support-contracts.html"
     },
@@ -211,6 +215,10 @@
     {
       "source": "/ar/articles/voip-security",
       "destination": "/ar/articles/voip-security.html"
+    },
+    {
+      "source": "/ar/articles/vps-hosting-voip-pbx-servers",
+      "destination": "/ar/articles/vps-hosting-voip-pbx-servers.html"
     },
     {
       "source": "/ar/articles/warehouse-inventory-software",
@@ -453,6 +461,10 @@
       "destination": "/articles/hr-payroll-software-egypt-gulf.html"
     },
     {
+      "source": "/articles/installment-sales-software",
+      "destination": "/articles/installment-sales-software.html"
+    },
+    {
       "source": "/articles/it-support-contracts",
       "destination": "/articles/it-support-contracts.html"
     },
@@ -535,6 +547,10 @@
     {
       "source": "/articles/voip-security",
       "destination": "/articles/voip-security.html"
+    },
+    {
+      "source": "/articles/vps-hosting-voip-pbx-servers",
+      "destination": "/articles/vps-hosting-voip-pbx-servers.html"
     },
     {
       "source": "/articles/warehouse-inventory-software",

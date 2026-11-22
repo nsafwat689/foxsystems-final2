@@ -359,6 +359,29 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
     },
   },
 
+  "installment-sales-software": {
+    en: {
+      id: "installment-sales-software",
+      title: "Installment Sales Software for Shops: How to Choose One",
+      excerpt: "Selling on installments? The six things the software must track, the mistakes that lose money, and the questions to ask before you choose.",
+      category: "Software",
+      author: "Fox Systems Team",
+      date: "2026-11-22",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+    },
+    ar: {
+      id: "installment-sales-software",
+      title: "برنامج تقسيط للمحلات: كيف تختار نظام أقساط يحمي أموالك",
+      excerpt: "تبيع بالتقسيط؟ ستة أمور يجب أن يتابعها برنامج الأقساط، وأخطاء تضيّع أموالك، وأسئلة تطرحها قبل أن تختار.",
+      category: "البرمجيات",
+      author: "فريق فوكس سيستمز",
+      date: "2026-11-22",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+    },
+  },
+
   "real-estate-crm-egypt": {
     en: {
       id: "real-estate-crm-egypt",

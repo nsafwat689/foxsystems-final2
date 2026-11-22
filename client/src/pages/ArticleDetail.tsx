@@ -1260,6 +1260,107 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
     },
   },
 
+  "installment-sales-software": {
+    en: {
+      id: "installment-sales-software",
+      title: "Installment Sales Software for Shops: How to Choose One",
+      subtitle: "Selling phones, appliances or furniture on installments? What the software must track so the money you are owed actually comes back",
+      author: "Fox Systems Team",
+      date: "2026-11-22",
+      category: "Software",
+      readTime: "6 min read",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+      content: `
+        <p>Installment sales software is what separates a shop that grows on credit from a shop that slowly runs out of cash. Selling on installments brings customers who cannot pay in full today, but every contract is money that sits outside the shop until it is collected. If the schedule lives in a notebook or a spreadsheet, some of that money never comes back.</p>
+
+        <h2>Why installment sales get out of control</h2>
+        <p>The problem is rarely the sale. It is what happens after it: a missed payment nobody notices for two months, a guarantor whose number was never saved, a partial payment recorded against the wrong month, and no single view of how much is due this week. When the owner asks "how much is outside with customers?", nobody can answer quickly.</p>
+
+        <h2>What installment sales software must do</h2>
+        <h3>1. A contract with a clear schedule</h3>
+        <p>Price, down payment, number of months, profit or markup method, and the due date of every payment, generated automatically and printed or sent to the customer.</p>
+        <h3>2. Customer and guarantor files</h3>
+        <p>National ID, phone numbers, address and guarantor details stored with the contract, not on paper in a drawer.</p>
+        <h3>3. Collection that matches the schedule</h3>
+        <p>Every payment, full or partial, is posted against the right installment, with a receipt. Early payments and settlements are calculated, not guessed.</p>
+        <h3>4. Today's and this week's due list</h3>
+        <p>A daily list of who must pay today, who is late and by how many days, so collection becomes a routine instead of a memory exercise.</p>
+        <h3>5. Reminders before and after the due date</h3>
+        <p>SMS or WhatsApp reminders reduce late payments far more than calls made after the customer is already late.</p>
+        <h3>6. The real position of the shop</h3>
+        <p>Total receivables, aging (current, 30, 60, 90 days), collections per collector and per branch, and the stock that was sold on installments.</p>
+
+        <h2>Common mistakes to avoid</h2>
+        <ul>
+          <li>Recording the contract but not the guarantor.</li>
+          <li>Accepting partial payments without a rule for which month they cover.</li>
+          <li>Mixing cash sales and installment receivables in one cash book.</li>
+          <li>Waiting until month end to discover who did not pay.</li>
+        </ul>
+
+        <h2>Questions to ask before you choose</h2>
+        <ul>
+          <li>Can I load my existing customers and their remaining balances on day one?</li>
+          <li>Does it handle partial payments, early settlement and rescheduling?</li>
+          <li>Can collectors use it from a phone, with each one seeing only his customers?</li>
+          <li>Can I export everything at any time?</li>
+        </ul>
+
+        <h2>See it on your own contracts</h2>
+        <p>Fox Systems sets up an <a href="/solutions/finance-crm">installments and finance system</a> for shops and finance companies in Egypt, Saudi Arabia and Kuwait, with a free 3-day trial on your own data. To plan a schedule before you sell, try the free <a href="/tools/installment-plan-generator">installment plan generator</a>.</p>
+      `,
+    },
+    ar: {
+      id: "installment-sales-software",
+      title: "برنامج تقسيط للمحلات: كيف تختار نظام أقساط يحمي أموالك",
+      subtitle: "تبيع الموبايلات أو الأجهزة أو الأثاث بالتقسيط؟ ما الذي يجب أن يتابعه البرنامج حتى تعود إليك أموالك فعلًا",
+      author: "فريق فوكس سيستمز",
+      date: "2026-11-22",
+      category: "البرمجيات",
+      readTime: "6 دقائق قراءة",
+      image: "https://foxsystemstech.com/services/crm-og.jpg",
+      content: `
+        <p>برنامج تقسيط للمحلات هو ما يفرّق بين محل يكبر بالبيع الآجل ومحل تنفد سيولته بهدوء. فالبيع بالتقسيط يجلب عملاء لا يستطيعون الدفع كاملًا اليوم، لكن كل عقد هو مال خارج المحل حتى يُحصَّل. وإذا كان جدول الأقساط في دفتر أو ملف إكسل، فإن جزءًا من هذا المال لا يعود.</p>
+
+        <h2>لماذا يخرج البيع بالتقسيط عن السيطرة؟</h2>
+        <p>المشكلة نادرًا ما تكون في البيع نفسه، بل فيما بعده: قسط متأخر لا ينتبه إليه أحد شهرين، وضامن لم يُسجَّل رقمه، ودفعة جزئية سُجلت على شهر خطأ، ولا توجد صورة واحدة لما يستحق هذا الأسبوع. وحين يسأل صاحب المحل: كم لنا عند العملاء؟ لا يجد إجابة سريعة.</p>
+
+        <h2>ما الذي يجب أن يقدمه برنامج الأقساط؟</h2>
+        <h3>1. عقد بجدول أقساط واضح</h3>
+        <p>السعر والمقدم وعدد الشهور وطريقة حساب الربح أو الزيادة، وتاريخ استحقاق كل قسط، تُولَّد تلقائيًا وتُطبع أو تُرسل للعميل.</p>
+        <h3>2. ملف للعميل والضامن</h3>
+        <p>الرقم القومي وأرقام الهاتف والعنوان وبيانات الضامن محفوظة مع العقد، لا على ورقة في الدرج.</p>
+        <h3>3. تحصيل مطابق للجدول</h3>
+        <p>كل دفعة، كاملة أو جزئية، تُسجَّل على القسط الصحيح مع إيصال، ويُحسب السداد المبكر والتسوية بدل التقدير.</p>
+        <h3>4. قائمة مستحقات اليوم والأسبوع</h3>
+        <p>قائمة يومية بمن يجب أن يدفع اليوم، ومن تأخر وبكم يومًا، فيصبح التحصيل روتينًا لا يعتمد على الذاكرة.</p>
+        <h3>5. تذكير قبل الاستحقاق وبعده</h3>
+        <p>رسائل التذكير عبر SMS أو واتساب تقلل التأخير أكثر بكثير من الاتصال بعد أن يتأخر العميل بالفعل.</p>
+        <h3>6. الموقف الحقيقي للمحل</h3>
+        <p>إجمالي المستحقات، وأعمار الديون (جارية، 30، 60، 90 يومًا)، والتحصيل لكل محصّل ولكل فرع، والبضاعة التي بيعت بالتقسيط.</p>
+
+        <h2>أخطاء شائعة يجب تجنبها</h2>
+        <ul>
+          <li>تسجيل العقد دون تسجيل الضامن.</li>
+          <li>قبول دفعات جزئية دون قاعدة واضحة لأي شهر تُحتسب.</li>
+          <li>خلط المبيعات النقدية بمستحقات التقسيط في دفتر خزنة واحد.</li>
+          <li>انتظار نهاية الشهر لاكتشاف من لم يدفع.</li>
+        </ul>
+
+        <h2>أسئلة تطرحها قبل أن تختار</h2>
+        <ul>
+          <li>هل أستطيع إدخال عملائي الحاليين وأرصدتهم المتبقية من اليوم الأول؟</li>
+          <li>هل يدعم الدفعات الجزئية والسداد المبكر وإعادة الجدولة؟</li>
+          <li>هل يستطيع المحصّلون استخدامه من الهاتف، بحيث يرى كل منهم عملاءه فقط؟</li>
+          <li>هل أستطيع تصدير كل البيانات في أي وقت؟</li>
+        </ul>
+
+        <h2>جرّبه على عقودك</h2>
+        <p>تجهّز فوكس سيستمز <a href="/ar/solutions/finance-crm">نظام تقسيط وتمويل وأقساط</a> للمحلات وشركات التمويل في مصر والسعودية والكويت، مع تجربة مجانية 3 أيام على بياناتك. ولتخطيط جدول الأقساط قبل البيع، جرّب <a href="/ar/tools/installment-plan-generator">أداة إنشاء جدول الأقساط المجانية</a>.</p>
+      `,
+    },
+  },
+
   "real-estate-crm-egypt": {
     en: {
       id: "real-estate-crm-egypt",

@@ -124,6 +124,11 @@ function rootBody(route, cfg) {
   }
   const links = (ar ? AR_LINKS : EN_LINKS).filter(([href]) => href !== route);
   parts.push(`<nav><ul>${links.map(([href, label]) => `<li><a href="${href}">${esc(label)}</a></li>`).join("")}</ul></nav>`);
+  // The footer's hosting credit is React-only, so a crawler that does not render never saw it.
+  const hosting = ar ? "الاستضافة من" : "Servers by";
+  const readWhy = ar ? "اقرأ المقال" : "Read why";
+  const article = `${ar ? "/ar" : ""}/articles/vps-hosting-voip-pbx-servers`;
+  parts.push(`<p>${hosting} <a href="https://phantomvps.com" rel="noopener">PhantomVPS</a> &mdash; <a href="${article}">${readWhy}</a></p>`);
   return `<div style="max-width:760px;margin:0 auto;padding:32px 20px;font:16px/1.7 system-ui,sans-serif">${parts.join("")}</div>`;
 }
 

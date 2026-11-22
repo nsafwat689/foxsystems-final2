@@ -17,7 +17,7 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
     en: {
       id: "vps-hosting-voip-pbx-servers",
       title: "Where to Host a PBX or VoIP Server: What to Check Before You Order",
-      subtitle: "Bandwidth, clock speed, the console you need at 2 am, and how crypto payment works",
+      subtitle: "Bandwidth, clock speed, the console you need at 2 am, and the billing terms to settle first",
       author: "Fox Systems Team",
       date: "2026-11-21",
       category: "Infrastructure",
@@ -47,12 +47,12 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
         <h2>Root access, and a way back in</h2>
         <p>You will need root: kernel network tuning, media proxies, firewall rules and NAT handling are not possible behind a managed control panel. You will also, eventually, lock yourself out — everyone who has tightened a firewall on a SIP server late at night has done it. What saves the night is out-of-band access: IPMI on a dedicated server, an emergency VNC console on a VPS. Confirm it exists, and that you can reinstall the operating system from it, before you need it.</p>
 
-        <h2>Paying for the server</h2>
-        <p>Card payment is the default and for most buyers that is the end of the matter. Two reasons it sometimes is not: cards issued in Egypt and parts of the Gulf are declined by overseas hosts more often than anyone admits, and some operators would rather not route infrastructure spend through a card at all.</p>
-        <p>Crypto covers both cases, and the flow is unremarkable. You order, the panel raises an invoice, you pay it in Monero, Bitcoin, Litecoin, USDT, USDC, SOL or TRX, and the invoice marks itself paid once the network confirms. Renewal invoices are issued ten days ahead, so nothing switches off while a payment settles. A card route through a processor stays available if you prefer it.</p>
+        <h2>Billing, and the part people skip</h2>
+        <p>Card payment is the default and for most buyers that is the end of the matter. Two things are worth settling before you order. The first is whether the host accepts cards issued by your own bank — cards issued in Egypt and parts of the Gulf are declined by overseas providers more often than anyone admits, and finding that out at checkout wastes a day.</p>
+        <p>The second is when renewal invoices go out, and it matters more than it sounds. A host that raises the renewal ten days before the due date leaves you room to settle it without the server switching off underneath a live phone system. One that bills on the day does not. Ask what the grace period is on a late payment too — that is the difference between a slow bank transfer and a dead PBX at nine in the morning.</p>
 
         <h2>What we use</h2>
-        <p>Our own servers sit with <a href="https://phantomvps.com/vpn-vps" target="_blank" rel="noopener noreferrer">PhantomVPS</a>: NVMe and bare-metal machines, full root, IPMI on dedicated and VNC on VPS, delivery usually within minutes, and the payment flow above. Plans start at $7.99 a month, and every plan states its processor, network port and location before you order — which is exactly the information this article says to look for.</p>
+        <p>Our own servers sit with <a href="https://phantomvps.com/vpn-vps" target="_blank" rel="noopener noreferrer">PhantomVPS</a>: NVMe and bare-metal machines, full root, IPMI on dedicated and VNC on VPS, delivery usually within minutes, and renewal invoices ten days ahead of the due date. Plans start at $7.99 a month, and every plan states its processor, network port and location before you order — which is exactly the information this article says to look for.</p>
 
         <h2>If you would rather not do any of this</h2>
         <p>We size, deploy and maintain PBX and call-centre servers as part of our <a href="/services/internet">call-centre and VoIP work</a>, including the firewall and the monitoring around them. Tell us the number of concurrent calls and where your people sit, and the specification follows from that.</p>
@@ -61,7 +61,7 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
     ar: {
       id: "vps-hosting-voip-pbx-servers",
       title: "أين تستضيف سيرفر السنترال أو الـ VoIP؟ ما يجب التأكد منه قبل الطلب",
-      subtitle: "الباندويدث، وسرعة المعالج، والكونسول الذي ستحتاجه في الثانية صباحًا، والدفع بالعملات الرقمية",
+      subtitle: "الباندويدث، وسرعة المعالج، والكونسول الذي ستحتاجه في الثانية صباحًا، وشروط الفاتورة",
       author: "فريق فوكس سيستمز",
       date: "2026-11-21",
       category: "البنية التحتية",
@@ -91,12 +91,12 @@ const articleContent: Record<string, Record<"en" | "ar", any>> = {
         <h2>صلاحية root ومنفذ للعودة</h2>
         <p>ستحتاج صلاحية root: ضبط الشبكة على مستوى النواة، وبروكسي الوسائط، وقواعد الفايروول، ومعالجة NAT — لا شيء من ذلك ممكن خلف لوحة تحكم مُدارة. وستغلق على نفسك الوصول في وقت ما؛ كل من ضبط فايروول على سيرفر SIP ليلًا فعلها. ما ينجّي الليلة هو وصول خارج النطاق: IPMI على السيرفر المخصص، وكونسول VNC للطوارئ على الـ VPS. تأكد من وجوده وأنك تستطيع إعادة تثبيت النظام منه، قبل أن تحتاجه.</p>
 
-        <h2>الدفع</h2>
-        <p>الدفع بالكارت هو الأساس، ويكفي معظم الناس. لكن هناك سببان قد يمنعانه: الكروت الصادرة من مصر وبعض دول الخليج تُرفض من المزوّدين في الخارج أكثر مما يُقال، وبعض المشغّلين يفضّلون ألا يمرّ صرف البنية التحتية على الكارت أصلًا.</p>
-        <p>العملات الرقمية تحل الحالتين، والخطوات عادية: تطلب الخطة، فتُصدر اللوحة فاتورة، تدفعها بـ Monero أو Bitcoin أو Litecoin أو USDT أو USDC أو SOL أو TRX، وتُعلَّم الفاتورة مدفوعة بعد تأكيد الشبكة. فواتير التجديد تُصدر قبل عشرة أيام من الاستحقاق، فلا يتوقف شيء أثناء تأكيد الدفع. والدفع بالكارت عبر معالج دفع متاح لمن يفضّله.</p>
+        <h2>الفاتورة والجزء الذي يتجاهله الناس</h2>
+        <p>الدفع بالكارت هو الأساس ويكفي معظم الناس. لكن هناك أمران يستحقان الاتفاق عليهما قبل الطلب. الأول: هل يقبل المزوّد الكروت الصادرة من بنكك؟ الكروت الصادرة من مصر وبعض دول الخليج تُرفض من المزوّدين في الخارج أكثر مما يُقال، ومعرفة ذلك عند الدفع تضيّع يومًا كاملًا.</p>
+        <p>والثاني: متى تُصدر فواتير التجديد، وهو أهم مما يبدو. المزوّد الذي يُصدر فاتورة التجديد قبل عشرة أيام من الاستحقاق يترك لك وقتًا لسدادها دون أن يتوقف السيرفر تحت سنترال شغّال. والذي يطالب في يوم الاستحقاق لا يفعل. واسأل كذلك عن مدة السماح بعد التأخير — هي الفرق بين تحويل بنكي بطيء وسنترال متوقف في التاسعة صباحًا.</p>
 
         <h2>ما نستخدمه نحن</h2>
-        <p>سيرفراتنا عند <a href="https://phantomvps.com/vpn-vps" target="_blank" rel="noopener noreferrer">PhantomVPS</a>: أجهزة NVMe وبير ميتال، صلاحية root كاملة، IPMI على المخصص وVNC على الـ VPS، والتسليم عادةً في دقائق، مع طريقة الدفع السابقة. الخطط تبدأ من 7.99 دولار شهريًا، وكل خطة تذكر معالجها وبورت الشبكة والموقع قبل الطلب — وهي بالضبط المعلومات التي يطلب هذا المقال البحث عنها.</p>
+        <p>سيرفراتنا عند <a href="https://phantomvps.com/vpn-vps" target="_blank" rel="noopener noreferrer">PhantomVPS</a>: أجهزة NVMe وبير ميتال، صلاحية root كاملة، IPMI على المخصص وVNC على الـ VPS، والتسليم عادةً في دقائق، وفواتير التجديد تُصدر قبل عشرة أيام من الاستحقاق. الخطط تبدأ من 7.99 دولار شهريًا، وكل خطة تذكر معالجها وبورت الشبكة والموقع قبل الطلب — وهي بالضبط المعلومات التي يطلب هذا المقال البحث عنها.</p>
 
         <h2>إذا لم ترغب في عمل كل هذا</h2>
         <p>نحدد المواصفات وننفّذ ونصين سيرفرات السنترال والكول سنتر ضمن <a href="/ar/services/internet">أعمال الكول سنتر والـ VoIP</a> عندنا، مع الفايروول والمراقبة حولها. أخبرنا بعدد المكالمات المتزامنة وأين يجلس فريقك، وتخرج المواصفة من ذلك.</p>

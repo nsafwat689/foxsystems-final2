@@ -50,7 +50,7 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
     en: {
       id: "vps-hosting-voip-pbx-servers",
       title: "Where to Host a PBX or VoIP Server: What to Check Before You Order",
-      excerpt: "The bandwidth maths for concurrent calls, why clock speed beats core count, the out-of-band console you need when a firewall rule locks you out, and how paying in crypto works.",
+      excerpt: "The bandwidth maths for concurrent calls, why clock speed beats core count, the out-of-band console you need when a firewall rule locks you out, and the billing terms to settle before you order.",
       category: "Infrastructure",
       author: "Fox Systems Team",
       date: "2026-11-21",
@@ -60,7 +60,7 @@ const articles: Record<string, Record<"en" | "ar", Article>> = {
     ar: {
       id: "vps-hosting-voip-pbx-servers",
       title: "أين تستضيف سيرفر السنترال أو الـ VoIP؟ ما يجب التأكد منه قبل الطلب",
-      excerpt: "حساب الباندويدث للمكالمات المتزامنة، ولماذا سرعة المعالج أهم من عدد الأنوية، والكونسول الذي ستحتاجه لو أغلقت على نفسك الفايروول، وكيف يتم الدفع بالعملات الرقمية.",
+      excerpt: "حساب الباندويدث للمكالمات المتزامنة، ولماذا سرعة المعالج أهم من عدد الأنوية، والكونسول الذي ستحتاجه لو أغلقت على نفسك الفايروول، وشروط الفاتورة التي يجب الاتفاق عليها قبل الطلب.",
       category: "البنية التحتية",
       author: "فريق فوكس سيستمز",
       date: "2026-11-21",

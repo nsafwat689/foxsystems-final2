@@ -74,7 +74,7 @@ describe("lead store", () => {
   });
 
   it("POST rejects a prospect without a name or with an unknown product", async () => {
-    for (const body of [{ product: "hr-crm" }, { name: "A", product: "crypto" }, { name: "A", product: "hr-crm", email: "not-an-email" }]) {
+    for (const body of [{ product: "hr-crm" }, { name: "A", product: "catering-crm" }, { name: "A", product: "hr-crm", email: "not-an-email" }]) {
       const r = mockRes();
       await handler({ method: "POST", headers: { authorization: `Bearer ${ENV.LEADS_ADMIN_KEY}` }, body }, r);
       expect(r.statusCode).toBe(400);

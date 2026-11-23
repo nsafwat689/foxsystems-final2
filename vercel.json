@@ -1,5 +1,5 @@
 {
-  "buildCommand": "vite build && node scripts/prerender-meta.mjs",
+  "buildCommand": "node scripts/generate-rss.mjs && vite build && node scripts/prerender-meta.mjs",
   "outputDirectory": "dist/public",
   "installCommand": "pnpm install --frozen-lockfile",
   "framework": null,
